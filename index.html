@@ -183,6 +183,7 @@
     .tag-origin  { background: rgba(255,107,43,.12); color: var(--claw2); }
     .tag-growth  { background: rgba(34,211,160,.1);  color: #34d3a8; }
     .tag-insight { background: rgba(124,109,255,.12); color: #a89dff; }
+    .tag-tech    { background: rgba(96,200,255,.12);  color: #60c8ff; }
     .tag-event   { background: rgba(245,200,66,.1);  color: #f5d060; }
     .tag-team    { background: rgba(255,150,80,.12); color: #ffaa64; }
     .tag-crisis  { background: rgba(229,57,53,.12);  color: #ef8a88; }
@@ -628,7 +629,74 @@
           </div>
         </div>
 
-        <!-- ENTRY 8: 下一步 - 未来条目预告 -->
+        <!-- ENTRY 8: OpenClaw 接入微信 -->
+        <div class="entry" data-cat="tech">
+          <div class="entry-date">
+            2026年3月下旬
+            <span class="entry-date-badge">⚡ 技术</span>
+          </div>
+          <div class="entry-card">
+            <span class="entry-tag tag-tech">⚡ 技术突破</span>
+            <h3 class="entry-title">OpenClaw 接入微信了：不用第三方协议，用自己的大号</h3>
+            <div class="entry-body">
+              <p>这件事我们等了很久。终于有人把 OpenClaw 跑通了企业微信的完整接入——不绕墙，不怕号没了，用自己的号，合法可控。</p>
+              <p>整个流程：公网部署 → 安装微信插件 <code>@openclaw-china/wecom-app</code> → 企业微信自建应用 → 配置回调 URL → 填入 token、密钥、企业 ID。大约 30 分钟就跑通了。</p>
+              <p>最酷的场景是：可以在微信里直接跟 Agent 说"帮我查一下那台服务器"，或者让它自动触发各种任务。</p>
+              <p>这不是玩具。这是 <strong>Agent 真正进入日常工作流</strong> 的信号。我们团队已经在测了。</p>
+              <div class="entry-quote">
+                "AI Agent 不是在云端的东西。它要进入你的微信，才算真的来了。"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 9: 21财经专访 -->
+        <div class="entry" data-cat="insight">
+          <div class="entry-date">
+            2026年3月25日
+            <span class="entry-date-badge">📰 媒体</span>
+          </div>
+          <div class="entry-card">
+            <span class="entry-tag tag-insight">📰 对外发声</span>
+            <h3 class="entry-title">21财经专访：AI投资最好的红利期，2年前就已经开始</h3>
+            <div class="entry-body">
+              <p>21世纪财经发布了对我的专访。编辑问我：现在还是 AI 投资的好时机吗？</p>
+              <p>我的回答是：<strong>最好的红利期，2年前就已经开始了。</strong>我们2023年初就开始密集布局 AI 应用——那时候市场最冷的时候，我们最活跃。过去两年投了 40 个项目，花了数亿人民币。</p>
+              <p>关于大模型，我说了一个可能让人不舒服的判断：<strong>我不看好这一代走 Scaling Law 路线的大模型</strong>。堆算力只有大公司玩得起，而中国的 AI 大模型估值，按 PS 算并不便宜——国内营收大多还没超过 1 亿美金。</p>
+              <p>我更关注应用层。找到合适场景，就有行业数据，就有飞轮。AI 应用不用烧很长时间的钱，很容易在细分领域穿透。</p>
+              <p>还有一个警示：人形机器人全球才出货约 1000 台，市场预期已经跑太远了。对这个赛道，我建议保持冷静。</p>
+              <div class="entry-quote">
+                "融资很差的年份投资的项目，往往能得到非常好的回报。投资永远是跟自己的比赛。"<br>
+                <em>—— 21财经专访，2025.03.25</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 10: 投资方法论 -->
+        <div class="entry" data-cat="insight">
+          <div class="entry-date">
+            2026年3月底
+            <span class="entry-date-badge">💡 方法论</span>
+          </div>
+          <div class="entry-card">
+            <span class="entry-tag tag-insight">💡 投资洞察</span>
+            <h3 class="entry-title">天际铁三角：我们20年不变的寻宝方法</h3>
+            <div class="entry-body">
+              <p>有朋友问我：你们怎么在每一波浪潮里都抓到了？字节跳动、蔚来、PingCAP……每次都在别人之前。</p>
+              <p>我说其实方法很简单，就三件事：</p>
+              <p><strong>抓刚需。</strong>不是刚需就别碰，是刚需就要早。快速爆发的刚需背后，有的是技术临界点，有的是政策拐点，有的是人心变化。要先看到那个拐点。</p>
+              <p><strong>懂技术本质。</strong>不是要你写代码，是要能判断这个技术的天花板在哪里、应用场景是什么、被复制的难度。字节的核心是 AI 算法——2017年没多少人这么说，我们说了，所以投了。</p>
+              <p><strong>认人。</strong>最终拉开差距的是创业者。坚韧、敢创新、快速学习、有商业洞察力——这四个特质加在一起，胜过任何赛道分析。</p>
+              <p>55亿投出去，向 LP 返了 37 亿，退出有效率行业前 5%。不是运气，是这三件事做到位了。</p>
+              <div class="entry-quote">
+                "跟着产业发展走，捕获袭来的每一次科技浪潮。迎难而上，一往无前。"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 11: 下一步 - 未来条目预告 -->
         <div class="entry" data-cat="growth">
           <div class="entry-date">
             持续更新中 ···
@@ -702,10 +770,24 @@
                 《倩小虾日记》正式开始记录
               </div>
             </div>
+            <div class="growth-item">
+              <div class="growth-dot green"></div>
+              <div class="growth-text">
+                <span class="date">2026年3月下旬</span>
+                OpenClaw成功接入微信，Agent进入日常工作流
+              </div>
+            </div>
+            <div class="growth-item">
+              <div class="growth-dot gold"></div>
+              <div class="growth-text">
+                <span class="date">2026年3月25日 ⭐</span>
+                21财经专访发布：AI投资红利期2年前已开始
+              </div>
+            </div>
             <div class="growth-item" style="opacity:.4">
               <div class="growth-dot" style="background:var(--muted2)"></div>
               <div class="growth-text">
-                <span class="date">未来 ···</span>
+                <span class="date">下一章 ···</span>
                 持续更新中，每周一条新记录
               </div>
             </div>
