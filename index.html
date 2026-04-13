@@ -261,6 +261,24 @@
       background: rgba(255,107,43,.12); border-color: var(--claw2); color: var(--claw2);
     }
 
+    /* ── LAST UPDATED BAR ── */
+    .last-updated-bar {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 28px; padding: 12px 18px;
+      background: rgba(255,107,43,.07);
+      border: 1px solid rgba(255,107,43,.22);
+      border-radius: 10px; font-family: var(--sans); font-size: 13px;
+    }
+    .last-updated-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--claw); box-shadow: 0 0 8px var(--claw);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .last-updated-label { color: var(--claw2); font-weight: 700; letter-spacing: .04em; font-size: 11px; text-transform: uppercase; }
+    .last-updated-date { color: var(--text); font-weight: 600; }
+    .last-updated-title { color: var(--muted); }
+
     /* ── PHOTO WALL ── */
     .photo-wall { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
     .photo-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 1; background: var(--bg3); position: relative; cursor: pointer; }
@@ -415,7 +433,7 @@
   <div class="stats-inner">
     <div class="stat"><div class="stat-val claw-text">Day 30</div><div class="stat-lbl">日记连续记录中</div></div>
     <div class="stat"><div class="stat-val claw-text">20+</div><div class="stat-lbl">全员养虾中</div></div>
-    <div class="stat"><div class="stat-val claw-text">17篇</div><div class="stat-lbl">成长日记已写</div></div>
+    <div class="stat"><div class="stat-val claw-text">19篇</div><div class="stat-lbl">成长日记已写</div></div>
     <div class="stat"><div class="stat-val claw-text">1000万</div><div class="stat-lbl">龙虾创造的第一单</div></div>
   </div>
 </div>
@@ -432,6 +450,14 @@
         <p class="sec-sub">从一个想法，到一个品牌，到一支组织。每天都在发生。</p>
       </div>
 
+      <!-- Last Updated -->
+      <div class="last-updated-bar">
+        <div class="last-updated-dot"></div>
+        <span class="last-updated-label">最近更新</span>
+        <span class="last-updated-date">2026年4月14日</span>
+        <span class="last-updated-title">· OpenClaw 4.11 记忆维基与主动记忆：龙虾开始真正"认识你"了</span>
+      </div>
+
       <!-- Filter -->
       <div style="margin-bottom:32px">
         <div class="tag-filter">
@@ -446,205 +472,193 @@
 
       <div class="timeline" id="timeline">
 
-        <!-- ENTRY 0: 缘起 -->
-        <div class="entry milestone" data-cat="origin">
-          <div class="entry-date">
-            2026年1月 · 春节前夕
-            <span class="entry-date-badge">🌱 起源</span>
-          </div>
-          <div class="entry-card milestone-card">
-            <span class="entry-tag tag-origin">🦞 缘起</span>
-            <h3 class="entry-title">为什么是一只龙虾</h3>
-            <div class="entry-body">
-              <p>OpenClaw出现之前，没有人会把"龙虾"和"AI Agent"放在一起。</p>
-              <p>但OpenClaw出现之后，<strong>60天，25万颗GitHub星</strong>，超过React十多年的积累——这只橙红色的爪子，突然成了2026年AI世界最炙手可热的符号。</p>
-              <div class="entry-quote">
-                "我第一次看到OpenClaw的logo，觉得很有意思。一只龙虾爪子，象征抓取、执行、不放手。这不就是Agent的本质吗？"
-              </div>
-              <p>那时候我在想：天际要不要围绕这个做点什么？不是跟风，而是因为<strong>我们真的相信这件事</strong>。Agent时代是真的来了。</p>
-              <p>然后"倩小虾"这个名字就出现了。不是品牌策划，而是一群人在群里瞎聊，突然觉得——对，就这个。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTRY 1: 第一次讨论 -->
-        <div class="entry" data-cat="team">
-          <div class="entry-date">
-            2026年2月初
-            <span class="entry-date-badge">👥 队伍</span>
-          </div>
-          <div class="entry-card">
-            <span class="entry-tag tag-team">👥 队伍</span>
-            <h3 class="entry-title">第一次内部讨论：我们要养一只什么样的龙虾</h3>
-            <div class="entry-body">
-              <p>那天的会议没有议程。就是几个人坐在一起，每人桌上一杯咖啡，说——我们到底要用OpenClaw做什么？</p>
-              <p>有人说做投研工具。有人说做社区。有人说做课程。</p>
-              <p>我说：<strong>都不是。我们要做的是一个组织。一支能在Agent时代真正作战的团队。</strong></p>
-              <p>龙虾是我们的图腾，不是我们的产品。</p>
-              <div class="entry-quote">
-                "一只龙虾能干什么？它能夹，能执行，能不放手。我们也要变成这样的组织。"
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTRY 2: AI海啸文章 -->
+        <!-- ENTRY 19 (最新): OpenClaw 4.11 记忆维基与主动记忆 -->
         <div class="entry" data-cat="insight">
           <div class="entry-date">
-            2026年2月
-            <span class="entry-date-badge">💡 洞察</span>
+            2026年4月14日
+            <span class="entry-date-badge">🧠 最新</span>
           </div>
           <div class="entry-card featured">
-            <span class="entry-tag tag-insight">💡 洞察</span>
-            <h3 class="entry-title">写完《AI海啸与东方文明》之后，我意识到我们要更快</h3>
+            <span class="entry-tag tag-insight">🧠 技术洞察</span>
+            <h3 class="entry-title">龙虾开始"记住你了"：OpenClaw 4.11 记忆维基与主动记忆，改变了什么</h3>
             <div class="entry-body">
-              <p>春节前，我跟一个在顶级AI实验室工作的朋友通了电话。他是那种每天跑着几千万tokens的人。</p>
-              <p>他说：<em>"我觉得AI很快就会把我也淘汰了，最快可能就在2026年。"</em></p>
-              <p>这句话让我心里一沉。不是因为恐惧，而是因为我意识到：<strong>我们组建龙虾组织这件事，不能再等了。</strong></p>
-              <p>等你"想清楚了"再动，这条坡道上已经来不及了。亚布力的雪坡教过我：在不确定性面前，前倾比后坐安全得多。</p>
-              <div class="entry-number">
-                <div class="entry-number-item"><span class="val">2天</span><span class="lbl">写完万字长文</span></div>
-                <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">10万+</span><span class="lbl">阅读量</span></div>
-                <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">1</span><span class="lbl">核心判断：加速</span></div>
+              <p>昨晚 OpenClaw 推送了 v2026.4.11，我第一时间更新，测了两个小时，有些话憋在心里，今天必须写出来。</p>
+              <p>这次最重要的两个功能：<strong>记忆维基（Memory Wiki）</strong>和<strong>主动记忆（Active Memory）</strong>。</p>
+              <p>先说记忆维基。之前 OpenClaw 的记忆是散的——一条条 note 躺在 memory/ 目录里，时间长了自己都找不回来。4.11 做的事，是把这些碎片自动整理成一个只属于你的"维基百科"：自动提取持久性事实、检测新旧信息之间的矛盾、还能在 Dreaming 页面看到哪些知识已经"过期"。最让我意外的是，它支持导入 ChatGPT 的历史记录——换句话说，你在别的地方喂给 AI 的上下文，现在可以迁移过来。</p>
+              <p>再说主动记忆。之前的逻辑是：你得主动叫 OpenClaw 去找记忆，它才会调用 memory_search。现在反过来了——<strong>每次对话开始前，它自己先翻一遍笔记，再来回答你</strong>。就像一个助理，每次开会前都会先看一遍你的背景资料，而不是等你提醒他。</p>
+              <p>这两个功能加在一起，意味着什么？<em>龙虾真的开始"认识你"了。</em>不是会话级的认识，而是跨越时间的、越用越懂你的那种认识。这是 AI agent 从"工具"变成"伙伴"的关键一步。</p>
+              <p>从投资角度，我想记住这个时间节点：<strong>2026年4月，AI agent 的记忆层开始成熟。</strong>接下来会出现一批专门做"个人知识图谱"和"记忆即服务"的公司。天际要提前卡位。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 17: Anthropic vs OpenClaw 创始人封号事件 -->
+        <div class="entry" data-cat="insight">
+          <div class="entry-date">
+            2026年4月12日
+            <span class="entry-date-badge">⚡ 行业震荡</span>
+          </div>
+          <div class="entry-card featured">
+            <span class="entry-tag tag-insight">⚡ 行业震荡</span>
+            <h3 class="entry-title">Anthropic 封号龙虾之父：一场24小时的闹剧，和它背后的真正信号</h3>
+            <div class="entry-body">
+              <p>4月10日，OpenClaw 创始人 Peter Steinberger 发帖，说他的 Claude 账号被 Anthropic 封禁了——理由是"可疑活动"。帖子一出，AI圈炸锅。几个小时后，Anthropic 出来道歉：误判，已解封，是"过于敏感的滥用检测系统误报"。</p>
+              <p>这场闹剧持续了不到一天，但我盯着这件事看了很久，因为它是一个比封号本身更值得细品的信号。</p>
+              <p><strong>背景：Anthropic其实已经开过第一刀。</strong>就在封号风波之前，Anthropic宣布，Claude 订阅用户的额度将不再覆盖"第三方调用方案，包括 OpenClaw"——换句话说，用 OpenClaw 的人，以后得单独付 API 费。这对很多个人用户是真实的痛。</p>
+              <p><strong>更微妙的是 Peter 本人的身份。</strong>他在今年2月就加入了 OpenAI，专门做个人 Agent 产品。也就是说，Anthropic 封的是一个同时为竞争对手工作、又在用自己平台构建生态的人。这里面的张力，耐人寻味。</p>
+              <p>我从这件事里看到三条线：<br/>
+              <em>第一，大模型公司和生态工具之间的利益矛盾，已经明牌了。</em>以前是共生，现在是争食。<br/>
+              <em>第二，中国市场的大厂策略反而显得更"成熟"。</em>字节、腾讯没有封 OpenClaw，而是把它包进自己的生态，拿走了控制权却给了用户留了免费入口——高明多了。<br/>
+              <em>第三，开源项目的护城河，根本不是代码，是社区。</em>OpenClaw 之所以能在24小时内把 Anthropic 逼到道歉，靠的是 250000 颗 GitHub Star 背后的声音。这是任何大公司都不敢轻易硬碰的力量。</p>
+              <p>养虾这条路，注定不会是一条平坦的赛道。<strong>但越是混乱的时候，越是最好的入场时机。</strong>我们继续。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 16: 投资判断升级 -->
+        <div class="entry" data-cat="insight">
+          <div class="entry-date">
+            2026年4月
+            <span class="entry-date-badge">🎯 投资判断</span>
+          </div>
+          <div class="entry-card featured">
+            <span class="entry-tag tag-insight">🎯 投资判断</span>
+            <h3 class="entry-title">工具类只值5%：我对Agent赛道最新的三个硬判断</h3>
+            <div class="entry-body">
+              <p>最近一个月，我把龙虾生态里每一层都重新过了一遍，得出三个硬判断。写在这里，将来回头自己检查。</p>
+              <p><strong>一、中美打法已经彻底分叉。</strong>美国市场 OpenClaw 部署要收 15K 安装费 + 5K/月维护费；而中国这边，字节、腾讯、火山引擎的大厂已经开始 <em>"免费帮你装，甚至倒贴"</em>。这不是价格战，这是大厂在用"免费"换"生态接入权"。结论：<strong>中国做基础设施的公司很难单独赚钱，要赚钱只能站到场景里去</strong>。</p>
+              <p><strong>二、端到端给结果的产品才值钱，工具类最多只值 5%。</strong>任何一个只卖"帮你调 Agent"的工具型项目，长期都会被大厂的免费方案挤到边角。真正值钱的是那种 <em>"给我一个问题，我交付一个结果"</em> 的垂直闭环——它吃的是场景里的全部信息差，不是一段 API 的调用费。</p>
+              <p><strong>三、硬件 + 龙虾是我今年最兴奋的方向。</strong>因为硬件的供应链护城河是真的、是复制不了的。一只龙虾 + 一块特定场景的硬件（仓储机械臂、医疗影像设备、工厂质检相机），构成的是一个没办法被纯软件项目超车的组合。<em>越离虚拟世界远的场景，商业价值越大。</em></p>
+              <div class="entry-img">
+                <img src="assets/360-event.jpg" alt="360 × 小龙虾装机体验日" />
+                <div class="entry-img-caption">硬件 + 龙虾的典型落地：360硬壳服务 · 小龙虾装机体验日 · 2026.3.14 北京朝阳</div>
               </div>
+              <p>把这三条写下来，就是给全团队看的作战坐标。养虾是手段，抓到这三个方向里那些真正能跑出来的公司，才是目的。</p>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 3: 品牌建立 -->
-        <div class="entry" data-cat="origin">
+        <!-- ENTRY 13: 安德森的胜率法则 -->
+        <div class="entry" data-cat="insight">
           <div class="entry-date">
-            2026年2月中
-            <span class="entry-date-badge">🎨 品牌</span>
+            2026年4月5日
+            <span class="entry-date-badge">🎯 方法论</span>
           </div>
-          <div class="entry-card">
-            <span class="entry-tag tag-origin">🎨 品牌诞生</span>
-            <h3 class="entry-title">倩小虾的logo出来了</h3>
+          <div class="entry-card featured">
+            <span class="entry-tag tag-insight">🎯 投资洞察</span>
+            <h3 class="entry-title">昨夜又听了一遍安德森：胜率、赔率，和我们今年最大的一个盲点</h3>
             <div class="entry-body">
-              <p>设计师发来了第一版"倩小虾"的logo。一只小虾，卡通风，眼神很坚定，颜色是橙红。</p>
-              <p>我盯着它看了很久。这只虾有种不服气的劲，我喜欢。</p>
-              <p>我们改了六版。最后定的是v6——<strong>那是那只最敢瞪人的版本</strong>。</p>
-              <p>品牌不是设计出来的，是把一种精神找到一个形状。倩小虾的精神是：<em>小，但是不怕。</em></p>
-            </div>
-            <div class="entry-img">
-              <img src="assets/qianxiaxia.png" alt="倩小虾品牌" />
-              <div class="entry-img-caption">倩小虾 ClawQ · 品牌物料定稿</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTRY 4: 备战直播 -->
-        <div class="entry" data-cat="event">
-          <div class="entry-date">
-            2026年3月1日—6日
-            <span class="entry-date-badge">🔥 直播备战</span>
-          </div>
-          <div class="entry-card">
-            <span class="entry-tag tag-event">🔥 事件</span>
-            <h3 class="entry-title">备战6天：《OpenClaw重塑商业和AI格局》直播</h3>
-            <div class="entry-body">
-              <p>确定了要做一场直播，定在3月7日，主题就是OpenClaw。</p>
-              <p>三个人：我，Annie（唐安颖），Will（郎瀚威）。<strong>一个投资人，一个数据猎手，一个硅谷前线哨兵。</strong></p>
-              <p>这6天我们写了两版完整脚本，改了不知道多少次。每一次改稿，都是一次对"什么是真正有价值的判断"的逼问。</p>
+              <p>昨晚我把 Marc Andreessen 最近那一期播客又听了一遍。一个多小时，记了满满三页笔记。</p>
+              <p>他讲了一件特别朴素、却极容易被忽略的事——<strong>风险投资的回报不来自胜率，来自赔率</strong>。在100个项目里，对的那2–3个的回报要大到能覆盖其他97个的全部损失。所以真正要问的问题不是"这家公司会不会成"，而是"如果它成了，它的天花板在哪里"。</p>
+              <p>这句话让我回看了一下我们过去三个月对 Agent 赛道的判断，发现了一个盲点：<em>我们在看项目时太担心"会不会死"，反而没花足够的时间问"如果活下来，能大到什么程度"。</em>两个问题，是完全不同的思考方式。</p>
+              <p>我给团队改了一条规则：<strong>从今天起，所有新项目的内部立项评估，第一张图必须是天花板图，而不是风险图。</strong>先假设它成了，再倒推它需要什么条件。</p>
+              <p>龙虾组织的判断力，是要一件一件事磨出来的。磨的方式就是——看见自己错在哪里，然后改。</p>
               <div class="entry-quote">
-                "我们不卖课，不带货。我们用管理近30亿美元的投资视角，和亲身体验，讲真话。"<br>
-                —— 直播预热文案，后来转发了几千次
+                "天花板决定你买不买，风险决定你买多少。这两件事永远分开问。"<br>
+                <em>—— 2026.04.05 深夜笔记</em>
               </div>
-              <p>写文案的那天下午，我突然明白了为什么要建这个龙虾组织。<strong>不是为了跟风，而是因为我们真的有东西要说。</strong></p>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 5: 直播当天 - 里程碑 -->
-        <div class="entry milestone" data-cat="event">
+        <!-- ENTRY 12: OpenClaw 中国镜像 -->
+        <div class="entry milestone" data-cat="tech">
           <div class="entry-date">
-            2026年3月7日（周六）
-            <span class="entry-date-badge">⭐ 里程碑</span>
+            2026年4月2日
+            <span class="entry-date-badge">🌐 生态</span>
           </div>
           <div class="entry-card milestone-card">
-            <span class="entry-tag tag-event">⭐ 里程碑</span>
-            <h3 class="entry-title">直播日：我们开口说了那些话</h3>
+            <span class="entry-tag tag-tech">🌐 生态里程碑</span>
+            <h3 class="entry-title">OpenClaw 正式上线中国镜像站：字节跳动 × 火山引擎联合托底</h3>
             <div class="entry-body">
-              <p>北京时间上午10点，直播准时开始。</p>
-              <p>我说的第一句话不是"大家好"，是：<em>"你们最近有没有被一只龙虾刷屏？"</em></p>
-              <p>那两个小时，我们聊了很多。泡沫还是信号？中美玩家的不同打法？谁在AI Agent浪潮里真正赚钱，谁在裸泳？</p>
-              <p>Annie用数据打我的论断，Will用硅谷温度补细节。我们"吵"了好几次。但我觉得那种碰撞<strong>正是这个组织应该有的样子</strong>——不是表演，是真实的认知摩擦。</p>
+              <p>等了很久的一件事落地了。4月1日启用，4月2日官方公告：<strong>OpenClaw 中国镜像站正式上线</strong>，基础设施由字节跳动 / 火山引擎联合支持。</p>
+              <p>意味着什么？意味着从今天起，国内开发者拉 Skills、同步 ClawHub、下载模型配置——不用再翻墙、不用再等几十秒的握手、不用再担心哪天仓库突然被掐。延迟从几百毫秒降到几毫秒。<strong>这是开发者规模能突破下一个数量级的前提。</strong></p>
+              <p>更重要的是，这是大厂真正"站队"的信号。一个开源项目上25万星不稀奇，稀奇的是字节跳动愿意拿基础设施托底——<em>这代表他们把 OpenClaw 当成了自己生态的一部分，而不是一个需要围剿的竞品。</em></p>
+              <p>龙虾进了中国家门。接下来就该看国内开发者怎么"养龙虾"了。我们已经在看哪些团队最先把这波红利用起来。</p>
+              <div class="entry-number">
+                <div class="entry-number-item"><span class="val">25万+</span><span class="lbl">GitHub Stars</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">5700+</span><span class="lbl">ClawHub Skills</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">1张</span><span class="lbl">中国镜像入场券</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 15: 1000万的故事 -->
+        <div class="entry milestone" data-cat="event">
+          <div class="entry-date">
+            2026年3月 · 某个下午
+            <span class="entry-date-badge">💰 真实战例</span>
+          </div>
+          <div class="entry-card milestone-card">
+            <span class="entry-tag tag-event">💰 真实战例</span>
+            <h3 class="entry-title">龙虾帮我找到了一份 OpenAI 算力数据，当天拿到1000万投资</h3>
+            <div class="entry-body">
+              <p>这件事我在多个场合讲过，但我想把它认真记录在日记里，因为它是<strong>"龙虾到底值不值得"</strong>这个问题最干脆的答案。</p>
+              <p>那是三月的一个下午。我要去见一家几千亿市值的 A 股上市公司，聊天际的下一期基金。出发前我让龙虾帮我抓一份 <em>OpenAI 算力使用趋势的实时数据</em>——这种数据，我过去需要动用好几个研究员，花两三天交叉验证。</p>
+              <p>龙虾给我的结果，<strong>精准度比我此前收集的所有数据都高</strong>。我把数据打印出来，带去了会议。</p>
+              <p>结果是：<strong>对方当天决定投天际资本1000万人民币。</strong>不是流程走一周，不是回去讨论，就是当天决定。</p>
+              <p>那一刻我想清楚了一件事——<em>龙虾不是效率工具。龙虾是一张进入谈判桌的新门票。</em>它让你在一件事情上从"研究员水平"直接跳到"可以跟上市公司 CFO 对话"的水平。</p>
               <div class="entry-img">
-                <img src="assets/openclaw-poster.jpg" alt="OpenClaw直播" />
-                <div class="entry-img-caption">2026.3.7 · OpenClaw重塑商业和AI格局 · 张倩 × Annie × Will</div>
+                <img src="assets/clawq-logo-black.jpg" alt="倩小虾 ClawQ 主LOGO" />
+                <div class="entry-img-caption">倩小虾 ClawQ® · "AI 的手和脚"的正式图腾</div>
+              </div>
+              <div class="entry-quote">
+                "以前 AI 是你的大脑，现在龙虾是你的手和脚。大脑只能想，手脚能把想法真正实现——你甚至不知道它是怎么实现的。"<br>
+                <em>—— 答记者问，2026.03</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 14: 龙虾兵团成军 -->
+        <div class="entry milestone" data-cat="team">
+          <div class="entry-date">
+            2026年春节后 · 持续至今
+            <span class="entry-date-badge">🦞 龙虾兵团</span>
+          </div>
+          <div class="entry-card milestone-card">
+            <span class="entry-tag tag-team">🦞 组织进化</span>
+            <h3 class="entry-title">天际资本"龙虾兵团"成军：每人至少一只，最厉害的同事养了八只</h3>
+            <div class="entry-body">
+              <p>过去两个月，我把整个天际资本的工作方式全改了。起因只有一句话：<em>每个人必须养一只龙虾，不养不算合格的投资人。</em></p>
+              <p>现在的配置是——公司20多人，<strong>每个员工至少养一只龙虾，最厉害的同事养了八只</strong>。最离谱的是我的 LP 班级，400人，从春节就开始养，现在很多人跟我汇报的第一句话变成了："张倩，我的龙虾今天又干了什么什么……"</p>
+              <p>典型的一天是这样的：<strong>早上7点，我把十几个赛道丢给龙虾研究；7点半，报告全出来了。</strong>更扎心的是——我发现 <em>70% 同事自己写的报告质量不如龙虾生成的内容</em>。这不是在打击同事，这是让我必须重新定义"投资人的价值"这件事。</p>
+              <p>投资人的稀缺性过去在于"信息差 + 判断力"。龙虾出现之后，信息差被压平了。留下的只有判断力——而判断力只能靠场景里真打出来，不是靠坐办公室想出来。</p>
+              <p>所以天际的组织逻辑现在变成了：<strong>每个人都是一个"人+虾"的混合体</strong>。人负责定方向、看人、拍板；虾负责执行、搜集、演算。谁不用虾，谁就自动落后半个赛季。</p>
+              <div class="entry-img">
+                <img src="assets/clawq-neon.jpg" alt="倩小虾 ClawQ 霓虹主视觉" />
+                <div class="entry-img-caption">ClawQ 霓虹主视觉 · 天际资本"人+虾"混合作战的图腾</div>
               </div>
               <div class="entry-number">
-                <div class="entry-number-item"><span class="val">120分钟</span><span class="lbl">直播时长</span></div>
+                <div class="entry-number-item"><span class="val">20+</span><span class="lbl">全员养虾</span></div>
                 <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">3人</span><span class="lbl">真实碰撞</span></div>
+                <div class="entry-number-item"><span class="val">8只</span><span class="lbl">个人最高养殖记录</span></div>
                 <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">1个判断</span><span class="lbl">Agent时代到了</span></div>
+                <div class="entry-number-item"><span class="val">400人</span><span class="lbl">LP班同步入坑</span></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 6: 直播后复盘 -->
-        <div class="entry" data-cat="growth">
+        <!-- ENTRY 11: 双片发布 -->
+        <div class="entry" data-cat="event">
           <div class="entry-date">
-            2026年3月8日
-            <span class="entry-date-badge">📝 复盘</span>
+            2026年3月29日 · 30日
+            <span class="entry-date-badge">🎬 双片发布</span>
           </div>
           <div class="entry-card">
-            <span class="entry-tag tag-growth">📈 成长</span>
-            <h3 class="entry-title">直播结束后，我睡不着</h3>
+            <span class="entry-tag tag-event">🎬 内容输出</span>
+            <h3 class="entry-title">连发两条视频：《商业化论》和《天际龙虾26》</h3>
             <div class="entry-body">
-              <p>直播结束，我没有立刻睡觉。我在想一个问题：</p>
-              <p><strong>下一步是什么？</strong></p>
-              <p>我们证明了自己可以做好一场有质量的直播。但一场直播不是一个组织。</p>
-              <p>真正的龙虾组织，应该是能持续输出的、有节奏的、彼此信任的一群人。就像傅盛写龙虾日记，不是为了某一篇被转发，<strong>而是日复一日地把一件事做进时间里</strong>。</p>
-              <p>这个日记，就是从这里开始的。</p>
+              <p>两天，两条视频。一个关于钱，一个关于人。</p>
+              <p>第一条叫<strong>《Openclaw Agent 商业化论》</strong>。Agent时代的生意到底怎么做？我讲了最近看到的三种正在跑通的模式：<em>Skills 市场抽成、Agent 分发中间件、垂直场景代运营</em>。不是每一种都能跑出来，但钱一定会从Token费用流向这三个方向之一。</p>
+              <p>第二条叫<strong>《天际龙虾26》</strong>。这是我第一次把"天际龙虾组织"这件事完整讲出来——为什么我们要改名叫龙虾，为什么要改作战方式，为什么在2026年我们必须变成一个更快、更真、更敢下水的组织。</p>
+              <p>两条视频合起来看，其实是一件事：<em>Agent 已经从"能用"走到"能赚钱"的节点，谁先把自己的组织改造成 Agent-First，谁就抢到了下一个十年的位置。</em></p>
               <div class="entry-quote">
-                "最好的品牌不是设计出来的。是把每天发生的真实记录下来，日积月累，自然就有了形状。"
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTRY 7: 组织定义 -->
-        <div class="entry" data-cat="team">
-          <div class="entry-date">
-            2026年3月中
-            <span class="entry-date-badge">🏗️ 建设</span>
-          </div>
-          <div class="entry-card">
-            <span class="entry-tag tag-team">🏗️ 队伍建设</span>
-            <h3 class="entry-title">我们到底是一个什么组织</h3>
-            <div class="entry-body">
-              <p>有人问我：天际龙虾组织是干什么的？</p>
-              <p>我想了很久，最后给出的答案是三个词：<em>感知、判断、行动。</em></p>
-              <p><strong>感知</strong>：比别人更早看到AI浪潮里真正重要的信号。<br>
-              <strong>判断</strong>：用20年投资经验和第一性原理，穿透表象看到本质。<br>
-              <strong>行动</strong>：不等待，不观望，第一个下水。</p>
-              <p>这不是一个媒体组织，也不是一个课程品牌。<strong>这是一支在Agent时代一起作战的团队。</strong></p>
-              <p>龙虾的爪子是用来夹住机会的，不是用来晒太阳的。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTRY 8: OpenClaw 接入微信 -->
-        <div class="entry" data-cat="tech">
-          <div class="entry-date">
-            2026年3月下旬
-            <span class="entry-date-badge">⚡ 技术</span>
-          </div>
-          <div class="entry-card">
-            <span class="entry-tag tag-tech">⚡ 技术突破</span>
-            <h3 class="entry-title">OpenClaw 接入微信了：不用第三方协议，用自己的大号</h3>
-            <div class="entry-body">
-              <p>这件事我们等了很久。终于有人把 OpenClaw 跑通了企业微信的完整接入——不绕墙，不怕号没了，用自己的号，合法可控。</p>
-              <p>整个流程：公网部署 → 安装微信插件 <code>@openclaw-china/wecom-app</code> → 企业微信自建应用 → 配置回调 URL → 填入 token、密钥、企业 ID。大约 30 分钟就跑通了。</p>
-              <p>最酷的场景是：可以在微信里直接跟 Agent 说"帮我查一下那台服务器"，或者让它自动触发各种任务。</p>
-              <p>这不是玩具。这是 <strong>Agent 真正进入日常工作流</strong> 的信号。我们团队已经在测了。</p>
-              <div class="entry-quote">
-                "AI Agent 不是在云端的东西。它要进入你的微信，才算真的来了。"
+                "过去我们是投资人在看公司。从这两条视频开始，我们也是公司——一支把自己当作品的队伍。"
               </div>
             </div>
           </div>
@@ -696,156 +710,207 @@
           </div>
         </div>
 
-        <!-- ENTRY 11: 双片发布 -->
-        <div class="entry" data-cat="event">
+        <!-- ENTRY 8: OpenClaw 接入微信 -->
+        <div class="entry" data-cat="tech">
           <div class="entry-date">
-            2026年3月29日 · 30日
-            <span class="entry-date-badge">🎬 双片发布</span>
+            2026年3月下旬
+            <span class="entry-date-badge">⚡ 技术</span>
           </div>
           <div class="entry-card">
-            <span class="entry-tag tag-event">🎬 内容输出</span>
-            <h3 class="entry-title">连发两条视频：《商业化论》和《天际龙虾26》</h3>
+            <span class="entry-tag tag-tech">⚡ 技术突破</span>
+            <h3 class="entry-title">OpenClaw 接入微信了：不用第三方协议，用自己的大号</h3>
             <div class="entry-body">
-              <p>两天，两条视频。一个关于钱，一个关于人。</p>
-              <p>第一条叫<strong>《Openclaw Agent 商业化论》</strong>。Agent时代的生意到底怎么做？我讲了最近看到的三种正在跑通的模式：<em>Skills 市场抽成、Agent 分发中间件、垂直场景代运营</em>。不是每一种都能跑出来，但钱一定会从Token费用流向这三个方向之一。</p>
-              <p>第二条叫<strong>《天际龙虾26》</strong>。这是我第一次把"天际龙虾组织"这件事完整讲出来——为什么我们要改名叫龙虾，为什么要改作战方式，为什么在2026年我们必须变成一个更快、更真、更敢下水的组织。</p>
-              <p>两条视频合起来看，其实是一件事：<em>Agent 已经从"能用"走到"能赚钱"的节点，谁先把自己的组织改造成 Agent-First，谁就抢到了下一个十年的位置。</em></p>
+              <p>这件事我们等了很久。终于有人把 OpenClaw 跑通了企业微信的完整接入——不绕墙，不怕号没了，用自己的号，合法可控。</p>
+              <p>整个流程：公网部署 → 安装微信插件 <code>@openclaw-china/wecom-app</code> → 企业微信自建应用 → 配置回调 URL → 填入 token、密钥、企业 ID。大约 30 分钟就跑通了。</p>
+              <p>最酷的场景是：可以在微信里直接跟 Agent 说"帮我查一下那台服务器"，或者让它自动触发各种任务。</p>
+              <p>这不是玩具。这是 <strong>Agent 真正进入日常工作流</strong> 的信号。我们团队已经在测了。</p>
               <div class="entry-quote">
-                "过去我们是投资人在看公司。从这两条视频开始，我们也是公司——一支把自己当作品的队伍。"
+                "AI Agent 不是在云端的东西。它要进入你的微信，才算真的来了。"
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 12: OpenClaw 中国镜像 -->
-        <div class="entry milestone" data-cat="tech">
+        <!-- ENTRY 7: 组织定义 -->
+        <div class="entry" data-cat="team">
           <div class="entry-date">
-            2026年4月2日
-            <span class="entry-date-badge">🌐 生态</span>
+            2026年3月中
+            <span class="entry-date-badge">🏗️ 建设</span>
           </div>
-          <div class="entry-card milestone-card">
-            <span class="entry-tag tag-tech">🌐 生态里程碑</span>
-            <h3 class="entry-title">OpenClaw 正式上线中国镜像站：字节跳动 × 火山引擎联合托底</h3>
+          <div class="entry-card">
+            <span class="entry-tag tag-team">🏗️ 队伍建设</span>
+            <h3 class="entry-title">我们到底是一个什么组织</h3>
             <div class="entry-body">
-              <p>等了很久的一件事落地了。4月1日启用，4月2日官方公告：<strong>OpenClaw 中国镜像站正式上线</strong>，基础设施由字节跳动 / 火山引擎联合支持。</p>
-              <p>意味着什么？意味着从今天起，国内开发者拉 Skills、同步 ClawHub、下载模型配置——不用再翻墙、不用再等几十秒的握手、不用再担心哪天仓库突然被掐。延迟从几百毫秒降到几毫秒。<strong>这是开发者规模能突破下一个数量级的前提。</strong></p>
-              <p>更重要的是，这是大厂真正"站队"的信号。一个开源项目上25万星不稀奇，稀奇的是字节跳动愿意拿基础设施托底——<em>这代表他们把 OpenClaw 当成了自己生态的一部分，而不是一个需要围剿的竞品。</em></p>
-              <p>龙虾进了中国家门。接下来就该看国内开发者怎么"养龙虾"了。我们已经在看哪些团队最先把这波红利用起来。</p>
-              <div class="entry-number">
-                <div class="entry-number-item"><span class="val">25万+</span><span class="lbl">GitHub Stars</span></div>
-                <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">5700+</span><span class="lbl">ClawHub Skills</span></div>
-                <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">1张</span><span class="lbl">中国镜像入场券</span></div>
-              </div>
+              <p>有人问我：天际龙虾组织是干什么的？</p>
+              <p>我想了很久，最后给出的答案是三个词：<em>感知、判断、行动。</em></p>
+              <p><strong>感知</strong>：比别人更早看到AI浪潮里真正重要的信号。<br>
+              <strong>判断</strong>：用20年投资经验和第一性原理，穿透表象看到本质。<br>
+              <strong>行动</strong>：不等待，不观望，第一个下水。</p>
+              <p>这不是一个媒体组织，也不是一个课程品牌。<strong>这是一支在Agent时代一起作战的团队。</strong></p>
+              <p>龙虾的爪子是用来夹住机会的，不是用来晒太阳的。</p>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 13: 安德森的胜率法则 -->
-        <div class="entry" data-cat="insight">
+        <!-- ENTRY 6: 直播后复盘 -->
+        <div class="entry" data-cat="growth">
           <div class="entry-date">
-            2026年4月5日
-            <span class="entry-date-badge">🎯 方法论</span>
+            2026年3月8日
+            <span class="entry-date-badge">📝 复盘</span>
           </div>
-          <div class="entry-card featured">
-            <span class="entry-tag tag-insight">🎯 投资洞察</span>
-            <h3 class="entry-title">昨夜又听了一遍安德森：胜率、赔率，和我们今年最大的一个盲点</h3>
+          <div class="entry-card">
+            <span class="entry-tag tag-growth">📈 成长</span>
+            <h3 class="entry-title">直播结束后，我睡不着</h3>
             <div class="entry-body">
-              <p>昨晚我把 Marc Andreessen 最近那一期播客又听了一遍。一个多小时，记了满满三页笔记。</p>
-              <p>他讲了一件特别朴素、却极容易被忽略的事——<strong>风险投资的回报不来自胜率，来自赔率</strong>。在100个项目里，对的那2–3个的回报要大到能覆盖其他97个的全部损失。所以真正要问的问题不是"这家公司会不会成"，而是"如果它成了，它的天花板在哪里"。</p>
-              <p>这句话让我回看了一下我们过去三个月对 Agent 赛道的判断，发现了一个盲点：<em>我们在看项目时太担心"会不会死"，反而没花足够的时间问"如果活下来，能大到什么程度"。</em>两个问题，是完全不同的思考方式。</p>
-              <p>我给团队改了一条规则：<strong>从今天起，所有新项目的内部立项评估，第一张图必须是天花板图，而不是风险图。</strong>先假设它成了，再倒推它需要什么条件。</p>
-              <p>龙虾组织的判断力，是要一件一件事磨出来的。磨的方式就是——看见自己错在哪里，然后改。</p>
+              <p>直播结束，我没有立刻睡觉。我在想一个问题：</p>
+              <p><strong>下一步是什么？</strong></p>
+              <p>我们证明了自己可以做好一场有质量的直播。但一场直播不是一个组织。</p>
+              <p>真正的龙虾组织，应该是能持续输出的、有节奏的、彼此信任的一群人。就像傅盛写龙虾日记，不是为了某一篇被转发，<strong>而是日复一日地把一件事做进时间里</strong>。</p>
+              <p>这个日记，就是从这里开始的。</p>
               <div class="entry-quote">
-                "天花板决定你买不买，风险决定你买多少。这两件事永远分开问。"<br>
-                <em>—— 2026.04.05 深夜笔记</em>
+                "最好的品牌不是设计出来的。是把每天发生的真实记录下来，日积月累，自然就有了形状。"
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 14: 龙虾兵团成军 -->
-        <div class="entry milestone" data-cat="team">
-          <div class="entry-date">
-            2026年春节后 · 持续至今
-            <span class="entry-date-badge">🦞 龙虾兵团</span>
-          </div>
-          <div class="entry-card milestone-card">
-            <span class="entry-tag tag-team">🦞 组织进化</span>
-            <h3 class="entry-title">天际资本"龙虾兵团"成军：每人至少一只，最厉害的同事养了八只</h3>
-            <div class="entry-body">
-              <p>过去两个月，我把整个天际资本的工作方式全改了。起因只有一句话：<em>每个人必须养一只龙虾，不养不算合格的投资人。</em></p>
-              <p>现在的配置是——公司20多人，<strong>每个员工至少养一只龙虾，最厉害的同事养了八只</strong>。最离谱的是我的 LP 班级，400人，从春节就开始养，现在很多人跟我汇报的第一句话变成了："张倩，我的龙虾今天又干了什么什么……"</p>
-              <p>典型的一天是这样的：<strong>早上7点，我把十几个赛道丢给龙虾研究；7点半，报告全出来了。</strong>更扎心的是——我发现 <em>70% 同事自己写的报告质量不如龙虾生成的内容</em>。这不是在打击同事，这是让我必须重新定义"投资人的价值"这件事。</p>
-              <p>投资人的稀缺性过去在于"信息差 + 判断力"。龙虾出现之后，信息差被压平了。留下的只有判断力——而判断力只能靠场景里真打出来，不是靠坐办公室想出来。</p>
-              <p>所以天际的组织逻辑现在变成了：<strong>每个人都是一个"人+虾"的混合体</strong>。人负责定方向、看人、拍板；虾负责执行、搜集、演算。谁不用虾，谁就自动落后半个赛季。</p>
-              <div class="entry-img">
-                <img src="assets/clawq-neon.jpg" alt="倩小虾 ClawQ 霓虹主视觉" />
-                <div class="entry-img-caption">ClawQ 霓虹主视觉 · 天际资本"人+虾"混合作战的图腾</div>
-              </div>
-              <div class="entry-number">
-                <div class="entry-number-item"><span class="val">20+</span><span class="lbl">全员养虾</span></div>
-                <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">8只</span><span class="lbl">个人最高养殖记录</span></div>
-                <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">400人</span><span class="lbl">LP班同步入坑</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTRY 15: 1000万的故事 -->
+        <!-- ENTRY 5: 直播当天 - 里程碑 -->
         <div class="entry milestone" data-cat="event">
           <div class="entry-date">
-            2026年3月 · 某个下午
-            <span class="entry-date-badge">💰 真实战例</span>
+            2026年3月7日（周六）
+            <span class="entry-date-badge">⭐ 里程碑</span>
           </div>
           <div class="entry-card milestone-card">
-            <span class="entry-tag tag-event">💰 真实战例</span>
-            <h3 class="entry-title">龙虾帮我找到了一份 OpenAI 算力数据，当天拿到1000万投资</h3>
+            <span class="entry-tag tag-event">⭐ 里程碑</span>
+            <h3 class="entry-title">直播日：我们开口说了那些话</h3>
             <div class="entry-body">
-              <p>这件事我在多个场合讲过，但我想把它认真记录在日记里，因为它是<strong>"龙虾到底值不值得"</strong>这个问题最干脆的答案。</p>
-              <p>那是三月的一个下午。我要去见一家几千亿市值的 A 股上市公司，聊天际的下一期基金。出发前我让龙虾帮我抓一份 <em>OpenAI 算力使用趋势的实时数据</em>——这种数据，我过去需要动用好几个研究员，花两三天交叉验证。</p>
-              <p>龙虾给我的结果，<strong>精准度比我此前收集的所有数据都高</strong>。我把数据打印出来，带去了会议。</p>
-              <p>结果是：<strong>对方当天决定投天际资本1000万人民币。</strong>不是流程走一周，不是回去讨论，就是当天决定。</p>
-              <p>那一刻我想清楚了一件事——<em>龙虾不是效率工具。龙虾是一张进入谈判桌的新门票。</em>它让你在一件事情上从"研究员水平"直接跳到"可以跟上市公司 CFO 对话"的水平。</p>
+              <p>北京时间上午10点，直播准时开始。</p>
+              <p>我说的第一句话不是"大家好"，是：<em>"你们最近有没有被一只龙虾刷屏？"</em></p>
+              <p>那两个小时，我们聊了很多。泡沫还是信号？中美玩家的不同打法？谁在AI Agent浪潮里真正赚钱，谁在裸泳？</p>
+              <p>Annie用数据打我的论断，Will用硅谷温度补细节。我们"吵"了好几次。但我觉得那种碰撞<strong>正是这个组织应该有的样子</strong>——不是表演，是真实的认知摩擦。</p>
               <div class="entry-img">
-                <img src="assets/clawq-logo-black.jpg" alt="倩小虾 ClawQ 主LOGO" />
-                <div class="entry-img-caption">倩小虾 ClawQ® · "AI 的手和脚"的正式图腾</div>
+                <img src="assets/openclaw-poster.jpg" alt="OpenClaw直播" />
+                <div class="entry-img-caption">2026.3.7 · OpenClaw重塑商业和AI格局 · 张倩 × Annie × Will</div>
               </div>
-              <div class="entry-quote">
-                "以前 AI 是你的大脑，现在龙虾是你的手和脚。大脑只能想，手脚能把想法真正实现——你甚至不知道它是怎么实现的。"<br>
-                <em>—— 答记者问，2026.03</em>
+              <div class="entry-number">
+                <div class="entry-number-item"><span class="val">120分钟</span><span class="lbl">直播时长</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">3人</span><span class="lbl">真实碰撞</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">1个判断</span><span class="lbl">Agent时代到了</span></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 16: 投资判断升级 -->
+        <!-- ENTRY 4: 备战直播 -->
+        <div class="entry" data-cat="event">
+          <div class="entry-date">
+            2026年3月1日—6日
+            <span class="entry-date-badge">🔥 直播备战</span>
+          </div>
+          <div class="entry-card">
+            <span class="entry-tag tag-event">🔥 事件</span>
+            <h3 class="entry-title">备战6天：《OpenClaw重塑商业和AI格局》直播</h3>
+            <div class="entry-body">
+              <p>确定了要做一场直播，定在3月7日，主题就是OpenClaw。</p>
+              <p>三个人：我，Annie（唐安颖），Will（郎瀚威）。<strong>一个投资人，一个数据猎手，一个硅谷前线哨兵。</strong></p>
+              <p>这6天我们写了两版完整脚本，改了不知道多少次。每一次改稿，都是一次对"什么是真正有价值的判断"的逼问。</p>
+              <div class="entry-quote">
+                "我们不卖课，不带货。我们用管理近30亿美元的投资视角，和亲身体验，讲真话。"<br>
+                —— 直播预热文案，后来转发了几千次
+              </div>
+              <p>写文案的那天下午，我突然明白了为什么要建这个龙虾组织。<strong>不是为了跟风，而是因为我们真的有东西要说。</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 2: AI海啸文章 -->
         <div class="entry" data-cat="insight">
           <div class="entry-date">
-            2026年4月
-            <span class="entry-date-badge">🎯 投资判断</span>
+            2026年2月
+            <span class="entry-date-badge">💡 洞察</span>
           </div>
           <div class="entry-card featured">
-            <span class="entry-tag tag-insight">🎯 投资判断</span>
-            <h3 class="entry-title">工具类只值5%：我对Agent赛道最新的三个硬判断</h3>
+            <span class="entry-tag tag-insight">💡 洞察</span>
+            <h3 class="entry-title">写完《AI海啸与东方文明》之后，我意识到我们要更快</h3>
             <div class="entry-body">
-              <p>最近一个月，我把龙虾生态里每一层都重新过了一遍，得出三个硬判断。写在这里，将来回头自己检查。</p>
-              <p><strong>一、中美打法已经彻底分叉。</strong>美国市场 OpenClaw 部署要收 15K 安装费 + 5K/月维护费；而中国这边，字节、腾讯、火山引擎的大厂已经开始 <em>"免费帮你装，甚至倒贴"</em>。这不是价格战，这是大厂在用"免费"换"生态接入权"。结论：<strong>中国做基础设施的公司很难单独赚钱，要赚钱只能站到场景里去</strong>。</p>
-              <p><strong>二、端到端给结果的产品才值钱，工具类最多只值 5%。</strong>任何一个只卖"帮你调 Agent"的工具型项目，长期都会被大厂的免费方案挤到边角。真正值钱的是那种 <em>"给我一个问题，我交付一个结果"</em> 的垂直闭环——它吃的是场景里的全部信息差，不是一段 API 的调用费。</p>
-              <p><strong>三、硬件 + 龙虾是我今年最兴奋的方向。</strong>因为硬件的供应链护城河是真的、是复制不了的。一只龙虾 + 一块特定场景的硬件（仓储机械臂、医疗影像设备、工厂质检相机），构成的是一个没办法被纯软件项目超车的组合。<em>越离虚拟世界远的场景，商业价值越大。</em></p>
-              <div class="entry-img">
-                <img src="assets/360-event.jpg" alt="360 × 小龙虾装机体验日" />
-                <div class="entry-img-caption">硬件 + 龙虾的典型落地：360硬壳服务 · 小龙虾装机体验日 · 2026.3.14 北京朝阳</div>
+              <p>春节前，我跟一个在顶级AI实验室工作的朋友通了电话。他是那种每天跑着几千万tokens的人。</p>
+              <p>他说：<em>"我觉得AI很快就会把我也淘汰了，最快可能就在2026年。"</em></p>
+              <p>这句话让我心里一沉。不是因为恐惧，而是因为我意识到：<strong>我们组建龙虾组织这件事，不能再等了。</strong></p>
+              <p>等你"想清楚了"再动，这条坡道上已经来不及了。亚布力的雪坡教过我：在不确定性面前，前倾比后坐安全得多。</p>
+              <div class="entry-number">
+                <div class="entry-number-item"><span class="val">2天</span><span class="lbl">写完万字长文</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">10万+</span><span class="lbl">阅读量</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">1</span><span class="lbl">核心判断：加速</span></div>
               </div>
-              <p>把这三条写下来，就是给全团队看的作战坐标。养虾是手段，抓到这三个方向里那些真正能跑出来的公司，才是目的。</p>
             </div>
           </div>
         </div>
 
-        <!-- ENTRY 17: 下一步 - 未来条目预告 -->
+        <!-- ENTRY 3: 品牌建立 -->
+        <div class="entry" data-cat="origin">
+          <div class="entry-date">
+            2026年2月中
+            <span class="entry-date-badge">🎨 品牌</span>
+          </div>
+          <div class="entry-card">
+            <span class="entry-tag tag-origin">🎨 品牌诞生</span>
+            <h3 class="entry-title">倩小虾的logo出来了</h3>
+            <div class="entry-body">
+              <p>设计师发来了第一版"倩小虾"的logo。一只小虾，卡通风，眼神很坚定，颜色是橙红。</p>
+              <p>我盯着它看了很久。这只虾有种不服气的劲，我喜欢。</p>
+              <p>我们改了六版。最后定的是v6——<strong>那是那只最敢瞪人的版本</strong>。</p>
+              <p>品牌不是设计出来的，是把一种精神找到一个形状。倩小虾的精神是：<em>小，但是不怕。</em></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 1: 第一次讨论 -->
+        <div class="entry" data-cat="team">
+          <div class="entry-date">
+            2026年2月初
+            <span class="entry-date-badge">👥 队伍</span>
+          </div>
+          <div class="entry-card">
+            <span class="entry-tag tag-team">👥 队伍</span>
+            <h3 class="entry-title">第一次内部讨论：我们要养一只什么样的龙虾</h3>
+            <div class="entry-body">
+              <p>那天的会议没有议程。就是几个人坐在一起，每人桌上一杯咖啡，说——我们到底要用OpenClaw做什么？</p>
+              <p>有人说做投研工具。有人说做社区。有人说做课程。</p>
+              <p>我说：<strong>都不是。我们要做的是一个组织。一支能在Agent时代真正作战的团队。</strong></p>
+              <p>龙虾是我们的图腾，不是我们的产品。</p>
+              <div class="entry-quote">
+                "一只龙虾能干什么？它能夹，能执行，能不放手。我们也要变成这样的组织。"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 0: 缘起 -->
+        <div class="entry milestone" data-cat="origin">
+          <div class="entry-date">
+            2026年1月 · 春节前夕
+            <span class="entry-date-badge">🌱 起源</span>
+          </div>
+          <div class="entry-card milestone-card">
+            <span class="entry-tag tag-origin">🦞 缘起</span>
+            <h3 class="entry-title">为什么是一只龙虾</h3>
+            <div class="entry-body">
+              <p>OpenClaw出现之前，没有人会把"龙虾"和"AI Agent"放在一起。</p>
+              <p>但OpenClaw出现之后，<strong>60天，25万颗GitHub星</strong>，超过React十多年的积累——这只橙红色的爪子，突然成了2026年AI世界最炙手可热的符号。</p>
+              <div class="entry-quote">
+                "我第一次看到OpenClaw的logo，觉得很有意思。一只龙虾爪子，象征抓取、执行、不放手。这不就是Agent的本质吗？"
+              </div>
+              <p>那时候我在想：天际要不要围绕这个做点什么？不是跟风，而是因为<strong>我们真的相信这件事</strong>。Agent时代是真的来了。</p>
+              <p>然后"倩小虾"这个名字就出现了。不是品牌策划，而是一群人在群里瞎聊，突然觉得——对，就这个。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 持续更新中 -->
         <div class="entry" data-cat="growth">
           <div class="entry-date">
             持续更新中 ···
@@ -959,6 +1024,20 @@
               <div class="growth-text">
                 <span class="date">2026年4月6日 ⭐</span>
                 龙虾兵团成军 · 1000万融资战例 · 工具类只值5%
+              </div>
+            </div>
+            <div class="growth-item">
+              <div class="growth-dot gold"></div>
+              <div class="growth-text">
+                <span class="date">2026年4月12日 ⭐</span>
+                Anthropic封号龙虾之父24小时闹剧 · 大模型与生态工具利益矛盾明牌
+              </div>
+            </div>
+            <div class="growth-item">
+              <div class="growth-dot gold"></div>
+              <div class="growth-text">
+                <span class="date">2026年4月14日 ⭐</span>
+                OpenClaw 4.11 记忆维基 + 主动记忆 · 龙虾开始真正"认识你"
               </div>
             </div>
             <div class="growth-item" style="opacity:.4">
