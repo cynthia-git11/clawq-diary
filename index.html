@@ -433,7 +433,7 @@
   <div class="stats-inner">
     <div class="stat"><div class="stat-val claw-text">Day 30</div><div class="stat-lbl">日记连续记录中</div></div>
     <div class="stat"><div class="stat-val claw-text">20+</div><div class="stat-lbl">全员养虾中</div></div>
-    <div class="stat"><div class="stat-val claw-text">24篇</div><div class="stat-lbl">成长日记已写</div></div>
+    <div class="stat"><div class="stat-val claw-text">25篇</div><div class="stat-lbl">成长日记已写</div></div>
     <div class="stat"><div class="stat-val claw-text">1000万</div><div class="stat-lbl">龙虾创造的第一单</div></div>
   </div>
 </div>
@@ -454,8 +454,8 @@
       <div class="last-updated-bar">
         <div class="last-updated-dot"></div>
         <span class="last-updated-label">最近更新</span>
-        <span class="last-updated-date">2026年4月20日</span>
-        <span class="last-updated-title">· 今天我用龙虾给倩小虾画了第一帧动态：OpenClaw视频生成首测实录</span>
+        <span class="last-updated-date">2026年4月21日</span>
+        <span class="last-updated-title">· 龙虾长出了耳朵：OpenClaw 4.15 的语音、云端记忆与 Claude Opus 4.7</span>
       </div>
 
       <!-- Filter -->
@@ -472,7 +472,31 @@
 
       <div class="timeline" id="timeline">
 
-        <!-- ENTRY 24 (最新): 用龙虾给倩小虾画第一帧动态 -->
+        <!-- ENTRY 25 (最新): OpenClaw 4.15 语音、记忆云端化与多模态 -->
+        <div class="entry" data-cat="tech">
+          <div class="entry-date">
+            2026年4月21日
+            <span class="entry-date-badge">🦞 技术动态</span>
+          </div>
+          <div class="entry-card featured">
+            <span class="entry-tag tag-tech">🦞 技术动态</span>
+            <h3 class="entry-title">龙虾长出了耳朵：OpenClaw 4.15 的语音、云端记忆与 Claude Opus 4.7，我看到了什么</h3>
+            <div class="entry-body">
+              <p>今天一早刷到 OpenClaw 推送了 v2026.4.15，我把 changelog 从头读到尾，有几件事憋在心里，今天必须写出来。</p>
+              <p>先说我觉得最有意思的一个功能：<strong>Gemini 文字转语音（TTS）</strong>正式集成进了 OpenClaw，支持选择音色、输出 WAV 格式语音回复。听起来是个小功能，但我当时脑子里第一个念头是——<em>龙虾长出了嘴巴</em>。以前 Agent 是哑的，它只能给你打字。现在它可以开口说话了，而且声音是可调的。这对我们一直在讨论的"Agent + 直播"场景，是一个信号弹：无需真人出镜，有 Agent 语音 + 倩小虾动态形象，一个能实时互动的 AI 主播原型就有了基础。</p>
+              <p>第二件事：<strong>Claude Opus 4.7 成为 OpenClaw 的新默认模型</strong>，并附带了捆绑式图像理解能力。这说明什么？Anthropic 和 OpenClaw 生态之间，那段"封号风波"之后的裂痕，正在被市场力量一层层修复——用户投票用的是实际使用量，生态投票用的是默认接入。能成为 OpenClaw 的默认模型，是比任何合作公告更有说服力的背书。</p>
+              <p>第三件：<strong>记忆层迁移到云端</strong>。4.15 支持将 memory-lancedb 的索引存储到云端，不再绑死在本地磁盘。这个技术细节很多人可能忽略，但对我来说是一个关键节点信号——<em>Agent 的记忆开始从"个人设备附件"变成"云端资产"</em>。下一步，记忆就可以跨设备同步、可以被企业集中管理、可以作为一种服务独立出售。4.11 我们说龙虾"认识你了"，4.15 它的记忆开始"跟着你走了"。</p>
+              <p>最后一个细节让我印象很深：新增了一个 <strong>Model Auth 状态卡</strong>，实时显示各 AI 服务商的 OAuth 令牌健康度和速率限制压力。这是一个面向"多龙虾调度"场景的工具——当你同时用 Claude、GPT-5、Gemini 的时候，你需要一个控制塔来知道哪只虾的管道堵了。企业级 Agent 运维的需求，正在被龙虾社区倒逼出来。</p>
+              <p>把这四件事放在一起，我感受到的不是"又一个版本更新"，而是：<em>OpenClaw 正在从"会执行任务的 Agent 框架"演变成"能感知、能说话、能记忆、能跨平台存活的 AI 基础设施"。</em>这是两件完全不同的事。前者是工具，后者是操作系统。</p>
+              <div class="entry-quote">
+                "模型是引擎，框架是底盘，记忆是燃料。谁先把这三层搭完，谁就是 Agent 时代的操作系统。"<br>
+                <em>—— 2026.04.21 晨间笔记</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 24: 用龙虾给倩小虾画第一帧动态 -->
         <div class="entry" data-cat="growth">
           <div class="entry-date">
             2026年4月20日
@@ -1158,6 +1182,13 @@
               <div class="growth-text">
                 <span class="date">2026年4月18日 ⭐</span>
                 NVIDIA/NemoClaw 亮相 · 英伟达下场养虾，企业 Agent 合规赛道窗口开启
+              </div>
+            </div>
+            <div class="growth-item">
+              <div class="growth-dot"></div>
+              <div class="growth-text">
+                <span class="date">2026年4月21日</span>
+                OpenClaw 4.15 语音+云端记忆+Opus 4.7 · 龙虾向"AI操作系统"演进
               </div>
             </div>
             <div class="growth-item" style="opacity:.4">
