@@ -557,6 +557,152 @@
     }
     .modal-skip:hover { color: var(--muted); }
 
+    /* ── LP PITCH SECTION ── */
+    .lp-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,107,43,.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 96px 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .lp-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border2);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+    .lp-metric {
+      background: var(--bg);
+      padding: 36px 20px;
+      text-align: center;
+    }
+    .lp-metric-val {
+      font-family: var(--sans);
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      background: linear-gradient(135deg, var(--claw), var(--claw2), var(--claw3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+    .lp-metric-lbl {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .03em;
+      line-height: 1.5;
+    }
+    .lp-wins {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .lp-win-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .lp-win-card:hover { border-color: var(--border2); box-shadow: 0 8px 28px rgba(255,107,43,.07); }
+    .lp-win-year {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--claw2);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .lp-win-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .lp-win-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .lp-cta-block {
+      text-align: center;
+      padding: 64px 40px;
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-cta-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 110%, rgba(255,107,43,.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .lp-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 40px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--claw), var(--claw2));
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+      box-shadow: 0 10px 36px rgba(255,107,43,.38);
+    }
+    .lp-cta-btn:hover { opacity: .9; transform: translateY(-2px); }
+    .lp-cta-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 17px 36px;
+      border-radius: 50px;
+      background: transparent;
+      border: 1px solid var(--border2);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .lp-cta-btn-ghost:hover { border-color: var(--claw2); background: rgba(255,107,43,.05); }
+    @media (max-width: 1024px) {
+      .lp-metric-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-wins { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .lp-inner { padding: 48px 20px; }
+      .lp-wins { grid-template-columns: 1fr; }
+      .lp-cta-block { padding: 36px 20px; }
+    }
+
     /* ANIMATIONS */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .fade-up { animation: fadeUp .7s ease forwards; }
@@ -591,6 +737,7 @@
     <a href="#community">留言社区</a>
     <a href="#manifesto">我们是谁</a>
     <a href="https://futurexcapital.ai" target="_blank">天际资本</a>
+    <a href="#invest" style="color:var(--claw2);font-weight:700">成为LP →</a>
   </div>
   <span class="nav-tag">🦞 持续更新中</span>
 </nav>
@@ -639,7 +786,7 @@
   <div class="stats-inner">
     <div class="stat"><div class="stat-val claw-text">Day 30</div><div class="stat-lbl">日记连续记录中</div></div>
     <div class="stat"><div class="stat-val claw-text">20+</div><div class="stat-lbl">全员养虾中</div></div>
-    <div class="stat"><div class="stat-val claw-text">27篇</div><div class="stat-lbl">成长日记已写</div></div>
+    <div class="stat"><div class="stat-val claw-text">28篇</div><div class="stat-lbl">成长日记已写</div></div>
     <div class="stat"><div class="stat-val claw-text">1000万</div><div class="stat-lbl">龙虾创造的第一单</div></div>
   </div>
 </div>
@@ -660,8 +807,8 @@
       <div class="last-updated-bar">
         <div class="last-updated-dot"></div>
         <span class="last-updated-label">最近更新</span>
-        <span class="last-updated-date">2026年4月23日</span>
-        <span class="last-updated-title">· 天际独投灵核数智 Pre-A：AI 数智员工进入制造业，我押的是哪一步棋</span>
+        <span class="last-updated-date">2026年4月24日</span>
+        <span class="last-updated-title">· 写给正在看这个网页的潜在LP：AI赋能的AI投资机构，效率是传统VC的数倍</span>
       </div>
 
       <!-- Filter -->
@@ -677,6 +824,42 @@
       </div>
 
       <div class="timeline" id="timeline">
+
+        <!-- ENTRY 28 (最新): 写给潜在LP的信 -->
+        <div class="entry milestone" data-cat="insight">
+          <div class="entry-date">
+            2026年4月24日
+            <span class="entry-date-badge">💌 致未来LP</span>
+          </div>
+          <div class="entry-card milestone-card featured">
+            <span class="entry-tag tag-insight">💌 致未来LP</span>
+            <h3 class="entry-title">写给正在看这个网页的潜在LP：我们是一家"AI赋能的AI投资机构"，效率是传统VC的数倍</h3>
+            <div class="entry-body">
+              <p>有朋友问我：为什么要把投资决策过程写成日记公开在网上？</p>
+              <p>我的答案是：<em>因为最好的LP关系，不是建立在PPT上，而是建立在真实认知的共鸣上。</em>如果你读到这里还在读，那我们可能已经是一类人了——所以今天我想直接说一件事。</p>
+              <p><strong>天际资本新一期基金正在面向合适的LP开放。</strong>我想用这篇日记，把我们的底牌摊开来。</p>
+              <p><strong>先说战绩。</strong>过去，天际资本管理约30亿美元，累计投出55亿人民币，已向LP返还37亿，退出有效率行业前5%。字节跳动，从A轮开始五轮连续投资，在2017年没有人把字节叫作"AI公司"的时候，我们押的就是它的AI推荐算法。蔚来、PingCAP——每一个案例背后都是同一套判断框架：<em>刚需 + 技术临界点 + 认对人。</em></p>
+              <p><strong>再说为什么AI Agent是我们押的最大一波。</strong>2023年，当市场还在讨论"大模型有没有泡沫"的时候，天际已经开始密集布局AI应用层。过去两年，我们平均每年投出20个AI项目，共40多家，花了小几亿人民币——这是我们有意选择的节奏，不是跑量，是精准卡位。今天，我们独家投资了灵核数智，押注"制造业AI数智员工"这个赛道——理由在ENTRY 27里写了，可以回头看。</p>
+              <p><strong>但最让我想跟你说的，是我们做投资这件事本身的方式变了。</strong>我们建立了<em>天际 AI Research Lab 四合一智能研究系统</em>：AI自动扫描全球赛道动态、实时追踪竞品、Agent辅助尽职调查、智能生成投后监控报告。以前一个研究员跑一个项目要两周，现在龙虾两个小时出初稿，研究员两天完成深度验证。这不是"用AI写报告"——这是整个投研作战体系的重构。</p>
+              <p>与此同时，我们背后有<strong>60位产业Founders Fund网络</strong>——这60位都是各自细分赛道的一线创始人，他们既是我们的LP，也是我们最深的产业天线。看一个制造业项目，两小时内我们能连线三位有过亿营收的制造业创始人来交叉验证。这种速度和深度，传统VC做不到。</p>
+              <p>所以当有人问我：天际和其他AI基金有什么不同？我的回答只有一句话——<strong>我们是一家"AI赋能的AI投资机构"</strong>。我们不只是投AI，我们用AI重新定义了投资机构本身应该是什么样子。效率，是传统VC的数倍。</p>
+              <p>如果你认同这个判断，或者想更深地了解天际下一期基金的结构——<em>向下滚动，那里有我想跟你说的话。</em></p>
+              <div class="entry-quote">
+                "最好的LP关系从认同开始，不从数字开始。如果你读到这里还在继续读，你大概就是那个对的人。"<br>
+                <em>—— 2026.04.24 写于深夜</em>
+              </div>
+              <div class="entry-number">
+                <div class="entry-number-item"><span class="val">~$30亿</span><span class="lbl">管理规模</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">前5%</span><span class="lbl">退出有效率</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">60位</span><span class="lbl">Founders网络</span></div>
+                <div class="entry-number-sep"></div>
+                <div class="entry-number-item"><span class="val">四合一</span><span class="lbl">AI研究系统</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- ENTRY 27 (最新): 天际独投灵核数智，AI数智员工进制造业 -->
         <div class="entry milestone" data-cat="insight">
@@ -1469,6 +1652,13 @@
                 天际独投灵核数智 Pre-A · AI 数智员工进入制造业 · 飞轮投资论落地
               </div>
             </div>
+            <div class="growth-item">
+              <div class="growth-dot gold"></div>
+              <div class="growth-text">
+                <span class="date">2026年4月24日 ⭐</span>
+                AI Research Lab 四合一系统 + 60位Founders网络 · 致潜在LP公开信发布
+              </div>
+            </div>
             <div class="growth-item" style="opacity:.4">
               <div class="growth-dot" style="background:var(--muted2)"></div>
               <div class="growth-text">
@@ -1792,6 +1982,137 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     </div>
     <button class="modal-btn" onclick="submitIdentity()">进入龙虾星球 🦞</button>
     <button class="modal-skip" onclick="skipIdentity()">匿名进入，先看看</button>
+  </div>
+</div>
+
+<!-- LP PITCH SECTION -->
+<div class="lp-section" id="invest">
+  <div class="lp-inner">
+
+    <!-- Header -->
+    <div style="text-align:center;max-width:660px;margin:0 auto 64px">
+      <div class="sec-eyebrow" style="text-align:center;margin-bottom:14px">天际资本 · 致潜在LP</div>
+      <h2 style="font-size:44px;line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:18px">为什么是天际，<br>为什么是现在</h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.9">AI Agent 浪潮是近十年最大的投资窗口。天际已在市场形成共识前两年完成布局——这是一份我们愿意公开的账本，和一张我们想发出的邀请。</p>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="lp-metric-grid">
+      <div class="lp-metric">
+        <div class="lp-metric-val">~$30亿</div>
+        <div class="lp-metric-lbl">美元管理规模</div>
+      </div>
+      <div class="lp-metric">
+        <div class="lp-metric-val">前 5%</div>
+        <div class="lp-metric-lbl">行业退出有效率</div>
+      </div>
+      <div class="lp-metric">
+        <div class="lp-metric-val">40+</div>
+        <div class="lp-metric-lbl">AI被投企业（近两年）</div>
+      </div>
+      <div class="lp-metric">
+        <div class="lp-metric-val">¥37亿</div>
+        <div class="lp-metric-lbl">已向LP返还</div>
+      </div>
+    </div>
+
+    <!-- Unique Differentiator Banner -->
+    <div style="background:linear-gradient(135deg,rgba(255,107,43,.1),rgba(255,159,74,.06));border:1px solid rgba(255,107,43,.25);border-radius:20px;padding:40px 44px;margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+      <div>
+        <div style="font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--claw2);margin-bottom:14px">核心差异化</div>
+        <h3 style="font-size:26px;font-weight:800;line-height:1.25;margin-bottom:14px">AI赋能的AI投资机构<br>效率是传统VC的数倍</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.8">我们不只是投AI——我们用AI重新定义了投资机构本身。天际 <strong style="color:var(--text)">AI Research Lab 四合一智能研究系统</strong>让一个研究员能发挥传统团队数倍的战斗力。这是我们对"AI赋能投资"最真实的验证。</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <span style="width:40px;height:40px;border-radius:12px;background:rgba(255,107,43,.12);border:1px solid rgba(255,107,43,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🔬</span>
+          <div><div style="font-size:14px;font-weight:700;margin-bottom:3px">AI Research Lab 四合一系统</div><div style="font-size:12px;color:var(--muted);line-height:1.6">自动赛道扫描 · Agent尽调 · 竞品追踪 · 智能投后监控</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <span style="width:40px;height:40px;border-radius:12px;background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🌐</span>
+          <div><div style="font-size:14px;font-weight:700;margin-bottom:3px">60位产业Founders Fund网络</div><div style="font-size:12px;color:var(--muted);line-height:1.6">各细分赛道一线创始人LP，2小时内完成产业交叉验证</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <span style="width:40px;height:40px;border-radius:12px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🦞</span>
+          <div><div style="font-size:14px;font-weight:700;margin-bottom:3px">全员 Agent-First 作战体系</div><div style="font-size:12px;color:var(--muted);line-height:1.6">20+人团队全员养虾，龙虾辅助拿下第一单千万融资</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track Record -->
+    <div style="margin-bottom:56px">
+      <div class="sec-eyebrow" style="margin-bottom:24px">历史战绩 · 部分代表案例</div>
+      <div class="lp-wins">
+        <div class="lp-win-card">
+          <div class="lp-win-year">2017 · 五轮连续投资</div>
+          <div class="lp-win-name">字节跳动</div>
+          <div class="lp-win-desc">在没人叫字节"AI公司"的时候，我们押的是它底层的AI推荐算法。从A轮跟投五轮，判断逻辑一以贯之。</div>
+        </div>
+        <div class="lp-win-card">
+          <div class="lp-win-year">早期 · 新能源赛道</div>
+          <div class="lp-win-name">蔚来 NIO</div>
+          <div class="lp-win-desc">基于"刚需+技术临界点+认对人"框架，在电动车浪潮形成市场共识之前早期入场。</div>
+        </div>
+        <div class="lp-win-card">
+          <div class="lp-win-year">开源数据库 · 基础设施</div>
+          <div class="lp-win-name">PingCAP / TiDB</div>
+          <div class="lp-win-desc">看懂分布式数据库技术护城河，在开源生态大爆发前完成布局。投的是技术壁垒，不是市场热度。</div>
+        </div>
+        <div class="lp-win-card">
+          <div class="lp-win-year">2024–2026 · AI应用层</div>
+          <div class="lp-win-name">40+ AI被投企业</div>
+          <div class="lp-win-desc">连续两年平均每年20个AI项目，比市场形成共识早两年开始布局。精准押注端到端Agent和硬件×龙虾双主线。</div>
+        </div>
+        <div class="lp-win-card">
+          <div class="lp-win-year">2026 Q1 · 天际独家</div>
+          <div class="lp-win-name">灵核数智 LinkCrux AI</div>
+          <div class="lp-win-desc">制造业全栈AI数智员工平台，Pre-A独家投资。"按结果付费"的Agent商业模式——上限是中国制造业全部的人力成本盘子。</div>
+        </div>
+        <div class="lp-win-card" style="border-color:rgba(255,107,43,.22);background:linear-gradient(135deg,var(--bg4),var(--bg3))">
+          <div class="lp-win-year">元优势 · 独一无二</div>
+          <div class="lp-win-name">用AI做AI投资</div>
+          <div class="lp-win-desc">我们是真正在用Agent工作的投资机构——四合一研究系统已部署，LP班400人同步实战。我们的判断来自一线，不来自报告。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Investment Thesis -->
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:44px;margin-bottom:56px">
+      <div class="sec-eyebrow" style="margin-bottom:28px">天际AI投资论 · 三条主线</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
+        <div>
+          <div style="font-size:32px;margin-bottom:14px">🎯</div>
+          <h4 style="font-size:17px;font-weight:700;margin-bottom:10px">端到端垂直 Agent</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.75">给结果，不卖工具。按成果付费的商业模式，天花板是被替代的全行业人力成本总量——这个数字，比任何SaaS订阅费都大十倍。</p>
+        </div>
+        <div>
+          <div style="font-size:32px;margin-bottom:14px">🏭</div>
+          <h4 style="font-size:17px;font-weight:700;margin-bottom:10px">硬件 × 龙虾组合</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.75">物理世界的供应链护城河叠加AI Agent能力，双重壁垒。工厂里跑出来的数据和SOP，是纯软件项目在任何时间内都补不回来的资产。</p>
+        </div>
+        <div>
+          <div style="font-size:32px;margin-bottom:14px">🔒</div>
+          <h4 style="font-size:17px;font-weight:700;margin-bottom:10px">企业 AI 安全合规</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.75">安全是B端市场的入场券。NVIDIA NemoClaw的亮相、ClawHub恶意插件事件——这个赛道从需求验证走向规模爆发的时机，就在今年。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="lp-cta-block">
+      <div style="font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:16px;position:relative;z-index:1">新一期基金 · 正在面向合适的LP开放</div>
+      <h3 style="font-size:36px;font-weight:800;line-height:1.15;margin-bottom:16px;position:relative;z-index:1">这个窗口<br>不会开很长时间</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:540px;margin:0 auto 36px;position:relative;z-index:1">
+        AI Agent应用层的红利，我们比市场提前两年布局。<br>
+        如果你认同这个判断——我们来谈谈下一步。
+      </p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;margin-bottom:20px">
+        <a href="https://futurexcapital.ai" target="_blank" class="lp-cta-btn">了解天际资本 →</a>
+        <a href="https://mp.weixin.qq.com/s?search=天际科技投资" target="_blank" class="lp-cta-btn-ghost">微信公众号联系我们</a>
+      </div>
+      <p style="font-size:12px;color:var(--muted2);position:relative;z-index:1">搜索微信公众号「天际科技投资」· 或访问 futurexcapital.ai</p>
+    </div>
+
   </div>
 </div>
 
