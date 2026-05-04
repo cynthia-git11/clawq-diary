@@ -164,6 +164,26 @@
       background: linear-gradient(135deg, var(--claw), var(--claw2));
       color: #fff; letter-spacing: .03em;
     }
+    .lang-switch {
+      display: flex; gap: 0; border: 1px solid var(--border2);
+      border-radius: 8px; overflow: hidden; font-family: var(--sans);
+      font-size: 12px; font-weight: 600;
+    }
+    .lang-switch a { padding: 6px 12px; color: var(--muted); transition: all .2s; }
+    .lang-switch a:hover { color: var(--claw2); }
+    .lang-switch a.active { background: var(--claw2); color: #fff; }
+    /* Social share row + newsletter form (shared) */
+    .share-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .share-btn { padding: 6px 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; font-family: var(--sans); font-size: 11px; color: var(--muted); cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 5px; }
+    .share-btn:hover { border-color: var(--claw2); color: var(--claw2); transform: translateY(-1px); }
+    .newsletter-block { padding: 44px 36px; background: linear-gradient(135deg, var(--bg3), var(--bg4)); border: 1px solid var(--border2); border-radius: 18px; text-align: center; max-width: 780px; margin: 56px auto; }
+    .newsletter-block h3 { font-family: var(--sans); font-size: 26px; font-weight: 800; margin-bottom: 10px; }
+    .newsletter-block p { font-size: 14px; color: var(--muted); margin-bottom: 24px; font-family: var(--sans); }
+    .newsletter-form { display: flex; gap: 10px; max-width: 520px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input { flex: 1; min-width: 240px; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border2); border-radius: 10px; color: var(--text); font-family: var(--sans); font-size: 14px; }
+    .newsletter-form input:focus { outline: none; border-color: var(--claw2); }
+    .newsletter-form button { padding: 14px 26px; background: linear-gradient(135deg, var(--claw), var(--claw2)); border: none; color: #fff; border-radius: 10px; font-weight: 700; font-family: var(--sans); cursor: pointer; font-size: 14px; }
+    .newsletter-block .privacy { margin-top: 14px; font-size: 11px; color: var(--muted2); font-family: var(--sans); }
 
     /* ── HERO ── */
     .hero {
@@ -828,7 +848,13 @@
     <a href="https://futurexcapital.ai" target="_blank">天际资本</a>
     <a href="#invest" style="color:var(--claw2);font-weight:700">成为LP →</a>
   </div>
-  <span class="nav-tag">🦞 持续更新中</span>
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="lang-switch">
+      <a href="index.html" class="active">中文</a>
+      <a href="en.html">EN</a>
+    </div>
+    <span class="nav-tag">🦞 持续更新中</span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -901,6 +927,29 @@
         <span class="last-updated-title">· 今天，我决定把这本日记正式 Launch 给机构 LP 看</span>
       </div>
 
+      <!-- Social Share Row -->
+      <div style="display:flex;align-items:center;gap:14px;margin:18px 0 32px;padding:14px 18px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;flex-wrap:wrap">
+        <span style="font-family:var(--sans);font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.08em;text-transform:uppercase">📢 分享这本日记</span>
+        <div class="share-row" style="margin:0">
+          <a class="share-btn" href="https://twitter.com/intent/tweet?text=The%20ClawQ%20Chronicles%20%C2%B7%20Day%2058%20%C2%B7%20An%20AI-First%20VC%20writing%20in%20public&url=https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2F" target="_blank" rel="noopener">𝕏 / Twitter</a>
+          <a class="share-btn" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2F&title=%E5%80%A9%E5%B0%8F%E8%99%BE%E6%97%A5%E8%AE%B0%20%C2%B7%20Day%2058%20%C2%B7%20%E5%A4%A9%E9%99%85%E9%BE%99%E8%99%BE%E7%BB%84%E7%BB%87%E6%88%90%E9%95%BF%E5%8F%B2" target="_blank" rel="noopener">微博</a>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2Fen.html" target="_blank" rel="noopener">in LinkedIn</a>
+          <button class="share-btn" onclick="copyDiaryLink(this)">📋 复制链接</button>
+          <button class="share-btn" onclick="showWeChatQR()">📱 微信扫码</button>
+          <a class="share-btn" href="atom.xml" target="_blank" rel="noopener">📡 RSS 订阅</a>
+        </div>
+      </div>
+
+      <!-- WeChat QR modal -->
+      <div id="wechat-qr-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;align-items:center;justify-content:center" onclick="this.style.display='none'">
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:16px;padding:28px;text-align:center;max-width:320px" onclick="event.stopPropagation()">
+          <div style="font-family:var(--sans);font-size:13px;font-weight:700;margin-bottom:14px">📱 用微信扫码打开</div>
+          <img id="wechat-qr-img" src="" alt="WeChat QR code" style="width:240px;height:240px;border-radius:8px;background:#fff;padding:8px" />
+          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);margin-top:14px">链接：cynthia-git11.github.io/clawq-diary</div>
+          <button onclick="document.getElementById('wechat-qr-modal').style.display='none'" style="margin-top:14px;padding:8px 18px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text);cursor:pointer;font-family:var(--sans);font-size:12px">关闭</button>
+        </div>
+      </div>
+
       <!-- Filter -->
       <div style="margin-bottom:32px">
         <div class="tag-filter">
@@ -931,6 +980,7 @@
               <p><strong>二、自动推广要起来。</strong>一本日记如果只在 GitHub Pages 上存在，再好的内容也没人读。今天加了：sitemap.xml + robots.txt（让 Google 抓得到）、<a href="atom.xml">RSS 订阅源</a>（给读者每天自动推新条目）、Schema.org 结构化数据（搜索结果直接显示作者头像和最新条目）、Open Graph 卡片（粘到任何群里都有大图预览）。下一步还要加邮件订阅、隐私分析、社交分享按钮。</p>
               <p>这件事的元逻辑很简单：<em>Day 1 我用一只龙虾改造了天际的工作流。Day 58 我用一个网站改造天际的 LP 募资流程。</em>两件事都是"用 AI 投 AI"在不同层面的应用——投资机构本身就是产品，产品就要被持续迭代。</p>
               <p>从今天起，<a href="https://cynthia-git11.github.io/clawq-diary/" target="_blank" rel="noopener">cynthia-git11.github.io/clawq-diary</a> 这个 URL 会出现在所有对外材料、邮件签名、名片背面、公众号推文。<strong>我们不再写 BP，我们写日记。</strong></p>
+              <p><strong>Day 58 当天还做了三件配套：</strong>（1）上线 <a href="en.html">English version</a>，海外 LP 也能读；（2）每条日记顶部加 X / 微博 / LinkedIn / 微信扫码 / RSS 分享按钮；（3）页面底部加邮件订阅表单——任何路过的读者都能留下邮箱，新条目自动推送。<em>"Launch" 不是发一条推文，是把整套分发管线打通。</em></p>
               <div class="entry-quote">
                 "20 年前募资靠一份 PPT。今天募资靠一本每天写的日记——因为 PPT 可以包装，58 天的连续判断不能。"<br>
                 <em>—— 2026.05.04 网站正式对外日</em>
@@ -2350,6 +2400,23 @@
   </div>
 </div>
 
+<!-- NEWSLETTER SUBSCRIBE -->
+<div class="newsletter-block" id="newsletter">
+  <div style="font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--claw2);margin-bottom:10px">📬 每日邮件版</div>
+  <h3>订阅倩小虾日记</h3>
+  <p>每天 7AM 自动更新一条新日记后，第一时间发到你邮箱。<br>不发广告，不卖名单，只有真实判断。</p>
+  <form class="newsletter-form" action="https://formsubmit.co/lp@futurexcapital.ai" method="POST">
+    <input type="hidden" name="_subject" value="倩小虾日记 · 新订阅" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_captcha" value="true" />
+    <input type="hidden" name="_next" value="https://cynthia-git11.github.io/clawq-diary/?subscribed=1" />
+    <input type="hidden" name="lang" value="zh" />
+    <input type="email" name="email" placeholder="your.email@example.com" required />
+    <button type="submit">订阅 →</button>
+  </form>
+  <div class="privacy">仅推送新条目 · 一键退订 · 邮箱信息绝不外传</div>
+</div>
+
 <!-- CHANNEL MATRIX -->
 <div class="channels-section" id="channels">
   <div class="channels-inner">
@@ -2917,6 +2984,37 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     </div>
   </div>
 </footer>
+
+<!-- Plausible Analytics (privacy-friendly, cookieless). Owner: register at plausible.io and update data-domain. -->
+<script defer data-domain="cynthia-git11.github.io" src="https://plausible.io/js/script.js"></script>
+
+<!-- Share helpers + subscribe-success toast -->
+<script>
+  function copyDiaryLink(btn) {
+    const url = 'https://cynthia-git11.github.io/clawq-diary/';
+    navigator.clipboard.writeText(url).then(() => {
+      const original = btn.textContent;
+      btn.textContent = '✓ 已复制';
+      btn.style.color = '#34d3a8';
+      btn.style.borderColor = '#34d3a8';
+      setTimeout(() => { btn.textContent = original; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+    });
+  }
+  function showWeChatQR() {
+    const url = encodeURIComponent('https://cynthia-git11.github.io/clawq-diary/');
+    const qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + url;
+    document.getElementById('wechat-qr-img').src = qrSrc;
+    document.getElementById('wechat-qr-modal').style.display = 'flex';
+  }
+  // Subscribe toast (when redirected back from FormSubmit)
+  if (location.search.includes('subscribed=1')) {
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ff6b2b,#ff9f4a);color:#fff;padding:14px 28px;border-radius:30px;font-weight:700;font-family:Inter,system-ui,sans-serif;z-index:9999;box-shadow:0 12px 40px rgba(255,107,43,.4);font-size:14px';
+    toast.textContent = '✓ 订阅成功 · 下条新日记将第一时间发到你邮箱';
+    document.body.appendChild(toast);
+    setTimeout(()=>toast.remove(), 4500);
+  }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
