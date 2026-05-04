@@ -1,0 +1,27 @@
+# 倩小虾日记 · 天际龙虾组织成长史
+# robots.txt — allow all major search engines and AI crawlers
+
+User-agent: *
+Allow: /
+
+# Explicit allow for major AI training/search crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Sitemap
+Sitemap: https://cynthia-git11.github.io/clawq-diary/sitemap.xml

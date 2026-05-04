@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+  <title>倩小虾日记 · 天际龙虾组织成长史</title>
+  <subtitle>张倩 Cynthia Zhang · 用 AI 投 AI 的每日 AI 投资判断</subtitle>
+  <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
+  <id>https://cynthia-git11.github.io/clawq-diary/</id>
+  <updated>2026-05-04T07:00:00+08:00</updated>
+  <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
+  <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
+  <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
+  <rights>© 2026 天际资本 FutureX Capital · 张倩 Cynthia Zhang</rights>
+  <author>
+    <name>张倩 Cynthia Zhang</name>
+    <uri>https://futurexcapital.ai</uri>
+    <email>cynthia@futurexcapital.ai</email>
+  </author>
+
+  <entry>
+    <title>今天，我决定把这本日记正式 Launch 给机构 LP 看</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#diary"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/40</id>
+    <updated>2026-05-04T20:00:00+08:00</updated>
+    <published>2026-05-04T20:00:00+08:00</published>
+    <category term="growth"/>
+    <category term="正式 Launch"/>
+    <summary>过去 58 天，这本日记是写给我自己、写给团队的。今天起不一样了——我们要把它正式 Launch 出去，给从未听说过天际的机构 LP 看。这意味着两件事必须同时升级：网站到机构级 + 自动推广基建。</summary>
+  </entry>
+
+  <entry>
+    <title>OpenClaw v2026.5.2：双源插件 + xAI Grok 4.3 入驻 + iOS PWA 适配</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#diary"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/39</id>
+    <updated>2026-05-03T09:00:00+08:00</updated>
+    <published>2026-05-03T09:00:00+08:00</published>
+    <category term="tech"/>
+    <category term="OpenClaw"/>
+    <summary>5 月开局第一个稳定版来了——npm + ClawHub + Git 三位一体插件分发；xAI Grok 4.3 正式入驻为默认 Provider；iOS PWA 适配让 Agent 真正"装进口袋"。</summary>
+  </entry>
+
+  <entry>
+    <title>五一假期回看：56 天写了什么、收获了什么、错过了什么</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#diary"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/38</id>
+    <updated>2026-05-02T22:00:00+08:00</updated>
+    <published>2026-05-02T22:00:00+08:00</published>
+    <category term="growth"/>
+    <category term="阶段反思"/>
+    <summary>56 天的日记教会我一件事：看见信号 ≠ 抓住信号。从今天起，每周三我会强迫自己写一份"上周我犹豫但没出手的项目"清单——把"看到了"和"做到了"分开记录。</summary>
+  </entry>
+
+  <entry>
+    <title>这本日记本身，今天被"养"了一次</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#diary"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/37</id>
+    <updated>2026-05-01T18:00:00+08:00</updated>
+    <published>2026-05-01T18:00:00+08:00</published>
+    <category term="growth"/>
+    <summary>把网站本身彻底重塑了一次。Hero / About / 影像墙 / Manifesto / Footer / SEO 一次更新到位——日记不止记录组织，还在重塑组织本身。</summary>
+  </entry>
+
+  <entry>
+    <title>OpenClaw v2026.4.29：龙虾开始"认人"，NVIDIA 正式入驻，启动加速 18 倍</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#diary"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/36</id>
+    <updated>2026-04-30T10:00:00+08:00</updated>
+    <published>2026-04-30T10:00:00+08:00</published>
+    <category term="tech"/>
+    <category term="OpenClaw"/>
+    <summary>记忆体系升级为"人物感知 Wiki"；NVIDIA 12 天内从亮相到官方 Provider；Windows 插件启动从 39 秒压到 2 秒。OpenClaw 完成从"个人工具"到"企业级平台"的最后一公里。</summary>
+  </entry>
+</feed>
