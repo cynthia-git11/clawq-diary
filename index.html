@@ -34,6 +34,11 @@
   <!-- Theme color for mobile browsers -->
   <meta name="theme-color" content="#ff6b2b" />
 
+  <!-- Search engine verification placeholders. Owner: replace content="" after registering. -->
+  <!-- <meta name="google-site-verification" content="" /> -->
+  <!-- <meta name="msvalidate.01" content="" /> -->
+  <!-- <meta name="baidu-site-verification" content="" /> -->
+
   <!-- RSS / Atom Feed -->
   <link rel="alternate" type="application/atom+xml" title="倩小虾日记 · Atom Feed" href="https://cynthia-git11.github.io/clawq-diary/atom.xml" />
 
@@ -90,6 +95,21 @@
         "industry": "Venture Capital",
         "knowsAbout": ["AI Agent", "OpenClaw", "AaaS", "Agent-as-a-Service", "AI Investment"]
       }
+    ]
+  }
+  </script>
+
+  <!-- BlogPosting JSON-LD for top 5 entries (helps Google show them as rich snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-01", "name": "今天，我决定把这本日记正式 Launch 给机构 LP 看 · Day 58" },
+      { "@type": "ListItem", "position": 2, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-02", "name": "OpenClaw v2026.5.2：双源插件 + xAI Grok 4.3 入驻 + iOS PWA · Day 57" },
+      { "@type": "ListItem", "position": 3, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-03", "name": "五一回看：56 天写了什么、收获了什么、错过了什么 · Day 56" },
+      { "@type": "ListItem", "position": 4, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-04", "name": "这本日记本身，今天被'养'了一次 · Day 55" },
+      { "@type": "ListItem", "position": 5, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-05", "name": "OpenClaw v2026.4.29：龙虾开始'认人'，NVIDIA 入驻 · Day 54" }
     ]
   }
   </script>
@@ -2911,11 +2931,12 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
         AI Agent 应用层的红利，天际比市场提前两年布局。<br>
         如果你是机构 LP——下面两条路径，选适合你的那条。
       </p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:680px;margin:0 auto 24px;position:relative;z-index:1">
-        <a href="mailto:lp@futurexcapital.ai?subject=机构 LP 数据室访问申请&body=您好张倩团队，%0A%0A我（机构名 / 角色 / 资金属性）希望申请天际新一期基金的数据室访问权限。%0A%0A以下是我的简介与意向资金量级：%0A...%0A%0A期待联系。" class="lp-cta-btn" style="display:flex;flex-direction:column;align-items:center;padding:24px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">机构 LP · 直通通道</span><span style="font-size:18px;font-weight:800">申请数据室 NDA →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">含完整 Portfolio / 业绩数据 / Fund Deck</span></a>
-        <a href="https://futurexcapital.ai" target="_blank" class="lp-cta-btn-ghost" style="display:flex;flex-direction:column;align-items:center;padding:24px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">先了解再决定</span><span style="font-size:18px;font-weight:800">访问机构官网 →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">FuturexCapital.ai · 团队 / 案例 / 媒体</span></a>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:880px;margin:0 auto 24px;position:relative;z-index:1">
+        <a href="mailto:lp@futurexcapital.ai?subject=机构 LP 数据室访问申请&body=您好张倩团队，%0A%0A我（机构名 / 角色 / 资金属性）希望申请天际新一期基金的数据室访问权限。%0A%0A以下是我的简介与意向资金量级：%0A...%0A%0A期待联系。" class="lp-cta-btn" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">机构 LP · 直通</span><span style="font-size:16px;font-weight:800">申请数据室 NDA →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">完整 Portfolio + 业绩 + Fund Deck</span></a>
+        <a href="https://calendly.com/cynthiazhang-futurex/30min" target="_blank" rel="noopener" class="lp-cta-btn" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center;background:linear-gradient(135deg,var(--claw2),var(--gold))"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:6px">直接约见</span><span style="font-size:16px;font-weight:800">预约 30 分钟通话 📞</span><span style="font-size:11px;font-family:var(--sans);opacity:.75;margin-top:6px">和张倩 1-on-1 · 中英可选</span></a>
+        <a href="https://futurexcapital.ai" target="_blank" class="lp-cta-btn-ghost" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">先了解再决定</span><span style="font-size:16px;font-weight:800">访问机构官网 →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">团队 / 案例 / 媒体</span></a>
       </div>
-      <p style="font-size:12px;color:var(--muted2);position:relative;z-index:1">企业邮箱直通：<a href="mailto:lp@futurexcapital.ai" style="color:var(--claw2)">lp@futurexcapital.ai</a> · 24 小时内由张倩本人或核心 IR 团队回复</p>
+      <p style="font-size:12px;color:var(--muted2);position:relative;z-index:1">企业邮箱直通：<a href="mailto:lp@futurexcapital.ai" style="color:var(--claw2)">lp@futurexcapital.ai</a> · 24 小时内由张倩本人或核心 IR 团队回复 · 媒体询问请用 <a href="press.html" style="color:var(--claw2)">Press Kit</a></p>
     </div>
 
   </div>
@@ -3055,6 +3076,59 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     el.style.transition = 'opacity .6s ease, transform .6s ease';
     io.observe(el);
   });
+
+  // ── Per-entry permalinks + share-this-entry button ──
+  document.querySelectorAll('.entry').forEach((entry, idx) => {
+    const titleEl = entry.querySelector('.entry-title');
+    if (!titleEl) return;
+    // Extract day or entry number from comment if available, else use sequential
+    // Use slug from title: take first 30 chars, strip non-word
+    const dateEl = entry.querySelector('.entry-date');
+    const dateText = dateEl ? dateEl.textContent.trim().split('\n')[0].trim().replace(/\s+/g, '-').replace(/[^\w一-龥\-·]/g, '') : '';
+    const slug = 'entry-' + (idx + 1).toString().padStart(2, '0');
+    entry.id = slug;
+    // Insert share-this-entry button on the right of the title
+    const card = entry.querySelector('.entry-card');
+    if (!card) return;
+    if (card.querySelector('.entry-share-btn')) return;
+    const fullUrl = window.location.origin + window.location.pathname + '#' + slug;
+    const titleText = titleEl.textContent.trim();
+    const shareBtn = document.createElement('button');
+    shareBtn.className = 'entry-share-btn';
+    shareBtn.style.cssText = 'position:absolute;top:14px;right:14px;background:rgba(255,107,43,.08);border:1px solid var(--border);color:var(--muted);font-family:var(--sans);font-size:11px;padding:5px 10px;border-radius:14px;cursor:pointer;transition:all .2s;z-index:5';
+    shareBtn.innerHTML = '🔗 分享此条';
+    shareBtn.onmouseover = () => { shareBtn.style.color = 'var(--claw2)'; shareBtn.style.borderColor = 'var(--claw2)'; };
+    shareBtn.onmouseout = () => { shareBtn.style.color = 'var(--muted)'; shareBtn.style.borderColor = 'var(--border)'; };
+    shareBtn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        shareBtn.innerHTML = '✓ 链接已复制';
+        shareBtn.style.color = '#34d3a8';
+        shareBtn.style.borderColor = '#34d3a8';
+        setTimeout(() => {
+          shareBtn.innerHTML = '🔗 分享此条';
+          shareBtn.style.color = 'var(--muted)';
+          shareBtn.style.borderColor = 'var(--border)';
+        }, 1800);
+      });
+    };
+    // Make card position relative if not already
+    if (getComputedStyle(card).position === 'static') card.style.position = 'relative';
+    card.appendChild(shareBtn);
+  });
+
+  // Smooth-scroll to entry from URL hash
+  if (location.hash.startsWith('#entry-')) {
+    setTimeout(() => {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.style.boxShadow = '0 0 0 2px var(--claw2)';
+        setTimeout(() => target.style.boxShadow = '', 2400);
+      }
+    }, 200);
+  }
 </script>
 
 <script>
