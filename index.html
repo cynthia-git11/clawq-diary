@@ -13,6 +13,12 @@
   <link rel="icon" type="image/png" href="assets/clawq-square.jpg" />
   <link rel="apple-touch-icon" href="assets/clawq-square.jpg" />
 
+  <!-- PWA Manifest (installable on iOS/Android home screen) -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="倩小虾日记" />
+
   <!-- Open Graph / WeChat / 微博 -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/" />
@@ -99,17 +105,17 @@
   }
   </script>
 
-  <!-- BlogPosting JSON-LD for top 5 entries (helps Google show them as rich snippets) -->
+  <!-- BlogPosting ItemList JSON-LD (stable IDs match HTML #entry-NN anchors) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-01", "name": "今天，我决定把这本日记正式 Launch 给机构 LP 看 · Day 58" },
-      { "@type": "ListItem", "position": 2, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-02", "name": "OpenClaw v2026.5.2：双源插件 + xAI Grok 4.3 入驻 + iOS PWA · Day 57" },
-      { "@type": "ListItem", "position": 3, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-03", "name": "五一回看：56 天写了什么、收获了什么、错过了什么 · Day 56" },
-      { "@type": "ListItem", "position": 4, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-04", "name": "这本日记本身，今天被'养'了一次 · Day 55" },
-      { "@type": "ListItem", "position": 5, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-05", "name": "OpenClaw v2026.4.29：龙虾开始'认人'，NVIDIA 入驻 · Day 54" }
+      { "@type": "ListItem", "position": 1, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-40", "name": "今天，我决定把这本日记正式 Launch 给机构 LP 看 · Day 58" },
+      { "@type": "ListItem", "position": 2, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-39", "name": "OpenClaw v2026.5.2：双源插件 + xAI Grok 4.3 + iOS PWA · Day 57" },
+      { "@type": "ListItem", "position": 3, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-38", "name": "五一回看：56 天写了什么、收获了什么、错过了什么 · Day 56" },
+      { "@type": "ListItem", "position": 4, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-37", "name": "这本日记本身，今天被'养'了一次 · Day 55" },
+      { "@type": "ListItem", "position": 5, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-36", "name": "OpenClaw v2026.4.29：龙虾开始'认人'，NVIDIA 入驻 · Day 54" }
     ]
   }
   </script>
@@ -830,6 +836,48 @@
       .lp-inner { padding: 48px 20px; }
       .lp-wins { grid-template-columns: 1fr; }
       .lp-cta-block { padding: 36px 20px; }
+    }
+
+    /* ── PRINT STYLESHEET (for LP packet PDF export) ── */
+    @media print {
+      body { background: #fff !important; color: #000 !important; font-size: 11pt; line-height: 1.5; }
+      nav, .nav-tag, .lang-switch, #progressbar, #pb,
+      .filter-btn, .tag-filter, .last-updated-bar,
+      .share-row, .entry-share-btn, .newsletter-block, .newsletter-form,
+      #wechat-qr-modal, .lp-cta-btn, .lp-cta-btn-ghost, .lp-cta-block,
+      [id="community"], #channels, .channels-section,
+      script, .photo-wall {
+        display: none !important;
+      }
+      a { color: #000 !important; text-decoration: underline; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; word-break: break-all; }
+      a[href^="#"]::after, a[href^="mailto:"]::after { content: ""; }
+      .hero, .stats, .page, footer, .lp-section, .manifesto, .lp-inner,
+      [class*="entry-"], [class*="lp-"] {
+        background: #fff !important; color: #000 !important; box-shadow: none !important;
+        border-color: #ddd !important;
+      }
+      .claw-text, .stat-val, .lp-metric-val, .metric-val {
+        background: none !important; -webkit-text-fill-color: #c2410c !important; color: #c2410c !important;
+      }
+      .entry { break-inside: avoid; page-break-inside: avoid; margin-bottom: 18pt; padding: 10pt; border: 1px solid #ddd !important; border-radius: 0 !important; opacity: 1 !important; transform: none !important; }
+      .entry-card, .entry-card.featured, .entry-card.milestone-card {
+        background: #fafafa !important; border: 1px solid #ddd !important; padding: 12pt !important;
+      }
+      .entry-title { font-size: 14pt; color: #000 !important; margin-bottom: 8pt; }
+      .entry-body, .entry-body p, .entry-body strong, .entry-body em { color: #1a1a1a !important; }
+      .entry-quote { background: #f5f5f5 !important; border-left: 3pt solid #c2410c !important; padding: 8pt 12pt !important; color: #1a1a1a !important; font-style: italic; }
+      .entry-tag, .entry-date-badge { background: transparent !important; color: #c2410c !important; border: 1pt solid #c2410c !important; padding: 1pt 6pt; font-size: 9pt; }
+      .hero h1 { font-size: 28pt; }
+      h2, .sec-h2 { font-size: 18pt; page-break-after: avoid; }
+      .stat, .lp-metric, .metric { padding: 12pt; border: 1px solid #ddd !important; }
+      .stat-val, .lp-metric-val { font-size: 18pt !important; }
+      .stat-lbl, .lp-metric-lbl { font-size: 9pt !important; color: #666 !important; }
+      img { max-height: 200pt; }
+      footer { border-top: 1pt solid #ccc; padding-top: 10pt; margin-top: 20pt; }
+      footer * { color: #666 !important; }
+      @page { margin: 16mm; }
+      @page :first { margin-top: 24mm; }
     }
 
     /* ANIMATIONS */
@@ -3078,14 +3126,25 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
   });
 
   // ── Per-entry permalinks + share-this-entry button ──
+  // Use ENTRY number from preceding HTML comment for STABLE IDs
+  // (so #entry-40 always points to ENTRY 40 even after reordering or new inserts)
   document.querySelectorAll('.entry').forEach((entry, idx) => {
     const titleEl = entry.querySelector('.entry-title');
     if (!titleEl) return;
-    // Extract day or entry number from comment if available, else use sequential
-    // Use slug from title: take first 30 chars, strip non-word
-    const dateEl = entry.querySelector('.entry-date');
-    const dateText = dateEl ? dateEl.textContent.trim().split('\n')[0].trim().replace(/\s+/g, '-').replace(/[^\w一-龥\-·]/g, '') : '';
-    const slug = 'entry-' + (idx + 1).toString().padStart(2, '0');
+    // Walk back to find preceding comment with "ENTRY <N>"
+    let stableNum = null;
+    let prev = entry.previousSibling;
+    while (prev) {
+      if (prev.nodeType === 8) { // comment node
+        const m = prev.nodeValue.match(/ENTRY\s+(\d+)/);
+        if (m) { stableNum = m[1]; break; }
+      } else if (prev.nodeType === 1) {
+        // hit a non-comment element other than text — stop walking
+        break;
+      }
+      prev = prev.previousSibling;
+    }
+    const slug = stableNum ? ('entry-' + stableNum.padStart(2, '0')) : ('entry-pos-' + (idx + 1).toString().padStart(2, '0'));
     entry.id = slug;
     // Insert share-this-entry button on the right of the title
     const card = entry.querySelector('.entry-card');

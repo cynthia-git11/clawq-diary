@@ -51,5 +51,20 @@
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/press.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/press-en.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+  </url>
+  <url>
+    <loc>https://cynthia-git11.github.io/clawq-diary/press-en.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/press.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/press-en.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+  </url>
+  <url>
+    <loc>https://cynthia-git11.github.io/clawq-diary/manifest.json</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
