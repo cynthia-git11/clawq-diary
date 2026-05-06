@@ -24,22 +24,22 @@ This file lists the **manual steps you (Cynthia) need to complete** outside this
 
 ## 🔴 高优先级 · 你这周需要做
 
-### 1. 配置邮箱 `lp@futurexcapital.ai`（30 分钟）
+### 1. 配置邮箱 `lp@futurex.capital`（30 分钟）
 
 **为什么重要**：网站上所有 LP CTA 都指向这个邮箱，目前可能还没有设置。
 
 **步骤**：
-1. 登录 futurexcapital.ai 域名的邮箱管理后台（多半是阿里云邮箱 / 腾讯企业邮）
-2. 创建别名 `lp@futurexcapital.ai`，转发到你和核心 IR 同事的邮箱
+1. 登录 futurex.capital 域名的邮箱管理后台（多半是阿里云邮箱 / 腾讯企业邮）
+2. 创建别名 `lp@futurex.capital`，转发到你和核心 IR 同事的邮箱
 3. 测试一封邮件能正常收到 + 能正常回信
 
 ### 2. 激活邮件订阅（FormSubmit）（10 分钟）
 
-**为什么**：第一个订阅者发表单后，FormSubmit 会向 `lp@futurexcapital.ai` 发送一封确认邮件，**点击确认链接**才会激活，否则后续订阅都不会到达。
+**为什么**：第一个订阅者发表单后，FormSubmit 会向 `lp@futurex.capital` 发送一封确认邮件，**点击确认链接**才会激活，否则后续订阅都不会到达。
 
 **步骤**：
 1. 用任意邮箱测试订阅一次（在 https://cynthia-git11.github.io/clawq-diary/ 拉到底部，输入邮箱）
-2. 检查 lp@futurexcapital.ai 收件箱，找到 FormSubmit 的确认邮件
+2. 检查 lp@futurex.capital 收件箱，找到 FormSubmit 的确认邮件
 3. 点击 "Confirm" 激活
 4. 完成后所有订阅都会自动落到这个邮箱
 
@@ -125,12 +125,12 @@ LP Data Room/
 ### 8. 注册自定义域名（可选，但显著提升机构级专业感）
 
 当前域名：`cynthia-git11.github.io/clawq-diary` (GitHub 子域)
-建议域名：`diary.futurexcapital.ai` 或 `chronicles.futurexcapital.ai`
+建议域名：`diary.futurex.capital` 或 `chronicles.futurex.capital`
 
 **步骤**：
-1. 在 futurexcapital.ai 的 DNS 后台添加 CNAME 记录：
+1. 在 futurex.capital 的 DNS 后台添加 CNAME 记录：
    - `diary` → `cynthia-git11.github.io`
-2. 在 GitHub repo Settings → Pages → Custom domain 填入 `diary.futurexcapital.ai`
+2. 在 GitHub repo Settings → Pages → Custom domain 填入 `diary.futurex.capital`
 3. 创建 `CNAME` 文件（我可以帮你做这一步）
 4. 等 24 小时 DNS 生效
 
@@ -185,7 +185,7 @@ LP Data Room/
 
 - [ ] 每周一早上 8:30 看 Plausible 数据（10 分钟）
 - [ ] 每周三复盘"错过清单"并写进当周日记（参考 ENTRY 38 制度）
-- [ ] 每周五检查 lp@futurexcapital.ai 邮箱，回复未处理的机构申请
+- [ ] 每周五检查 lp@futurex.capital 邮箱，回复未处理的机构申请
 - [ ] 每周日检查 sitemap 是否被 Google 重新爬取（在 Search Console 看）
 
 ---
