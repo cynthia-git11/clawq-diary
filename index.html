@@ -3500,13 +3500,15 @@ function toggleSetupGuide() {
 }
 
 // ── NAV link ─────────────────────────────────────────────────────
+// Idempotent: only inject if no #community link already exists in nav
+// (prevents duplicate "留言社区" when static markup already has the link)
 (function addCommunityNavLink() {
   const links = document.querySelector('.nav-links');
-  if (links) {
-    const a = document.createElement('a');
-    a.href = '#community'; a.textContent = '留言社区';
-    links.insertBefore(a, links.children[2]);
-  }
+  if (!links) return;
+  if (links.querySelector('a[href="#community"]')) return; // already there
+  const a = document.createElement('a');
+  a.href = '#community'; a.textContent = '留言社区';
+  links.insertBefore(a, links.children[2]);
 })();
 
 // ── INIT ─────────────────────────────────────────────────────────
