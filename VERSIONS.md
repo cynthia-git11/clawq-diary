@@ -4,6 +4,63 @@
 
 ---
 
+## 🏷️ v1.1-lp-decision-portal
+
+**日期**：2026-05-07
+**Commit**：[`f02ddac`](https://github.com/cynthia-git11/clawq-diary/commit/f02ddac)
+**GitHub**：[查看 tag](https://github.com/cynthia-git11/clawq-diary/releases/tag/v1.1-lp-decision-portal)
+
+**状态描述**：在 v1.0 基础上**深度补强 LP 决策维度**，并加入**邀请码门户**。
+
+**v1.1 新增的 5 大块（CN + EN 等价）**：
+
+1. **Investment Thesis · 投资论文**
+   - Lane 1 端到端垂直（给结果不卖工具）
+   - Lane 2 硬件 × 龙虾（物理世界供应链护城河）
+   - Lane 3 企业 AI 安全合规（B 端入场券）
+   - Why Now · 2026 Q3–Q4 窗口论证
+
+2. **GP Alignment + Risk Factors + Key Person**
+   - GP commit ≥ 2% pari-passu · European waterfall · 8% hurdle
+   - Claw-back · carry 分配上限 · no-cross-fund-fee
+   - 5 个已识别风险 + 各自对冲
+   - 关键人条款 · 第二梯队 4 名 Partner · 90 天投资期暂停触发
+
+3. **Selected LP Voices · 现存 LP 匿名推荐语**
+   - 4 段引语：CVC Partner / 主权基金 ODD Lead / 家办 UHNW / Tier-1 FoF
+   - 每段都标注 Fund 编号和角色
+
+4. **Quarterly LP Report Sample**
+   - 11 节季报 TOC（GP Letter → 现金流 → MTM → 新投 → 退出 → 健康度 → Co-invest → 风险 → 市场观察 → 财报 → 附件）
+   - 全年沟通节奏：每天 / 每月 / 每季 / 半年 / 每年 / 事件触发
+
+5. **🔒 LP Portal · 邀请码门户**
+   - Nav 按钮 + 模态框（中英双语）
+   - **万能邀请码：`888888`、`FUTUREX-LP`**
+   - 可扩展：每个机构独立 6 位 / 标签 / 过期时间
+   - 解锁后揭示 4 个 LP-only 直链：Data Room / Reference Call / 最新季报 / Cynthia 优先排期
+   - localStorage 持久化 · Plausible 解锁事件追踪
+   - 这是软门 — 真正数据室仍 NDA 签后开
+
+**如何回滚到这个版本**：
+```bash
+cd "/Users/cynthiazhang/Library/Mobile Documents/com~apple~CloudDocs/内容资产/clawq-diary"
+git checkout v1.1-lp-decision-portal
+# or to a new editable branch:
+git checkout -b restore/v1.1 v1.1-lp-decision-portal
+```
+
+**如何添加新机构邀请码**（每个 LP 独立码）：
+打开 `index.html` 和 `en.html`，找到 `const INVITE_CODES = {`，在里面添加：
+```js
+'CICC-2026':    { tier: 'tier-ii',  label: 'CICC Capital',                expires: '2026-12-31' },
+'TEMASEK-VIII': { tier: 'tier-iii', label: 'Temasek Holdings',            expires: '2026-09-30' },
+'KIA-AI-26':    { tier: 'tier-iii', label: 'Kuwait Investment Authority', expires: '2026-09-30' },
+```
+两个文件都要加，保持中英一致。Plausible 后台会单独显示哪个 code 解锁了多少次——你能看到哪家 LP 在认真读。
+
+---
+
 ## 🏷️ v1.0-institutional-lp-launch
 
 **日期**：2026-05-07 · Day 60+
