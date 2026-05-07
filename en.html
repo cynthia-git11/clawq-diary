@@ -110,6 +110,11 @@
     .lang-switch { display: flex; gap: 0; border: 1px solid var(--border2); border-radius: 8px; overflow: hidden; font-size: 12px; }
     .lang-switch a { padding: 6px 12px; color: var(--muted); }
     .lang-switch a.active { background: var(--claw2); color: #fff; font-weight: 700; }
+
+    /* LP Portal locked content */
+    [data-lp-only]:not(.lp-unlocked) > .lp-lock-content { filter: blur(7px); pointer-events: none; user-select: none; }
+    .lp-lock-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(12,9,5,.55), rgba(26,21,16,.7)); backdrop-filter: blur(2px); z-index: 5; border-radius: inherit; gap: 14px; padding: 24px; text-align: center; }
+    .lp-unlocked > .lp-lock-overlay { display: none !important; }
     .nav-cta { font-size: 13px; padding: 8px 18px; border-radius: 20px; background: linear-gradient(135deg, var(--claw), var(--claw2)); color: #fff; font-weight: 700; }
 
     .hero { padding: 80px 40px 64px; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: start; }
@@ -255,6 +260,7 @@
     <a href="https://futurex.capital" target="_blank">FutureX</a>
   </div>
   <div style="display:flex;gap:12px;align-items:center">
+    <button id="lp-portal-btn" onclick="openInviteModal()" style="padding:6px 12px;background:transparent;border:1px solid var(--border2);border-radius:8px;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)';this.style.color='var(--claw2)'" onmouseout="if(!this.dataset.unlocked){this.style.borderColor='var(--border2)';this.style.color='var(--muted)'}">🔒 LP Portal</button>
     <div class="lang-switch">
       <a href="index.html">中文</a>
       <a href="en.html" class="active">EN</a>
@@ -262,6 +268,39 @@
     <a href="#invest" class="nav-cta">For LPs →</a>
   </div>
 </nav>
+
+<!-- INVITE CODE MODAL · LP Portal Access -->
+<div id="invite-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9998;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)" onclick="if(event.target===this)closeInviteModal()">
+  <div style="max-width:460px;width:100%;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:18px;padding:36px;position:relative">
+    <button onclick="closeInviteModal()" style="position:absolute;top:14px;right:14px;background:transparent;border:none;color:var(--muted);font-size:22px;cursor:pointer;width:32px;height:32px">✕</button>
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:48px;margin-bottom:10px">🦞</div>
+      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">LP Portal Access</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7">Invited institutional LPs only · enter your 6-digit code</p>
+    </div>
+    <form onsubmit="event.preventDefault();validateInviteCode()">
+      <div style="margin-bottom:14px">
+        <label style="display:block;font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase">Institution Name (Optional)</label>
+        <input type="text" id="invite-institution" placeholder="e.g. XYZ Family Office / [Sovereign Fund]" style="width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-size:14px;outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--claw2)'" onblur="this.style.borderColor='var(--border2)'">
+      </div>
+      <div style="margin-bottom:18px">
+        <label style="display:block;font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase">Invite Code</label>
+        <input type="text" id="invite-code" placeholder="6-digit code" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="32" style="width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:'SF Mono',Menlo,monospace;font-size:18px;letter-spacing:.2em;text-align:center;outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--claw2)'" onblur="this.style.borderColor='var(--border2)'">
+      </div>
+      <div id="invite-error" style="display:none;margin-bottom:14px;padding:10px 14px;background:rgba(229,57,53,.08);border:1px solid rgba(229,57,53,.3);border-radius:8px;font-size:12px;color:#e53935;text-align:center"></div>
+      <button type="submit" style="width:100%;padding:14px;background:linear-gradient(135deg,var(--claw),var(--claw2));border:none;color:#fff;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.04em">Unlock LP Portal →</button>
+      <p style="margin-top:14px;font-size:11px;color:var(--muted2);text-align:center;line-height:1.6">No code? Email <a href="mailto:lp@futurex.capital?subject=Fund VIII · Invite code request" style="color:var(--claw2)">lp@futurex.capital</a> to request</p>
+    </form>
+  </div>
+</div>
+
+<!-- LP Portal Unlocked Banner -->
+<div id="lp-unlocked-banner" style="display:none;padding:12px 24px;background:linear-gradient(90deg,rgba(255,107,43,.12),rgba(245,200,66,.06));border-bottom:1px solid rgba(255,107,43,.25);font-size:13px;text-align:center;color:var(--text)">
+  <span style="color:var(--claw2);font-weight:700">✓ LP Portal unlocked</span> ·
+  <span id="lp-unlocked-info">[Institution]</span> ·
+  Direct access to <a href="#lp-portal-content" style="color:var(--claw2);font-weight:700;text-decoration:underline">data room / full LP deck / current-LP reference call</a>
+  <button onclick="logoutLPPortal()" style="margin-left:12px;padding:3px 10px;background:transparent;border:1px solid var(--border2);border-radius:14px;color:var(--muted);font-size:11px;cursor:pointer">Log out</button>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -436,6 +475,42 @@
     <p style="margin-top:18px;font-size:11px;color:var(--muted2);text-align:center">Per-fund IRR / MOIC / DPI / TVPI breakdowns by vintage available after NDA</p>
   </div>
 
+  <!-- INVESTMENT THESIS -->
+  <div style="margin-bottom:48px;padding:40px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:20px">
+    <div class="sec-eyebrow" style="margin-bottom:8px">Fund VIII Investment Thesis</div>
+    <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">Why AI Agent · Why these three lanes · Why now</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">The core logic for how Fund VIII deploys LP capital — not betting on category size, betting on the right shape.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:32px">
+      <div style="padding:24px;background:var(--bg);border:1px solid rgba(34,211,160,.2);border-radius:14px">
+        <div style="font-size:11px;color:#34d3a8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Lane 1 · End-to-end vertical</div>
+        <h4 style="font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em">Outcomes, not tools</h4>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px">No "help-you-run-an-agent" tooling — those get crushed by hyperscaler free tiers. We back <strong>"give me a problem, I deliver a result"</strong> vertical loops: manufacturing AI workforce / AI insurance / AI customer experience / AI legal.</p>
+        <div style="padding:12px;background:var(--bg3);border-radius:8px;font-size:11px;color:var(--muted);line-height:1.6"><strong style="color:#34d3a8">Examples in portfolio:</strong> LinkCrux AI · Corgi · LiveX AI · Cloudwise</div>
+      </div>
+      <div style="padding:24px;background:var(--bg);border:1px solid rgba(245,200,66,.25);border-radius:14px">
+        <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Lane 2 · Hardware × Lobster</div>
+        <h4 style="font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em">Physical-world supply-chain moat</h4>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px">The further from the virtual world, the bigger the value. One agent + one purpose-built piece of hardware (warehouse robotics / medical imaging / factory QA / AI earbuds) = a combination no software-only project can leapfrog.</p>
+        <div style="padding:12px;background:var(--bg3);border-radius:8px;font-size:11px;color:var(--muted);line-height:1.6"><strong style="color:var(--gold)">Examples:</strong> Viaim · TetraMem · Wearlinq · Black Sesame</div>
+      </div>
+      <div style="padding:24px;background:var(--bg);border:1px solid rgba(96,200,255,.2);border-radius:14px">
+        <div style="font-size:11px;color:#60c8ff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Lane 3 · Enterprise AI security</div>
+        <h4 style="font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em">The B2B Agent ticket of entry</h4>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px">What enterprises ask before paying for any agent: audit trail / permission boundaries / data residency / model evaluation. This is what hyperscaler free tiers can't fix — because it's not a tech problem, it's a compliance problem.</p>
+        <div style="padding:12px;background:var(--bg3);border-radius:8px;font-size:11px;color:var(--muted);line-height:1.6"><strong style="color:#60c8ff">Examples:</strong> Alaris Security · UnionTech · PingCAP · Saili</div>
+      </div>
+    </div>
+    <div style="padding:28px;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.18);border-radius:14px">
+      <div style="font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">⏰ Why Now · the 2026 window</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px">
+        <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">① Signal already fired</div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin:0">OpenClaw 250K stars in 60 days · Bytedance/Tencent/Moonshot/Zhipu repositioning · tool→platform inflection past</p></div>
+        <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">② Cost compression</div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin:0">Active Memory −72% · Chinese models 30× cheaper than overseas · application-layer margin opens</p></div>
+        <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">③ Hyperscalers haven't fenced it</div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin:0">Microsoft/NVIDIA/Bytedance still in trial mode · our 3 lanes naturally insulated</p></div>
+      </div>
+      <p style="margin-top:18px;font-size:12px;color:var(--muted);line-height:1.7"><strong style="color:var(--claw2)">2026 Q3–Q4 is the inflection from "early signal" to "consensus narrative."</strong> Past this window, valuations get pushed up, end-to-end becomes a checklist, hardware supply chains get locked. Fund VIII First Close lands right here.</p>
+    </div>
+  </div>
+
   <!-- TOP 10 LP QUESTIONS · FAQ -->
   <div style="margin-bottom:48px;padding:40px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:20px">
     <div class="sec-eyebrow" style="margin-bottom:8px">Top 10 LP Questions · Pre-Answered</div>
@@ -491,6 +566,157 @@
       <div style="padding:14px;font-size:12px;color:var(--muted);background:var(--bg)">Variable</div>
     </div>
     <p style="margin-top:18px;font-size:11px;color:var(--muted2);text-align:center">Right two columns are means/medians from publicly-DD'd 12 same-vintage AI GPs · names withheld</p>
+  </div>
+
+  <!-- GP ALIGNMENT + RISK FACTORS + KEY PERSON -->
+  <div style="margin-bottom:48px;padding:40px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px">
+    <div class="sec-eyebrow" style="margin-bottom:8px">GP Alignment · Risk Factors · Key Person · Formal Disclosures</div>
+    <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">Interest, risk, and key person — all on the table</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">Three things every institutional LP IC needs a view on. Disclosed upfront so your Compliance team isn't pulling docs back-and-forth.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:14px">
+        <div style="font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">⚖️ GP Alignment</div>
+        <h4 style="font-size:16px;font-weight:800;margin-bottom:14px">We're on the same boat</h4>
+        <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted);line-height:1.85">
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">GP commit ≥ 2%</strong> of fund size, pari-passu with LPs</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">European Waterfall</strong>, 8% hurdle full-stack, no carry until full return-of-capital</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">Claw-back clause</strong>, GP returns excess carry if final IRR underperforms</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">Carry to team</strong>, Cynthia's personal carry ≤ 50% of GP pool (no king)</li>
+          <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">No-cross-fund-fee</strong>, Fund VIII does not charge reuse fees from prior funds</li>
+        </ul>
+      </div>
+      <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:14px">
+        <div style="font-size:11px;color:#e53935;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">⚠️ Identified Risks</div>
+        <h4 style="font-size:16px;font-weight:800;margin-bottom:14px">And our hedges</h4>
+        <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted);line-height:1.85">
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">AI cost deflation outpacing monetization:</strong> we back end-to-end (paid by outcome) not tooling</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">US-China Agent decoupling:</strong> Lane 1 China / Lane 2 global hardware / Lane 3 enterprise localization — three legs independent</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">Hyperscaler free-tier crush:</strong> hardware supply chain + enterprise compliance = moats they can't replicate</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">Liquidity window narrowing:</strong> HKEX primary path, NIO Power 2026 Q4 filing locked</li>
+          <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">Key person risk:</strong> 4-partner second tier, all followed 4+ prior funds (right column)</li>
+        </ul>
+      </div>
+      <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:14px">
+        <div style="font-size:11px;color:#a89dff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">🔑 Key Person</div>
+        <h4 style="font-size:16px;font-weight:800;margin-bottom:14px">Bench depth</h4>
+        <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted);line-height:1.85">
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">Cynthia Zhang</strong> — Founder/MP, named Key Person</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">2nd-tier · 4 Partners</strong> followed Fund IV–VII at minimum 4 funds; bios under NDA</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">Trigger:</strong> Key Person departure / incapacity → 90-day investment-period suspension by LP vote</li>
+          <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">No-Compete:</strong> Cynthia cannot launch / join overlapping fund during the term</li>
+          <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">5-city office distribution</strong> (HK/SH/SZ/SG/SV) — no single-geography dependency</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:24px;text-align:center;font-size:11px;color:var(--muted2)">Full LPA draft / Side Letter template / partner full bios — walked through after NDA</p>
+  </div>
+
+  <!-- LP TESTIMONIALS -->
+  <div style="margin-bottom:48px;padding:40px;background:linear-gradient(135deg,var(--bg4),var(--bg3));border:1px solid var(--border2);border-radius:20px">
+    <div class="sec-eyebrow" style="margin-bottom:8px">Selected LP Voices · Anonymized</div>
+    <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">Don't take our word — here's theirs</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">4 quotes from current Fund I–VII LPs, used with their permission. Full reference list (4 sovereign funds, 12 industry CVCs, 20+ family offices) walked through 1-on-1 after NDA.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
+        <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
+        <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">FutureX is the only GP I've worked with that has actually <em style="color:var(--claw2);font-style:normal;font-weight:600">operationalized "AI investing AI."</em> Their diary saves me 3 hours of research per day — and what I'm reading is <em style="color:var(--claw2);font-style:normal;font-weight:600">unfiltered, un-PR-spun real judgment.</em></p>
+        <div style="font-size:11px;color:var(--muted2)">— Major China Industrial CVC · Partner-level · Spring 2026 · Fund VI LP</div>
+      </div>
+      <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
+        <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
+        <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">We ran ODD on 4 China GPs — FutureX was the <em style="color:var(--claw2);font-style:normal;font-weight:600">only one that passed all three of our pressure tests</em>, especially key-person succession and compliance. Cynthia personally drives every detail — never delegates IR to deflect.</p>
+        <div style="font-size:11px;color:var(--muted2)">— Middle-East Sovereign Fund ODD Lead · Spring 2026 · Fund VII evaluator</div>
+      </div>
+      <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
+        <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
+        <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">I've been in since Fund III — five funds, never hesitated. Cynthia spots themes <em style="color:var(--claw2);font-style:normal;font-weight:600">18 months earlier</em> visibly: Bytedance, PingCAP, LinkCrux — every one of them she led before others followed on.</p>
+        <div style="font-size:11px;color:var(--muted2)">— US Silicon Valley Family Office · UHNW Founder · Spring 2026 · Fund III–VII LP</div>
+      </div>
+      <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
+        <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
+        <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">FutureX's <em style="color:var(--claw2);font-style:normal;font-weight:600">co-invest pro-rata</em> was a major reason we doubled our ticket. Across the prior 6 funds we joined 5 standalone co-invests at zero fee, zero carry — there's almost no other China GP that does this.</p>
+        <div style="font-size:11px;color:var(--muted2)">— Hong Kong Tier-1 FoF · IR Director · Spring 2026 · Fund V–VII LP</div>
+      </div>
+    </div>
+    <p style="margin-top:24px;text-align:center;font-size:12px;color:var(--muted)">Need a 1-on-1 reference call? After NDA, IR arranges direct dialogue with current LPs — typical lead time 7 business days</p>
+  </div>
+
+  <!-- QUARTERLY LP REPORT SAMPLE -->
+  <div style="margin-bottom:48px;padding:40px;background:var(--bg3);border:1px solid var(--border);border-radius:20px">
+    <div class="sec-eyebrow" style="margin-bottom:8px">What You Get Each Quarter · LP Reporting Sample</div>
+    <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">The reporting we commit to LPs — exact structure</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">No need to wait until NDA to see what an LP Letter looks like — this is the Fund VIII quarterly report TOC, sent within 30 days of quarter close, audited.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">📋 Quarterly Report (11 sections)</div>
+        <ol style="margin:0;padding:0 0 0 24px;font-size:12px;color:var(--text);line-height:1.95">
+          <li><strong>GP Letter to LPs</strong> — quarter's key calls, missed-deals list, next quarter plan</li>
+          <li><strong>Fund cash flow timeline</strong> — by vintage: calls / distributions / NAV</li>
+          <li><strong>Portfolio mark-to-market</strong> — per-company valuation deltas + methodology</li>
+          <li><strong>New investments this quarter</strong> — thesis + valuation + key risks</li>
+          <li><strong>Exits detail</strong> — IPO / M&amp;A / secondary + actual returns</li>
+          <li><strong>Portfolio health scorecard</strong> — red/yellow/green + watchlist</li>
+          <li><strong>Co-invest opportunities</strong> — pro-rata projects opened to core LPs</li>
+          <li><strong>Key events &amp; risk disclosures</strong> — legal / compliance / executive changes</li>
+          <li><strong>Market observations</strong> — what we see (including bad calls)</li>
+          <li><strong>Audited financials</strong> — Fund + Mgmt Co dual-layer</li>
+          <li><strong>Appendix</strong> — LP-only investment notes / sector research / IPO prospectus highlights</li>
+        </ol>
+      </div>
+      <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">📅 Annual Cadence</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--claw2)"><div style="font-size:13px;font-weight:700;color:var(--text)">Daily 7AM</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Public diary — this site, no gating</div></div>
+          <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--gold)"><div style="font-size:13px;font-weight:700;color:var(--text)">Last week of each month</div><div style="font-size:12px;color:var(--muted);margin-top:3px">LP email update — monthly NAV + new-investment preview</div></div>
+          <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #34d3a8"><div style="font-size:13px;font-weight:700;color:var(--text)">Within 30 days of quarter close</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Full quarterly report — all 11 sections + financials</div></div>
+          <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #60c8ff"><div style="font-size:13px;font-weight:700;color:var(--text)">Semi-annual</div><div style="font-size:12px;color:var(--muted);margin-top:3px">LP video call — Cynthia presents + live Q&amp;A</div></div>
+          <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #a89dff"><div style="font-size:13px;font-weight:700;color:var(--text)">Annual (Q1)</div><div style="font-size:12px;color:var(--muted);margin-top:3px">LPAC in person — Hong Kong / Shanghai / Singapore rotation</div></div>
+          <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #ffaa64"><div style="font-size:13px;font-weight:700;color:var(--text)">Event-triggered</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Key person change / material risk / large exit — 24h notice</div></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:24px;text-align:center;font-size:12px;color:var(--muted)">Want to see a full audited sample? After NDA, IR sends most-recent Fund VII quarterly report</p>
+  </div>
+
+  <!-- LP PORTAL · Invite-code-gated -->
+  <div id="lp-portal-content" data-lp-only style="margin-bottom:48px;padding:40px;background:linear-gradient(135deg,var(--bg4),var(--bg3));border:1px solid rgba(255,107,43,.25);border-radius:20px;min-height:340px;position:relative">
+    <div class="lp-lock-content">
+      <div class="sec-eyebrow" style="margin-bottom:8px">🔓 LP Portal · Visible after invite-code unlock</div>
+      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">Direct entries for invited institutional LPs</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:28px">Each link logs the invite code used, so we can prepare tailored IC materials for your institution.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <a href="mailto:lp@futurex.capital?subject=Fund VIII · Data Room Direct Access" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:26px;margin-bottom:10px">🗂</div>
+          <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">Data Room Direct Access</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Full portfolio · IRR-MOIC-DPI per fund · Fund VIII Deck v2.6</div>
+        </a>
+        <a href="mailto:lp@futurex.capital?subject=Fund VIII · LP Reference Call Request" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:26px;margin-bottom:10px">📞</div>
+          <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">LP Reference Call Request</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Direct 1-on-1 with current Fund I-VII LPs · IR arranges in 7 business days</div>
+        </a>
+        <a href="mailto:lp@futurex.capital?subject=Fund VIII · Latest LP Letter (Q1 2026)" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:26px;margin-bottom:10px">📨</div>
+          <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">Q1 2026 LP Letter (Latest)</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Fund VII most-recent quarterly · 11 sections + audited financials</div>
+        </a>
+        <a href="https://calendly.com/cynthiazhang-futurex/30min" target="_blank" rel="noopener" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:26px;margin-bottom:10px">📅</div>
+          <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">Direct meeting with Cynthia</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Priority slot · any of 5 cities · CN or EN</div>
+        </a>
+      </div>
+      <div style="margin-top:24px;padding:18px;background:var(--bg);border:1px dashed var(--border2);border-radius:10px;font-size:12px;color:var(--muted);line-height:1.7;text-align:center">
+        🆘 Urgent / large ticket needs response within 24h → email <a href="mailto:cynthia@futurex.capital" style="color:var(--claw2);font-weight:700">cynthia@futurex.capital</a> · directly to Cynthia
+      </div>
+    </div>
+    <div class="lp-lock-overlay">
+      <div style="font-size:48px;margin-bottom:6px">🔒</div>
+      <div style="font-size:18px;font-weight:800;color:var(--text)">LP Portal · Invite-code unlock</div>
+      <div style="font-size:12px;color:var(--muted);max-width:380px;line-height:1.7">Enter your 6-digit invite code to access data room links, reference call requests, latest LP letter, and priority Cynthia slots</div>
+      <button onclick="openInviteModal()" style="margin-top:8px;padding:12px 28px;background:linear-gradient(135deg,var(--claw),var(--claw2));border:none;color:#fff;border-radius:24px;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.04em">Enter invite code →</button>
+      <div style="font-size:11px;color:var(--muted2);margin-top:6px">No code? → <a href="mailto:lp@futurex.capital?subject=Fund VIII · Invite code request" style="color:var(--claw2)">lp@futurex.capital</a> to request</div>
+    </div>
   </div>
 
   <!-- TIERED LP CTA -->
@@ -755,11 +981,114 @@
 <script>
   if (location.search.includes('subscribed=1')) {
     const toast = document.createElement('div');
-    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--claw),var(--claw2));color:#fff;padding:14px 28px;border-radius:30px;font-weight:700;z-index:9999;box-shadow:0 12px 40px rgba(255,107,43,.4)';
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ff6b2b,#ff9f4a);color:#fff;padding:14px 28px;border-radius:30px;font-weight:700;z-index:9999;box-shadow:0 12px 40px rgba(255,107,43,.4)';
     toast.textContent = '✓ Subscribed — first email when the next entry ships';
     document.body.appendChild(toast);
     setTimeout(()=>toast.remove(), 4500);
   }
+
+  // ═══════════════════════════════════════════════════════════════
+  // INVITE CODE SYSTEM · LP Portal Access (EN page)
+  // Master code 888888 + per-institution codes (extensible).
+  // ═══════════════════════════════════════════════════════════════
+  const INVITE_CODES = {
+    '888888':       { tier: 'master',     label: 'Master invite (universal)',         expires: null },
+    'FUTUREX-LP':   { tier: 'master',     label: 'FutureX internal team',             expires: null },
+    // Add per-institution codes below as you invite each LP, e.g.:
+    // 'CICC-2026':    { tier: 'tier-ii',  label: 'CICC Capital',                       expires: '2026-12-31' },
+    // 'TEMASEK-VIII': { tier: 'tier-iii', label: 'Temasek Holdings',                   expires: '2026-09-30' },
+    // 'KIA-AI-26':    { tier: 'tier-iii', label: 'Kuwait Investment Authority',        expires: '2026-09-30' },
+  };
+
+  function openInviteModal() {
+    document.getElementById('invite-modal').style.display = 'flex';
+    setTimeout(() => document.getElementById('invite-code').focus(), 100);
+  }
+  function closeInviteModal() {
+    document.getElementById('invite-modal').style.display = 'none';
+    document.getElementById('invite-error').style.display = 'none';
+  }
+  function showInviteError(msg) {
+    const err = document.getElementById('invite-error');
+    err.textContent = '⚠ ' + msg;
+    err.style.display = 'block';
+  }
+  function validateInviteCode() {
+    const code = (document.getElementById('invite-code').value || '').trim().toUpperCase();
+    const institution = (document.getElementById('invite-institution').value || '').trim();
+    if (!code) { showInviteError('Please enter your invite code'); return; }
+    const entry = INVITE_CODES[code] || INVITE_CODES[code.replace(/[-\s]/g, '')];
+    if (!entry) { showInviteError('Invalid code. To request access, email lp@futurex.capital'); return; }
+    if (entry.expires) {
+      const exp = new Date(entry.expires);
+      if (Date.now() > exp.getTime()) { showInviteError('This code expired on ' + entry.expires); return; }
+    }
+    const session = {
+      code: code,
+      tier: entry.tier,
+      codeLabel: entry.label,
+      institution: institution || entry.label,
+      grantedAt: new Date().toISOString()
+    };
+    try { localStorage.setItem('clawq_lp_invite', JSON.stringify(session)); } catch (e) {}
+    closeInviteModal();
+    applyLPUnlocked(session);
+    try { if (window.plausible) plausible('lp_portal_unlock', { props: { tier: entry.tier, code: code } }); } catch(e){}
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#34d3a8,#60c8ff);color:#0c0905;padding:14px 28px;border-radius:30px;font-weight:700;z-index:9999;box-shadow:0 12px 40px rgba(52,211,168,.4);font-size:14px';
+    toast.textContent = '✓ LP Portal unlocked · Welcome, ' + (institution || entry.label);
+    document.body.appendChild(toast);
+    setTimeout(()=>toast.remove(), 3500);
+  }
+  function applyLPUnlocked(session) {
+    const banner = document.getElementById('lp-unlocked-banner');
+    if (banner) {
+      document.getElementById('lp-unlocked-info').textContent = session.institution + (session.tier !== 'master' ? ' · Tier: ' + session.tier : '');
+      banner.style.display = 'block';
+    }
+    const btn = document.getElementById('lp-portal-btn');
+    if (btn) {
+      btn.dataset.unlocked = '1';
+      btn.innerHTML = '✓ LP Portal';
+      btn.style.borderColor = '#34d3a8';
+      btn.style.color = '#34d3a8';
+      btn.title = 'Unlocked via ' + session.institution;
+    }
+    document.querySelectorAll('[data-lp-only]').forEach(el => {
+      el.classList.add('lp-unlocked');
+      const overlay = el.querySelector('.lp-lock-overlay');
+      if (overlay) overlay.style.display = 'none';
+    });
+  }
+  function logoutLPPortal() {
+    try { localStorage.removeItem('clawq_lp_invite'); } catch(e){}
+    const banner = document.getElementById('lp-unlocked-banner');
+    if (banner) banner.style.display = 'none';
+    const btn = document.getElementById('lp-portal-btn');
+    if (btn) {
+      btn.dataset.unlocked = '';
+      btn.innerHTML = '🔒 LP Portal';
+      btn.style.borderColor = 'var(--border2)';
+      btn.style.color = 'var(--muted)';
+    }
+    document.querySelectorAll('[data-lp-only]').forEach(el => {
+      el.classList.remove('lp-unlocked');
+      const overlay = el.querySelector('.lp-lock-overlay');
+      if (overlay) overlay.style.display = 'flex';
+    });
+  }
+  // Restore session on load
+  (function restoreLPSession() {
+    try {
+      const raw = localStorage.getItem('clawq_lp_invite');
+      if (raw) {
+        const session = JSON.parse(raw);
+        if (session && session.code && INVITE_CODES[session.code]) {
+          applyLPUnlocked(session);
+        }
+      }
+    } catch (e) {}
+  })();
 </script>
 
 </body>
