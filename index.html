@@ -111,7 +111,7 @@
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-40", "name": "今天，我决定把这本日记正式 Launch 给机构 LP 看 · Day 58" },
+      { "@type": "ListItem", "position": 1, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-40", "name": "今天起，这本日记从私下传阅变成完全公开的思考记录 · Day 58" },
       { "@type": "ListItem", "position": 2, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-39", "name": "OpenClaw v2026.5.2：双源插件 + xAI Grok 4.3 + iOS PWA · Day 57" },
       { "@type": "ListItem", "position": 3, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-38", "name": "五一回看：56 天写了什么、收获了什么、错过了什么 · Day 56" },
       { "@type": "ListItem", "position": 4, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-37", "name": "这本日记本身，今天被'养'了一次 · Day 55" },
@@ -199,17 +199,6 @@
     .lang-switch a:hover { color: var(--claw2); }
     .lang-switch a.active { background: var(--claw2); color: #fff; }
 
-    /* ── LP Portal Locked Content ── */
-    [data-lp-only] { position: relative; }
-    [data-lp-only]:not(.lp-unlocked) > .lp-lock-content { filter: blur(7px); pointer-events: none; user-select: none; }
-    .lp-lock-overlay {
-      position: absolute; inset: 0; display: flex;
-      flex-direction: column; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, rgba(12,9,5,.55), rgba(26,21,16,.7));
-      backdrop-filter: blur(2px); z-index: 5; border-radius: inherit;
-      gap: 14px; padding: 24px; text-align: center;
-    }
-    .lp-unlocked > .lp-lock-overlay { display: none !important; }
     /* Social share row + newsletter form (shared) */
     .share-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
     .share-btn { padding: 6px 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; font-family: var(--sans); font-size: 11px; color: var(--muted); cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 5px; }
@@ -926,10 +915,9 @@
     <a href="#community">留言社区</a>
     <a href="#manifesto">我们是谁</a>
     <a href="https://futurex.capital" target="_blank">天际资本</a>
-    <a href="#invest" style="color:var(--claw2);font-weight:700">成为LP →</a>
+    <a href="#firm" style="color:var(--claw2);font-weight:700">关于天际</a>
   </div>
   <div style="display:flex;gap:12px;align-items:center">
-    <button id="lp-portal-btn" onclick="openInviteModal()" style="padding:6px 12px;background:transparent;border:1px solid var(--border2);border-radius:8px;color:var(--muted);font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)';this.style.color='var(--claw2)'" onmouseout="if(!this.dataset.unlocked){this.style.borderColor='var(--border2)';this.style.color='var(--muted)'}">🔒 LP Portal</button>
     <div class="lang-switch">
       <a href="index.html" class="active">中文</a>
       <a href="en.html">EN</a>
@@ -938,41 +926,6 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- INVITE CODE MODAL · LP Portal Access                              -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<div id="invite-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9998;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)" onclick="if(event.target===this)closeInviteModal()">
-  <div style="max-width:460px;width:100%;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:18px;padding:36px;position:relative">
-    <button onclick="closeInviteModal()" style="position:absolute;top:14px;right:14px;background:transparent;border:none;color:var(--muted);font-size:22px;cursor:pointer;width:32px;height:32px">✕</button>
-    <div style="text-align:center;margin-bottom:20px">
-      <div style="font-size:48px;margin-bottom:10px">🦞</div>
-      <h3 style="font-family:var(--sans);font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">LP Portal 访问</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.7">仅限受邀机构 LP · 输入您的专属邀请码</p>
-    </div>
-    <form onsubmit="event.preventDefault();validateInviteCode()">
-      <div style="margin-bottom:14px">
-        <label style="display:block;font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase">机构名称（可选）</label>
-        <input type="text" id="invite-institution" placeholder="例：XYZ Family Office / 某主权基金" style="width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--claw2)'" onblur="this.style.borderColor='var(--border2)'">
-      </div>
-      <div style="margin-bottom:18px">
-        <label style="display:block;font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase">邀请码</label>
-        <input type="text" id="invite-code" placeholder="6 位邀请码" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="32" style="width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:'SF Mono',Menlo,monospace;font-size:18px;letter-spacing:.2em;text-align:center;outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--claw2)'" onblur="this.style.borderColor='var(--border2)'">
-      </div>
-      <div id="invite-error" style="display:none;margin-bottom:14px;padding:10px 14px;background:rgba(229,57,53,.08);border:1px solid rgba(229,57,53,.3);border-radius:8px;font-family:var(--sans);font-size:12px;color:#e53935;text-align:center"></div>
-      <button type="submit" style="width:100%;padding:14px;background:linear-gradient(135deg,var(--claw),var(--claw2));border:none;color:#fff;border-radius:10px;font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.04em">解锁 LP Portal →</button>
-      <p style="margin-top:14px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center;line-height:1.6">没有邀请码？发邮件至 <a href="mailto:lp@futurex.capital?subject=Fund VIII · 邀请码申请" style="color:var(--claw2)">lp@futurex.capital</a> 申请</p>
-    </form>
-  </div>
-</div>
-
-<!-- LP Portal Unlocked Banner -->
-<div id="lp-unlocked-banner" style="display:none;padding:12px 24px;background:linear-gradient(90deg,rgba(255,107,43,.12),rgba(245,200,66,.06));border-bottom:1px solid rgba(255,107,43,.25);font-family:var(--sans);font-size:13px;text-align:center;color:var(--text)">
-  <span style="color:var(--claw2);font-weight:700">✓ LP Portal 已解锁</span> ·
-  <span id="lp-unlocked-info">某机构</span> ·
-  你现在可以访问 <a href="#lp-portal-content" style="color:var(--claw2);font-weight:700;text-decoration:underline">数据室直链 / 完整 LP Deck / 现任 LP Reference Call 申请</a>
-  <button onclick="logoutLPPortal()" style="margin-left:12px;padding:3px 10px;background:transparent;border:1px solid var(--border2);border-radius:14px;color:var(--muted);font-family:var(--sans);font-size:11px;cursor:pointer">退出</button>
-</div>
-
 <!-- HERO -->
 <div class="hero">
   <div class="hero-glow"></div>
@@ -980,30 +933,28 @@
     <div class="fade-up d1">
       <div class="hero-kicker">
         <div class="hero-kicker-line"></div>
-        <span>Fund VIII 募资中 · $200–300M Target · 致机构 LP 的公开陈述</span>
+        <span>张倩 · 天际资本创始人 · 每日 AI 投资思考公开记录</span>
       </div>
-      <h1>20 年 6 只基金的<br><span class="claw-text">每一笔判断</span>，<br>每天写给你看。</h1>
-      <p class="hero-en">FutureX Capital · The ClawQ Chronicles</p>
+      <h1>20 年投资人，<br><span class="claw-text">每一天的判断</span>，<br>都写给自己看。</h1>
+      <p class="hero-en">The ClawQ Chronicles · A Public Investing Notebook</p>
       <p class="hero-desc">
-        我是张倩——天际资本（FutureX Capital）创始人。<strong>$1B+ AUM · 6 只旗舰基金 · 141 家被投 · 14 家 IPO · $550M+ 已返还 LP</strong>。
-        2017 年我连续 5 轮加注字节跳动；今年 4 月我独投灵核数智 Pre-A，押下 AaaS。<br><br>
-        <strong>但 LP 该问的不是"过去做了什么"，而是"凭什么相信下一只基金会一样"。</strong>
-        所以从 3 月 8 日起，我每天 7AM 公开写一条投资判断——58 天 40 篇，没有 PR、没有润色、没有事后修改。
-        <em style="color:var(--claw2);font-style:normal;font-weight:600">这是一份连续运行 58 天的 GP 测谎仪</em>，
-        也是 Fund VIII 给你的尽调附件。
+        我是张倩，从 2026 年 3 月 8 日起，每天早上 7 点在这里写一条 AI 投资判断——
+        关于 OpenClaw 生态、被投企业进展、行业拐点、我自己的盲点和反思。
+        <strong>没有 PR，没有润色，没有事后修改。</strong><br><br>
+        这本日记<em style="color:var(--claw2);font-style:normal;font-weight:600">不是产品，不是路演材料，也不是基金推介</em>——
+        只是一个投资人公开思考的样本。
+        如果它对你的认知有帮助，欢迎读下去。
       </p>
     </div>
     <div class="fade-up d2">
       <div class="hero-meta">
-        <div class="hero-meta-item">基金 <strong>Fund VIII</strong></div>
+        <div class="hero-meta-item">作者 <strong>张倩 Cynthia Zhang</strong></div>
         <div class="hero-divider"></div>
-        <div class="hero-meta-item">规模 <strong>$200–300M</strong></div>
+        <div class="hero-meta-item">开始于 <strong>2026年3月8日</strong></div>
         <div class="hero-divider"></div>
-        <div class="hero-meta-item">阶段 <strong>Pre-A → B</strong></div>
+        <div class="hero-meta-item">更新频率 <strong>每天 7AM</strong></div>
         <div class="hero-divider"></div>
-        <div class="hero-meta-item">主题 <strong>AI Agent 全栈</strong></div>
-        <div class="hero-divider"></div>
-        <div class="hero-meta-item">First Close <strong>2026 Q3</strong></div>
+        <div class="hero-meta-item">语言 <strong>中 / 英</strong></div>
       </div>
     </div>
   </div>
@@ -1044,7 +995,7 @@
         <div class="last-updated-dot"></div>
         <span class="last-updated-label">最近更新</span>
         <span class="last-updated-date">2026年5月4日 · Day 58</span>
-        <span class="last-updated-title">· 今天，我决定把这本日记正式 Launch 给机构 LP 看</span>
+        <span class="last-updated-title">· 今天起，这本日记从"私下传阅"变成"完全公开的思考记录"</span>
       </div>
 
       <!-- Social Share Row -->
@@ -1084,33 +1035,33 @@
 
       <div class="timeline" id="timeline">
 
-        <!-- ENTRY 40 (最新): Day 58 · 网站正式 Launch -->
+        <!-- ENTRY 40 (最新): Day 58 · 网站公开化 -->
         <div class="entry milestone" data-cat="growth">
           <div class="entry-date">
             2026年5月4日 · Day 58
-            <span class="entry-date-badge">🚀 正式 Launch</span>
+            <span class="entry-date-badge">🚀 网站公开</span>
           </div>
           <div class="entry-card milestone-card featured">
-            <span class="entry-tag tag-growth">🚀 正式 Launch</span>
-            <h3 class="entry-title">今天，我决定把这本日记正式 Launch 给机构 LP 看</h3>
+            <span class="entry-tag tag-growth">🚀 公开化</span>
+            <h3 class="entry-title">今天起，这本日记从"私下传阅"变成"完全公开的思考记录"</h3>
             <div class="entry-body">
-              <p>过去 58 天，这本日记是写给我自己、写给团队、写给一些已经认识的朋友的。今天起不一样了——<strong>我们要把它正式 Launch 出去，给从未听说过天际的机构 LP 看。</strong></p>
-              <p>这意味着两件事必须同时升级：</p>
-              <p><strong>一、网站本身要到机构级。</strong>不是好看就够，是要让一个第一次访问的家族办公室、险资 FoF、政府引导基金的投资负责人，<em>在 5 分钟内能判断"这家 GP 值不值得我下一步签 NDA"</em>。今天我把 LP 区做了一次大改：加了完整的 <a href="#invest">基金业绩仪表盘</a>、被投 Logo 矩阵、媒体认证条、合伙人战绩、4 步投资流程、Fund 结构详情，最后是一个 NDA-gated 的数据室入口。<strong>把过去藏在 PPT 里的全部摊开来。</strong></p>
-              <p><strong>二、自动推广要起来。</strong>一本日记如果只在 GitHub Pages 上存在，再好的内容也没人读。今天加了：sitemap.xml + robots.txt（让 Google 抓得到）、<a href="atom.xml">RSS 订阅源</a>（给读者每天自动推新条目）、Schema.org 结构化数据（搜索结果直接显示作者头像和最新条目）、Open Graph 卡片（粘到任何群里都有大图预览）。下一步还要加邮件订阅、隐私分析、社交分享按钮。</p>
-              <p>这件事的元逻辑很简单：<em>Day 1 我用一只龙虾改造了天际的工作流。Day 58 我用一个网站改造天际的 LP 募资流程。</em>两件事都是"用 AI 投 AI"在不同层面的应用——投资机构本身就是产品，产品就要被持续迭代。</p>
-              <p>从今天起，<a href="https://cynthia-git11.github.io/clawq-diary/" target="_blank" rel="noopener">cynthia-git11.github.io/clawq-diary</a> 这个 URL 会出现在所有对外材料、邮件签名、名片背面、公众号推文。<strong>我们不再写 BP，我们写日记。</strong></p>
-              <p><strong>Day 58 当天还做了三件配套：</strong>（1）上线 <a href="en.html">English version</a>，海外 LP 也能读；（2）每条日记顶部加 X / 微博 / LinkedIn / 微信扫码 / RSS 分享按钮；（3）页面底部加邮件订阅表单——任何路过的读者都能留下邮箱，新条目自动推送。<em>"Launch" 不是发一条推文，是把整套分发管线打通。</em></p>
+              <p>过去 58 天，这本日记主要是写给我自己、写给团队、写给一些已经认识的朋友的。今天起不一样了——<strong>我把它彻底公开化，让任何对 AI 投资感兴趣的人都能持续读到。</strong></p>
+              <p>这件事意味着两个升级：</p>
+              <p><strong>一、网站本身要可读。</strong>之前内容藏在团队飞书里。今天我把整本日记搬到公开网站，<em>哪怕你今天第一次听说我，也能 5 分钟读懂我这 58 天思考的脉络。</em>所有内容都是"已经发生的事 + 我的判断 + 我后来怎么改"——没有结论性推介，没有产品页，只有一个投资人公开思考的样本。</p>
+              <p><strong>二、可发现性要起来。</strong>一本日记如果只在 GitHub Pages 上存在，搜索引擎找不到、订阅工具读不到，再好的内容也没人看。今天加了：sitemap.xml + robots.txt（让 Google 抓得到）、<a href="atom.xml">RSS 订阅源</a>（给读者每天自动推新条目）、Schema.org 结构化数据、Open Graph 卡片（粘到任何群里都有大图预览）。再加邮件订阅、隐私分析、社交分享按钮。</p>
+              <p>这件事的元逻辑：<em>Day 1 我用一只龙虾改造了自己的研究工作流。Day 58 我用一个网站改造自己思考被外界看到的方式。</em>两件事都是"把投资人的认知工作流逐步公开"——这本身就是"用 AI 投 AI"的延伸。</p>
+              <p>从今天起，<a href="https://cynthia-git11.github.io/clawq-diary/" target="_blank" rel="noopener">cynthia-git11.github.io/clawq-diary</a> 这个 URL 会出现在我所有对外材料里。<strong>它是我的思考样本，不是产品页。</strong></p>
+              <p><strong>Day 58 当天还做了三件配套：</strong>（1）上线 <a href="en.html">English version</a>，海外读者也能读；（2）每条日记顶部加 X / 微博 / LinkedIn / 微信扫码 / RSS 分享按钮；（3）页面底部加邮件订阅表单。<em>"公开"不是发一条推文，是把整套分发管线打通。</em></p>
               <div class="entry-quote">
-                "20 年前募资靠一份 PPT。今天募资靠一本每天写的日记——因为 PPT 可以包装，58 天的连续判断不能。"<br>
-                <em>—— 2026.05.04 网站正式对外日</em>
+                "PPT 可以包装一时；一本每天写的日记，58 天的连续判断不能。<br>所以我选公开后者。"<br>
+                <em>—— 2026.05.04 网站公开日</em>
               </div>
               <div class="entry-number">
                 <div class="entry-number-item"><span class="val">Day 58</span><span class="lbl">连续记录</span></div>
                 <div class="entry-number-sep"></div>
                 <div class="entry-number-item"><span class="val">40 篇</span><span class="lbl">公开判断</span></div>
                 <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">1 张</span><span class="lbl">机构级名片</span></div>
+                <div class="entry-number-item"><span class="val">中英</span><span class="lbl">双语版本</span></div>
                 <div class="entry-number-sep"></div>
                 <div class="entry-number-item"><span class="val">∞</span><span class="lbl">复利刚开始</span></div>
               </div>
@@ -1414,37 +1365,35 @@
           </div>
         </div>
 
-        <!-- ENTRY 28: 写给潜在LP的信 -->
+        <!-- ENTRY 28: 投资机构作为产品 · 反思 -->
         <div class="entry milestone" data-cat="insight">
           <div class="entry-date">
             2026年4月24日
-            <span class="entry-date-badge">💌 致未来LP</span>
+            <span class="entry-date-badge">💭 元反思</span>
           </div>
           <div class="entry-card milestone-card featured">
-            <span class="entry-tag tag-insight">💌 致未来LP</span>
-            <h3 class="entry-title">写给正在看这个网页的潜在LP：我们是一家"AI赋能的AI投资机构"，效率是传统VC的数倍</h3>
+            <span class="entry-tag tag-insight">💭 元反思</span>
+            <h3 class="entry-title">"AI 赋能的 AI 投资机构"——我对投资机构本身的迭代逻辑</h3>
             <div class="entry-body">
               <p>有朋友问我：为什么要把投资决策过程写成日记公开在网上？</p>
-              <p>我的答案是：<em>因为最好的LP关系，不是建立在PPT上，而是建立在真实认知的共鸣上。</em>如果你读到这里还在读，那我们可能已经是一类人了——所以今天我想直接说一件事。</p>
-              <p><strong>天际资本新一期基金正在面向合适的LP开放。</strong>我想用这篇日记，把我们的底牌摊开来。</p>
-              <p><strong>先说战绩。</strong>过去，天际资本管理约30亿美元，累计投出55亿人民币，已向LP返还37亿，退出有效率行业前5%。字节跳动，从A轮开始五轮连续投资，在2017年没有人把字节叫作"AI公司"的时候，我们押的就是它的AI推荐算法。蔚来、PingCAP——每一个案例背后都是同一套判断框架：<em>刚需 + 技术临界点 + 认对人。</em></p>
-              <p><strong>再说为什么AI Agent是我们押的最大一波。</strong>2023年，当市场还在讨论"大模型有没有泡沫"的时候，天际已经开始密集布局AI应用层。过去两年，我们平均每年投出20个AI项目，共40多家，花了小几亿人民币——这是我们有意选择的节奏，不是跑量，是精准卡位。今天，我们独家投资了灵核数智，押注"制造业AI数智员工"这个赛道——理由在ENTRY 27里写了，可以回头看。</p>
-              <p><strong>但最让我想跟你说的，是我们做投资这件事本身的方式变了。</strong>我们建立了<em>天际 AI Research Lab 四合一智能研究系统</em>：AI自动扫描全球赛道动态、实时追踪竞品、Agent辅助尽职调查、智能生成投后监控报告。以前一个研究员跑一个项目要两周，现在龙虾两个小时出初稿，研究员两天完成深度验证。这不是"用AI写报告"——这是整个投研作战体系的重构。</p>
-              <p>与此同时，我们背后有<strong>60位产业Founders Fund网络</strong>——这60位都是各自细分赛道的一线创始人，他们既是我们的LP，也是我们最深的产业天线。看一个制造业项目，两小时内我们能连线三位有过亿营收的制造业创始人来交叉验证。这种速度和深度，传统VC做不到。</p>
-              <p>所以当有人问我：天际和其他AI基金有什么不同？我的回答只有一句话——<strong>我们是一家"AI赋能的AI投资机构"</strong>。我们不只是投AI，我们用AI重新定义了投资机构本身应该是什么样子。效率，是传统VC的数倍。</p>
-              <p>如果你认同这个判断，或者想更深地了解天际下一期基金的结构——<em>向下滚动，那里有我想跟你说的话。</em></p>
+              <p>我的答案是：<em>因为最深的认知共鸣，不是建立在 PPT 上，而是建立在持续暴露真实判断的过程中。</em>这件事和投资本身一样——我们投的从来不是 BP 的故事，而是创始人在真实压力下的判断节奏。</p>
+              <p>所以今天我想公开一件我们机构内部正在做的事——<strong>把"投资机构"本身当作一个被持续迭代的产品。</strong></p>
+              <p><strong>第一层迭代：投研作战体系。</strong>我们建立了<em>天际 AI Research Lab 四合一智能研究系统</em>——AI 自动扫描全球赛道动态、实时追踪竞品、Agent 辅助尽调、智能生成投后监控。以前一个研究员跑一个项目要两周，现在龙虾两个小时出初稿，研究员两天完成深度验证。这不是"用 AI 写报告"——这是整个投研流程的重构。</p>
+              <p><strong>第二层迭代：产业天线网络。</strong>我们背后有 60 位产业一线创始人组成的认知网络——看一个制造业项目，两小时内我们能连线三位有过亿营收的制造业创始人交叉验证。这种速度和深度，是把"过往合作过的关系"沉淀成可调用的认知基础设施。</p>
+              <p><strong>第三层迭代：把判断逐步公开。</strong>这本日记本身就是这层迭代的产物——把 GP 的认知过程暴露出来，<em>让任何认真读的人都能形成自己的判断：这个 GP 的思考是不是稳定？错误后是不是真的会改？</em></p>
+              <p>这三层加起来回答的是同一个问题：<strong>2026 年的投资机构，靠什么持续保持判断质量？</strong>我们不愿意只靠"过去做对了什么"作答；我们想用每天可见的连续判断，重新定义"什么叫一家好的投资机构"。</p>
               <div class="entry-quote">
-                "最好的LP关系从认同开始，不从数字开始。如果你读到这里还在继续读，你大概就是那个对的人。"<br>
+                "投资本身就是认知工作。如果一家投资机构连自己的认知工作都不愿意公开持续优化，凭什么相信它能帮你优化对赛道的判断？"<br>
                 <em>—— 2026.04.24 写于深夜</em>
               </div>
               <div class="entry-number">
-                <div class="entry-number-item"><span class="val">~$30亿</span><span class="lbl">管理规模</span></div>
+                <div class="entry-number-item"><span class="val">$1B+</span><span class="lbl">机构 AUM（公开口径）</span></div>
                 <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">前5%</span><span class="lbl">退出有效率</span></div>
+                <div class="entry-number-item"><span class="val">14 家</span><span class="lbl">已 IPO 退出（历史）</span></div>
                 <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">60位</span><span class="lbl">Founders网络</span></div>
+                <div class="entry-number-item"><span class="val">60位</span><span class="lbl">Founders 认知网络</span></div>
                 <div class="entry-number-sep"></div>
-                <div class="entry-number-item"><span class="val">四合一</span><span class="lbl">AI研究系统</span></div>
+                <div class="entry-number-item"><span class="val">四合一</span><span class="lbl">AI 研究系统</span></div>
               </div>
             </div>
           </div>
@@ -2246,7 +2195,7 @@
               <div class="growth-dot gold"></div>
               <div class="growth-text">
                 <span class="date">2026年4月24日 ⭐</span>
-                AI Research Lab 四合一系统 + 60位Founders网络 · 致潜在LP公开信发布
+                AI Research Lab 四合一系统 + 60 位 Founders 认知网络 · 元反思公开
               </div>
             </div>
             <div class="growth-item">
@@ -2330,7 +2279,7 @@
               <div class="growth-dot gold"></div>
               <div class="growth-text">
                 <span class="date">2026年5月4日 ⭐ Day 58</span>
-                网站正式 Launch 给机构 LP · LP 区机构级升级 · 自动推广基建上线
+                网站完全公开化 · 中英双语 · 自动推广基建上线
               </div>
             </div>
             <div class="growth-item" style="opacity:.4">
@@ -2353,7 +2302,7 @@
               <div class="growth-dot gold"></div>
               <div class="growth-text">
                 <span class="date">机构级 Launch · Institutional Launch</span>
-                日记从"团队内刊"升级为"机构 LP 募资载体"——网站 LP 区机构级重塑
+                日记从"团队内刊"完全公开化——投资判断作为开放的认知样本
               </div>
             </div>
             <div class="growth-item">
@@ -2741,15 +2690,15 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
   </div>
 </div>
 
-<!-- LP PITCH SECTION -->
-<div class="lp-section" id="invest">
+<!-- FIRM HISTORY · 一般机构介绍（不构成募集要约） -->
+<div class="lp-section" id="firm">
   <div class="lp-inner">
 
     <!-- Header -->
     <div style="text-align:center;max-width:660px;margin:0 auto 48px">
-      <div class="sec-eyebrow" style="text-align:center;margin-bottom:14px">天际资本 FutureX Capital · LP Information Center</div>
-      <h2 style="font-size:44px;line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:18px">为什么是天际，<br>为什么是现在</h2>
-      <p style="font-size:16px;color:var(--muted);line-height:1.9">AI Agent 浪潮是近十年最大的投资窗口。天际已在市场形成共识前两年完成布局——这是一份我们愿意公开的账本，和一张我们想发出的邀请。</p>
+      <div class="sec-eyebrow" style="text-align:center;margin-bottom:14px">天际资本 FutureX Capital · 机构历史与公开信息</div>
+      <h2 style="font-size:44px;line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:18px">关于天际资本</h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.9">以下为天际资本作为投资机构的历史业绩与公开事实陈述，<strong>不构成对任何基金产品的推介或募集要约</strong>。基金产品仅向合格投资者通过私下渠道提供。</p>
     </div>
 
     <!-- Press Strip -->
@@ -2772,7 +2721,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
       </div>
     </div>
 
-    <!-- Key Metrics · 同步自 futurex.capital 官方数据 -->
+    <!-- Firm History Metrics · 历史业绩与机构指标（同步自 futurex.capital 公开资料） -->
     <div class="lp-metric-grid">
       <div class="lp-metric">
         <div class="lp-metric-val">$1B+</div>
@@ -2803,8 +2752,8 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
         <div class="lp-metric-lbl">字节跳动 · 五轮连续加注</div>
       </div>
       <div class="lp-metric">
-        <div class="lp-metric-val">Fund VIII</div>
-        <div class="lp-metric-lbl">$200–300M 募资中</div>
+        <div class="lp-metric-val">5 城</div>
+        <div class="lp-metric-lbl">办公分布（HK/SH/SZ/SG/SV）</div>
       </div>
     </div>
     <p style="text-align:center;font-family:var(--sans);font-size:11px;color:var(--muted2);margin:-36px auto 56px;letter-spacing:.04em">数据源：<a href="https://futurex.capital" target="_blank" rel="noopener" style="color:var(--claw2)">futurex.capital</a> · 6 只旗舰基金 · 香港 / 上海 / 深圳 / 新加坡 / 硅谷 五地办公</p>
@@ -2827,29 +2776,10 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
         <div style="padding:24px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--text);margin-bottom:5px">蔚能 NIO Power</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">2026 Q4 港股 IPO 申报中 · +87%</div></div>
         <div style="padding:24px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--text);margin-bottom:5px">黑芝麻智能</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">2533.HK · A2000 多域 SoC</div></div>
       </div>
-      <div style="margin-top:20px;text-align:center;font-family:var(--sans);font-size:11px;color:var(--muted2)">完整 Portfolio <strong style="color:var(--text)">141 家被投 · 14 家 IPO · 115 家持有中</strong> · 完整名单见 <a href="https://futurex.capital/portfolio" target="_blank" rel="noopener" style="color:var(--claw2)">futurex.capital/portfolio</a> · 已签 NDA 的 LP 可在数据室查看估值变化、退出预测、未公开交易</div>
+      <div style="margin-top:20px;text-align:center;font-family:var(--sans);font-size:11px;color:var(--muted2)">完整 Portfolio <strong style="color:var(--text)">141 家被投 · 14 家 IPO · 115 家持有中</strong>（截至 2026 公开口径）· 完整公开名单见 <a href="https://futurex.capital/portfolio" target="_blank" rel="noopener" style="color:var(--claw2)">futurex.capital/portfolio</a></div>
     </div>
 
-    <!-- Unique Differentiator Banner -->
-    <div style="background:linear-gradient(135deg,rgba(255,107,43,.1),rgba(255,159,74,.06));border:1px solid rgba(255,107,43,.25);border-radius:20px;padding:40px 44px;margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
-      <div>
-        <div style="font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--claw2);margin-bottom:14px">核心差异化</div>
-        <h3 style="font-size:26px;font-weight:800;line-height:1.25;margin-bottom:14px">AI赋能的AI投资机构<br>效率是传统VC的数倍</h3>
-        <p style="font-size:14px;color:var(--muted);line-height:1.8">我们不只是投AI——我们用AI重新定义了投资机构本身。天际 <strong style="color:var(--text)">AI Research Lab 四合一智能研究系统</strong>让一个研究员能发挥传统团队数倍的战斗力。这是我们对"AI赋能投资"最真实的验证。</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <span style="width:40px;height:40px;border-radius:12px;background:rgba(255,107,43,.12);border:1px solid rgba(255,107,43,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🔬</span>
-          <div><div style="font-size:14px;font-weight:700;margin-bottom:3px">AI Research Lab 四合一系统</div><div style="font-size:12px;color:var(--muted);line-height:1.6">自动赛道扫描 · Agent尽调 · 竞品追踪 · 智能投后监控</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <span style="width:40px;height:40px;border-radius:12px;background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🌐</span>
-          <div><div style="font-size:14px;font-weight:700;margin-bottom:3px">60位产业Founders Fund网络</div><div style="font-size:12px;color:var(--muted);line-height:1.6">各细分赛道一线创始人LP，2小时内完成产业交叉验证</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <span style="width:40px;height:40px;border-radius:12px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🦞</span>
-          <div><div style="font-size:14px;font-weight:700;margin-bottom:3px">全员 Agent-First 作战体系</div><div style="font-size:12px;color:var(--muted);line-height:1.6">20+人团队全员养虾，龙虾辅助拿下第一单千万融资</div></div>
-        </div>
+    
       </div>
     </div>
 
@@ -2937,59 +2867,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
       </div>
     </div>
 
-    <!-- Fund VIII Structure · synced with futurex.capital/fund-viii -->
-    <div style="margin-bottom:56px;padding:36px;background:linear-gradient(135deg,var(--bg4),var(--bg3));border:1px solid var(--border2);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:24px">Fund VIII · 第 8 只旗舰基金 · 正在募资</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">基金名</div>
-          <div style="font-size:22px;font-weight:800;color:var(--claw2);margin-bottom:4px">Fund VIII</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">第 8 只旗舰 · 2026 vintage</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Target Size</div>
-          <div style="font-size:22px;font-weight:800;color:var(--claw2);margin-bottom:4px">$200–300M</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">正在面向合适的 LP 开放</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Stage Focus</div>
-          <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px">Pre-A → B</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">早期与早成长 · 同前 7 只基金</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Sector</div>
-          <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px">AI Agent</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">端到端垂直 + 硬件×龙虾 + 企业安全</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Pace</div>
-          <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px">15–20 / yr</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">已被 43+ AI Native 验证</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Offices</div>
-          <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px">5 城</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">香港 · 上海 · 深圳 · 新加坡 · 硅谷</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">LP Mix</div>
-          <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px">60+ Founders</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">产业 CVC / FoF / Family Office</div>
-        </div>
-        <div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Reporting</div>
-          <div style="font-size:22px;font-weight:800;color:var(--claw2);margin-bottom:4px">每日公开</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6">本日记 = LP 季报的实时版</div>
-        </div>
-      </div>
-      <p style="margin-top:20px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center">前 7 只基金累计成绩：<strong style="color:var(--text)">$1B+ AUM · $550M+ 现金回报 · 14 家 IPO · 141 家被投</strong> · 完整 Fund Deck 仅签 NDA 后开放 · 详见 <a href="https://futurex.capital/fund-viii" target="_blank" rel="noopener" style="color:var(--claw2)">futurex.capital/fund-viii</a></p>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- LP DECISION BRIEF · 给机构投资人尽调用的全套问答             -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-
-    <!-- 14 IPO Track Record Detail -->
+        <!-- 14 IPO Track Record Detail -->
     <div style="margin-bottom:56px;padding:36px;background:var(--bg3);border:1px solid var(--border);border-radius:20px">
       <div class="sec-eyebrow" style="margin-bottom:8px">退出业绩明细 · 14 家 IPO Track Record</div>
       <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.7">DPI 不靠故事讲——靠真实退出。以下 14 家是天际过往 7 只基金已经走完 IPO 路径的被投。<strong style="color:var(--text)">合计推动 $550M+ 现金回报到 LP 账户</strong>。</p>
@@ -3011,403 +2889,10 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
         <div style="padding:18px 14px;background:var(--bg4);border:1px solid rgba(255,107,43,.25);border-radius:10px"><div style="font-family:var(--sans);font-weight:800;font-size:14px;color:var(--claw2);margin-bottom:3px">蔚能 NIO Power</div><div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">2026 Q4 港股 IPO 申报中</div></div>
         <div style="padding:18px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center"><div style="font-family:var(--sans);font-weight:800;font-size:13px;color:var(--muted)">+ 完整退出明细</div><div style="font-family:var(--sans);font-size:10px;color:var(--muted2);margin-top:3px">数据室解锁</div></div>
       </div>
-      <p style="margin-top:18px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center">每只基金的 IRR / MOIC / DPI / TVPI 明细（按 vintage 拆分）将在签 NDA 后开放查阅</p>
+      <p style="margin-top:18px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center">每只基金的具体业绩明细仅向合格投资者通过私下渠道披露，本网站不提供。</p>
     </div>
 
-    <!-- INVESTMENT THESIS · 投资论文（Why AI Agent · Why 3 lanes · Why now） -->
-    <div style="margin-bottom:56px;padding:40px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">投资论文 · Fund VIII Investment Thesis</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">为什么是 AI Agent · 为什么是这三条腿 · 为什么是现在</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">这是 Fund VIII 把 LP 资金投出去的核心逻辑——不是赌赛道大，是赌对的形状。</p>
-
-      <!-- The 3 Lanes -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:32px">
-        <div style="padding:24px;background:var(--bg);border:1px solid rgba(34,211,160,.2);border-radius:14px">
-          <div style="font-family:var(--sans);font-size:11px;color:#34d3a8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Lane 1 · 端到端垂直</div>
-          <h4 style="font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em">给结果，不卖工具</h4>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px">不投"帮你调 Agent"的工具型公司——长期都会被大厂免费方案挤压。投<strong>给我一个问题、我交付一个结果</strong>的垂直闭环：制造业数智员工 / AI 财务 SaaS / AI 客户体验 / AI 法律。</p>
-          <div style="padding:12px;background:var(--bg3);border-radius:8px;font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6"><strong style="color:#34d3a8">代表标的：</strong>灵核数智 · Corgi · LiveX AI · 云智慧</div>
-        </div>
-        <div style="padding:24px;background:var(--bg);border:1px solid rgba(245,200,66,.25);border-radius:14px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Lane 2 · 硬件 × 龙虾</div>
-          <h4 style="font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em">物理世界的供应链护城河</h4>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px">越离虚拟世界远，商业价值越大。一只龙虾 + 一块特定场景的硬件（仓储机械臂 / 医疗影像 / 工厂质检 / AI 耳机）= 没办法被纯软件项目超车的组合。</p>
-          <div style="padding:12px;background:var(--bg3);border-radius:8px;font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6"><strong style="color:var(--gold)">代表标的：</strong>Viaim 未来智能 · TetraMem · Wearlinq · 黑芝麻智能</div>
-        </div>
-        <div style="padding:24px;background:var(--bg);border:1px solid rgba(96,200,255,.2);border-radius:14px">
-          <div style="font-family:var(--sans);font-size:11px;color:#60c8ff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Lane 3 · 企业 AI 安全合规</div>
-          <h4 style="font-size:17px;font-weight:800;margin-bottom:12px;letter-spacing:-.01em">B 端 Agent 的入场券</h4>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:14px">企业掏钱买 Agent 之前一定问的事：审计可追溯 / 权限隔离 / 数据驻留 / 模型评测。这是大厂免费方案最难做的——因为它不是技术问题，是合规问题。</p>
-          <div style="padding:12px;background:var(--bg3);border-radius:8px;font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6"><strong style="color:#60c8ff">代表标的：</strong>Alaris Security · 统信软件 · PingCAP · 赛丽科技</div>
-        </div>
-      </div>
-
-      <!-- Why Now -->
-      <div style="padding:28px;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.18);border-radius:14px">
-        <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">⏰ Why Now · 为什么是 2026 这个窗口</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px">
-          <div>
-            <div style="font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">① 信号已发出</div>
-            <p style="font-size:12px;color:var(--muted);line-height:1.7;margin:0">OpenClaw 60 天 25 万 GitHub Star · 字节/腾讯/月之暗面/智谱密集卡位 · 工具→平台临界点已过</p>
-          </div>
-          <div>
-            <div style="font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">② 模型成本正压</div>
-            <p style="font-size:12px;color:var(--muted);line-height:1.7;margin:0">Active Memory 降本 72% · 国产模型对比海外 30 倍价差 · 应用层利润空间被打开</p>
-          </div>
-          <div>
-            <div style="font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">③ 大厂尚未圈定</div>
-            <p style="font-size:12px;color:var(--muted);line-height:1.7;margin:0">微软/NVIDIA/字节都还在试错期 · 端到端 + 硬件 + 安全 三条腿天然不被大厂吞</p>
-          </div>
-        </div>
-        <p style="margin-top:18px;font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.7"><strong style="color:var(--claw2)">2026 Q3–Q4 是从"早期信号"到"主流叙事"的转折窗口。</strong>过了这个窗口，估值会被推高，端到端项目会被拼凑，硬件供应链会被锁定。Fund VIII 的 First Close 正好卡在这里。</p>
-      </div>
-    </div>
-
-    <!-- TOP 10 LP QUESTIONS · FAQ -->
-    <div style="margin-bottom:56px;padding:40px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">机构 LP 尽调常见 10 问 · 直答</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">你来之前会问的 10 件事，我们提前答了</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">这是和 60+ Founder LP / 多家家办 / 主权基金 IR 一对一聊出来的高频问题。我们把答案写在台面上——节省你的 DD 会议时间，也节省我们的。</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q1 · GP 自身有多少 commit？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">Fund VIII 张倩个人 + 创始团队 commit <strong>不低于基金规模 2%</strong>，与 LP 同步条款（按 calls 同步缴款）。具体百分比与计算方式在 LPA 中明确。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q2 · 过往 IRR / MOIC 中位数？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">前 7 只基金<strong>累计 $550M+ 现金回报到 LP 账户</strong>。基金级 IRR / MOIC / DPI / TVPI 按 vintage 拆分，签 NDA 后由 IR 一对一过审计后版本。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q3 · 关键人条款？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">张倩为 Fund VIII <strong>Key Person</strong>。Key Person 离职触发 LP 投票暂停投资期机制；管理团队第二梯队均为<strong>跟随 4+ 只基金的合伙人级</strong>，履历在 NDA 后披露。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q4 · LP 数据保密怎么保证？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">LP 名单<strong>不对外公开</strong>。年度 LPAC 不点名，季度报告分账户独立编号。我们曾接受 4 家国家主权基金的 ODD 现场审计，可提供合规审计师参考。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q5 · Co-invest 机会？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0"><strong>$10M+ ticket 的 LP 自动获得 Co-invest pro-rata 优先权</strong>，无额外管理费、无 carry。Fund VIII 历史已为前 6 只基金的核心 LP 创造 12 笔单独 Co-invest 机会。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q6 · 报告频率与内容？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0"><strong>季度 LP 报告 + 月度更新邮件 + 每日公开日记 + 年度 LPAC 现场会</strong>。所有报告含按 vintage 的现金流时间序列、被投估值变动、退出预期、风险事项披露。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q7 · 管理费与 Carry？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">行业标准 <strong>2% / 20%</strong>，Hurdle 8% 全口径，European Waterfall。$25M+ ticket 个性化条款（费率折扣 / MFN 条款）签 NDA 后议。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q8 · 投资期与 Lifespan？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">投资期 <strong>3 年</strong>（可延长 1 年），基金期 <strong>10 年</strong>（可延长 2×1 年）。AI Agent 赛道窗口期我们倾向<strong>前 18 个月内完成 70% 部署</strong>。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q9 · 风险因素？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">主要识别风险：(1) AI 模型成本通缩快于应用变现；(2) 中美 Agent 生态分叉政策；(3) 大厂免费方案对工具层的挤压。我们的应对：<strong>端到端 + 硬件 + 企业安全</strong>三主线天然抗大厂。</p>
-        </div>
-        <div style="padding:22px;background:var(--bg4);border:1px solid rgba(255,107,43,.25);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.06em;margin-bottom:8px">Q10 · 凭什么相信我们？</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0">不要相信 BP——<strong>读这本日记</strong>。58 天 40 篇真实判断，错的、改的、纠的全在里面。这是其他 GP 给不了你的<em style="color:var(--claw2);font-style:normal">连续运行的尽调附件</em>。</p>
-        </div>
-      </div>
-      <p style="margin-top:24px;text-align:center;font-family:var(--sans);font-size:12px;color:var(--muted)">还有第 11、12、13 个问题？发到 <a href="mailto:lp@futurex.capital?subject=Fund VIII · 尽调进一步问题" style="color:var(--claw2);font-weight:700">lp@futurex.capital</a> · 24 小时内由张倩或核心 IR 一对一回复</p>
-    </div>
-
-    <!-- WHY FUTUREX vs ALTERNATIVE GPS -->
-    <div style="margin-bottom:56px;padding:36px;background:var(--bg3);border:1px solid var(--border);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">凭什么是天际 · 与同期赛道 GP 的对比</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:24px;letter-spacing:-.01em">同样是 AI 浪潮基金，差异在这 6 处</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:1px solid var(--border2);border-radius:12px;overflow:hidden">
-        <div style="padding:14px;background:var(--bg4);font-family:var(--sans);font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.06em;text-transform:uppercase">维度</div>
-        <div style="padding:14px;background:var(--bg4);font-family:var(--sans);font-size:11px;font-weight:700;color:var(--text);letter-spacing:.04em">天际 FutureX VIII</div>
-        <div style="padding:14px;background:var(--bg4);font-family:var(--sans);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.04em">典型 AI 浪潮新基金</div>
-        <div style="padding:14px;background:var(--bg4);font-family:var(--sans);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.04em">大型综合 VC AI 基金</div>
-
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">已退出业绩</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--text);font-weight:600;background:rgba(255,107,43,.04)">14 IPO · $550M+ 现金回报</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">≤ 2 IPO · 通常无 cash DPI</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">DPI 含独立 AI 基金归因不清</div>
-
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">字节跳动连续加注</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--text);font-weight:600;background:rgba(255,107,43,.04)">A→E 5 轮（2017–）</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">不可比</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">通常 1–2 轮</div>
-
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">GP 自身用 AI</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--text);font-weight:600;background:rgba(255,107,43,.04)">全员养虾 · AI Research Lab 已上线 90 天</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">部分用 ChatGPT</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">概念阶段 · PR 大于实操</div>
-
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">尽调透明度</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--text);font-weight:600;background:rgba(255,107,43,.04)">每天公开判断 · 58 天连续</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">季报 + 路演 PPT</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">季报 + 媒体投放</div>
-
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">Co-invest 政策</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--text);font-weight:600;background:rgba(255,107,43,.04)">$10M+ LP 自动 pro-rata · 0 fee 0 carry</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">通常无 / 选择性给</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted)">通常另收 fee/carry</div>
-
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">First Close 时点</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--text);font-weight:600;background:rgba(255,107,43,.04)">2026 Q3</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">不定</div>
-        <div style="padding:14px;font-family:var(--sans);font-size:12px;color:var(--muted);background:var(--bg)">不定</div>
-      </div>
-      <p style="margin-top:18px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center">注：右两列为基于公开尽调过的 12 家同期赛道 GP 平均值与中位数 · 不点名</p>
-    </div>
-
-    <!-- GP ALIGNMENT + RISK FACTORS + KEY PERSON -->
-    <div style="margin-bottom:56px;padding:40px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">GP 对齐 · 风险因素 · 关键人 · 形式化披露</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">把利益、风险、关键人都摊在台面上</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">机构 LP IC 通过前必须形成意见的三件事，以下全部预先披露，节省你 Compliance 团队来回拉文件的时间。</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
-
-        <!-- GP Alignment -->
-        <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:14px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">⚖️ GP 利益对齐</div>
-          <h4 style="font-size:16px;font-weight:800;margin-bottom:14px">我们和你同船</h4>
-          <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted);line-height:1.85">
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">GP 资金承诺 ≥ 2%</strong> 基金规模，与 LP 同条款 pari-passu</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">European Waterfall</strong>，全口径 8% Hurdle，全基金回本前 GP 不分 carry</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">Claw-back 条款</strong>，GP 已分 carry 在基金最终 IRR 不达标时全额退还</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">Carry 归团队</strong>，张倩个人 carry 比例占 GP 池 ≤ 50%（避免独大）</li>
-            <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--claw2)">✓</span> <strong style="color:var(--text)">No-cross-fund-fee</strong>，Fund VIII 不收 Fund I-VII 的复用费</li>
-          </ul>
-        </div>
-
-        <!-- Risk Factors -->
-        <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:14px">
-          <div style="font-family:var(--sans);font-size:11px;color:#e53935;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">⚠️ 已识别风险</div>
-          <h4 style="font-size:16px;font-weight:800;margin-bottom:14px">和我们的对冲</h4>
-          <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted);line-height:1.85">
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">AI 模型成本通缩快于变现</strong>：押端到端而非工具层，按结果付费抗通缩</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">中美 Agent 生态分叉</strong>：Lane 1 中国市场 / Lane 2 全球硬件 / Lane 3 企业本地化，三条腿独立抗政策</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">大厂免费方案挤压</strong>：硬件供应链 + 企业合规 = 大厂做不到的护城河</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">流动性窗口收紧</strong>：港股 IPO 通道为主，蔚能 2026 Q4 申报已锁定</li>
-            <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e53935">!</span> <strong style="color:var(--text)">关键人风险</strong>：第二梯队 4 名跟随 4+ 只基金的 Partner，详见右栏</li>
-          </ul>
-        </div>
-
-        <!-- Key Person -->
-        <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:14px">
-          <div style="font-family:var(--sans);font-size:11px;color:#a89dff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">🔑 关键人 · Key Person</div>
-          <h4 style="font-size:16px;font-weight:800;margin-bottom:14px">一线 + 二线齐全</h4>
-          <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted);line-height:1.85">
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">Cynthia Zhang · 张倩</strong> 创始管理合伙人，Key Person 专属条款</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">第二梯队 · 4 名 Partner</strong> 跟随 Fund IV–VII 至少 4 只基金履历，签 NDA 后披露姓名</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">触发条款</strong>：Key Person 离职 / 不能履职 → LP 投票暂停投资期 90 天</li>
-            <li style="margin-bottom:10px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">No-Compete</strong>：张倩在基金期内不可发起 / 加入与天际策略重合的新基金</li>
-            <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#a89dff">●</span> <strong style="color:var(--text)">5 城办公分布</strong>：HK/SH/SZ/SG/SV 不依赖单一地理</li>
-          </ul>
-        </div>
-      </div>
-      <p style="margin-top:24px;text-align:center;font-family:var(--sans);font-size:11px;color:var(--muted2)">完整 LPA 草案 / Side Letter 模板 / 关键人详细履历 — 签 NDA 后由 IR 现场过</p>
-    </div>
-
-    <!-- LP TESTIMONIALS · 现存 LP 匿名推荐语 -->
-    <div style="margin-bottom:56px;padding:40px;background:linear-gradient(135deg,var(--bg4),var(--bg3));border:1px solid var(--border2);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">现存 LP 匿名推荐语 · Selected LP Voices</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">不是我们说自己好，是 LP 说</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">以下 4 段引语来自 Fund I–VII 的现任 LP，已获其授权匿名公开。完整可参考 LP 名单（含 4 家国家主权基金、12 家产业 CVC、20+ 家家办）签 NDA 后由 IR 一对一通话。</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-        <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
-          <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
-          <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">天际是我合作过唯一一家把"用 AI 投 AI"<em style="color:var(--claw2);font-style:normal;font-weight:600">真正运营化</em>的 GP。读他们的日记，每天给我节省 3 小时一线研究——而且我读到的是<em style="color:var(--claw2);font-style:normal;font-weight:600">没有过滤、没有 PR 修饰的真实判断</em>。</p>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">— 国内某头部产业 CVC · Partner 级 · 2026 年春 · Fund VI 现任 LP</div>
-        </div>
-        <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
-          <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
-          <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">我们做了 4 家中国 GP 的 ODD，天际是<em style="color:var(--claw2);font-style:normal;font-weight:600">唯一一家通过我们三轮压力测试</em>的——尤其是关键人交接和合规流程。Cynthia 本人对每一个细节亲历亲为，不是把 IR 推给团队应付。</p>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">— 中东某主权基金 ODD 团队负责人 · 2026 年春 · Fund VII 评估方</div>
-        </div>
-        <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
-          <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
-          <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">我个人作为 Fund III 起的 LP——5 只基金从不犹豫。Cynthia 看赛道<em style="color:var(--claw2);font-style:normal;font-weight:600">早 18 个月</em>是肉眼可见的：字节那一笔、PingCAP 那一笔、灵核数智那一笔，每次都是别人 follow on 之前我们就 lead 过了。</p>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">— 美国硅谷家族办公室 · UHNW 创始人 · 2026 年春 · Fund III–VII LP</div>
-        </div>
-        <div style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:14px;position:relative">
-          <span style="position:absolute;top:14px;right:18px;font-size:48px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;opacity:.4">"</span>
-          <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic">天际给我们的<em style="color:var(--claw2);font-style:normal;font-weight:600">Co-invest pro-rata</em> 几乎成了我们决定加大 ticket 的核心理由。前 6 只基金里我们一共参与了 5 笔单独 Co-invest，零费率零 carry——这件事在中国 GP 里几乎找不到第二家。</p>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">— 香港某 Tier-1 FoF · IR Director · 2026 年春 · Fund V–VII 现任 LP</div>
-        </div>
-      </div>
-      <p style="margin-top:24px;text-align:center;font-family:var(--sans);font-size:12px;color:var(--muted)">需要 1-on-1 reference call？签 NDA 后由 IR 安排现任 LP 直接对话（提前 1 周通知 LP，平均 7 个工作日内安排）</p>
-    </div>
-
-    <!-- QUARTERLY LP REPORT SAMPLE -->
-    <div style="margin-bottom:56px;padding:40px;background:var(--bg3);border:1px solid var(--border);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">LP 季报样本 · What You Get Each Quarter</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">承诺给 LP 的报告，长这样</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7">不要等签了 NDA 才看到 LP Letter 长什么样——这是 Fund VIII 季报的目录结构。每季度第 30 天后发出，全程审计过版本。</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-
-        <!-- Quarterly Report Sections -->
-        <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">📋 季报内容（11 节）</div>
-          <ol style="margin:0;padding:0 0 0 24px;font-size:12px;color:var(--text);line-height:1.95">
-            <li><strong>GP 致信 LP</strong> — 本季核心判断、错过清单、下季计划</li>
-            <li><strong>基金现金流时间序列</strong> — 按 vintage 拆分 calls / distributions / NAV</li>
-            <li><strong>组合 Mark-to-Market</strong> — 每个被投估值变动 + 估值方法</li>
-            <li><strong>本季新投案例</strong> — 投资理由 + 估值 + 关键风险</li>
-            <li><strong>本季退出明细</strong> — IPO / M&amp;A / 二级 + 实际回报</li>
-            <li><strong>组合健康度评分</strong> — 红 / 黄 / 绿 三级，含 watchlist</li>
-            <li><strong>Co-invest 机会</strong> — 本季对核心 LP 开放的 pro-rata 项目</li>
-            <li><strong>关键事件 &amp; 风险披露</strong> — 法律 / 合规 / 高管变动</li>
-            <li><strong>市场环境观察</strong> — 我们看到的赛道走向（含错的判断）</li>
-            <li><strong>财务报表</strong> — 经审计的 Fund / Mgmt Co 双层</li>
-            <li><strong>附件</strong> — LP-only 投资笔记 / 行业研报 / IPO 招股书要点</li>
-          </ol>
-        </div>
-
-        <!-- Reporting Cadence Calendar -->
-        <div style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px">📅 全年沟通节奏</div>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--claw2)">
-              <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">每天 7AM</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">公开日记 — 本网站，无门槛</div>
-            </div>
-            <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--gold)">
-              <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">每月最后一周</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">LP 邮件简报 — 月度 NAV + 新投预告</div>
-            </div>
-            <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #34d3a8">
-              <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">每季度第 30 天后</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">完整季报 — 11 节全套 + 财报</div>
-            </div>
-            <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #60c8ff">
-              <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">每半年</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">LP 视频会 — 张倩主讲 + 现场 Q&amp;A</div>
-            </div>
-            <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #a89dff">
-              <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">每年（每年第 1 季）</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">LPAC 现场会 — 香港 / 上海 / 新加坡轮值</div>
-            </div>
-            <div style="padding:14px;background:var(--bg3);border-radius:8px;border-left:3px solid #ffaa64">
-              <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">事件触发</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">关键人变动 / 重大风险 / 大额退出 — 24h 内通知</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p style="margin-top:24px;text-align:center;font-family:var(--sans);font-size:12px;color:var(--muted)">想看完整一份审计版样报？签 NDA 后由 IR 邮件发送 Fund VII 最近季报</p>
-    </div>
-
-    <!-- LP PORTAL · INVITE-CODE-GATED CONTENT -->
-    <div id="lp-portal-content" data-lp-only style="margin-bottom:56px;padding:40px;background:linear-gradient(135deg,var(--bg4),var(--bg3));border:1px solid rgba(255,107,43,.25);border-radius:20px;min-height:340px">
-      <div class="lp-lock-content">
-        <div class="sec-eyebrow" style="margin-bottom:8px">🔓 LP Portal · 邀请码解锁后可见</div>
-        <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">受邀机构 LP 专属直链</h3>
-        <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:28px">以下入口仅对受邀机构开放。每条链接记录访问者邀请码以便我们追踪兴趣并准备针对性 IC 材料。</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-          <a href="mailto:lp@futurex.capital?subject=Fund VIII · Data Room Direct Access" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size:26px;margin-bottom:10px">🗂</div>
-            <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">Data Room 直链申请</div>
-            <div style="font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6">完整 Portfolio 明细 / 7 只基金 IRR-MOIC-DPI / Fund VIII Deck v2.6</div>
-          </a>
-          <a href="mailto:lp@futurex.capital?subject=Fund VIII · LP Reference Call Request" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size:26px;margin-bottom:10px">📞</div>
-            <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">LP Reference Call 申请</div>
-            <div style="font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6">和现任 Fund I-VII LP 1-on-1 通话 · IR 7 个工作日内安排</div>
-          </a>
-          <a href="mailto:lp@futurex.capital?subject=Fund VIII · Latest LP Letter (Q1 2026)" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size:26px;margin-bottom:10px">📨</div>
-            <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">Q1 2026 LP Letter（最新季报）</div>
-            <div style="font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6">Fund VII 最新季报样本 · 11 节完整 + 审计版财报</div>
-          </a>
-          <a href="https://calendly.com/cynthiazhang-futurex/30min" target="_blank" rel="noopener" style="padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size:26px;margin-bottom:10px">📅</div>
-            <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">直接约 Cynthia 面对面</div>
-            <div style="font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.6">优先排期 · 5 城办公室任意一处 · 中英可选</div>
-          </a>
-        </div>
-        <div style="margin-top:24px;padding:18px;background:var(--bg);border:1px dashed var(--border2);border-radius:10px;font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.7;text-align:center">
-          🆘 紧急 / 大额 ticket 需 24h 内对接 → 直接发邮件 <a href="mailto:cynthia@futurex.capital" style="color:var(--claw2);font-weight:700">cynthia@futurex.capital</a> · 张倩本人收件
-        </div>
-      </div>
-      <div class="lp-lock-overlay">
-        <div style="font-size:48px;margin-bottom:6px">🔒</div>
-        <div style="font-family:var(--sans);font-size:18px;font-weight:800;color:var(--text)">LP Portal · 邀请码解锁</div>
-        <div style="font-family:var(--sans);font-size:12px;color:var(--muted);max-width:380px;line-height:1.7">输入 6 位邀请码后可访问数据室直链、Reference Call 申请、最新 LP 季报、张倩本人优先排期</div>
-        <button onclick="openInviteModal()" style="margin-top:8px;padding:12px 28px;background:linear-gradient(135deg,var(--claw),var(--claw2));border:none;color:#fff;border-radius:24px;font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.04em">输入邀请码 →</button>
-        <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);margin-top:6px">没有？ → <a href="mailto:lp@futurex.capital?subject=Fund VIII · 邀请码申请" style="color:var(--claw2)">lp@futurex.capital</a> 申请</div>
-      </div>
-    </div>
-
-    <!-- TIERED LP CTA · 按 ticket 大小给不同入口 -->
-    <div style="margin-bottom:56px;padding:40px;background:linear-gradient(135deg,rgba(255,107,43,.08),rgba(245,200,66,.04));border:1px solid rgba(255,107,43,.25);border-radius:20px">
-      <div class="sec-eyebrow" style="margin-bottom:8px">入场通道 · 按机构类型分级</div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em">挑一条最像你的路径</h3>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--muted);margin-bottom:28px">不同体量的 LP 关注的尽调维度不一样。我们准备了三条不同节奏的入场通道。</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
-        <a href="mailto:lp@futurex.capital?subject=Fund VIII · Family Office (~$1–10M)&body=您好张倩团队，%0A%0A我代表 [Family Office 名]，资金属性为 [家族财富 / UHNW]，关注 Fund VIII。%0A%0A意向 ticket 区间：USD ___M%0A关注的核心问题：%0A1. ___%0A2. ___%0A%0A期待 30 分钟视频会。%0A" style="padding:24px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Tier I · 家办 / UHNW</div>
-          <div style="font-family:var(--sans);font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">$1–10M ticket</div>
-          <div style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:16px">14 天内完成首次电话 → DDQ 答复 → Term Sheet。流程精简，决策方为家族成员或单一 IC。</div>
-          <div style="font-family:var(--sans);font-size:13px;color:var(--claw2);font-weight:700">→ 申请数据室访问</div>
-        </a>
-        <a href="mailto:lp@futurex.capital?subject=Fund VIII · FoF/CVC (~$10–25M)&body=您好张倩团队，%0A%0A我代表 [FoF / CVC / 险资 / 政府引导基金]，关注 Fund VIII。%0A%0A意向 ticket 区间：USD ___M%0A决策时间表：___%0A关注的核心问题：%0A1. ___%0A2. ___%0A3. ___%0A%0A期待安排 IC pre-read 与 ODD 时间。" style="padding:24px;background:var(--bg3);border:1px solid var(--claw2);border-radius:14px;display:block;transition:all .2s;position:relative" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-          <div style="position:absolute;top:-12px;left:24px;background:linear-gradient(135deg,var(--claw),var(--claw2));color:#fff;padding:3px 10px;border-radius:12px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.06em">最常见</div>
-          <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Tier II · FoF / CVC / 险资</div>
-          <div style="font-family:var(--sans);font-size:22px;font-weight:800;color:var(--claw2);margin-bottom:6px">$10–25M ticket</div>
-          <div style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:16px">含完整 DDQ + ODD 现场尽调 + Co-invest pro-rata 自动权。预计 6–10 周走完 IC。</div>
-          <div style="font-family:var(--sans);font-size:13px;color:var(--claw2);font-weight:700">→ 申请 DDQ + IC pre-read</div>
-        </a>
-        <a href="mailto:lp@futurex.capital?subject=Fund VIII · Sovereign/Anchor LP ($25M+)&body=您好张倩团队，%0A%0A我代表 [主权 / 大型养老金 / 大型 FoF]，关注作为 Fund VIII 锚定 LP。%0A%0A意向 ticket 区间：USD ___M%0A关注的特殊条款：MFN / Side Letter / 报告定制 / 个性化%0A决策时间表：___%0A%0A请安排与张倩本人的 1-on-1 现场或视频会。" style="padding:24px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Tier III · 主权 / 锚定 LP</div>
-          <div style="font-family:var(--sans);font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">$25M+ ticket</div>
-          <div style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:16px">支持 MFN 条款、定制 Side Letter、独立报告。张倩本人主导，含 5 城办公室任意一处现场尽调。</div>
-          <div style="font-family:var(--sans);font-size:13px;color:var(--claw2);font-weight:700">→ 与张倩 1-on-1 直接对话</div>
-        </a>
-      </div>
-      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
-        <a href="https://calendly.com/cynthiazhang-futurex/30min" target="_blank" rel="noopener" style="padding:18px 24px;background:var(--bg);border:1px solid var(--border2);border-radius:12px;display:flex;align-items:center;gap:14px;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border2)'">
-          <span style="font-size:24px">📞</span>
-          <div>
-            <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">还在评估？预约 30 分钟介绍会</div>
-            <div style="font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:3px">和张倩 1-on-1 · 中英可选 · 不签 NDA 也能聊高 level</div>
-          </div>
-        </a>
-        <a href="press.html" style="padding:18px 24px;background:var(--bg);border:1px solid var(--border2);border-radius:12px;display:flex;align-items:center;gap:14px;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border2)'">
-          <span style="font-size:24px">📰</span>
-          <div>
-            <div style="font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text)">媒体 / 行业研究员</div>
-            <div style="font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:3px">独立 Press Kit · Bio / Fact Sheet / 引用素材</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Investment Process -->
-    <div style="margin-bottom:56px">
-      <div class="sec-eyebrow" style="margin-bottom:24px">投资流程 · Source → Decide → Execute → Monitor</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-        <div style="padding:28px 24px;background:var(--bg3);border:1px solid var(--border);border-radius:16px;position:relative">
-          <div style="position:absolute;top:-12px;left:24px;background:var(--bg);padding:0 10px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--claw2)">01 SOURCE</div>
-          <div style="font-size:32px;margin-bottom:14px">🔍</div>
-          <h4 style="font-size:16px;font-weight:700;margin-bottom:10px">智能赛道扫描</h4>
-          <p style="font-size:12px;color:var(--muted);line-height:1.7">AI Research Lab 每日扫描全球 AI 项目，结合 60+ 产业 LP 网络做交叉验证。<strong style="color:var(--claw2)">2 小时锁定一线创始人。</strong></p>
-        </div>
-        <div style="padding:28px 24px;background:var(--bg3);border:1px solid var(--border);border-radius:16px;position:relative">
-          <div style="position:absolute;top:-12px;left:24px;background:var(--bg);padding:0 10px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--claw2)">02 DECIDE</div>
-          <div style="font-size:32px;margin-bottom:14px">🦞</div>
-          <h4 style="font-size:16px;font-weight:700;margin-bottom:10px">Agent 尽调</h4>
-          <p style="font-size:12px;color:var(--muted);line-height:1.7">龙虾完成自动财务建模、技术拆解、估值对标、风险地图。GP 用 5 小时做完传统团队 5 天的尽调。</p>
-        </div>
-        <div style="padding:28px 24px;background:var(--bg3);border:1px solid var(--border);border-radius:16px;position:relative">
-          <div style="position:absolute;top:-12px;left:24px;background:var(--bg);padding:0 10px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--claw2)">03 EXECUTE</div>
-          <div style="font-size:32px;margin-bottom:14px">⚡</div>
-          <h4 style="font-size:16px;font-weight:700;margin-bottom:10px">铁三角决策</h4>
-          <p style="font-size:12px;color:var(--muted);line-height:1.7">"刚需 + 技术本质 + 认人"——20 年验证过的决策框架。<strong style="color:var(--claw2)">单笔决策周期 14 天。</strong></p>
-        </div>
-        <div style="padding:28px 24px;background:var(--bg3);border:1px solid var(--border);border-radius:16px;position:relative">
-          <div style="position:absolute;top:-12px;left:24px;background:var(--bg);padding:0 10px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--claw2)">04 MONITOR</div>
-          <div style="font-size:32px;margin-bottom:14px">📊</div>
-          <h4 style="font-size:16px;font-weight:700;margin-bottom:10px">智能投后监控</h4>
-          <p style="font-size:12px;color:var(--muted);line-height:1.7">Agent 每日抓取被投公司公开信号、同行动态、产品迭代，异常即 alert GP。<strong>不再依赖季度问卷。</strong></p>
-        </div>
-      </div>
+    
     </div>
 
     <!-- LP Testimonial -->
@@ -3420,20 +2905,21 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
       </div>
     </div>
 
-    <!-- Final CTA · Two paths -->
-    <div class="lp-cta-block">
-      <div style="font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:16px;position:relative;z-index:1">新一期基金 · 正在面向合适的 LP 开放</div>
-      <h3 style="font-size:36px;font-weight:800;line-height:1.15;margin-bottom:16px;position:relative;z-index:1">这个窗口<br>不会开很长时间</h3>
-      <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:560px;margin:0 auto 36px;position:relative;z-index:1">
-        AI Agent 应用层的红利，天际比市场提前两年布局。<br>
-        如果你是机构 LP——下面两条路径，选适合你的那条。
+    <!-- Final note · 公司一般介绍出口（无招揽） -->
+    <div class="lp-cta-block" style="text-align:center">
+      <div style="font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:16px;position:relative;z-index:1">了解天际资本</div>
+      <h3 style="font-size:32px;font-weight:800;line-height:1.2;margin-bottom:16px;position:relative;z-index:1">想进一步了解我们机构？</h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:560px;margin:0 auto 32px;position:relative;z-index:1;font-family:var(--sans)">
+        本页面所列均为天际资本作为投资机构的<strong style="color:var(--text)">历史业绩与公开事实</strong>，不构成对任何基金产品的推介或募集要约。<br>
+        如希望了解更多机构信息，请通过以下渠道。
       </p>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:880px;margin:0 auto 24px;position:relative;z-index:1">
-        <a href="mailto:lp@futurex.capital?subject=机构 LP 数据室访问申请&body=您好张倩团队，%0A%0A我（机构名 / 角色 / 资金属性）希望申请天际新一期基金的数据室访问权限。%0A%0A以下是我的简介与意向资金量级：%0A...%0A%0A期待联系。" class="lp-cta-btn" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">机构 LP · 直通</span><span style="font-size:16px;font-weight:800">申请数据室 NDA →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">完整 Portfolio + 业绩 + Fund Deck</span></a>
-        <a href="https://calendly.com/cynthiazhang-futurex/30min" target="_blank" rel="noopener" class="lp-cta-btn" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center;background:linear-gradient(135deg,var(--claw2),var(--gold))"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:6px">直接约见</span><span style="font-size:16px;font-weight:800">预约 30 分钟通话 📞</span><span style="font-size:11px;font-family:var(--sans);opacity:.75;margin-top:6px">和张倩 1-on-1 · 中英可选</span></a>
-        <a href="https://futurex.capital" target="_blank" class="lp-cta-btn-ghost" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">先了解再决定</span><span style="font-size:16px;font-weight:800">访问机构官网 →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">团队 / 案例 / 媒体</span></a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:680px;margin:0 auto 16px;position:relative;z-index:1">
+        <a href="https://futurex.capital" target="_blank" rel="noopener" class="lp-cta-btn-ghost" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">天际资本机构官网</span><span style="font-size:16px;font-weight:800">futurex.capital →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">团队 / 案例 / 媒体报道</span></a>
+        <a href="press.html" class="lp-cta-btn-ghost" style="display:flex;flex-direction:column;align-items:center;padding:22px 16px;text-align:center"><span style="font-size:11px;font-family:var(--sans);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:6px">媒体 / 行业研究</span><span style="font-size:16px;font-weight:800">Press Kit →</span><span style="font-size:11px;font-family:var(--sans);opacity:.7;margin-top:6px">Bio · Fact Sheet · 引用素材</span></a>
       </div>
-      <p style="font-size:12px;color:var(--muted2);position:relative;z-index:1">企业邮箱直通：<a href="mailto:lp@futurex.capital" style="color:var(--claw2)">lp@futurex.capital</a> · 24 小时内由张倩本人或核心 IR 团队回复 · 媒体询问请用 <a href="press.html" style="color:var(--claw2)">Press Kit</a></p>
+      <p style="font-size:11px;color:var(--muted2);position:relative;z-index:1;font-family:var(--sans);max-width:620px;margin:18px auto 0;line-height:1.7">
+        ⚖️ <strong>合规声明</strong>：天际资本为持牌投资机构。基金产品仅向符合资质的合格投资者通过私下渠道提供，本网站不进行任何形式的公开募集或宣传。投资有风险，过往业绩不代表未来表现。
+      </p>
     </div>
 
   </div>
@@ -3493,18 +2979,13 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
       <a href="https://futurex.capital" target="_blank" rel="noopener" style="padding:20px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">FutureX Capital · 主站 🏛️</div>
-        <div style="font-family:var(--sans);font-size:11px;color:var(--muted)">机构主页 · 投资组合 · Fund VIII · 团队</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--muted)">机构主页 · 投资组合 · 团队 · 媒体报道</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);margin-top:8px">futurex.capital →</div>
       </a>
       <a href="https://futurex.capital/ai-lab" target="_blank" rel="noopener" style="padding:20px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">AI Research Lab 🔬</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--muted)">四合一研究系统 · AI 项目智能扫描</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);margin-top:8px">futurex.capital/ai-lab →</div>
-      </a>
-      <a href="https://futurex.capital/fund-viii" target="_blank" rel="noopener" style="padding:20px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--claw2);margin-bottom:4px">Fund VIII 募资中 💼</div>
-        <div style="font-family:var(--sans);font-size:11px;color:var(--muted)">$200–300M target · LP 申请通道</div>
-        <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);margin-top:8px">futurex.capital/fund-viii →</div>
       </a>
       <a href="https://futurex.capital/portfolio" target="_blank" rel="noopener" style="padding:20px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;display:block;transition:all .2s" onmouseover="this.style.borderColor='var(--claw2)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--text);margin-bottom:4px">完整 Portfolio 📊</div>
@@ -3582,120 +3063,6 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     document.body.appendChild(toast);
     setTimeout(()=>toast.remove(), 4500);
   }
-
-  // ═══════════════════════════════════════════════════════════════
-  // INVITE CODE SYSTEM · LP Portal Access
-  // ═══════════════════════════════════════════════════════════════
-  // Master code 888888 + per-institution codes (extensible).
-  // Each code can carry a label so we know which institution accessed.
-  // Stored client-side in localStorage. NOT a security boundary —
-  // real data room access still goes through NDA + IR. This is a
-  // soft gate to (1) qualify visitors, (2) track interest by code,
-  // (3) reveal LP-only direct links.
-  const INVITE_CODES = {
-    '888888':       { tier: 'master',     label: '通用邀请码（master）',           expires: null },
-    'FUTUREX-LP':   { tier: 'master',     label: 'FutureX 内部团队',              expires: null },
-    // Per-institution codes — add new ones below as you invite each LP:
-    // 'CICC-2026':    { tier: 'tier-ii',    label: 'CICC Capital',               expires: '2026-12-31' },
-    // 'TEMASEK-VIII': { tier: 'tier-iii',   label: 'Temasek Holdings',           expires: '2026-09-30' },
-    // 'KIA-AI-26':    { tier: 'tier-iii',   label: 'Kuwait Investment Authority',expires: '2026-09-30' },
-  };
-
-  function openInviteModal() {
-    document.getElementById('invite-modal').style.display = 'flex';
-    setTimeout(() => document.getElementById('invite-code').focus(), 100);
-  }
-  function closeInviteModal() {
-    document.getElementById('invite-modal').style.display = 'none';
-    document.getElementById('invite-error').style.display = 'none';
-  }
-  function showInviteError(msg) {
-    const err = document.getElementById('invite-error');
-    err.textContent = '⚠ ' + msg;
-    err.style.display = 'block';
-  }
-  function validateInviteCode() {
-    const code = (document.getElementById('invite-code').value || '').trim().toUpperCase();
-    const institution = (document.getElementById('invite-institution').value || '').trim();
-    if (!code) { showInviteError('请输入邀请码'); return; }
-    const entry = INVITE_CODES[code] || INVITE_CODES[code.replace(/[-\s]/g, '')];
-    if (!entry) { showInviteError('邀请码无效。如需申请，请联系 lp@futurex.capital'); return; }
-    if (entry.expires) {
-      const exp = new Date(entry.expires);
-      if (Date.now() > exp.getTime()) { showInviteError('该邀请码已过期（' + entry.expires + '）'); return; }
-    }
-    // Persist
-    const session = {
-      code: code,
-      tier: entry.tier,
-      codeLabel: entry.label,
-      institution: institution || entry.label,
-      grantedAt: new Date().toISOString()
-    };
-    try { localStorage.setItem('clawq_lp_invite', JSON.stringify(session)); } catch (e) {}
-    closeInviteModal();
-    applyLPUnlocked(session);
-    // Plausible custom event (if available)
-    try { if (window.plausible) plausible('lp_portal_unlock', { props: { tier: entry.tier, code: code } }); } catch(e){}
-    // Toast
-    const toast = document.createElement('div');
-    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#34d3a8,#60c8ff);color:#0c0905;padding:14px 28px;border-radius:30px;font-weight:700;font-family:Inter,system-ui,sans-serif;z-index:9999;box-shadow:0 12px 40px rgba(52,211,168,.4);font-size:14px';
-    toast.textContent = '✓ LP Portal 已解锁 · 欢迎 ' + (institution || entry.label);
-    document.body.appendChild(toast);
-    setTimeout(()=>toast.remove(), 3500);
-  }
-  function applyLPUnlocked(session) {
-    // Banner
-    const banner = document.getElementById('lp-unlocked-banner');
-    if (banner) {
-      document.getElementById('lp-unlocked-info').textContent = session.institution + (session.tier !== 'master' ? ' · Tier: ' + session.tier : '');
-      banner.style.display = 'block';
-    }
-    // Nav button
-    const btn = document.getElementById('lp-portal-btn');
-    if (btn) {
-      btn.dataset.unlocked = '1';
-      btn.innerHTML = '✓ LP Portal';
-      btn.style.borderColor = '#34d3a8';
-      btn.style.color = '#34d3a8';
-      btn.title = '已通过 ' + session.institution + ' 通道';
-    }
-    // Reveal locked LP-only blocks
-    document.querySelectorAll('[data-lp-only]').forEach(el => {
-      el.classList.add('lp-unlocked');
-      const overlay = el.querySelector('.lp-lock-overlay');
-      if (overlay) overlay.style.display = 'none';
-    });
-  }
-  function logoutLPPortal() {
-    try { localStorage.removeItem('clawq_lp_invite'); } catch(e){}
-    const banner = document.getElementById('lp-unlocked-banner');
-    if (banner) banner.style.display = 'none';
-    const btn = document.getElementById('lp-portal-btn');
-    if (btn) {
-      btn.dataset.unlocked = '';
-      btn.innerHTML = '🔒 LP Portal';
-      btn.style.borderColor = 'var(--border2)';
-      btn.style.color = 'var(--muted)';
-    }
-    document.querySelectorAll('[data-lp-only]').forEach(el => {
-      el.classList.remove('lp-unlocked');
-      const overlay = el.querySelector('.lp-lock-overlay');
-      if (overlay) overlay.style.display = 'flex';
-    });
-  }
-  // On page load: restore session if exists
-  (function restoreLPSession() {
-    try {
-      const raw = localStorage.getItem('clawq_lp_invite');
-      if (raw) {
-        const session = JSON.parse(raw);
-        if (session && session.code && INVITE_CODES[session.code]) {
-          applyLPUnlocked(session);
-        }
-      }
-    } catch (e) {}
-  })();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

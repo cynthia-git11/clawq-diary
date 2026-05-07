@@ -4,6 +4,54 @@
 
 ---
 
+## 🏷️ v2.0-compliance-clean
+
+**日期**：2026-05-07
+**目标**：根据合规要求（VC 基金不能公开推广），把网站从"机构 LP DD 附件"重构为**纯思考性公开日记 + 历史业绩信息陈述**。
+
+**关键合规变更**：
+
+❌ **下线（全部移除）**：
+- "Fund VIII 募资中 / Raising"、"$200–300M target"、"First Close Q3 2026"
+- 所有 LP 决策块：Investment Thesis · Top 10 LP Q&A · GP Alignment · Risk Factors · Key Person · LP Voices · Quarterly Sample · Why FutureX vs Alternatives
+- 三级 LP CTA（$1-10M / $10-25M / $25M+）
+- LP Portal 邀请码门户（master 888888 + 机构码）—— 整套登录、模态、JS 全部删
+- "申请数据室 NDA"、"Apply for Data Room" CTAs
+- "签 NDA 后开放" 类暗示性条款
+- Family of Sites 中的 "Fund VIII 募资中" 卡片
+- ENTRY 28 的 "天际新一期基金正在面向合适的 LP 开放" 段落
+- ENTRY 40 的 "把日记 Launch 给机构 LP 看" 框架
+- atom.xml ENTRY 40 summary 中的 "募资载体" 描述
+- LAUNCH-CHECKLIST.md 中的 "数据室申请数 / NDA 数 / LP 投资意向" KPI
+
+✅ **保留（合规历史事实）**：
+- 14 家 IPO 退出明细（已退出企业的公开事实）
+- $1B+ AUM、$550M+ 现金回报（截至当前的历史业绩）
+- 字节跳动 5 轮连续投资（2017–）
+- 141 家累计被投、60+ AI Native（公开数字）
+- 5 城办公分布
+- 张倩 bio + 学历 + 履历
+- 媒体采访引用 + Press Strip
+- 全部日记内容（思考性，非募资材料）
+
+➕ **新增**：
+- LP 区改名为"firm"（id="firm"）
+- 顶部 H1 改为"20 年投资人，每一天的判断，都写给自己看"
+- Hero 副文：明确"这本日记不是产品、不是路演材料、不是基金推介"
+- 底部"了解天际资本"区域加 ⚖️ 合规声明：
+  > 天际资本为持牌投资机构。基金产品仅向符合资质的合格投资者通过私下渠道提供，本网站不进行任何形式的公开募集或宣传。投资有风险，过往业绩不代表未来表现。
+- press.html 和 press-en.html 同样加合规声明
+- atom.xml 摘要也加"本日记不构成对任何基金产品的推介或募集要约"
+
+**回滚**：
+```bash
+git checkout v2.0-compliance-clean
+```
+
+注意：这是一次"减法"版本——把 v1.0 / v1.1 里所有 LP 募资材料移除。如果合规框架未来允许部分内容回归（例如某地区允许的合格投资者私募宣传），可以从 v1.1 取出局部内容。
+
+---
+
 ## 🏷️ v1.1-lp-decision-portal
 
 **日期**：2026-05-07
