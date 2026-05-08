@@ -1,7 +1,10 @@
 # 🚀 ClawQ Chronicles · Launch Checklist
 
 **Date drafted:** 2026-05-04 (Day 58)
-**Status:** Site is LIVE at https://cynthia-git11.github.io/clawq-diary/ · 中英双语 · LP 区机构级 · 自动推广基建 v1 已上线
+**Last revised:** 2026-05-07（v2.0 合规清理后同步）
+**Status:** Site is LIVE at https://cynthia-git11.github.io/clawq-diary/ · 中英双语 · 公开思考日记 · v2.0 合规版
+
+> ⚖️ **本文件已同步 v2.0 合规调整**：网站定位为"公开投资思考日记 + 历史业绩信息陈述"，**不再包含任何 VC 基金产品的推介或招揽内容**。下面所有任务都围绕"内容站 / 思考公开"展开，**不涉及募资 / LP 招揽**。
 
 This file lists the **manual steps you (Cynthia) need to complete** outside this codebase. AI 自动化无法替你执行的事项都在这里。
 
@@ -10,7 +13,9 @@ This file lists the **manual steps you (Cynthia) need to complete** outside this
 ## ✅ 已完成（在网站上）
 
 - [x] 中文版 + 英文版双语网站
-- [x] 机构级 LP 区（媒体认证条 / 8 项核心指标 / 12 张被投 LOGO / GP 双卡 / Fund Structure 8 维 / 4 步投资流程 / LP 引用 / NDA-gated CTA）
+- [x] 机构介绍区（公开历史业绩 + 14 IPO 退出明细 + 12 家代表被投 + 媒体报道引用）
+- [x] **v2.0 合规清理**：移除 Fund VIII 募资材料 / LP DD 块 / Tiered LP CTA / LP Portal 邀请码系统
+- [x] **合规声明**：每个公开页面（中英 + Press Kit + RSS）均带"不构成对任何基金产品的推介或募集要约"声明
 - [x] sitemap.xml · robots.txt · atom.xml RSS feed
 - [x] Schema.org JSON-LD（Person + Blog + Organization）
 - [x] Open Graph + Twitter Card 全套
@@ -22,24 +27,49 @@ This file lists the **manual steps you (Cynthia) need to complete** outside this
 
 ---
 
+## ⚖️ 合规红线（不能跨过的事）
+
+**任何后续的网站更新都必须遵守以下约束。** 如果某个新功能想跨过红线，请先和合规顾问确认。
+
+| ❌ 不可在网站做 | ✅ 可在网站做 |
+|---|---|
+| 提及任何具体在募基金（"Fund VIII / 新一期 / 募资中"） | 历史业绩陈述（"Fund I-VII 已退出 14 家 IPO"） |
+| 写"目标规模 / Target size / First Close" | 提及历史 AUM、累计回报等公开数字 |
+| Tiered LP CTA（按 ticket 大小邀请） | 一般机构介绍 + 媒体联系方式 |
+| "申请数据室 / Apply for Data Room"按钮 | "了解机构请访问 futurex.capital" 一般链接 |
+| LP DD 材料（GP commit / hurdle / claw-back / IRR 拆分） | 投资观点 / 行业判断 / 公开思考 |
+| 邀请码 LP Portal · 解锁后看到的 LP-only 直链 | 普通邮件订阅（公开新条目推送） |
+| 现存 LP 推荐语 / Reference 引用 | 媒体公开报道引用 |
+| Quarterly LP Report 样本 | 公开博客 / RSS 摘要 |
+
+每个公开页面必须保留"⚖️ 合规声明"区块。如果你或团队成员要新增内容，先看一眼这两栏。
+
+---
+
 ## 🔴 高优先级 · 你这周需要做
 
-### 1. 配置邮箱 `lp@futurex.capital`（30 分钟）
+### 1. 配置邮箱 `hello@futurex.capital` 或 `diary@futurex.capital`（30 分钟）
 
-**为什么重要**：网站上所有 LP CTA 都指向这个邮箱，目前可能还没有设置。
+**为什么**：网站邮件订阅表单和读者来信都需要一个收件邮箱。**用一般用途的邮箱**（不要用 lp@ —— 那是私下募资渠道才用的，不应出现在公开网站）。
+
+**建议邮箱别名**：
+- `hello@futurex.capital` （读者询问 / 一般咨询）
+- `diary@futurex.capital` （订阅与内容互动）
+- `press@futurex.capital` （媒体询问，已在 Press Kit 中使用）
 
 **步骤**：
-1. 登录 futurex.capital 域名的邮箱管理后台（多半是阿里云邮箱 / 腾讯企业邮）
-2. 创建别名 `lp@futurex.capital`，转发到你和核心 IR 同事的邮箱
+1. 登录 futurex.capital 域名的邮箱管理后台
+2. 创建以上别名，转发到你和核心团队的邮箱
 3. 测试一封邮件能正常收到 + 能正常回信
+4. 把网站里 mailto 链接更新为新邮箱（我可以批量替换）
 
 ### 2. 激活邮件订阅（FormSubmit）（10 分钟）
 
-**为什么**：第一个订阅者发表单后，FormSubmit 会向 `lp@futurex.capital` 发送一封确认邮件，**点击确认链接**才会激活，否则后续订阅都不会到达。
+**为什么**：第一个订阅者发表单后，FormSubmit 会向 `hello@futurex.capital` 发送一封确认邮件，**点击确认链接**才会激活，否则后续订阅都不会到达。
 
 **步骤**：
 1. 用任意邮箱测试订阅一次（在 https://cynthia-git11.github.io/clawq-diary/ 拉到底部，输入邮箱）
-2. 检查 lp@futurex.capital 收件箱，找到 FormSubmit 的确认邮件
+2. 检查收件箱，找到 FormSubmit 的确认邮件
 3. 点击 "Confirm" 激活
 4. 完成后所有订阅都会自动落到这个邮箱
 
@@ -93,34 +123,38 @@ This file lists the **manual steps you (Cynthia) need to complete** outside this
 
 ## 🟡 中优先级 · 这两周做完
 
-### 7. 创建 LP 数据室（Notion/腾讯文档/Google Drive）
+### 7. 私下渠道材料库（Notion/腾讯文档/Google Drive）· 仅供合规私下沟通
 
-**目的**：当合格投资者通过私下渠道询问后，你需要一个内部材料库可以准备资料。
+**⚠️ 与本公开网站隔离**：此材料库**不公开访问、不在网站上提供链接**，仅在合格投资者通过线下私下渠道询问后由 IR 团队按合规流程提供。**这些材料绝不应出现在 cynthia-git11.github.io/clawq-diary 任一页面上。**
+
+**目的**：合格投资者通过私下渠道（线下会议、推荐人介绍）询问后，你需要一个权限隔离的内部材料库可以准备资料。
 
 **建议结构**：
 ```
-LP Data Room/
-├── 1. Fund Deck (PDF)
-├── 2. Track Record/
+Private Investor Information Room/  (offline / NDA-only)
+├── 1. Firm Deck (PDF)
+├── 2. Historical Track Record/
 │   ├── Realized Returns Detail.xlsx
 │   ├── Bytedance 5 Rounds Case.pdf
-│   └── Portfolio Performance Q1 2026.pdf
-├── 3. Current Portfolio/
-│   ├── Full 40+ Companies List.xlsx
-│   ├── LinkCrux AI Memo (latest).pdf
-│   └── ...
+│   └── Quarterly Portfolio Performance.pdf
+├── 3. Current Holdings/
 ├── 4. Team & Org/
 │   └── Cynthia Bio + Team Bios.pdf
 ├── 5. Legal/
 │   ├── NDA Template.pdf
 │   └── LPA Draft.pdf
-└── 6. Diary Archive (PDF export, monthly)
+└── 6. Diary Archive (monthly PDF export)
 ```
 
 **工具推荐**：
 - **Notion** (中英文都好用，权限分级)
-- **DocSend** (海外 LP 标配，能追踪谁看了哪一页)
+- **DocSend** (能追踪谁看了哪一页)
 - **Carta Investor Portal** (如果用 Carta 管基金)
+
+**操作约束**：
+- 该材料库的链接 **绝不** 放在公开网站、公众号文章、社交分享内容
+- 仅通过私下邮件 / 一对一会议 / 推荐人介绍后定向发送
+- 访问需先签 NDA，材料库本身设置访问令牌或 IP 白名单
 
 ### 8. 注册自定义域名（可选，但显著提升机构级专业感）
 
@@ -160,9 +194,9 @@ LP Data Room/
 - **TechCrunch Asia / KrAsia**（之前 36氪有合作，可以延续）
 - **Substack 推荐网络**（找 LP 视角的 newsletter 互推）
 
-### 12. 季度 LP 简报 PDF 自动生成
+### 12. 季度日记合集 PDF 自动生成
 
-把每季度的所有 entry 自动 PDF 化，发给已经签了 NDA 的 LP。这就是从"日记"升级成"季度财报"的路径。
+把每季度的所有 entry 自动 PDF 化，作为公开内容的归档版本——任何读者都可以下载阅读。**注意**：这是公开内容归档，不要把它和"私下投资人材料"混淆。
 
 ---
 
@@ -185,7 +219,7 @@ LP Data Room/
 
 - [ ] 每周一早上 8:30 看 Plausible 数据（10 分钟）
 - [ ] 每周三复盘"错过清单"并写进当周日记（参考 ENTRY 38 制度）
-- [ ] 每周五检查 lp@futurex.capital 邮箱，回复读者来信和媒体询问
+- [ ] 每周五检查 hello@futurex.capital / press@futurex.capital 邮箱，回复读者来信和媒体询问
 - [ ] 每周日检查 sitemap 是否被 Google 重新爬取（在 Search Console 看）
 
 ---
@@ -198,5 +232,5 @@ LP Data Room/
 
 ---
 
-**Last updated by:** Day 58 自动化系统 + 张倩
-**Next review:** Day 88（一个月后）
+**Last updated by:** v2.0 合规清理 · 2026-05-07
+**Next review:** Day 88（v2.0 后一个月）— 重点确认是否仍 0 募资 ref + 8 处合规声明
