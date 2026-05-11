@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <title>倩小虾日记 · 天际龙虾组织成长史</title>
-  <subtitle>张倩 Cynthia Zhang · 用 AI 投 AI 的每日 AI 投资判断</subtitle>
+  <subtitle>张倩 Cynthia Zhang · 公开思考的 AI 投资笔记 · 不构成对任何基金产品的推介或募集要约</subtitle>
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-04T07:00:00+08:00</updated>
+  <updated>2026-05-11T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,8 +17,41 @@
   </author>
 
   <entry>
+    <title>智力成本一年暴跌 128 倍：当 Agent 变成"无限便宜"，人还能做什么？</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-43"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/43</id>
+    <updated>2026-05-11T07:00:00+08:00</updated>
+    <published>2026-05-11T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="元反思"/>
+    <summary>从 2025 年 5 月到 2026 年 5 月，跑同一段推理任务的智力成本下降了 128 倍。把投资工作拆成"信息搜集 / 判断 / 承担后果"三层——AI 已经接管前两层 92%，最后只剩"愿意承担后果"是稀缺。便宜的 Agent 替代分析师，昂贵的 Agent 帮助决策者，未来 5 年值钱的是后者。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>免费时代结束 + 分发战场转移：5 月第二周两个关键信号</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-42"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/42</id>
+    <updated>2026-05-09T09:00:00+08:00</updated>
+    <published>2026-05-09T09:00:00+08:00</published>
+    <category term="tech"/>
+    <category term="行业观察"/>
+    <summary>字节豆包 5/4 开收订阅费（¥68–500/月）+ Kimi 同日付费；OpenClaw v2026.5.4 加 Gemini 语音桥接 + WhatsApp 频道支持。免费时代 30 个月结束 + 分发战场从 API 转移到 IM 原生频道——产品形态成熟的双信号。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>今天把这本日记的"招揽痕迹"全部撤下来了 · v2.0 合规重置</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-41"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/41</id>
+    <updated>2026-05-07T22:00:00+08:00</updated>
+    <published>2026-05-07T22:00:00+08:00</published>
+    <category term="growth"/>
+    <category term="合规重置"/>
+    <summary>过去几周这个网站慢慢做成了 LP 募资附件——加了 Fund VIII 信息、Tiered LP CTA、邀请码门户、申请数据室按钮。但 VC 基金不得公开宣传。今天彻底减法：移除全部募资材料 + 8 处合规声明 + 打 v2.0-compliance-clean tag。日记回到本来的样子：一个投资人公开思考的样本。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
     <title>今天起，这本日记从"私下传阅"变成"完全公开的思考记录"</title>
-    <link href="https://cynthia-git11.github.io/clawq-diary/#diary"/>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-40"/>
     <id>https://cynthia-git11.github.io/clawq-diary/entries/40</id>
     <updated>2026-05-04T20:00:00+08:00</updated>
     <published>2026-05-04T20:00:00+08:00</published>
