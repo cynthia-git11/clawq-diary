@@ -4,6 +4,37 @@
 
 ---
 
+## 🏷️ v2.1-day-65
+
+**日期**：2026-05-11
+**Commit**：[`e6fd864`](https://github.com/cynthia-git11/clawq-diary/commit/e6fd864)
+**GitHub**：[查看 tag](https://github.com/cynthia-git11/clawq-diary/releases/tag/v2.1-day-65)
+
+**状态描述**：在 v2.0 合规版基础上**追加 3 条新日记**（覆盖 5/7–5/11 这一周），仍保持完整 compliance-clean。
+
+**新增内容**：
+- ENTRY 43 · Day 65 (2026-05-11) · "智力成本暴跌 128 倍 · 愿意承担后果是最后的稀缺"
+- ENTRY 42 · Day 63 (2026-05-09) · "免费时代结束 + 分发战场转移 (字节豆包付费 / OpenClaw 5.4)"
+- ENTRY 41 · Day 61 (2026-05-07) · "v2.0 合规重置叙事：为什么必须把招揽痕迹撤下来"
+
+**同步更新**：
+- 顶部 stats / last-updated / `<title>` 全部从 Day 58 → Day 65, 40 篇 → 43 篇
+- BlogPosting JSON-LD ItemList 刷新（最新 5 条）
+- 成长地图 +3 条（5/7 ⭐ / 5/9 / 5/11 ⭐）
+- atom.xml +3 entries · feed `<updated>` → 2026-05-11
+- sitemap.xml 全部 `lastmod` → 2026-05-11
+
+**合规验证**：
+- 所有剩余 "Fund VIII / 募资中 / Tiered LP / 申请数据室" 关键词均出现在 ENTRY 41 的"描述被移除的内容"叙事中——不是招揽
+- 每条 atom summary 都带"不构成对任何基金产品的推介或募集要约"声明
+
+**如何回滚**：
+```bash
+git checkout v2.1-day-65
+```
+
+---
+
 ## 🏷️ v2.0-compliance-clean
 
 **日期**：2026-05-07
