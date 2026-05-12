@@ -4,6 +4,28 @@
 
 ---
 
+## 🏷️ v2.2-day-66
+
+**日期**：2026-05-12
+**Commit**：[`5e64d65`](https://github.com/cynthia-git11/clawq-diary/commit/5e64d65)
+**GitHub**：[查看 tag](https://github.com/cynthia-git11/clawq-diary/releases/tag/v2.2-day-66)
+
+**状态描述**：v2.1 之后第 1 条日更，**ENTRY 44 · Day 66** —— 字节 2026 AI capex 拐点。
+
+**新增**：
+- ENTRY 44 · 2026-05-12 · **"字节 2026 年 AI capex 从 1600 亿上调到 2000 亿——这个 +25% 背后藏着三层信号"**
+  - 数据：¥2000B（+25%）/ 火山引擎 13% IDC AI cloud 份额 / 豆包 1.2 万亿日均 Token
+  - 三层判断：算力通胀 / Token 工厂 / 端到端 Agent 新路径
+  - 修正了 Day 65 "智力成本 128 倍跌" 的判断（用户层跌 ≠ 基建层跌）
+
+**同步**：stats Day 65→66 / 43→44 篇 / 网页 title + og + twitter / JSON-LD top-5 / 成长地图 +1 / atom.xml +1 + 5/12 / sitemap lastmod 5/12
+
+**合规验证**：剩余 Fund VIII / Tiered LP / 申请数据室 等关键词全部仍只在 ENTRY 41 合规重置叙事中——0 处新增募资语言。
+
+**回滚**：`git checkout v2.2-day-66`
+
+---
+
 ## 🏷️ v2.1-day-65
 
 **日期**：2026-05-11
