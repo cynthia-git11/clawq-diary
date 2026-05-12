@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-11T07:00:00+08:00</updated>
+  <updated>2026-05-12T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>字节 2026 年 AI capex 从 1600 亿上调到 2000 亿——这个 +25% 背后藏着三层信号</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-44"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/44</id>
+    <updated>2026-05-12T07:00:00+08:00</updated>
+    <published>2026-05-12T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="行业拐点"/>
+    <summary>字节 2026 AI 资本支出从 ¥1600 亿上修至 ¥2000 亿（+25%）；火山引擎 13% 中国 AI 云份额（IDC #2）；豆包日均 Token 1.2 万亿。三层信号：① 算力通胀加速；② 字节变成 Token 工厂，单点工具更难活；③ 但端到端 Agent 获得"不依赖单一美国大模型"的新路径。补充修正 Day 65 那条：智力成本在用户层跌、基建层涨——是巨头补贴战的两面。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>智力成本一年暴跌 128 倍：当 Agent 变成"无限便宜"，人还能做什么？</title>
