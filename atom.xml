@@ -39,6 +39,39 @@
   </entry>
 
   <entry>
+    <title>一周 4 个版本：把"发版速度"当成一个独立的投资信号</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-45"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/45</id>
+    <updated>2026-05-10T09:00:00+08:00</updated>
+    <published>2026-05-10T09:00:00+08:00</published>
+    <category term="tech"/>
+    <category term="行业观察"/>
+    <summary>OpenClaw 一周发了 v2026.5.4→5.5→5.6→5.7 四个稳定版。把"发版速度"单拎出来当指标看——它衡量开源项目的"代谢率"。但 v5.6 是来修 v5.5 的 bug 的，发太快会变成版本追版本。尽调新问题：最近 10 个版本里"加新功能 vs 修上版洞"的比例，健康值约 7:3。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>OpenClaw v2026.5.5 修了 6 个通讯渠道——Agent 价值从"能力"转向"可靠性"</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-46"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/46</id>
+    <updated>2026-05-08T09:00:00+08:00</updated>
+    <published>2026-05-08T09:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="投资视角"/>
+    <summary>v2026.5.5 一次修复飞书/LINE/Telegram/Discord/Slack/Matrix 六渠道，整条更新无新功能。2024 看 AI 应用看"能力天花板"，2026 看 Agent 要看"可靠性地板"。能力可演示，可靠性只能被长期使用证明。给 Agent 评估表加一栏"渠道可靠性"——自己连续跑两周记录失败率。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>第 60 天：我盯着这个网站看了一晚上，发现它已经不像一本日记了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-47"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/47</id>
+    <updated>2026-05-06T22:00:00+08:00</updated>
+    <published>2026-05-06T22:00:00+08:00</published>
+    <category term="growth"/>
+    <category term="自我审视"/>
+    <summary>第 60 天复盘。用陌生人视角翻了一遍网站，发现它被一点点改造成了募资材料——每个单独决定都"对"，合起来漂移到了谁都没想去的地方。渐进的错误最危险，因为永远不触发警报。决定第二天把日记退回本来的样子（即 Day 61 的合规重置）。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
     <title>免费时代结束 + 分发战场转移：5 月第二周两个关键信号</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-42"/>
     <id>https://cynthia-git11.github.io/clawq-diary/entries/42</id>
