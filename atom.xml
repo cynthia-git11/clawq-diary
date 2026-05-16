@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-12T07:00:00+08:00</updated>
+  <updated>2026-05-16T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,39 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>Anthropic 企业采用率首次超过 OpenAI——Agent 创业者该重读这张表了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-51"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/51</id>
+    <updated>2026-05-16T07:00:00+08:00</updated>
+    <published>2026-05-16T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="行业拐点"/>
+    <summary>Ramp 基于 5 万+ 家企业的样本：Anthropic 商业客户采用率 34.4%，首次超过 OpenAI 32.3%——GPT 时代以来企业侧第一次模型偏好实质翻转。给 Agent 创业者三条：① 押单一模型风险比想象大；② 企业选模型从"谁最聪明"转向"谁最让我放心"；③ 别追这个数字，把架构做成对模型份额波动免疫。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>OpenAI 和 Anthropic 同一天成立 PE 支持的"驻场工程师"公司——模型厂商正在下沉抢服务层</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-52"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/52</id>
+    <updated>2026-05-14T09:00:00+08:00</updated>
+    <published>2026-05-14T09:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="投资视角"/>
+    <summary>5/4 OpenAI 与 Anthropic 同日宣布联合顶级 PE 成立企业驻场工程师（FDE）合资公司——Anthropic 拉黑石/H&amp;F/高盛+红杉，OpenAI 拉 TPG/贝恩/软银等 19 家成立 DeployCo。模型厂商从"卖 API"往下游沉抢高毛利交付服务。对中间集成商是逆风——要么往上做产品壁垒，要么往下做模型厂商够不着的细分。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>Anthropic 9000 亿美元估值融资：万亿估值是边界信号，不是机会信号</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-53"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/53</id>
+    <updated>2026-05-13T09:00:00+08:00</updated>
+    <published>2026-05-13T09:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="元反思"/>
+    <summary>Anthropic 以 9000 亿美元估值募集 300 亿新资金，5 月底完成。比数字更值得想的问题：一家未盈利公司值近万亿，你在为什么付钱？答案是"会不会成为基础设施的事实标准"。对早期投资人的反向提醒：估值进入天文数字的地方就不再是早期猎场——早期投资人的活永远在还没被定价的角落。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>字节 2026 年 AI capex 从 1600 亿上调到 2000 亿——这个 +25% 背后藏着三层信号</title>
