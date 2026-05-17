@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 · 这只龙虾跑丢了 · 倩小虾日记</title>
   <meta name="description" content="404 — 你要找的这条日记可能被龙虾爪子夹到别的地方去了。" />
-  <link rel="icon" type="image/png" href="/clawq-diary/assets/clawq-square.jpg" />
+  <!-- 站点根路径自适应：github.io 在 /clawq-diary/，Cloudflare/自定义域名在 / -->
+  <script>document.write('<base href="' + (location.hostname.indexOf('github.io') > -1 ? '/clawq-diary/' : '/') + '">');</script>
+  <link rel="icon" type="image/png" href="assets/clawq-square.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -56,12 +58,12 @@
     <p>你要找的这条日记，可能被某只龙虾的爪子夹到 <strong>"未来的某一天"</strong> 去了——</p>
     <p>但这本日记每天 <strong>7AM</strong> 都在长出新的内容，所以它要么已经被写过、要么明天就会被写出来。</p>
     <div class="btns">
-      <a class="btn btn-primary" href="/clawq-diary/">回到主页 →</a>
-      <a class="btn btn-ghost" href="/clawq-diary/#diary">看最新日记</a>
-      <a class="btn btn-ghost" href="/clawq-diary/en.html">English</a>
+      <a class="btn btn-primary" href="./">回到主页 →</a>
+      <a class="btn btn-ghost" href="./#diary">看最新日记</a>
+      <a class="btn btn-ghost" href="en.html">English</a>
     </div>
     <div class="meta">
-      © 2026 <a href="/clawq-diary/">倩小虾日记</a> · 天际资本 FutureX Capital · 持续更新中 🦞
+      © 2026 <a href="./">倩小虾日记</a> · 天际资本 FutureX Capital · 持续更新中 🦞
     </div>
   </div>
   <script defer data-domain="cynthia-git11.github.io" src="https://plausible.io/js/script.js"></script>
