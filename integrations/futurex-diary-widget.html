@@ -1,0 +1,93 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+     FutureX 主站「AI 投资日记」嵌入组件  ·  v1
+     把这一整段（从 <div 到 </script>）粘贴到 futurex.capital 想显示日记的位置
+     —— 例如 /diary 页面，或首页的「最新洞察」板块。
+     粘贴后零维护：每天 7AM 日记自动更新，这里会自动跟着刷新。
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<div id="clawq-diary-feed" data-max="5"></div>
+
+<script>
+(function () {
+  // ─── 配置（只需要改这两行）───────────────────────────────────────
+  // 日记 RSS 源。日记迁到 Cloudflare / diary.futurex.capital 后，把这里换成新地址。
+  var FEED_URL = 'https://cynthia-git11.github.io/clawq-diary/atom.xml';
+  var SITE_URL = 'https://cynthia-git11.github.io/clawq-diary/';
+  // ─── 配置结束 ───────────────────────────────────────────────────
+
+  var box = document.getElementById('clawq-diary-feed');
+  if (!box) return;
+  var MAX = parseInt(box.getAttribute('data-max') || '5', 10);
+
+  // 注入一次性样式（命名空间 cqd- 前缀，不会和主站 CSS 冲突）
+  if (!document.getElementById('cqd-style')) {
+    var st = document.createElement('style');
+    st.id = 'cqd-style';
+    st.textContent =
+      '.cqd-wrap{--cqd-accent:#ff6b2b;--cqd-text:#1a1a1a;--cqd-muted:#6b6b6b;--cqd-line:#e8e8e8;font-family:-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;max-width:760px}' +
+      '.cqd-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}' +
+      '.cqd-title{font-size:20px;font-weight:800;color:var(--cqd-text);letter-spacing:-.01em}' +
+      '.cqd-title small{font-weight:500;color:var(--cqd-muted);font-size:12px;margin-left:8px}' +
+      '.cqd-all{font-size:13px;font-weight:700;color:var(--cqd-accent);text-decoration:none;white-space:nowrap}' +
+      '.cqd-item{display:block;padding:16px 0;border-top:1px solid var(--cqd-line);text-decoration:none;transition:opacity .15s}' +
+      '.cqd-item:hover{opacity:.62}' +
+      '.cqd-date{font-size:12px;color:var(--cqd-muted);font-weight:600;letter-spacing:.02em}' +
+      '.cqd-itd{font-size:16px;font-weight:700;color:var(--cqd-text);line-height:1.5;margin:4px 0 5px}' +
+      '.cqd-sum{font-size:13px;color:var(--cqd-muted);line-height:1.65}' +
+      '.cqd-foot{margin-top:14px;font-size:11px;color:var(--cqd-muted)}' +
+      '.cqd-fallback{padding:20px;border:1px solid var(--cqd-line);border-radius:10px;font-size:14px;color:var(--cqd-muted)}' +
+      '.cqd-fallback a{color:var(--cqd-accent);font-weight:700;text-decoration:none}';
+    document.head.appendChild(st);
+  }
+
+  function esc(s){ var d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+  function fmtDate(iso){
+    var m=(iso||'').match(/(\d{4})-(\d{2})-(\d{2})/);
+    return m ? m[1]+'.'+m[2]+'.'+m[3] : '';
+  }
+  function clip(s,n){ s=(s||'').trim(); return s.length>n ? s.slice(0,n)+'…' : s; }
+
+  function fallback(){
+    box.innerHTML =
+      '<div class="cqd-wrap"><div class="cqd-fallback">' +
+      'AI 投资日记每日更新中 —— ' +
+      '<a href="'+SITE_URL+'" target="_blank" rel="noopener">点此阅读最新内容 →</a>' +
+      '</div></div>';
+  }
+
+  fetch(FEED_URL, { cache: 'no-cache' })
+    .then(function(r){ if(!r.ok) throw 0; return r.text(); })
+    .then(function(xml){
+      var doc = new DOMParser().parseFromString(xml, 'application/xml');
+      var entries = Array.prototype.slice.call(doc.getElementsByTagName('entry'), 0, MAX);
+      if (!entries.length) return fallback();
+
+      var html = '<div class="cqd-wrap"><div class="cqd-head">' +
+        '<div class="cqd-title">AI 投资日记 · 最新<small>每天 7AM 自动更新</small></div>' +
+        '<a class="cqd-all" href="'+SITE_URL+'" target="_blank" rel="noopener">查看全部 →</a>' +
+        '</div>';
+
+      entries.forEach(function(e){
+        var t = e.getElementsByTagName('title')[0];
+        var l = e.getElementsByTagName('link')[0];
+        var u = e.getElementsByTagName('updated')[0];
+        var s = e.getElementsByTagName('summary')[0];
+        var title = t ? t.textContent : '';
+        var href = l ? (l.getAttribute('href') || SITE_URL) : SITE_URL;
+        var date = fmtDate(u ? u.textContent : '');
+        // 摘要去掉结尾的合规免责句，卡片里只显示前 90 字
+        var sum = (s ? s.textContent : '').replace(/本日记不构成对任何基金产品的推介或募集要约。?/g,'').trim();
+        html += '<a class="cqd-item" href="'+esc(href)+'" target="_blank" rel="noopener">' +
+          '<div class="cqd-date">'+esc(date)+'</div>' +
+          '<div class="cqd-itd">'+esc(title)+'</div>' +
+          '<div class="cqd-sum">'+esc(clip(sum,90))+'</div>' +
+          '</a>';
+      });
+
+      html += '<div class="cqd-foot">内容为投资思考记录，不构成对任何基金产品的推介或募集要约。</div></div>';
+      box.innerHTML = html;
+    })
+    .catch(fallback);
+})();
+</script>
+<!-- ═══════════════ 组件结束 ═══════════════ -->
