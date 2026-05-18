@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-17T07:00:00+08:00</updated>
+  <updated>2026-05-19T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,28 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>Anthropic 把 OpenClaw 又放回来了——但这次"自助餐"明码标价</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-58"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/58</id>
+    <updated>2026-05-19T07:00:00+08:00</updated>
+    <published>2026-05-19T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="定价博弈"/>
+    <summary>Anthropic 反转四月禁令，新增"Agent SDK 额度"重新允许 OpenClaw 调用 Claude——但额度固定、不滚存、按 API 价计费，社区估算部分工作流有效容量掉 25 倍。同周 OpenAI 反向给新企业客户两个月免费 Codex。AI 自助餐时代结束，进入明码标价时代。尽调新规则：把 Agent 的模型调用成本按零补贴 API 实价重算单位经济学。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>一个反直觉的信号：Agent 越火，CPU 越值钱</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-57"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/57</id>
+    <updated>2026-05-18T09:00:00+08:00</updated>
+    <published>2026-05-18T09:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="硬件信号"/>
+    <summary>Agent harness 把单个任务拆成多步编排循环，这些编排逻辑跑在 CPU 而非 GPU 上——Intel Xeon 卖断货、Meta 抢购 ARM/Graviton。英伟达 200 亿美元收购 Groq 整合 LPU 推理芯片。算力的"形状"在变：CPU 编排层 + GPU 模型层 + 专用加速器推理层的三层重组。值得盯的是三层接缝处。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>读完一份 AI labs 竞争格局报告：技术差距在缩小，执行差距在放大</title>
