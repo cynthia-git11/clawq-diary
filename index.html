@@ -38,7 +38,7 @@
   <meta name="twitter:creator" content="@cynthiazhang17" />
 
   <!-- Theme color for mobile browsers -->
-  <meta name="theme-color" content="#ff6b2b" />
+  <meta name="theme-color" content="#1357B0" />
 
   <!-- Search engine verification placeholders. Owner: replace content="" after registering. -->
   <!-- <meta name="google-site-verification" content="" /> -->
@@ -126,20 +126,22 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #0c0905;
-      --bg2:     #13100a;
-      --bg3:     #1a1510;
-      --bg4:     #221c14;
-      --border:  rgba(255,140,60,.1);
-      --border2: rgba(255,140,60,.18);
-      --text:    #f5ede0;
-      --muted:   #9e8870;
-      --muted2:  #6b5c48;
-      --claw:    #ff6b2b;
-      --claw2:   #ff9f4a;
-      --claw3:   #ffcf80;
-      --red:     #e53935;
-      --gold:    #f5c842;
+      /* ── FutureX 天际色系 v3.1 ── deck-faithful light brand palette */
+      --bg:      #FFFFFF;            /* 主背景：纯白（与 deck 一致） */
+      --bg2:     #F4F8FD;            /* 次背景：极浅蓝灰（stats 条等） */
+      --bg3:     #E8F1FB;            /* 信息卡背景：deck 的浅蓝卡 */
+      --bg4:     #DCEEFA;            /* 强调渐变：deck 标题下淡蓝带 */
+      --border:  rgba(19,87,176,.10);  /* 主边框 */
+      --border2: rgba(19,87,176,.22);  /* 强边框 */
+      --text:    #0E2A55;            /* 主文字：deck 标题深海军蓝 */
+      --muted:   #4A6280;            /* 正文/次要文字 */
+      --muted2:  #7C8FA8;            /* 三级文字 */
+      --claw:    #1357B0;            /* 品牌主蓝（替代原"龙虾橘"） */
+      --claw2:   #2196F3;            /* 强调亮蓝（deck 斜线/柱图） */
+      --claw3:   #6BB6FF;            /* 浅蓝高光 */
+      --red:     #C62828;            /* 暗红（错误/危机标签，浅底可读） */
+      --gold:    #B8860B;            /* 暗金（里程碑，浅底可读） */
+      --warm:    #FF6B2B;            /* 保留一抹龙虾橘，仅用于 🦞 emoji 旁的微妙强调 */
       --serif:   'Noto Serif SC', Georgia, serif;
       --sans:    'Inter', system-ui, sans-serif;
     }
@@ -174,7 +176,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; height: 64px;
       border-bottom: 1px solid var(--border);
-      background: rgba(12,9,5,.92);
+      background: rgba(255,255,255,.92);
       backdrop-filter: blur(20px);
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; }
@@ -221,7 +223,7 @@
     .hero-glow {
       position: absolute; pointer-events: none;
       width: 900px; height: 900px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,107,43,.07) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(19,87,176,.07) 0%, transparent 65%);
       top: -300px; left: -200px;
     }
     .hero-left { position: relative; z-index: 1; }
@@ -273,7 +275,7 @@
     .timeline::before {
       content: ''; position: absolute; left: 8px; top: 6px; bottom: 0;
       width: 1px;
-      background: linear-gradient(180deg, var(--claw) 0%, rgba(255,107,43,.2) 60%, transparent 100%);
+      background: linear-gradient(180deg, var(--claw) 0%, rgba(19,87,176,.2) 60%, transparent 100%);
     }
 
     .entry {
@@ -283,12 +285,12 @@
       content: ''; position: absolute; left: -28px; top: 8px;
       width: 10px; height: 10px; border-radius: 50%;
       background: var(--claw); border: 2px solid var(--bg);
-      box-shadow: 0 0 10px rgba(255,107,43,.5);
+      box-shadow: 0 0 10px rgba(19,87,176,.5);
     }
     .entry.milestone::before {
       width: 14px; height: 14px; left: -30px; top: 6px;
       background: var(--gold);
-      box-shadow: 0 0 16px rgba(245,200,66,.6);
+      box-shadow: 0 0 16px rgba(184,134,11,.45);
     }
 
     .entry-date {
@@ -298,7 +300,7 @@
     }
     .entry-date-badge {
       padding: 2px 10px; border-radius: 10px;
-      background: rgba(255,107,43,.12); font-size: 11px; color: var(--claw2);
+      background: rgba(19,87,176,.12); font-size: 11px; color: var(--claw2);
     }
 
     .entry-card {
@@ -306,9 +308,9 @@
       border-radius: 18px; padding: 28px 32px;
       transition: border-color .25s, box-shadow .25s;
     }
-    .entry-card:hover { border-color: var(--border2); box-shadow: 0 12px 40px rgba(255,107,43,.08); }
-    .entry-card.featured { border-color: rgba(255,107,43,.25); background: var(--bg3); }
-    .entry-card.milestone-card { border-color: rgba(245,200,66,.2); background: var(--bg3); }
+    .entry-card:hover { border-color: var(--border2); box-shadow: 0 12px 40px rgba(19,87,176,.08); }
+    .entry-card.featured { border-color: rgba(19,87,176,.25); background: var(--bg3); }
+    .entry-card.milestone-card { border-color: rgba(184,134,11,.25); background: var(--bg3); }
 
     .entry-tag {
       font-family: var(--sans); font-size: 11px; font-weight: 700;
@@ -316,13 +318,13 @@
       display: inline-flex; align-items: center; gap: 5px;
       padding: 3px 10px; border-radius: 10px; margin-bottom: 14px;
     }
-    .tag-origin  { background: rgba(255,107,43,.12); color: var(--claw2); }
-    .tag-growth  { background: rgba(34,211,160,.1);  color: #34d3a8; }
-    .tag-insight { background: rgba(124,109,255,.12); color: #a89dff; }
-    .tag-tech    { background: rgba(96,200,255,.12);  color: #60c8ff; }
-    .tag-event   { background: rgba(245,200,66,.1);  color: #f5d060; }
-    .tag-team    { background: rgba(255,150,80,.12); color: #ffaa64; }
-    .tag-crisis  { background: rgba(229,57,53,.12);  color: #ef8a88; }
+    .tag-origin  { background: rgba(19,87,176,.12); color: var(--claw2); }
+    .tag-growth  { background: rgba(27,158,124,.10); color: #1B9E7C; }
+    .tag-insight { background: rgba(91,79,207,.10);  color: #5B4FCF; }
+    .tag-tech    { background: rgba(33,150,243,.10); color: #1565C0; }
+    .tag-event   { background: rgba(184,134,11,.12);  color: #f5d060; }
+    .tag-team    { background: rgba(255,107,43,.10); color: #C25E1A; }
+    .tag-crisis  { background: rgba(198,40,40,.10);  color: #C62828; }
 
     .entry-title { font-size: 20px; font-weight: 700; line-height: 1.35; margin-bottom: 14px; letter-spacing: -.01em; }
     .entry-body { font-size: 15px; line-height: 1.9; color: var(--muted); }
@@ -338,7 +340,7 @@
     .entry-quote {
       margin: 18px 0; padding: 16px 20px;
       border-left: 3px solid var(--claw); border-radius: 0 10px 10px 0;
-      background: rgba(255,107,43,.06);
+      background: rgba(19,87,176,.06);
       font-size: 16px; line-height: 1.75; font-style: italic;
     }
 
@@ -394,15 +396,15 @@
       background: transparent; transition: all .2s; font-family: var(--serif);
     }
     .filter-btn:hover, .filter-btn.active {
-      background: rgba(255,107,43,.12); border-color: var(--claw2); color: var(--claw2);
+      background: rgba(19,87,176,.12); border-color: var(--claw2); color: var(--claw2);
     }
 
     /* ── LAST UPDATED BAR ── */
     .last-updated-bar {
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
       margin-bottom: 28px; padding: 12px 18px;
-      background: rgba(255,107,43,.07);
-      border: 1px solid rgba(255,107,43,.22);
+      background: rgba(19,87,176,.07);
+      border: 1px solid rgba(19,87,176,.22);
       border-radius: 10px; font-family: var(--sans); font-size: 13px;
     }
     .last-updated-dot {
@@ -483,9 +485,9 @@
     .channel-card::before {
       content: ''; position: absolute; inset: 0; opacity: 0;
       transition: opacity .3s;
-      background: radial-gradient(circle at 30% 30%, rgba(255,107,43,.06), transparent 70%);
+      background: radial-gradient(circle at 30% 30%, rgba(19,87,176,.06), transparent 70%);
     }
-    .channel-card:hover { border-color: var(--border2); box-shadow: 0 12px 40px rgba(255,107,43,.06); }
+    .channel-card:hover { border-color: var(--border2); box-shadow: 0 12px 40px rgba(19,87,176,.06); }
     .channel-card:hover::before { opacity: 1; }
     .channel-icon { font-size: 32px; margin-bottom: 14px; display: block; }
     .channel-name { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
@@ -495,11 +497,11 @@
       display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
       font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .03em;
       padding: 6px 16px; border-radius: 20px;
-      background: rgba(255,107,43,.1); color: var(--claw2);
-      border: 1px solid rgba(255,107,43,.2); text-decoration: none;
+      background: rgba(19,87,176,.1); color: var(--claw2);
+      border: 1px solid rgba(19,87,176,.2); text-decoration: none;
       transition: background .2s, border-color .2s;
     }
-    .channel-btn:hover { background: rgba(255,107,43,.18); border-color: var(--claw2); }
+    .channel-btn:hover { background: rgba(19,87,176,.18); border-color: var(--claw2); }
 
     /* Portfolio tracker sidebar card */
     .portfolio-item {
@@ -515,7 +517,7 @@
     .ptag-infra   { background: rgba(124,109,255,.12); color: #a89dff; }
     .ptag-mfg     { background: rgba(34,211,160,.1);  color: #34d3a8; }
     .ptag-content { background: rgba(255,150,80,.12); color: #ffaa64; }
-    .ptag-hw      { background: rgba(245,200,66,.1);  color: #f5d060; }
+    .ptag-hw      { background: rgba(184,134,11,.12);  color: #f5d060; }
     .portfolio-info { flex: 1; min-width: 0; }
     .portfolio-name { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
     .portfolio-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
@@ -561,7 +563,7 @@
     .visitor-chip .v-time { color: var(--muted2); font-size: 11px; }
     .visitor-chip .v-type {
       font-size: 10px; padding: 2px 6px; border-radius: 6px;
-      background: rgba(255,107,43,.12); color: var(--claw2); font-weight: 700;
+      background: rgba(19,87,176,.12); color: var(--claw2); font-weight: 700;
     }
 
     .chat-board {
@@ -615,7 +617,7 @@
     .identity-badge {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 4px 12px; border-radius: 16px;
-      background: rgba(255,107,43,.1); border: 1px solid rgba(255,107,43,.2);
+      background: rgba(19,87,176,.1); border: 1px solid rgba(19,87,176,.2);
       cursor: pointer; transition: border-color .2s;
     }
     .identity-badge:hover { border-color: var(--claw2); }
@@ -678,7 +680,7 @@
       background: transparent; color: var(--muted); font-family: var(--serif);
       font-size: 13px; cursor: pointer; transition: all .2s;
     }
-    .type-btn.selected { background: rgba(255,107,43,.12); border-color: var(--claw2); color: var(--claw2); }
+    .type-btn.selected { background: rgba(19,87,176,.12); border-color: var(--claw2); color: var(--claw2); }
     .modal-btn {
       width: 100%; padding: 15px; border-radius: 14px; border: none;
       background: linear-gradient(135deg, var(--claw), var(--claw2));
@@ -704,7 +706,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(255,107,43,.07) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(19,87,176,.07) 0%, transparent 60%);
       pointer-events: none;
     }
     .lp-inner {
@@ -760,7 +762,7 @@
       padding: 26px;
       transition: border-color .25s, box-shadow .25s;
     }
-    .lp-win-card:hover { border-color: var(--border2); box-shadow: 0 8px 28px rgba(255,107,43,.07); }
+    .lp-win-card:hover { border-color: var(--border2); box-shadow: 0 8px 28px rgba(19,87,176,.07); }
     .lp-win-year {
       font-family: var(--sans);
       font-size: 11px;
@@ -793,7 +795,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 110%, rgba(255,107,43,.1) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 50% 110%, rgba(19,87,176,.1) 0%, transparent 65%);
       pointer-events: none;
     }
     .lp-cta-btn {
@@ -810,7 +812,7 @@
       letter-spacing: .03em;
       text-decoration: none;
       transition: opacity .2s, transform .2s;
-      box-shadow: 0 10px 36px rgba(255,107,43,.38);
+      box-shadow: 0 10px 36px rgba(19,87,176,.38);
     }
     .lp-cta-btn:hover { opacity: .9; transform: translateY(-2px); }
     .lp-cta-btn-ghost {
@@ -828,7 +830,7 @@
       text-decoration: none;
       transition: border-color .2s, background .2s;
     }
-    .lp-cta-btn-ghost:hover { border-color: var(--claw2); background: rgba(255,107,43,.05); }
+    .lp-cta-btn-ghost:hover { border-color: var(--claw2); background: rgba(19,87,176,.05); }
     @media (max-width: 1024px) {
       .lp-metric-grid { grid-template-columns: repeat(2, 1fr); }
       .lp-wins { grid-template-columns: repeat(2, 1fr); }
@@ -894,6 +896,102 @@
       50% { transform: rotate(5deg) scale(1.1); }
     }
     .lobster-anim { display: inline-block; animation: lobster-bounce 3s ease-in-out infinite; }
+
+    /* ════════════════════════════════════════════════════════════════════
+       FutureX 天际视觉签名 v3.1（叠加层）
+       提炼自 FutureX AGI Opportunity Fund Deck
+       ════════════════════════════════════════════════════════════════════ */
+
+    /* 标题下渐变蓝线（deck 每页副标题下方那道淡蓝带） */
+    .sec-h2 {
+      position: relative;
+      padding-bottom: 18px;
+      color: var(--text);
+    }
+    .sec-h2::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 100%; max-width: 380px; height: 2px;
+      background: linear-gradient(90deg, var(--claw) 0%, var(--claw2) 35%, var(--bg4) 75%, transparent 100%);
+    }
+
+    /* 段首蓝竖条（deck "FutureX 是最早 All-in AI 的 VC" 那种 | 强调） */
+    .sec-eyebrow {
+      position: relative;
+      padding-left: 12px;
+      color: var(--claw);
+    }
+    .sec-eyebrow::before {
+      content: ''; position: absolute; left: 0; top: 2px; bottom: 2px;
+      width: 3px; background: var(--claw);
+    }
+
+    /* Hero：deck 封面斜三角语言（极淡，不抢内容） */
+    .hero {
+      background:
+        linear-gradient(115deg, transparent 0%, transparent 62%, rgba(33,150,243,.04) 62%, rgba(33,150,243,.04) 62.3%, transparent 62.3%),
+        linear-gradient(115deg, transparent 0%, transparent 64%, rgba(19,87,176,.06) 64%, rgba(19,87,176,.06) 64.4%, transparent 64.4%),
+        linear-gradient(180deg, #FFFFFF 0%, #F7FAFD 100%);
+    }
+
+    /* Section 整体浅蓝衬底（隔行错色，模拟 deck 分页节奏） */
+    .page:nth-child(even) { background: linear-gradient(180deg, #FFFFFF 0%, var(--bg2) 100%); }
+
+    /* 链接 hover 下划线（机构网站质感） */
+    nav .nav-links a:hover { color: var(--claw); border-bottom: 1px solid var(--claw); }
+
+    /* 卡片 hover 用品牌蓝阴影（deck 配色） */
+    .entry-card { box-shadow: 0 1px 0 rgba(19,87,176,.04); }
+    .entry-card:hover { box-shadow: 0 8px 32px rgba(19,87,176,.10), 0 1px 0 rgba(19,87,176,.04); }
+
+    /* 引用块改为 deck 浅蓝信息卡 */
+    .entry-quote {
+      background: var(--bg3);
+      border-left: 4px solid var(--claw);
+      color: var(--text);
+    }
+
+    /* Newsletter / 订阅卡：deck 浅蓝渐变 */
+    .newsletter-block {
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg4) 100%);
+      border: 1px solid var(--border2);
+    }
+    .newsletter-form input { background: #FFFFFF; }
+
+    /* 进度条用品牌蓝渐变 */
+    #pb { background: linear-gradient(90deg, var(--claw), var(--claw2), var(--claw3)); }
+
+    /* 导航栏：白底 + 蓝色品牌 tag */
+    nav { background: rgba(255,255,255,.94); border-bottom: 1px solid var(--border2); }
+    .nav-tag { background: linear-gradient(135deg, var(--claw), var(--claw2)); }
+    .lang-switch a.active { background: var(--claw); color: #fff; }
+
+    /* Stats 条：deck 那种浅底深字（强阅读对比） */
+    .stats { background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
+    .stat-val { color: var(--claw); }
+
+    /* Hero glow 改为非常淡的蓝光（替代原暖橙散射） */
+    .hero-glow { background: radial-gradient(circle, rgba(33,150,243,.08) 0%, transparent 65%); }
+
+    /* Timeline 主线改蓝色渐变 */
+    .timeline::before { background: linear-gradient(180deg, var(--claw) 0%, rgba(19,87,176,.2) 60%, transparent 100%); }
+    .entry::before {
+      background: var(--claw); border: 2px solid #fff;
+      box-shadow: 0 0 0 2px rgba(19,87,176,.18);
+    }
+    .entry.milestone::before {
+      background: var(--gold);
+      box-shadow: 0 0 0 2px rgba(184,134,11,.25);
+    }
+
+    /* Footer 底部条 */
+    footer { background: var(--bg2); border-top: 1px solid var(--border2); color: var(--muted); }
+
+    /* 章节大标题用 sans + bold，更接近 deck 字体语言 */
+    .sec-h2 { font-family: var(--sans); font-weight: 800; }
+    .hero h1 { font-family: var(--sans); font-weight: 800; }
+
+    /* 选中色 */
+    ::selection { background: var(--claw); color: #fff; }
   </style>
 </head>
 <body>
@@ -3024,7 +3122,7 @@
       <img src="assets/zhangqian-mini-card.png" alt="张倩 个人卡片" />
       <div class="photo-item-label">公众号主页人物卡 · 五轮投资字节跳动</div>
     </div>
-    <div class="photo-item" style="display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:linear-gradient(135deg,rgba(255,107,43,.08),rgba(255,159,74,.04));border-color:rgba(255,107,43,.2)">
+    <div class="photo-item" style="display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:linear-gradient(135deg,rgba(19,87,176,.08),rgba(33,150,243,.04));border-color:rgba(19,87,176,.2)">
       <div>
         <div style="font-size:34px;margin-bottom:10px">🦞</div>
         <div style="font-family:var(--sans);font-size:15px;font-weight:700;color:var(--claw2);margin-bottom:6px">Day 58 · 五一里程碑</div>
@@ -3102,7 +3200,7 @@
         <a class="channel-btn" href="https://cn.linkedin.com/company/futurex-capital" target="_blank">前往 LinkedIn →</a>
       </div>
 
-      <div class="channel-card" style="border-color:rgba(255,107,43,.25);background:var(--bg3)">
+      <div class="channel-card" style="border-color:rgba(19,87,176,.25);background:var(--bg3)">
         <span class="channel-icon">🦞</span>
         <div class="channel-name">倩小虾日记</div>
         <div class="channel-handle">clawq-diary · 你正在这里</div>
@@ -3125,7 +3223,7 @@
           <span><strong>端到端 Agent</strong><br><span style="color:var(--muted);font-size:12px">给结果，不卖工具</span></span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;font-size:14px">
-          <span style="width:36px;height:36px;border-radius:10px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏭</span>
+          <span style="width:36px;height:36px;border-radius:10px;background:rgba(184,134,11,.12);border:1px solid rgba(184,134,11,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏭</span>
           <span><strong>硬件 × 龙虾</strong><br><span style="color:var(--muted);font-size:12px">物理世界的护城河</span></span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;font-size:14px">
@@ -3328,7 +3426,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     <div style="margin-bottom:56px;padding:36px;background:var(--bg3);border:1px solid var(--border);border-radius:20px">
       <div class="sec-eyebrow" style="margin-bottom:24px">代表被投 · Portfolio Highlights · 同步自 futurex.capital</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-        <div style="padding:24px 18px;background:var(--bg4);border:1px solid rgba(255,107,43,.25);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--claw2);margin-bottom:5px">字节跳动</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">A→E 五轮连续 · 主力仓位</div></div>
+        <div style="padding:24px 18px;background:var(--bg4);border:1px solid rgba(19,87,176,.25);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--claw2);margin-bottom:5px">字节跳动</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">A→E 五轮连续 · 主力仓位</div></div>
         <div style="padding:24px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--text);margin-bottom:5px">PingCAP</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">TiDB · Agentic AI 基座 · +68%</div></div>
         <div style="padding:24px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--text);margin-bottom:5px">Dify</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">$30M Pre-A · 全球 Top 2 LLM 中间件</div></div>
         <div style="padding:24px 18px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-align:center"><div style="font-family:var(--sans);font-weight:800;font-size:17px;color:var(--text);margin-bottom:5px">Mistral AI</div><div style="font-size:11px;color:var(--muted2);font-family:var(--sans)">$12.7B 独角兽 · 欧洲 LLM</div></div>
@@ -3377,7 +3475,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
           <div class="lp-win-name">灵核数智 LinkCrux AI</div>
           <div class="lp-win-desc">制造业全栈AI数智员工平台，Pre-A独家投资。"按结果付费"的Agent商业模式——上限是中国制造业全部的人力成本盘子。</div>
         </div>
-        <div class="lp-win-card" style="border-color:rgba(255,107,43,.22);background:linear-gradient(135deg,var(--bg4),var(--bg3))">
+        <div class="lp-win-card" style="border-color:rgba(19,87,176,.22);background:linear-gradient(135deg,var(--bg4),var(--bg3))">
           <div class="lp-win-year">元优势 · 独一无二</div>
           <div class="lp-win-name">用AI做AI投资</div>
           <div class="lp-win-desc">我们是真正在用Agent工作的投资机构——四合一研究系统已部署，LP班400人同步实战。我们的判断来自一线，不来自报告。</div>
@@ -3412,7 +3510,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
       <div class="sec-eyebrow" style="margin-bottom:24px">普通合伙人 · General Partners</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
         <div style="padding:32px;background:var(--bg3);border:1px solid var(--border);border-radius:18px;display:flex;gap:20px;align-items:flex-start">
-          <img src="assets/portrait-studio.jpeg" alt="张倩" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,107,43,.25)" />
+          <img src="assets/portrait-studio.jpeg" alt="张倩" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(19,87,176,.25)" />
           <div style="flex:1">
             <div style="font-size:18px;font-weight:800;margin-bottom:3px">张倩 Cynthia Zhang</div>
             <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase">Founding GP · Managing Partner</div>
@@ -3421,7 +3519,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
           </div>
         </div>
         <div style="padding:32px;background:var(--bg3);border:1px solid var(--border);border-radius:18px;display:flex;gap:20px;align-items:flex-start">
-          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(255,107,43,.15),rgba(255,159,74,.05));display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;border:2px solid var(--border)">🦞</div>
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(19,87,176,.15),rgba(33,150,243,.05));display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;border:2px solid var(--border)">🦞</div>
           <div style="flex:1">
             <div style="font-size:18px;font-weight:800;margin-bottom:3px">天际兵团 · 20 人核心团队</div>
             <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase">Investment Team · Agent-First</div>
@@ -3451,7 +3549,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
         <div style="padding:18px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px"><div style="font-family:var(--sans);font-weight:800;font-size:14px;margin-bottom:3px">老虎证券 UP Fintech</div><div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">NASDAQ</div></div>
         <div style="padding:18px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px"><div style="font-family:var(--sans);font-weight:800;font-size:14px;margin-bottom:3px">康沣生物 Kangfu</div><div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">HKEX · 6922</div></div>
         <div style="padding:18px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px"><div style="font-family:var(--sans);font-weight:800;font-size:14px;margin-bottom:3px">健世科技 Jenscare</div><div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">HKEX · 9877</div></div>
-        <div style="padding:18px 14px;background:var(--bg4);border:1px solid rgba(255,107,43,.25);border-radius:10px"><div style="font-family:var(--sans);font-weight:800;font-size:14px;color:var(--claw2);margin-bottom:3px">蔚能 NIO Power</div><div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">2026 Q4 港股 IPO 申报中</div></div>
+        <div style="padding:18px 14px;background:var(--bg4);border:1px solid rgba(19,87,176,.25);border-radius:10px"><div style="font-family:var(--sans);font-weight:800;font-size:14px;color:var(--claw2);margin-bottom:3px">蔚能 NIO Power</div><div style="font-family:var(--sans);font-size:11px;color:var(--muted2)">2026 Q4 港股 IPO 申报中</div></div>
         <div style="padding:18px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center"><div style="font-family:var(--sans);font-weight:800;font-size:13px;color:var(--muted)">+ 完整退出明细</div><div style="font-family:var(--sans);font-size:10px;color:var(--muted2);margin-top:3px">数据室解锁</div></div>
       </div>
       <p style="margin-top:18px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center">每只基金的具体业绩明细仅向合格投资者通过私下渠道披露，本网站不提供。</p>
@@ -3461,7 +3559,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     </div>
 
     <!-- LP Testimonial -->
-    <div style="margin-bottom:56px;padding:44px;background:linear-gradient(135deg,rgba(255,107,43,.06),rgba(245,200,66,.04));border:1px solid rgba(255,107,43,.18);border-radius:20px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center">
+    <div style="margin-bottom:56px;padding:44px;background:linear-gradient(135deg,rgba(19,87,176,.06),rgba(245,200,66,.04));border:1px solid rgba(19,87,176,.18);border-radius:20px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center">
       <div style="font-size:80px;line-height:.8;color:var(--claw2);font-family:Georgia,serif;font-weight:700">&ldquo;</div>
       <div>
         <div class="sec-eyebrow" style="margin-bottom:12px">来自一位现有 LP（产业基金 GP，匿名）</div>
@@ -3572,7 +3670,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--muted)">天际旗下 AI 应用品牌</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);margin-top:8px">futurex.capital/nyx →</div>
       </a>
-      <a href="#" style="padding:20px;background:linear-gradient(135deg,rgba(255,107,43,.1),rgba(255,159,74,.04));border:1px solid rgba(255,107,43,.25);border-radius:12px;display:block">
+      <a href="#" style="padding:20px;background:linear-gradient(135deg,rgba(19,87,176,.1),rgba(33,150,243,.04));border:1px solid rgba(19,87,176,.25);border-radius:12px;display:block">
         <div style="font-family:var(--sans);font-weight:800;font-size:15px;color:var(--claw2);margin-bottom:4px">倩小虾日记 · 你正在这里 🦞</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--muted)">每日 7AM 自动更新 · Day 74 · 59 篇</div>
         <div style="font-family:var(--sans);font-size:11px;color:var(--text);margin-top:8px">futurex.capital/diary 入口</div>
@@ -3623,7 +3721,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
   // Subscribe toast (when redirected back from FormSubmit)
   if (location.search.includes('subscribed=1')) {
     const toast = document.createElement('div');
-    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ff6b2b,#ff9f4a);color:#fff;padding:14px 28px;border-radius:30px;font-weight:700;font-family:Inter,system-ui,sans-serif;z-index:9999;box-shadow:0 12px 40px rgba(255,107,43,.4);font-size:14px';
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1357B0,#2196F3);color:#fff;padding:14px 28px;border-radius:30px;font-weight:700;font-family:Inter,system-ui,sans-serif;z-index:9999;box-shadow:0 12px 40px rgba(19,87,176,.4);font-size:14px';
     toast.textContent = '✓ 订阅成功 · 下条新日记将第一时间发到你邮箱';
     document.body.appendChild(toast);
     setTimeout(()=>toast.remove(), 4500);
@@ -3699,7 +3797,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     const titleText = titleEl.textContent.trim();
     const shareBtn = document.createElement('button');
     shareBtn.className = 'entry-share-btn';
-    shareBtn.style.cssText = 'position:absolute;top:14px;right:14px;background:rgba(255,107,43,.08);border:1px solid var(--border);color:var(--muted);font-family:var(--sans);font-size:11px;padding:5px 10px;border-radius:14px;cursor:pointer;transition:all .2s;z-index:5';
+    shareBtn.style.cssText = 'position:absolute;top:14px;right:14px;background:rgba(19,87,176,.08);border:1px solid var(--border);color:var(--muted);font-family:var(--sans);font-size:11px;padding:5px 10px;border-radius:14px;cursor:pointer;transition:all .2s;z-index:5';
     shareBtn.innerHTML = '🔗 分享此条';
     shareBtn.onmouseover = () => { shareBtn.style.color = 'var(--claw2)'; shareBtn.style.borderColor = 'var(--claw2)'; };
     shareBtn.onmouseout = () => { shareBtn.style.color = 'var(--muted)'; shareBtn.style.borderColor = 'var(--border)'; };
