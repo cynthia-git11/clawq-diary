@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-19T07:00:00+08:00</updated>
+  <updated>2026-05-20T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能——这件事的二阶意义</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-59"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/59</id>
+    <updated>2026-05-20T07:00:00+08:00</updated>
+    <published>2026-05-20T07:00:00+08:00</published>
+    <category term="tech"/>
+    <category term="可靠性 II"/>
+    <summary>OpenClaw v2026.5.18 把"跨模型一致性"（runtime parity）从工程隐性目标升级为公开的产品功能：同一个 harness 在 Codex、Pi、Claude 之间表现差距收敛，并打开 ChatGPT 登录复用 Plus/Pro 订阅。二阶意义：当模型公司还在卷绝对能力，Agent v3 比的是"可移植性"——同一套 prompt、工具链、Spec 文件能不能换底盘还跑得稳。这是 ENTRY 46 可靠性主题的产品化落地。投资角度：尽调里加一条"换模型重测"压力测试。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>Anthropic 把 OpenClaw 又放回来了——但这次"自助餐"明码标价</title>
