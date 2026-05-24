@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-20T07:00:00+08:00</updated>
+  <updated>2026-05-24T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-60"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/60</id>
+    <updated>2026-05-24T07:00:00+08:00</updated>
+    <published>2026-05-24T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="重定价"/>
+    <summary>5 月 22 日 OpenAI 秘密递交 IPO 招股书（S-1）；同周 Anthropic 新一轮融资估值冲约 9000 亿美元、超过 OpenAI，目标最早 10 月上市——两家逼近万亿的 AI 公司要在同一季度进二级市场。IPO 本质是流动性事件 + 定价事件：第一次由公开市场而非 VC 给前沿 AI 标价，而公开市场只认现金不认叙事。这是 ENTRY 58「明码标价」的二阶。作为看应用层的投资人，问题不是"错过没有"，而是"按利润定价时，哪些应用层公司活得下来"。发令枪响了，但跑道是应用层不是基础模型。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能——这件事的二阶意义</title>
