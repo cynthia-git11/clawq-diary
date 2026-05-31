@@ -8,8 +8,8 @@
   "scope": "/clawq-diary/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0c0905",
-  "theme_color": "#ff6b2b",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1357B0",
   "icons": [
     {
       "src": "assets/clawq-square.jpg",
