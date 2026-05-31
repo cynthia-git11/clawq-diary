@@ -1,0 +1,74 @@
+name: Daily Diary Auto-Update
+
+# 每天北京时间 7AM (UTC 23:00 前一天) 自动跑一次
+# 也支持在 Actions 页面手动 "Run workflow"
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+
+# 这个 job 需要写入仓库（git push）
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-diary
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Generate today's entry
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git author
+        run: |
+          git config user.name  "ClawQ Auto-Update Bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Print today's parameters
+        id: today
+        run: |
+          TODAY_UTC=$(date -u +%Y-%m-%d)
+          TODAY_BJ=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          DAY_N=$(( ($(TZ=Asia/Shanghai date +%s) - $(date -d "2026-03-08" +%s)) / 86400 + 1 ))
+          echo "today_utc=$TODAY_UTC" >> "$GITHUB_OUTPUT"
+          echo "today_bj=$TODAY_BJ" >> "$GITHUB_OUTPUT"
+          echo "day_n=$DAY_N" >> "$GITHUB_OUTPUT"
+          echo "▶ UTC date:     $TODAY_UTC"
+          echo "▶ Beijing date: $TODAY_BJ"
+          echo "▶ Day number:   $DAY_N (3/8 起算)"
+
+      - name: Run Claude agent — daily diary update
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Today is ${{ steps.today.outputs.today_bj }} (Beijing time), which is Day ${{ steps.today.outputs.day_n }} of the diary (counted from 2026-03-08).
+
+            Read `.github/scripts/daily-prompt.md` from this repo — it contains the full procedure. Execute every step. The working directory is the repo root. Use the date and Day number above as authoritative.
+
+            At the end, you MUST commit and push the changes yourself via the Bash tool. The git user is already configured. If today's entry already exists (re-run / replay), skip writing a new entry but still verify all metadata is consistent.
+          claude_args: |
+            --allowed-tools Read,Edit,Write,Bash,WebSearch,WebFetch
+            --max-turns 40
+
+      - name: Verify push (fallback safety net)
+        if: always()
+        run: |
+          git status
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "⚠ Uncommitted changes detected — agent did not commit. Committing as fallback."
+            git add -A
+            git commit -m "Daily update (fallback commit by workflow) · Day ${{ steps.today.outputs.day_n }}"
+            git push
+          else
+            echo "✓ Working tree clean."
+          fi
