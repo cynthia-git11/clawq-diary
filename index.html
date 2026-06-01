@@ -996,6 +996,34 @@
     .auto-badge:hover { color: var(--claw); border-color: var(--border2); }
     .auto-badge img { height: 18px; width: auto; vertical-align: middle; }
 
+    /* ── 月度归档 TOC 侧栏 ── */
+    .archive-toc-card .sidebar-card-body { padding: 14px 16px; max-height: 460px; overflow-y: auto; }
+    .archive-toc-card .sidebar-card-body::-webkit-scrollbar { width: 4px; }
+    .archive-toc-card .sidebar-card-body::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+    .toc-month { margin-bottom: 6px; }
+    .toc-month summary {
+      cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 700;
+      color: var(--text); padding: 6px 0; user-select: none;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .toc-month summary:hover { color: var(--claw); }
+    .toc-month[open] > summary { color: var(--claw); }
+    .toc-month ul { list-style: none; padding: 4px 0 10px 4px; margin: 0; }
+    .toc-month li { margin: 0; }
+    .toc-item {
+      display: flex; gap: 8px; padding: 5px 8px; border-radius: 6px;
+      font-family: var(--sans); font-size: 12px; color: var(--muted);
+      transition: background .15s, color .15s; align-items: center;
+    }
+    .toc-item:hover { background: var(--bg3); color: var(--claw); }
+    .toc-day { font-weight: 700; color: var(--claw2); flex-shrink: 0; min-width: 30px; font-size: 11px; }
+    .toc-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .toc-count {
+      font-size: 10px; color: var(--muted); margin-left: auto;
+      background: var(--bg3); padding: 1px 8px; border-radius: 8px; font-weight: 700;
+    }
+    .toc-loading { font-size: 12px; color: var(--muted2); padding: 4px 0; }
+
     /* ════════════════════════════════════════════════════════════════════
        FutureX 天际视觉签名 v3.1（叠加层）
        提炼自 FutureX AGI Opportunity Fund Deck
@@ -3189,6 +3217,14 @@
         </div>
       </div>
 
+      <!-- 📚 按月归档 · JS 自动构建 -->
+      <div class="sidebar-card archive-toc-card">
+        <div class="sidebar-card-head">📚 按月浏览</div>
+        <div class="sidebar-card-body" id="archive-toc">
+          <div class="toc-loading">加载日记索引…</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -4249,6 +4285,64 @@ function toggleSetupGuide() {
     }, 1400);
   }
 })();
+</script>
+
+<script>
+  /* ── Service Worker 注册（v3.3：离线 PWA 能力）── */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('[SW] registered, scope:', reg.scope))
+        .catch(err => console.warn('[SW] registration failed:', err));
+    });
+  }
+
+  /* ── 月度归档 TOC：JS 扫描所有 .entry，按月分组生成侧栏链接 ── */
+  (function buildArchiveToc(){
+    const target = document.getElementById('archive-toc');
+    if (!target) return;
+    // 等 entry-id 注入完成（在前一个 script 块里）
+    requestAnimationFrame(() => {
+      const groups = {};
+      document.querySelectorAll('.entry').forEach(e => {
+        const dateEl = e.querySelector('.entry-date');
+        const titleEl = e.querySelector('.entry-title');
+        if (!dateEl || !titleEl) return;
+        const txt = dateEl.textContent;
+        const dm = txt.match(/2026年(\d+)月(\d+)日/);
+        if (!dm) return;
+        const monthKey = '2026-' + String(dm[1]).padStart(2,'0');
+        const dayMatch = txt.match(/Day\s*(\d+)/);
+        const id = e.id || '';
+        if (!id) return;
+        (groups[monthKey] = groups[monthKey] || []).push({
+          id,
+          title: titleEl.textContent.trim(),
+          day: dayMatch ? dayMatch[1] : '?'
+        });
+      });
+      const months = Object.keys(groups).sort().reverse();
+      if (!months.length) {
+        target.innerHTML = '<div style="font-size:12px;color:var(--muted2)">暂无内容</div>';
+        return;
+      }
+      const escapeHtml = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      const html = months.map((m, idx) => {
+        const items = groups[m].map(i => {
+          const shortTitle = i.title.length > 30 ? i.title.slice(0,30) + '…' : i.title;
+          return `<li><a href="#${i.id}" class="toc-item" title="${escapeHtml(i.title)}">` +
+                 `<span class="toc-day">D${i.day}</span>` +
+                 `<span class="toc-title">${escapeHtml(shortTitle)}</span>` +
+                 `</a></li>`;
+        }).join('');
+        const label = m.replace('2026-0', '2026 · ').replace('2026-1', '2026 · 1') + ' 月';
+        return `<details class="toc-month"${idx === 0 ? ' open' : ''}>` +
+               `<summary>${label} <span class="toc-count">${groups[m].length}</span></summary>` +
+               `<ul>${items}</ul></details>`;
+      }).join('');
+      target.innerHTML = html;
+    });
+  })();
 </script>
 </body>
 </html>
