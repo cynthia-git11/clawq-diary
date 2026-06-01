@@ -1,0 +1,44 @@
+/* TEAM */
+
+Author / Editor: 张倩 Cynthia Zhang
+Role: Founder & Managing Partner, FutureX Capital
+Site: https://futurex.capital
+Twitter: @cynthiazhang17
+LinkedIn: https://cn.linkedin.com/company/futurex-capital
+
+
+/* SITE */
+
+Name: 倩小虾日记 · The ClawQ Chronicles
+Started: 2026-03-08
+Posting cadence: daily, 7AM Beijing time
+Languages: 中文 (zh-CN) · English (en)
+License: All rights reserved · © 2026 FutureX Capital
+Disclaimer: 本日记不构成对任何基金产品的推介或募集要约。
+            This diary is not a solicitation for any fund.
+
+
+/* TECH STACK */
+
+Frontend: hand-written semantic HTML + CSS variables (FutureX 天际色系 v3.1) + vanilla JS
+Hosting: GitHub Pages (static)
+Domain: cynthia-git11.github.io/clawq-diary · diary.futurex.capital (planned)
+Feed: Atom 1.0
+SEO: Schema.org JSON-LD (Person, Blog, Organization, ItemList, BreadcrumbList, BlogPosting)
+Auto-update: GitHub Actions cron (daily 23:00 UTC) + anthropics/claude-code-action
+Mascot: 🦞 (genuinely 张倩 own pet name "倩小虾")
+
+
+/* COMPLIANCE */
+
+This site is governed by v2.0 compliance constraints (mainland China private fund
+advertising rules). No active fundraising references, LP solicitation, or
+unpublished portfolio company financials. See ENTRY 41 and ENTRY 47 for the
+public reset narrative.
+
+
+/* THANKS */
+
+To every founder who let me into their journey.
+To the lobsters at every milestone dinner.
+To public diaries kept honest by people who came before — 邱国鹭, Howard Marks, Paul Graham, 拾象 founders' notebooks.

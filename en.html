@@ -41,6 +41,9 @@
 
   <meta name="theme-color" content="#1357B0" />
 
+  <!-- 🦞 SVG emoji favicon · crisp at all sizes · no file needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦞%3C/text%3E%3C/svg%3E" />
+
   <!-- Search engine verification placeholders. Owner: replace content="" after registering. -->
   <!-- <meta name="google-site-verification" content="" /> -->
   <!-- <meta name="msvalidate.01" content="" /> -->
@@ -267,10 +270,11 @@
   </style>
 </head>
 <body>
+<a href="#diary" class="skip-link" style="position:absolute;top:-100px;left:16px;z-index:9999;padding:10px 18px;background:var(--claw);color:#fff;font-size:13px;font-weight:700;border-radius:8px;box-shadow:0 4px 20px rgba(19,87,176,.35);transition:top .2s" onfocus="this.style.top='12px'" onblur="this.style.top='-100px'">Skip to main content</a>
 
 <nav>
   <div class="nav-logo">
-    <img src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
+    <img loading="eager" fetchpriority="high" src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
     <div>
       <div class="nav-logo-text"><span class="claw-text">ClawQ</span> Chronicles</div>
       <div class="nav-logo-sub">FutureX Capital · Day 78</div>
@@ -319,7 +323,7 @@
     </div>
   </div>
   <div class="hero-portrait">
-    <img src="assets/portrait-studio.jpeg" alt="Cynthia Zhang, Founder & Managing Partner of FutureX Capital" />
+    <img loading="eager" fetchpriority="high" src="assets/portrait-studio.jpeg" alt="Cynthia Zhang, Founder & Managing Partner of FutureX Capital" />
     <div class="hero-portrait-cap">
       <div class="name">Cynthia Zhang</div>
       <div class="role">Founder & Managing Partner · FutureX Capital</div>
@@ -399,7 +403,7 @@
   <!-- GP -->
   <div class="gp-grid">
     <div class="gp-card">
-      <img src="assets/portrait-studio.jpeg" alt="Cynthia Zhang" />
+      <img loading="lazy" src="assets/portrait-studio.jpeg" alt="Cynthia Zhang" />
       <div>
         <div class="gname">Cynthia Zhang</div>
         <div class="grole">Founding GP · Managing Partner</div>
@@ -632,7 +636,7 @@
 
 <footer>
   <div class="fbrand">
-    <img src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
+    <img loading="lazy" src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
     <div>
       <div class="fbrand-text"><span class="claw-text">ClawQ</span> Chronicles</div>
       <div class="fbrand-sub">FutureX Capital · The Lobster Organization</div>
@@ -641,6 +645,9 @@
   <div class="fright">
     <p>© 2026 FutureX Capital · Cynthia Zhang</p>
     <p style="margin-top:4px"><a href="https://futurex.capital" target="_blank">futurex.capital</a> · Day 78 · 60 entries · auto-updated daily 7AM 🦞</p>
+    <a href="https://github.com/cynthia-git11/clawq-diary/actions/workflows/daily-diary.yml" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);padding:4px 10px;background:var(--bg3);border-radius:12px;border:1px solid var(--border);margin-top:8px" title="Auto-deployed via GitHub Actions · click to see live build status">
+      <img loading="lazy" src="https://github.com/cynthia-git11/clawq-diary/actions/workflows/daily-diary.yml/badge.svg" alt="Daily auto-update status" style="height:18px;vertical-align:middle" />
+    </a>
   </div>
 </footer>
 

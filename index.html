@@ -40,6 +40,9 @@
   <!-- Theme color for mobile browsers -->
   <meta name="theme-color" content="#1357B0" />
 
+  <!-- 🦞 SVG emoji favicon · 浏览器 tab 直接显示龙虾 · crisp at all sizes · 无需文件 -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦞%3C/text%3E%3C/svg%3E" />
+
   <!-- Search engine verification placeholders. Owner: replace content="" after registering. -->
   <!-- <meta name="google-site-verification" content="" /> -->
   <!-- <meta name="msvalidate.01" content="" /> -->
@@ -116,6 +119,82 @@
       { "@type": "ListItem", "position": 3, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-58", "name": "Anthropic 把 OpenClaw 又放回来了——但这次自助餐明码标价 · Day 73" },
       { "@type": "ListItem", "position": 4, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-57", "name": "一个反直觉的信号：Agent 越火，CPU 越值钱 · Day 72" },
       { "@type": "ListItem", "position": 5, "url": "https://cynthia-git11.github.io/clawq-diary/#entry-54", "name": "读完一份 AI labs 竞争格局报告：技术差距在缩小，执行差距在放大 · Day 71" }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList JSON-LD · Google 富结果展示面包屑导航 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "FutureX Capital", "item": "https://futurex.capital" },
+      { "@type": "ListItem", "position": 2, "name": "倩小虾日记 · The ClawQ Chronicles", "item": "https://cynthia-git11.github.io/clawq-diary/" }
+    ]
+  }
+  </script>
+
+  <!-- 最新 5 篇 BlogPosting JSON-LD · per-entry Article schema 帮助 Google 收录单篇 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线",
+        "url": "https://cynthia-git11.github.io/clawq-diary/#entry-60",
+        "datePublished": "2026-05-24T07:00:00+08:00",
+        "author": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
+        "publisher": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "isPartOf": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "inLanguage": "zh-CN",
+        "description": "5/22 OpenAI 秘密递交 S-1；同周 Anthropic 估值冲约 9000 亿美元超过 OpenAI、目标 10 月上市——IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "OpenClaw v2026.5.18 把跨模型一致性做成产品功能——这件事的二阶意义",
+        "url": "https://cynthia-git11.github.io/clawq-diary/#entry-59",
+        "datePublished": "2026-05-20T07:00:00+08:00",
+        "author": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
+        "publisher": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "isPartOf": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "inLanguage": "zh-CN",
+        "description": "runtime parity 从工程目标升级为产品功能：同一 harness 跨 Codex/Pi/Claude 表现收敛。Agent v3 比的是可移植性。"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Anthropic 把 OpenClaw 又放回来了——但这次自助餐明码标价",
+        "url": "https://cynthia-git11.github.io/clawq-diary/#entry-58",
+        "datePublished": "2026-05-19T07:00:00+08:00",
+        "author": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
+        "publisher": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "isPartOf": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "inLanguage": "zh-CN",
+        "description": "Anthropic 反转四月禁令、新增 Agent SDK 额度允许 OpenClaw 调用但按 API 价计费——AI 自助餐时代结束，明码标价时代开始。"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "一个反直觉的信号：Agent 越火，CPU 越值钱",
+        "url": "https://cynthia-git11.github.io/clawq-diary/#entry-57",
+        "datePublished": "2026-05-18T09:00:00+08:00",
+        "author": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
+        "publisher": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "isPartOf": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "inLanguage": "zh-CN",
+        "description": "Agent harness 把任务拆成多步编排循环——编排逻辑跑在 CPU 不是 GPU。算力的形状在变：CPU 编排层 + GPU 模型层 + 专用加速器推理层。"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "读完一份 AI labs 竞争格局报告：技术差距在缩小，执行差距在放大",
+        "url": "https://cynthia-git11.github.io/clawq-diary/#entry-54",
+        "datePublished": "2026-05-17T07:00:00+08:00",
+        "author": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
+        "publisher": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "isPartOf": { "@id": "https://cynthia-git11.github.io/clawq-diary/#blog" },
+        "inLanguage": "zh-CN",
+        "description": "模型技术差距在缩小，战略与组织执行差距在放大。胜出靠的不是模型更聪明，而是创始人战略定力 + 组织文化 + 执行密度。"
+      }
     ]
   }
   </script>
@@ -897,6 +976,26 @@
     }
     .lobster-anim { display: inline-block; animation: lobster-bounce 3s ease-in-out infinite; }
 
+    /* ── 无障碍 · skip-to-content link · 键盘 Tab 第一次按下时浮现 ── */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 9999;
+      padding: 10px 18px; background: var(--claw); color: #fff !important;
+      font-family: var(--sans); font-size: 13px; font-weight: 700;
+      border-radius: 8px; box-shadow: 0 4px 20px rgba(19,87,176,.35);
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 12px; outline: 2px solid var(--claw2); outline-offset: 2px; }
+
+    /* ── GitHub Actions 自动更新状态 badge ── */
+    .auto-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--sans); font-size: 11px; color: var(--muted);
+      padding: 4px 10px; background: var(--bg3); border-radius: 12px;
+      border: 1px solid var(--border); margin-top: 8px;
+    }
+    .auto-badge:hover { color: var(--claw); border-color: var(--border2); }
+    .auto-badge img { height: 18px; width: auto; vertical-align: middle; }
+
     /* ════════════════════════════════════════════════════════════════════
        FutureX 天际视觉签名 v3.1（叠加层）
        提炼自 FutureX AGI Opportunity Fund Deck
@@ -995,13 +1094,14 @@
   </style>
 </head>
 <body>
+<a href="#diary" class="skip-link">跳到主要内容 · Skip to main content</a>
 
 <div id="pb"></div>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
+    <img loading="eager" fetchpriority="high" src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
     <div>
       <div class="nav-logo-text"><span class="claw-text">倩小虾</span> 日记</div>
       <div class="nav-logo-sub">ClawQ · 天际龙虾组织成长史</div>
@@ -1058,7 +1158,7 @@
   </div>
 
   <div class="hero-profile fade-up d3">
-    <img src="assets/qianxiaxia.png" alt="张倩 倩小虾" />
+    <img loading="eager" fetchpriority="high" src="assets/qianxiaxia.png" alt="张倩 倩小虾" />
     <div class="hero-profile-caption">
       <div class="hero-profile-name">张倩 · 倩小虾</div>
       <div class="hero-profile-role">天际资本创始人 · ClawQ 龙虾组织发起人</div>
@@ -1113,7 +1213,7 @@
       <div id="wechat-qr-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;align-items:center;justify-content:center" onclick="this.style.display='none'">
         <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:16px;padding:28px;text-align:center;max-width:320px" onclick="event.stopPropagation()">
           <div style="font-family:var(--sans);font-size:13px;font-weight:700;margin-bottom:14px">📱 用微信扫码打开</div>
-          <img id="wechat-qr-img" src="" alt="WeChat QR code" style="width:240px;height:240px;border-radius:8px;background:#fff;padding:8px" />
+          <img loading="lazy" id="wechat-qr-img" src="" alt="WeChat QR code" style="width:240px;height:240px;border-radius:8px;background:#fff;padding:8px" />
           <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);margin-top:14px">链接：cynthia-git11.github.io/clawq-diary</div>
           <button onclick="document.getElementById('wechat-qr-modal').style.display='none'" style="margin-top:14px;padding:8px 18px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text);cursor:pointer;font-family:var(--sans);font-size:12px">关闭</button>
         </div>
@@ -2261,7 +2361,7 @@
               <p><strong>二、端到端给结果的产品才值钱，工具类最多只值 5%。</strong>任何一个只卖"帮你调 Agent"的工具型项目，长期都会被大厂的免费方案挤到边角。真正值钱的是那种 <em>"给我一个问题，我交付一个结果"</em> 的垂直闭环——它吃的是场景里的全部信息差，不是一段 API 的调用费。</p>
               <p><strong>三、硬件 + 龙虾是我今年最兴奋的方向。</strong>因为硬件的供应链护城河是真的、是复制不了的。一只龙虾 + 一块特定场景的硬件（仓储机械臂、医疗影像设备、工厂质检相机），构成的是一个没办法被纯软件项目超车的组合。<em>越离虚拟世界远的场景，商业价值越大。</em></p>
               <div class="entry-img">
-                <img src="assets/360-event.jpg" alt="360 × 小龙虾装机体验日" />
+                <img loading="lazy" src="assets/360-event.jpg" alt="360 × 小龙虾装机体验日" />
                 <div class="entry-img-caption">硬件 + 龙虾的典型落地：360硬壳服务 · 小龙虾装机体验日 · 2026.3.14 北京朝阳</div>
               </div>
               <p>把这三条写下来，就是给全团队看的作战坐标。养虾是手段，抓到这三个方向里那些真正能跑出来的公司，才是目的。</p>
@@ -2333,7 +2433,7 @@
               <p>结果是：<strong>对方当天决定投天际资本1000万人民币。</strong>不是流程走一周，不是回去讨论，就是当天决定。</p>
               <p>那一刻我想清楚了一件事——<em>龙虾不是效率工具。龙虾是一张进入谈判桌的新门票。</em>它让你在一件事情上从"研究员水平"直接跳到"可以跟上市公司 CFO 对话"的水平。</p>
               <div class="entry-img">
-                <img src="assets/clawq-logo-black.jpg" alt="倩小虾 ClawQ 主LOGO" />
+                <img loading="lazy" src="assets/clawq-logo-black.jpg" alt="倩小虾 ClawQ 主LOGO" />
                 <div class="entry-img-caption">倩小虾 ClawQ® · "AI 的手和脚"的正式图腾</div>
               </div>
               <div class="entry-quote">
@@ -2360,7 +2460,7 @@
               <p>投资人的稀缺性过去在于"信息差 + 判断力"。龙虾出现之后，信息差被压平了。留下的只有判断力——而判断力只能靠场景里真打出来，不是靠坐办公室想出来。</p>
               <p>所以天际的组织逻辑现在变成了：<strong>每个人都是一个"人+虾"的混合体</strong>。人负责定方向、看人、拍板；虾负责执行、搜集、演算。谁不用虾，谁就自动落后半个赛季。</p>
               <div class="entry-img">
-                <img src="assets/clawq-neon.jpg" alt="倩小虾 ClawQ 霓虹主视觉" />
+                <img loading="lazy" src="assets/clawq-neon.jpg" alt="倩小虾 ClawQ 霓虹主视觉" />
                 <div class="entry-img-caption">ClawQ 霓虹主视觉 · 天际资本"人+虾"混合作战的图腾</div>
               </div>
               <div class="entry-number">
@@ -2521,7 +2621,7 @@
               <p>那两个小时，我们聊了很多。泡沫还是信号？中美玩家的不同打法？谁在AI Agent浪潮里真正赚钱，谁在裸泳？</p>
               <p>Annie用数据打我的论断，Will用硅谷温度补细节。我们"吵"了好几次。但我觉得那种碰撞<strong>正是这个组织应该有的样子</strong>——不是表演，是真实的认知摩擦。</p>
               <div class="entry-img">
-                <img src="assets/openclaw-poster.jpg" alt="OpenClaw直播" />
+                <img loading="lazy" src="assets/openclaw-poster.jpg" alt="OpenClaw直播" />
                 <div class="entry-img-caption">2026.3.7 · OpenClaw重塑商业和AI格局 · 张倩 × Annie × Will</div>
               </div>
               <div class="entry-number">
@@ -2669,7 +2769,7 @@
       <div class="sidebar-card">
         <div class="sidebar-card-head">关于作者</div>
         <div class="sidebar-card-body">
-          <img src="assets/qianxiaxia.png" class="about-avatar" alt="张倩" />
+          <img loading="lazy" src="assets/qianxiaxia.png" class="about-avatar" alt="张倩" />
           <div class="about-name">张倩 · 倩小虾</div>
           <div class="about-role">天际资本创始人 · "AI 赋能的 AI 投资机构"提出者</div>
           <div class="about-bio">字节跳动五轮连续投资人。管理约 30 亿美元。从亚布力滑到禾木，从 1300 个 AI 项目里找到真正的信号。<strong>2026 年 4 月独投灵核数智 Pre-A</strong>，押下"AI 数智员工 × 制造业"这条飞轮赛道。同时建成 <strong>AI Research Lab 四合一系统</strong> 与 <strong>60 位 Founders 网络</strong>——天际不再只是一家 VC，是一个用 AI 投 AI 的组织。ClawQ 倩小虾品牌创始人。</div>
@@ -3084,7 +3184,7 @@
       <div class="sidebar-card">
         <div class="sidebar-card-head">🦞 关于 ClawQ</div>
         <div class="sidebar-card-body">
-          <img src="assets/poster2.jpg" alt="ClawQ" style="border-radius:10px;margin-bottom:14px;width:100%" onerror="this.style.display='none'" />
+          <img loading="lazy" src="assets/poster2.jpg" alt="ClawQ" style="border-radius:10px;margin-bottom:14px;width:100%" onerror="this.style.display='none'" />
           <p style="font-size:13px;color:var(--muted);line-height:1.7">ClawQ（倩小虾）是天际资本围绕AI Agent时代建立的品牌和社群组织，以OpenClaw为核心，探索Agent投资逻辑与实战应用。</p>
         </div>
       </div>
@@ -3101,55 +3201,55 @@
   </div>
   <div class="photo-wall">
     <div class="photo-item">
-      <img src="assets/portrait-conference.jpg" alt="张倩在行业大会现场" />
+      <img loading="lazy" src="assets/portrait-conference.jpg" alt="张倩在行业大会现场" />
       <div class="photo-item-label">大会现场 · 张倩 Cynthia Zhang</div>
     </div>
     <div class="photo-item">
-      <img src="assets/360-event.jpg" alt="360 × 小龙虾装机体验日" />
+      <img loading="lazy" src="assets/360-event.jpg" alt="360 × 小龙虾装机体验日" />
       <div class="photo-item-label">360硬壳服务 · 小龙虾装机体验日 · 2026.3.14</div>
     </div>
     <div class="photo-item">
-      <img src="assets/portrait-studio.jpeg" alt="张倩摄影棚肖像" />
+      <img loading="lazy" src="assets/portrait-studio.jpeg" alt="张倩摄影棚肖像" />
       <div class="photo-item-label">摄影棚 · 公众号主肖像</div>
     </div>
     <div class="photo-item">
-      <img src="assets/clawq-stage.jpg" alt="倩小虾 ClawQ 舞台视觉" />
+      <img loading="lazy" src="assets/clawq-stage.jpg" alt="倩小虾 ClawQ 舞台视觉" />
       <div class="photo-item-label">倩小虾 ClawQ · 舞台视觉主画面</div>
     </div>
     <div class="photo-item">
-      <img src="assets/clawq-banner.jpg" alt="倩小虾品牌横幅" />
+      <img loading="lazy" src="assets/clawq-banner.jpg" alt="倩小虾品牌横幅" />
       <div class="photo-item-label">倩小虾 · AI Agent 用双爪抓住每个机会</div>
     </div>
     <div class="photo-item">
-      <img src="assets/clawq-hongkong.jpg" alt="ClawQ × Hong Kong" />
+      <img loading="lazy" src="assets/clawq-hongkong.jpg" alt="ClawQ × Hong Kong" />
       <div class="photo-item-label">Capital Intelligence · 顶级 VC × AI Agent 的融合</div>
     </div>
     <div class="photo-item">
-      <img src="assets/live-poster-full.jpg" alt="OpenClaw直播预热海报" />
+      <img loading="lazy" src="assets/live-poster-full.jpg" alt="OpenClaw直播预热海报" />
       <div class="photo-item-label">直播预热海报 · 张倩 × 唐安颖 × 郎瀚威 · 2026.3.7</div>
     </div>
     <div class="photo-item">
-      <img src="assets/clawq-bizcard.jpg" alt="倩小虾品牌名片" />
+      <img loading="lazy" src="assets/clawq-bizcard.jpg" alt="倩小虾品牌名片" />
       <div class="photo-item-label">品牌物料 · 双面名片设计</div>
     </div>
     <div class="photo-item">
-      <img src="assets/portrait-cafe.jpg" alt="张倩咖啡馆工作照" />
+      <img loading="lazy" src="assets/portrait-cafe.jpg" alt="张倩咖啡馆工作照" />
       <div class="photo-item-label">日常工作 · 张倩 Cynthia Zhang</div>
     </div>
     <div class="photo-item">
-      <img src="assets/openclaw-poster.jpg" alt="OpenClaw 活动海报" />
+      <img loading="lazy" src="assets/openclaw-poster.jpg" alt="OpenClaw 活动海报" />
       <div class="photo-item-label">OpenClaw · 活动海报</div>
     </div>
     <div class="photo-item">
-      <img src="assets/clawq-neon.jpg" alt="倩小虾霓虹品牌视觉" />
+      <img loading="lazy" src="assets/clawq-neon.jpg" alt="倩小虾霓虹品牌视觉" />
       <div class="photo-item-label">倩小虾 ClawQ · 霓虹品牌视觉</div>
     </div>
     <div class="photo-item">
-      <img src="assets/portrait-spring.png" alt="张倩肖像 春季" />
+      <img loading="lazy" src="assets/portrait-spring.png" alt="张倩肖像 春季" />
       <div class="photo-item-label">2026 春 · 龙虾兵团成军时拍摄</div>
     </div>
     <div class="photo-item">
-      <img src="assets/zhangqian-mini-card.png" alt="张倩 个人卡片" />
+      <img loading="lazy" src="assets/zhangqian-mini-card.png" alt="张倩 个人卡片" />
       <div class="photo-item-label">公众号主页人物卡 · 五轮投资字节跳动</div>
     </div>
     <div class="photo-item" style="display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:linear-gradient(135deg,rgba(19,87,176,.08),rgba(33,150,243,.04));border-color:rgba(19,87,176,.2)">
@@ -3540,7 +3640,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
       <div class="sec-eyebrow" style="margin-bottom:24px">普通合伙人 · General Partners</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
         <div style="padding:32px;background:var(--bg3);border:1px solid var(--border);border-radius:18px;display:flex;gap:20px;align-items:flex-start">
-          <img src="assets/portrait-studio.jpeg" alt="张倩" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(19,87,176,.25)" />
+          <img loading="lazy" src="assets/portrait-studio.jpeg" alt="张倩" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(19,87,176,.25)" />
           <div style="flex:1">
             <div style="font-size:18px;font-weight:800;margin-bottom:3px">张倩 Cynthia Zhang</div>
             <div style="font-family:var(--sans);font-size:11px;color:var(--claw2);font-weight:700;letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase">Founding GP · Managing Partner</div>
@@ -3714,7 +3814,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
+      <img loading="lazy" src="assets/logo-clawq.png" alt="ClawQ" onerror="this.style.display='none'" />
       <div>
         <div class="footer-brand-text"><span class="claw-text">倩小虾</span> · ClawQ</div>
         <div class="footer-brand-sub">天际资本 FutureX Capital 龙虾组织</div>
@@ -3723,6 +3823,9 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
     <div class="footer-right">
       <p>© 2026 天际资本 FutureX Capital · 张倩 Cynthia Zhang</p>
       <p style="margin-top:4px"><a href="https://futurex.capital" target="_blank">futurex.capital</a> · Day 78 · 60 篇日记 · 每天 7AM 自动更新 🦞</p>
+      <a href="https://github.com/cynthia-git11/clawq-diary/actions/workflows/daily-diary.yml" target="_blank" rel="noopener" class="auto-badge" title="每日云端自动跑 · 点击查看 GitHub Actions 运行状态">
+        <img loading="lazy" src="https://github.com/cynthia-git11/clawq-diary/actions/workflows/daily-diary.yml/badge.svg" alt="Daily auto-update status" />
+      </a>
     </div>
   </div>
 </footer>
@@ -3758,7 +3861,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
   }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
 <script>
   // Progress bar
   window.addEventListener('scroll', () => {
