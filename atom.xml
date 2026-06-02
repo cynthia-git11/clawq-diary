@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-05-24T07:00:00+08:00</updated>
+  <updated>2026-06-02T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>Anthropic 9650 亿反超 OpenAI——但真正该读的是那个"470 亿 ARR"</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-61"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/61</id>
+    <updated>2026-06-02T07:00:00+08:00</updated>
+    <published>2026-06-02T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="估值锚"/>
+    <summary>5 月 29 日 Anthropic 完成 650 亿美元融资，估值定到 9650 亿，反超 OpenAI 三月的 8520 亿，同时端出 Claude Opus 4.8 与即将面向所有客户的 Mythos 模型。这次不是 IPO，但效力等同于 IPO 前的私募定价锚。真正该读的是另一组数字：ARR 从年初 300 亿冲到 470 亿，1000 多家企业客户年付 100 万美元以上——半年增 56%，没有 SaaS 公司画过这种曲线。延续 ENTRY 60 的判断：模型层用真实现金把"现金 vs 叙事"两边同时做实，Mythos 还在网络安全这种高利润业务里直接抢应用层的单。新尽调头号问题：客户会不会被模型厂自营业务直接吃掉？本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线</title>
