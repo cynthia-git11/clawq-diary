@@ -1024,6 +1024,48 @@
     }
     .toc-loading { font-size: 12px; color: var(--muted2); padding: 4px 0; }
 
+    /* ── 阅读时长 chip ── */
+    .reading-time {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--sans); font-size: 11px; font-weight: 600;
+      color: var(--muted2); margin-left: 8px;
+      padding: 2px 8px; border-radius: 10px;
+      background: var(--bg2); border: 1px solid var(--border);
+    }
+    .reading-time::before { content: "📖"; font-size: 11px; }
+
+    /* ── PWA 安装提示 toast ── */
+    #install-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%);
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px; max-width: 92vw;
+      background: linear-gradient(135deg, var(--claw), var(--claw2));
+      color: #fff; border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(19,87,176,.4);
+      font-family: var(--sans); font-size: 13px; font-weight: 600;
+      z-index: 10000; opacity: 0; transition: opacity .35s, transform .4s;
+    }
+    #install-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    #install-toast button {
+      padding: 6px 14px; border: none; border-radius: 8px;
+      font-family: var(--sans); font-size: 12px; font-weight: 700; cursor: pointer;
+      transition: all .15s;
+    }
+    #install-toast .install-yes { background: #fff; color: var(--claw); }
+    #install-toast .install-yes:hover { background: #f0f7ff; }
+    #install-toast .install-no { background: rgba(255,255,255,.18); color: #fff; }
+    #install-toast .install-no:hover { background: rgba(255,255,255,.28); }
+
+    /* ── 移动端 TOC + badge 微调 ── */
+    @media (max-width: 768px) {
+      .archive-toc-card .sidebar-card-body { max-height: 320px; }
+      .toc-item { padding: 8px 10px; font-size: 13px; }
+      .toc-day { min-width: 36px; }
+      .auto-badge { margin-top: 12px; }
+      .reading-time { font-size: 10px; padding: 1px 7px; }
+      #install-toast { font-size: 12px; padding: 12px 16px; max-width: calc(100vw - 24px); }
+    }
+
     /* ════════════════════════════════════════════════════════════════════
        FutureX 天际视觉签名 v3.1（叠加层）
        提炼自 FutureX AGI Opportunity Fund Deck
@@ -4296,6 +4338,71 @@ function toggleSetupGuide() {
         .catch(err => console.warn('[SW] registration failed:', err));
     });
   }
+
+  /* ── 阅读时长：每篇日记按中文字数 / 400 字每分钟估算 ── */
+  (function injectReadingTime(){
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.entry').forEach(e => {
+        const body = e.querySelector('.entry-body');
+        const tag = e.querySelector('.entry-tag');
+        if (!body || !tag) return;
+        if (tag.querySelector('.reading-time') || e.querySelector('.reading-time')) return;
+        // 中文字符 + 英文单词 折算（中文 1 字 = 英文 1 词 ≈ 同速）
+        const txt = body.textContent || '';
+        const cjk = (txt.match(/[一-龥]/g) || []).length;
+        const ascii = (txt.match(/[A-Za-z]+/g) || []).length;
+        const minutes = Math.max(1, Math.round((cjk + ascii) / 400));
+        const chip = document.createElement('span');
+        chip.className = 'reading-time';
+        chip.textContent = minutes + ' 分钟';
+        tag.parentNode.insertBefore(chip, tag.nextSibling);
+      });
+    });
+  })();
+
+  /* ── PWA 安装提示：访问 ≥3 次且未拒绝过才展示 ── */
+  (function pwaInstallPrompt(){
+    if (window.matchMedia('(display-mode: standalone)').matches) return; // 已装
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const visits = parseInt(localStorage.getItem('cqd_visits') || '0', 10) + 1;
+      localStorage.setItem('cqd_visits', visits);
+      const dismissed = parseInt(localStorage.getItem('cqd_install_dismissed') || '0', 10);
+      const now = Date.now();
+      if (visits < 3) return; // 至少 3 次访问
+      if (dismissed && (now - dismissed) < 30 * 24 * 3600 * 1000) return; // 30 天内拒过不再问
+      showToast();
+    });
+    function showToast(){
+      const toast = document.createElement('div');
+      toast.id = 'install-toast';
+      toast.innerHTML = '🦞 把这本日记装到主屏幕？离线也能读' +
+        '<button class="install-yes">好</button>' +
+        '<button class="install-no">稍后</button>';
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.add('show'));
+      toast.querySelector('.install-yes').onclick = async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          await deferredPrompt.userChoice;
+          deferredPrompt = null;
+        }
+        toast.remove();
+      };
+      toast.querySelector('.install-no').onclick = () => {
+        localStorage.setItem('cqd_install_dismissed', Date.now());
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      };
+    }
+    // 没触发 beforeinstallprompt 的浏览器（iOS Safari 等）也累计访问次数
+    if (!('onbeforeinstallprompt' in window)) {
+      const visits = parseInt(localStorage.getItem('cqd_visits') || '0', 10) + 1;
+      localStorage.setItem('cqd_visits', visits);
+    }
+  })();
 
   /* ── 月度归档 TOC：JS 扫描所有 .entry，按月分组生成侧栏链接 ── */
   (function buildArchiveToc(){
