@@ -17,6 +17,15 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/en.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
   </url>
   <url>
+    <loc>https://cynthia-git11.github.io/clawq-diary/ja.html</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/en.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://cynthia-git11.github.io/clawq-diary/ja.html" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+  </url>
+  <url>
     <loc>https://cynthia-git11.github.io/clawq-diary/#diary</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>

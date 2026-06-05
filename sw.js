@@ -10,7 +10,7 @@
  *        Cloudflare/自定义域下是 /，两边都兼容。
  * ───────────────────────────────────────────────────────────────── */
 
-const VERSION = 'v3.3.0';
+const VERSION = 'v3.7.0';
 const STATIC_CACHE = `clawq-static-${VERSION}`;
 const RUNTIME_CACHE = `clawq-runtime-${VERSION}`;
 
@@ -19,9 +19,12 @@ const PRECACHE = [
   './',
   './index.html',
   './en.html',
+  './ja.html',
   './manifest.json',
   './atom.xml',
   './sitemap.xml',
+  './assets/css/main.css',
+  './assets/js/app.js',
   './assets/logo-clawq.png',
   './assets/qianxiaxia.png',
   './assets/portrait-studio.jpeg',
