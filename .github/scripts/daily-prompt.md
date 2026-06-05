@@ -58,9 +58,11 @@
 - 顶部 stats：Day 数、"N 篇"
 - `<title>` + `og:title` + `twitter:title` 里的 Day 数
 - "最近更新"栏：日期 + 标题换成今天这篇
-- JSON-LD `ItemList`：把今天这篇加到 position 1，整体下移，保留 5 条
-- 侧栏「成长地图」：在"下一章"之前插入今天的条目
+- JSON-LD `ItemList`（第 2 个 `<script type="application/ld+json">` 块）：把今天这篇加到 position 1，整体下移，保留 5 条
+- JSON-LD `BlogPosting` `@graph` 数组（第 3 个 `<script type="application/ld+json">` 块，v3.2 引入）：在数组顶端 prepend 一个新 BlogPosting 对象（含 `headline / url=#entry-N / datePublished / author + publisher + isPartOf 用 @id 引用 / inLanguage / description`），把数组末尾最旧那条删掉以保持 top-5。**这一步漏掉的话 Google 富结果会卡在永久陈旧、SEO 退化。**
+- 侧栏「成长地图」：在"下一章"之前插入今天的条目，把上一条原本带 ⭐ 的去掉
 - 页脚两处 "Day N · N 篇"（一处中文 footer，一处 futurex.capital 链接行）
+- （TOC / Stats / 搜索这三个侧栏卡片是 JS 自动从 DOM 读取生成的，**不用手动维护**）
 
 ═══════════════════════════════════════════════
 4. 同步英文版 en.html（重要 — 不要漏）

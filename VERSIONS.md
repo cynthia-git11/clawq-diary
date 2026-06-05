@@ -4,6 +4,43 @@
 
 ---
 
+## 🏷️ v3.5-search-stats
+
+**日期**：2026-06-02
+**Commit**：[`98c06ad`](https://github.com/cynthia-git11/clawq-diary/commit/98c06ad)
+**回滚**：`git checkout v3.5-search-stats -- .`
+
+**新增**：站内 fulltext 搜索（Cmd/Ctrl+K）+ 侧栏「日记构成」stats widget（按 tag 自动分类）+ 删除零引用资产 `zhangqian-profile.png`（-1.98MB）。Day 87 / ENTRY 61 顺手带上。
+
+---
+
+## 🏷️ v3.3-pwa-toc
+
+**日期**：2026-06-01
+**Commit**：[`55e1fcc`](https://github.com/cynthia-git11/clawq-diary/commit/55e1fcc)
+**回滚**：`git checkout v3.3-pwa-toc -- .`
+
+**新增**：Service Worker（HTML network-first + 静态 cache-first，离线 PWA 能力）+ 侧栏「📚 按月浏览」TOC 卡（JS 自动按月分组）。v3.4 接续：阅读时长 chip + PWA 安装 toast（≥3 次访问触发）+ mobile 微调。
+
+---
+
+## 🏷️ v3.0-warm-lobster
+
+**日期**：2026-05-31
+**Commit**：[`6a7c39c`](https://github.com/cynthia-git11/clawq-diary/commit/6a7c39c)
+**回滚**：`git checkout v3.0-warm-lobster -- .`
+
+**状态描述**：FutureX 天际蓝品牌改造**之前**的最后一个暖暗色稳定版（"龙虾橘 + 黑底"原版）。如果觉得新蓝色系不喜欢，这是 1 行回滚的安全网。
+
+**改造路线**（v3.0 → v3.5）：
+- v3.1 · 天际蓝色系（deck-faithful 浅色版）
+- v3.2 · SEO + a11y + 性能 + GitHub Actions 自动更新 badge
+- v3.3 · PWA 离线 + 月度归档 TOC
+- v3.4 · 阅读时长 + 安装 toast + mobile 微调
+- v3.5 · 全文搜索 + Stats widget + 资产瘦身
+
+---
+
 ## 🏷️ v2.2-day-66
 
 **日期**：2026-05-12
