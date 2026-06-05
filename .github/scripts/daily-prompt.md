@@ -74,6 +74,16 @@
 - section 副标题里的 "N-entry" 和 "Read all N entries" 按钮数字
 
 ═══════════════════════════════════════════════
+4b. 同步日文版 ja.html（v3.7 引入 · 同样不要漏）
+═══════════════════════════════════════════════
+- 顶部 stats：Day 数、entry 数（数字本身不译）
+- nav-logo-sub："FutureX Capital · Day N · 日本語"
+- 页脚 ×2 处："Day N · Nエントリー"
+- 「最近のエントリー」摘要列表：在最上面加一行今天这篇的日文摘要（结构同 en.html 的 entry-row）
+- section 副标题里的 "Nエントリーの公開ノート" 和 "Nエントリーをすべて読む" 数字
+- **写日文摘要原则**：です/ます 形、机构级、保留品牌词不译（FutureX / OpenClaw / Anthropic / Mythos / AgiBot 等英文专名直接用）
+
+═══════════════════════════════════════════════
 5. 同步 atom.xml + sitemap.xml
 ═══════════════════════════════════════════════
 - `atom.xml`：feed 顶部 `<updated>` 改成今天 (UTC+8)；在第一个 `<entry>` 之前插入今天这篇的 `<entry>`（含 title / link `#entry-N` / id `entries/N` / updated / published / category / summary）。summary 末尾固定加一句"本日记不构成对任何基金产品的推介或募集要约。"

@@ -7,9 +7,10 @@ on:
     - cron: '0 23 * * *'
   workflow_dispatch:
 
-# 这个 job 需要写入仓库（git push）
+# 这个 job 需要写入仓库（git push）+ 失败时开 issue
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-diary
@@ -72,3 +73,59 @@ jobs:
           else
             echo "✓ Working tree clean."
           fi
+
+      # 失败时自动开 issue 通知用户（避免再次发生 5 天没人察觉）
+      - name: Notify on failure (open issue)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const day = '${{ steps.today.outputs.day_n }}';
+            const dateBJ = '${{ steps.today.outputs.today_bj }}';
+            const runUrl = `https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
+            const title = `[daily-diary] Day ${day} (${dateBJ}) auto-update FAILED`;
+            const body = [
+              `每日日记自动更新失败。`,
+              ``,
+              `**Day:** ${day}`,
+              `**北京日期:** ${dateBJ}`,
+              `**触发方式:** ${{ github.event_name }}`,
+              `**Run 日志:** ${runUrl}`,
+              ``,
+              `常见原因：`,
+              `1. \`ANTHROPIC_API_KEY\` secret 未配或失效 → [配置 secret](https://github.com/${{ github.repository }}/settings/secrets/actions)`,
+              `2. \`anthropics/claude-code-action@v1\` 版本变更 → 改成 \`@beta\` 试试`,
+              `3. Agent 跑超 \`--max-turns 40\` → 编辑 daily-diary.yml 提到 60`,
+              `4. WebSearch quota / 网络问题 → 看 log 详细错误`,
+              ``,
+              `修好之后到 Actions 页面手动 Run workflow 重跑，或者明天 7AM 自动重试。`,
+              ``,
+              `本 issue 由 daily-diary workflow 自动生成。修复后直接关闭即可。`
+            ].join('\n');
+            // 检查是否已有同样未关闭的 issue（避免连续失败开 5 个相同 issue）
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'daily-diary-failure',
+              state: 'open',
+              per_page: 5
+            });
+            if (existing.data.length > 0) {
+              // 已有未关闭 issue，仅追加评论
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body: `又失败一次：Day ${day} (${dateBJ}) · [log](${runUrl})`
+              });
+              core.info(`已在 issue #${existing.data[0].number} 上追加评论`);
+            } else {
+              const issue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['daily-diary-failure']
+              });
+              core.info(`已开 issue #${issue.data.number}`);
+            }
