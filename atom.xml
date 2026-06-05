@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-03T07:00:00+08:00</updated>
+  <updated>2026-06-05T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,28 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>Day 90 复盘：90 天公开写日记真正改变了的是我自己</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-66"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/66</id>
+    <updated>2026-06-05T07:00:00+08:00</updated>
+    <published>2026-06-05T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="Day 90 复盘"/>
+    <summary>90 天 66 篇日记的里程碑复盘——24 天缺位、平均每周漏一次，但比"撑不过 30 天"的判断好。90 天前以为公开写是给读者看，90 天后回头看真正被改造的是自己：被迫每天把"我以为我懂"写成"我能证明"，60% 的初稿写到中段就发现底层假设没立住。修正过的 3 个核心判断：通用 harness 双向夹击（ENTRY 56→64，32 天）、智力成本分层（ENTRY 43→44，1 天）、模型层定价权三段递进（ENTRY 58→60→61）。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
+
+  <entry>
+    <title>中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-65"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/65</id>
+    <updated>2026-06-04T07:00:00+08:00</updated>
+    <published>2026-06-04T07:00:00+08:00</published>
+    <category term="tech"/>
+    <category term="第四层"/>
+    <summary>中国 embodied intelligence 累计融资过 ¥345 亿（约 $48B），23 家进 10 亿俱乐部，AgiBot 单笔 $200M A 轮，Figure + UBTECH 全球累计 $35 亿超后 6 名加总，Q1 单 world models 就吃 $60 亿。Morgan Stanley 给 humanoid 2050 画 $5 万亿。麦肯锡 4 月被忽略的一句"供应链是 humanoid 规模化里最被低估的约束"才是真信号。算力 4 层重组：CPU 编排 + GPU 模型 + 专用推理加速器 + 机械供应链；第 4 层（谐波减速器、力矩传感器、电池、关节伺服）现在还是老牌工业 + 隐形冠军撑着、估值远未被定价。Figure 估值 $40B 不只是因为模型，是因为把关键供应链产能提前锁了。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>今天三连发：Mythos + 应用层数据 + 我对 OpenClaw 这类工具的判断要修正了</title>
