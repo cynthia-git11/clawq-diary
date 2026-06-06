@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-05T07:00:00+08:00</updated>
+  <updated>2026-06-06T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>我把日记 cron 从 API key 切到了 OAuth——这条小操作背后的"订阅 vs API"信号</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-67"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/67</id>
+    <updated>2026-06-06T07:00:00+08:00</updated>
+    <published>2026-06-06T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="订阅经济学"/>
+    <summary>把日记 cron 从 ANTHROPIC_API_KEY 切到 CLAUDE_CODE_OAUTH_TOKEN 直接复用 Pro 订阅——一行配置改动里有广泛信号。模型厂自己在抹掉 API/订阅边界：你的订阅可以反过来给"开发机器人"用，订阅成为另一条 API 通路。对 Agent 创业者，意味着两条供给路径并存——sub-as-API vs API-as-billing-rail。当订阅可以代替 API，$20/月 Pro 和 $100/月 Max 就是整条 Agent 链路定价的隐性 anchor。所有"按 API 转手收钱"的中间层（harness、aggregator、proxy、token bank）下半年要重新算两条曲线——pure API 模式要么转向 OAuth 直连卡位订阅、要么死在 $20/月 天花板上。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>Day 90 复盘：90 天公开写日记真正改变了的是我自己</title>

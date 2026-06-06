@@ -50,7 +50,9 @@ jobs:
       - name: Run Claude agent — daily diary update
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 用 OAuth token 复用你已有的 Claude Pro/Max 订阅、不另付 API 账单
+          # 本地跑 `claude setup-token` 拿 token、放到 secret CLAUDE_CODE_OAUTH_TOKEN
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             Today is ${{ steps.today.outputs.today_bj }} (Beijing time), which is Day ${{ steps.today.outputs.day_n }} of the diary (counted from 2026-03-08).
 
@@ -93,7 +95,7 @@ jobs:
               `**Run 日志:** ${runUrl}`,
               ``,
               `常见原因：`,
-              `1. \`ANTHROPIC_API_KEY\` secret 未配或失效 → [配置 secret](https://github.com/${{ github.repository }}/settings/secrets/actions)`,
+              `1. \`CLAUDE_CODE_OAUTH_TOKEN\` secret 未配或失效（本地跑 \`claude setup-token\` 重新拿）→ [配置 secret](https://github.com/${{ github.repository }}/settings/secrets/actions)`,
               `2. \`anthropics/claude-code-action@v1\` 版本变更 → 改成 \`@beta\` 试试`,
               `3. Agent 跑超 \`--max-turns 40\` → 编辑 daily-diary.yml 提到 60`,
               `4. WebSearch quota / 网络问题 → 看 log 详细错误`,
