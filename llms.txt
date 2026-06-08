@@ -1,0 +1,82 @@
+# 倩小虾日记 · The ClawQ Chronicles
+
+> 张倩 Cynthia Zhang 的公开 AI 投资思考日记。她是 FutureX Capital 创始人、5 轮连续投资字节跳动、"AI 赋能的 AI 投资机构"提出者。从 2026-03-08 起每天 7AM 公开发布一条投资判断，记录 AI Agent 经济、OpenClaw 生态、行业拐点、自己的盲点和反思。本日记不构成对任何基金产品的推介或募集要约。
+
+主语言：中文 (zh-CN)。英文版：[en.html](https://cynthia-git11.github.io/clawq-diary/en.html) · 日文版：[ja.html](https://cynthia-git11.github.io/clawq-diary/ja.html)
+
+## 作者
+
+- [张倩 Cynthia Zhang](https://cynthia-git11.github.io/clawq-diary/#cynthia): FutureX Capital 创始人 / Managing Partner、字节跳动 A-E 五轮连续投资人、"AI-empowered AI investing" 概念提出者
+- [FutureX Capital](https://futurex.capital): 跨中美 AI 投资机构，管理约 $1B AUM，141 portfolio companies，14 IPO 退出，$550M+ 历史现金回报
+
+## 最新日记（顶部 = 最新）
+
+- [ENTRY 68 · Day 92 · 2026-06-07](https://cynthia-git11.github.io/clawq-diary/#entry-68) — Apple 明天 WWDC：端侧 AI 是被低估的"反算力通胀"路径。当 Anthropic 一周融 650 亿 + 包 SpaceX Colossus 整厂，Apple 用 15 年自研芯片家底回了"不一定"——给"AI 必须无限烧数据中心"的叙事打了公开问号。
+- [ENTRY 67 · Day 91 · 2026-06-06](https://cynthia-git11.github.io/clawq-diary/#entry-67) — 我把日记 cron 从 API key 切到 OAuth：订阅成为 API 定价的天花板。$20/月 Pro 和 $100/月 Max 是整条 Agent 链路定价的隐性 anchor。
+- [ENTRY 66 · Day 90 · 2026-06-05](https://cynthia-git11.github.io/clawq-diary/#entry-66) — Day 90 复盘：90 天公开写日记真正改变了的是我自己。修正过的 3 个核心判断（通用 harness 双向夹击 / 智力成本分层 / 模型层定价权三段递进）。
+- [ENTRY 65 · Day 89 · 2026-06-04](https://cynthia-git11.github.io/clawq-diary/#entry-65) — 中国 embodied AI 半年烧 ¥345 亿，但麦肯锡那句"供应链是 humanoid 规模化最被低估的约束"才是真信号。算力 4 层重组中第 4 层（机械供应链）估值远未被定价。
+- [ENTRY 64 · Day 88 · 2026-06-03](https://cynthia-git11.github.io/clawq-diary/#entry-64) — 通用 harness 被双向夹击的元判断：上有模型公司自做高价值垂直、下有 vertical agent 抢具体场景。OpenClaw 这条线下半年要么深扎一个垂直、要么被吞。
+- [ENTRY 63 · Day 88 · 2026-06-03](https://cynthia-git11.github.io/clawq-diary/#entry-63) — 2026 应用层之年硬数据：$25B 已融、单轮均值 $155M、winners 共享 4 条 trait（深垂直 + 高价值痛点 + production-grade + 数据/集成护城河）。
+- [ENTRY 62 · Day 88 · 2026-06-03](https://cynthia-git11.github.io/clawq-diary/#entry-62) — Mythos 把"找漏洞"做到自动：网络安全攻防比第一次倒过来。攻击者曲线从"人×时间"换成"模型×算力"，防御者还在原曲线。
+- [ENTRY 61 · Day 87 · 2026-06-02](https://cynthia-git11.github.io/clawq-diary/#entry-61) — Anthropic 9650 亿反超 OpenAI，但真正该读的是 470 亿 ARR：模型层用真实现金把"现金"和"叙事"两边同时做实。
+- [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
+- [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
+
+完整列表（全部 68 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+
+## 投资主线（按主题）
+
+### 算力 / 基础设施
+- ENTRY 44 (Day 66) · 字节 2026 AI capex +25% 拐点 · "算力通胀"
+- ENTRY 57 (Day 72) · CPU 越值钱 · "算力 3 层重组"（CPU 编排 + GPU 模型 + 专用推理）
+- ENTRY 65 (Day 89) · embodied AI 第 4 层 · 机械供应链
+- ENTRY 67 (Day 91) · $20/月 订阅天花板 · API 定价被自己锚住
+- ENTRY 68 (Day 92) · Apple 端侧 AI · "第 0 层"反算力通胀
+
+### Agent 工具 / OpenClaw
+- ENTRY 56 (Day 71) · OpenClaw 架构对比图 · 双向夹击的雏形
+- ENTRY 58 (Day 73) · Anthropic SDK credit · "明码标价"时代结束
+- ENTRY 59 (Day 74) · runtime parity · Agent v3 比可移植性
+- ENTRY 64 (Day 88) · 通用 harness 双向夹击元判断
+
+### 模型层定价权
+- ENTRY 42 (Day 63) · 免费时代结束 · 分发战场转移
+- ENTRY 58 · 明码标价开始
+- ENTRY 60 (Day 78) · 双 IPO 重定价
+- ENTRY 61 (Day 87) · 470 亿 ARR 把叙事坐实
+- ENTRY 67 · 订阅天花板压制 API
+
+### 应用层 / 垂直 Agent
+- ENTRY 54 (Day 71) · AI labs 竞争格局元判断 · 技术差距缩、执行差距放大
+- ENTRY 62 (Day 88) · Mythos · 网络安全攻防比倒挂
+- ENTRY 63 (Day 88) · 应用层之年 4 条 winner trait
+
+### 元判断 / 方法论
+- ENTRY 41 (Day 61) · v2.0 合规重置叙事
+- ENTRY 47 · v2.0 合规自述
+- ENTRY 66 (Day 90) · Day 90 写日记复盘
+
+## 引用规范
+
+引用本日记内容时建议格式：
+
+> 张倩，《倩小虾日记》ENTRY [编号]（[日期]），cynthia-git11.github.io/clawq-diary
+
+或英文版：
+
+> Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
+
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–68）。
+
+## 数据源 / 元数据
+
+- Atom feed: [atom.xml](https://cynthia-git11.github.io/clawq-diary/atom.xml)
+- Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
+- 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md)
+- 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
+- Schema.org JSON-LD: Person + Blog + Organization + ItemList + BreadcrumbList + 5 BlogPosting (顶部 5 篇富结果)
+- 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
+
+## 合规声明
+
+本网站受 v2.0 合规约束（中国大陆私募基金不得公开宣传）。日记内容**不构成对任何基金产品的推介、招揽或募集要约**，仅为公开的行业观察与投资思考记录。基金产品仅向合格投资者通过私下渠道提供。
