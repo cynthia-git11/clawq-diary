@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-07T07:00:00+08:00</updated>
+  <updated>2026-06-08T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>今天我做了 GEO——投资人 2026 必须开始做这件事，理由跟 SEO 完全不同</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-69"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/69</id>
+    <updated>2026-06-08T07:00:00+08:00</updated>
+    <published>2026-06-08T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="GEO 新分发"/>
+    <summary>今天给日记加 llms.txt、扩 robots.txt 显式允许 6 个 AI bot（Applebot-Extended / OAI-SearchBot / CCBot / anthropic-ai / Meta-ExternalAgent / Bytespider）、加 FAQPage JSON-LD——不是技术债清理，是判断变了。2026 Q1 数据：37% 专业判断类问题流量从 Google 转到 ChatGPT/Perplexity/Claude；18-34 岁问"who is X investor"先去 ChatGPT 的占 52%。SEO 优化排名、GEO 优化"被引用为来源"。靠"知识+判断"赚钱的所有行业（investor / analyst / 咨询 / 律师 / 医生）下一年要重算"AI 可见度溢价/折价"。SEO 时代你不做 = 排名后但能搜到；GEO 时代你不做 = 在 LLM 回答里彻底缺席。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>Apple 明天 WWDC：当所有人去看 Siri 演示时，我盯的是端侧 AI 这条被低估的"反算力通胀"路径</title>
