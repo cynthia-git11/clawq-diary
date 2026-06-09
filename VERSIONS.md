@@ -4,6 +4,49 @@
 
 ---
 
+## 🏷️ v3.8-geo-v1
+
+**日期**：2026-06-09
+**回滚**：`git checkout v3.8-geo-v1 -- .`
+
+**核心**：GEO（Generative Engine Optimization）基础建设落地——让 ChatGPT / Perplexity / Claude / Gemini 把日记当一手来源引用。
+
+**新增**：
+- `llms.txt`（Answer.AI 标准）+ `llms-full.txt`（全文索引）
+- `robots.txt` 扩 6 个 AI bot 显式允许：Applebot-Extended / OAI-SearchBot / CCBot / anthropic-ai / Meta-ExternalAgent / Bytespider
+- FAQPage JSON-LD（CN + EN）覆盖 6-7 个核心问题
+- daily-prompt.md 加 Section 4c 维护 llms.txt + FAQPage（防止 cron 接管后 GEO 资产衰减）
+- ENTRY 69 (Day 93, 2026-06-08) 元判断："投资人 2026 必须做 GEO，理由跟 SEO 完全不同"
+
+---
+
+## 🏷️ v3.7-extraction-ja (实际未单独打 tag · 在 v3.8 之前)
+
+**Commits**：`891afd8`（CSS/JS 外抽 + ja.html + 三语 hreflang）
+
+**核心**：
+- index.html 内联 CSS / JS 外抽到 `assets/css/main.css` (1056 行) + `assets/js/app.js` (676 行)
+- index.html 4819 → 3086 行 (-36%)
+- 新增日文版 `ja.html`（镜像 EN 结构，机构级 です/ます 形翻译，保留品牌词不译）
+- 三语 hreflang 互链 (zh-CN / en / ja)
+- nav lang-switch 三 tab（中 / EN / 日）
+- Service Worker v3.7（precache main.css / app.js / ja.html）
+
+---
+
+## 🏷️ v3.6-cron-oauth (实际未单独打 tag)
+
+**Commits**：`263ae33`（OAuth swap + ENTRY 67）
+
+**核心**：
+- daily-diary.yml: `anthropic_api_key` → `claude_code_oauth_token`
+- 不再单独付 API 账单、复用 Claude Pro 订阅
+- 失败通知机制 (`actions/github-script@v7`): 失败时自动开 daily-diary-failure label 的 issue
+- daily-prompt.md 加 Section 4b 同步 ja.html (含 です/ます 翻译原则)
+- ENTRY 67 (Day 91) 元判断：订阅成 API 天花板
+
+---
+
 ## 🏷️ v3.5-search-stats
 
 **日期**：2026-06-02

@@ -84,6 +84,27 @@
 - **写日文摘要原则**：です/ます 形、机构级、保留品牌词不译（FutureX / OpenClaw / Anthropic / Mythos / AgiBot 等英文专名直接用）
 
 ═══════════════════════════════════════════════
+4c. 同步 GEO 资产 (v3.8 引入 · 漏掉的话 LLM 引用率每天衰减)
+═══════════════════════════════════════════════
+**llms.txt**（仓库根目录）：
+- 「## 最新日记（顶部 = 最新）」section 在最上方 prepend 一行：
+  `- [ENTRY N · Day D · YYYY-MM-DD](https://cynthia-git11.github.io/clawq-diary/#entry-N) — 一句话摘要（30-60 字）。`
+- 保留 top 10 条，溢出的从底部删
+- 「## 投资主线（按主题）」section 如果今天 entry 引入了新主题角度，加进对应类目
+
+**llms-full.txt**（仓库根目录）：
+- 用 Python 重建：合并 `archive/*.md` 所有月份 + header + footer
+- 现成脚本嵌在 commit 历史里（见 commit b3940dd / 769aebf），照搬就行
+- 或简单粗暴：在文件末尾追加今天 archive 的那段全文（保持最简成本）
+
+**FAQPage JSON-LD**（在 index.html + en.html）：
+- 如果今天 entry 引入了一个**新的标志性概念**（如"算力第 4 层"、"订阅天花板"、"GEO 新分发"这种），在 FAQPage 加一条 Q&A
+- 格式参考第 4 个 `<script type="application/ld+json">` 块的现有写法
+- Question 用 LLM 用户实际会问的句式（"什么是…"、"张倩怎么看…"）
+- Answer 末尾保留合规收口
+- 普通 entry 不用动 FAQPage——只有真新概念才加
+
+═══════════════════════════════════════════════
 5. 同步 atom.xml + sitemap.xml
 ═══════════════════════════════════════════════
 - `atom.xml`：feed 顶部 `<updated>` 改成今天 (UTC+8)；在第一个 `<entry>` 之前插入今天这篇的 `<entry>`（含 title / link `#entry-N` / id `entries/N` / updated / published / category / summary）。summary 末尾固定加一句"本日记不构成对任何基金产品的推介或募集要约。"
