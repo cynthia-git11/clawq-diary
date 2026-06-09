@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-08T07:00:00+08:00</updated>
+  <updated>2026-06-09T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>WWDC 之后我必须公开修正 ENTRY 68——Apple 不是反 hyperscaler，是反向收编</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-70"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/70</id>
+    <updated>2026-06-09T07:00:00+08:00</updated>
+    <published>2026-06-09T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="公开修正"/>
+    <summary>WWDC 真发生后 ENTRY 68 判断错了一半。实际：(a) Apple Foundation Models 与 Google Gemini 合作 custom-built；(b) Xcode 27 接入 Anthropic / Google / OpenAI coding agents；(c) 顶级 Siri AI 仍需 hyperscaler 后端。Apple 不是反 hyperscaler，是反向收编——把 hyperscaler 接入 3 亿设备分发渠道当 supplier，跟当年对运营商的范式一样。3 条投资判断补丁：(1) hyperscaler 中介估值短期反而托住；(2) 端侧硬件 + humanoid 第 4 层判断仍成立；(3) Siri AI 暂不上中欧给国产端侧 AI 芯片 + 国产模型 2-3 季度独立窗口。元判断：判断的颗粒度比方向更重要——Apple 是 hyperscaler 零售商、不是 hyperscaler killer。继续写日记的价值在于：5 天前下错注、今天必须公开打日期戳承认。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>今天我做了 GEO——投资人 2026 必须开始做这件事，理由跟 SEO 完全不同</title>
