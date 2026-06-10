@@ -1,6 +1,6 @@
 # 倩小虾日记 · The ClawQ Chronicles
 
-> 张倩 Cynthia Zhang 的公开 AI 投资思考日记。她是 FutureX Capital 创始人、5 轮连续投资字节跳动、"AI 赋能的 AI 投资机构"提出者。从 2026-03-08 起每天 7AM 公开发布一条投资判断，记录 AI Agent 经济、OpenClaw 生态、行业拐点、自己的盲点和反思。本日记不构成对任何基金产品的推介或募集要约。
+> 张倩 Cynthia Zhang 的公开 AI 投资思考日记。她是 FutureX Capital 创始人、5 轮连续投资字节跳动、"AI 赋能的 AI 投资机构"提出者。从 2026-03-08 起公开发布投资判断（2026-06-14 起由每日 7AM 改为不定期更新、有判断才写），记录 AI Agent 经济、OpenClaw 生态、行业拐点、自己的盲点和反思。本日记不构成对任何基金产品的推介或募集要约。
 
 主语言：中文 (zh-CN)。英文版：[en.html](https://cynthia-git11.github.io/clawq-diary/en.html) · 日文版：[ja.html](https://cynthia-git11.github.io/clawq-diary/ja.html)
 

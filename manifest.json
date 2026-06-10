@@ -1,7 +1,7 @@
 {
   "name": "倩小虾日记 · The ClawQ Chronicles",
   "short_name": "倩小虾日记",
-  "description": "天际资本张倩的每日 AI 投资日记 · A Daily AI Investing Diary by Cynthia Zhang, FutureX Capital",
+  "description": "天际资本张倩的AI 投资日记（不定期更新） · An AI Investing Diary by Cynthia Zhang, FutureX Capital",
   "lang": "zh-CN",
   "dir": "ltr",
   "start_url": "/clawq-diary/",
@@ -30,28 +30,47 @@
       "purpose": "any"
     }
   ],
-  "categories": ["business", "finance", "productivity"],
+  "categories": [
+    "business",
+    "finance",
+    "productivity"
+  ],
   "shortcuts": [
     {
       "name": "最新日记 Latest Entry",
       "short_name": "最新",
       "description": "Jump to the latest diary entry",
       "url": "/clawq-diary/#diary",
-      "icons": [{ "src": "assets/clawq-square.jpg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "assets/clawq-square.jpg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "致 LP · For LPs",
       "short_name": "LP",
       "description": "Institutional LP information center",
       "url": "/clawq-diary/#invest",
-      "icons": [{ "src": "assets/clawq-square.jpg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "assets/clawq-square.jpg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "English",
       "short_name": "EN",
       "description": "English version",
       "url": "/clawq-diary/en.html",
-      "icons": [{ "src": "assets/clawq-square.jpg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "assets/clawq-square.jpg",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }

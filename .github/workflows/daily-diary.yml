@@ -1,10 +1,11 @@
-name: Daily Diary Auto-Update
+name: Diary Auto-Update (aperiodic)
 
-# 每天北京时间 7AM (UTC 23:00 前一天) 自动跑一次
-# 也支持在 Actions 页面手动 "Run workflow"
+# 不定期更新策略 (2026-06-14 起，原每日 7AM)：
+# 每周二/周五北京 7AM 触发检查，由 Claude 判断是否有值得写的实质判断——
+# 没有就不写、不产生 commit。手动 Run workflow 可随时加更。
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 23 * * 1,4'
   workflow_dispatch:
 
 # 这个 job 需要写入仓库（git push）+ 失败时开 issue
@@ -58,7 +59,9 @@ jobs:
 
             Read `.github/scripts/daily-prompt.md` from this repo — it contains the full procedure. Execute every step. The working directory is the repo root. Use the date and Day number above as authoritative.
 
-            At the end, you MUST commit and push the changes yourself via the Bash tool. The git user is already configured. If today's entry already exists (re-run / replay), skip writing a new entry but still verify all metadata is consistent.
+            IMPORTANT — aperiodic policy: this diary is NOT daily anymore. First review what happened since the last entry. Only write a new entry if there is (a) a substantive development that changes an existing thesis, (b) a new judgment worth adding to the ledger, or (c) a published call being verified/falsified. If none apply, do NOT write an entry — just verify site consistency and exit WITHOUT committing, printing "今日无新判断，跳过". Quality over cadence; an empty week is acceptable, a filler post is not.
+
+            If you do write: at the end, you MUST commit and push the changes yourself via the Bash tool. The git user is already configured. If today's entry already exists (re-run / replay), skip writing a new entry but still verify all metadata is consistent.
           claude_args: |
             --allowed-tools Read,Edit,Write,Bash,WebSearch,WebFetch
             --max-turns 40
@@ -87,7 +90,7 @@ jobs:
             const runUrl = `https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
             const title = `[daily-diary] Day ${day} (${dateBJ}) auto-update FAILED`;
             const body = [
-              `每日日记自动更新失败。`,
+              `日记自动更新（不定期策略）运行失败。`,
               ``,
               `**Day:** ${day}`,
               `**北京日期:** ${dateBJ}`,
@@ -100,7 +103,7 @@ jobs:
               `3. Agent 跑超 \`--max-turns 40\` → 编辑 daily-diary.yml 提到 60`,
               `4. WebSearch quota / 网络问题 → 看 log 详细错误`,
               ``,
-              `修好之后到 Actions 页面手动 Run workflow 重跑，或者明天 7AM 自动重试。`,
+              `修好之后到 Actions 页面手动 Run workflow 重跑，或等下个触发日（周二/周五 7AM）自动重试。`,
               ``,
               `本 issue 由 daily-diary workflow 自动生成。修复后直接关闭即可。`
             ].join('\n');
