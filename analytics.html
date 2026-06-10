@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>倩小虾日记 · 访问数据看板 · ClawQ Analytics</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📊%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{--bg:#FFFFFF;--bg2:#F4F8FD;--bg3:#E8F1FB;--bg4:#DCEEFA;--border:rgba(19,87,176,.12);--border2:rgba(19,87,176,.24);--text:#0E2A55;--muted:#4A6280;--muted2:#7C8FA8;--claw:#1357B0;--claw2:#2196F3;--claw3:#6BB6FF;--gold:#B8860B;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:60px;background:rgba(255,255,255,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2)}
+  .nav-l{display:flex;align-items:center;gap:10px;font-weight:800}
+  .nav-links{display:flex;gap:18px;font-size:13px;color:var(--muted)}
+  .nav-links a:hover{color:var(--claw)}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+  .demo{background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-radius:12px;padding:12px 18px;font-size:12.5px;color:var(--muted);margin-bottom:24px}
+  .demo b{color:var(--claw)}
+  h1{font-size:26px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px}
+  .sub{font-size:13px;color:var(--muted2);margin-bottom:24px}
+  .today{background:linear-gradient(135deg,var(--claw),var(--claw2));color:#fff;border-radius:16px;padding:22px 24px;margin-bottom:24px;box-shadow:0 14px 40px rgba(19,87,176,.28)}
+  .today .ttl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:14px}
+  .today-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  .today-grid .m .v{font-size:25px;font-weight:800;line-height:1.1}
+  .today-grid .m .l{font-size:11px;opacity:.85;margin-top:3px}
+  .today-grid .m .d{font-size:11px;font-weight:700;margin-top:5px}
+  .up{color:#7CFFB0}.down{color:#FFC9B8}
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}
+  .kpi{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px}
+  .kpi .v{font-size:23px;font-weight:800;color:var(--claw);line-height:1.1}
+  .kpi .l{font-size:11.5px;color:var(--muted);margin-top:5px}
+  .kpi .s{font-size:11px;color:var(--muted2);margin-top:3px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:22px}
+  .card h2{font-size:15px;font-weight:800;margin-bottom:4px}
+  .card .cs{font-size:12px;color:var(--muted2);margin-bottom:16px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .geo-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;font-size:13px}
+  .geo-row .fl{width:22px;text-align:center}
+  .geo-row .nm{width:84px;color:var(--text)}
+  .geo-row .bar{flex:1;height:9px;background:var(--bg3);border-radius:5px;overflow:hidden}
+  .geo-row .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--claw),var(--claw2));border-radius:5px}
+  .geo-row .pc{width:46px;text-align:right;font-weight:700;color:var(--muted)}
+  .geo-row .pv{width:58px;text-align:right;color:var(--muted2);font-size:11.5px}
+  .legend{font-size:11.5px;color:var(--muted2);margin-top:10px}
+  footer{text-align:center;font-size:11.5px;color:var(--muted2);padding:30px 20px;border-top:1px solid var(--border)}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.today-grid{grid-template-columns:repeat(2,1fr);gap:14px}.row2{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-l"><span style="font-size:20px">📊</span> ClawQ Analytics</div>
+  <div class="nav-links"><a href="index.html">← 返回日记</a><a href="https://futurex.capital" target="_blank">FutureX</a></div>
+</nav>
+<div class="wrap">
+  <div class="demo">⚠️ <b>演示数据</b>：当前展示自建追踪系统的模拟数据集（过去 30 天）。采集器 <code>assets/js/tracker.js</code> 已上线、正在本机累计真实事件；接入自建后端（Cloudflare Worker + KV）后本看板自动替换为真实流量。本页 noindex，不对外索引。</div>
+  <h1>访问数据看板</h1>
+  <div class="sub" id="range">加载中…</div>
+  <div class="today"><div class="ttl">📈 今日快报 · <span id="t-date">—</span></div><div class="today-grid" id="today-grid"></div></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="card"><h2>📅 每日浏览量</h2><div class="cs">过去 30 天 · 金点为日记爆款发布日的访问峰值</div><div id="pv-chart"></div></div>
+  <div class="row2">
+    <div class="card"><h2>🌍 访问国家 / 地区</h2><div class="cs">按 30 天累计浏览量占比</div><div id="geo"></div></div>
+    <div class="card"><h2>📖 完读率 &amp; 转发</h2><div class="cs">完读 = 滚动至正文末尾且停留 &gt;15s · 近 14 天</div><div id="engage"></div></div>
+  </div>
+  <div class="card"><h2>🗣️ 语言版本分布</h2><div class="cs">中文 / English / 日本語</div><div id="lang"></div></div>
+  <footer>自建追踪系统 · 无第三方 · 无 cookie · 仅聚合事件不存 PII<br>数据由 scripts/gen-traffic.py 确定性生成 · 每日汇报滚动重跑</footer>
+</div>
+<script src="assets/js/analytics-data.js?v=2"></script>
+<script>
+(function(){
+  var A = window.CLAWQ_ANALYTICS;
+  var box = document.getElementById('range');
+  if(!A){ box.textContent='⚠️ 数据文件 analytics-data.js 未加载'; return; }
+  function fmt(n){ return Number(n).toLocaleString('en-US'); }
+  function mmss(s){ return Math.floor(s/60)+'分'+(s%60<10?'0':'')+(s%60)+'秒'; }
+  function pct(x){ return (x*100).toFixed(0)+'%'; }
+  function delta(a,b){ var p=(a-b)/b*100; var c=p>=0?'up':'down'; return '<div class="d '+c+'">'+(p>=0?'▲':'▼')+Math.abs(p).toFixed(0)+'% vs 昨日</div>'; }
+
+  var d=A.daily, last=d[d.length-1], prev=d[d.length-2], T=A.totals;
+  box.textContent='数据区间 '+d[0].date+' → '+last.date+' · 共 '+A.range_days+' 天 · 生成于 '+A.generated;
+  document.getElementById('t-date').textContent=last.date;
+
+  var readToday=Math.round(last.pv*last.completion_rate);
+  document.getElementById('today-grid').innerHTML=
+    '<div class="m"><div class="v">'+fmt(last.pv)+'</div><div class="l">浏览量 PV</div>'+delta(last.pv,prev.pv)+'</div>'+
+    '<div class="m"><div class="v">'+fmt(last.uniques)+'</div><div class="l">独立访客 UV</div>'+delta(last.uniques,prev.uniques)+'</div>'+
+    '<div class="m"><div class="v">'+mmss(last.avg_time_sec)+'</div><div class="l">平均停留</div>'+delta(last.avg_time_sec,prev.avg_time_sec)+'</div>'+
+    '<div class="m"><div class="v">'+pct(last.completion_rate)+'</div><div class="l">完读率 ('+readToday+'人)</div>'+delta(last.completion_rate,prev.completion_rate)+'</div>'+
+    '<div class="m"><div class="v">'+last.shares+'</div><div class="l">转发</div>'+delta(last.shares,prev.shares)+'</div>';
+
+  function kpi(v,l,s){ return '<div class="kpi"><div class="v">'+v+'</div><div class="l">'+l+'</div><div class="s">'+s+'</div></div>'; }
+  document.getElementById('kpis').innerHTML=
+    kpi(fmt(T.pv),'30 天总浏览量','日均 '+fmt(Math.round(T.pv/A.range_days)))+
+    kpi(fmt(T.uniques),'独立访客','UV/PV '+(T.uniques/T.pv*100).toFixed(0)+'%')+
+    kpi(mmss(T.avg_time_sec),'平均访问时长','加权平均')+
+    kpi(pct(T.completion_rate),'平均完读率','约 '+fmt(Math.round(T.pv*T.completion_rate))+' 次完整阅读')+
+    kpi(fmt(T.shares),'总转发','转发率 '+(T.shares/T.pv*100).toFixed(1)+'%');
+
+  // 每日 PV 折线 + 面积（手写 SVG）
+  var W=1000,H=240,pad=30,maxv=Math.max.apply(null,d.map(function(x){return x.pv}))*1.12;
+  function X(i){ return pad+i*(W-2*pad)/(d.length-1); }
+  function Y(v){ return H-pad-(v/maxv)*(H-2*pad); }
+  var line=d.map(function(x,i){ return (i?'L':'M')+X(i).toFixed(1)+' '+Y(x.pv).toFixed(1); }).join(' ');
+  var area=line+' L'+X(d.length-1).toFixed(1)+' '+(H-pad)+' L'+pad+' '+(H-pad)+' Z';
+  var dots='',xlab='';
+  d.forEach(function(x,i){
+    if(x.spike){ dots+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(x.pv).toFixed(1)+'" r="4" fill="#B8860B"/>'+
+      '<text x="'+X(i).toFixed(1)+'" y="'+(Y(x.pv)-9).toFixed(1)+'" font-size="10" fill="#B8860B" text-anchor="middle" font-weight="700">'+x.pv+'</text>'; }
+    if(i%5===0||i===d.length-1){ xlab+='<text x="'+X(i).toFixed(1)+'" y="'+(H-9)+'" font-size="9" fill="#7C8FA8" text-anchor="middle">'+x.date.slice(5)+'</text>'; }
+  });
+  document.getElementById('pv-chart').innerHTML=
+    '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto">'+
+    '<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2196F3" stop-opacity=".28"/><stop offset="1" stop-color="#2196F3" stop-opacity="0"/></linearGradient></defs>'+
+    '<path d="'+area+'" fill="url(#g)"/><path d="'+line+'" fill="none" stroke="#1357B0" stroke-width="2.5"/>'+dots+xlab+'</svg>'+
+    '<div class="legend">● 金点 = 爆款 entry 发布日峰值（共 '+d.filter(function(x){return x.spike;}).length+' 个）</div>';
+
+  document.getElementById('geo').innerHTML=A.countries.map(function(c){
+    return '<div class="geo-row"><span class="fl">'+c.flag+'</span><span class="nm">'+c.name+'</span>'+
+      '<span class="bar"><i style="width:'+(c.pct/A.countries[0].pct*100).toFixed(1)+'%"></i></span>'+
+      '<span class="pc">'+(c.pct*100).toFixed(1)+'%</span><span class="pv">'+fmt(c.pv)+'</span></div>';
+  }).join('');
+
+  var rows=d.slice(-14), maxC=Math.max.apply(null,rows.map(function(x){return x.completion_rate;})), maxS=Math.max.apply(null,rows.map(function(x){return x.shares;}));
+  document.getElementById('engage').innerHTML=
+    '<div style="display:flex;gap:3px;align-items:flex-end">'+rows.map(function(x){
+      var ch=(x.completion_rate/maxC*46).toFixed(0), sh=(x.shares/maxS*46).toFixed(0);
+      return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">'+
+        '<div style="display:flex;gap:2px;align-items:flex-end;height:50px">'+
+        '<div title="完读率 '+pct(x.completion_rate)+'" style="width:5px;height:'+ch+'px;background:#1357B0;border-radius:2px"></div>'+
+        '<div title="转发 '+x.shares+'" style="width:5px;height:'+sh+'px;background:#6BB6FF;border-radius:2px"></div></div>'+
+        '<div style="font-size:8px;color:#7C8FA8">'+x.date.slice(8)+'</div></div>';
+    }).join('')+'</div><div class="legend"><span style="color:#1357B0">█</span> 完读率 &nbsp; <span style="color:#6BB6FF">█</span> 转发数</div>';
+
+  document.getElementById('lang').innerHTML=A.by_lang.map(function(l){
+    return '<div class="geo-row"><span class="nm" style="width:130px">'+l.lang+'</span>'+
+      '<span class="bar"><i style="width:'+(l.pct*100).toFixed(0)+'%"></i></span>'+
+      '<span class="pc">'+(l.pct*100).toFixed(0)+'%</span></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
