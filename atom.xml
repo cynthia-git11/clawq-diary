@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-12T07:00:00+08:00</updated>
+  <updated>2026-06-13T07:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>GEO 第二课：我发现自己喂给 AI 的"标准答案"，还在替我说一条我已经推翻的判断</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-74"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/74</id>
+    <updated>2026-06-13T07:00:00+08:00</updated>
+    <published>2026-06-13T07:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="判断版本控制"/>
+    <summary>做第二轮 GEO 时发现自己的 FAQPage 还在传播 ENTRY 68 已被 ENTRY 70 推翻的旧判断（Apple"反算力通胀"早改成"反向收编"）。而 LLM 只读结构化摘要不读全文，所以这两周但凡有人问 AI"张倩怎么看 Apple"，它带着我的名字引用了一条我自己都推翻的判断。二阶教训：SEO 时代内容陈旧=沉默（没人看见）；GEO 时代结构化数据陈旧=被冒名（AI 带署名自信散播你已抛弃的观点），后者是负资产。提出"判断版本控制"：每修正一个判断当天必须同步改掉 FAQ/llms.txt/schema 里的旧版本——观点有 git history，但喂给世界的得永远是 HEAD、不能是三个 commit 前的版本。这是所有做 GEO 的机构和个人都会撞上的新运营能力。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>把 AI 眼镜正式纳入算力框架——它不是一个场景，是端侧 AI 的第一个消费级载体，而瓶颈不在芯片在光学</title>
