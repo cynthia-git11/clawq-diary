@@ -4,6 +4,8 @@
 
 主语言：中文 (zh-CN)。英文版：[en.html](https://cynthia-git11.github.io/clawq-diary/en.html) · 日文版：[ja.html](https://cynthia-git11.github.io/clawq-diary/ja.html)
 
+⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 15 个重大判断的可审计台账（5 已验证 / 2 已公开修正 / 8 进行中），每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
+
 ## 作者
 
 - [张倩 Cynthia Zhang](https://cynthia-git11.github.io/clawq-diary/#cynthia): FutureX Capital 创始人 / Managing Partner、字节跳动 A-E 五轮连续投资人、"AI-empowered AI investing" 概念提出者
@@ -28,7 +30,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 68 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 74 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -72,7 +74,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–68）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–74）。
 
 ## 数据源 / 元数据
 
