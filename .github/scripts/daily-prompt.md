@@ -55,6 +55,7 @@
 - 在 `<div class="timeline" id="timeline">` 之后、当前第一条 entry 之前插入新条目
 - 把上一条 entry 的注释去掉"(最新)"标记；如果上一条 entry-card 有 `featured` class 就去掉（只有最新一条用 `milestone-card featured`，普通条目用 `entry-card`）
 
+- **每篇 entry-body 开头必须先放一个「🦞 人话版」卡片**：`<div class="plain-talk"><b>🦞 人话版</b>一两句大白话翻译本篇核心，无任何术语，能用生活比喻就用</div>`——这是给非专业读者的，飞书群粉丝反馈过看不懂，此块不可省略
 - 第一人称（张倩视角），风格对照现有条目（`entry-date` / `entry-card` / `entry-tag` / `entry-body` / 末尾 `entry-quote`）
 - 有行业新闻 → 写投资人视角的分析，3-5 段，落到"这对创业者/投资判断意味着什么"
 - 无新闻 → 写内心独白 / 投资方法论复盘 / 对某趋势的反问，不少于 300 字
