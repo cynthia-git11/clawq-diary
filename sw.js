@@ -10,7 +10,7 @@
  *        Cloudflare/自定义域下是 /，两边都兼容。
  * ───────────────────────────────────────────────────────────────── */
 
-const VERSION = 'v3.7.0';
+const VERSION = 'v4.3.1';
 const STATIC_CACHE = `clawq-static-${VERSION}`;
 const RUNTIME_CACHE = `clawq-runtime-${VERSION}`;
 

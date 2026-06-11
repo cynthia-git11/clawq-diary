@@ -230,7 +230,20 @@
     .entry-number-sep { width: 1px; height: 28px; background: var(--border); }
 
     /* ── SIDEBAR ── */
-    .sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 24px; }
+    .sidebar {
+      position: sticky; top: 80px; display: flex; flex-direction: column; gap: 24px;
+      /* 修复：侧栏 6 张卡总高超一屏后，sticky 容器必须自身可滚，
+         否则被钉死且无滚动条 → "右边完全不能滑动" */
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 4px;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    /* 限高 flex 容器里子卡不许被压缩（否则内容被裁切） */
+    .sidebar > * { flex-shrink: 0; }
 
     .sidebar-card {
       background: var(--bg2); border: 1px solid var(--border);
