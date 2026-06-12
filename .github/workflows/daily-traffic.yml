@@ -4,7 +4,8 @@ name: Daily Traffic Report
 # 纯数据生成 + git，只用 GITHUB_TOKEN，不依赖任何 API token —— 能独立跑成功。
 on:
   schedule:
-    - cron: '30 23 * * *'
+    - cron: '30 23 * * *'   # 北京 7:30 主跑
+    - cron: '30 11 * * *'   # 北京 19:30 补跑（主跑被 GitHub 跳过时兜底；数据没变则静默退出）
   workflow_dispatch:
 
 permissions:
@@ -35,18 +36,22 @@ jobs:
           TRAFFIC_END="$TODAY_BJ" python3 scripts/gen-traffic.py
 
       - name: Commit if changed
+        id: commit
         run: |
           git config user.name  "ClawQ Traffic Bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/js/analytics-data.js TRAFFIC-REPORT.md
           if git diff --cached --quiet; then
             echo "No change."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore(analytics): daily traffic report $(TZ=Asia/Shanghai date +%Y-%m-%d)"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Post daily report to a fixed issue
+        if: steps.commit.outputs.changed == 'true'
         uses: actions/github-script@v7
         with:
           script: |

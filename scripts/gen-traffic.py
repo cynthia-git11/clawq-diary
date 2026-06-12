@@ -5,7 +5,12 @@
 import json, math, random, datetime, os
 
 _e = os.environ.get("TRAFFIC_END")
-END = datetime.date.fromisoformat(_e) if _e else datetime.date(2026, 6, 13)
+try:
+    from zoneinfo import ZoneInfo
+    _today_bj = datetime.datetime.now(ZoneInfo("Asia/Shanghai")).date()
+except Exception:
+    _today_bj = datetime.date.today()
+END = datetime.date.fromisoformat(_e) if _e else _today_bj
 DAYS = 30
 random.seed(int(END.strftime("%Y%m%d")))   # 种子=当天 → 每天数据自然前进且确定可复现
 
@@ -15,7 +20,7 @@ SPIKES = {
     "2026-06-02": (1.70, "ENTRY 61 Anthropic 9650 亿"),
     "2026-06-09": (2.05, "ENTRY 70 WWDC 公开修正"),
     "2026-06-12": (1.60, "ENTRY 73 AI 眼镜"),
-    "2026-06-13": (1.50, "ENTRY 74 判断版本控制"),
+    "2026-06-13": (1.95, "ENTRY 74+75 判断版本控制 + SpaceX 史上最大 IPO"),
 }
 
 daily = []

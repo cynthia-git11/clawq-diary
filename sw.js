@@ -10,7 +10,7 @@
  *        Cloudflare/自定义域下是 /，两边都兼容。
  * ───────────────────────────────────────────────────────────────── */
 
-const VERSION = 'v4.3.1';
+const VERSION = 'v4.6';
 const STATIC_CACHE = `clawq-static-${VERSION}`;
 const RUNTIME_CACHE = `clawq-runtime-${VERSION}`;
 
@@ -68,6 +68,20 @@ self.addEventListener('fetch', event => {
 
   // 跨域第三方分析 / 追踪 — 不拦截
   if (url.origin !== location.origin && !FONT_HOSTS.includes(url.host)) {
+    return;
+  }
+
+  // 每日更新的数据文件：network-first（否则看板会被 cache-first 永久冻结在某一天）
+  if (url.pathname.endsWith('/assets/js/analytics-data.js')) {
+    event.respondWith(
+      fetch(req)
+        .then(res => {
+          const copy = res.clone();
+          caches.open(RUNTIME_CACHE).then(c => c.put(req, copy));
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
     return;
   }
 
