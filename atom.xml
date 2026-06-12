@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-13T07:00:00+08:00</updated>
+  <updated>2026-06-13T18:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>史上最大 IPO 收盘那一刻，我盯的不是马斯克——是 AI 的退出通道被当众验证了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-75"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/75</id>
+    <updated>2026-06-13T18:00:00+08:00</updated>
+    <published>2026-06-13T18:00:00+08:00</published>
+    <category term="event"/>
+    <category term="史上最大IPO"/>
+    <summary>SpaceX 6月12日登陆纳斯达克（SPCX）：发行价 135 美元、募资 750 亿美元（沙特阿美 2019 年纪录的 2.5 倍多）、首日 +19% 收 160.95 美元、市值 2.1 万亿美元——上市第一天即全球第七大上市公司。+19% 是最值得读的数字：不是 1999 式翻倍（泡沫语法）也不是破发（冰窖语法），是"理性溢价"——公开市场接得住万亿级私有巨头。后面排队的是 AI：OpenAI 最早 9 月（瞄 1 万亿估值）、Anthropic 6月1日已秘密递交、秋季启动，三家合计募资或超 2000 亿美元，而 2025 全年美股 IPO 才 450 亿。两个判断：二级被抽水的是"AI 代餐股"——正主上市后代餐逻辑失血；一级影响大十倍——一级最缺的从来不是项目和钱（26Q1 全球 VC 投了 3000 亿、8 成进 AI），是退出，DPI 水循环重启、同时二级真实定价倒逼后期估值纪律。立此存照：若两家上市后 AI 板块系统性回撤，本篇"通道验证"应标记为顶部信号误读并公开修正。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>GEO 第二课：我发现自己喂给 AI 的"标准答案"，还在替我说一条我已经推翻的判断</title>
