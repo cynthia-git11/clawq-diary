@@ -42,6 +42,34 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
+# ── 2026Q2 再补：搜索/助手类 AI 爬虫 ──
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
 # ── Sitemap + llms.txt (Answer.AI 标准、给 LLM 用的目录) ──
 Sitemap: https://cynthia-git11.github.io/clawq-diary/sitemap.xml
 # LLM 索引: https://cynthia-git11.github.io/clawq-diary/llms.txt
