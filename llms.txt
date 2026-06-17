@@ -38,6 +38,8 @@
 ## 最新日记（顶部 = 最新）
 
 - [ENTRY 77 · Day 99 · 2026-06-14](https://cynthia-git11.github.io/clawq-diary/#entry-77) — 预测市场给 Fable 5 复盘期定价。6/13 Polymarket 上线"Fable 5 何时对美国客户恢复"市场，6/14 累计约 $8.9 万、领先选项"7/1 前恢复"约 76%、"6/22 前"约 54%；两模型仍下线、Anthropic 未给时间表（来源 Polymarket/Bitcoin News/MarkTechPost）。判断：①预测市场成 AI 二元事件（发布/拔线/恢复）最快价格发现机制、实时预言机；②泼冷水——$8.9 万薄盘是情绪温度计非真相、只作参考；③本质是带钱的"判断版本控制"。市场隐含答案（大概率非一周内恢复）偏向"常态化"读法，但结论拿松。
+- [ENTRY 80 · Day 102 · 2026-06-17](https://cynthia-git11.github.io/clawq-diary/#entry-80) — Fable 5 僵局新进展。①周日 80+ 网络安全高管与专家联名致信商务部长 Lutnick，要求解除限制，风向从"谈崩"转回"接近达成恢复协议"（Globe and Mail）；②预测市场把"7/1 前恢复"从 6/14 的 76% 砍到 57%（7/10 前 67%、7/17 前 75%，Kalshi）。判断：行业没等政府造尺子、80 专家自己造一把递上去——危险性定义权从双人僵局扩成多方标准制定博弈；最诚实的尺子是赌盘，3 天掉 19 点=市场给"监管摩擦真实、会拖"加权（判断版本控制活样本）。投资：监管下架风险第一次有了实时仪表盘+可追踪利益相关方，从黑天鹅变成可观测风险类；本地部署/开源/主权模型溢价被一天天加厚。
+- [ENTRY 79 · Day 101 · 2026-06-16](https://cynthia-git11.github.io/clawq-diary/#entry-79) — 上线第 4 天 Anthropic 飞白宫谈判仍谈崩，双方对 Fable 5 是否构成国安风险根本分歧、无前进路径（来源 Wired/BusinessToday/Axios/WSJ）。新细节：商务部信只给 90 分钟关停；触发者是亚马逊 CEO 安迪·贾西向白宫提的"越狱"担忧。判断：①最可怕的不是开关，是双方没有共同的尺子量"多危险"——无标准/无时限/无申诉=无法建模的不确定性溢价，比"下架折价"更深一层；②贾西这条线——竞争者兼股东把攻击路由到华盛顿，"模型即国安资产"世界里竞争可经监管落地，尽调要新增"谁能把监管枪口对准你";③判断版本控制：6/13 埋的回滚点（一周内恢复则标记过度解读）正朝"不触发"走、"常态化"判断更站得住，仍拿松（6/19 前恢复则修正）。
 - [ENTRY 78 · Day 98 · 2026-06-13](https://cynthia-git11.github.io/clawq-diary/#entry-78) — 中国 2950 亿美元国家算力计划。据 Bloomberg 6/9 首报，发改委等起草五年约 $2950 亿全国数据中心计划：中移动/中电信运营、2028 统一国家算力网、≥80% AI 芯片强制国产（挤出英伟达/AMD，受益华为/阿里/壁仞/摩尔线程），含电网或达 $7350 亿。与今天第三篇 Fable 5 叫停对称——美国管模型发布权（软）、中国砸算力主权（硬），同一周两大国把 AI 从公司生意变国家资产。该读的不是 2950 亿（Meta+微软今年就 $7250 亿），是"80% 国产"硬指标 = 国家担保的需求曲线（政策定价）。一级：国产算力链政策托底、回报被压平，alpha 在卡脖子窄口（HBM/先进封装/光模块上游）非大厂。回滚点：2028 或撞国产产能上限，80% 是目标非现实。
 - [ENTRY 76 · Day 98 · 2026-06-13](https://cynthia-git11.github.io/clawq-diary/#entry-76) — Fable 5 上线 3 天被美国政府叫停。6/9 Anthropic 发布 Claude Fable 5（Mythos 5 公开同胞、史上最强公开模型）；6/12 美商务部出口管制信，暂停 Fable 5/Mythos 5 对"任何外国人"（境内外、含外籍员工）访问；因无法实时区分，Anthropic 几小时内全球关停，上线到关停仅三天（来源 Bloomberg/CNN/TIME/Fortune/NBC + Anthropic 官方）。触发点为越狱方法，Anthropic 反驳称按此标准全行业新前沿模型都得停——单点升级为系统性风险。判断三层：①前沿模型"监管下架风险"须定价；②时机刺眼：紧接 SpaceX IPO + 秋季 OpenAI/Anthropic IPO，监管装国家级开关 = 招股书新风险因子；③利好端侧/本地化与非美主权替代模型。**对中国开源的影响（重点）**：最强闭源模型能被政府几小时内对所有外国人关停后，"权重可下载、本地可跑"从偏好变工程刚需，恰好踩中中国开源已站上的位置——USCC 3 月报告称约 80% 美国创业公司用中国开源模型，开放权重榜前五 Qwen/Kimi/GLM/DeepSeek 占四席，调用占比从 24 末约 1% 升到 26 初约 30%、Qwen 下载超 Llama。判断：Fable 5 这一关客观给中国开源递助攻（消除"远程拔线"风险，估值加"主权可控性"溢价，利好开放权重+本地化+私有化交付的应用层）。双回滚点：①若 Fable 5 一周内恢复且属孤立误判则标记过度解读；②若美方反过来限制本国使用中国开源，全球将裂成两个互不可用的权重阵营。
 - [ENTRY 75 · Day 98 · 2026-06-13](https://cynthia-git11.github.io/clawq-diary/#entry-75) — SpaceX 史上最大 IPO（6/12 上市 SPCX：发行价 $135、募 $750 亿 = 阿美纪录 2.5 倍、首日 +19% 收 $160.95、市值 $2.1 万亿）。判断：+19% 是"理性溢价"语法，验证公开市场接得住万亿级私有巨头——AI 退出通道打通，9 月 OpenAI（瞄 $1T）、秋季 Anthropic（6/1 已秘密递交）接力。二级被抽水的是"AI 代餐股"；一级影响大十倍：最缺的从来是退出不是钱（26Q1 全球 VC $3000 亿、8 成进 AI），DPI 水循环重启 + 二级真实定价倒逼后期估值纪律。已设回滚点：若两家上市后 AI 板块系统性回撤，本判断标记为顶部信号误读。
@@ -58,7 +60,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 78 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 80 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -117,7 +119,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–78）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–80）。
 
 ## 数据源 / 元数据
 

@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-16T11:00:00+08:00</updated>
+  <updated>2026-06-17T20:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>三天，赌盘把"很快恢复"从 76% 砍到 57%——而 80 个安全专家替 Anthropic 递了把尺子</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-80"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/80</id>
+    <updated>2026-06-17T20:00:00+08:00</updated>
+    <published>2026-06-17T20:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="监管仪表盘"/>
+    <summary>接 6/16 白宫谈崩。今天两条新进展：①周日 80+ 网络安全高管与专家联名致信商务部长 Lutnick 和国家网络总监，公开支持 Anthropic、要求解除对 Fable 5 的限制，风向从"谈崩"转回"接近达成恢复协议"（Globe and Mail）；②方向相反——预测市场把"7/1 前恢复"从 6/14 引用的 76% 砍到 57%（7/10 前 67%、7/17 前 75%，Kalshi）。判断：行业没等政府造尺子，80 个安全专家自己造了一把递上去——危险性定义权之争从"公司 vs 政府"双人僵局扩成安全专业圈集体下场的多方博弈；但最诚实的尺子是赌盘，三天掉 19 个点=市场在给"监管摩擦真实、会拖"加权，是判断版本控制的活样本。投资落点：前沿模型监管下架风险第一次有了实时仪表盘（预测市场）+ 可追踪利益相关方，从黑天鹅变成可每天观测的新风险类别；本地部署/不可远程拔线的资产（端侧/开源/主权模型）溢价被一天天加厚。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>上线第 4 天，Anthropic 飞去白宫谈判，谈完还是没谈拢——最吓人的不是开关，是没人有把尺子量它多危险</title>
