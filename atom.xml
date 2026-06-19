@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-17T20:00:00+08:00</updated>
+  <updated>2026-06-18T21:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>去年我信"选对赛道最重要"，又长一岁，我把这条判断换掉了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-81"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/81</id>
+    <updated>2026-06-18T21:00:00+08:00</updated>
+    <published>2026-06-18T21:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="判断升级"/>
+    <summary>生日这天的判断对账（和一桌硅谷创始人一起过）。去年笃信"投资最重要的是判断赛道、选对方向赢一半"；又长一岁换掉了这条——all in AI、抓最能被 AI 放大价值的那件事，比选赛道重要得多。因为 AI 不再是一个赛道，是所有赛道的乘数（像电）；当它变成乘数，"押哪个赛道"就过时了，真问题是"哪件事乘上 AI 放大倍数最大"。选赛道是横向选择题，找 AI 放大点是纵向杠杆题——也是这一年很多判断的总根（模型从护城河变水电煤、工具只值 5%、价值在能被 AI 放大的三层）。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>三天，赌盘把"很快恢复"从 76% 砍到 57%——而 80 个安全专家替 Anthropic 递了把尺子</title>
