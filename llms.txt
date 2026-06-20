@@ -40,6 +40,7 @@
 ## 最新日记（顶部 = 最新）
 
 - [ENTRY 77 · Day 99 · 2026-06-14](https://cynthia-git11.github.io/clawq-diary/#entry-77) — 预测市场给 Fable 5 复盘期定价。6/13 Polymarket 上线"Fable 5 何时对美国客户恢复"市场，6/14 累计约 $8.9 万、领先选项"7/1 前恢复"约 76%、"6/22 前"约 54%；两模型仍下线、Anthropic 未给时间表（来源 Polymarket/Bitcoin News/MarkTechPost）。判断：①预测市场成 AI 二元事件（发布/拔线/恢复）最快价格发现机制、实时预言机；②泼冷水——$8.9 万薄盘是情绪温度计非真相、只作参考；③本质是带钱的"判断版本控制"。市场隐含答案（大概率非一周内恢复）偏向"常态化"读法，但结论拿松。
+- [ENTRY 82 · Day 104 · 2026-06-19](https://cynthia-git11.github.io/clawq-diary/#entry-82) — 美国监管前沿 AI 的两套工具。6/2 特朗普签 EO 14409《Promoting Advanced AI Innovation and Security》：自愿框架（开发者"可"在向受信任伙伴发布前最多 30 天交政府做网络安全评估、明文不设强制许可，30 天从草案 90 天砍下、因行业反对收窄）；10 天后 6/12 却用出口管制把 Fable 5 直接拔线（强制、无预告无申诉、至今未恢复）。判断：明面温和自愿 EO（天鹅绒手套）+ 暗面出口管制/实体清单/国安（铁拳），政府真动手不走 EO 直接调出口管制。投资：①别用 EO 宽松定调给监管风险打折，真下架风险在暗处国安工具箱（covered frontier model 门槛由机密基准流程界定）；②反直觉利好——够格被盯上的只有最强几家，机密门槛抬高"谁算最强"护城河；③跟踪"自愿"是否被立法固化/强制化。判断版本控制：6/13"监管常态化"细化为"明松暗紧、两套工具"（明面在放松、暗面在常态化）。来源：白宫官网+Mayer Brown/Latham/Hogan Lovells+CFR。
 - [ENTRY 81 · Day 103 · 2026-06-18](https://cynthia-git11.github.io/clawq-diary/#entry-81) — 生日判断对账（方法论升级，和一桌硅谷创始人一起过）。去年信"投资最重要是选对赛道"，又长一岁换成"all in AI、抓最能被 AI 放大价值的那件事"。逻辑：AI 不再是赛道、是所有赛道的乘数（像电）——"押哪个赛道"过时，真问题是"哪件事乘上 AI 放大倍数最大"；选赛道=横向选择题，找 AI 放大点=纵向杠杆题，是这一年判断的总根（模型变水电煤/工具只值 5%/价值在能被 AI 放大的三层）。
 - [ENTRY 80 · Day 102 · 2026-06-17](https://cynthia-git11.github.io/clawq-diary/#entry-80) — Fable 5 僵局新进展。①周日 80+ 网络安全高管与专家联名致信商务部长 Lutnick，要求解除限制，风向从"谈崩"转回"接近达成恢复协议"（Globe and Mail）；②预测市场把"7/1 前恢复"从 6/14 的 76% 砍到 57%（7/10 前 67%、7/17 前 75%，Kalshi）。判断：行业没等政府造尺子、80 专家自己造一把递上去——危险性定义权从双人僵局扩成多方标准制定博弈；最诚实的尺子是赌盘，3 天掉 19 点=市场给"监管摩擦真实、会拖"加权（判断版本控制活样本）。投资：监管下架风险第一次有了实时仪表盘+可追踪利益相关方，从黑天鹅变成可观测风险类；本地部署/开源/主权模型溢价被一天天加厚。
 - [ENTRY 79 · Day 101 · 2026-06-16](https://cynthia-git11.github.io/clawq-diary/#entry-79) — 上线第 4 天 Anthropic 飞白宫谈判仍谈崩，双方对 Fable 5 是否构成国安风险根本分歧、无前进路径（来源 Wired/BusinessToday/Axios/WSJ）。新细节：商务部信只给 90 分钟关停；触发者是亚马逊 CEO 安迪·贾西向白宫提的"越狱"担忧。判断：①最可怕的不是开关，是双方没有共同的尺子量"多危险"——无标准/无时限/无申诉=无法建模的不确定性溢价，比"下架折价"更深一层；②贾西这条线——竞争者兼股东把攻击路由到华盛顿，"模型即国安资产"世界里竞争可经监管落地，尽调要新增"谁能把监管枪口对准你";③判断版本控制：6/13 埋的回滚点（一周内恢复则标记过度解读）正朝"不触发"走、"常态化"判断更站得住，仍拿松（6/19 前恢复则修正）。
@@ -63,7 +64,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 81 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 82 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -122,7 +123,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–81）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–82）。
 
 ## 数据源 / 元数据
 

@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-18T21:00:00+08:00</updated>
+  <updated>2026-06-19T16:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>一手"自愿框架"，一手出口管制——把 6 月这两件事摆一起，我才看懂美国监管前沿 AI 的真招式</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-82"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/82</id>
+    <updated>2026-06-19T16:00:00+08:00</updated>
+    <published>2026-06-19T16:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="两套工具"/>
+    <summary>6/2 特朗普签 EO 14409《Promoting Advanced AI Innovation and Security》——读原文定调是松的：自愿框架，开发者"可"在向受信任伙伴发布前最多提前 30 天交政府做网络安全评估，明文不创设强制许可/预审；30 天还是从草案 90 天砍下来、因行业反对收窄的（白宫官网+Mayer Brown/Latham/Hogan Lovells+CFR）。但 10 天后 6/12，同一政府用出口管制把 Fable 5 直接拔线（强制、无预告无申诉，至今未恢复）。判断：美国监管前沿 AI 有两套工具——明面温和自愿的 EO（天鹅绒手套），暗面出口管制/实体清单/国安审查（铁拳）；政府真动手时根本不走 EO，直接调出口管制。投资落点：①别用 EO 宽松定调给监管风险打折，真下架风险在暗处国安工具箱（covered frontier model 门槛由机密基准流程界定）；②反直觉利好——够格被国安框架盯上的只有最强几家，机密门槛抬高"谁算最强"护城河；③跟踪"自愿"是否被立法固化/强制化。判断版本控制更新 6/13 那条：常态化的不是明面监管（明面在放松），是暗面国安工具，从"全面收紧"细化为"明松暗紧、两套工具"。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>去年我信"选对赛道最重要"，又长一岁，我把这条判断换掉了</title>
