@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-19T16:00:00+08:00</updated>
+  <updated>2026-06-21T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ChatGPT 份额首次跌破 50%——我 3 月说「模型是水电煤」，今天数据到了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-83"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/83</id>
+    <updated>2026-06-21T10:00:00+08:00</updated>
+    <published>2026-06-21T10:00:00+08:00</published>
+    <category term="insight"/>
+    <category term="份额拐点"/>
+    <summary>Sensor Tower《State of AI 2026》：ChatGPT 全球份额 5 月底跌至 46.4%（3 月已穿 50% 线），回溯 65.3%（2024/12）→52.8%（2025/12）→46.4%。Gemini 27.7%、Claude 10.3%。绝对月活仍在涨（ChatGPT 11 亿、Gemini 6.62 亿、Claude 2.45 亿）——不是 ChatGPT 变弱，是市场膨胀快过任何一家。判断："一家通吃"论文正式死了，模型层竞争结构是"水涨众船高但没人高过半"，验证 3 月"模型从护城河变水电煤"判断。修正类比：不是"水电煤"（无差异化），更准确是"电信运营商"——有体感差异但不够大到吃掉对方。模型公司估值天花板该按运营商 P/E 想、不按平台 P/S 想；价值往两头走——往下到算力/芯片、往上到应用层（工作流锁定+数据护城河）。来源：Sensor Tower / TechCrunch / Business Standard。本日记不构成对任何基金产品的推介或募集要约。</summary>
+  </entry>
 
   <entry>
     <title>一手"自愿框架"，一手出口管制——把 6 月这两件事摆一起，我才看懂美国监管前沿 AI 的真招式</title>
