@@ -4,7 +4,7 @@
 
 主语言：中文 (zh-CN)。英文版：[en.html](https://cynthia-git11.github.io/clawq-diary/en.html) · 日文版：[ja.html](https://cynthia-git11.github.io/clawq-diary/ja.html)
 
-⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 17 个重大判断的可审计台账（5 已验证 / 2 已公开修正 / 10 进行中），每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
+⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 19 个重大判断的可审计台账（5 已验证 / 2 已公开修正 / 12 进行中），每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
 
 ## 作者
 
@@ -36,11 +36,15 @@
 - **监管下架风险有了实时仪表盘**：预测市场把 Fable 5"7/1 前恢复"从 76% 砍到 57%，叠加 80+ 安全专家联名——监管风险从算不出的黑天鹅变成可每天观测的新风险类，本地化/开源/主权模型溢价持续加厚（2026-06-17，进行中）。
 - **美国监管前沿 AI 是"明松暗紧、两套工具"**：明面 EO 14409（6/2 自愿框架、90→30 天、不设强制许可）是天鹅绒手套，暗面出口管制/国安（6/12 拔线 Fable 5）是铁拳——真下架风险在暗处国安工具箱、不在明面 EO（2026-06-19，进行中）。
 - **"一家通吃"论文死了，模型层是"电信运营商"不是"平台"**：ChatGPT 份额 65%→46.4%、Gemini 27.7%、Claude 10.3%——没人过半但都在涨，模型层竞争结构=水涨众船高；估值天花板按运营商 P/E 想不按平台 P/S 想，价值往算力和应用层两头走（2026-06-21，进行中）。
+- **监管即壁垒：够格被限的才是够格被保护的，前沿模型公司从被管者变规则共建者（regulatory capture）**（2026-06-22，进行中）。
+- **前沿AI准入从"付费墙"走向"护照墙"：身份验证是出口管制的技术解，一旦建成不会拆**（2026-06-23，进行中）。
 - **判断版本控制**：每修正一个判断当天必须同步所有传播载体（FAQ/llms.txt/schema），喂给世界的永远是 HEAD（2026-06-13，方法论）。
 - **两次公开认错**：智力成本 128 倍（2026-05-11，1 天后自我推翻）；Apple 端侧"反算力通胀"（2026-06-07，5 天后被 WWDC 实况推翻改为"反向收编"）——修正不覆盖原文，git history 留日期戳。
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 85 · Day 108 · 2026-06-23](https://cynthia-git11.github.io/clawq-diary/#entry-85) — 7月8日起交护照和脸——前沿AI从"付费墙"走向"护照墙"
+- [ENTRY 84 · Day 107 · 2026-06-22](https://cynthia-git11.github.io/clawq-diary/#entry-84) — 被拔线5天后Amodei在G7说"建美国领导的AI联盟排除中国"——从被管到帮设规则
 - [ENTRY 83 · Day 106 · 2026-06-21](https://cynthia-git11.github.io/clawq-diary/#entry-83) — ChatGPT 份额首次跌破 50%。Sensor Tower《State of AI 2026》：ChatGPT 5 月底 46.4%（3 月已穿 50% 线）、Gemini 27.7%、Claude 10.3%；回溯线 65.3%（2024/12）→52.8%（2025/12）→46.4%，但绝对月活 11 亿仍在涨——市场膨胀快过任何一家。判断："一家通吃"论文正式死了，模型层竞争结构是"水涨众船高但没人过半"，验证 3 月"模型从护城河变水电煤"判断；修正类比从"水电煤"→"电信运营商"（有差异但不够大到吃掉对方）；模型公司估值天花板该按运营商 P/E 想、不按平台 P/S 想；价值往两头走——往下到算力/芯片、往上到应用层（工作流锁定+数据护城河）。来源：Sensor Tower / TechCrunch / Business Standard。
 - [ENTRY 77 · Day 99 · 2026-06-14](https://cynthia-git11.github.io/clawq-diary/#entry-77) — 预测市场给 Fable 5 复盘期定价。6/13 Polymarket 上线"Fable 5 何时对美国客户恢复"市场，6/14 累计约 $8.9 万、领先选项"7/1 前恢复"约 76%、"6/22 前"约 54%；两模型仍下线、Anthropic 未给时间表（来源 Polymarket/Bitcoin News/MarkTechPost）。判断：①预测市场成 AI 二元事件（发布/拔线/恢复）最快价格发现机制、实时预言机；②泼冷水——$8.9 万薄盘是情绪温度计非真相、只作参考；③本质是带钱的"判断版本控制"。市场隐含答案（大概率非一周内恢复）偏向"常态化"读法，但结论拿松。
 - [ENTRY 82 · Day 104 · 2026-06-19](https://cynthia-git11.github.io/clawq-diary/#entry-82) — 美国监管前沿 AI 的两套工具。6/2 特朗普签 EO 14409《Promoting Advanced AI Innovation and Security》：自愿框架（开发者"可"在向受信任伙伴发布前最多 30 天交政府做网络安全评估、明文不设强制许可，30 天从草案 90 天砍下、因行业反对收窄）；10 天后 6/12 却用出口管制把 Fable 5 直接拔线（强制、无预告无申诉、至今未恢复）。判断：明面温和自愿 EO（天鹅绒手套）+ 暗面出口管制/实体清单/国安（铁拳），政府真动手不走 EO 直接调出口管制。投资：①别用 EO 宽松定调给监管风险打折，真下架风险在暗处国安工具箱（covered frontier model 门槛由机密基准流程界定）；②反直觉利好——够格被盯上的只有最强几家，机密门槛抬高"谁算最强"护城河；③跟踪"自愿"是否被立法固化/强制化。判断版本控制：6/13"监管常态化"细化为"明松暗紧、两套工具"（明面在放松、暗面在常态化）。来源：白宫官网+Mayer Brown/Latham/Hogan Lovells+CFR。
@@ -67,7 +71,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 83 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 85 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -126,7 +130,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–83）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–85）。
 
 ## 数据源 / 元数据
 
@@ -134,7 +138,7 @@
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
 - 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
-- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(21 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
+- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(23 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
 
 ## 合规声明

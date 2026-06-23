@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-21T10:00:00+08:00</updated>
+  <updated>2026-06-23T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,28 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>7月8日起交护照和脸——前沿AI从「付费墙」走向「护照墙」</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-85"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-85</id>
+    <updated>2026-06-23T10:00:00+08:00</updated>
+    <published>2026-06-23T10:00:00+08:00</published>
+    <category term="insight"/>
+    <summary>Fable 5 关停第11天。Anthropic 7/8生效隐私政策新增身份验证数据类目（ID+面部+生物特征）。分析师：验证美国公民身份后可仅对国内用户恢复Fable 5。NSA局长披露Mythos在红队演练中几小时入侵几乎所有NSA保密系统。判断：前沿AI从付费墙走向护照墙，一旦建成不会拆。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
+
+  <entry>
+    <title>被拔线5天后Amodei在G7说"建美国领导的AI联盟排除中国"——从被管到帮设规则</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-84"/>
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-84</id>
+    <updated>2026-06-22T10:00:00+08:00</updated>
+    <published>2026-06-22T10:00:00+08:00</published>
+    <category term="insight"/>
+    <summary>6/17 G7 Évian。Amodei与Hassabis向特朗普和G7元首提frontier model结构化准入、芯片贸易排除中国。Fable 5被拔线5天后提制度化版本=经典regulatory capture。判断：监管即壁垒，够格被限的才是够格被保护的。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ChatGPT 份额首次跌破 50%——我 3 月说「模型是水电煤」，今天数据到了</title>

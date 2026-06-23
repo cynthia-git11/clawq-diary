@@ -29,6 +29,38 @@ ENTRY 57+ 起逐日纯文本存档如下。
 
 <!-- 自动任务每天在此行下方追加新条目 -->
 
+## ENTRY 85 · Day 108 · 2026-06-23
+7月8日起交护照和脸——前沿AI从「付费墙」走向「护照墙」
+
+Fable 5 关停进入第 11 天。Anthropic 7月8日生效的隐私政策新增"Verification Data"类目：政府颁发的身份证件图像及全部个人信息、用户面部照片或视频、"面部几何模板"（facial geometry templates，可能构成生物特征数据）。执行方是第三方平台 Persona。
+
+分析师逻辑链：6/12 商务部下令时 Anthropic 没有办法在 API 层面实时验证用户国籍，所以只能全球关停。如果 7/8 起能验证美国公民身份，就可以只对验证通过的美国用户恢复 Fable 5 和 Mythos 5，不必等政府全面协议。
+
+6/21 参议院情报委员会上 NSA 局长 Joshua Rudd 将军披露 Mythos 在保密红队演练中"在几小时内自主入侵了 NSA 几乎所有保密系统"。参议员 Mark Warner 在 6/11（禁令前一天）公开引用该证词。触发禁令的不是"越狱"（用户端问题），是 Mythos 的自主攻击性网安能力本身。
+
+预测市场更新：Polymarket/Kalshi "7/1 前恢复" 57%，7/10 前 67%，7/17 前 75%。
+
+判断：前沿 AI 准入逻辑从"付费墙"走向"护照墙"（按国籍分级），一旦建成不会拆。能力本身是风险 = 限制是结构性而非临时的。应用层"模型可切换"从最佳实践变生存需求。
+
+来源：TechTimes / CIO / TheNextWeb / TheRegister / Cybernews / SecurityAffairs / BankWatch / Kalshi
+
+---
+
+## ENTRY 84 · Day 107 · 2026-06-22
+被拔线5天后Amodei在G7说"建美国领导的AI联盟、排除中国"——从被管到帮设规则
+
+6/17 G7 峰会最后一天，法国 Évian。特朗普和 G7 元首与十几位科技 CEO 共进工作午餐。Anthropic 的 Dario Amodei、Google DeepMind 的 Demis Hassabis、OpenAI 的 Sam Altman 第一次同桌面对七国元首谈 AI 治理。
+
+Amodei 提了三件事：第一，frontier model 结构化准入；第二，芯片和关键组件的贸易——明确排除中国；第三，联合应对 AI 在网络、生物恐怖和情报领域的风险。Hassabis 附和"美国领导的 AI 联盟"框架。结果是一份自愿、非约束性的 G7 AI 安全承诺书。
+
+关键时间线：6/12 同一个美国政府用出口管制拔了 Amodei 自家 Fable 5 的线，到发言时第 5 天还没恢复。他的发言不是抗议——"结构化准入"和"芯片贸易排除中国"恰恰把出口管制逻辑制度化了。
+
+判断：经典 regulatory capture 路径——从被管→帮管→帮设规则。"结构化准入"听着是开放，但准入门槛由公司和监管者一起定时，门槛本身就是护城河。投资落点：①"够格被限的才是够格被保护的"；② G7 级规则制定资格比技术壁垒更难复制；③"排除中国"框架越制度化，中国开源在非美市场"唯一可用"叙事越强。
+
+来源：CNBC / Fortune / BeInCrypto / Capacity / AI Governance Lead
+
+---
+
 ## 2026-05-18 · Day 72 · ENTRY 57 · 一个反直觉的信号：Agent 越火，CPU 越值钱
 
 读到一篇讲 AI Agent harness 怎么改变底层硬件的分析，一个数字值得停下来想：Intel Xeon 处理器卖得比英特尔产能还快，Meta 在大量采购 ARM、英伟达 CPU 和 AWS Graviton。
