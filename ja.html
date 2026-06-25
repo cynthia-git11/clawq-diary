@@ -600,6 +600,7 @@
     <button type="submit">Subscribe →</button>
   </form>
   <div class="privacy">We email new entries only · Unsubscribe any time · Your address is never shared</div>
+  <div style="margin-top:18px;font-size:13px;color:var(--muted)">RSSがお好みですか？ <button onclick="showRssModal()" style="background:none;border:none;color:var(--claw);font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline">📡 フィードで購読 →</button></div>
 </section>
 
 <!-- FAMILY OF SITES · FutureX product matrix -->
@@ -676,7 +677,28 @@
     document.body.appendChild(toast);
     setTimeout(()=>toast.remove(), 4500);
   }
+  function showRssModal(){ document.getElementById('rss-modal').style.display='flex'; }
+  function copyRssUrl(btn){ const u='https://cynthia-git11.github.io/clawq-diary/atom.xml'; navigator.clipboard.writeText(u).then(()=>{const o=btn.textContent;btn.textContent='✓ コピー済み';setTimeout(()=>{btn.textContent=o;},2000);}); }
 </script>
+
+<!-- RSS subscribe modal -->
+<div id="rss-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;align-items:center;justify-content:center;padding:20px" onclick="this.style.display='none'">
+  <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:16px;padding:26px;max-width:380px;width:100%;text-align:left" onclick="event.stopPropagation()">
+    <div style="font-size:15px;font-weight:800;margin-bottom:6px;color:var(--text)">📡 RSSで購読</div>
+    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px">お好きな RSS リーダーで購読できます。新しい日記を自動でお届け（メール登録不要）。下の URL をリーダーに貼り付けてください。</div>
+    <div style="display:flex;gap:8px;margin-bottom:18px">
+      <input id="rss-url" readonly value="https://cynthia-git11.github.io/clawq-diary/atom.xml" style="flex:1;min-width:0;padding:9px 11px;font-size:11px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text)" onclick="this.select()" />
+      <button onclick="copyRssUrl(this)" style="padding:9px 14px;background:var(--claw);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">コピー</button>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">ワンクリックで購読</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <a href="https://feedly.com/i/subscription/feed/https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2Fatom.xml" target="_blank" rel="noopener" style="padding:11px 14px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;font-size:13px;font-weight:600;color:var(--text);text-align:center">Feedly に追加 →</a>
+      <a href="https://www.inoreader.com/?add_feed=https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2Fatom.xml" target="_blank" rel="noopener" style="padding:11px 14px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;font-size:13px;font-weight:600;color:var(--text);text-align:center">Inoreader に追加 →</a>
+      <a href="atom.xml" target="_blank" rel="noopener" style="padding:8px;font-size:11px;color:var(--muted2);text-align:center">フィードのソースを見る →</a>
+    </div>
+    <button onclick="document.getElementById('rss-modal').style.display='none'" style="margin-top:16px;width:100%;padding:9px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text);cursor:pointer;font-size:12px">閉じる</button>
+  </div>
+</div>
 
 <script src="assets/js/tracker.js" defer></script>
 </body>
