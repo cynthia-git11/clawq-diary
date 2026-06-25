@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-23T10:00:00+08:00</updated>
+  <updated>2026-06-24T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>同一天，OpenAI 发了自研芯片、DeepSeek 把降价 75% 写死——推理层「去英伟达」从战术变结构</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-86"/>
+    <id>tag:cynthia-git11.github.io,2026-06-24:clawq-diary/entry-86</id>
+    <updated>2026-06-24T10:00:00+08:00</updated>
+    <published>2026-06-24T10:00:00+08:00</published>
+    <category term="insight"/>
+    <summary>OpenAI+Broadcom 发布 Jalapeño 推理 ASIC（成本降 50%），DeepSeek V4-Pro 75% 降价永久化（$0.87/M token，靠华为昇腾 950）。全球两大推理出货方同时去英伟达化——从战术变结构。验证模型运营商化+80%国产判断。训练端 Nvidia 护城河仍深，推理成本暴跌利好应用层。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>7月8日起交护照和脸——前沿AI从「付费墙」走向「护照墙」</title>
