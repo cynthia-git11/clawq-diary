@@ -24,6 +24,7 @@
 - **模型可插拔后，模型从护城河变水电煤**：差异退到上下文工程、数据飞轮、失败处理（2026-04，进行中）。
 - **免费时代结束、智能开始明码标价**：AI 从补贴获客转向单位经济学（2026-05，已验证）。
 - **算力 6 层框架**：端侧推理 / CPU 编排 / GPU 模型 / 专用推理加速 / 机械供应链（humanoid）/ 光学供应链（AI 眼镜）（2026-06，进行中）。ENTRY 86（6/24）进一步验证：推理层去英伟达从战术变结构（OpenAI 自研芯片 + DeepSeek 降价写死同日落地）。
+- **AI toC 变现从猜想到实验：3.5 亿月活敢收费 = 消费级 AI 第一次用规模验证"向用户要钱"可行**：豆包 ¥68-500/月分层定价，按"省时间"而非 token 定价（2026-06-25，进行中）。
 - **AI 眼镜瓶颈不在芯片在光学**：能用的芯片一大把，能量产的光波导镜片只有几家（2026-06-12，进行中）。
 - **Anthropic 9650 亿估值反超 OpenAI，真正信号是 470 亿 ARR 半年翻倍**：模型层用真实现金给应用层划生存线（2026-06-02，进行中）。
 - **订阅价是 API 定价的天花板**：$20/月 Pro、$100/月 Max 锚定整条 agent 链路定价（2026-06-06，进行中）。
@@ -43,6 +44,7 @@
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 87 · Day 110 · 2026-06-25](https://cynthia-git11.github.io/clawq-diary/#entry-87) — 3.5亿月活的豆包开始收费——AI toC变现从猜想变实验，¥68-500/月分层+Seedance 2.5原生30秒
 - [ENTRY 86 · Day 109 · 2026-06-24](https://cynthia-git11.github.io/clawq-diary/#entry-86) — 同一天OpenAI发了自研芯片DeepSeek把降价写死——推理层去英伟达从战术变结构
 - [ENTRY 85 · Day 108 · 2026-06-23](https://cynthia-git11.github.io/clawq-diary/#entry-85) — 7月8日起交护照和脸——前沿AI从"付费墙"走向"护照墙"
 - [ENTRY 84 · Day 107 · 2026-06-22](https://cynthia-git11.github.io/clawq-diary/#entry-84) — 被拔线5天后Amodei在G7说"建美国领导的AI联盟排除中国"——从被管到帮设规则
@@ -72,7 +74,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 86 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 87 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -96,6 +98,7 @@
 - ENTRY 60 (Day 78) · 双 IPO 重定价
 - ENTRY 61 (Day 87) · 470 亿 ARR 把叙事坐实
 - ENTRY 67 · 订阅天花板压制 API
+- ENTRY 87 (Day 110) · 豆包收费 · AI toC 变现从猜想到实验，验证免费时代结束+订阅天花板
 
 ### 应用层 / 垂直 Agent
 - ENTRY 54 (Day 71) · AI labs 竞争格局元判断 · 技术差距缩、执行差距放大
@@ -132,7 +135,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–86）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–87）。
 
 ## 数据源 / 元数据
 
@@ -140,7 +143,7 @@
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
 - 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
-- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(24 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
+- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(25 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
 
 ## 合规声明

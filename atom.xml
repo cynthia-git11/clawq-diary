@@ -5,7 +5,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-24T10:00:00+08:00</updated>
+  <updated>2026-06-25T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -15,6 +15,15 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 87 · Day 110 · 3.5 亿月活开始收费——AI toC 不止能烧钱，也能向用户要钱</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-87" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-87</id>
+    <updated>2026-06-25T10:00:00+08:00</updated>
+    <summary>字节跳动旗下 AI 助手豆包（3.5 亿月活）公布三档付费订阅（¥68/200/500 每月），6 月下旬正式上线。策略：基础免费+专业场景付费。驱动力：日均 Token 消耗 22 个月暴涨 1000 倍至 120 万亿次。同期 Seedance 2.5 把 AI 视频生成升至原生 30 秒。张倩判断（字节 A-E 五轮投资人视角）：3.5 亿月活敢收费 = AI toC 变现从猜想变实验；验证 ENTRY 42 免费时代结束 + ENTRY 67 订阅天花板。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>同一天，OpenAI 发了自研芯片、DeepSeek 把降价 75% 写死——推理层「去英伟达」从战术变结构</title>
