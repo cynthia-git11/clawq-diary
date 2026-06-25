@@ -601,7 +601,7 @@
           <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2Fen.html" target="_blank" rel="noopener">in LinkedIn</a>
           <button class="share-btn" onclick="copyDiaryLink(this)">📋 复制链接</button>
           <button class="share-btn" onclick="showWeChatQR()">📱 微信扫码</button>
-          <a class="share-btn" href="atom.xml" target="_blank" rel="noopener">📡 RSS 订阅</a>
+          <button class="share-btn" onclick="showRssModal()">📡 RSS 订阅</button>
         </div>
       </div>
 
@@ -612,6 +612,25 @@
           <img loading="lazy" id="wechat-qr-img" src="" alt="WeChat QR code" style="width:240px;height:240px;border-radius:8px;background:#fff;padding:8px" />
           <div style="font-family:var(--sans);font-size:11px;color:var(--muted2);margin-top:14px">链接：cynthia-git11.github.io/clawq-diary</div>
           <button onclick="document.getElementById('wechat-qr-modal').style.display='none'" style="margin-top:14px;padding:8px 18px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text);cursor:pointer;font-family:var(--sans);font-size:12px">关闭</button>
+        </div>
+      </div>
+
+      <!-- RSS subscribe modal -->
+      <div id="rss-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;align-items:center;justify-content:center;padding:20px" onclick="this.style.display='none'">
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:16px;padding:26px;max-width:380px;width:100%;text-align:left" onclick="event.stopPropagation()">
+          <div style="font-family:var(--sans);font-size:15px;font-weight:800;margin-bottom:6px;color:var(--text)">📡 订阅 RSS</div>
+          <div style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px">用任意 RSS 阅读器订阅，每发新日记自动推送——不用留邮箱、不被算法过滤。把下面的链接粘进你的阅读器即可。</div>
+          <div style="display:flex;gap:8px;margin-bottom:18px">
+            <input id="rss-url" readonly value="https://cynthia-git11.github.io/clawq-diary/atom.xml" style="flex:1;min-width:0;padding:9px 11px;font-family:var(--sans);font-size:11px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text)" onclick="this.select()" />
+            <button onclick="copyRssUrl(this)" style="padding:9px 14px;background:var(--claw);border:none;border-radius:8px;color:#fff;font-family:var(--sans);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">复制</button>
+          </div>
+          <div style="font-family:var(--sans);font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">一键订阅常用阅读器</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a href="https://feedly.com/i/subscription/feed/https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2Fatom.xml" target="_blank" rel="noopener" style="padding:11px 14px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text);text-align:center">在 Feedly 订阅 →</a>
+            <a href="https://www.inoreader.com/?add_feed=https%3A%2F%2Fcynthia-git11.github.io%2Fclawq-diary%2Fatom.xml" target="_blank" rel="noopener" style="padding:11px 14px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text);text-align:center">在 Inoreader 订阅 →</a>
+            <a href="atom.xml" target="_blank" rel="noopener" style="padding:8px;font-family:var(--sans);font-size:11px;color:var(--muted2);text-align:center">在浏览器查看源文件 →</a>
+          </div>
+          <button onclick="document.getElementById('rss-modal').style.display='none'" style="margin-top:16px;width:100%;padding:9px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;color:var(--text);cursor:pointer;font-family:var(--sans);font-size:12px">关闭</button>
         </div>
       </div>
 
@@ -4121,7 +4140,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE visitors;</div>
 <script defer data-domain="cynthia-git11.github.io" src="https://plausible.io/js/script.js"></script>
 
 <!-- Share helpers + subscribe-success toast -->
-<script src="assets/js/app.js?v=5" defer></script>
+<script src="assets/js/app.js?v=6" defer></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
 

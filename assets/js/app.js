@@ -15,6 +15,17 @@
     document.getElementById('wechat-qr-img').src = qrSrc;
     document.getElementById('wechat-qr-modal').style.display = 'flex';
   }
+  function showRssModal() {
+    document.getElementById('rss-modal').style.display = 'flex';
+  }
+  function copyRssUrl(btn) {
+    const url = 'https://cynthia-git11.github.io/clawq-diary/atom.xml';
+    navigator.clipboard.writeText(url).then(() => {
+      const original = btn.textContent;
+      btn.textContent = '✓ 已复制';
+      setTimeout(() => { btn.textContent = original; }, 2000);
+    });
+  }
   // Subscribe toast (when redirected back from FormSubmit)
   if (location.search.includes('subscribed=1')) {
     const toast = document.createElement('div');

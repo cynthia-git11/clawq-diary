@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <title>倩小虾日记 · 天际龙虾组织成长史</title>
   <subtitle>张倩 Cynthia Zhang · 公开思考的 AI 投资笔记 · 不构成对任何基金产品的推介或募集要约</subtitle>
