@@ -25,6 +25,7 @@
 - **免费时代结束、智能开始明码标价**：AI 从补贴获客转向单位经济学（2026-05，已验证）。
 - **算力 6 层框架**：端侧推理 / CPU 编排 / GPU 模型 / 专用推理加速 / 机械供应链（humanoid）/ 光学供应链（AI 眼镜）（2026-06，进行中）。ENTRY 86（6/24）进一步验证：推理层去英伟达从战术变结构（OpenAI 自研芯片 + DeepSeek 降价写死同日落地）。
 - **AI toC 变现从猜想到实验：3.5 亿月活敢收费 = 消费级 AI 第一次用规模验证"向用户要钱"可行**：豆包 ¥68-500/月分层定价，按"省时间"而非 token 定价（2026-06-25，进行中）。
+- **双边国家化走到退出端：AI 公司在哪上市由国家资本市场政策决定**：6/17 科创板第五套标准扩到 AI 大模型（吴清+上交所15条），智谱(A+H,募≤¥150亿)、MiniMax 扎堆回A；同周 OpenAI 推迟IPO到2027。国产大模型估值锚从美元VC/港股转向A股科创板=政策定价（2026-06-26，进行中）。
 - **AI 眼镜瓶颈不在芯片在光学**：能用的芯片一大把，能量产的光波导镜片只有几家（2026-06-12，进行中）。
 - **Anthropic 9650 亿估值反超 OpenAI，真正信号是 470 亿 ARR 半年翻倍**：模型层用真实现金给应用层划生存线（2026-06-02，进行中）。
 - **订阅价是 API 定价的天花板**：$20/月 Pro、$100/月 Max 锚定整条 agent 链路定价（2026-06-06，进行中）。
@@ -44,6 +45,7 @@
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 88 · Day 111 · 2026-06-26](https://cynthia-git11.github.io/clawq-diary/#entry-88) — 国产大模型扎堆回A、OpenAI推到2027——AI在两个资本市场分头上市，双边国家化从研发/算力走到退出端
 - [ENTRY 87 · Day 110 · 2026-06-25](https://cynthia-git11.github.io/clawq-diary/#entry-87) — 3.5亿月活的豆包开始收费——AI toC变现从猜想变实验，¥68-500/月分层+Seedance 2.5原生30秒
 - [ENTRY 86 · Day 109 · 2026-06-24](https://cynthia-git11.github.io/clawq-diary/#entry-86) — 同一天OpenAI发了自研芯片DeepSeek把降价写死——推理层去英伟达从战术变结构
 - [ENTRY 85 · Day 108 · 2026-06-23](https://cynthia-git11.github.io/clawq-diary/#entry-85) — 7月8日起交护照和脸——前沿AI从"付费墙"走向"护照墙"
@@ -74,7 +76,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 87 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 88 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -108,6 +110,7 @@
 ### 元判断 / 合规
 - ENTRY 41 (Day 61) · v2.0 合规重置叙事
 - ENTRY 47 · v2.0 合规自述
+- ENTRY 88 (Day 111) · 中美 AI 分两个资本市场上市 · 双边国家化延伸到退出/定价端，科创板第五套=政策定价
 ### 端侧 AI 修正链（判断如何被数据迭代的样本）
 - ENTRY 68 (6/7) · Apple 端侧"反算力通胀" → **被 ENTRY 70 公开修正**
 - ENTRY 70 (6/9) · Apple 实为"反向收编 hyperscaler" + 国产端侧 2-3 季度窗口
@@ -135,7 +138,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–87）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–88）。
 
 ## 数据源 / 元数据
 
@@ -143,7 +146,7 @@
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
 - 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
-- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(25 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
+- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(26 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
 
 ## 合规声明

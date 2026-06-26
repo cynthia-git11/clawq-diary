@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-25T10:00:00+08:00</updated>
+  <updated>2026-06-26T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,15 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 88 · Day 111 · 国产大模型扎堆回 A、OpenAI 推到 2027——AI 在两个资本市场分头上市</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-88" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-88</id>
+    <updated>2026-06-26T10:00:00+08:00</updated>
+    <summary>6/17 证监会主席吴清宣布科创板第五套标准扩至 AI 大模型、上交所同日发 15 条审核指引（为未盈利大模型公司开境内上市的门）；智谱 6/1 冲科创板拟募 ≤¥150 亿（1 月已港股上市 2513，走 A+H），MiniMax 5/29 签中信证券辅导启动 A 股 IPO。同周美国 OpenAI 把 IPO 推到 2027、Anthropic 或 10 月先上约 $1.1 万亿。判断：双边国家化从研发/算力端延伸到退出/定价端；国产大模型估值锚从美元 VC/港股转向 A 股科创板（政策定价）；退出通道分叉两条平行轨，绑美元退出的国产标的要打通道折价。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 87 · Day 110 · 3.5 亿月活开始收费——AI toC 不止能烧钱，也能向用户要钱</title>
