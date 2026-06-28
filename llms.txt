@@ -40,11 +40,13 @@
 - **"一家通吃"论文死了，模型层是"电信运营商"不是"平台"**：ChatGPT 份额 65%→46.4%、Gemini 27.7%、Claude 10.3%——没人过半但都在涨，模型层竞争结构=水涨众船高；估值天花板按运营商 P/E 想不按平台 P/S 想，价值往算力和应用层两头走（2026-06-21，进行中）。
 - **监管即壁垒：够格被限的才是够格被保护的，前沿模型公司从被管者变规则共建者（regulatory capture）**（2026-06-22，进行中）。
 - **前沿AI准入从"付费墙"走向"护照墙"：身份验证是出口管制的技术解，一旦建成不会拆**（2026-06-23，进行中）。
+- **具身智能三重拐点同时到达，但拐点≠赢家已定**：技术(端到端VLA+世界模型)+政策(6/8工信部国资委实景实训专项)+退出(宇树科创板过会)三拐点共振；关键词从"会不会走路"转"能不能交付"=进入单位经济学筛选；护城河从硬件转向数据飞轮（2026-06-28，进行中，更新ENTRY 65）。
 - **判断版本控制**：每修正一个判断当天必须同步所有传播载体（FAQ/llms.txt/schema），喂给世界的永远是 HEAD（2026-06-13，方法论）。
 - **两次公开认错**：智力成本 128 倍（2026-05-11，1 天后自我推翻）；Apple 端侧"反算力通胀"（2026-06-07，5 天后被 WWDC 实况推翻改为"反向收编"）——修正不覆盖原文，git history 留日期戳。
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 89 · Day 113 · 2026-06-28](https://cynthia-git11.github.io/clawq-diary/#entry-89) — 从"会不会走路"到"能不能交付"——具身智能技术/政策/退出三重拐点同时到达，护城河从硬件转向数据飞轮，但拐点不等于赢家已定
 - [ENTRY 88 · Day 111 · 2026-06-26](https://cynthia-git11.github.io/clawq-diary/#entry-88) — 国产大模型扎堆回A、OpenAI推到2027——AI在两个资本市场分头上市，双边国家化从研发/算力走到退出端
 - [ENTRY 87 · Day 110 · 2026-06-25](https://cynthia-git11.github.io/clawq-diary/#entry-87) — 3.5亿月活的豆包开始收费——AI toC变现从猜想变实验，¥68-500/月分层+Seedance 2.5原生30秒
 - [ENTRY 86 · Day 109 · 2026-06-24](https://cynthia-git11.github.io/clawq-diary/#entry-86) — 同一天OpenAI发了自研芯片DeepSeek把降价写死——推理层去英伟达从战术变结构
@@ -76,7 +78,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 88 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 89 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -87,6 +89,7 @@
 - ENTRY 67 (Day 91) · $20/月 订阅天花板 · API 定价被自己锚住
 - ENTRY 68 (Day 92) · Apple 端侧 AI · "第 0 层"反算力通胀
 - ENTRY 86 (Day 109) · 去英伟达从战术变结构 · OpenAI 自研芯片 + DeepSeek 降价写死同日落地
+- ENTRY 89 (Day 113) · 具身智能三重拐点 · 端到端VLA+世界模型把护城河从硬件转向数据飞轮，更新ENTRY 65机械供应链判断
 
 ### Agent 工具 / OpenClaw
 - ENTRY 56 (Day 71) · OpenClaw 架构对比图 · 双向夹击的雏形
@@ -138,7 +141,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–88）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–89）。
 
 ## 数据源 / 元数据
 
@@ -146,7 +149,7 @@
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
 - 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
-- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(26 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
+- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(27 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
 
 ## 合规声明

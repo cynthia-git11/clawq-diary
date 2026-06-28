@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-26T10:00:00+08:00</updated>
+  <updated>2026-06-28T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,15 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 89 · Day 113 · 从"会不会走路"到"能不能交付"——具身智能三重拐点同时到达</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-89" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-89</id>
+    <updated>2026-06-28T10:00:00+08:00</updated>
+    <summary>具身智能三件事同时到：技术(端到端 VLA+世界模型，自变量 WALL-A/智平方 GOVLA/灵初 Psi)、政策(6/8 工信部+国资委实景实训专项)、退出(宇树 6 月科创板 IPO 过会)；半年 324 起融资/约 390 亿。判断：更新 ENTRY 65——物理 AI 从供应链约束升级为技术+政策+退出三重拐点，但拐点≠赢家已定；关键词从"会不会走路"转"能不能交付"=单位经济学筛选(同 ENTRY 72)；端到端 VLA 把护城河从硬件转向数据飞轮(灵初开源 1000 小时手部数据)；一级分两层，宇树过会接 ENTRY 88 科创板第五套。回滚点：量产卡百台级过不了万台级则降级为"拐点在路上"。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 88 · Day 111 · 国产大模型扎堆回 A、OpenAI 推到 2027——AI 在两个资本市场分头上市</title>
