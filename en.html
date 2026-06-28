@@ -152,7 +152,7 @@
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -197,6 +197,20 @@
     .hero-portrait-cap { padding: 16px 0 0; }
     .hero-portrait-cap .name { font-size: 17px; font-weight: 800; }
     .hero-portrait-cap .role { font-size: 12px; color: var(--muted); margin-top: 3px; }
+    /* 🪞 ClawQ magazine cover (self-brand, no third-party mark) */
+    .hero-portrait.mag-cover{ position:relative; }
+    .mag-frame{ position:relative; border-radius:16px; overflow:hidden; box-shadow:0 18px 55px rgba(46,40,32,.26); border:1px solid var(--border2); }
+    .mag-frame img{ width:100%; aspect-ratio:3/4; object-fit:cover; object-position:50% 30%; border-radius:0; border:none; display:block; }
+    .mag-frame::before{ content:''; position:absolute; top:0; left:0; right:0; height:34%; background:linear-gradient(180deg, rgba(18,14,8,.58), rgba(18,14,8,0)); pointer-events:none; }
+    .mag-frame::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:52%; background:linear-gradient(0deg, rgba(18,14,8,.84), rgba(18,14,8,.34) 48%, rgba(18,14,8,0)); pointer-events:none; }
+    .mag-top{ position:absolute; top:15px; left:18px; right:18px; z-index:2; text-align:center; }
+    .mag-masthead{ font-family:'Playfair Display',serif; font-weight:800; font-size:46px; line-height:.95; letter-spacing:.03em; color:#fff; text-shadow:0 2px 16px rgba(0,0,0,.42); }
+    .mag-sub{ font-size:9.5px; font-weight:600; letter-spacing:.30em; text-transform:uppercase; color:rgba(255,255,255,.92); margin-top:6px; }
+    .mag-tag{ position:absolute; top:17px; right:15px; z-index:3; font-size:9px; font-weight:700; letter-spacing:.14em; color:#fff; border:1px solid rgba(255,255,255,.55); padding:3px 7px; border-radius:3px; }
+    .mag-bottom{ position:absolute; left:20px; right:20px; bottom:18px; z-index:2; }
+    .mag-name{ font-family:'Playfair Display',serif; font-weight:700; font-size:23px; color:#fff; letter-spacing:.01em; text-shadow:0 2px 12px rgba(0,0,0,.46); }
+    .mag-role{ font-size:11.5px; font-weight:600; color:rgba(255,255,255,.92); margin-top:5px; letter-spacing:.02em; }
+    .mag-cline{ font-size:11px; color:rgba(255,255,255,.82); margin-top:9px; padding-top:9px; border-top:1px solid rgba(255,255,255,.28); letter-spacing:.02em; line-height:1.5; }
 
     .stats { padding: 0 40px; max-width: 1280px; margin: 0 auto 80px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border2); border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; }
     .stat { background: var(--bg); padding: 28px 18px; text-align: center; }
@@ -376,7 +390,7 @@
   <div>
     <div class="hero-kicker">
       <div class="hero-kicker-line"></div>
-      <span>Cynthia Zhang · A Public Daily Notebook on AI Investing</span>
+      <span>Cynthia Zhang · A Public Notebook on AI Investing</span>
     </div>
     <h1>A 20-year investor's<br><span class="accent claw-text">daily judgment,</span><br>written in public.</h1>
     <p class="hero-tagline">
@@ -398,11 +412,19 @@
       <span>Languages <strong>EN / 中</strong></span>
     </div>
   </div>
-  <div class="hero-portrait">
-    <img loading="eager" fetchpriority="high" src="assets/portrait-cafe.jpg" alt="Cynthia Zhang, Founder & Managing Partner of FutureX Capital" />
-    <div class="hero-portrait-cap">
-      <div class="name">Cynthia Zhang</div>
-      <div class="role">Founder & Managing Partner · FutureX Capital</div>
+  <div class="hero-portrait mag-cover">
+    <div class="mag-frame">
+      <img loading="eager" fetchpriority="high" src="assets/portrait-cafe.jpg" alt="Cynthia Zhang, Founder & Managing Partner of FutureX Capital — ClawQ Chronicles cover" />
+      <div class="mag-tag">DAY 113</div>
+      <div class="mag-top">
+        <div class="mag-masthead">ClawQ</div>
+        <div class="mag-sub">Chronicles · English</div>
+      </div>
+      <div class="mag-bottom">
+        <div class="mag-name">Cynthia Zhang</div>
+        <div class="mag-role">Founder & Managing Partner · FutureX Capital</div>
+        <div class="mag-cline">An AI-first VC writing in public · 89 entries, kept honest</div>
+      </div>
     </div>
   </div>
 </div>
@@ -540,6 +562,17 @@
   <div class="sec-eyebrow">The Diary · Recent Entries</div>
   <h2 class="sec-h2">A public record of thinking</h2>
   <p class="sec-sub">An 89-entry public notebook of judgments, mistakes, and reflections on the AI agent economy. Full text in Chinese — English summaries below. <a href="index.html" style="color:var(--claw2);font-weight:700">Read full diary in Chinese →</a></p>
+
+  <!-- 🆕 Latest entry feature card -->
+  <a href="index.html#entry-89" class="latest-feature" style="display:block;text-decoration:none;margin:0 0 22px;padding:22px 26px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border2);border-left:4px solid var(--claw);border-radius:16px;box-shadow:0 6px 24px rgba(176,128,31,.10);transition:box-shadow .25s,transform .2s" onmouseover="this.style.boxShadow='0 14px 40px rgba(176,128,31,.20)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 6px 24px rgba(176,128,31,.10)';this.style.transform='translateY(0)'">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--claw);padding:3px 11px;border-radius:20px">LATEST</span>
+      <span style="font-size:12px;font-weight:700;color:var(--claw2);letter-spacing:.04em">Jun 28, 2026 · Day 113</span>
+    </div>
+    <div style="font-size:20px;font-weight:800;line-height:1.34;color:var(--text);margin-bottom:8px;letter-spacing:-.01em">From "Can It Walk" to "Can It Deliver" — Embodied AI Hits a Triple Inflection</div>
+    <div style="font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:12px">Tech (end-to-end VLA + world models), policy (a national real-scene training program), and exit (Unitree's STAR Market IPO clears review) all inflect at once. But the keyword has shifted from "can it walk" to "can it deliver" — an inflection doesn't mean the winners are decided.</div>
+    <span style="font-size:13px;font-weight:800;color:var(--claw)">Read the full entry →</span>
+  </a>
 
   <div class="entry-list">
     <div class="entry-row">
