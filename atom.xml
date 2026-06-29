@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-28T10:00:00+08:00</updated>
+  <updated>2026-06-29T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,15 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 90 · Day 114 · GPT-5.6 不是发布是"持证发布"——大模型之战胜负手从谁更强变成谁被准许卖给谁</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-90" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-90</id>
+    <updated>2026-06-29T10:00:00+08:00</updated>
+    <summary>OpenAI 发 GPT-5.6（Sol/Terra/Luna，上下文 150 万 token，比 GPT-5.5 涨约 43%）：旗舰 Sol 是其最强网安模型，ExploitBench 接近 Anthropic Mythos Preview 但只用约 1/3 输出 token；Terra 半价给 GPT-5.5 性能。但首发应美国政府要求只给约 20 家政府批准的伙伴。判断：接 ENTRY 76 Fable 5 被拔线、ENTRY 85 护照墙，但进化一步——Anthropic 被动被拔线，OpenAI 主动"持证发布"（先拿政府准售名单再发），发布权常态化嵌进国安框架。大模型之战胜负手从"谁更强"变成"谁能合法把最强能力卖给谁"，模型层首现"军用级 vs 民用级"合法准入分层。价格战仍在民用层打、旗舰层转向准入。一级：模型可切换变刚需、监管即壁垒、中国开源再得一分。回滚点：若几周内全面放开则降级为"发布初期临时限制"。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 89 · Day 113 · 从"会不会走路"到"能不能交付"——具身智能三重拐点同时到达</title>
