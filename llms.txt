@@ -4,7 +4,7 @@
 
 主语言：中文 (zh-CN)。英文版：[en.html](https://cynthia-git11.github.io/clawq-diary/en.html) · 日文版：[ja.html](https://cynthia-git11.github.io/clawq-diary/ja.html)
 
-⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 19 个重大判断的可审计台账（5 已验证 / 2 已公开修正 / 12 进行中），每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
+⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 24 个重大判断的可审计台账（6 已验证 / 2 已公开修正 / 16 进行中，2026-06-29 更新）。最新动态：ENTRY 82"明松暗紧、两套工具"被 GPT-5.6 持证发布验证升级为 ✓；新挂账 7 条（运营商化/监管即壁垒/护照墙/去英伟达/退出国家化/具身三重拐点/持证发布）。每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
 
 ## 作者
 
