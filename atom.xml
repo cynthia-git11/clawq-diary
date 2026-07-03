@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-06-29T10:00:00+08:00</updated>
+  <updated>2026-07-03T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,24 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 92 · Day 118 · 2026 上半年判断大对账——AI 的定价权正从算力和资本转移到规则</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-92" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-92</id>
+    <updated>2026-07-03T10:00:00+08:00</updated>
+    <summary>上半年收官：92 篇日记、24 条挂账判断（6✓/2✗/16⏳，认错用时 1-5 天）。四条主线：模型层从平台梦到受监管公用事业；监管主权线最重（研发/算力/准入/退出半年内全部国家化，"明松暗紧"10 天兑现）；算力 3→6 层+去英伟达结构化；应用层之年+具身三重拐点。元判断：AI 从公司生意变国家资产，定价权从算力和资本转移到规则。下半年看 Anthropic IPO、7/8 护照墙形态、具身破万台。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
+
+  <entry>
+    <title>ENTRY 91 · Day 116 · 被拔线 18 天后 Fable 5 回来了——赌盘猜对日期，我把墙的材质猜错一半</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-91" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-91</id>
+    <updated>2026-07-01T10:00:00+08:00</updated>
+    <summary>商务部 6/30 解禁、Anthropic 7/1 全球恢复 Fable 5（18 天）。条件：7/8 起消费端需 Persona 身份验证（证件+活体），API 豁免。对账：①预测市场"7/1 前恢复"精确命中，监管下架风险走完发生→定价→解除第一个完整周期、从黑天鹅变可定价风险类；②护照墙一半验证（验证设施真建了）一半公开修正（是身份墙不是国籍墙）；③API 豁免=监管怕匿名个体不怕企业集成，toB/API 成低监管摩擦通道、集成方式本身是合规资产。回滚点：7/8 后若按国籍收紧则重算。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 90 · Day 114 · GPT-5.6 不是发布是"持证发布"——大模型之战胜负手从谁更强变成谁被准许卖给谁</title>

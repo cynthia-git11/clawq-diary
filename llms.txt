@@ -42,11 +42,15 @@
 - **前沿AI准入从"付费墙"走向"护照墙"：身份验证是出口管制的技术解，一旦建成不会拆**（2026-06-23，进行中）。
 - **具身智能三重拐点同时到达，但拐点≠赢家已定**：技术(端到端VLA+世界模型)+政策(6/8工信部国资委实景实训专项)+退出(宇树科创板过会)三拐点共振；关键词从"会不会走路"转"能不能交付"=进入单位经济学筛选；护城河从硬件转向数据飞轮（2026-06-28，进行中，更新ENTRY 65）。
 - **持证发布：前沿模型从"被动被拔线"到"主动拿政府准售名单再发"**：OpenAI GPT-5.6（最强网安模型 Sol）首发只给约 20 家政府批准的伙伴；大模型之战最强一档比的不再是 benchmark，是"谁被准许卖给谁"，模型层首现"军用级 vs 民用级"合法准入分层（2026-06-29，进行中，接 ENTRY 76/84/85）。
+- **监管下架风险走完第一个完整周期（发生→定价→解除），从黑天鹅变可定价风险类**：Fable 5 被拔线 18 天后全球恢复（6/30 解禁、7/1 上线），预测市场"7/1 前恢复"精确命中；护照墙判断一半验证（验证基础设施 7/8 上线）一半公开修正（墙的材质是"身份"不是"国籍"）；API 豁免=toB 是低监管摩擦通道（2026-07-01）。
+- **上半年元判断：AI 从公司生意变国家资产，AI 定价权正从算力和资本转移到规则**：研发/算力/准入/退出四道关半年内全部国家化；下半年看 Anthropic IPO 公开定价、7/8 护照墙形态、具身量产破万台（2026-07-03，半年对账）。
 - **判断版本控制**：每修正一个判断当天必须同步所有传播载体（FAQ/llms.txt/schema），喂给世界的永远是 HEAD（2026-06-13，方法论）。
-- **两次公开认错**：智力成本 128 倍（2026-05-11，1 天后自我推翻）；Apple 端侧"反算力通胀"（2026-06-07，5 天后被 WWDC 实况推翻改为"反向收编"）——修正不覆盖原文，git history 留日期戳。
+- **两次公开认错**：智力成本 128 倍（2026-05-11，1 天后自我推翻）；Apple 端侧"反算力通胀"（2026-06-07，5 天后被 WWDC 实况推翻改为"反向收编"）——修正不覆盖原文，git history 留日期戳；第三次半修正：护照墙"国籍"半句被 7/1 全球恢复修正为"身份墙"（2026-07-01）。
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 92 · Day 118 · 2026-07-03](https://cynthia-git11.github.io/clawq-diary/#entry-92) — 2026 上半年判断大对账：92 篇、24 条挂账（6✓/2✗/16⏳）——AI 的定价权正从算力和资本转移到规则
+- [ENTRY 91 · Day 116 · 2026-07-01](https://cynthia-git11.github.io/clawq-diary/#entry-91) — 被拔线 18 天后 Fable 5 回来了：赌盘精确命中 7/1，护照墙一半验证一半公开修正（身份墙非国籍墙），API 豁免=toB 低监管摩擦通道
 - [ENTRY 90 · Day 114 · 2026-06-29](https://cynthia-git11.github.io/clawq-diary/#entry-90) — GPT-5.6 不是发布是"持证发布"：OpenAI 最强网安模型只给约 20 家政府批准伙伴，大模型之战胜负手从"谁更强"变成"谁被准许卖给谁"
 - [ENTRY 89 · Day 113 · 2026-06-28](https://cynthia-git11.github.io/clawq-diary/#entry-89) — 从"会不会走路"到"能不能交付"——具身智能技术/政策/退出三重拐点同时到达，护城河从硬件转向数据飞轮，但拐点不等于赢家已定
 - [ENTRY 88 · Day 111 · 2026-06-26](https://cynthia-git11.github.io/clawq-diary/#entry-88) — 国产大模型扎堆回A、OpenAI推到2027——AI在两个资本市场分头上市，双边国家化从研发/算力走到退出端
@@ -80,7 +84,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 90 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 92 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -117,6 +121,8 @@
 - ENTRY 47 · v2.0 合规自述
 - ENTRY 88 (Day 111) · 中美 AI 分两个资本市场上市 · 双边国家化延伸到退出/定价端，科创板第五套=政策定价
 - ENTRY 90 (Day 114) · 持证发布 · 前沿模型发布权常态化嵌进国安框架，最强模型护城河=够格拿政府准售证，验证监管即壁垒+护照墙
+- ENTRY 91 (Day 116) · Fable 5 归来对账 · 监管下架风险第一个完整周期，18 天成定价基准
+- ENTRY 92 (Day 118) · 上半年对账 · 四条主线收拢：定价权从算力/资本转移到规则
 ### 端侧 AI 修正链（判断如何被数据迭代的样本）
 - ENTRY 68 (6/7) · Apple 端侧"反算力通胀" → **被 ENTRY 70 公开修正**
 - ENTRY 70 (6/9) · Apple 实为"反向收编 hyperscaler" + 国产端侧 2-3 季度窗口
@@ -144,15 +150,15 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–90）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–92）。
 
 ## 数据源 / 元数据
 
 - Atom feed: [atom.xml](https://cynthia-git11.github.io/clawq-diary/atom.xml)
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
-- 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md)
+- 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md) · [archive/2026-07.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-07.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
-- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(28 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
+- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(30 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
 
 ## 合规声明
