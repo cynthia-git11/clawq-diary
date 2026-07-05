@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-04T10:00:00+08:00</updated>
+  <updated>2026-07-05T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 94 · Day 120 · OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗就用股权表买护城河</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-94" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/94</id>
+    <updated>2026-07-05T10:00:00+08:00</updated>
+    <published>2026-07-05T10:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>FT 7/2 爆料：OpenAI 提议把约 5% 股权（按 8520 亿美元估值约 426 亿美元）送进一个美国主权财富基金式的政府载体、设想 Anthropic/谷歌/Meta 一并让渡同等比例，换取白宫良好关系、平息政治反弹；同周 Anthropic 以 9650 亿美元估值反超。判断：①纯能力的仗 OpenAI 正在输，打不赢模型层就换战场——用股权表买一条别人建不起来的护城河（离国家最近），Altman 把核心资产从"最聪明的模型"重定价成"最贴近政府的公司"；②这是我上半年追的 AI-国家融合最深一层，从出口管制拔线（ENTRY 76/91）、持证发布（ENTRY 90）的"卖什么/卖给谁"深入到"谁拥有你"，前沿 AI 正在被慢动作国有化；③一级市场重定价：前沿层变准主权资产后，"中立纯商业前沿供应商"叙事死了，独立性溢价往下迁到不够系统重要的应用/基础设施层，前沿护城河从技术变政治接近度（创业公司建不起来）。回滚点：需国会批可能落不了地，但 Altman 判断游戏已从技术转政治本身就是信号；政府入股双刃——今天保护明天控制。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 93 · Day 119 · 微软掏 25 亿美元买"交付"——企业 AI 的胜负手从模型多强变成最后一公里能不能落地</title>
