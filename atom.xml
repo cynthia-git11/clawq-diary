@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-03T10:00:00+08:00</updated>
+  <updated>2026-07-04T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 93 · Day 119 · 微软掏 25 亿美元买"交付"——企业 AI 的胜负手从模型多强变成最后一公里能不能落地</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-93" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/93</id>
+    <updated>2026-07-04T10:00:00+08:00</updated>
+    <published>2026-07-04T10:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>7/2 微软成立 Frontier Company，投 25 亿美元、派 6000 名工程师驻场客户、按业务结果结算；触发点是 MIT NANDA 的数字——95% 的企业生成式 AI 试点对利润零影响。同样的前向部署工程（FDE）亚马逊已投 10 亿、OpenAI/Anthropic 5 月各自上马，半年内成巨头默认动作。判断：模型层商品化后（接 3 月"模型从护城河变水电煤"、ENTRY 83 运营商化），企业 AI 的价值往交付层迁移——卡住落地的不是智能不够是 demo 到生产的鸿沟，纯套壳 SaaS 估值往下修、"垂直行业+驻场交付+结果对赌"成新稀缺资产。陷阱：FDE 是重人力低毛利难规模化的服务生意，分水岭在谁能把驻场交付沉淀成可复用 workflow/agent、让边际交付成本趋近于零——变成产品才配拿软件估值，变不了就是贴 AI 标签的埃森哲。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 92 · Day 118 · 2026 上半年判断大对账——AI 的定价权正从算力和资本转移到规则</title>
