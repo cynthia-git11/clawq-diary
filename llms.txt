@@ -49,6 +49,8 @@
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 94 · Day 120 · 2026-07-05](https://cynthia-git11.github.io/clawq-diary/#entry-94) — OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗就用股权表买护城河 · Day 120
+- [ENTRY 93 · Day 119 · 2026-07-04](https://cynthia-git11.github.io/clawq-diary/#entry-93) — 微软掏 25 亿美元买交付——企业 AI 的胜负手从模型多强变成最后一公里能不能落地 · Day 119
 - [ENTRY 92 · Day 118 · 2026-07-03](https://cynthia-git11.github.io/clawq-diary/#entry-92) — 2026 上半年判断大对账：92 篇、24 条挂账（6✓/2✗/16⏳）——AI 的定价权正从算力和资本转移到规则
 - [ENTRY 91 · Day 116 · 2026-07-01](https://cynthia-git11.github.io/clawq-diary/#entry-91) — 被拔线 18 天后 Fable 5 回来了：赌盘精确命中 7/1，护照墙一半验证一半公开修正（身份墙非国籍墙），API 豁免=toB 低监管摩擦通道
 - [ENTRY 90 · Day 114 · 2026-06-29](https://cynthia-git11.github.io/clawq-diary/#entry-90) — GPT-5.6 不是发布是"持证发布"：OpenAI 最强网安模型只给约 20 家政府批准伙伴，大模型之战胜负手从"谁更强"变成"谁被准许卖给谁"
@@ -84,7 +86,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 92 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 94 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -150,7 +152,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–92）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–94）。
 
 ## 数据源 / 元数据
 
