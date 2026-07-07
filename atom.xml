@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-06T10:00:00+08:00</updated>
+  <updated>2026-07-07T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,23 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 97 · Day 122 · 视频是中国 AI 第一门好生意——36氪深扒 Seedance：数据做 SOTA，闭环收钱</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-97" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-97</id>
+    <updated>2026-07-07T10:00:00+08:00</updated>
+    <summary>36氪深扒字节 Seedance：Seedance 2.0 全球市占第二（仅次谷歌 Veo）、贡献火山今年一半 MaaS 收入、毛利率外界估 90%，720P 每秒约 1 元且从不打折、满血版需签 ≥1000 万年框。判断：①视频是中国 AI 第一门好生意（token 值钱+SOTA，且可用国产芯片跑推理=高毛利）；②给 ENTRY 96“护城河是分发”补另一半——Seedance 胜在“数据的胜利”（上千人数据团队+采买影视级素材），SOTA 护城河在数据不在算法，数据×分发是乘法；③字节独有闭环 Seedance→AI 短剧→红果抖音广告分账，OpenAI/Anthropic 只能卖 token。一级：数据×分发×资本耐心叠乘；SOTA 是租的。回滚点：2.5/可灵/Veo 月底扎堆发，若被反超则火山半数 MaaS 收入与高毛利掉得比涨快。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
+  <entry>
+    <title>ENTRY 96 · Day 122 · 可灵单飞估值 180 亿美元、字节 Seedance 藏体内——视频大模型的护城河从来不是模型，是分发</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-96" />
+    <id>https://cynthia-git11.github.io/clawq-diary/#entry-96</id>
+    <updated>2026-07-07T10:00:00+08:00</updated>
+    <summary>快手 7/2 将可灵剥离单独融资近 $30 亿、投后估值约 $180 亿（¥1200 亿），保留 68.33%、计划 2027 初递港交所；阿里云/腾讯/百度罕见同台+文娱资本；可灵 2025 营收 ¥11 亿、净亏 ¥19 亿。判断（字节五轮投资人视角）：同为全球前三，快手主站分发弱只能剥出可灵用资本换时间、字节有抖音用生态换耐心不单独估值；视频模型护城河不在模型（在商品化）在分发闭环+创作生态+数据飞轮；Sora 3 月关停证明单位经济学残酷，能活的只有有分发或有资本两类。一级：别只看 benchmark 看分发+数据飞轮，BAT 同台=占位、独立创业窗口在关。回滚点：$180 亿融资撑非收入撑，若收入跟不上或成上市即倒挂。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 95 · Day 121 · 特斯拉给员工的 AI 账单装上电表——"越用越涨"的增长故事撞上企业成本部门的配额制</title>

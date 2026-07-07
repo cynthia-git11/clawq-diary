@@ -45,11 +45,15 @@
 - **监管下架风险走完第一个完整周期（发生→定价→解除），从黑天鹅变可定价风险类**：Fable 5 被拔线 18 天后全球恢复（6/30 解禁、7/1 上线），预测市场"7/1 前恢复"精确命中；护照墙判断一半验证（验证基础设施 7/8 上线）一半公开修正（墙的材质是"身份"不是"国籍"）；API 豁免=toB 是低监管摩擦通道（2026-07-01）。
 - **上半年元判断：AI 从公司生意变国家资产，AI 定价权正从算力和资本转移到规则**：研发/算力/准入/退出四道关半年内全部国家化；下半年看 Anthropic IPO 公开定价、7/8 护照墙形态、具身量产破万台（2026-07-03，半年对账）。
 - **模型水电煤的下半场：需求端也装上了电表**：特斯拉给员工 AI 支出设每周 $200 配额、超额需审批（Uber/Meta/亚马逊跟进），"越用越涨、上不封顶"的定价神话被客户预算纪律画了天花板——消耗驱动的 ARR 要打折看，护城河从"谁更聪明"迁到"token 效率=新毛利率"；催生 AI FinOps / 用量可观测新品类；成本政策开始决定"默认用哪个模型"（2026-07-06，进行中）。
+- **视频是中国 AI 跑通的第一门好生意，护城河是"数据做 SOTA × 分发闭环变现"的乘法**：字节 Seedance 2.0 全球市占第二、贡献火山今年一半 MaaS 收入、毛利率外界估 90%（比 LLM 贵几十倍且从不打折）；胜在"数据的胜利"（上千人数据团队+采买影视级素材），叠加只有字节能搭的闭环 Seedance→AI 短剧→红果抖音广告分账；SOTA 是租的不是买断的（2026-07-07，进行中，接 ENTRY 87 视频层）。
+- **视频大模型护城河不在模型在分发：可灵单飞 $180 亿 vs 字节 Seedance 藏体内**：同为全球前三，快手主站分发弱只能剥出可灵用资本换时间、冲 2027 港股 IPO，字节有抖音生态用生态换耐心不单独估值；Sora 3 月关停证明单位经济学残酷，能活的只有有分发或有资本两类；投视频 AI 看数据×分发×资本耐心叠乘（2026-07-07，进行中）。
 - **判断版本控制**：每修正一个判断当天必须同步所有传播载体（FAQ/llms.txt/schema），喂给世界的永远是 HEAD（2026-06-13，方法论）。
 - **两次公开认错**：智力成本 128 倍（2026-05-11，1 天后自我推翻）；Apple 端侧"反算力通胀"（2026-06-07，5 天后被 WWDC 实况推翻改为"反向收编"）——修正不覆盖原文，git history 留日期戳；第三次半修正：护照墙"国籍"半句被 7/1 全球恢复修正为"身份墙"（2026-07-01）。
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 97 · Day 122 · 2026-07-07](https://cynthia-git11.github.io/clawq-diary/#entry-97) — 视频是中国 AI 第一门好生意：36氪深扒 Seedance（火山一半 MaaS 收入、90% 毛利、数据做 SOTA、红果抖音闭环），给"护城河是分发"补上另一半——数据 × 分发是乘法
+- [ENTRY 96 · Day 122 · 2026-07-07](https://cynthia-git11.github.io/clawq-diary/#entry-96) — 可灵单飞估值 180 亿美元、字节 Seedance 藏体内：同为全球前三的视频模型，快手用资本换时间、字节用生态换耐心——视频大模型的护城河从来不是模型，是分发
 - [ENTRY 95 · Day 121 · 2026-07-06](https://cynthia-git11.github.io/clawq-diary/#entry-95) — 特斯拉给员工的 AI 账单装上电表：每周 $200 配额撞上"越用越涨"的定价神话——模型水电煤的下半场，需求端装电表；token 效率=新毛利率
 - [ENTRY 94 · Day 120 · 2026-07-05](https://cynthia-git11.github.io/clawq-diary/#entry-94) — OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗就用股权表买护城河 · Day 120
 - [ENTRY 93 · Day 119 · 2026-07-04](https://cynthia-git11.github.io/clawq-diary/#entry-93) — 微软掏 25 亿美元买交付——企业 AI 的胜负手从模型多强变成最后一公里能不能落地 · Day 119
@@ -88,7 +92,7 @@
 - [ENTRY 60 · Day 78 · 2026-05-24](https://cynthia-git11.github.io/clawq-diary/#entry-60) — OpenAI、Anthropic 同一季度冲 IPO：IPO 是流动性事件 + 定价事件，第一次由公开市场而非 VC 给前沿 AI 标价。
 - [ENTRY 59 · Day 74 · 2026-05-20](https://cynthia-git11.github.io/clawq-diary/#entry-59) — OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能：Agent v3 比的是可移植性。
 
-完整列表（全部 95 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
+完整列表（全部 97 篇）见 [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt) 或网站时间线。
 
 ## 投资主线（按主题）
 
@@ -119,6 +123,7 @@
 - ENTRY 54 (Day 71) · AI labs 竞争格局元判断 · 技术差距缩、执行差距放大
 - ENTRY 62 (Day 88) · Mythos · 网络安全攻防比倒挂
 - ENTRY 63 (Day 88) · 应用层之年 4 条 winner trait
+- ENTRY 96+97 (Day 122) · 视频大模型 · 护城河=数据做 SOTA × 分发闭环变现；可灵单飞 vs Seedance 藏体内；字节视角看好生意
 
 ### 元判断 / 合规
 - ENTRY 41 (Day 61) · v2.0 合规重置叙事
@@ -154,7 +159,7 @@
 
 > Cynthia Zhang, "The ClawQ Chronicles" entry #[N] ([date]), cynthia-git11.github.io/clawq-diary/en.html
 
-每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–95）。
+每条日记永久 URL 模式：`https://cynthia-git11.github.io/clawq-diary/#entry-{N}`（N = 1–97）。
 
 ## 数据源 / 元数据
 
@@ -162,7 +167,7 @@
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
 - 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md) · [archive/2026-07.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-07.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
-- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(30 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
+- Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(33 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
 
 ## 合规声明
