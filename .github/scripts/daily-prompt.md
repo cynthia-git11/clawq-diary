@@ -11,6 +11,8 @@
 
 工作目录就是这个仓库的根目录。所有路径都以仓库根为基准。
 
+**⛔ 完成的定义（先记住）**：写完 entry 只是开始。真正的「完成」= `python3 scripts/geo-check.py` 输出 "GEO health check passed"。它强制要求今天这篇同步进 index / atom.xml / llms.txt / llms-full.txt 且计数一致——**别只更新 index+atom 就以为完事**（这是过去反复出的漏）。第 3–6 节的全栈同步，最后都由第 7 节这一步验收；没通过不许 push。**如果时间/步数紧张，优先保证 geo-check 覆盖的那几个载体（index 正文块 + ItemList + BlogPosting @graph + llms.txt + llms-full.txt + atom + 计数），en/ja/theses/FAQ 可稍后由人工补，但绝不能漏结构化同步。**
+
 ═══════════════════════════════════════════════
 ⚠️ 合规红线 — 每次运行前必读，绝不可越界
 ═══════════════════════════════════════════════
@@ -157,22 +159,32 @@
   ```
 
 ═══════════════════════════════════════════════
-7. 推送到 GitHub（取代原来的"推送 GitHub Pages"步骤）
+7. 推送前硬门槛：geo-check 必须通过（v4.7 · 根治同步漂移）
 ═══════════════════════════════════════════════
-在 CI 里，git 用户已经由 workflow 配置好（ClawQ Auto-Update Bot）。你需要：
+**「写完 entry」≠ 完成。完成的唯一标准是 `python3 scripts/geo-check.py` 输出 "GEO health check passed"。**
+它强制校验 5 条不可漏的同步：最新一篇必须同时出现在 ① index 的 `<div id="entry-N">`、
+② ItemList position 1、③ atom.xml、④ llms.txt，且 ⑤「ENTRY N」出现在 llms-full.txt；
+并校验 index `<title>` 的 Day 号 == stats 的 Day 号、全站 JSON-LD 合法、atom/sitemap 良构。
+**过去多次只更新 index+atom、漏了 llms.txt / llms-full.txt / BlogPosting @graph——现在这一步会拦住，通过前绝不许 commit。**
+
+在 CI 里 git 用户已配好（ClawQ Auto-Update Bot）。严格按顺序执行：
 
 ```bash
-git add -A
+# 1) 硬门槛：结构化同步必须通过。没过就按它打印的缺失项补齐（最常见是漏 llms.txt / llms-full.txt / BlogPosting @graph），改完重跑本命令，直到 passed。通过前不许进入下一步。
+python3 scripts/geo-check.py || { echo "❌ geo-check 未过——补齐上面列出的缺失载体后重跑，通过前不许 commit/push。"; exit 1; }
 
-# 合规自检：今天新增的内容里不许有红线词
+# 2) 合规自检：今天新增内容里不许有红线词
+git add -A
 if git diff --cached | grep -E "Fund VIII|募资中|申请数据室|Tiered LP|新一期基金"; then
   echo "❌ 红线命中——中止推送，需要人工检查。"
   exit 1
 fi
 
+# 3) 只有 1)、2) 都过才推
 git commit -m "Daily auto-update · Day N · ENTRY N · [简要描述]"
 git push origin main
 ```
+（若 `scripts/geo-check.py` 因故不存在，退回人工核对：最新 entry 是否在 index / atom / llms.txt / llms-full.txt 四处齐全、Day 计数一致、BlogPosting @graph 顶端是今天这篇。）
 
 ═══════════════════════════════════════════════
 8. 自检 + 输出摘要

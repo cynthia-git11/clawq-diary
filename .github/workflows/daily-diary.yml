@@ -64,7 +64,7 @@ jobs:
             If you do write: at the end, you MUST commit and push the changes yourself via the Bash tool. The git user is already configured. If today's entry already exists (re-run / replay), skip writing a new entry but still verify all metadata is consistent.
           claude_args: |
             --allowed-tools Read,Edit,Write,Bash,WebSearch,WebFetch
-            --max-turns 40
+            --max-turns 60
 
       - name: Verify push (fallback safety net)
         if: always()
@@ -77,6 +77,17 @@ jobs:
             git push
           else
             echo "✓ Working tree clean."
+          fi
+
+      # 兜底门：跑 geo-check，若最新一篇没同步进全部载体/计数不一致，让本 job 失败 → 触发下面的 issue 提醒。
+      # 这样即使 agent 抄了近路推了半同步的 entry，也会被这里抓住（geo-hourly 也会独立抓一次）。
+      - name: GEO consistency gate
+        if: always()
+        run: |
+          if [ -f scripts/geo-check.py ]; then
+            python3 scripts/geo-check.py
+          else
+            echo "geo-check.py 不存在，跳过门禁"
           fi
 
       # 失败时自动开 issue 通知用户（避免再次发生 5 天没人察觉）
