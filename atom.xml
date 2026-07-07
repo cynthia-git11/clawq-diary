@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-05T10:00:00+08:00</updated>
+  <updated>2026-07-06T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,17 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 95 · Day 121 · 特斯拉给员工的 AI 账单装上电表——"越用越涨"的增长故事撞上企业成本部门的配额制</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-95" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/95</id>
+    <updated>2026-07-06T10:00:00+08:00</updated>
+    <published>2026-07-06T10:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>特斯拉从 7/6 起给员工 AI 支出装电表：每人每周 200 美元封顶、超额需经理签字，导火索是工程师每周烧掉"数千美元的 token"；Uber 今年 AI 预算 4 月就烧穿改成每月 1500 美元封顶，Meta/亚马逊/沃尔玛纷纷设帽或往便宜模型层赶。来源：The Information/Electrek/IBTimes。判断：①我 3 月说"模型从护城河变水电煤"讲的是供给端商品化，这批限额是下半场——需求端也开始按公用事业管，电力当年变水电煤后工厂第一件事是给每车间装分表定预算，企业第一次看清 agentic AI"没打折的全额成本"；②别当利空——能烧到要限额、工程师宁愿走审批也要用，是最硬的渗透证据，是"95% 试点零影响"（ENTRY 93）的另一面：真用起来的那部分用量大到失控，价值不是没落地是落地的地方贵到 CFO 得进场；③给"按用量计费越用越涨上不封顶"的神话画了天花板，顶就是客户的预算纪律——ARR 里"消耗驱动"部分要打折看，护城河从"谁更聪明"迁到"谁每个 token 产出更多"，token 效率=新的毛利率；④云账单爆炸催生 FinOps，token 账单爆炸正催生"AI FinOps/用量可观测/成本归因"新品类（特斯拉自建 token 排名 dashboard 是 DIY 版）；暗线：Grok beta 被豁免出 200 美元、预算被当渠道武器把人挤向自家模型，"默认用哪个模型"下一步被成本政策而非能力决定（接 ENTRY 90/85，现在轮到"成本可切换"成刚需）。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
 
   <entry>
     <title>ENTRY 94 · Day 120 · OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗就用股权表买护城河</title>
