@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-07T10:00:00+08:00</updated>
+  <updated>2026-07-09T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 98 · Day 124 · 这批 AI 公司稀奇的不是增长快是增速在加速——增长二阶导为正，但 ARR 三个字母下藏三个东西</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-98" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/98</id>
+    <updated>2026-07-09T10:00:00+08:00</updated>
+    <published>2026-07-09T10:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>TechCrunch 7/8 把这轮 AI 公司收入曲线摆到一起：Sierra 第一个 $100M ARR 用 7 个季度、第二个只用 2 个；Glean 翻倍从 9 个月缩到 6 个月；Anthropic 从 $30B 到 $47B run-rate 不到两个月；Mercor $1B→$2B 用 4 个月。判断：①稀奇的不是增长快是增速在加速（二阶导为正）——经典 SaaS“越大越慢”被消费计费+Agent 改写，软件单位价值从“替人省事”抬成“替人干活”，预算从 IT 挪到人力/业务、天花板抬高几个量级；②陷阱：所有人都用“ARR”三个字母、底下却是 recurring/run-rate（最好一个月乘 12）/committed（签了没上线）三个不同东西，数字从会计滑向营销，run-rate 分母最脆（AI 消费能像来一样快地走），看到 ARR 先问口径+net retention；③落点：绝对值不再是信号、二阶导才是，但要分清“真加速”（留存毛利同向）和“口径加速”（committed 塞进 run-rate 撑故事），$100M ARR 不再稀奇、市场只问“第二个 $100M 用多久”。回滚点（接 ENTRY 95 电表）：二阶导转负会同样剧烈、run-rate 下行崩得比 recurring 快，最漂亮的曲线最该盯留存和毛利去证伪——增速会说谎，留存不会。来源：TechCrunch/各公司公告。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 97 · Day 122 · 视频是中国 AI 第一门好生意——36氪深扒 Seedance：数据做 SOTA，闭环收钱</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-97" />
