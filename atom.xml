@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-09T10:00:00+08:00</updated>
+  <updated>2026-07-10T10:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 99 · Day 125 · Grok 4.5 不比谁最聪明，只比编码这一个活儿谁最划算——马斯克拿造火箭那套砸向 AI 最肥的工作负载</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-99" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/99</id>
+    <updated>2026-07-10T10:00:00+08:00</updated>
+    <published>2026-07-10T10:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>xAI 7/8 发 Grok 4.5、7/9 对公众开放：全新 V9 底座（1.5 万亿参数、比 V8 翻三倍），只冲编码/agent，用真实 Cursor 开发者会话数据训；综合智力 Artificial Analysis 指数第 4（在所有开源和所有 Gemini 之上），$2/$6 每百万 token 比 Opus 4.8/GPT-5.5 便宜六成，马斯克改口“相当 Opus 4.7 但快得多”。来源 TechCrunch/Axios。判断：①前沿按“活儿”分裂、不再比“谁最聪明”——只比编码这个能变现又可量化的活儿的性价比；②护城河从“更大底座”挪到“谁攥着真实 agent 会话数据”——真信号是拿 Cursor 会话训、价值在数据回路不在权重，xAI 没闭环只能借 Cursor（合作还是依赖要盯）；③价格是武器瞄 Anthropic 编码命门——编码 agent 狂烧 token、单价压倒一切，半价直接压 Claude Code（80%+ SWE-bench、Anthropic 收入主发动机）；xAI 现叫 SpaceXAI，算力+资本+分发垂直一体、耐力比纯模型公司深（接 ENTRY 95 预算当渠道武器）。一级：leapfrog 基准是自报要打折，可信的是第三方“跟 GPT-5.5 Codex 打平、成本减半”；定位诚实——不是更聪明是“够用+快+便宜一半”。回滚点：模型只是入口、编码 agent 留存赢在外壳/记忆/信任，Grok 的 harness 能否追上 Claude Code 没验证——三个月内能否在真实开发者留存（非 benchmark）啃下两位数份额是验收点。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 98 · Day 124 · 这批 AI 公司稀奇的不是增长快是增速在加速——增长二阶导为正，但 ARR 三个字母下藏三个东西</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-98" />
