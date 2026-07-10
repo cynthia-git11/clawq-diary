@@ -11,6 +11,7 @@ Checks:
   2. atom.xml / sitemap.xml / atom.xsl are well-formed XML
   3. robots.txt still allows the key AI crawlers
   4. The newest entry (ItemList position 1) is synced across carriers
+  4b. BlogPosting @graph contains all ItemList top-5 (anti silent drift)
   5. Day count is consistent (title vs stats) in index.html
 """
 import re, json, sys
@@ -71,6 +72,18 @@ else:
         errors.append(f"llms.txt: latest {latest} not present")
     if f"ENTRY {num}" not in read("llms-full.txt"):
         errors.append(f"llms-full.txt: ENTRY {num} not present")
+
+# 4b. BlogPosting @graph must mirror ItemList top-5 (silent-drift guard;
+# 2026-07-10: ENTRY 98 once vanished from @graph while ItemList was fine)
+top5 = re.findall(r'"position":\s*\d+,\s*"url":\s*"[^"]*#(entry-\d+)"', idx)[:5]
+gm = re.search(r'最新 5 篇 BlogPosting.*?<script type="application/ld\+json">(.*?)</script>', idx, re.S)
+if not gm:
+    errors.append("index.html: cannot locate BlogPosting @graph block")
+elif top5:
+    graph_ids = set(re.findall(r'#(entry-\d+)', gm.group(1)))
+    missing = [e for e in top5 if e not in graph_ids]
+    if missing:
+        errors.append(f"index.html: BlogPosting @graph missing {', '.join(missing)} (ItemList top-5 must all be present)")
 
 # 5. Day count consistency (title vs stats)
 title_day = re.search(r"<title>[^<]*Day (\d+)", idx)
