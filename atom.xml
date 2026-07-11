@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-10T10:00:00+08:00</updated>
+  <updated>2026-07-12T02:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 100 · Day 127 · 苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-100" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/100</id>
+    <updated>2026-07-12T02:00:00+08:00</updated>
+    <published>2026-07-12T02:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>第 100 篇。7/10 苹果在北加州联邦法院起诉 OpenAI + io Products + 硬件负责人 Tang Tan（苹果 24 年老将）+ 前工程师 Chang Liu：面试要求在职苹果员工带'真实零件' show-and-tell、教离职员工绕安检、未归还笔记本 + 下载几十份机密文件；诉求赔偿+禁令。来源 CNBC/Bloomberg/Fortune。判断：①先问时机不看戏码——挖角在 2025、io 收购 2025/5 官宣，苹果法务不可能今天才知道；选在 OpenAI 重启 IPO（最快 9 月挂牌）当口立案——巨头诉讼的立案时机从来是竞争决策不是法务决策，未决诉讼=S-1 必须披露+硬件叙事冻结+承销商定价打折；前例 Waymo 掐 Uber IPO 期起诉、~$245M 股权和解——用法院打估值比市场竞争便宜；②OpenAI 冒险的根源：硬件是变现焦虑的出口——$6.5B 买 io、至今零产品，等于自认订阅+API 撑不起万亿估值（接 ENTRY 94'打不赢就换战场'第三次）；但硬件是苹果主场——买得到人，买不到干净的知识转移，模型公司做硬件的死穴是'知识产权洁净室'；③一级市场：第一次有巨头把'挖角的姿势'做成完整证据链——founder：clean room/设备审计/知识隔离是 CEO 的事；投资人：尽调加'关键团队知识来源干净吗'——人才来源合规从可选项变成融资/退出风险敞口。回滚点：单方指控未判决，快速和解则冲击有限；证伪口：OpenAI 九月如期挂牌且定价无折扣则判断降级。验收：S-1 披露方式 + io 首款硬件能否在诉讼未决期发布。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 99 · Day 125 · Grok 4.5 不比谁最聪明，只比编码这一个活儿谁最划算——马斯克拿造火箭那套砸向 AI 最肥的工作负载</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-99" />
