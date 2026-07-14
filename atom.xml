@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-12T02:00:00+08:00</updated>
+  <updated>2026-07-13T02:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 101 · Day 128 · 一排巨头联手推 ARD 绕开 MCP——一个协议赢到让对手结盟，那既是加冕也是围剿</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-101" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/101</id>
+    <updated>2026-07-13T02:00:00+08:00</updated>
+    <published>2026-07-13T02:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>据 The Information：Google、微软、Salesforce、Snowflake、ServiceNow，外加 Cisco、Databricks、GitHub、NVIDIA、Hugging Face 一长串巨头，联手支持连接 AI agent 与企业软件的新标准 ARD，明确冲着 Anthropic 的 MCP——过去 18 个月 MCP 已成 agent 接工具的事实默认。判断：①一个协议赢到让一整排巨头组队另起炉灶，说明它赢的是开发者心智不是控制权——对手不再抢接口而是绕过你，那既是加冕也是围剿；②ARD 号称'补充而非替代'、兼容 MCP 与 A2A，翻成人话是 embrace-and-extend——先拥抱再延伸最后架空，三十年前微软对付 Netscape/Java 的同一招；谁掌握 system of record（Salesforce 客户/Snowflake 数据/ServiceNow 工单）谁掌握 agent 真正要够到的东西，模型能开源、接口能标准化，企业数据的地心引力搬不走；③同窗口第二信号——Cloudflare 开 Monetization Gateway 候补名单，用 x402 把三十年没人用的 HTTP 402 翻出来给 agent 访问资源装收费闸机、稳定币按次结算：agent 正从工具变经济主体，聪明钱押的是必经的'收费站层'而非模型层；④判断：MCP 上 all-in 现在是两标准赌注、站队有成本，标准打架的缝里长中间件；值钱的位置在 agent 身份/鉴权/计费/企业数据连接这些收费站——别再只问谁的模型最强、要问谁拥有 agent 干活绕不开的那道门；技术会赢、分发未必。回滚点：若一年后 ARD 沦为没人实现的联盟 PPT、MCP 依旧一家独大，则本篇把公关结盟读成了产业拐点该降级；盯两信号——巨头旗舰产品默认接 ARD 还是 MCP、有没有第三方真按 ARD 出货。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 100 · Day 127 · 苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-100" />
