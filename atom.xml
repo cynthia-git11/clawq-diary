@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-14T16:00:00+08:00</updated>
+  <updated>2026-07-16T23:30:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 103 · Day 131 · DeepSeek 给智能装上峰谷电价——“模型变水电煤”从比喻变成定价表</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-103" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/103</id>
+    <updated>2026-07-16T23:30:00+08:00</updated>
+    <published>2026-07-16T23:30:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>DeepSeek 6/29 官宣、V4 正式版 7 月中旬上线（日报报 7/15 已上线）：每日 9-12 点、14-18 点高峰 API 价格翻倍、谷时维持现价——主流大模型厂商首次 API 分时定价；5/22 刚把限时折扣转永久，一个月后用分时收回高峰价。来源：新浪财经/澎湃/证券时报。判断：①“模型变水电煤”的字面兑现——3 月水电煤（供给商品化）→6/21 运营商化（份额）→7/6 电表（需求配额）→今天分时电价（供给定价）：计量、配额、分时三件套齐了；推理成本结构已电网化（固定容量+波峰波谷+闲置边际成本≈0），模型公司第一次承认卖的是“容量利用率”不是“智能”；②智能价格首次有时段属性：企业将把批处理负载挪到谷时，“成本可切换”（ENTRY 95）之后是“时段可切换”；类比 AWS spot 生态——token 调度层/推理负载均衡是马上能立项的新品类；③DeepSeek 的算盘：名义价不动、高峰收回 5 月降价、削峰填谷省 GPU 资本开支；配昇腾适配+私有化，讲“中国公用事业级智能供应商”上市叙事——第一个按运营商方式定价的模型公司，IPO 估值锚是运营商 P/E 还是平台 P/S（接 ENTRY 84/88）。回滚点：IPO/估值系日报聚合未官宣以招股书为准；三个月内无第二家跟进分时则降级为个体负载管理；2 倍价差能否驱动挪负载待验证。验收：字节/阿里/智谱/Kimi 是否跟进；夜间 token 占比变化。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 102 · Day 129 · Claude Code 一周两面受敌——为一边合规写的代码，在另一边成了“后门”</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-102" />
