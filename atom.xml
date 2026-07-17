@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-16T23:30:00+08:00</updated>
+  <updated>2026-07-17T23:30:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 104 · Day 132 · WAIC 开幕：最高领导人首次亲临、29 国把 AI 合作组织总部签在上海——美国在砌墙，中国在建组织</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-104" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/104</id>
+    <updated>2026-07-17T23:30:00+08:00</updated>
+    <published>2026-07-17T23:30:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>2026 WAIC 暨 AI 全球治理高级别会议 7/17 上海开幕：习近平首次亲临并发表主旨讲话（“AI 发展应该是国际合作的交响曲，而不是一国的独奏”）；前夜 29 国签署世界人工智能合作组织（WAICO）成立协定、总部设上海；配套 5 年 5000 个研修名额、六大区域合作中心、“妈祖”方案 30 国。规模：三地四馆 10 万㎡、1100 余家、3000 余项、300+ 全球首发。来源：新华社/央视/国际在线。判断：①规格即判断——AI 升格为国家外交主轴；同月对照：美国砌墙（出口管制/身份墙/持证发布，管“谁能用我的模型”），中国建组织（WAICO+名额+方案，建“谁跟我一起用”）——中国第一次把 AI 治理东道主角色做成实体机构，对全球南方是 AI 外交+出口通道；②展馆两台铁柜比 demo 重要：华为 Atlas 950 真机首展（现场 1024 卡、满配 8192 卡 Q4 上市，“业界最大”系华为口径）+ 曙光8000 全国产十万卡集群首秀（海光底座）——国产算力从昇腾单极变双极；纠偏：MiniMax M3 非本届首发（6/1 已发）、智元 1.5 万台系旧闻——会期数字要打折看；③首日最实的一单是渠道不是算力：魔法原子独家签约速卖通出海——具身拐点信号从产量挪到渠道；豆包 C 端智能体 7/15 下线、7/17 豆包智能体手机首发=字节把智能体从 App 挪进硬件。回滚点：WAICO 一年内无实体运作则降级“论坛+1”；162 亿系会前累计意向；两台机器真实客户名单才是验收；需求发布≠签约。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 103 · Day 131 · DeepSeek 给智能装上峰谷电价——“模型变水电煤”从比喻变成定价表</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-103" />
