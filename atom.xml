@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-17T23:30:00+08:00</updated>
+  <updated>2026-07-18T23:50:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 105 · Day 133 · WAIC 参展牌统计：83 家改挂 Agent、只剩 18 家还举“基础大模型”——百模大战的结局是转行名单</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-105" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/105</id>
+    <updated>2026-07-18T23:50:00+08:00</updated>
+    <published>2026-07-18T23:50:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>甲子光年对 WAIC 2026 全部参展主体的统计：大模型与生成式 AI 赛道 130 家展商体量与去年持平，但 83 家（63.8%）改挂 Agent 标签、以“基础大模型”为主标签的只剩 18 家（口径为参展标签统计非行业普查）。数字轨迹：79 个（2023-05 科技部）→238（2023-10 李彦宏引用）→约 305（2024-04 每经）→累计 1509（2025-07 官方含行业模型）；备案 988 款（2026-06）。判断：①参展牌是公司自己选的定位=最诚实的行业普查；淘汰极少是破产是转行——零一并入阿里云转政企、百川 All in 医疗，六小虎留在通用基座的只剩智谱/MiniMax/月暗/阶跃四家（接 6/21 运营商化）；②幸存者四层生存逻辑：国家资本（DeepSeek 7/15 工商落定，“国家队拿票、市场队出钱”——商业投资人 5 年锁定无票、国家基金唯一有票无锁定）/上市通道（智谱 314 亿配售+科创板辅导、MiniMax 160 亿、阶跃冲港股——18C 再融资反超 IPO）/大厂体内（豆包 180 万亿日 tokens、混元份额 0→8.7%）/垂直现金流（可灵投后约 $180 亿≈约 $5 亿年化收入的 36 倍）；独立纯血只剩月暗——K3（2.8T/1M ctx/承诺 7/27 前开放权重）是技术旗帜但 $3/$15 定价为 GLM-5.2 的两到三倍、$3 亿 ARR 对 $315 亿估值、发布卡 WAIC 前一天——基座是资本行业不再是创业行业；③一级：通用基座创业投资窗口正式关闭（新钱=在桌基座公司后续轮或上层）；83 家 Agent 标签是新的百团大战、两年内重演洗牌——该问 Agent 公司“两年后你的参展牌写什么”。回滚点：18 家系单一机构口径取趋势不取精度；备案数仍涨=整合只在基座层；证伪口=非五强非大厂新玩家一年内真进基座牌桌则降级；K3 口碑仅两天会漂。验收：明年 WAIC 标签统计、五强是否再收敛、Agent 83 家两年存活率。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 104 · Day 132 · WAIC 开幕：最高领导人首次亲临、29 国把 AI 合作组织总部签在上海——美国在砌墙，中国在建组织</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-104" />
