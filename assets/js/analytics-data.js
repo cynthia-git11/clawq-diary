@@ -1,283 +1,283 @@
 /* 自建追踪 · 模拟数据 · scripts/gen-traffic.py 确定性生成 · 每日汇报重跑 */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-07-18",
+  "generated": "2026-07-19",
   "range_days": 30,
   "totals": {
-    "pv": 7125,
-    "uniques": 5272,
-    "avg_time_sec": 186,
-    "completion_rate": 0.285,
-    "shares": 152
+    "pv": 6808,
+    "uniques": 4990,
+    "avg_time_sec": 184,
+    "completion_rate": 0.267,
+    "shares": 134
   },
   "daily": [
     {
-      "date": "2026-06-19",
-      "pv": 134,
-      "uniques": 94,
-      "avg_time_sec": 159,
-      "completion_rate": 0.264,
+      "date": "2026-06-20",
+      "pv": 109,
+      "uniques": 81,
+      "avg_time_sec": 174,
+      "completion_rate": 0.24,
       "shares": 3,
       "spike": ""
     },
     {
-      "date": "2026-06-20",
-      "pv": 109,
-      "uniques": 77,
-      "avg_time_sec": 175,
-      "completion_rate": 0.332,
-      "shares": 2,
-      "spike": ""
-    },
-    {
       "date": "2026-06-21",
-      "pv": 119,
-      "uniques": 90,
-      "avg_time_sec": 164,
-      "completion_rate": 0.296,
+      "pv": 100,
+      "uniques": 73,
+      "avg_time_sec": 176,
+      "completion_rate": 0.237,
       "shares": 2,
       "spike": ""
     },
     {
       "date": "2026-06-22",
-      "pv": 143,
-      "uniques": 109,
-      "avg_time_sec": 172,
-      "completion_rate": 0.274,
-      "shares": 4,
+      "pv": 120,
+      "uniques": 86,
+      "avg_time_sec": 157,
+      "completion_rate": 0.225,
+      "shares": 3,
       "spike": ""
     },
     {
       "date": "2026-06-23",
-      "pv": 135,
-      "uniques": 96,
-      "avg_time_sec": 156,
-      "completion_rate": 0.331,
+      "pv": 130,
+      "uniques": 94,
+      "avg_time_sec": 163,
+      "completion_rate": 0.314,
       "shares": 3,
       "spike": ""
     },
     {
       "date": "2026-06-24",
-      "pv": 147,
-      "uniques": 106,
-      "avg_time_sec": 174,
-      "completion_rate": 0.262,
+      "pv": 133,
+      "uniques": 102,
+      "avg_time_sec": 179,
+      "completion_rate": 0.306,
       "shares": 3,
       "spike": ""
     },
     {
       "date": "2026-06-25",
-      "pv": 159,
-      "uniques": 118,
-      "avg_time_sec": 174,
-      "completion_rate": 0.229,
+      "pv": 151,
+      "uniques": 111,
+      "avg_time_sec": 164,
+      "completion_rate": 0.281,
       "shares": 3,
       "spike": ""
     },
     {
       "date": "2026-06-26",
-      "pv": 152,
-      "uniques": 117,
-      "avg_time_sec": 161,
-      "completion_rate": 0.233,
+      "pv": 144,
+      "uniques": 102,
+      "avg_time_sec": 172,
+      "completion_rate": 0.227,
       "shares": 3,
       "spike": ""
     },
     {
       "date": "2026-06-27",
-      "pv": 146,
-      "uniques": 111,
-      "avg_time_sec": 177,
-      "completion_rate": 0.269,
-      "shares": 3,
+      "pv": 147,
+      "uniques": 109,
+      "avg_time_sec": 161,
+      "completion_rate": 0.255,
+      "shares": 2,
       "spike": ""
     },
     {
       "date": "2026-06-28",
-      "pv": 164,
-      "uniques": 121,
-      "avg_time_sec": 185,
-      "completion_rate": 0.316,
-      "shares": 3,
+      "pv": 127,
+      "uniques": 96,
+      "avg_time_sec": 171,
+      "completion_rate": 0.336,
+      "shares": 2,
       "spike": ""
     },
     {
       "date": "2026-06-29",
-      "pv": 206,
-      "uniques": 145,
-      "avg_time_sec": 184,
-      "completion_rate": 0.266,
+      "pv": 178,
+      "uniques": 133,
+      "avg_time_sec": 178,
+      "completion_rate": 0.248,
       "shares": 4,
       "spike": ""
     },
     {
       "date": "2026-06-30",
-      "pv": 176,
-      "uniques": 126,
-      "avg_time_sec": 184,
-      "completion_rate": 0.335,
-      "shares": 3,
+      "pv": 192,
+      "uniques": 148,
+      "avg_time_sec": 166,
+      "completion_rate": 0.311,
+      "shares": 4,
       "spike": ""
     },
     {
       "date": "2026-07-01",
-      "pv": 187,
-      "uniques": 133,
-      "avg_time_sec": 166,
-      "completion_rate": 0.294,
-      "shares": 5,
+      "pv": 193,
+      "uniques": 148,
+      "avg_time_sec": 177,
+      "completion_rate": 0.33,
+      "shares": 3,
       "spike": ""
     },
     {
       "date": "2026-07-02",
       "pv": 225,
-      "uniques": 161,
-      "avg_time_sec": 181,
-      "completion_rate": 0.302,
-      "shares": 3,
+      "uniques": 164,
+      "avg_time_sec": 172,
+      "completion_rate": 0.241,
+      "shares": 4,
       "spike": ""
     },
     {
       "date": "2026-07-03",
-      "pv": 220,
-      "uniques": 155,
-      "avg_time_sec": 172,
-      "completion_rate": 0.289,
-      "shares": 5,
+      "pv": 216,
+      "uniques": 160,
+      "avg_time_sec": 174,
+      "completion_rate": 0.281,
+      "shares": 4,
       "spike": ""
     },
     {
       "date": "2026-07-04",
-      "pv": 182,
-      "uniques": 131,
-      "avg_time_sec": 170,
-      "completion_rate": 0.271,
+      "pv": 184,
+      "uniques": 137,
+      "avg_time_sec": 180,
+      "completion_rate": 0.278,
       "shares": 4,
       "spike": ""
     },
     {
       "date": "2026-07-05",
-      "pv": 204,
-      "uniques": 145,
+      "pv": 208,
+      "uniques": 149,
       "avg_time_sec": 179,
-      "completion_rate": 0.323,
-      "shares": 4,
-      "spike": ""
-    },
-    {
-      "date": "2026-07-06",
-      "pv": 286,
-      "uniques": 219,
-      "avg_time_sec": 172,
-      "completion_rate": 0.285,
-      "shares": 7,
-      "spike": ""
-    },
-    {
-      "date": "2026-07-07",
-      "pv": 243,
-      "uniques": 186,
-      "avg_time_sec": 190,
-      "completion_rate": 0.339,
+      "completion_rate": 0.301,
       "shares": 5,
       "spike": ""
     },
     {
+      "date": "2026-07-06",
+      "pv": 223,
+      "uniques": 157,
+      "avg_time_sec": 172,
+      "completion_rate": 0.316,
+      "shares": 4,
+      "spike": ""
+    },
+    {
+      "date": "2026-07-07",
+      "pv": 247,
+      "uniques": 177,
+      "avg_time_sec": 180,
+      "completion_rate": 0.239,
+      "shares": 4,
+      "spike": ""
+    },
+    {
       "date": "2026-07-08",
-      "pv": 288,
-      "uniques": 214,
-      "avg_time_sec": 195,
-      "completion_rate": 0.276,
+      "pv": 282,
+      "uniques": 203,
+      "avg_time_sec": 190,
+      "completion_rate": 0.248,
       "shares": 5,
       "spike": ""
     },
     {
       "date": "2026-07-09",
-      "pv": 335,
-      "uniques": 247,
-      "avg_time_sec": 199,
-      "completion_rate": 0.222,
-      "shares": 6,
+      "pv": 258,
+      "uniques": 195,
+      "avg_time_sec": 178,
+      "completion_rate": 0.239,
+      "shares": 7,
       "spike": ""
     },
     {
       "date": "2026-07-10",
-      "pv": 307,
-      "uniques": 222,
-      "avg_time_sec": 202,
-      "completion_rate": 0.261,
+      "pv": 284,
+      "uniques": 205,
+      "avg_time_sec": 178,
+      "completion_rate": 0.265,
       "shares": 5,
       "spike": ""
     },
     {
       "date": "2026-07-11",
-      "pv": 262,
-      "uniques": 200,
-      "avg_time_sec": 179,
-      "completion_rate": 0.33,
-      "shares": 6,
+      "pv": 277,
+      "uniques": 202,
+      "avg_time_sec": 201,
+      "completion_rate": 0.269,
+      "shares": 5,
       "spike": ""
     },
     {
       "date": "2026-07-12",
-      "pv": 294,
-      "uniques": 223,
-      "avg_time_sec": 197,
-      "completion_rate": 0.338,
-      "shares": 8,
+      "pv": 239,
+      "uniques": 175,
+      "avg_time_sec": 195,
+      "completion_rate": 0.262,
+      "shares": 6,
       "spike": ""
     },
     {
       "date": "2026-07-13",
-      "pv": 324,
-      "uniques": 244,
-      "avg_time_sec": 189,
-      "completion_rate": 0.249,
+      "pv": 314,
+      "uniques": 224,
+      "avg_time_sec": 181,
+      "completion_rate": 0.247,
       "shares": 5,
       "spike": ""
     },
     {
       "date": "2026-07-14",
-      "pv": 397,
-      "uniques": 300,
-      "avg_time_sec": 188,
-      "completion_rate": 0.328,
-      "shares": 9,
+      "pv": 323,
+      "uniques": 237,
+      "avg_time_sec": 199,
+      "completion_rate": 0.221,
+      "shares": 5,
       "spike": ""
     },
     {
       "date": "2026-07-15",
-      "pv": 361,
-      "uniques": 265,
-      "avg_time_sec": 198,
-      "completion_rate": 0.229,
+      "pv": 356,
+      "uniques": 263,
+      "avg_time_sec": 190,
+      "completion_rate": 0.334,
       "shares": 6,
       "spike": ""
     },
     {
       "date": "2026-07-16",
-      "pv": 418,
-      "uniques": 312,
+      "pv": 407,
+      "uniques": 304,
       "avg_time_sec": 198,
-      "completion_rate": 0.328,
-      "shares": 12,
+      "completion_rate": 0.245,
+      "shares": 8,
       "spike": ""
     },
     {
       "date": "2026-07-17",
-      "pv": 456,
-      "uniques": 351,
-      "avg_time_sec": 201,
-      "completion_rate": 0.272,
-      "shares": 12,
+      "pv": 368,
+      "uniques": 279,
+      "avg_time_sec": 193,
+      "completion_rate": 0.235,
+      "shares": 7,
       "spike": ""
     },
     {
       "date": "2026-07-18",
-      "pv": 346,
-      "uniques": 254,
+      "pv": 326,
+      "uniques": 233,
       "avg_time_sec": 210,
-      "completion_rate": 0.244,
-      "shares": 9,
+      "completion_rate": 0.243,
+      "shares": 8,
+      "spike": ""
+    },
+    {
+      "date": "2026-07-19",
+      "pv": 347,
+      "uniques": 243,
+      "avg_time_sec": 206,
+      "completion_rate": 0.297,
+      "shares": 7,
       "spike": ""
     }
   ],
@@ -287,63 +287,63 @@ window.CLAWQ_ANALYTICS = {
       "code": "CN",
       "flag": "🇨🇳",
       "pct": 0.561,
-      "pv": 3997
+      "pv": 3819
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
       "pct": 0.158,
-      "pv": 1126
+      "pv": 1076
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
       "pct": 0.079,
-      "pv": 563
+      "pv": 538
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
       "pct": 0.061,
-      "pv": 435
+      "pv": 415
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
       "pct": 0.048,
-      "pv": 342
+      "pv": 327
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
       "pct": 0.031,
-      "pv": 221
+      "pv": 211
     },
     {
       "name": "英国",
       "code": "GB",
       "flag": "🇬🇧",
       "pct": 0.021,
-      "pv": 150
+      "pv": 143
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
       "pct": 0.018,
-      "pv": 128
+      "pv": 123
     },
     {
       "name": "其他",
       "code": "XX",
       "flag": "🌐",
       "pct": 0.023,
-      "pv": 164
+      "pv": 157
     }
   ],
   "by_lang": [
