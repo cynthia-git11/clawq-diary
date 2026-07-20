@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-18T23:50:00+08:00</updated>
+  <updated>2026-07-20T23:30:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 106 · Day 135 · 八周、四巨头、约 $90 亿涌进 AI 交付层——苦力活放表外，PE 出钱拿保底，模型厂用 5 亿控 140 亿</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-106" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/106</id>
+    <updated>2026-07-20T23:30:00+08:00</updated>
+    <published>2026-07-20T23:30:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>八周时间线：5/4 Anthropic×Blackstone/H&amp;F/高盛合资（$1.5B committed）→5/11 OpenAI 官宣 DeployCo（$4B/19 家/TPG 领投，同日购 Tomoro 约 150 名 FDE）→5/21 Anthropic 系购 Fractional AI（约 100 工程师）→6/30 AWS $1B 自建 FDE→7/2 微软 $2.5B Frontier（6000 专家驻场）→7/8 DeployCo 二购 Northslope→7/15 合资定名 Ode with Anthropic 亮相。四巨头合计约 $90 亿（接 ENTRY 93“价值往交付层迁移”——当时一个数据点，现在一个行业）。判断：①看钱的结构不看声势——OpenAI 只出 $5 亿股权+超级投票权控投前 $100 亿的公司，$40 亿 PE 资本据 FT 拿五年期 17.5% 年化保底+利润封顶（分析师称“更像固收”）；模型厂把低毛利苦力活剥出表外：PE 承担资本、labs 拿多数票+IP 通道+不并表——“服务收入稀释 multiple”被结构预答：不进报表；②客户=股东的被投：19 家伙伴 sponsor 超 2000 家企业，circular deal flow 冷启动零获客但收入质量待验；传统咨询全部入股不开战（麦肯锡/贝恩咨询/凯捷是 DeployCo 出资人）；ACN 信号钝化：2 月 -6.6%→5 月 -3%→7/2 反涨→7/15 无反应，腰斩主因自家订单 -13%；③独立交付公司终局=acqui-hire（Tomoro/Fractional AI 成 founding core）；Ode CTO：模型“不是消耗大部分卡路里的地方”——自己人说出“模型不是护城河，落地才是”；企业每 $1 软件配 $6 服务，$90 亿买的是“95% 试点零影响”的救治权。回滚点：17.5%/$100 亿/$5 亿系媒体报道取结构不取精度；计费条款均未披露；头对头竞标未发生；证伪口=一年后独立第三方客户占比仍低则降级为“PE 内部工程队”。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 105 · Day 133 · WAIC 参展牌统计：83 家改挂 Agent、只剩 18 家还举“基础大模型”——百模大战的结局是转行名单</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-105" />
