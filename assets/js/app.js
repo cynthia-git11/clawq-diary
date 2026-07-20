@@ -1,7 +1,23 @@
 /* ════════════════ Block 1/4 ════════════════ */
+  function clawqCopy(text, onOk) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onOk, function(){ clawqCopyFallback(text, onOk); });
+    } else { clawqCopyFallback(text, onOk); }
+  }
+  function clawqCopyFallback(text, onOk) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (ok) { onOk(); return; }
+    } catch (e) {}
+    window.prompt('长按/全选复制链接：', text);
+  }
   function copyDiaryLink(btn) {
     const url = 'https://cynthia-git11.github.io/clawq-diary/';
-    navigator.clipboard.writeText(url).then(() => {
+    clawqCopy(url, () => {
       const original = btn.textContent;
       btn.textContent = '✓ 已复制';
       btn.style.color = '#34d3a8';
@@ -10,9 +26,7 @@
     });
   }
   function showWeChatQR() {
-    const url = encodeURIComponent('https://cynthia-git11.github.io/clawq-diary/');
-    const qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + url;
-    document.getElementById('wechat-qr-img').src = qrSrc;
+    // QR 是本地静态图 assets/qr-diary.png（外部二维码 API 在微信/大陆网络被墙）
     document.getElementById('wechat-qr-modal').style.display = 'flex';
   }
   function showRssModal() {
@@ -20,7 +34,7 @@
   }
   function copyRssUrl(btn) {
     const url = 'https://cynthia-git11.github.io/clawq-diary/atom.xml';
-    navigator.clipboard.writeText(url).then(() => {
+    clawqCopy(url, () => {
       const original = btn.textContent;
       btn.textContent = '✓ 已复制';
       setTimeout(() => { btn.textContent = original; }, 2000);
