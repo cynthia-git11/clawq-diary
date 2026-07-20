@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-20T23:30:00+08:00</updated>
+  <updated>2026-07-20T23:50:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 107 · Day 135 · 西班牙夺冠给投资人的三堂课：冠军在决赛那一周是买不到的——明星会老，体系会复利</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-107" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/107</id>
+    <updated>2026-07-20T23:50:00+08:00</updated>
+    <published>2026-07-20T23:50:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>昨夜 MetLife：西班牙 1-0 加时胜阿根廷（Ferran Torres 106 分钟），队史第二冠（上次 2010）；卫冕冠军 0 射正、恩佐两黄离场；西班牙系 2024 欧洲杯冠军班底、最年轻球队之一（Yamal 刚过 19 岁生日）。来源：FIFA/NBC/Fox。三堂课：①冠军在决赛那一周买不到——奖杯是十几年体系化青训“投”出来的、王朝谢幕后穿越十年低谷仍在投小苗；对照 ENTRY 106：巨头能花 90 亿买现成交付团队，但被买的 Tomoro/Fractional AI 也是当年种子轮投出的小苗——体系化早期布局是唯一能“制造”冠军的方式，其余都是租；巨头越热衷收购，青训营定价权越高；②体系胜过明星——阿根廷有最伟大个体、西班牙首发无金球奖得主，赢在控球哲学从 U15 贯穿成年队的文化一致性；0 射正是体系性窒息不是个体失常；VC 对应：投体系型组织胜过投明星创始人（接“工具只值 5%、价值在数据飞轮”）；③周期与年轻化——2008-2012 王朝→十年低谷→再登顶：底部还在投青训的人拿走下一个周期；AI 此刻：基座窗口关（ENTRY 105）、交付被买走（ENTRY 106）——该问“下一个周期的青训在哪”（Agent 83 家/具身数据飞轮/端侧）；敢让 19 岁踢决赛=敢给年轻创始人 lead 轮。回滚点：体育类比取结构不取戏剧性——若 Torres 偏出三堂课一字不改，过程质量优先于单场结果，别用一脚加时球验证投资框架。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 106 · Day 135 · 八周、四巨头、约 $90 亿涌进 AI 交付层——苦力活放表外，PE 出钱拿保底，模型厂用 5 亿控 140 亿</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-106" />

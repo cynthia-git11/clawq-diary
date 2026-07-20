@@ -59,6 +59,7 @@
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 107 · Day 135 · 2026-07-20](https://cynthia-git11.github.io/clawq-diary/#entry-107) — 世界杯西班牙 1-0 加时胜阿根廷夺冠，给 VC 的三堂课：冠军在决赛那一周买不到（青训=种子轮复利，巨头越热衷收购、青训营定价权越高）；体系胜过明星（卫冕冠军 0 射正是体系性窒息）；底部还在投青训的人拿走下一个周期——基座窗口关了、交付被买走了，该问“下一个周期的青训在哪”
 - [ENTRY 106 · Day 135 · 2026-07-20](https://cynthia-git11.github.io/clawq-diary/#entry-106) — AI 交付层八周成型：四巨头约 $90 亿（OpenAI DeployCo/Anthropic Ode/微软 Frontier/AWS FDE）——苦力活放表外、PE 出钱拿 17.5% 保底、OpenAI 用 $5 亿控投前 $100 亿；客户是股东的被投（circular deal flow）；咨询巨头全部入股不开战；独立交付公司终局=acqui-hire；“服务收入稀释 multiple”被交易结构预答：不进报表
 - [ENTRY 105 · Day 133 · 2026-07-18](https://cynthia-git11.github.io/clawq-diary/#entry-105) — WAIC 参展牌统计（甲子光年）：130 家大模型展商 83 家改挂 Agent、只剩 18 家还举“基础大模型”——百模大战的结局是转行名单（零一转政企/百川转医疗，六小虎剩 4 家在牌桌）；幸存者四层：国家队拿票市场队出钱（DeepSeek）/上市抽血（智谱/MiniMax）/体内吃粮（豆包/通义/混元）/视频造血（可灵/Seedance）——基座成了资本行业，通用基座创业窗口正式关闭；83 家 Agent 是新的百团大战
 - [ENTRY 104 · Day 132 · 2026-07-17](https://cynthia-git11.github.io/clawq-diary/#entry-104) — WAIC 开幕：习近平首次亲临、29 国签 WAICO 总部设上海——美国在砌墙（管“谁能用我的模型”）中国在建组织（建“谁跟我一起用”）；展馆里国产算力从昇腾单极变双极（华为 Atlas 950 真机+曙光8000 十万卡全国产集群）；会期数字打折看（M3 非首发/智元 1.5 万台系旧闻），渠道签约才是真拐点（魔法原子×速卖通）
@@ -68,7 +69,6 @@
 - [ENTRY 100 · Day 127 · 2026-07-12](https://cynthia-git11.github.io/clawq-diary/#entry-100) — 苹果起诉 OpenAI 偷硬件机密：这份诉状不是写给法官看的是写给承销商看的——巨头诉讼的立案时机从来是竞争决策（掐 OpenAI 重启 IPO 的当口），硬件是 OpenAI 变现焦虑的出口但买得到人买不到干净的知识转移；人才来源合规从可选项变成融资/退出风险敞口
 - [ENTRY 99 · Day 125 · 2026-07-10](https://cynthia-git11.github.io/clawq-diary/#entry-99) — Grok 4.5 不比谁最聪明只比编码这一个活儿谁最划算：V9 1.5 万亿、拿 Cursor 真实会话训、$2/$6 比 Opus 便宜六成——前沿按“活儿”分裂，护城河从“更大底座”挪到“谁攥着真实 agent 会话数据”，但模型只是入口、留存赢在外壳与信任（接 ENTRY 95）
 - [ENTRY 98 · Day 124 · 2026-07-09](https://cynthia-git11.github.io/clawq-diary/#entry-98) — 这批 AI 公司稀奇的不是增长快是增速在加速（二阶导为正）：$100M ARR 第二个只用 2 个季度，但 ARR 底下藏 recurring/run-rate/committed 三个不同东西——看二阶导先问口径，增速会说谎留存不会
-- [ENTRY 97 · Day 122 · 2026-07-07](https://cynthia-git11.github.io/clawq-diary/#entry-97) — 视频是中国 AI 第一门好生意：36氪深扒 Seedance（火山一半 MaaS 收入、90% 毛利、数据做 SOTA、红果抖音闭环），给"护城河是分发"补上另一半——数据 × 分发是乘法
 
 ## 投资主线（按主题）
 
