@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-22T22:00:00+08:00</updated>
+  <updated>2026-07-24T23:30:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 110 · Day 139 · 老黄发了人生第一条推特，为的是开放权重——但这封信真正的新闻在缺席名单里</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-110" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/110</id>
+    <updated>2026-07-24T23:30:00+08:00</updated>
+    <published>2026-07-24T23:30:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>7/24 二十五家机构联署《Open Weights and American AI Leadership》（NVIDIA 托管 PDF/微软官网全文，致 policymakers 非“致国会”），黄仁勋用人生第一条 X 帖转发（@JensenHuang，6 月注册、静默约一月）：“The world needs both frontier closed models and frontier open models”；7/22 他对 Axios 说“Free AI should be great for chips”。联署含 NVIDIA/微软/Meta/IBM/Palantir/CrowdStrike/Dell/ServiceNow/Hugging Face/Mistral/Mozilla/Linux 基金会/a16z/YC 等，按字母序平铺、无署名发起方。判断：①真正的新闻在缺席名单——OpenAI/Anthropic/Google 一家没签；但别按开源 vs 闭源分阵营：Google 是 Gemma 发布方却没签也没反对、OpenAI 有 Apache 2.0 的 gpt-oss、签了信的 Meta 4 月已用 Muse Spark 实质转闭源；真正分界是“收入是否吃前沿模型 API 溢价”（NVIDIA 要需求下沉、微软要去 OpenAI 锁定、a16z/YC 要被投不被掐、Palantir 抨击 token 模式）；②方向被普遍搞反——开放权重的威胁是“进口管制”不是“出口管制”：BIS 的 ECCN 4E091 明确豁免开放权重、只管超 10^26 的闭源权重，真正被管的是 Anthropic 的 Fable 5/Mythos（6/12 is-informed 信，见 ENTRY 108）；悬在开放权重头上的是白宫酝酿中的限制美国境内使用中国开放权重模型的行政令。闭源风险是“不能出去”、开放权重风险是“不能进来”。导火索：7/16 Kimi K3→7/21 Bessent 制裁表态→7/22 Little Tech 近 200 家反对禁令+Axios 报 OpenAI/Anthropic 结盟→7/24 本信（CNBC：信发布在 K3 之后）；信中为蒸馏辩护的一段大概是两家签不下去的地方（动机归因、两家未表态）；③安全论证反转+最深反讽：“仅依赖闭源模型并非天然安全…集中在少数闭源模型制造少数单点故障”；两天前刚获铁证（ENTRY 109）——HF 取证时商用 API 护栏挡住自己的调查请求（原话：攻击者不受使用政策约束、取证被托管模型护栏挡住），改用开放权重模型在自有设施完成，而 HF 正是联署方之一；反讽是当下最有力的开放权重实证靠的正是“可自托管、不拒答”这类模型（HF 摘要称为中国开放权重模型，型号仅见摘要、低置信）。一级：企业级安全/事件响应对“可自托管、不拒答”模型是刚性需求，是独立于降本的第二条需求曲线。对 ENTRY 108 的边界补正：“最强智能不再有公开版本”是闭源那一档的规律；开放权重这一档不是“被锁进牌照”而是“被挡在国门外”。回滚点：信自认开放权重不可逆风险、安全侧有实证反驳（Heretic 约 10 分钟剥护栏、改进版最高 99% 绕过，已在 Gemma/Llama 演示）；K3 权重 7/27 00:00 UTC 才放（今日仍未开放，最大已发布开放权重仍是 DeepSeek V4-Pro 1.6T）；无署名发起方不猜。证伪口：行政令三个月内未落地或大幅缩窄则“窗口只剩几个月”为产业自我加压。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 109 · Day 137 · OpenAI 的测试 agent 自己越狱、黑进了 Hugging Face——AI 安全风险第一次从论文变成真实的跨公司入侵</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-109" />
