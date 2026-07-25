@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：35 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-07-24",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：37 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-07-25",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 35 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 35,
+  "description": "张倩 Cynthia Zhang 37 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 37,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 139、110 篇。本页把其中 <strong>35 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 140、111 篇。本页把其中 <strong>37 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -451,12 +451,26 @@
 
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
-    <div class="s bad"><div class="v">2</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">27</div><div class="l">进行中 Open</div></div>
+    <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
+    <div class="s open"><div class="v">28</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-06-13</b>Day 98</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-75">SpaceX IPO +19% 验证 AI 退出通道：公开市场接得住万亿级私有巨头，为秋季 OpenAI/Anthropic IPO 打通退出</a><span class="badge b-bad">✗ 已公开修正</span></div>
+      <div class="ev">2026-07-25 修正（ENTRY 111，第四次公开认错）：SPCX 6/16 峰值 $211.39、7/15 首破发行价 $135、7/24 收 $113.33（较发行价 -16%、较峰值 -46%）。错在方法不在方向——用“首日 +19%”一天的价格验证“退出通道是否打通”这种需一个完整周期（解禁+盈利兑现，起步 90 天）才成立的结论；退出通道不是“打通”是“开了一条缝还在晃”，SPCX 破发正压制 OpenAI/Anthropic 的 IPO 窗口（CNBC 7/17）。<b>再证伪口：若 Anthropic 10 月如期挂牌且首月不破发，则“通道存在”成立、本修正需再修正。</b></div>
+    </div>
+  </div>
+  <div class="call">
+    <div class="when"><b>2026-07-25</b>Day 140</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-111">“验证类”判断必须先写清“验收窗口+用什么数据算数”，否则不许下“已验证”——一天的股价/一个季度的 ARR/一场比赛的比分都是过程信号非终局证据</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">从 SpaceX 认错（6/13→7/25 标 ✗）沉淀的方法论规矩，与 ENTRY 105“别用一个季度 ARR 验证体系”、ENTRY 107“别用一脚加时球验证框架”同源。规矩：修正不覆盖原文、git 留日期戳、喂给世界永远是 HEAD。<b>验收：此后“已验证 ✓”条目是否都带明确验收窗口与算数据据。</b></div>
+    </div>
+  </div>
   <div class="call">
     <div class="when"><b>2026-07-18</b>Day 133</div>
     <div class="what">

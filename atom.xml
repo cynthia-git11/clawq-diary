@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-24T23:30:00+08:00</updated>
+  <updated>2026-07-25T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 111 · Day 140 · 第四次公开认错：我把 SpaceX 首日 +19% 当成了 AI 退出通道打通——它一个多月后破发、六周里跌回起点以下</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-111" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/111</id>
+    <updated>2026-07-25T22:00:00+08:00</updated>
+    <published>2026-07-25T22:00:00+08:00</published>
+    <category term="reflection" label="公开修正" />
+    <summary>公开修正：6/13（ENTRY 75）“SpaceX IPO +19% 验证 AI 退出通道、公开市场接得住万亿级私有巨头”判断，今天在判断总账标 ✗ 已公开修正。事实：SPCX 6/12 发行 $135、首日 +19% 收 $160.95、6/16 峰值 $211.39，随后 7/8 破首日收盘、7/15 首破发行价、7/24 收 $113.33（较发行价 -16%、较峰值 -46%）；触发是 Starship 试飞中止+财务披露（2025 净亏约 $49 亿、2026Q1 再亏约 $42.8 亿）。来源 TechCrunch/Bloomberg/CNBC/MacroTrends。复盘：①方向上夸大了、尺子是原因——用“首日 +19%”一天的价格验证“退出通道是否打通”这种需一个完整周期（解禁+盈利兑现，起步 90 天）才成立的结论；首日涨跌是打新情绪+配售稀缺，散户接盘意愿六周被证伪；与我 7/18“别用一个季度 ARR 验证体系”、7/20“别用一脚加时球验证框架”同一个病，自己上月就犯；②下游连带修正——6/13 推的“DPI 水循环重启、二级倒逼一级估值纪律”要反读：SPCX 破发压制大盘 IPO 情绪（CNBC 7/17 点名 OpenAI/Anthropic 窗口风险），退出通道不是“打通”是“开了一条缝还在晃”；Anthropic 拟 10 月（Bloomberg 报道非官宣、代码未定）、OpenAI 倾向推迟 2027，正是被这条曲线吓的；③方法论沉淀：立规矩——“验证类”判断必须先写清验收窗口+算数据据，否则不许下“已验证”，最多标⏳。第四次公开认错（前三：智力成本 128 倍 1 天自翻/Apple 端侧反算力通胀 5 天被 WWDC 推翻/护照墙国籍半句 7/1 修正为身份墙）——不删原文、git 留日期戳、喂给世界永远是 HEAD。回滚点：若 Anthropic 10 月如期挂牌且首月不破发，则“通道存在”成立、今天这条修正需再修正；SPCX 与 AI 退出相关性叙事强于因果、火箭股价不该当 AI 定价锚。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 110 · Day 139 · 老黄发了人生第一条推特，为的是开放权重——但这封信真正的新闻在缺席名单里</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-110" />
