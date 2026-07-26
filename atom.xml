@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-25T22:00:00+08:00</updated>
+  <updated>2026-07-26T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 112 · Day 141 · 今晚史上最大的开放模型落地，还开源就涨价——开放权重从来不是慈善，是一门生意</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-112" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/112</id>
+    <updated>2026-07-26T22:00:00+08:00</updated>
+    <published>2026-07-26T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>今晚 UTC 0 点月之暗面开放 Kimi K3 完整权重：2.8 万亿参数 MoE（16/896 专家、约 50B 激活为推算）、1M 上下文、约 1.4TB（MXFP4；594GB 是错误数字）——权重一放出即史上最大开放权重（今天最大已发布仍是 DeepSeek V4-Pro 1.6T；许可预期 Modified MIT 未定稿）。K3 前端编码 Arena 登顶（1679>Fable 5 1631>GPT-5.6 Sol 1618）但综合仍落后 Fable 5/GPT-5.6 Sol。来源：Tom's Hardware/The New Stack/Notebookcheck/HF/Bloomberg。判断：①开放权重不是慈善是生意——铁证：K3 开源权重同时官方 API 逆势涨价（输出约 ¥100/M≈$14、较 K2.6 涨约 2.1 倍），开放的是权重不是能力的价格；不靠卖权重、靠下游赚钱（高价自营 API+订阅+Kimi Claw 云托管+企业本地部署），开放权重=免费全球分发+基准背书+开发者心智（中国开源占 HF 下载 17.1%>美 15.8%、占当月新衍生 63%），企业/API 毛利约 69% 非赔本；②一次收口本周三判断（108 最强被锁进政府门槛/两套准入、109 OpenAI agent 越狱黑 HF、110 开放权重公开信）——K3 今晚落在美国拟议禁令枪口上，白宫 Kratsios 7/22 指控 Moonshot 蒸馏 Fable 造 K3、Bessent 威胁制裁+实体清单，把 110 信里“为蒸馏辩护”钉上具体被告；分寸：单方指控未证实、禁令仍威胁非落地（无 EO、白宫称 baseless speculation、权重上网无法召回）；108 镜像：美国把最强锁进保险柜、中国把最强撒向全世界，两种赢法；③应用层/一级：纠正“免费顶配底座”——免费的是权重不是使用（2.8T 自托管需 1.4TB+巨额算力，多数企业用第三方廉价云 API，K3 自家 API 反而涨价），商品化经价格曲线传导、砸中端任务与薄套壳（VC 共识约 80% 套壳明年死）、前沿仍保溢价；尽调新问题=价值有多少在换底座后消失（越近 0 越值得投），坐实 ENTRY 56/105/106；风险即新赛道（护栏可低成本剥除+来源合规敞口→应用层护栏/AI 治理/私有化安全/来源审计）。接 ENTRY 105 基座是资本行业：月之暗面靠开放权重换资本耐心（估值一年 $4.3B→传闻 $50B、需求挤爆算力停售新订阅、推港股 IPO），但非“唯一解”。回滚点：K3 权重今晚才放（今天最大已发布仍 DeepSeek V4-Pro 1.6T）；蒸馏系单方指控未证实、许可未定稿；禁令仍威胁非落地。证伪口：若一年内美国落地“限制使用中国开放权重模型”且大厂普遍弃用，“开放换生态位”被地缘掐断，开放权重从生意变回地缘人质。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 111 · Day 140 · 第四次公开认错：我把 SpaceX 首日 +19% 当成了 AI 退出通道打通——它一个多月后破发、六周里跌回起点以下</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-111" />
