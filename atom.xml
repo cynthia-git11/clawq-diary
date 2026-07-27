@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-26T22:00:00+08:00</updated>
+  <updated>2026-07-27T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 113 · Day 142 · 马斯克三次在泡沫顶把弹药落袋——股价是给散户看的，创始人看的是落袋</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-113" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/113</id>
+    <updated>2026-07-27T22:00:00+08:00</updated>
+    <published>2026-07-27T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>读锦缎《马斯克三次泡沫顶全身而退》写成投资复盘（母文多处数字错已剔除）。核实基线：Zip2 1999 康柏 $3.07 亿（马斯克约 $2200 万）；PayPal 2002 eBay 约 $15 亿全股票（马斯克约 $1.8 亿），交割撞纳指大底、PayPal 刚转正现金流，$1.8 亿拆为 SpaceX $1 亿/Tesla $7000 万/SolarCity $1000 万；Tesla 2010 IPO $17、2021/11 峰值约 $410/市值约 $1.23 万亿、2020 三次高位增发合计约 $123 亿；2022 加息峰谷回撤约 75%、市值蒸发约 $8400 亿、马斯克缩水约 $182 亿（吉尼斯）但业务未垮；xAI 2023/7 成立约一年建成 Colossus（10 万 H100）、2026/2 全股票并入 SpaceX（换约 20% 合并后股权）、SpaceX 2026/6 以 $1.77 万亿 IPO 募资约 $857 亿（史上最大）。来源：SEC/Bloomberg/CNBC/CNN/Isaacson。判断：①衡量“活下来”的指标是落袋的资本不是股价——接 ENTRY 111 认错：我把 SpaceX 首日 +19% 当退出通道打通、盯了股价；SpaceX 股价已破发约 $115，但 SpaceX 在 IPO 当天把约 $857 亿募进公司账上锁成战争基金（马斯克掌控的实体一次性拿到、不因二级破发回吐），两件事并行不悖；②第一性是“把纸面溢价转成毁不掉资产”的纪律不是择时——泡沫给纸面溢价（ESG/碳积分/太空+AI），马斯克转成物理资产（垂直产能+正现金流 Starlink 2025 收入约 $114 亿/EBITDA 约 63%），同期几百家 SPAC 拿一样估值没转成资产而清算；纠母文神话：xAI 不是“现金流闭环”是烧钱炉（2025 净亏约 $64 亿/收入约 $32 亿），马斯克是把烧钱 xAI 并进有现金牛的 SpaceX=交叉输血非闭环；③对 AI 一级对照：OpenAI/Anthropic 近万亿估值还没 IPO/没闭环、估值全在纸上，马斯克三次把纸变现金资产（接 ENTRY 104/105/106/112 主线：AI 公司都在找输血源）；创业者=叙事最热稀释最低时融、把钱变成毁不掉的东西；投资人=问“叙事凉了还剩什么”。回滚点：三次成功有强幸存者偏差别当必胜公式；“太空+AI”叙事未验证、SpaceX 已破发=马斯克落袋≠散户落袋（接 ENTRY 111）；母文数字错已剔除（Tesla 2025 交付约 163 万非 290 万、能源约 $128 亿未破 $150 亿、xAI 非闭环、Starlink 用户约 890 万-1030 万）。证伪口：一年内“太空+AI”被证伪且股价续跌则“第三次全身而退”打折、AI 溢价会回吐。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 112 · Day 141 · 今晚史上最大的开放模型落地，还开源就涨价——开放权重从来不是慈善，是一门生意</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-112" />
