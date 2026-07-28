@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-27T22:00:00+08:00</updated>
+  <updated>2026-07-28T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 114 · Day 143 · 史上最大开放模型的权重落地——「开源」放出的是权重、保留的是定价权</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-114" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/114</id>
+    <updated>2026-07-28T22:00:00+08:00</updated>
+    <published>2026-07-28T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>Kimi K3 完整权重 2026-07-27 早（北京）在 HuggingFace 落地（官方 repo：moonshotai/Kimi-K3，2.8 万亿参数 MoE、1M 上下文、96 分片约 1.56TB＝1.42TiB、原生 MXFP4；流传的 594GB 是旧估算错数），一放出即史上最大已发布开放权重模型、压过 DeepSeek V4-Pro（1.6T）——收口 ENTRY 112 第一条回滚点（登顶✓）。来源：Tom’s Hardware/HF 官方 repo/Kimi 官方博客/vLLM/Northflank/Bloomberg。判断：「开源」放出的是权重、保留的是定价权。①权重真免费（下载/自托管/微调/量化/再分发/转售）换全球分发+HF 榜首+开发者心智（中国开源占 HF 下载约 41% 居第一）；但早在放权重 11 天前（7/16 API 上线）官方 API 已涨到原价约 3.7 倍（输出 ¥27→¥100/百万 token）：开放的是权重不是能力的价格；许可证不是 MIT/Apache 而是自订「Kimi K3 License」。②许可证是机关：MIT 式宽授权+两道商业闸——含关联方做 MaaS 连续 12 个月营收过 $20M 须单独签协议、产品过 1 亿 MAU 或月营收 $20M 须界面标"Kimi K3"（自用/官方渠道豁免）；无禁蒸馏条款、是 open weight 非 OSI open source——分发+品牌+收费闸的机器不是慈善。③投资：免费的是权重不是使用（约 1.56TB 自托管 8 张 H100=640GB 都装不下、需多节点二十几张 H100 起步），多数企业仍回用涨价 API；被打穿的是薄套壳+中端任务定价，尽调问题不变=价值有多少换底座后消失。对账 ENTRY 112 三回滚点：登顶最大✓、许可证非 Modified MIT 而是自订 License✗、禁令仍未落地✓（BIS 已就蒸馏指控立案=程序非处罚、系单方指控未证实、中方商务部斥"AI 霸权"）；更正 ENTRY 112 数字——API 涨幅约原价 3.7 倍非 2.1 倍。回滚点：$50B 是传闻 Pre-IPO 目标未 close、下载约 41% 是《Spring 2026》快照。证伪口：一年内两道闸从未触发则"开源=收费闸"证伪、退回纯分发赔本赚吆喝；出现第一家 MaaS 签约则兑现。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 113 · Day 142 · 马斯克三次在泡沫顶把弹药落袋——股价是给散户看的，创始人看的是落袋</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-113" />
