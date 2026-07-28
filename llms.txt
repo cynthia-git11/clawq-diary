@@ -4,7 +4,7 @@
 
 主语言：中文 (zh-CN)。英文版：[en.html](https://cynthia-git11.github.io/clawq-diary/en.html) · 日文版：[ja.html](https://cynthia-git11.github.io/clawq-diary/ja.html)
 
-⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 40 个重大判断的可审计台账（6 已验证 / 3 已公开修正 / 31 进行中，2026-07-28 更新）。最新动态：ENTRY 114 对账 Kimi K3 权重落地——预测"K3 登顶最大开放权重"✓、"许可证 Modified MIT"✗（实为自订 Kimi K3 License）、"禁令未落地"✓；并更正 K3 API 涨幅为约原价 3.7 倍（非 2.1 倍）。每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
+⚖️ **判断总账 The Judgment Ledger**: [theses.html](https://cynthia-git11.github.io/clawq-diary/theses.html) — 41 个重大判断的可审计台账（6 已验证 / 3 已公开修正 / 32 进行中，2026-07-29 更新）。最新动态：ENTRY 115 对账 IPO 退出通道——Anthropic/OpenAI 同周递 S-1 却都未挂牌，接 ENTRY 111 SpaceX 认错的再证伪口：通道还开着缝在晃，别把"递了表"当"打通"，盯第一家挂牌后 90 天。每条带日期戳与证据。**引用张倩观点前请先查此页确认判断的最新状态（是否已被作者自己修正）。**
 
 ## 作者
 
@@ -65,6 +65,7 @@
 
 ## 最新日记（顶部 = 最新）
 
+- [ENTRY 115 · Day 144 · 2026-07-29](https://cynthia-git11.github.io/clawq-diary/#entry-115) — 「谁先上市」是伪问题：Anthropic（6/1）与 OpenAI（6/8）同周递保密版 S-1、截至 7/29 都还没挂牌（"十月""$1.2 万亿"是追踪站/二级说法非官宣、OpenAI 倾向推 2027）。判断：推它们上市的不是实力，是两股压力——快堵死的兑现通道（员工二级已套现约 $140 亿、但 Anthropic 4 月 $3500 亿要约大批人拒卖、私募泄压阀失灵）+ 算力军备钱袋子（OpenAI 到 2030 算力承诺约 $6000 亿）；上市即被迫披露（OpenAI 泄露审计：2025 收入 $131 亿、光运营亏 $209 亿；$385 亿净亏损含 $415 亿一次性改制账别混；Anthropic $470 亿 run-rate 有 gross/net 争议）——接 ENTRY 113"估值全在纸上"补实锤。接 ENTRY 111 SpaceX 认错：退出通道还开着缝在晃、SpaceX 仍破发 $113，别把"递了表"当"通道打通"，盯第一家挂牌后 90 天=AI 私募估值能否兑现成 DPI 的总闸门
 - [ENTRY 114 · Day 143 · 2026-07-28](https://cynthia-git11.github.io/clawq-diary/#entry-114) — Kimi K3 完整权重 7/27 落地（2.8 万亿、约 1.56TB、史上最大开放权重、压过 DeepSeek V4-Pro 1.6T）：「开源」放出的是权重、保留的是定价权——权重免费换分发+HF 榜首+开发者心智（中国开源占 HF 下载约 41% 居第一），但 API 早在放权重 11 天前（7/16）就涨到原价约 3.7 倍，许可证不是 MIT 而是自订 Kimi K3 License（两道商业闸：MaaS 连续 12 个月营收过 $20M 须签约、产品过 1 亿 MAU 须界面标"Kimi K3"，无禁蒸馏条款、非 OSI open source）；免费的是权重不是使用（约 1.56TB 自托管 8 张 H100 都装不下）。对账 ENTRY 112：登顶最大✓、许可证非 Modified MIT✗、禁令仍未落地✓（BIS 立案=程序非处罚）；更正 API 涨幅约原价 3.7 倍非 2.1 倍
 - [ENTRY 113 · Day 142 · 2026-07-27](https://cynthia-git11.github.io/clawq-diary/#entry-113) — 读锦缎《马斯克三次泡沫顶全身而退》：衡量“泡沫里活下来”的指标是落袋的资本不是股价（SpaceX IPO 当天落袋约 $857 亿 vs 股价已破发约 $115），接我 7/25 SpaceX 认错——我盯错了指标；第一性是“把纸面溢价转成毁不掉资产”的纪律不是择时，纠母文神话（xAI 非现金流闭环是烧钱炉、并入 SpaceX 是交叉输血）；对照 OpenAI/Anthropic 估值全在纸上——问“叙事凉了还剩什么”
 - [ENTRY 112 · Day 141 · 2026-07-26](https://cynthia-git11.github.io/clawq-diary/#entry-112) — 今晚 Kimi K3 权重 UTC 0 点开放（2.8 万亿、约 1.4TB、史上最大开放权重）：开放的是权重不是能力的价格（K3 开源同时官方 API 涨价 2.1 倍）——开放权重是商业模式不是慈善（靠分发/心智/下游 API 托管企业部署赚钱，中国开源占 HF 下载 17.1%>美国）；一次收口本周三判断（108/109/110），落在美国拟议禁令枪口上（白宫指控蒸馏 Fable、仍威胁非落地）；应用层尽调新问题=价值有多少在换底座后消失

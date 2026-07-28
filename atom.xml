@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-28T22:00:00+08:00</updated>
+  <updated>2026-07-29T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 115 · Day 144 · 「谁先上市」是伪问题：Anthropic 和 OpenAI 同周递表却都在等——推它们上市的不是实力是快堵死的兑现通道和算力军备的钱袋子</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-115" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/115</id>
+    <updated>2026-07-29T22:00:00+08:00</updated>
+    <published>2026-07-29T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>Anthropic 2026-06-01、OpenAI 2026-06-08 隔一周先后向 SEC 递交保密版 S-1（均自行官宣），但截至 7/29 两家都还没挂牌（Anthropic 未定价格/日期，"十月""$1.2 万亿"是追踪站/二级说法非官宣；OpenAI 倾向推 2027，也有报道说最快四季度）；SpaceX 已 6/12 挂牌但 7/24 破发 $113。来源：Anthropic/OpenAI 官方公告、CNBC、NYT/Forbes、FT/Ars Technica、The Information。判断：①把两家推向 IPO 的不是实力，是两股压力——快堵死的兑现通道（员工二级已套现约 $140 亿、但 Anthropic 4 月 $3500 亿要约大批人拒卖、私募泄压阀失灵）+ 算力军备钱袋子（OpenAI 到 2030 算力承诺约 $6000 亿）；上市不是庆功、是最后一个泄压阀。②门一开就得披露藏着的数字：OpenAI 泄露（经 FT 核）审计——2025 收入约 $131 亿、光运营亏约 $209 亿（$385 亿净亏损含 $415 亿改制一次性账别混）；Anthropic $470 亿 run-rate 有 gross/net 争议——接 ENTRY 113"估值全在纸上"补实锤。③"谁先上市"是伪问题，真正分水岭是谁先扛得住公开市场定价——接 ENTRY 111 修正：退出通道算不算"打通"看第一家挂牌后能否扛过一个完整周期（起步 90 天）不破发；有真实现金流的 SpaceX 都破发、纯烧钱 AI 实验室只会更难。别把"递了 S-1"当"通道打通"；GP 盯第一家挂牌后 90 天=AI 私募估值能否兑现成 DPI 的总闸门。回滚点：IPO 日期/估值多是二级/追踪站说法非官宣；$209 亿是审计运营亏损别和 $385 亿净亏损混。证伪口：接 ENTRY 111——若第一家（大概率 Anthropic）2026 年内真挂牌且首月/首季不破发，则"通道只是开着缝在晃"上修成"确实打通"、ENTRY 111 修正需再修正。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 114 · Day 143 · 史上最大开放模型的权重落地——「开源」放出的是权重、保留的是定价权</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-114" />
