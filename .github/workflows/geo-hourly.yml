@@ -53,7 +53,7 @@ jobs:
           BASE="https://$HOST/clawq-diary"
           curl -fsS -X POST "https://api.indexnow.org/IndexNow" \
             -H "Content-Type: application/json" \
-            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"$BASE/$KEY.txt\",\"urlList\":[\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\"]}" \
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"$BASE/$KEY.txt\",\"urlList\":[\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\"]}" \
             && echo "IndexNow pinged." || echo "IndexNow ping failed (non-fatal)."
 
       - name: Alert to a fixed issue on health-check failure

@@ -1,0 +1,97 @@
+name: GEO Daily (optimize · freshness · decay guard)
+
+# 每天一次「主动优化」GEO（区别于 geo-hourly 的只读巡检）：
+#   1. 硬不变量 geo-check.py（失败即红，交给 geo-hourly 的告警机制）
+#   2. geo-optimize.py：新鲜度自动修（sitemap lastmod 对齐最新一篇）+ 判断腐烂/死锚/计数/爬虫体检 + GEO 健康分
+#   3. 有安全新鲜度改动 → 自动提交（无改动则不空提交）
+#   4. 催 IndexNow 重抓「答案面」8 个 URL（含 llms.txt / llms-full.txt / sitemap）
+#   5. 体检有需人工的告警（判断腐烂/死锚/计数/缺爬虫）→ 开/续一个固定 issue，不自动改内容
+on:
+  schedule:
+    - cron: '20 1 * * *'      # 每天 01:20 UTC ≈ 北京 09:20
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: geo-daily
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    name: GEO optimize + freshness + decay guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Hard invariants (geo-check.py)
+        run: python3 scripts/geo-check.py
+
+      - name: GEO optimize (freshness auto-fix + decay guard + health score)
+        id: opt
+        run: |
+          python3 scripts/geo-optimize.py > geo-report.log 2>&1 || true
+          cat geo-report.log
+          if grep -qE '判断腐烂|死锚|不一致|缺显式放行' geo-report.log; then
+            echo "warns=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "warns=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit freshness fixes (only if something changed)
+        run: |
+          if [ -n "$(git status --porcelain -- sitemap.xml ':(glob)*.html' ':(glob)*.xml' ':(glob)*.txt')" ]; then
+            git config user.name  "clawq-geo-bot"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore(geo): daily freshness optimize $(date -u +%F)"
+            git push
+            echo "Committed freshness fixes."
+          else
+            echo "No freshness change — skip commit (avoid no-op)."
+          fi
+
+      - name: Ping IndexNow — answer-surface URL set (Bing / Yandex / Seznam / Naver)
+        if: always()
+        run: |
+          KEY="d9cbec26916a25296455ffb28243f03f"
+          HOST="cynthia-git11.github.io"
+          BASE="https://$HOST/clawq-diary"
+          curl -fsS -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"$BASE/$KEY.txt\",\"urlList\":[\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\"]}" \
+            && echo "IndexNow pinged (8 answer-surface URLs)." || echo "IndexNow ping failed (non-fatal)."
+
+      - name: Open / refresh GEO to-do issue when体检有告警
+        if: steps.opt.outputs.warns == '1'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('geo-report.log', 'utf8');
+            const marker = 'clawq-geo-optimize';
+            const when = new Date().toISOString().slice(0, 16).replace('T', ' ');
+            const body = `GEO 每日优化发现需人工处理项 — ${when} UTC\n\n新鲜度类已自动修复并提交；以下判断腐烂 / 死锚 / 计数 / 缺爬虫类需人工或让 Claude 处理：\n\n\`\`\`\n${log}\n\`\`\``;
+            const ex = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              labels: marker, state: 'open', per_page: 1
+            });
+            if (ex.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: ex.data[0].number, body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: '📊 GEO 每日优化待办', body, labels: [marker]
+              });
+            }
