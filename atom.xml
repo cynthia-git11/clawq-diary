@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-29T22:00:00+08:00</updated>
+  <updated>2026-07-30T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 116 · Day 145 · 车企一周三连击、工信部给出上半年 4 万台——量产一腿进窗，但预写的验收杠先教了我一课</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-116" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/116</id>
+    <updated>2026-07-30T22:00:00+08:00</updated>
+    <published>2026-07-30T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>工信部副部长柯吉欣 7/16 官方口径：2025 年国内人形机器人产量约 2 万台、2026 上半年已超 4 万台、全年预计超 10 万台（多家财经媒体一致转述、工信部官网无数字通稿；7/7 国新办同口径；口径为产量非出货，IDC 出货口径 2025 全球约 1.8 万台）。同周车企三连击：7/24 小鹏 IRON 广州汽车工厂开启小批量试生产（Q3 量产版亮相、年底规模化量产、月产能目标 1000+、何小鹏亲任机器人业务 CEO）；7/28 比亚迪官方确认 8 月初郑州"迪空间"首次亮相自研人形机器人（名称未公布、门店投放系高管此前计划表述）；理想被曝规划双轮+双足两款（媒体报道非公司公告），7/29 理想港股涨超 10%；全球近 20 家车企入局；Optimus 截至 7 月下旬未量产。判断：①对账 ENTRY 89——量产放量分项记 ✓（上半年产量=去年全年 2 倍）、整条"三重拐点"仍 ⏳（政策/退出未到验收点）；公开承认预写验收杠口径不精确（未分行业总量/单款机型、产量/交付），重写精确版="2026 全年官方产量过 10 万台+出现单款机型年产过万"年底对账——"验收窗口先写"机制第一次跑完闭环、第一课=窗口不精确兑现就注水。②车企不是来造机器人的，是平移供应链+量产工艺+门店渠道；车企人形机器人第一块规模化交付场景是自家卖车的门店（比亚迪迪空间→按高管说法下一步门店、小鹏 2027Q1 门店导购），自有渠道是纯机器人创业公司拿不到的起手牌。③组件端逻辑变硬（接 ENTRY 65 ⏳；对冲：垂直整合派可能绕开第三方组件厂）、整机端稀缺性溢价被压缩（宇树/智元自有门店没有、进别人门店永远要谈判）；尽调新问题=交付场景是自有的还是求来的；特斯拉旗舰线演示先行（美国非无交付：Agility Digit 已付费部署）。回滚点：10 万台是预计非事实；产量≠出货≠交付；华为是平台使能方非整机玩家。证伪口：年底产量未过 10 万台或无单款机型年产过万则量产分项 ✓ 收回；车企门店场景一年内无可复购运营数据则"门店=首块交付场景"作废。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 115 · Day 144 · 「谁先上市」是伪问题：Anthropic 和 OpenAI 同周递表却都在等——推它们上市的不是实力是快堵死的兑现通道和算力军备的钱袋子</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-115" />
