@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-30T22:00:00+08:00</updated>
+  <updated>2026-07-31T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 117 · Day 146 · AWS 一季运营利润超过 OpenAI 一年收入——同一波 AI 两张损益表，云厂落袋里也藏着纸、真金全在再押</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-117" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/117</id>
+    <updated>2026-07-31T22:00:00+08:00</updated>
+    <published>2026-07-31T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>亚马逊 Q2 2026（美东 7/30 盘后，SEC 8-K）：AWS 单季营收 $422 亿 +37%（Jassy 原话 36.7%、18 个季度最快、远超约 31% 共识）、年化 run rate $1690 亿、运营利润 $166 亿/利润率 39.4%；Jassy 原话"our AI and Chips businesses each eclipsed run rates of more than $25 billion"（AI 业务 AWS 口径、自研芯片=Trainium/Graviton（电话会纪要口径），新闻稿称均三位数增长、公司自述切片无审计明细）；净利 $626 亿背后有 $534 亿税前非经营投资收益（主要为 Anthropic 持股重估）；TTM 自由现金流负 $76 亿、TTM capex $1690 亿 +64%、2026 capex 电话会抬至约 $2200 亿；盘后 +9.5%。三朵云同季加速：谷歌云 +82%、Azure +43%（FY26 破 $1000 亿）、AWS +37%。Meta 同周营收 $608 亿 +28% 但 capex 指引抬下限（narrowed 至 $1300-1450 亿）、FCF 崩至 $7.84 亿、股价跌约 10%。判断：①同一波 AI 两张损益表（接 ENTRY 115）——AWS 一季运营利润超 OpenAI 一年收入（$131 亿；刻意跨口径跨期对仗）、AI 业务一块的 run rate≈OpenAI 全公司 ARR（约 $250 亿）；模型层拿纸面估值、云层拿进 SEC 存档的报表落袋（接 ENTRY 113）。②落袋里也有纸、真金全在再押：净利里纸比真金多、FCF 为负——云厂落袋即再押；Meta 是反面：市场罚的不是 capex 大、是 capex 换不回对外计价的收入线。③循环性（接 ENTRY 106 巨头版）：亚马逊投 OpenAI 承诺 $500 亿（SEC 文件分析约 $350 亿为 IPO/AGI 或有、到账约 $150 亿）+Anthropic 潜在至多 $330 亿；labs 在 Trainium 签 multi-gigawatt、AWS 托管 OpenAI 模型——左手股权右手云费中间自研芯片；本周 Bloomberg《Nvidia $7500 亿交易重燃 AI 循环融资担忧》、AMD 投 Anthropic 至多 $50 亿配 2GW 订单；循环不等于假（正反馈非空转）、但检验不在牛市在退潮；尽调尺=股东-客户关联度+客户集中度。回滚点：AI run rate 是方向数非审计数；$500 亿是承诺非到账；OpenAI ARR 进 2026 $200 亿、2 月 $250 亿；Meta capex 是 narrowed。证伪口：两季内 AWS AI 增速掉进两位数或 labs 融资断档与云减速同向则降级"循环放大器"；Anthropic 上市后 $534 亿重估大幅回吐则再写净利含金量对账。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 116 · Day 145 · 车企一周三连击、工信部给出上半年 4 万台——量产一腿进窗，但预写的验收杠先教了我一课</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-116" />
