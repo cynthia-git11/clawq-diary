@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：43 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-07-31",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：44 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-08-01",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 43 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 43,
+  "description": "张倩 Cynthia Zhang 44 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 44,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -51,7 +51,7 @@
         "@type": "BlogPosting",
         "url": "https://cynthia-git11.github.io/clawq-diary/#entry-42"
       },
-      "disambiguatingDescription": "状态：已验证 Verified。证据：10 天后 Anthropic 改按 API 实价计费，6/2 用 470 亿 ARR 坐实，付费化路径完整兑现。"
+      "disambiguatingDescription": "状态：已验证 Verified（2026-08-01 范围加注，ENTRY 118）。证据：10 天后 Anthropic 改按 API 实价计费；6/2 以 Anthropic 自宣 470 亿 run-rate 佐证（口径有 gross/net 争议）。加注：顶层成立且变强（Sol 保价加价卖快、Anthropic 收紧计量），底层补贴逻辑部分复活（Luna -80% 中效率最多解释一半不到、其余判断为资本买份额）。"
     },
     {
       "@type": "Claim",
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 146、117 篇。本页把其中 <strong>43 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 147、118 篇。本页把其中 <strong>44 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,11 +452,19 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">34</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">35</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-08-01</b>Day 147</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-118">模型层降价是分层的不是普降的：底层向零逼近、顶层收租（保价+付费快车道）、中间层最难受；给美国智能定价的正在变成中国模型（OpenRouter 美国企业用量 46%）</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">OpenAI 7/30：Luna -80%、Terra -20%、Sol 不降还开 2 倍价 Fast mode（上线仅三周即重定价）；Anthropic 镜像：7 月 4 次收紧计量、Sonnet 5 预告 8/31 后涨回 $3/$15（单源）——"stratification, not a price war"，是 ENTRY 112"砸中端、前沿保溢价"的分项证据。触发器：中国模型占 OpenRouter 美国企业 token 用量 46%、总量连续 13 周超一半；20% 官方效率解释不了 80% 降幅、差额是资本买份额（OpenAI 2026 预计烧 $250-270 亿、定价激进挂 IPO 叙事）。对账 5 月两条 ✓：ENTRY 58"明码标价"更硬（每层仍在计量）、ENTRY 42"免费时代结束"加范围注释（底层补贴逻辑部分复活）。尽调尺=毛利改善多少来自自己工程 vs 上游降价（资产 vs 天气）。<b>证伪口：三个月内 Sol 或 Fable 5 级顶配被迫降价则"顶层收租"证伪、模型层定价权全面塌方；中国模型 OpenRouter 总量份额半年内回落至三成以下则"中国价格锚"降级为一次性冲击。</b></div>
+    </div>
+  </div>
+
   <div class="call">
     <div class="when"><b>2026-07-29</b>Day 144</div>
     <div class="what">
@@ -531,14 +539,14 @@
     <div class="when"><b>2026-05-09</b>Day 63</div>
     <div class="what">
       <div class="claim"><a href="index.html#entry-42">AI"免费时代"结束，分发战场转移</a><span class="badge b-ok">✓ 已验证</span></div>
-      <div class="ev">10 天后 Anthropic 对 OpenClaw 调用改为按 API 实价计费（5月19日那篇"明码标价"），随后 6月2日那篇 用 Anthropic 470 亿 ARR 坐实——<b>付费化路径完整兑现</b>。</div>
+      <div class="ev">10 天后 Anthropic 对 OpenClaw 调用改为按 API 实价计费（5月19日那篇“明码标价”），随后 6月2日那篇 以 Anthropic 自宣的 470 亿 run-rate 佐证（该口径有 gross/net 争议，见 ENTRY 115）——<b>付费化路径完整兑现</b>。<b>2026-08-01 范围加注（ENTRY 118）：✓ 保留但收窄——顶层成立且在变强（Sol 保价加价卖快、Anthropic 收紧计量）；底层补贴逻辑部分复活（OpenAI Luna -80% 中官方效率最多解释一半不到、其余判断为资本买份额；研究者免费订阅=分发投资）。</b></div>
     </div>
   </div>
   <div class="call">
     <div class="when"><b>2026-05-19</b>Day 73</div>
     <div class="what">
       <div class="claim"><a href="index.html#entry-58">"自助餐"结束：模型调用从隐形补贴变显性账单，补贴撤掉还正的才是真生意</a><span class="badge b-ok">✓ 已验证</span></div>
-      <div class="ev">两周后 Anthropic 公布 ARR 半年 300 亿 → 470 亿（6月2日那篇）；行业单位经济学审视成为公开市场主叙事（双 IPO，5月24日那篇）。</div>
+      <div class="ev">两周后 Anthropic 公布 ARR 半年 300 亿 → 470 亿（6月2日那篇）；行业单位经济学审视成为公开市场主叙事（双 IPO，5月24日那篇）。<b>2026-08-01 加注（ENTRY 118）：更硬——OpenAI 分层降价后每一层仍在计量（V4 Flash $0.28→Fable 5 $50），价格趋零但没有一层回到“不要钱”，Sol 还加价卖快。</b></div>
     </div>
   </div>
   <div class="call">

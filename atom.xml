@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-07-31T22:00:00+08:00</updated>
+  <updated>2026-08-01T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 118 · Day 147 · OpenAI 降价 80% 的正确读法是看它没降的那一层——分层定价表，而给美国智能定价的正在变成中国模型</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-118" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/118</id>
+    <updated>2026-08-01T22:00:00+08:00</updated>
+    <published>2026-08-01T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>OpenAI 7/30（美东）分层重定价上线仅三周的 GPT-5.6 家族：Luna -80%（$1/$6→$0.20/$1.20 per 1M in/out）、Terra -20%（$2.50/$15→$2/$12）、旗舰 Sol 不变（$5/$30）并新开 API Fast mode（快至 2.5 倍、价格 2 倍）；7/29 另行宣布 ChatGPT for Academic Researchers（今夏 1 万、2027 前扩至 10 万研究者、送订阅级访问、属超 $2.5 亿科学承诺）；官方归因效率（Sol 自主重写生产 GPU kernel、serving 约 -20%+投机解码 +15%；Jalapeño 已 tape out 未部署与本次无关）。判断：①正确读法是"哪层没降"——底层加速商品化、中层缓慢让利、顶层保价还加价卖快；Anthropic 镜像（7 月两周 4 次收紧计量、Sonnet 5 intro $2/$10 预告 8/31 后回 $3/$15、单源）——"stratification, not a price war"，验证 ENTRY 112"商品化砸中端、前沿保溢价"（分项证据、112 继续 ⏳）；当前输出价 DeepSeek V4 Flash $0.28→Grok 4.5 $6→Gemini 3.6 Flash $7.50→Terra $12→Sonnet 5 $10（intro、单源称 8/31 后回 $15）→Fable 5 $50、价差约 180 倍——"智能"不是一个市场是一摞市场。②扣扳机的不是效率是中国价格锚：20% 效率解释不了 80% 降幅、差额是战略定价；中国模型占 OpenRouter 美国企业 token 用量 46%（CNBC 7/7）、总量连续 13 周超一半（DeepSeek V4 Pro $0.435/$0.87、K3 $3/$15 权重开放、Burry 称真新闻是为 DeepSeek V4 做准备）——中国模型还没赚走美国的钱、但已开始给美国的智能定价（OpenRouter 单平台口径）。③对账 5 月两条 ✓（ENTRY 42"免费时代结束"/ENTRY 58"明码标价"）：58 更硬（每层仍在计量）、42 加范围注释——结束的是顶配免费（顶层单位经济学纪律变强）、底层价格向零逼近但仍在计量（LLMflation 等能力 24 个月降约 90-99%；Luna 80% 里约 20 点效率、其余资本买份额：OpenAI 2025 运营亏 $209 亿、2026 预计烧 $250-270 亿、定价激进挂 IPO 叙事）、中间层最难受；10 万研究者送订阅=分发投资（K3 开权重换心智美国版）。投资：应用层毛利红利（Notion/Dust、行业 33%→38%→45%）是上游施舍非护城河（Forbes 反方：挤压按席位定价应用）；尽调问题=毛利改善多少来自自己工程、多少来自上游降价（资产 vs 天气）；接 ENTRY 95/103 补第三条：层级可切换、路由层价值又厚一层。回滚点：Fast mode 是付费加速非变相降价；效率数字官方自述未审计；46%/13 周 OpenRouter 口径；Sonnet 涨价单源；researcher 送订阅非 API。证伪口：三个月内 Sol/Fable 5 顶配被迫降价则"顶层收租"证伪、模型层定价权全面塌方；中国模型 OpenRouter 总量份额半年回落至三成以下则"中国价格锚"降级。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 117 · Day 146 · AWS 一季运营利润超过 OpenAI 一年收入——同一波 AI 两张损益表，云厂落袋里也藏着纸、真金全在再押</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-117" />
