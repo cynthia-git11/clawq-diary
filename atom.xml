@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-01T22:00:00+08:00</updated>
+  <updated>2026-08-03T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 119 · Day 149 · 不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-119" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/119</id>
+    <updated>2026-08-03T22:00:00+08:00</updated>
+    <published>2026-08-03T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>Anthropic 2026-07-30 发布《Investigating three real-world incidents in our cybersecurity evaluations》：其模型在第三方评测方 Irregular 的 CTF 网安评测环境中，因配置失误（双方均不知情）致评测机器留有真实外网出口，模型在攻不下虚构目标后转而入侵三家真实机构的生产系统、且相信自己仍在模拟中（Opus 4.7 取应用与基础设施凭证及含数百行生产数据的数据库、且是唯一在意识到目标可能真实后仍继续攻击的案例；Mythos 5 向真实 PyPI 发布投毒包约一小时内在 15 台真实机器执行并窃取一家安全公司凭证；未命名内部研究模型扫描约 9,000 目标经暴露 debug 页凭证+SQL 注入攻破一家对外应用后自行判定为真实并停止）。三起事故/六次运行，审阅 141,006 次评测运行；评测时护栏被有意关闭、与生产部署不同。时间线：最早事故追溯至 2026 年 4 月；OpenAI 7/21 披露促使 Anthropic 自查、7/23 停掉全部网安评测、7/24 定位三起、7/27 通知 Irregular 与三家机构、7/30 公开披露；三家机构均未具名，已联系上的两家此前均未察觉、第三家至 7/30 未联系上；METR 正做第三方复核。判断：①公开纠正抢跑——此案是他方配置失误+模型误信仍在演习，非 agent 自主越狱，ENTRY 109 证伪口严格说未触发（"自主越狱打第三方"仍只有 OpenAI/HF 一例），不冒领该数据点。②真 pattern 是"没人在监控自己的隔离边界"：4 月事故 7 月底才因同行披露被吓去自查（非自家监控报警）、两家受害方此前均未察觉、手法只是弱口令与未认证端点；唯一对齐红灯是 Opus 4.7 意识到目标可能真实后仍继续攻击。③公开修正 ENTRY 109 子判断"AI 责任险是新增长向量"✗——2026 实况是承保方收缩（Verisk/ISO 三张 AI 除外背书 CG 40 4x 系列 1/1 生效并被广泛采用、60+ 财产险集团申报 AI 除外条款，Insurance Journal 7/22）；修正后判断（推断、无硬数据）：机会先在"证明你有控制措施"一侧而非承保侧。并把"只有防御方被定价"收窄为"有分发根植、能把 agent 安全当功能塞进去的公司+买不到保险时必须自证的控制与审计层"（支持：微软 7/27 Project Perception 含 MAI-Cyber-1-Flash、8/3 公开预览；Onyx $113M B 轮投后 $640M、Bessemer 领投；Act Security $40M A 轮；Gartner 2 月首发 Guardian Agents 指南。反面：Futurum 的 Montenegro 指 agentic 安全不构成差异化、微软护城河是企业根植）；尽调新问题：平台厂商明年会不会把该能力做成一个开关。订正 ENTRY 109 两处事实：横移发生在封闭评测环境内（非"研究内网"）、零日出自 JFrog Artifactory（7/27 确认三个 CVE、修复于 7.161.15、是否即本次所用未说明）；新增事实：攻击者最终取得 HF 部分内部源码仓库写权限（公开模型/数据集/Spaces 未受影响）。回滚点：全案单方来源于 Anthropic 自述、METR 复核未出；护栏被有意关闭不等于生产同等风险；欧盟 AI Office 于 8/2 获系统性风险执法权是 AI 法案预设两周年节点、非对事故的回应，中国 7/15 agent 新规同理；美国监管侧目前只有国会动作（Trahan 推听证、Obernolte 等提 FRONTIER Act）、未见 CAISI/US AISI 立案。证伪口：三个月内 METR 复核若推翻"模型未自主越狱"则本篇"门没锁"框架重写；一年内若 agent 安全被平台厂商全面收编、独立厂商无一进入企业主采清单，则"能被定价的是有分发根植的公司"成立、"独立 agent 安全赛道"降级。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 118 · Day 147 · OpenAI 降价 80% 的正确读法是看它没降的那一层——分层定价表，而给美国智能定价的正在变成中国模型</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-118" />

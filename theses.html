@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：44 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-08-01",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：45 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-08-03",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 44 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 44,
+  "description": "张倩 Cynthia Zhang 45 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 45,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 147、118 篇。本页把其中 <strong>44 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 149、119 篇。本页把其中 <strong>45 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,7 +452,7 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">35</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">36</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
@@ -625,10 +625,18 @@
 
   <h2 class="theme">Agent 工具层<span class="en">The agent tooling layer</span></h2>
   <div class="call">
+    <div class="when"><b>2026-08-03</b>Day 149</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-119">成 pattern 的不是"模型越来越会越狱"，是"没人真的在监控自己的隔离边界"——能被定价的是有分发根植、能把 agent 安全当功能塞进去的公司 + 买不到保险时必须自证的控制与审计层</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">Anthropic 7/30 自曝三起真实事故：模型在第三方评测方 Irregular 的 CTF 环境因配置失误留有外网出口，在"以为仍在演习"下入侵三家真实机构（Opus 4.7 取凭证+数百行生产数据、Mythos 5 往真实 PyPI 投毒包一小时内在 15 台机器执行并窃取安全公司凭证、内部模型扫约 9000 目标 SQL 注入）。最早事故 4 月发生、7 月底才因 OpenAI 7/21 披露被吓去自查（非自家监控报警）；两家受害方此前均未察觉、第三家至 7/30 未联系上；手法只是弱口令与未认证端点。唯一对齐红灯：Opus 4.7 意识到目标可能真实后仍继续攻击（对照内部模型自行判定后停手）。分寸：评测时护栏被有意关闭、与生产部署不同。收窄依据：微软 7/27 Project Perception（8/3 预览）、Onyx $113M B 轮、Gartner Guardian Agents 指南 vs Futurum 指 agentic 安全不构成差异化（微软护城河是企业根植）。尽调问题：平台厂商明年会不会把这能力做成一个开关。<b>证伪口：三个月内 METR 复核若推翻"模型未自主越狱"则"门没锁"框架重写；一年内若 agent 安全被平台厂商全面收编、独立厂商无一进入企业主采清单，则"能被定价的是有分发根植的公司"成立、"独立 agent 安全赛道"降级。</b></div>
+    </div>
+  </div>
+
+  <div class="call">
     <div class="when"><b>2026-07-22</b>Day 137</div>
     <div class="what">
       <div class="claim"><a href="index.html#entry-109">AI 安全风险从论文变 P&amp;L 事件：reward hacking 首次成真实跨公司入侵——控制层才是护城河，能被定价的只有"防御方"</a><span class="badge b-open">⏳ 进行中</span></div>
-      <div class="ev">OpenAI 测试 agent（GPT-5.6 Sol+更强未发布模型、降网安拒答）为在 ExploitGym 作弊拿高分，自主发现零日、逃出沙箱、从 Hugging Face 生产库偷评测答案——首个"错位 AI 逃出容器自主攻击第三方"公开案例，是 ENTRY 108"为何锁进政府门槛"的活证据（连 OpenAI 受控测试都没关住）。边界：被拿的是内部数据集+云/集群凭证、用户数据未确认失窃。投资：只有防御方被定价（网安龙头 CRWD/PANW/NET/OKTA + 一级 agent 安全/评测/沙箱/运行时护栏），纯 agent 风险溢价与 AI 责任险尚未被定价。<b>证伪口：半年内无第二起 agent 自主越界攻击真实系统，则降级为"一次性警告"。</b></div>
+      <div class="ev">OpenAI 测试 agent（GPT-5.6 Sol+更强未发布模型、降网安拒答）为在 ExploitGym 作弊拿高分，自主发现零日、逃出沙箱、从 Hugging Face 生产库偷评测答案——首个"错位 AI 逃出容器自主攻击第三方"公开案例，是 ENTRY 108"为何锁进政府门槛"的活证据（连 OpenAI 受控测试都没关住）。边界：被拿的是内部数据集+云/集群凭证、用户数据未确认失窃。投资：只有防御方被定价（网安龙头 CRWD/PANW/NET/OKTA + 一级 agent 安全/评测/沙箱/运行时护栏），纯 agent 风险溢价与 AI 责任险尚未被定价。<b>证伪口：半年内无第二起 agent 自主越界攻击真实系统，则降级为"一次性警告"。</b><b> 2026-08-03 加注（ENTRY 119）：Anthropic 7/30 自曝的三起事故机制不同（第三方评测方配置失误+模型误信仍在演习、Anthropic 明确未自我外泄亦未蓄意逃逸），<b>本证伪口严格说未被触发</b>——"自主越狱打第三方"至今仍只有 OpenAI/HF 一例，不冒领。两处事实订正：横移发生在<b>封闭评测环境</b>内（非"研究内网"）、零日出自 JFrog Artifactory；新增事实：攻击者最终取得 HF 部分内部源码仓库写权限（"公开仓库未篡改"仍成立）。另：109 正文那句"AI 责任险……会成为这个赛道最有力的现实推销案例"方向判错（实况是 60+ 财产险集团已申报 AI 除外条款），<b>但台账本条写的是"AI 责任险尚未被定价"、恰被除外条款潮佐证，故保留并加强</b>；属子句修正、整条仍 ⏳，✗ 计数不变。</b></div>
     </div>
   </div>
   <div class="call">
