@@ -1,108 +1,157 @@
 #!/usr/bin/env python3
-# 自建追踪系统 · 模拟数据生成器（确定性、可每日滚动重跑）
-# 生成过去 30 天：每日浏览量 / 平均访问时间 / 访问国家 / 完读率 / 转发数
-# 用法：python3 scripts/gen-traffic.py   （TRAFFIC_END=YYYY-MM-DD 可指定截止日，默认基准日）
-import json, math, random, datetime, os
+# -*- coding: utf-8 -*-
+"""
+倩小虾日记 · 访问数据日报生成器（真实数据版）
 
-_e = os.environ.get("TRAFFIC_END")
+数据源：自建 Cloudflare Worker + D1（~/clawq-analytics-worker）
+  环境变量 CLAWQ_STATS_URL 指向 Worker，例：
+    export CLAWQ_STATS_URL=https://clawq-analytics.xxx.workers.dev
+
+⚠️ 设计原则：拿不到真实数据就明确写"暂无数据"，**绝不回退造假**。
+   （2026-08-03 前本脚本产出的是 random.seed 生成的模拟数据，已废弃。）
+"""
+import json, datetime, os, sys, urllib.request, urllib.error
+
+STATS_URL = os.environ.get("CLAWQ_STATS_URL", "").rstrip("/")
+DAYS = int(os.environ.get("TRAFFIC_DAYS", "30"))
+
 try:
     from zoneinfo import ZoneInfo
-    _today_bj = datetime.datetime.now(ZoneInfo("Asia/Shanghai")).date()
+    TODAY = datetime.datetime.now(ZoneInfo("Asia/Shanghai")).date()
 except Exception:
-    _today_bj = datetime.date.today()
-END = datetime.date.fromisoformat(_e) if _e else _today_bj
-DAYS = 30
-random.seed(int(END.strftime("%Y%m%d")))   # 种子=当天 → 每天数据自然前进且确定可复现
+    TODAY = datetime.date.today()
 
-# 爆款 entry 发布日 → 当天 PV 峰值（对齐真实日记里程碑）
-SPIKES = {
-    "2026-05-24": (1.55, "ENTRY 60 双 IPO 发令枪"),
-    "2026-06-02": (1.70, "ENTRY 61 Anthropic 9650 亿"),
-    "2026-06-09": (2.05, "ENTRY 70 WWDC 公开修正"),
-    "2026-06-12": (1.60, "ENTRY 73 AI 眼镜"),
-    "2026-06-13": (1.95, "ENTRY 74+75 判断版本控制 + SpaceX 史上最大 IPO"),
+CN_NAME = {
+    "CN": ("中国大陆", "\U0001F1E8\U0001F1F3"), "US": ("美国", "\U0001F1FA\U0001F1F8"),
+    "HK": ("中国香港", "\U0001F1ED\U0001F1F0"), "SG": ("新加坡", "\U0001F1F8\U0001F1EC"),
+    "JP": ("日本", "\U0001F1EF\U0001F1F5"), "TW": ("中国台湾", "\U0001F1F9\U0001F1FC"),
+    "GB": ("英国", "\U0001F1EC\U0001F1E7"), "CA": ("加拿大", "\U0001F1E8\U0001F1E6"),
+    "DE": ("德国", "\U0001F1E9\U0001F1EA"), "KR": ("韩国", "\U0001F1F0\U0001F1F7"),
+    "AU": ("澳大利亚", "\U0001F1E6\U0001F1FA"), "XX": ("其他", "\U0001F310"),
 }
+PAGE_NAME = {"index.html": "中文 (index)", "en.html": "English (en)",
+             "ja.html": "日本語 (ja)", "theses.html": "判断总账 (theses)",
+             "analytics.html": "数据看板", "": "中文 (index)"}
 
-daily = []
-for i in range(DAYS):
-    d = END - datetime.timedelta(days=DAYS - 1 - i)
-    ds = d.isoformat()
-    base = 120 * math.exp(0.046 * i)          # 30 天前 ~120 → 今天 ~470（约 4x）
-    if d.weekday() >= 5:
-        base *= 0.82                          # 周末回落 ~18%
-    base *= random.uniform(0.88, 1.12)        # 日常噪声
-    spike = ""
-    if ds in SPIKES:
-        mult, spike = SPIKES[ds]
-        base *= mult
-    pv = int(round(base))
-    uniques = int(round(pv * random.uniform(0.70, 0.78)))
-    avg_time = int(round(random.uniform(150, 175) + i * 1.3 + (25 if spike else 0)))
-    avg_time = min(avg_time, 240)
-    comp = round(min(random.uniform(0.22, 0.34) + (0.05 if spike else 0), 0.41), 3)
-    shares = int(round(pv * random.uniform(0.015, 0.028) * (1.6 if spike else 1.0)))
-    daily.append({"date": ds, "pv": pv, "uniques": uniques, "avg_time_sec": avg_time,
-                  "completion_rate": comp, "shares": shares, "spike": spike})
 
-tot_pv = sum(x["pv"] for x in daily)
-tot_uniq = sum(x["uniques"] for x in daily)
-tot_shares = sum(x["shares"] for x in daily)
-avg_time = int(round(sum(x["avg_time_sec"] * x["pv"] for x in daily) / tot_pv))
-avg_comp = round(sum(x["completion_rate"] * x["pv"] for x in daily) / tot_pv, 3)
+def fetch_stats():
+    """拉真实数据；失败返回 None（不造假）。"""
+    if not STATS_URL:
+        return None, "未配置 CLAWQ_STATS_URL（Worker 尚未部署）"
+    url = f"{STATS_URL}/stats?days={DAYS}"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "clawq-traffic-report"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read().decode("utf-8")), None
+    except urllib.error.HTTPError as e:
+        return None, f"Worker 返回 HTTP {e.code}"
+    except Exception as e:
+        return None, f"连接 Worker 失败：{type(e).__name__}"
 
-countries = [
-    ("中国大陆", "CN", "\U0001F1E8\U0001F1F3", 0.561), ("美国", "US", "\U0001F1FA\U0001F1F8", 0.158),
-    ("中国香港", "HK", "\U0001F1ED\U0001F1F0", 0.079), ("新加坡", "SG", "\U0001F1F8\U0001F1EC", 0.061),
-    ("日本", "JP", "\U0001F1EF\U0001F1F5", 0.048), ("中国台湾", "TW", "\U0001F1F9\U0001F1FC", 0.031),
-    ("英国", "GB", "\U0001F1EC\U0001F1E7", 0.021), ("加拿大", "CA", "\U0001F1E8\U0001F1E6", 0.018),
-    ("其他", "XX", "\U0001F310", 0.023),
-]
-countries = [{"name": n, "code": c, "flag": f, "pct": round(p, 3), "pv": int(round(tot_pv * p))}
-             for n, c, f, p in countries]
 
-out = {
-    "generated": END.isoformat(), "range_days": DAYS,
-    "totals": {"pv": tot_pv, "uniques": tot_uniq, "avg_time_sec": avg_time,
-               "completion_rate": avg_comp, "shares": tot_shares},
-    "daily": daily, "countries": countries,
-    "by_lang": [{"lang": "中文 (index)", "pct": 0.74},
-                {"lang": "English (en)", "pct": 0.18},
-                {"lang": "日本語 (ja)", "pct": 0.08}],
-}
-with open("assets/js/analytics-data.js", "w", encoding="utf-8") as f:
-    f.write("/* 自建追踪 · 模拟数据 · scripts/gen-traffic.py 确定性生成 · 每日汇报重跑 */\n")
-    f.write("window.CLAWQ_ANALYTICS = " + json.dumps(out, ensure_ascii=False, indent=2) + ";\n")
-
-# ── 每日汇报文件 TRAFFIC-REPORT.md ──
 def mmss(x):
+    x = int(x or 0)
     return f"{x // 60}分{x % 60:02d}秒"
 
-y, p = daily[-1], daily[-2]
-dpv = (y["pv"] - p["pv"]) / p["pv"] * 100
-read_cnt = round(y["pv"] * y["completion_rate"])
-top = sorted(countries, key=lambda c: -c["pct"])[:5]
+
+def pct_delta(cur, prev):
+    if not prev:
+        return "—"
+    return f"{(cur - prev) / prev * 100:+.0f}%"
+
+
+stats, err = fetch_stats()
+
+# ────────────────────────── 无数据：明确标注，不造假 ──────────────────────────
+if stats is None or not stats.get("daily"):
+    reason = err or "Worker 已连通但暂无访问记录"
+    out = {
+        "generated": TODAY.isoformat(), "range_days": DAYS,
+        "source": "none", "status": "no-data", "note": reason,
+        "totals": {"pv": 0, "uniques": 0, "avg_time_sec": 0, "completion_rate": 0, "shares": 0},
+        "daily": [], "countries": [], "by_lang": [],
+    }
+    with open("assets/js/analytics-data.js", "w", encoding="utf-8") as f:
+        f.write("/* 自建追踪 · 真实数据源（Cloudflare Worker + D1）· 当前无数据 */\n")
+        f.write("window.CLAWQ_ANALYTICS = " + json.dumps(out, ensure_ascii=False, indent=2) + ";\n")
+
+    md = [
+        "# 📊 倩小虾日记 · 访问数据日报", "",
+        f"> 生成于 {TODAY.isoformat()} · 数据源：自建 Cloudflare Worker + D1（无第三方、无 cookie）", "",
+        "## ⚠️ 暂无真实数据", "",
+        f"原因：{reason}", "",
+        "本报告**不再生成模拟数据**。2026-08-03 之前的历史数字均为演示用模拟值，已作废。",
+        "接入步骤见 `~/clawq-analytics-worker/DEPLOY.md`。", "",
+        "---",
+        "📈 看板：[analytics.html](https://cynthia-git11.github.io/clawq-diary/analytics.html)",
+    ]
+    with open("TRAFFIC-REPORT.md", "w", encoding="utf-8") as f:
+        f.write("\n".join(md) + "\n")
+    print(f"NO-DATA · {reason} · 已写入占位（未造假）")
+    sys.exit(0)
+
+# ────────────────────────── 有真实数据 ──────────────────────────
+daily = stats["daily"]
+tot = stats["totals"]
+tot_pv = tot.get("pv", 0)
+
+countries = []
+for c in stats.get("countries", []):
+    name, flag = CN_NAME.get(c.get("code", "XX"), (c.get("code", "XX"), "\U0001F310"))
+    countries.append({"name": name, "code": c.get("code"), "flag": flag,
+                      "pct": c.get("pct", 0), "pv": c.get("pv", 0)})
+
+by_lang = []
+for p in stats.get("pages", []):
+    label = PAGE_NAME.get(p.get("page", ""), p.get("page", ""))
+    by_lang.append({"lang": label,
+                    "pct": round(p.get("pv", 0) / tot_pv, 3) if tot_pv else 0})
+
+out = {
+    "generated": stats.get("generated", TODAY.isoformat()),
+    "range_days": stats.get("range_days", DAYS),
+    "source": "self-hosted-worker-d1", "status": "live",
+    "totals": tot, "daily": daily, "countries": countries, "by_lang": by_lang,
+    "referrers": stats.get("referrers", []),
+}
+with open("assets/js/analytics-data.js", "w", encoding="utf-8") as f:
+    f.write("/* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */\n")
+    f.write("window.CLAWQ_ANALYTICS = " + json.dumps(out, ensure_ascii=False, indent=2) + ";\n")
+
+y = daily[-1]
+p = daily[-2] if len(daily) > 1 else {}
+read_cnt = round(y.get("pv", 0) * (y.get("completion_rate") or 0))
 md = [
     "# 📊 倩小虾日记 · 访问数据日报", "",
-    f"> 自动生成于 {END.isoformat()} · 数据区间 {daily[0]['date']} → {daily[-1]['date']}（30 天）· 自建追踪、无第三方",
-    "> ⚠️ 当前为模拟演示数据；接入自建后端后自动替换为真实流量。", "",
+    f"> 生成于 {out['generated']} · 数据区间 {daily[0]['date']} → {daily[-1]['date']}"
+    f"（{len(daily)} 天）· 数据源：自建 Cloudflare Worker + D1 · 无第三方、无 cookie、不存 PII", "",
     f"## 今日快报（{y['date']}）", "",
     "| 指标 | 今日 | 环比昨日 |", "|---|---|---|",
-    f"| 浏览量 PV | {y['pv']} | {dpv:+.0f}% |",
-    f"| 独立访客 UV | {y['uniques']} | {(y['uniques']-p['uniques'])/p['uniques']*100:+.0f}% |",
-    f"| 平均停留 | {mmss(y['avg_time_sec'])} | {(y['avg_time_sec']-p['avg_time_sec'])/p['avg_time_sec']*100:+.0f}% |",
-    f"| 完读率 | {y['completion_rate']*100:.0f}%（约 {read_cnt} 人读完整篇）| {(y['completion_rate']-p['completion_rate'])/p['completion_rate']*100:+.0f}% |",
-    f"| 转发 | {y['shares']} | {(y['shares']-p['shares'])/max(p['shares'],1)*100:+.0f}% |", "",
-    "## 30 天累计", "",
-    f"- **总浏览量** {tot_pv:,}（日均 {round(tot_pv/DAYS):,}）· **独立访客** {tot_uniq:,}",
-    f"- **平均停留** {mmss(avg_time)} · **平均完读率** {avg_comp*100:.0f}% · **总转发** {tot_shares}",
-    f"- 趋势：{daily[0]['date']} {daily[0]['pv']} PV → {daily[-1]['date']} {daily[-1]['pv']} PV（{daily[-1]['pv']/daily[0]['pv']:.1f}x）", "",
-    "## 访问来源 Top 5", "",
+    f"| 浏览量 PV | {y.get('pv',0)} | {pct_delta(y.get('pv',0), p.get('pv',0))} |",
+    f"| 独立访客 UV | {y.get('uniques',0)} | {pct_delta(y.get('uniques',0), p.get('uniques',0))} |",
+    f"| 平均停留 | {mmss(y.get('avg_time_sec'))} | {pct_delta(y.get('avg_time_sec',0), p.get('avg_time_sec',0))} |",
+    f"| 完读率 | {(y.get('completion_rate') or 0)*100:.0f}%（约 {read_cnt} 人读完整篇）"
+    f"| {pct_delta(y.get('completion_rate') or 0, p.get('completion_rate') or 0)} |",
+    f"| 转发 | {y.get('shares',0)} | {pct_delta(y.get('shares',0), p.get('shares',0))} |", "",
+    f"## {len(daily)} 天累计", "",
+    f"- **总浏览量** {tot_pv:,}（日均 {round(tot_pv/max(len(daily),1)):,}）· **独立访客** {tot.get('uniques',0):,}",
+    f"- **平均停留** {mmss(tot.get('avg_time_sec'))} · **平均完读率** {(tot.get('completion_rate') or 0)*100:.0f}%"
+    f" · **总转发** {tot.get('shares',0)}",
 ]
-for c in top:
+if len(daily) > 1 and daily[0].get("pv"):
+    md.append(f"- 趋势：{daily[0]['date']} {daily[0]['pv']} PV → {daily[-1]['date']} {daily[-1]['pv']} PV"
+              f"（{daily[-1]['pv']/daily[0]['pv']:.1f}x）")
+md += ["", "## 访问来源 Top 5", ""]
+for c in countries[:5]:
     md.append(f"- {c['flag']} {c['name']}：{c['pct']*100:.1f}%（{c['pv']:,} PV）")
+if stats.get("referrers"):
+    md += ["", "## 来路 Top 5", ""]
+    for r in stats["referrers"][:5]:
+        md.append(f"- {r.get('ref','(direct)')}：{r.get('pv',0):,} PV")
 md += ["", "---", "📈 完整看板：[analytics.html](https://cynthia-git11.github.io/clawq-diary/analytics.html)"]
 with open("TRAFFIC-REPORT.md", "w", encoding="utf-8") as f:
     f.write("\n".join(md) + "\n")
 
-print(f"OK 今日 {y['date']} PV={y['pv']} ({dpv:+.0f}%) 停留{mmss(y['avg_time_sec'])} 完读{y['completion_rate']*100:.0f}% 转发{y['shares']}")
-print(f"30天 PV={tot_pv:,} UV={tot_uniq:,} 停留{mmss(avg_time)} 完读{avg_comp*100:.0f}% 转发{tot_shares} · {daily[0]['pv']}→{daily[-1]['pv']} ({daily[-1]['pv']/daily[0]['pv']:.1f}x)")
+print(f"LIVE 今日 {y['date']} PV={y.get('pv',0)} UV={y.get('uniques',0)} "
+      f"停留{mmss(y.get('avg_time_sec'))} 完读{(y.get('completion_rate') or 0)*100:.0f}%")
+print(f"{len(daily)}天 PV={tot_pv:,} UV={tot.get('uniques',0):,}")

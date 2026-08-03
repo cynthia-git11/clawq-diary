@@ -54,7 +54,7 @@
   <div class="nav-links"><a href="index.html">← 返回日记</a><a href="https://futurex.capital" target="_blank">FutureX</a></div>
 </nav>
 <div class="wrap">
-  <div class="demo">⚠️ <b>演示数据</b>：当前展示自建追踪系统的模拟数据集（过去 30 天）。采集器 <code>assets/js/tracker.js</code> 已上线、正在本机累计真实事件；接入自建后端（Cloudflare Worker + KV）后本看板自动替换为真实流量。本页 noindex，不对外索引。</div>
+  <div class="demo" id="src-banner">数据源加载中…</div>
   <h1>访问数据看板</h1>
   <div class="sub" id="range">加载中…</div>
   <div class="today"><div class="ttl">📈 今日快报 · <span id="t-date">—</span></div><div class="today-grid" id="today-grid"></div></div>
@@ -65,14 +65,36 @@
     <div class="card"><h2>📖 完读率 &amp; 转发</h2><div class="cs">完读 = 滚动至正文末尾且停留 &gt;15s · 近 14 天</div><div id="engage"></div></div>
   </div>
   <div class="card"><h2>🗣️ 语言版本分布</h2><div class="cs">中文 / English / 日本語</div><div id="lang"></div></div>
-  <footer>自建追踪系统 · 无第三方 · 无 cookie · 仅聚合事件不存 PII<br>数据由 scripts/gen-traffic.py 确定性生成 · 每日汇报滚动重跑</footer>
+  <footer>自建追踪系统 · 无第三方 · 无 cookie · 仅聚合事件不存 PII<br>采集 assets/js/tracker.js → Cloudflare Worker + D1 · 报告由 scripts/gen-traffic.py 拉取真实数据生成（拿不到则明确标注暂无数据，不生成模拟值）</footer>
 </div>
 <script src="assets/js/analytics-data.js?v=2"></script>
 <script>
 (function(){
   var A = window.CLAWQ_ANALYTICS;
   var box = document.getElementById('range');
+  var banner = document.getElementById('src-banner');
   if(!A){ box.textContent='⚠️ 数据文件 analytics-data.js 未加载'; return; }
+
+  // 数据源横幅：真实 / 无数据 —— 不再有"模拟数据"这一档
+  if(A.source === 'self-hosted-worker-d1' && A.status === 'live'){
+    banner.innerHTML = '✅ <b>真实数据</b>：自建 Cloudflare Worker + D1 采集，无第三方、无 cookie、不存 PII（UV 用每日轮换盐的匿名指纹去重，跨天不可关联）。机器人已过滤。本页 noindex。';
+    banner.style.borderColor = 'rgba(52,211,160,.45)';
+    banner.style.color = '#34d3a8';
+  } else {
+    banner.innerHTML = '⚠️ <b>暂无数据</b>：' + (A.note || '统计后端尚未接入') +
+      '。本看板<b>不再展示模拟数据</b>——2026-08-03 之前显示过的数字均为演示用模拟值，已作废。';
+  }
+
+  // 无数据时优雅停在这里，别去画空图表
+  if(!A.daily || !A.daily.length){
+    box.textContent = '暂无访问记录 · 生成于 ' + (A.generated || '—');
+    document.getElementById('t-date').textContent = '—';
+    ['today-grid','kpis','pv-chart','geo','engage','lang'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.innerHTML = '<div style="padding:18px;color:#85735a;font-size:13px">暂无数据</div>';
+    });
+    return;
+  }
   function fmt(n){ return Number(n).toLocaleString('en-US'); }
   function mmss(s){ return Math.floor(s/60)+'分'+(s%60<10?'0':'')+(s%60)+'秒'; }
   function pct(x){ return (x*100).toFixed(0)+'%'; }
