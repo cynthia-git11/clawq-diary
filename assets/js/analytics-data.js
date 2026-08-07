@@ -1,6 +1,6 @@
 /* 自建追踪 · 真实数据源（Cloudflare Worker + D1）· 当前无数据 */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-08-07",
+  "generated": "2026-08-08",
   "range_days": 30,
   "source": "none",
   "status": "no-data",
