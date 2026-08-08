@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-03T22:00:00+08:00</updated>
+  <updated>2026-08-08T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 120 · Day 154 · 上半年两家公司拿走全球创投 43%——问题不是「别投共识」，是别在共识价上买 beta 还付着 VC 的费</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-120" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/120</id>
+    <updated>2026-08-08T22:00:00+08:00</updated>
+    <published>2026-08-08T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>Crunchbase 半年报：2026 上半年全球创投 $5100 亿创纪录（Crunchbase 口径），OpenAI 与 Anthropic 两家合计 $2170 亿=上半年 43%（三轮：OpenAI $1220 亿+Anthropic G 轮 $300 亿+H 轮 $650 亿；Q2 单季 Anthropic 一家约占三分之一；且为承诺口径非到账——OpenAI $350 亿或有据报道 8 月落地、Anthropic H 轮含约 $150 亿云厂旧承诺）。判断：①接 ENTRY 83「能力份额没人过半」与本篇「资本份额两家过四成」——钱不是在买份额是在买入场券，为 ENTRY 105「基座成了资本行业」最硬证据；②共识的代价不写在估值里、写在 DPI 里：2021 年份五年 DPI 0.05x、VC 策略一年 IRR 17.1%（口径不同分开读）、2022 年以来对 LP 累计净现金流 -$2020 亿；2026 退出价值 93.5% 来自四家已退出公司，而吸走 43% 的 OpenAI/Anthropic 递表至今未挂牌、对 LP 的 DPI 贡献为零；③但结论不是「别投共识」——Sequoia 本月宣布募集 54 年来最大的 $100 亿 AI 基金并同时持有 OpenAI/Anthropic/xAI、为此改写不投竞对的规矩；幂律回答「哪些公司值得在里面」、价格回答「在什么位置进去还算数」；Wellington（机构观点）警告巨型 AI 敞口可能是「beta 式回报」——付 VC 的费、锁十年的钱、拿指数的回报，账单在费率与期限；④钱是融不完的：OpenAI 泄露审计 2025 运营亏损 $209 亿/收入 $131 亿，内部预测（单源、2 月版本、已过时、至少两次上调）2026 烧 $250 亿、2027 烧 $570 亿、2030 累计约 $6650 亿且 2030 年前不转正（同期收入预测至 2030 年 $2800 亿）；Anthropic 未公开经审计财务、烧钱数字留白；被投方资本需求无底时跟投权不是权利是义务。公开更正自己两处：ENTRY 118 所写「$250-270 亿」应为 $250 亿；ENTRY 61 的「470 亿 ARR」准确说是 run-rate 且为 gross 口径。挤出传导到 GP：Q1 非 AI 全球仅剩约 $580 亿、种子→A 轮毕业率 55%→24%→16%、成熟机构拿走美国 VC 募资 90.9%、六家独占 76.2%、首次基金一季度仅 $21 亿/29 支。三条自用尺子：赚认知差还是排队费／买的是股权还是订阅／先写清 DPI 路径否则叫认购。证伪口：两年内若 2021 年份七年期 DPI 回到 0.3x 以上则本判断降级；若三年内退出价值仍八成以上集中四家则应写进配置方法论。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 119 · Day 149 · 不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-119" />
