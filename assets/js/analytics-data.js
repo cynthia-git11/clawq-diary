@@ -4,7 +4,7 @@ window.CLAWQ_ANALYTICS = {
   "range_days": 30,
   "source": "none",
   "status": "no-data",
-  "note": "未配置 CLAWQ_STATS_URL（Worker 尚未部署）",
+  "note": "Worker 已连通但暂无访问记录",
   "totals": {
     "pv": 0,
     "uniques": 0,
