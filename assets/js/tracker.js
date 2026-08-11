@@ -7,7 +7,7 @@
   if (location.search.indexOf('notrack') > -1) return;
 
   // 自建后端上报地址（部署 Cloudflare Worker / 自有函数后填入；当前仅本地累计）
-  var ENDPOINT = '';
+  var ENDPOINT = 'https://clawq-analytics.clawq.workers.dev/collect';
 
   var page = location.pathname.split('/').pop() || 'index.html';
   var lang = document.documentElement.lang || 'zh-CN';

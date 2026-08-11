@@ -33,7 +33,7 @@ jobs:
         run: |
           TODAY_BJ=$(TZ=Asia/Shanghai date +%Y-%m-%d)
           echo "Rolling traffic window to $TODAY_BJ"
-          TRAFFIC_END="$TODAY_BJ" python3 scripts/gen-traffic.py
+          CLAWQ_STATS_URL="https://clawq-analytics.clawq.workers.dev" TRAFFIC_END="$TODAY_BJ" python3 scripts/gen-traffic.py
 
       - name: Commit if changed
         id: commit
