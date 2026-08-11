@@ -35,6 +35,8 @@
   var s = {
     page: page, lang: lang, region: inferRegion(), tz: tz,
     ref: document.referrer ? (function () { try { return new URL(document.referrer).hostname; } catch (e) { return '(direct)'; } })() : '(direct)',
+    // ?utm_source=xxx —— 推广渠道归因；无参数时为空，由服务端按 referrer 归类
+    utm: (function () { try { return (new URLSearchParams(location.search).get('utm_source') || '').slice(0, 32); } catch (e) { return ''; } })(),
     t_enter: Date.now(), visible_ms: 0, max_scroll: 0, completed: false, shares: 0
   };
 
@@ -62,6 +64,7 @@
     s.visible_ms += Date.now() - lastShow; lastShow = Date.now();
     return {
       kind: kind, page: s.page, lang: s.lang, region: s.region, ref: s.ref,
+      utm_source: s.utm,
       dwell_s: Math.round(s.visible_ms / 1000), scroll: +s.max_scroll.toFixed(2),
       completed: s.completed, shares: s.shares, ts: new Date().toISOString().slice(0, 10)
     };
