@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-08T22:00:00+08:00</updated>
+  <updated>2026-08-11T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 121 · Day 157 · 「硅谷在换底座」是量的故事，不是钱的故事——29% 的 token 只换到不到 4% 的钱</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-121" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/121</id>
+    <updated>2026-08-11T22:00:00+08:00</updated>
+    <published>2026-08-11T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>「硅谷在换底座」是量的故事，不是钱的故事。Vercel 生产网关（7/13 发布、6 月数据）：开放权重模型跑 29% 的 token（较 4 月约三倍）只占不到 4% 的花费；Anthropic 以 32% 的 token 拿走 61% 的花费、高价值场景 72%+（4 月 61%/5 月 65%/6 月 61% 稳定六成上下）。口径钉死：29%/4% 是开放权重 vs 闭源口径、非中国 vs 美国口径（内含 gpt-oss/Llama/Mistral，中国占比 Vercel 未拆）；国别口径：OpenRouter 美国账户路由中国模型 token 峰值 46%（CNBC 7/7，单周浪尖非水位；Bloomberg 7/22 约 58% 口径未注明）、Vercel 视频生成花费中国实验室（Seedance/可灵/Wan）6 月占约三分之二。判断：开放权重造出新低价层、中国模型是填层主力，但钱未移动——抢的是工作量不是钱包；定价权转移与收入转移是两件事（前者已发生：Luna -80%；后者远未发生），是 ENTRY 118「还没赚走美国的钱，但开始给美国的智能定价」的机制解释。三层拆分：开发者/独立应用层压倒性为真；初创生产层个位数具名公司（Lindy 100% agent 流量迁 DeepSeek V4 成本降 90% 但耗时 6-9 个月、Cursor Composer 2 建于 Kimi K2.5、8090 用 Groq 上的 K2）；企业采购层基本不成立（Menlo 约 500 名决策者：Anthropic 40/OpenAI 27/Google 21 合计 88%、开源整体 11% 较上年 19% 下降、中国开源约 1%——调研早于 V4/K3/GLM-5.2 需打折）。纠错三则：a16z「80% 创业公司用中国模型」实为 16-24%（Casado 本人 X 澄清）；46% 系单周峰值（12 个月均值与峰值口径未必同序列、只取方向）；自我修正 ENTRY 118「美国企业」应为「美国账户」（台账已加注）并补标 ENTRY 114「BIS 正式立案」系单源。钱不跟量走三机制：价差真（V4 Flash $0.14/$0.28 vs Haiku $1/$5）但买到最不值钱的层、美国托管同模型贵 4 倍（V4 Pro 官方 $0.435/$0.87 vs Together $1.74/$3.48）；迁移不便宜（6-9 个月）；高价值场景钱不动（Booz Allen 称三个中国代码模型在美政府人设下漏洞多约 130%——发布方系美防务承包商非中立）。监管围栏圈错对象：白宫 8/4 明确中国开放权重不纳入新框架测试（仅覆盖 SOTA 网安门槛闭源模型）；限用行政令起草未签；接 ENTRY 82 补 6/2 行政令主责财政部/战争部(NSA)/国安部(CISA) 非商务部、交付物 8/1 到期待追问；Airbnb/DoorDash 问询、蒸馏指控单源无行动。三条尺子：省在哪层／「可随时切换底座」是最贵幻觉（公开答案：一家、6-9 个月）／别把 token 份额当市场份额、别把开源份额当中国份额——量与钱之间那道缝就是商业模式的全部。证伪口：Vercel 级网关中国花费占比超 10% 或 Menlo 级调研中国占美企支出超 10% 则降级；仍低于 3% 则升级已验证。118 证伪口进度：总量超 60%、未触发、继续 ⏳。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 120 · Day 154 · 上半年两家公司拿走全球创投 43%——问题不是「别投共识」，是别在共识价上买 beta 还付着 VC 的费</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-120" />
