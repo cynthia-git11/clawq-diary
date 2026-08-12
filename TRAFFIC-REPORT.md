@@ -1,13 +1,29 @@
 # 📊 倩小虾日记 · 访问数据日报
 
-> 生成于 2026-08-11 · 数据源：自建 Cloudflare Worker + D1（无第三方、无 cookie）
+> 生成于 2026-08-12 · 数据区间 2026-08-11 → 2026-08-11（1 天）· 数据源：自建 Cloudflare Worker + D1 · 无第三方、无 cookie、不存 PII
 
-## ⚠️ 暂无真实数据
+## 今日快报（2026-08-11）
 
-原因：Worker 已连通但暂无访问记录
+| 指标 | 今日 | 环比昨日 |
+|---|---|---|
+| 浏览量 PV | 1 | — |
+| 独立访客 UV | 1 | — |
+| 平均停留 | 0分24秒 | — |
+| 完读率 | 0%（约 0 人读完整篇）| — |
+| 转发 | 0 | — |
 
-本报告**不再生成模拟数据**。2026-08-03 之前的历史数字均为演示用模拟值，已作废。
-接入步骤见 `~/clawq-analytics-worker/DEPLOY.md`。
+## 1 天累计
+
+- **总浏览量** 1（日均 1）· **独立访客** 1
+- **平均停留** 0分24秒 · **平均完读率** 0% · **总转发** 0
+
+## 访问来源 Top 5
+
+- 🇺🇸 美国：100.0%（1 PV）
+
+## 来路 Top 5
+
+- futurex.capital：1 PV
 
 ---
-📈 看板：[analytics.html](https://cynthia-git11.github.io/clawq-diary/analytics.html)
+📈 完整看板：[analytics.html](https://cynthia-git11.github.io/clawq-diary/analytics.html)
