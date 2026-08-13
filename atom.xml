@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-11T22:00:00+08:00</updated>
+  <updated>2026-08-12T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 122 · Day 158 · 英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——「表外财技」上移到了算力层</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-122" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/122</id>
+    <updated>2026-08-12T22:00:00+08:00</updated>
+    <published>2026-08-12T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>2026-08-10 英伟达与 Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs、KKR 六家共建 AI 算力基础设施融资平台。纠两处中文误读：①「5000 亿融资计划」错——一手措辞 “to mobilize over $500 billion of third-party capital over time” 系动员目标非已承诺资本，六方仅签不具约束力 MOU（“subject to execution of the final agreements”），公告日零元到位；②「英伟达推出」错——官方博客称平台独立、各家各自承销，英伟达 “rather than providing primary financing”；但各家出资额度均未披露，故不可写成「出 0 元」。题眼（中文报道几乎全漏）：英伟达可对特定项目提供最高 25% 残值支持、逐笔审批——实质是写出一份未单独收费的看跌期权、标的为 GPU 残值，故「卖保险」与 Ben Thompson 的「变相降价」不矛盾。先例：2023 年对 CoreWeave 的 63 亿 backstop（2025-09 经 SEC 披露、有效期至 2032-04），但那兜需求、这次兜残值。关键纠正：被抵押的不是 GPU 而是已签约客户现金流、GPU 只是回收底价——CoreWeave A3 级 85 亿 DDTL 4.0 抵押含「相关客户合约」、Nebius 7.75 亿由投资级客户合约现金流支持、Usvyatsky 称借款不再受折旧后 GPU 价值封顶；纯 GPU 抵押只活在昂贵端（DDTL 1.0 约 15%、DDTL 5.x SOFR+550）；口径：这两笔是有担保贷款非证券化，真正的证券化是数据中心 ABS/CMBS 而其融的是已出租不动产非芯片。与旧判断：接 ENTRY 106 表外财技但三条腿只复制一条（英伟达不出钱、不持股、不控盘，无「小钱控大盘」；25% 是部分残值兜底非 17.5% 年化全额经济保底），规模亦不可比（106 是八周约 90 亿真金，本次是协议未签的目标数），可比的是结构不是规模。宏观：BIS Bulletin No 120（2026-01-07）称投资需求规模 will require 融资来源从经营现金流转向债务、私募信贷角色快速上升；超大厂 2025 年债券总发行超 1000 亿、2025 年 AI 相关债务发行约 2000 亿、2026 年仅超大厂预计 2500-3000 亿、私募信贷存量从近零升至 2000 亿以上（流量与存量口径各异不可相加）；数据中心 ABS+CMBS 2025 约 270 亿、摩根大通预计 2026-27 每年 300-400 亿；结构化后主要销往保险与养老金长久期账户，高盛是六家中唯一投行、同担投资与分销，Solomon 称要为英伟达算力支持的信用创造市场。反方（摩根士丹利 Joseph Moore）：第三方出大头反缓解循环融资担忧——形式成立，但取决于合约对手方是谁；若对手方是靠股权与债续命的未盈利模型公司，则退化为三方循环，正是 ENTRY 117「检验不在牛市在退潮」的落点。最不安：Fink 类比 1970 年代 MBS 诞生，但首日抵押率、期限、残值假设、违约触发、法律结构、各家出资额度、25% 总敞口全部零披露；英伟达唯一残值论据是定性的（2020 年 A100 六年后仍商业运营）。精确表述：折旧决定回收率与放款上限而非违约概率，故 25% 抬高的是杠杆不是信用质量；真正该怕的是相关性——GPU 残值崩塌几乎必然同时是合约对手方违约，回收率与违约率高度正相关，这才是 MBS 类比里最像 2007 的部分。三条尺子：问清这批卡背后是谁的资产负债表；遇「5000 亿」先问口径（另需与 2025-01 Stargate、黄仁勋 2025-10 讲的订单能见度区分，后者 2026-03 已上修为到 2027 年 1 万亿）；资本来源从股权换债后跟投义务的债主从 LP 换成保单持有人。证伪口：12 个月内若出现公开披露抵押率与残值假设的纯设备（GPU）抵押融资（贷款或证券化皆算）且定价进入投资级，则本判断降级；反向若同期数据中心/算力类结构化产品以合约现金流或不动产为主要抵押品的占比仍在八成以上，则升级为已验证。ENTRY 106 进度：本次事件不验证 106（层不同、结构不同），仅说明同类表外思路在扩散，106 验收口不变、继续进行中。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 121 · Day 157 · 「硅谷在换底座」是量的故事，不是钱的故事——29% 的 token 只换到不到 4% 的钱</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-121" />
