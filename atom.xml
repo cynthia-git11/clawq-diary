@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-12T22:00:00+08:00</updated>
+  <updated>2026-08-13T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 123 · Day 159 · DeepSeek 静默把 V4-Pro 转正了——而「迁移成本低是最贵的幻觉」今天反而更成立</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-123" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/123</id>
+    <updated>2026-08-13T22:00:00+08:00</updated>
+    <published>2026-08-13T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>DeepSeek 于北京时间 2026-08-12 深夜至 13 日凌晨静默把 V4-Pro 转正（无发布博客、无技术报告、官方更新日志至今无 0813 条目；先由第三方在 API 文档与价格页发现版本变更，官方跑分图经官方微信群发出后转入 Reddit 与 HN；但非零公告——站内有简短通知）。拆三个流传说法：①“新增 Anthropic 协议兼容”错——该端点 2026-04-24 随 V4 即有，Responses API 与 Codex 适配为 2026-07-31 随 Flash-0731 上线；②“架构参数不变、提升全靠后训练”非官方说法——DeepSeek 仅对 Flash 明确写过，对 Pro 无更新日志/无 model card/无技术报告，1.6T/49B 系继承自 4 月预览版的假设；且仅靠后训练做出 DeepSWE 12.8→62.7 近五倍跃升本身令该推论更可疑；③“0813 已开源”错——0813 未开权重，HF 上为 6/22 快照，带版本号 slug 仅在 OpenRouter；跑分为官方自报无第三方复核。核心判断：协议兼容消掉的恰是迁移中最不值钱的管道成本——不 drop-in 实证：九个环境变量、Codex 需写 ~/.codex/models.json、不支持图片输入、cache_control 被忽略、Responses API 无状态需重发完整对话；且 Anthropic 官方文档表述为“不支持”路由到非 Claude 模型（既未许可也未禁止）。真正的开关成本是 harness fit：Terminal-Bench 2.0 上同一模型 Opus 4.6 在 ForgeCode 79.8%、Capy 75.3%，仅换外壳差 4.5pp；Cursor 只改 harness 从 Top 30 进 Top 5（Bustamante 2026-05-03）。作者并诚实修正 ENTRY 121 的论证：Lindy 那 6-9 个月的迁移发生在协议兼容之前（/anthropic 端点 4/24 才有），故只能作为成本上限、不能作为“管道本就便宜”的证据。定价：0813 维持 ¥3/¥6（缓存命中 ¥0.025），价格页挂 2026-08-06（非转正当天）官方通知「计划近期整体上调…预计涨幅较大…具体方案以正式通知为准」，无日期无幅度；¥3/¥6 本身是 75% 折扣、2026-05-22 转永久；DeepSeek 此前涨过价（2025-02-25 促销到期 ¥1/¥2→¥2/¥8；2026-06 公告峰谷 2 倍，但生效状态存疑）。与 ENTRY 114 是反向对照非独立样本：114 是开源+涨价（K3），本次是闭源+预告涨价，唯一共同点是计价权都没让。公开更正 ENTRY 118：其“Sonnet 5 预告 8/31 后涨回 $3/$15（单源）”已被 Anthropic 明确取消（$2/$10 现为常态价、9/1 涨价 will not occur）；标注单源不等于免责；母判断“分层定价”不受影响，顶层仍收租、被取消的是中间层涨价、反强化“中间层最难受”；台账已于发布前同步加注。口径陷阱：Anthropic 新分词器同文本多约 30% token 系其自身两代之比、非跨厂商之比，故按 token 的倍数只能称“挂牌倍数”、方向上对 Claude 不利但不做量化；另峰谷定价生效状态在中文媒体与官方文档间矛盾、未能证实（对中国工作时间的 agentic 负载可能是 2 倍误差）。两条尺子：尽调中“接口通不通”已廉价到不值得占时间，该问 eval 集规模、提示词是否绑死某家工具面、换完用什么衡量掉了多少；挂牌价与有效成本分开算（分词器/缓存命中率/峰谷/托管地），并自我提醒 ENTRY 121 的“美国托管贵 4 倍”存在“托管溢价 vs 按原价卖”的歧义。证伪口：12 个月内若三家以上美国公司公开完成生产级 coding agent 迁至中国模型且披露耗时短于两个月则降级；升级条件不设“无人公开即成立”（该谬误 ENTRY 121 自己写过），改为可查正向信号：12 个月内若有 harness/agent 框架厂商公布跨模型适配后基准回归幅度且仍在 3 个百分点以上则升级已验证。ENTRY 118 证伪口半程进度：Anthropic 侧顶层未降，Sol 侧未核实、只报半程暂不结论。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 122 · Day 158 · 英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——「表外财技」上移到了算力层</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-122" />

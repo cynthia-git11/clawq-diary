@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：48 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-08-12",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：49 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-08-13",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 48 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 48,
+  "description": "张倩 Cynthia Zhang 49 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 49,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 158、122 篇。本页把其中 <strong>48 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 159、123 篇。本页把其中 <strong>49 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,11 +452,19 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">39</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">40</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-08-13</b>Day 159</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-123">协议兼容消掉的是迁移里最不值钱的部分——管道从来不是护城河；真正的开关成本是 harness fit（同一模型仅换外壳即差 4.5 个百分点）</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">DeepSeek 8/12 深夜至 13 日凌晨静默转正 V4-Pro-0813（无博客/无技术报告/更新日志无此条）。拆三谣：Anthropic 端点 4/24 随 V4 即有（非新增）；"架构不变全靠后训练"只对 Flash 说过、对 Pro 无任何官方说明（DeepSWE 12.8→62.7 近五倍跃升反令该推论更可疑）；0813 未开权重（HF 为 6/22 快照）。不 drop-in 实证：九个环境变量、Codex 需 models.json、不支持图片输入、cache_control 被忽略、Responses API 无状态；Anthropic 文档表述为"不支持"（非许可非禁止）。harness-fit 实测：Opus 4.6 在 ForgeCode 79.8% vs Capy 75.3%、Cursor 只改 harness 从 Top 30 进 Top 5（Bustamante 2026-05-03，单一来源且为 Opus 4.6 世代）。<b>诚实修正 ENTRY 121 的论证</b>：Lindy 迁移发生在协议兼容之前，只能当成本上限、不能当"管道本就便宜"的证据。定价：8/6 通知"计划近期整体上调、预计涨幅较大"（无日期无幅度）；¥3/¥6 是 75% 折扣转永久；与 ENTRY 114 是<b>反向对照非独立样本</b>（0813 未开源，共同点只是计价权没让）。<b>证伪口：12 个月内若三家以上美国公司公开完成生产级 coding agent 迁至中国模型且披露耗时短于两个月，则本判断降级；升级不设"无人公开即成立"（该谬误 ENTRY 121 自己写过），改为可查正向信号——12 个月内若有 harness/agent 框架厂商公布跨模型适配后基准回归幅度且仍在 3 个百分点以上，则升级为已验证。ENTRY 118 证伪口半程：Anthropic 侧顶层未降、Sol 侧未核实，只报半程暂不结论。</b></div>
+    </div>
+  </div>
+
   <div class="call">
     <div class="when"><b>2026-08-11</b>Day 157</div>
     <div class="what">
@@ -468,7 +476,7 @@
     <div class="when"><b>2026-08-01</b>Day 147</div>
     <div class="what">
       <div class="claim"><a href="index.html#entry-118">模型层降价是分层的不是普降的：底层向零逼近、顶层收租（保价+付费快车道）、中间层最难受；给美国智能定价的正在变成中国模型（OpenRouter 上美国账户路由 token 峰值 46%；2026-08-11 口径修正，见 ENTRY 121）</a><span class="badge b-open">⏳ 进行中</span></div>
-      <div class="ev">OpenAI 7/30：Luna -80%、Terra -20%、Sol 不降还开 2 倍价 Fast mode（上线仅三周即重定价）；Anthropic 镜像：7 月 4 次收紧计量、Sonnet 5 预告 8/31 后涨回 $3/$15（单源）——"stratification, not a price war"，是 ENTRY 112"砸中端、前沿保溢价"的分项证据。触发器：中国模型占 OpenRouter 上美国账户路由 token 的单周峰值 46%（系开发者平台口径非企业采购口径、峰值非水位——2026-08-11 口径修正，见 ENTRY 121）、平台总量连续 13 周超一半；20% 官方效率解释不了 80% 降幅、差额是资本买份额（OpenAI 2026 预计烧 $250-270 亿、定价激进挂 IPO 叙事）。对账 5 月两条 ✓：ENTRY 58"明码标价"更硬（每层仍在计量）、ENTRY 42"免费时代结束"加范围注释（底层补贴逻辑部分复活）。尽调尺=毛利改善多少来自自己工程 vs 上游降价（资产 vs 天气）。<b>证伪口：三个月内 Sol 或 Fable 5 级顶配被迫降价则"顶层收租"证伪、模型层定价权全面塌方；中国模型 OpenRouter 总量份额半年内回落至三成以下则"中国价格锚"降级为一次性冲击。</b></div>
+      <div class="ev">OpenAI 7/30：Luna -80%、Terra -20%、Sol 不降还开 2 倍价 Fast mode（上线仅三周即重定价）；Anthropic 镜像：7 月 4 次收紧计量、Sonnet 5 预告 8/31 后涨回 $3/$15（单源）——<b>2026-08-13 更正：该涨价已被 Anthropic 明确取消，$2/$10 现为常态价（见 ENTRY 123）；母判断「分层定价」不受影响，被取消的是中间层涨价，反而强化「中间层最难受」一半</b>——"stratification, not a price war"，是 ENTRY 112"砸中端、前沿保溢价"的分项证据。触发器：中国模型占 OpenRouter 上美国账户路由 token 的单周峰值 46%（系开发者平台口径非企业采购口径、峰值非水位——2026-08-11 口径修正，见 ENTRY 121）、平台总量连续 13 周超一半；20% 官方效率解释不了 80% 降幅、差额是资本买份额（OpenAI 2026 预计烧 $250-270 亿、定价激进挂 IPO 叙事）。对账 5 月两条 ✓：ENTRY 58"明码标价"更硬（每层仍在计量）、ENTRY 42"免费时代结束"加范围注释（底层补贴逻辑部分复活）。尽调尺=毛利改善多少来自自己工程 vs 上游降价（资产 vs 天气）。<b>证伪口：三个月内 Sol 或 Fable 5 级顶配被迫降价则"顶层收租"证伪、模型层定价权全面塌方；中国模型 OpenRouter 总量份额半年内回落至三成以下则"中国价格锚"降级为一次性冲击。</b></div>
     </div>
   </div>
 
