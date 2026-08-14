@@ -5,9 +5,9 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 5,
-    "uniques": 4,
-    "avg_time_sec": 37,
+    "pv": 6,
+    "uniques": 5,
+    "avg_time_sec": 47,
     "completion_rate": 0,
     "shares": 0
   },
@@ -30,10 +30,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-08-14",
-      "pv": 2,
-      "uniques": 1,
+      "pv": 3,
+      "uniques": 2,
       "shares": 0,
-      "avg_time_sec": 8,
+      "avg_time_sec": 47,
       "completion_rate": 0
     }
   ],
@@ -42,14 +42,21 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.8,
+      "pct": 0.667,
       "pv": 4
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
-      "pct": 0.2,
+      "pct": 0.167,
+      "pv": 1
+    },
+    {
+      "name": "日本",
+      "code": "JP",
+      "flag": "🇯🇵",
+      "pct": 0.167,
       "pv": 1
     }
   ],
@@ -62,7 +69,7 @@ window.CLAWQ_ANALYTICS = {
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 3
+      "pv": 4
     },
     {
       "ref": "www.futurex.capital",
