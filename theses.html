@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：50 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-08-14",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：51 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-08-16",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 50 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 50,
+  "description": "张倩 Cynthia Zhang 51 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 51,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 160、124 篇。本页把其中 <strong>50 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 162、125 篇。本页把其中 <strong>51 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,11 +452,19 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">41</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">42</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-08-16</b>Day 162</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-125">AI 收入正从"按人收费"迁向"按消耗收费"、消耗分布是幂律——席位路径到不了 $600B（算术地板 $56/月 vs Ramp 中位 $11.95）；采纳外部 KILL SWITCH 为本台账验收信号</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">源起对 @tropicalvalue $600B 算术的深度解读：其内部计算自洽，但两个数值输入错（67% 毛利系 OpenAI 2030 目标、Anthropic 自己约 44%；$25B/GW/年租价偏高一倍、真实合约中枢约 $13B）、一个归属错（$600B 系 Harry Doyle 2030 个人 base case 非内部数；最接近内部口径为 Reuters 8/14 报的 2028 年收入 $190-200B、未获确认）——修正后 8 GW→约 26 GW＝四大超大厂全年可建量约 1.8 倍。需求侧：$30 系挂牌价（实付约 $12）、895M 分母中仅 42.7% 在高收入国家，真实混合价全渗透约 $215B、缺口翻倍；唯一可达点在幂律头部（$650 反解约 7,700 万人＝17% 席位）。现状佐证：Anthropic $47B run-rate 约 75-85% 系用量计费 API（第三方估；OpenAI 相反、大头是订阅）。接 ENTRY 121「量与钱之间那道缝」。含 agent 写作利益披露。<b>证伪口：12 个月内若 Ramp 中位数突破 $56/月（席位路径算术地板被现实支出清掉），则"席位到不了 $600B"重写；反向若 Ramp 中位仍低于 $20/月、且 Anthropic/OpenAI 披露或可信第三方口径（Vercel 级网关/研究机构拆分）显示用量计费占比仍高于三分之二，则升级为已验证。KILL SWITCH 现值：$11.95（Ramp 2026 年 7 月中位，每月更新）。</b></div>
+    </div>
+  </div>
+
   <div class="call">
     <div class="when"><b>2026-08-13</b>Day 159</div>
     <div class="what">
