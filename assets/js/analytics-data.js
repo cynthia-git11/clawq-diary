@@ -5,9 +5,9 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 7,
-    "uniques": 6,
-    "avg_time_sec": 39,
+    "pv": 10,
+    "uniques": 8,
+    "avg_time_sec": 54,
     "completion_rate": 0,
     "shares": 0
   },
@@ -38,10 +38,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-08-15",
-      "pv": 1,
-      "uniques": 1,
+      "pv": 4,
+      "uniques": 3,
       "shares": 0,
-      "avg_time_sec": 0,
+      "avg_time_sec": 66,
       "completion_rate": 0
     }
   ],
@@ -50,45 +50,52 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.714,
+      "pct": 0.5,
       "pv": 5
-    },
-    {
-      "name": "中国台湾",
-      "code": "TW",
-      "flag": "🇹🇼",
-      "pct": 0.143,
-      "pv": 1
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.143,
+      "pct": 0.3,
+      "pv": 3
+    },
+    {
+      "name": "中国台湾",
+      "code": "TW",
+      "flag": "🇹🇼",
+      "pct": 0.1,
+      "pv": 1
+    },
+    {
+      "name": "HU",
+      "code": "HU",
+      "flag": "🌐",
+      "pct": 0.1,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.857
+      "pct": 0.9
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.143
+      "pct": 0.1
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 5
-    },
-    {
-      "ref": "www.futurex.capital",
-      "pv": 1
+      "pv": 7
     },
     {
       "ref": "futurex.capital",
+      "pv": 2
+    },
+    {
+      "ref": "www.futurex.capital",
       "pv": 1
     }
   ]
