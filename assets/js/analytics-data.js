@@ -1,13 +1,13 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-08-15",
+  "generated": "2026-08-16",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
     "pv": 10,
-    "uniques": 8,
-    "avg_time_sec": 54,
+    "uniques": 9,
+    "avg_time_sec": 53,
     "completion_rate": 0,
     "shares": 0
   },
@@ -42,6 +42,14 @@ window.CLAWQ_ANALYTICS = {
       "uniques": 3,
       "shares": 0,
       "avg_time_sec": 66,
+      "completion_rate": 0
+    },
+    {
+      "date": "2026-08-16",
+      "pv": 0,
+      "uniques": 1,
+      "shares": 0,
+      "avg_time_sec": 50,
       "completion_rate": 0
     }
   ],
