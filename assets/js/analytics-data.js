@@ -6,8 +6,8 @@ window.CLAWQ_ANALYTICS = {
   "status": "live",
   "totals": {
     "pv": 15,
-    "uniques": 17,
-    "avg_time_sec": 880,
+    "uniques": 18,
+    "avg_time_sec": 833,
     "completion_rate": 0,
     "shares": 0
   },
@@ -63,9 +63,9 @@ window.CLAWQ_ANALYTICS = {
     {
       "date": "2026-08-19",
       "pv": 2,
-      "uniques": 4,
+      "uniques": 5,
       "shares": 0,
-      "avg_time_sec": 1820,
+      "avg_time_sec": 1462,
       "completion_rate": 0
     }
   ],
