@@ -1,13 +1,13 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-08-18",
+  "generated": "2026-08-19",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 13,
-    "uniques": 13,
-    "avg_time_sec": 591,
+    "pv": 15,
+    "uniques": 17,
+    "avg_time_sec": 880,
     "completion_rate": 0,
     "shares": 0
   },
@@ -59,6 +59,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "avg_time_sec": 2401,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-08-19",
+      "pv": 2,
+      "uniques": 4,
+      "shares": 0,
+      "avg_time_sec": 1820,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -66,50 +74,50 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.462,
-      "pv": 6
+      "pct": 0.533,
+      "pv": 8
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.308,
+      "pct": 0.267,
       "pv": 4
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
-      "pct": 0.077,
+      "pct": 0.067,
       "pv": 1
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.077,
+      "pct": 0.067,
       "pv": 1
     },
     {
       "name": "HU",
       "code": "HU",
       "flag": "🌐",
-      "pct": 0.077,
+      "pct": 0.067,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.846
+      "pct": 0.867
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.077
+      "pct": 0.067
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.077
+      "pct": 0.067
     }
   ],
   "referrers": [
@@ -118,11 +126,15 @@ window.CLAWQ_ANALYTICS = {
       "pv": 9
     },
     {
+      "ref": "www.futurex.capital",
+      "pv": 2
+    },
+    {
       "ref": "futurex.capital",
       "pv": 2
     },
     {
-      "ref": "www.futurex.capital",
+      "ref": "weixin110.qq.com",
       "pv": 1
     },
     {
