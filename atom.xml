@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-17T22:00:00+08:00</updated>
+  <updated>2026-08-19T22:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 127 · Day 165 · Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过（8/24 补记）</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-127" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/127</id>
+    <updated>2026-08-19T22:00:00+08:00</updated>
+    <published>2026-08-19T22:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>Stripe 于 8/19 官宣签署协议收购 OpenRouter——已签署未交割（OpenRouter 原句 subject to customary closing conditions）、金额未官方披露（Bloomberg 超 $70 亿/NYT 约 $75 亿/Axios 超 $80 亿且以股票为主）、领投 B 轮系 CapitalG 非 Sequoia。作者的三层处理：①认一个与收购无关的更大错：MIT/Nagle-Yue 研究（今年 1 月经 MIT Sloan 发表、研究期 2025 年 5-9 月）显示 OpenRouter 仅捕获全球 AI 推理支出约 1%、且吸引更愿用开源模型的用户——作者在 118/121/123/124 四篇引用十二次、每次加定性免责却从没量化漏斗，且 ENTRY 118 证伪口的验收指标就挂在其上（第一次遇到验收指标本身发生产权变更）；同源数据閉源模型占 80% token/96% 收入（研究者独立、数据不独立），与真正独立的第二漏斗 Vercel（29% token/不到 4% 花费）同形；自选择偏向开源意味着真实闭源占比只会更高；Mozilla.ai 补充本地自托管对中心化平台不可见；:free 变体是否抬高开放权重 token 数存疑待查。②更正确凿数字错误：“占平台总量超 60%”分母错、实为“头部排名模型 token 消耗的 60%+”——出自 ENTRY 121 证伪口进度行、即更正了两处又新错一处的同一篇：更正机制本身会漏；7 月下旬中国模型包揽前五名（小米 MiMo-V2.5 第一）足够强、不需要写大分母。③台账手术四条：ENTRY 118 份额侧证伪口改双轨（中国来源模型口径、阈值 30%：OpenRouter 侧＝公开 rankings 头部模型集内中国模型 token 份额、当前 60%+；Vercel 侧＝公开每日榜单实验室行中国实验室合计、首次带日期读数于下一篇记录；任一跌破部分触发并公开读数、两侧同向跌破正式降级、OpenRouter 停更/改口径/收紧访问则单轨 Vercel 同一阈值）；OpenRouter 降为方向指标；State of AI 按 vendor report 标注（a16z 合伙人合著且系股东为直接冲突、CapitalG 领投未署名为结构性表象、两层分说）；按月归档计量器快照（许可永久性≠访问永久性：Data API 虽 CC BY 4.0 却需 key、限速 30/分与 500/天、账号级可撤销；首份快照 8/24 已存 archive/meter-snapshots/）。并记账：ENTRY 121 证伪口单挂 Vercel 同欠并行指标、下一篇处理。交易实质：Stripe 1/15 完成收购按量计费厂商 Metronome（报道约 $10 亿）、七个月后签 OpenRouter——买的是“按消耗计价与结算”轨道上的收费站；Sacra 估年化收入约 $1.4 亿、对应约 55 倍（54-57）——路由抽成解释不了；Stripe 自报 2025 年支付额 $1.9 万亿、Forbes AI 50 约九成建在其上——系 ENTRY 125“按消耗收费”判断的外部验证：计价方式变了、最先被买走的是计量器；零假设并存（竞价/防御/股票买增长——若以股票为主则 55 倍以私有 mark 支付、硬度打折）。中立性：产品/使命/路由中立有承诺且 rankings 页与 arXiv 论文自带注意事项（披露分布不均而非隐瞒）；但公开数据连续性零承诺；结构性冲突机制＝Stripe 同时拥有路由决策与向提供商收单的通道。先例：CMC/Binance（指标三个月被改、Binance 15→1 名、舆论反弹后调回——调回靠舆论不靠治理）；Alexa 23 年后无解释关停；App Annie 免费层消失；反例 npm 承诺至今兑现。判别式：公开数据是收购方分发渠道则活、是给交易对手排名的记分牌则高危——OpenRouter 属后者；活案例 LiveRamp（Publicis 拟议后 Omnicom/WPP 先撤：竞争方先撤、数据就变）。两条尺子：每个外部数字都问计量器的产权与激励（任何计量器都有漏斗）；证伪口不单挂一个第三方指标（ENTRY 111 延伸）。证伪口：12 个月内出现提供商公开撤退/分母口径变更未同步可比历史/访问实质收紧任一则成立；三者皆无则标 ✗ 按公开认错处理。本篇为 8/24 补记 8/19 事件。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 126 · Day 163 · 英伟达没有借给 OpenAI 一分钱——$1050 亿上限的残值担保，担保标的是 OpenAI 缺失的信用评级（8/24 补记）</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-126" />

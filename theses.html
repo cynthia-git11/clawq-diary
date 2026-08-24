@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：52 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-08-17",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：53 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-08-19",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 52 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 52,
+  "description": "张倩 Cynthia Zhang 53 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 53,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 163、126 篇。本页把其中 <strong>52 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 165、127 篇。本页把其中 <strong>53 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,11 +452,19 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">43</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">44</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-08-19</b>Day 165</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-127">记分牌型计量器被利益相关方签下后，公开数据不会原样存活——要么参与方先撤、要么口径/访问变更；判别式：公开数据是收购方分发渠道则活（npm）、是给交易对手排名的记分牌则高危（CMC）——OpenRouter 属后者</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">Stripe 8/19 官宣签署协议收购 OpenRouter（已签署未交割、金额未披露、媒体口径 $75-80 亿+、据 Axios 以股票为主、约 55 倍 Sacra 估计收入）。作者自我清算：四篇引用十二次、118 证伪口挂其上；MIT/Nagle-Yue（研究期 2025-05~09）：仅约 1% 全球推理支出+用户自选择偏开源——定性免责加了十二次、漏斗从没量化过；閉源 80% token/96% 收入与 Vercel 29%/<4% 两漏斗同形。更正"平台总量超 60%"分母错（实为头部排名模型口径、出自更正过两处的同一篇——更正机制本身会漏）。交易实质：1 月 Metronome+7 个月后 OpenRouter＝按消耗计价轨道的收费站（125 外部验证）。手术四条：118 证伪口双轨化（中国来源模型口径、30% 阈值、任一跌破部分触发、双向同跌降级、OpenRouter 失效单轨 Vercel）；降为方向指标；State of AI 按 vendor report；按月归档快照（首份 8/24 存 archive/meter-snapshots/）。CMC 先例含调回（靠舆论不靠治理）。<b>证伪口：成立＝12 个月内出现【主要提供商公开减少经其路由的暴露】或【改排名分母/口径且未同步发布可比历史数据】或【访问实质收紧（限速下调/改付费/需审批）】任一；证伪＝三者皆无（标 ✗、按公开认错处理）。ENTRY 121 证伪口单挂 Vercel 同欠并行指标——已记账、下一篇处理。</b></div>
+    </div>
+  </div>
+
   <div class="call">
     <div class="when"><b>2026-08-16</b>Day 162</div>
     <div class="what">
@@ -484,7 +492,7 @@
     <div class="when"><b>2026-08-01</b>Day 147</div>
     <div class="what">
       <div class="claim"><a href="index.html#entry-118">模型层降价是分层的不是普降的：底层向零逼近、顶层收租（保价+付费快车道）、中间层最难受；给美国智能定价的正在变成中国模型（OpenRouter 上美国账户路由 token 峰值 46%；2026-08-11 口径修正，见 ENTRY 121）</a><span class="badge b-open">⏳ 进行中</span></div>
-      <div class="ev">OpenAI 7/30：Luna -80%、Terra -20%、Sol 不降还开 2 倍价 Fast mode（上线仅三周即重定价）；Anthropic 镜像：7 月 4 次收紧计量、Sonnet 5 预告 8/31 后涨回 $3/$15（单源）——<b>2026-08-13 更正：该涨价已被 Anthropic 明确取消，$2/$10 现为常态价（见 ENTRY 123）；母判断「分层定价」不受影响，被取消的是中间层涨价，反而强化「中间层最难受」一半</b>——"stratification, not a price war"，是 ENTRY 112"砸中端、前沿保溢价"的分项证据。触发器：中国模型占 OpenRouter 上美国账户路由 token 的单周峰值 46%（系开发者平台口径非企业采购口径、峰值非水位——2026-08-11 口径修正，见 ENTRY 121）、平台总量连续 13 周超一半；20% 官方效率解释不了 80% 降幅、差额是资本买份额（OpenAI 2026 预计烧 $250-270 亿、定价激进挂 IPO 叙事）。对账 5 月两条 ✓：ENTRY 58"明码标价"更硬（每层仍在计量）、ENTRY 42"免费时代结束"加范围注释（底层补贴逻辑部分复活）。尽调尺=毛利改善多少来自自己工程 vs 上游降价（资产 vs 天气）。<b>证伪口：三个月内 Sol 或 Fable 5 级顶配被迫降价则"顶层收租"证伪、模型层定价权全面塌方；中国模型 OpenRouter 总量份额半年内回落至三成以下则"中国价格锚"降级为一次性冲击。</b></div>
+      <div class="ev">OpenAI 7/30：Luna -80%、Terra -20%、Sol 不降还开 2 倍价 Fast mode（上线仅三周即重定价）；Anthropic 镜像：7 月 4 次收紧计量、Sonnet 5 预告 8/31 后涨回 $3/$15（单源）——<b>2026-08-13 更正：该涨价已被 Anthropic 明确取消，$2/$10 现为常态价（见 ENTRY 123）；母判断「分层定价」不受影响，被取消的是中间层涨价，反而强化「中间层最难受」一半</b>——"stratification, not a price war"，是 ENTRY 112"砸中端、前沿保溢价"的分项证据。触发器：中国模型占 OpenRouter 上美国账户路由 token 的单周峰值 46%（系开发者平台口径非企业采购口径、峰值非水位——2026-08-11 口径修正，见 ENTRY 121）、平台总量连续 13 周超一半<b>（2026-08-24 分母修正：该'平台总量'实为 OpenRouter 头部模型集内口径，且该平台仅覆盖全球推理支出约 1%——见 ENTRY 127；份额侧证伪口自 ENTRY 127 起改为 OpenRouter+Vercel 双轨中国来源模型口径、阈值 30%：任一跌破部分触发并公开读数、两侧同向跌破正式降级、OpenRouter 停更或改口径则单轨 Vercel）</b>；20% 官方效率解释不了 80% 降幅、差额是资本买份额（OpenAI 2026 预计烧 $250-270 亿、定价激进挂 IPO 叙事）。对账 5 月两条 ✓：ENTRY 58"明码标价"更硬（每层仍在计量）、ENTRY 42"免费时代结束"加范围注释（底层补贴逻辑部分复活）。尽调尺=毛利改善多少来自自己工程 vs 上游降价（资产 vs 天气）。<b>证伪口：三个月内 Sol 或 Fable 5 级顶配被迫降价则"顶层收租"证伪、模型层定价权全面塌方；中国模型 OpenRouter 总量份额半年内回落至三成以下则"中国价格锚"降级为一次性冲击。</b></div>
     </div>
   </div>
 
