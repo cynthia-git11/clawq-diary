@@ -1,13 +1,13 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-08-23",
+  "generated": "2026-08-24",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 22,
-    "uniques": 19,
-    "avg_time_sec": 866,
+    "pv": 26,
+    "uniques": 20,
+    "avg_time_sec": 1182,
     "completion_rate": 0,
     "shares": 0
   },
@@ -75,6 +75,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "avg_time_sec": 1456,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-08-24",
+      "pv": 4,
+      "uniques": 1,
+      "shares": 0,
+      "avg_time_sec": 7200,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -82,56 +90,56 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.5,
-      "pv": 11
+      "pct": 0.577,
+      "pv": 15
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.364,
+      "pct": 0.308,
       "pv": 8
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
-      "pct": 0.045,
+      "pct": 0.038,
       "pv": 1
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.045,
+      "pct": 0.038,
       "pv": 1
     },
     {
       "name": "HU",
       "code": "HU",
       "flag": "🌐",
-      "pct": 0.045,
+      "pct": 0.038,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.909
+      "pct": 0.923
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.045
+      "pct": 0.038
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.045
+      "pct": 0.038
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 15
+      "pv": 19
     },
     {
       "ref": "futurex.capital",
