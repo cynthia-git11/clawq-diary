@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：53 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-08-19",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：54 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-08-24",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 53 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 53,
+  "description": "张倩 Cynthia Zhang 54 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 54,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 165、127 篇。本页把其中 <strong>53 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 170、128 篇。本页把其中 <strong>54 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,11 +452,19 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">44</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">45</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-08-24</b>Day 170</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-128">钱包开始移动、缝在收窄——但触发申报按从严原则只标"部分触发"：自算广义口径过 10% 线、官方窄口径未过，9 月月度指数为裁定机制；预注册条款自己也要经得起"谁的口径"一问</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev">8/24 实拉 Vercel 公开榜单：自算广义中国口径花费份额 12.1%（8/23）/8 月日均 14.7%/峰值 19.8%（8/22）——过 ENTRY 121 预注册的 10% 线；Vercel 自家公布窄口径（四家自营开源实验室）7 月 8.6-9%、8/23 约 9%——未过。按 ENTRY 110"不冒领数据点"先例从严：部分触发、不降级、9 月中的 8 月月度指数裁定。方向如实记：开放权重花费份额不到 4%→8.6-9%→8 月日均 14.3%；token 侧单日纪录 62%（8/22）、月度 7 月 36%、8 月日均 55%——日均 55% token 配约七分之一的钱、Anthropic 以 19% token 拿 67.6% 花费。127 双轨读数落账：OpenRouter 60%+（8 月）、Vercel 60.0%（8/23、轨迹 27.6→45.6→51.0→60.0）——118 两侧均远高于 30% 未触发（第 23 天）。半个盲区：阶跃 Step 3.7 Flash 两个月 0.8%→17.0%。<b>证伪口（状态：部分触发待裁定）：裁定＝9 月中发布的 8 月月度指数——其公布口径确认开放权重（或中国来源）花费份额超 10% 则 121 正式降级、"钱包也开始移动"生效；未确认则撤回部分触发并公开对账。升级线：12 个月内月度口径开放权重花费份额破 30% 则升级"钱在迁移"、121 母判断重写。回撤线：月度口径回落 8% 以下则 8 月定性为单月脉冲。若 9 月指数停发或改口径，裁定顺延并另行公告。</b></div>
+    </div>
+  </div>
+
   <div class="call">
     <div class="when"><b>2026-08-19</b>Day 165</div>
     <div class="what">
@@ -485,7 +493,7 @@
     <div class="when"><b>2026-08-11</b>Day 157</div>
     <div class="what">
       <div class="claim"><a href="index.html#entry-121">「换底座」是量的故事不是钱的故事：开放权重造出新低价层、中国模型是填层主力，但钱未移动——定价权转移与收入转移是两件事；别把 token 份额当市场份额、别把开源份额当中国份额</a><span class="badge b-open">⏳ 进行中</span></div>
-      <div class="ev">Vercel 生产网关（6 月）：开放权重 29% token / 不到 4% 花费，Anthropic 32% token / 61% 花费、高价值场景 72%+（口径：开放权重 vs 闭源，中国占比未拆）。国别口径：OpenRouter 美国账户峰值 46%（单周浪尖）、Vercel 视频生成花费中国实验室占约三分之二。三层拆分：开发者层真／初创生产层个位数具名公司（Lindy 迁移 6-9 个月）／企业采购层基本不成立（Menlo：中国开源约 1%，调研早于 V4/K3/GLM-5.2）。纠错：a16z"80%"实为 16-24%；46% 系峰值；自我修正 ENTRY 118"美国企业"→"美国账户"、补标 ENTRY 114 BIS 单源。监管：白宫 8/4 明确不测中国开放权重、限用行政令未签。<b>证伪口：Vercel 级生产网关公布中国来源模型花费占比超 10%、或下一份 Menlo 级企业调研中国模型占美企 LLM 支出超 10%，则"抢的是工作量不是钱包"降级为"钱包也在移动"；反向若下一份 Menlo 级调研中国份额仍低于 3%，则升级为已验证。</b></div>
+      <div class="ev">Vercel 生产网关（6 月）：开放权重 29% token / 不到 4% 花费，Anthropic 32% token / 61% 花费、高价值场景 72%+（口径：开放权重 vs 闭源，中国占比未拆）。国别口径：OpenRouter 美国账户峰值 46%（单周浪尖）、Vercel 视频生成花费中国实验室占约三分之二。三层拆分：开发者层真／初创生产层个位数具名公司（Lindy 迁移 6-9 个月）／企业采购层基本不成立（Menlo：中国开源约 1%，调研早于 V4/K3/GLM-5.2）。纠错：a16z"80%"实为 16-24%；46% 系峰值；自我修正 ENTRY 118"美国企业"→"美国账户"、补标 ENTRY 114 BIS 单源。监管：白宫 8/4 明确不测中国开放权重、限用行政令未签。<b>证伪口：Vercel 级生产网关公布中国来源模型花费占比超 10%、或下一份 Menlo 级企业调研中国模型占美企 LLM 支出超 10%，则"抢的是工作量不是钱包"降级为"钱包也开始移动<b>（2026-08-24 部分触发申报：自算广义中国口径花费份额 12.1%（8/23）/8 月日均 14.7% 越过 10% 线；Vercel 自家公布窄口径 7 月 8.6-9%、8/23 约 9% 未过线——按 ENTRY 110 从严先例暂不降级，9 月中发布的 8 月月度指数为裁定机制：确认则降级生效、否则撤回。见 ENTRY 128）</b>"；反向若下一份 Menlo 级调研中国份额仍低于 3%，则升级为已验证。</b></div>
     </div>
   </div>
   <div class="call">

@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-19T22:00:00+08:00</updated>
+  <updated>2026-08-24T09:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -17,6 +17,16 @@
     <email>cynthia@futurex.capital</email>
   </author>
 
+  <entry>
+    <title>ENTRY 128 · Day 170 · 10% 触发线被越过了——但越过它的是我自算的口径，只标「部分触发」、让 9 月的月度指数裁定</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-128" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/128</id>
+    <updated>2026-08-24T09:00:00+08:00</updated>
+    <published>2026-08-24T09:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>预注册证伪口第一次被数据敲门。ENTRY 121（8/11）预注册“若任一 Vercel 级生产网关公布中国来源模型花费占比超 10% 则'抢的是工作量不是钱包'降级、改写为'钱包也开始移动'”。8/24 实拉 Vercel 公开榜单原始每日数据（CC BY 4.0）：自算广义中国口径（实验室行加总：DeepSeek+阶跃+智谱+月暗+小米+MiniMax+阿里等）花费份额 8/23 为 12.1%、8 月日均 14.7%、8/22 峰值 19.8%——过线；但 Vercel 自家公布的窄口径（月度指数、仅四家自营开源实验室）7 月 8.6-9%、按 8/23 行数据粗算约 9%——未过线；预注册的“中国来源模型”支持广义、“公布”二字站窄口径一边——过没过线取决于谁的定义。按台账先例（ENTRY 110“不冒领数据点”）从严处理：只标“部分触发”不降级；裁定机制＝9 月中发布的 8 月月度指数（公布口径确认超 10% 则降级按预注册文本自动执行、否则撤回部分触发公开对账）；台账 121 发布前已加注。检讨：过去四次公开认错都是自己发现用错尺子，这是第一次数据按预先写好的条款敲门——而这一敲考出条款毛病：没写清“公布”指行级数据还是聚合口径，下次证伪口要连口径定义权一起写死。方向如实记：花费侧不到 4%（4-6 月）→8.6-9%（7 月）→8 月日均 14.3%、峰值 19.3%——缝在收窄、终局未定；同口径配对：日均 55% token 配约七分之一的钱、纪录日 62% 配约五分之一；Anthropic 以 19.0% token 拿 67.6% 花费、Opus 5 单模型占 30.2%。token 侧：单日纪录 62%（8/22、精确 61.62%）非月度水位（月度 4 月 11%→6 月 29%→7 月 36%、8 月日均 55%）。两解读并列：低价层向上蚕食（7 月开放权重花费增长 90%+ 来自月暗与智谱）vs token 通胀（均价再降 13.6%、量 +59% 花费 +37%）。三处口径修正：121 所引系 6 月数据版本（最新为 36%/8.6-9%）——验收指标必须带读数日期与口径版本；125 的 tracker 区间让位官方（Anthropic 8/17 披露 7 月底 ARR $650 亿）；此网关上开放权重≈95%+ 系中国实验室——至少在这个生产网关上西方开放权重几乎不存在（Meta 1.7%+Nvidia 0.6%+Mistral 0.05%、gpt-oss 不见踪影）。半个盲区：阶跃 Step 3.7 Flash 两个月 0.8%→17.0%（单模型 16.9% 仅次于 DeepSeek V4 Flash）——ENTRY 105 写过其融资与牌桌位置、从没当模型份额玩家看；V4-Pro-0813 仍不在榜（静默转正十一天后旗舰开放权重仍未落地、接 123）。Baker 推文逐句核（具名投资人观点非数据）：加速有据（OpenAI run-rate 破 $400 亿、Anthropic 官方 $650 亿——总盘子绝对增量比任一边都大）；Grok 比较系其读法非 Ramp 口径（Ramp 测付费企业渗透率：xAI +0.94pp 至 4.0%）；开源 token 同成本仅同尺寸成立（开源均价约閉源 1/5-1/6、价差大部分是毛利）；其终局预测（闭源 60-90% 价值/15-25% token、读者出示原文、检索未独立恢复）＝121“量与钱那道缝”的 end state 版（对照实测閉源约 45% token/约 86% 花费与 Nagle-Yue 80%/96%）；Ramp 注脚：Fable 5 上线一月仅占 Anthropic token 6%/美元 11.4%、Opus 5 企业花费已反超——付费意愿天花板真实。127 双轨读数落账：OpenRouter 侧 60%+（8 月）、Vercel 侧首次带日期读数 60.0%（8/23）、轨迹 27.6→45.6→51.0→60.0——118“三成以下”两侧均远高于 30% 未触发（自 8/1 起第 23 天）。三条尺子：单日纪录≠水位；验收指标带读数日期与口径版本；证伪口触发时改写幅度由预注册文本决定——而预注册文本自己也要经得起“谁的口径”一问。证伪口（状态：部分触发待裁定）：裁定＝9 月中的 8 月月度指数；升级线＝12 个月内月度口径破 30% 则升级“钱在迁移”；回撤线＝回落 8% 以下则定性单月脉冲。本日记不构成对任何基金产品的推介或募集要约。</summary>
+    <author><name>张倩 Cynthia Zhang</name></author>
+  </entry>
   <entry>
     <title>ENTRY 127 · Day 165 · Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过（8/24 补记）</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-127" />
