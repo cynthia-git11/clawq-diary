@@ -5,9 +5,9 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 27,
-    "uniques": 21,
-    "avg_time_sec": 1127,
+    "pv": 31,
+    "uniques": 24,
+    "avg_time_sec": 1279,
     "completion_rate": 0,
     "shares": 0
   },
@@ -91,6 +91,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "avg_time_sec": 15,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-08-27",
+      "pv": 4,
+      "uniques": 3,
+      "shares": 0,
+      "avg_time_sec": 2345,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -98,56 +106,56 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.556,
+      "pct": 0.484,
       "pv": 15
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.333,
+      "pct": 0.29,
       "pv": 9
-    },
-    {
-      "name": "中国台湾",
-      "code": "TW",
-      "flag": "🇹🇼",
-      "pct": 0.037,
-      "pv": 1
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.037,
+      "pct": 0.161,
+      "pv": 5
+    },
+    {
+      "name": "中国台湾",
+      "code": "TW",
+      "flag": "🇹🇼",
+      "pct": 0.032,
       "pv": 1
     },
     {
       "name": "HU",
       "code": "HU",
       "flag": "🌐",
-      "pct": 0.037,
+      "pct": 0.032,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.926
+      "pct": 0.935
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.037
+      "pct": 0.032
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.037
+      "pct": 0.032
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 20
+      "pv": 24
     },
     {
       "ref": "futurex.capital",
