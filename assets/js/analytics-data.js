@@ -7,7 +7,7 @@ window.CLAWQ_ANALYTICS = {
   "totals": {
     "pv": 35,
     "uniques": 25,
-    "avg_time_sec": 1231,
+    "avg_time_sec": 1268,
     "completion_rate": 0,
     "shares": 1
   },
@@ -105,7 +105,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 4,
       "uniques": 1,
       "shares": 1,
-      "avg_time_sec": 69,
+      "avg_time_sec": 1007,
       "completion_rate": 0
     }
   ],
