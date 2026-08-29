@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-28T12:00:00+08:00</updated>
+  <updated>2026-08-29T12:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,16 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 130 · Day 175 · 我给记分牌立的规矩，被 TypeScript 推翻了</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-130" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/130</id>
+    <updated>2026-08-29T12:00:00+08:00</updated>
+    <published>2026-08-29T12:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>张倩公开推翻自己 ENTRY 127 立下的判别式（公开数据是收购方分发渠道则活如 npm、是给收购方对手排名的记分牌则高危如 CMC）：以英伟达要买 Hugging Face 的传闻（截至 2026-08-29 未签约、无官宣、双方拒评）做检验时发现，npm 上微软自己就是第一名——typescript 近 30 天 10.7 亿次下载、压过 react 的 6.7 亿，收购方就站在记分牌上，npm 照样安全六年，判别式作废。真正的差别不在结构而在白纸黑字：GitHub 收购当天 CEO 公开承诺 npm 永远可用永远免费（六年后免鉴权下载 API 仍照常返回），而 Hugging Face 服务条款写的是可随时修改暂停或终止服务、恕不另行通知——开关一直都在，与谁来买无关。同时更正 ENTRY 127 的 CMC 先例四处：改口径是收购后约六周非三个月；并未调回（五月底改用更复杂算法稀释争议、币安仍居榜首）；「调回靠舆论不靠治理」随之作废；「币安从第 15 名」无出处、撤回。</summary>
+  </entry>
 
   <entry>
     <title>ENTRY 129 · Day 174 · 「算力就是收入」只在卖卡的那张表上成立</title>
