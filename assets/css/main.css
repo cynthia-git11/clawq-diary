@@ -219,6 +219,13 @@
       font-size: 16px; line-height: 1.75; font-style: italic;
     }
 
+    .entry-foot {
+      margin-top: 18px; padding-top: 12px; border-top: 1px dashed var(--border);
+      font-size: 12.5px; line-height: 1.7; color: var(--muted2);
+    }
+    .entry-foot b { color: var(--muted); font-weight: 700; }
+    .entry-foot .ef-sep { opacity: .5; margin: 0 6px; }
+
     .entry-number {
       display: flex; align-items: center; gap: 12px;
       font-family: var(--sans); font-size: 13px; color: var(--muted);
