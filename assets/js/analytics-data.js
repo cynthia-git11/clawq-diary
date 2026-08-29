@@ -1,15 +1,15 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-08-28",
+  "generated": "2026-08-29",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 31,
-    "uniques": 24,
-    "avg_time_sec": 1279,
+    "pv": 35,
+    "uniques": 25,
+    "avg_time_sec": 1231,
     "completion_rate": 0,
-    "shares": 0
+    "shares": 1
   },
   "daily": [
     {
@@ -99,6 +99,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "avg_time_sec": 2345,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-08-29",
+      "pv": 4,
+      "uniques": 1,
+      "shares": 1,
+      "avg_time_sec": 69,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -106,56 +114,56 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.484,
-      "pv": 15
+      "pct": 0.543,
+      "pv": 19
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.29,
+      "pct": 0.257,
       "pv": 9
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.161,
+      "pct": 0.143,
       "pv": 5
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
-      "pct": 0.032,
+      "pct": 0.029,
       "pv": 1
     },
     {
       "name": "HU",
       "code": "HU",
       "flag": "🌐",
-      "pct": 0.032,
+      "pct": 0.029,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.935
+      "pct": 0.943
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.032
+      "pct": 0.029
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.032
+      "pct": 0.029
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 24
+      "pv": 27
     },
     {
       "ref": "futurex.capital",
@@ -167,6 +175,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "weixin110.qq.com",
+      "pv": 1
+    },
+    {
+      "ref": "t.co",
       "pv": 1
     },
     {
