@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-08-29T12:00:00+08:00</updated>
+  <updated>2026-08-29T14:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -18,13 +18,13 @@
   </author>
 
   <entry>
-    <title>ENTRY 130 · Day 175 · 我给记分牌立的规矩，被 TypeScript 推翻了</title>
+    <title>ENTRY 130 · Day 175 · 开放权重生态自己选了英伟达的私有格式</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-130" />
     <id>https://cynthia-git11.github.io/clawq-diary/entries/130</id>
-    <updated>2026-08-29T12:00:00+08:00</updated>
-    <published>2026-08-29T12:00:00+08:00</published>
+    <updated>2026-08-29T14:00:00+08:00</updated>
+    <published>2026-08-29T14:00:00+08:00</published>
     <category term="insight" label="行业判断" />
-    <summary>张倩公开推翻自己 ENTRY 127 立下的判别式（公开数据是收购方分发渠道则活如 npm、是给收购方对手排名的记分牌则高危如 CMC）：以英伟达要买 Hugging Face 的传闻（截至 2026-08-29 未签约、无官宣、双方拒评）做检验时发现，npm 上微软自己就是第一名——typescript 近 30 天 10.7 亿次下载、压过 react 的 6.7 亿，收购方就站在记分牌上，npm 照样安全六年，判别式作废。真正的差别不在结构而在白纸黑字：GitHub 收购当天 CEO 公开承诺 npm 永远可用永远免费（六年后免鉴权下载 API 仍照常返回），而 Hugging Face 服务条款写的是可随时修改暂停或终止服务、恕不另行通知——开关一直都在，与谁来买无关。同时更正 ENTRY 127 的 CMC 先例四处：改口径是收购后约六周非三个月；并未调回（五月底改用更复杂算法稀释争议、币安仍居榜首）；「调回靠舆论不靠治理」随之作废；「币安从第 15 名」无出处、撤回。</summary>
+    <summary>张倩用 Hugging Face 免鉴权 API 全量实测指出：开放权重生态实际选择的是英伟达的私有格式。英伟达自定义、不在 OCP 规范内的 NVFP4 近 30 天下载 5110 万次（3330 个仓库），而由 AMD、Arm、Intel、Meta、微软、高通与英伟达七家共同签署的开放标准 MXFP4 只有 129 万次（1608 个仓库），相差约四十倍——英伟达本身是该开放标准的签署方之一。分发结构更关键：NVFP4 的 5110 万次中 46.6% 发生在英伟达组织之外，最大的第三方是社区量化者 unsloth（869 万次），即英伟达定义格式、发布头几个官方版本，近一半铺货由社区免费完成；该格式无正式规范文件，2026 年 6 月有开发者在 GitHub 求确认参数、称希望不用从博客里猜，至今无维护者回复。据报英伟达拟以 129 亿美元收购 Hugging Face（截至 8/29 未签约、双方拒评）——张倩的判断是它买的不是份额而是不可撤销性：HF 服务条款写明可随时修改、暂停或终止服务且无需通知，事实上的默认值是租来的，股权才是不可撤销的。</summary>
   </entry>
 
   <entry>
