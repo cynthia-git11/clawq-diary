@@ -1,13 +1,13 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-08-29",
+  "generated": "2026-08-30",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
     "pv": 35,
     "uniques": 25,
-    "avg_time_sec": 1268,
+    "median_time_sec": 32,
     "completion_rate": 0,
     "shares": 1
   },
@@ -17,7 +17,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 1,
       "uniques": 1,
       "shares": 0,
-      "avg_time_sec": 24,
+      "median_time_sec": 24,
       "completion_rate": 0
     },
     {
@@ -25,7 +25,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 2,
       "uniques": 2,
       "shares": 0,
-      "avg_time_sec": 59,
+      "median_time_sec": 59,
       "completion_rate": 0
     },
     {
@@ -33,7 +33,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 3,
       "uniques": 2,
       "shares": 0,
-      "avg_time_sec": 47,
+      "median_time_sec": 47,
       "completion_rate": 0
     },
     {
@@ -41,7 +41,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 4,
       "uniques": 3,
       "shares": 0,
-      "avg_time_sec": 66,
+      "median_time_sec": 91,
       "completion_rate": 0
     },
     {
@@ -49,7 +49,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 1,
       "uniques": 2,
       "shares": 0,
-      "avg_time_sec": 25,
+      "median_time_sec": 25,
       "completion_rate": 0
     },
     {
@@ -57,7 +57,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 2,
       "uniques": 3,
       "shares": 0,
-      "avg_time_sec": 2401,
+      "median_time_sec": 1,
       "completion_rate": 0
     },
     {
@@ -65,7 +65,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 2,
       "uniques": 5,
       "shares": 0,
-      "avg_time_sec": 1462,
+      "median_time_sec": 32,
       "completion_rate": 0
     },
     {
@@ -73,7 +73,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 7,
       "uniques": 1,
       "shares": 0,
-      "avg_time_sec": 1456,
+      "median_time_sec": 1456,
       "completion_rate": 0
     },
     {
@@ -81,7 +81,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 4,
       "uniques": 1,
       "shares": 0,
-      "avg_time_sec": 7200,
+      "median_time_sec": 0,
       "completion_rate": 0
     },
     {
@@ -89,7 +89,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 1,
       "uniques": 1,
       "shares": 0,
-      "avg_time_sec": 15,
+      "median_time_sec": 15,
       "completion_rate": 0
     },
     {
@@ -97,7 +97,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 4,
       "uniques": 3,
       "shares": 0,
-      "avg_time_sec": 2345,
+      "median_time_sec": 134,
       "completion_rate": 0
     },
     {
@@ -105,7 +105,7 @@ window.CLAWQ_ANALYTICS = {
       "pv": 4,
       "uniques": 1,
       "shares": 1,
-      "avg_time_sec": 1007,
+      "median_time_sec": 1007,
       "completion_rate": 0
     }
   ],
