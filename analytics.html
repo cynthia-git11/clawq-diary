@@ -108,7 +108,7 @@
   document.getElementById('today-grid').innerHTML=
     '<div class="m"><div class="v">'+fmt(last.pv)+'</div><div class="l">浏览量 PV</div>'+delta(last.pv,prev.pv)+'</div>'+
     '<div class="m"><div class="v">'+fmt(last.uniques)+'</div><div class="l">独立访客 UV</div>'+delta(last.uniques,prev.uniques)+'</div>'+
-    '<div class="m"><div class="v">'+mmss(last.avg_time_sec)+'</div><div class="l">平均停留</div>'+delta(last.avg_time_sec,prev.avg_time_sec)+'</div>'+
+    '<div class="m"><div class="v">'+mmss(last.median_time_sec)+'</div><div class="l">停留中位数</div>'+delta(last.median_time_sec,prev.median_time_sec)+'</div>'+
     '<div class="m"><div class="v">'+pct(last.completion_rate)+'</div><div class="l">完读率 ('+readToday+'人)</div>'+delta(last.completion_rate,prev.completion_rate)+'</div>'+
     '<div class="m"><div class="v">'+last.shares+'</div><div class="l">转发</div>'+delta(last.shares,prev.shares)+'</div>';
 
@@ -116,7 +116,7 @@
   document.getElementById('kpis').innerHTML=
     kpi(fmt(T.pv),'30 天总浏览量','日均 '+fmt(Math.round(T.pv/A.range_days)))+
     kpi(fmt(T.uniques),'独立访客','UV/PV '+(T.uniques/T.pv*100).toFixed(0)+'%')+
-    kpi(mmss(T.avg_time_sec),'平均访问时长','加权平均')+
+    kpi(mmss(T.median_time_sec),'停留中位数','剔除 ≥30 分钟的未关标签页')+
     kpi(pct(T.completion_rate),'平均完读率','约 '+fmt(Math.round(T.pv*T.completion_rate))+' 次完整阅读')+
     kpi(fmt(T.shares),'总转发','转发率 '+(T.shares/T.pv*100).toFixed(1)+'%');
 

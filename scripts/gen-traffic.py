@@ -68,7 +68,7 @@ if stats is None or not stats.get("daily"):
     out = {
         "generated": TODAY.isoformat(), "range_days": DAYS,
         "source": "none", "status": "no-data", "note": reason,
-        "totals": {"pv": 0, "uniques": 0, "avg_time_sec": 0, "completion_rate": 0, "shares": 0},
+        "totals": {"pv": 0, "uniques": 0, "median_time_sec": 0, "completion_rate": 0, "shares": 0},
         "daily": [], "countries": [], "by_lang": [],
     }
     with open("assets/js/analytics-data.js", "w", encoding="utf-8") as f:
@@ -129,13 +129,13 @@ md = [
     "| 指标 | 今日 | 环比昨日 |", "|---|---|---|",
     f"| 浏览量 PV | {y.get('pv',0)} | {pct_delta(y.get('pv',0), p.get('pv',0))} |",
     f"| 独立访客 UV | {y.get('uniques',0)} | {pct_delta(y.get('uniques',0), p.get('uniques',0))} |",
-    f"| 平均停留 | {mmss(y.get('avg_time_sec'))} | {pct_delta(y.get('avg_time_sec',0), p.get('avg_time_sec',0))} |",
+    f"| 停留中位数 | {mmss(y.get('median_time_sec'))} | {pct_delta(y.get('median_time_sec',0), p.get('median_time_sec',0))} |",
     f"| 完读率 | {(y.get('completion_rate') or 0)*100:.0f}%（约 {read_cnt} 人读完整篇）"
     f"| {pct_delta(y.get('completion_rate') or 0, p.get('completion_rate') or 0)} |",
     f"| 转发 | {y.get('shares',0)} | {pct_delta(y.get('shares',0), p.get('shares',0))} |", "",
     f"## {len(daily)} 天累计", "",
     f"- **总浏览量** {tot_pv:,}（日均 {round(tot_pv/max(len(daily),1)):,}）· **独立访客** {tot.get('uniques',0):,}",
-    f"- **平均停留** {mmss(tot.get('avg_time_sec'))} · **平均完读率** {(tot.get('completion_rate') or 0)*100:.0f}%"
+    f"- **停留中位数** {mmss(tot.get('median_time_sec'))} · **平均完读率** {(tot.get('completion_rate') or 0)*100:.0f}%"
     f" · **总转发** {tot.get('shares',0)}",
 ]
 if len(daily) > 1 and daily[0].get("pv"):
@@ -153,5 +153,5 @@ with open("TRAFFIC-REPORT.md", "w", encoding="utf-8") as f:
     f.write("\n".join(md) + "\n")
 
 print(f"LIVE 今日 {y['date']} PV={y.get('pv',0)} UV={y.get('uniques',0)} "
-      f"停留{mmss(y.get('avg_time_sec'))} 完读{(y.get('completion_rate') or 0)*100:.0f}%")
+      f"停留{mmss(y.get('median_time_sec'))} 完读{(y.get('completion_rate') or 0)*100:.0f}%")
 print(f"{len(daily)}天 PV={tot_pv:,} UV={tot.get('uniques',0):,}")
