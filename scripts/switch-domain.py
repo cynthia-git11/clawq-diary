@@ -16,6 +16,7 @@ import io, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GH   = "cynthia-git11.github.io/clawq-diary"
 FILES = ["index.html", "en.html", "ja.html", "theses.html", "analytics.html",
+         "integrations/futurex-diary-widget.html",
          "press.html", "press-en.html", "404.html",
          "llms.txt", "llms-full.txt", "atom.xml", "sitemap.xml", "robots.txt",
          "humans.txt", "manifest.json", "sw.js"]
@@ -51,9 +52,10 @@ def main():
     if dry: print("DRY RUN — 未落盘"); return
     for p, s in staged.items():
         io.open(p, "w", encoding="utf-8").write(s)
-    io.open(os.path.join(ROOT, "CNAME"), "w", encoding="utf-8").write(dst.split("/")[0] + "\n")
+    # 注意：走 Cloudflare Pages 路线时【不要】写 GitHub 的 CNAME 文件，
+    # 否则 GitHub Pages 会抢占该域名并与 Cloudflare 冲突（见 SETUP-CUSTOM-DOMAIN.md）。
     io.open(os.path.join(ROOT, ".domain"), "w", encoding="utf-8").write(dst + "\n")
-    print(f"已写入 {len(staged)} 个文件 + CNAME；现在跑 python3 scripts/geo-check.py")
+    print(f"已写入 {len(staged)} 个文件（未写 CNAME，Cloudflare 路线）；现在跑 python3 scripts/geo-check.py")
 
 def read_current():
     p = os.path.join(ROOT, ".domain")
