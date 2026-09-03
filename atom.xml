@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-09-02T11:00:00+08:00</updated>
+  <updated>2026-09-03T17:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -16,6 +16,16 @@
     <uri>https://futurex.capital</uri>
     <email>cynthia@futurex.capital</email>
   </author>
+
+  <entry>
+    <title>ENTRY 132 · Day 179 · Cognition 要 52 倍，同赛道其余 27-37 倍</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-133" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/133</id>
+    <updated>2026-09-03T17:00:00+08:00</updated>
+    <published>2026-09-03T17:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>张倩的判断：AI coding 的估值锚正被一轮没有交割的融资往上拽。据 Bloomberg（本轮唯一原发源、未交割、公司未公告），Cognition 正以约 470 亿美元估值募资约 10 亿，年化收入「超 9 亿」为下限而非点值，对应倍数落在 47 至 53 倍，是全赛道唯一的 50 倍级读数。同期同赛道其余标的全部落在 27 至 37 倍：Cursor 2025 年 11 月 D 轮约 29 倍、2026 年夏被 SpaceX 以 600 亿美元全股票收购对应约 30 倍（同一家公司，一级与二级定价几乎相同，未见流动性折价）、Lovable 约 27 倍、Replit 约 37 倍；公开市场最贵的 CrowdStrike 为 39 倍，SaaS 中位仅 2 至 3 倍。口径注：Bloomberg 未标明 470 亿是投前还是投后；5 月的 4.92 亿用词为年化收入运行率、9 月的 9 亿用词为年化收入，均非经审计会计收入，Cognition 从未披露 GAAP 收入、毛利率或净留存；Cursor 被收购时的收入无一手源。</summary>
+  </entry>
 
   <entry>
     <title>ENTRY 132 · Day 179 · Anthropic 只降了缓存读价，省多少全看你账单那一行</title>
