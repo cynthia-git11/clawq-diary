@@ -5,9 +5,9 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 47,
-    "uniques": 30,
-    "median_time_sec": 38,
+    "pv": 50,
+    "uniques": 31,
+    "median_time_sec": 44,
     "completion_rate": 0,
     "shares": 2
   },
@@ -131,6 +131,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 1,
       "median_time_sec": 61,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-09-04",
+      "pv": 3,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 154,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -138,54 +146,54 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.638,
+      "pct": 0.6,
       "pv": 30
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.191,
+      "pct": 0.18,
       "pv": 9
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.128,
-      "pv": 6
+      "pct": 0.18,
+      "pv": 9
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
-      "pct": 0.021,
+      "pct": 0.02,
       "pv": 1
     },
     {
       "name": "HU",
       "code": "HU",
       "flag": "🌐",
-      "pct": 0.021,
+      "pct": 0.02,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.851
+      "pct": 0.84
     },
     {
       "lang": "English (en)",
-      "pct": 0.085
+      "pct": 0.1
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.043
+      "pct": 0.04
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.021
+      "pct": 0.02
     }
   ],
   "referrers": [
@@ -195,7 +203,7 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "cynthia-git11.github.io",
-      "pv": 7
+      "pv": 9
     },
     {
       "ref": "futurex.capital",
@@ -207,7 +215,7 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "weixin110.qq.com",
-      "pv": 1
+      "pv": 2
     },
     {
       "ref": "t.co",
