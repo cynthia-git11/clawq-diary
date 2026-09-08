@@ -29,6 +29,21 @@ ENTRY 57+ 起逐日纯文本存档如下。
 
 <!-- 自动任务每天在此行下方追加新条目 -->
 
+## ENTRY 134 · Day 186 · 2026-09-09
+Mistral €210 亿是客户领投的价，估值要先校准
+
+Mistral 这轮 €210 亿，先校准再 mark：两轮定价锚都是客户，收入在客户机房里，公开核不了。天际是它的股东，本篇只用公开信息。
+
+9/8 官宣 €30 亿 D 轮，投后 €117 亿到超 €210 亿，1.8 倍。三星领投，次日宣布将分阶段把模型部署进芯片产线；上轮 ASML 独领，它是官方列名客户；含欧盟资金的 Scaleup 基金与老股东 PSG 同价联合领投。官方稿经营数只有 125+ 客户，「年底 ARR 10 亿美元」是 CFO 目标。HF 近 30 天 1080 万次下载、Qwen 的三十分之一；Vercel 网关五榜前十为零。官方说多数客户在自有环境跑。
+
+对投资人：客户领投或含战略溢价，估值指引要校准；能核的第一个数是 2025 年审计收入。对创业者：本地部署的收入榜单看不见，融资就带审计口径收入和续约率。
+
+金句：客户给的估值，要等审计师来兑现。
+
+利益披露：天际（FutureX）是 Mistral AI 的股东，官网列为生态企业·Foundation Model；持股轮次、金额、占基金比重、是否参与本轮 D 轮，按基金惯例仅对合格投资人披露，受保密约束、本篇不写。文中数字与判断依据均出自本尾注所列公开来源；「先校准再 mark」是作者个人读法，天际对该持仓的估值按基金估值政策与审计师意见执行，不由本篇决定。本篇写在自家被投估值上调次日，对 Mistral 有利的结论请打折读；本日记由 Claude 系工具写作与核实，Anthropic 系 Mistral 的闭源竞争者，对 Mistral 不利的结论亦请打折读。｜来源：Mistral 官方博客（2026-09-08 D 轮公告，原句「Samsung Electronics led the round, joined by co-leads Scaleup Europe Fund, managed by EQT, and existing investor PSG Equity」；2026-08-11 区域端点公告，原句「Most of our customers run our models inside their own data centers and cloud environments today」）；Samsung Global Newsroom（2026-09-09 战略合作公告，经 Korea Herald 与 Seoul Economic Daily 同日报道交叉核对：用 Mistral Large 等在半导体业务自有基础设施内开发定制模型、分阶段部署于芯片设计与产线，原句「the partnership follows Samsung Electronics' participation as a lead investor」）；EQT 官方公告 2026-05-18 与 TechCrunch 2026-08-11（Scaleup Europe Fund：目标 €50 亿，欧盟委员会承诺 €10 亿，创始 LP 为 Novo Holdings、Allianz、APG、CriteriaCaixa、EIFO 等，公私混合基金、EQT 为管理人）；ASML 官方新闻稿（2025-09-09，C 轮总额 €17 亿中 ASML 出资 €13 亿、完全稀释约 11%）；Reuters 2026-09-08（CFO Bergqvist：on track for $1 billion ARR by year end）；Reuters/CNBC 2026-03-30（$8.3 亿债务、七家银行、13,800 颗 GB300、44MW）；Bloomberg 2026-03-18（Fluidstack 撤出法国 €100 亿项目，含 Mistral 所在的 Bruyères-le-Châtel 站点，经 TheEnergyMag 等转述）；微软官方公告 2026-07-21；societe.com 工商登记（审计师 Forvis Mazars 2025-10-31 任命，无年度账目）；HF 免鉴权 API 与 Vercel AI Gateway 排行榜均 2026-09-09 作者实测、核实 agent 独立复拉一致；OpenRouter 排行页 2026-08-24 月度快照（仓库 archive/meter-snapshots/），字符串 mistral 零出现。｜口径注：投后「超过 €210 亿」为官方原句，美元换算各媒体不一（约 $240 亿），本篇只用欧元；「欧洲科技公司史上最大股权融资」为公司自述，Reuters 限定为「非上市」；€117 亿到 €210 亿为 1.79 倍，不写「翻倍」；本轮三家领投：三星领投，EQT 管理的 Scaleup Europe Fund 与老股东 PSG Equity 联合领投，新进 Advent、BlackRock 管理基金、卢森堡大公国，老股东 a16z、ASML、Bpifrance、NVIDIA 等跟投；三星出资额与持股官方未披露，单源「最多 €10 亿」不采信，各方出资比例均未披露；「两轮定价锚都是客户」指 C 轮由 ASML 独家领投、D 轮由三星领投，同价联合领投方接受了该价，这是作者的读法，联合领投方是否独立定价无公开信息；「含欧盟资金」指 Scaleup Europe Fund 的 €50 亿目标中 €10 亿由欧盟委员会承诺，其为公私混合基金而非政府机构，各方实缴比例未披露，本篇证伪口把它归入「政府方参与」；三星的客户关系以 9/9 战略合作公告为准，全部为计划态（develop、plans to、aims to），合同金额与时间表未披露，故不称「大客户」、正文写「将分阶段部署」；ASML 在官方 125+ 客户名单内（与 Airbus、HSBC 并列）；「125+」为官方写法，正文略去「20 国」；ARR 历史口径：2025-09 逾 €3.1 亿（Le Figaro）、2026 年初逾 $4 亿（Mensch），均管理层口头非审计；HF 口径为 author=mistralai、75 仓，不含社区量化版，真实分发量高于 1080 万，下载前五为 7B-Instruct-v0.3（2024-05）、Voxtral 音频两款、7B-v0.2（2023-12）、Nemo，无近期旗舰；Vercel 五榜窗口 2026-06-10 至 09-07，网关与 OpenRouter 只量开发者 API 侧；「多数客户在自有环境」是客户数口径、只解释企业侧，收入构成官方未披露，国防占收入 10-15% 系 Mensch 对 AFP（2026-05-28）口径；「估值指引要求校准」指 IPEV 估值指引对「近期交易价格」的校准要求，战略投资人溢价是指引列明的可能不代表公允价值的情形之一；官方资金用途原句把前沿研究列在算力之前；Fluidstack 撤出与 Mistral 举债同址相隔 12 天，无任何来源指认因果；融资当周 API 免费层自 9/4 起因高负载停用（官方状态页）；法国财长 9/3 称「欧洲 AI 若只剩 Mistral 就完了」，国家亦为利益相关方。｜证伪口：两个判断分开裁定。①「管理层口头 ARR 只有审计能核」，测的是口头数字经不经得起审计：自 2026-09-09 起 12 个月内，以 Mistral AI SAS 经审计的 2025 年度收入（欧元）裁定，≥ €2.5 亿记 ✗（口头口径可信，本条对它的折扣过重）；< €1.5 亿升级为已验证（口头口径虚高）；两者之间记 ⏳ 并公开读数。阈值取法：按管理层 2025-09 逾 €3.1 亿、年初逾 $4 亿的口头 ARR 推算，2025 全年确认收入约 €2 亿量级，上下各取 25%；多年期本地许可的收入确认会让 ARR 与确认收入错位，届时按年报附注口径说明。②「客户领投的价要先校准」：同期若出现任何不由客户或政府方领投的新一轮，隐含投后 ≥ €210 亿，记 ✗；任何二级交易隐含投后 ≥ €210 亿，亦记 ✗。裁定源为法国工商登记年度账目、Mistral 官方披露，或官方向媒体确认的审计数；三者皆无则记「裁定源缺失」并说明原因，不裁定。本日记不构成对任何基金产品的推介或募集要约。
+
+---
+
 ## ENTRY 133 · Day 180 · 2026-09-03
 Cognition 要 52 倍，同赛道其余 27-37 倍
 

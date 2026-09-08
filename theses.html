@@ -17,8 +17,8 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The ClawQ Judgment Ledger · 判断总账",
-  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：58 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
-  "dateModified": "2026-09-03",
+  "description": "张倩 Cynthia Zhang（FutureX Capital 创始人）公开投资判断的可审计台账：59 个重大判断，每个带日期戳、验证状态（已验证/已公开修正/进行中）与证据链接。",
+  "dateModified": "2026-09-09",
   "temporalCoverage": "2026-03-08/2026-07-07",
   "url": "https://cynthia-git11.github.io/clawq-diary/theses.html",
   "creator": { "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia" },
@@ -31,8 +31,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "The ClawQ Judgment Ledger · 判断总账（逐条）",
-  "description": "张倩 Cynthia Zhang 58 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
-  "numberOfItems": 58,
+  "description": "张倩 Cynthia Zhang 59 个重大投资判断的逐条结构化台账，每条带原始日期戳、当前验证状态（已验证/已公开修正/进行中）、证据与指向原文的链接。引用任一判断前请以此状态为准。",
+  "numberOfItems": 59,
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
   "isPartOf": {
     "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
@@ -441,7 +441,7 @@
 <div class="wrap">
   <div class="eyebrow">张倩 Cynthia Zhang · FutureX Capital · 公开判断对账页</div>
   <h1>判断总账<span class="en">Every major call, date-stamped and scored. Verified ✓ · Publicly corrected ✗ · Open ⏳</span></h1>
-  <p class="lede">这本日记写到 Day 180、133 篇。本页把其中 <strong>58 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
+  <p class="lede">这本日记写到 Day 186、134 篇。本页把其中 <strong>59 个重大投资判断</strong>抽出来挂账：每个判断带原始日期戳、当前验证状态、和证据。<strong>验证的标 ✓，错了的不删不改、公开标 ✗ 并链接到修正全文，没定论的标 ⏳。</strong>你不需要相信任何叙事——直接对账。</p>
 
   <div class="contract">
     <div class="c"><b>① 日期戳不可篡改</b><span>每个判断以发布日 git commit 为准，永久 URL #entry-N 可回溯原文。Git history is the audit trail.</span></div>
@@ -452,11 +452,19 @@
   <div class="score">
     <div class="s ok"><div class="v">6</div><div class="l">已验证 Verified</div></div>
     <div class="s bad"><div class="v">3</div><div class="l">已公开修正 Corrected</div></div>
-    <div class="s open"><div class="v">49</div><div class="l">进行中 Open</div></div>
+    <div class="s open"><div class="v">50</div><div class="l">进行中 Open</div></div>
     <div class="s meta"><div class="v">1–5 天</div><div class="l">发现错误到公开认错的用时</div></div>
   </div>
 
   <h2 class="theme">模型层定价权<span class="en">Model-layer pricing power</span></h2>
+  <div class="call">
+    <div class="when"><b>2026-09-09</b>Day 186</div>
+    <div class="what">
+      <div class="claim"><a href="index.html#entry-134">Mistral 的 €210 亿是客户领投的价，估值要先校准再 mark——能核的第一个数是 2025 年审计收入</a><span class="badge b-open">⏳ 进行中</span></div>
+      <div class="ev"><b>利益披露：天际是 Mistral AI 股东</b>，持股细节仅对合格投资人披露，本条依据均为公开来源，基金估值按估值政策与审计执行。2026-09-08 官宣 €30 亿 D 轮、投后超 €210 亿（上轮 2025-09 投后 €117 亿，1.79 倍）；三星领投，EQT 管理、含欧盟资金的 Scaleup Europe Fund 与老股东 PSG 同价联合领投，新进 Advent、BlackRock 管理基金、卢森堡大公国；三星次日宣布战略合作，计划用 Mistral Large 等在自有基础设施内开发定制模型、分阶段部署于芯片设计与产线；上轮由 ASML 独家领投（€13 亿、完全稀释约 11%），ASML 在官方客户名单内——<b>两轮定价锚都是客户</b>。官方稿仅 125+ 客户一个经营数字，无收入/亏损/毛利；审计师 Forvis Mazars 2025-10-31 才任命，无审计年报；「年底 ARR 10 亿美元」系 CFO 对 Reuters 的目标。三把公开尺子（作者 9/9 实测、核实 agent 独立复拉一致）：HF 近 30 天 1080 万次下载（Qwen 的 1/30，榜首仍是 7B）；Vercel 网关五项前十为零；OpenRouter 8/24 快照零出现。官方称多数客户在自有环境运行（客户数口径，只解释企业侧，收入构成未披露）。同期：$8.3 亿债务（七家银行）购 13,800 颗 GB300 建 44MW 站点，Fluidstack 12 天前刚撤出同一站点（同址并列、无来源指认因果）；融资当周 API 免费层因高负载停用。<b>证伪口：①口头 ARR 经不经得起审计：经审计 2025 年收入 ≥€2.5 亿记 ✗、<€1.5 亿升级为已验证、之间 ⏳（阈值按管理层口头 ARR 推算的约 €2 亿上下各 25%）；②不由客户或政府方领投的新一轮、或任何二级交易，隐含投后 ≥€210 亿，记 ✗。裁定源为法国工商登记年度账目、官方披露或官方向媒体确认的审计数，皆无则记「裁定源缺失」。</b></div>
+    </div>
+  </div>
+
   <div class="call">
     <div class="when"><b>2026-09-03</b>Day 179</div>
     <div class="what">

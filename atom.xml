@@ -6,7 +6,7 @@
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
   <id>https://cynthia-git11.github.io/clawq-diary/</id>
-  <updated>2026-09-03T17:00:00+08:00</updated>
+  <updated>2026-09-09T13:00:00+08:00</updated>
   <generator uri="https://cynthia-git11.github.io/clawq-diary/" version="1.0">ClawQ Chronicles Auto-publish</generator>
   <icon>https://cynthia-git11.github.io/clawq-diary/assets/clawq-square.jpg</icon>
   <logo>https://cynthia-git11.github.io/clawq-diary/assets/logo-clawq.png</logo>
@@ -18,6 +18,16 @@
   </author>
 
     <entry>
+    <title>ENTRY 134 · Day 186 · Mistral €210 亿是客户领投的价，估值要先校准</title>
+    <link href="https://cynthia-git11.github.io/clawq-diary/#entry-134" />
+    <id>https://cynthia-git11.github.io/clawq-diary/entries/134</id>
+    <updated>2026-09-09T13:00:00+08:00</updated>
+    <published>2026-09-09T13:00:00+08:00</published>
+    <category term="insight" label="行业判断" />
+    <summary>张倩在自家被投公司 Mistral AI 估值上调次日写下的判断：这轮 €210 亿是客户领投的价，估值要先校准再 mark。2026-09-08 Mistral 官宣 €30 亿 D 轮、投后超过 €210 亿（上一轮 2025-09 投后 €117 亿，1.8 倍），三星电子领投，EQT 管理、含欧盟资金的 Scaleup Europe Fund 与老股东 PSG 同价联合领投；三星次日宣布战略合作，计划用 Mistral Large 等在自有基础设施内开发定制模型、分阶段部署于芯片设计与产线；上一轮由客户 ASML 独家领投——两轮的定价锚都是客户。官方公告只有 125+ 企业客户一个经营数字，无收入、亏损、毛利；法定审计师 2025 年 10 月才任命，尚无审计年报；「年底 ARR 10 亿美元」是 CFO 对 Reuters 的目标口径。作者实测三把公开尺子（核实 agent 独立复拉一致）：Hugging Face 近 30 天 1080 万次下载、约为 Qwen 的三十分之一；Vercel AI Gateway 五项指标前十无任何 Mistral 模型；OpenRouter 8/24 快照零出现。官方称多数客户在自有环境运行模型，这部分收入公开尺子核不了。落点：客户领投或含战略溢价，估值指引要求校准，能核的第一个数是 2025 年审计收入；本地部署型创业公司融资时要主动给审计口径的收入与续约率。利益披露置于尾注首项：天际是 Mistral 股东，持股细节仅对合格投资人披露，文中依据均为公开来源，基金估值按估值政策与审计执行。</summary>
+  </entry>
+
+  <entry>
     <title>ENTRY 133 · Day 180 · Cognition 要 52 倍，同赛道其余 27-37 倍</title>
     <link href="https://cynthia-git11.github.io/clawq-diary/#entry-133" />
     <id>https://cynthia-git11.github.io/clawq-diary/entries/133</id>
