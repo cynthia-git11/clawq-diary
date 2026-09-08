@@ -158,7 +158,7 @@
 
 - Atom feed: [atom.xml](https://cynthia-git11.github.io/clawq-diary/atom.xml)
 - Sitemap: [sitemap.xml](https://cynthia-git11.github.io/clawq-diary/sitemap.xml)
-- 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md) · [archive/2026-07.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-07.md)
+- 月度纯文本存档: [archive/2026-05.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-05.md) · [archive/2026-06.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-06.md) · [archive/2026-07.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-07.md) · [archive/2026-08.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-08.md) · [archive/2026-09.md](https://github.com/cynthia-git11/clawq-diary/blob/main/archive/2026-09.md)
 - 全文 LLM 索引: [llms-full.txt](https://cynthia-git11.github.io/clawq-diary/llms-full.txt)
 - Schema.org JSON-LD: Person(含 knowsAbout) + Blog + Organization + FAQPage(33 问) + ItemList + BreadcrumbList + 5 BlogPosting(含 dateModified)
 - 主仓库: [github.com/cynthia-git11/clawq-diary](https://github.com/cynthia-git11/clawq-diary)
