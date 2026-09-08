@@ -91,10 +91,26 @@ stats_day = re.search(r'stat-val claw-text">Day (\d+)<', idx)
 if title_day and stats_day and title_day.group(1) != stats_day.group(1):
     errors.append(f"index.html: Day mismatch — title={title_day.group(1)} stats={stats_day.group(1)}")
 
+# 6. atom.xml entries: no duplicate ENTRY numbers, descending order, newest == ItemList position 1
+#    (2026-09-09: derived build scripts silently duplicated 130/132 and dropped 131/133; #entry-N existed in the
+#     feed header so check 4 passed. Order/duplicate must be asserted explicitly.)
+try:
+    _atom = read("atom.xml")
+    _nums = [int(x) for x in re.findall(r'<entry>\s*<title>ENTRY (\d+) ', _atom)]
+    _dups = sorted({n for n in _nums if _nums.count(n) > 1})
+    if _dups:
+        errors.append(f"atom.xml: duplicate entries for ENTRY {_dups}")
+    if _nums != sorted(_nums, reverse=True):
+        errors.append("atom.xml: entries not in descending ENTRY order")
+    if m and _nums and f"entry-{_nums[0]}" != latest:
+        errors.append(f"atom.xml: first entry is ENTRY {_nums[0]} but ItemList position 1 is {latest}")
+except Exception as _e:
+    errors.append(f"atom.xml: order/duplicate check crashed — {_e}")
+
 if errors:
     print("GEO health check FAILED:")
     for e in errors:
         print("  ✗", e)
     sys.exit(1)
 
-print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent")
+print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok")
