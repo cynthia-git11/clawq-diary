@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-09-09",
+  "generated": "2026-09-10",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 52,
-    "uniques": 34,
-    "median_time_sec": 39,
+    "pv": 51,
+    "uniques": 33,
+    "median_time_sec": 41,
     "completion_rate": 0,
     "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-08-11",
-      "pv": 1,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 24,
-      "completion_rate": 0
-    },
     {
       "date": "2026-08-12",
       "pv": 2,
@@ -170,54 +162,54 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.615,
+      "pct": 0.627,
       "pv": 32
-    },
-    {
-      "name": "美国",
-      "code": "US",
-      "flag": "🇺🇸",
-      "pct": 0.173,
-      "pv": 9
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.173,
+      "pct": 0.176,
       "pv": 9
+    },
+    {
+      "name": "美国",
+      "code": "US",
+      "flag": "🇺🇸",
+      "pct": 0.157,
+      "pv": 8
     },
     {
       "name": "中国台湾",
       "code": "TW",
       "flag": "🇹🇼",
-      "pct": 0.019,
+      "pct": 0.02,
       "pv": 1
     },
     {
       "name": "HU",
       "code": "HU",
       "flag": "🌐",
-      "pct": 0.019,
+      "pct": 0.02,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.846
+      "pct": 0.843
     },
     {
       "lang": "English (en)",
-      "pct": 0.096
+      "pct": 0.098
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.038
+      "pct": 0.039
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.019
+      "pct": 0.02
     }
   ],
   "referrers": [
@@ -230,11 +222,11 @@ window.CLAWQ_ANALYTICS = {
       "pv": 9
     },
     {
-      "ref": "futurex.capital",
-      "pv": 4
+      "ref": "www.futurex.capital",
+      "pv": 3
     },
     {
-      "ref": "www.futurex.capital",
+      "ref": "futurex.capital",
       "pv": 3
     },
     {
