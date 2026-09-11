@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-09-10",
+  "generated": "2026-09-11",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 51,
-    "uniques": 33,
+    "pv": 49,
+    "uniques": 31,
     "median_time_sec": 41,
     "completion_rate": 0,
     "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-08-12",
-      "pv": 2,
-      "uniques": 2,
-      "shares": 0,
-      "median_time_sec": 59,
-      "completion_rate": 0
-    },
     {
       "date": "2026-08-14",
       "pv": 3,
@@ -162,29 +154,22 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.627,
+      "pct": 0.653,
       "pv": 32
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.176,
+      "pct": 0.184,
       "pv": 9
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.157,
-      "pv": 8
-    },
-    {
-      "name": "中国台湾",
-      "code": "TW",
-      "flag": "🇹🇼",
-      "pct": 0.02,
-      "pv": 1
+      "pct": 0.143,
+      "pv": 7
     },
     {
       "name": "HU",
@@ -197,15 +182,15 @@ window.CLAWQ_ANALYTICS = {
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.843
+      "pct": 0.837
     },
     {
       "lang": "English (en)",
-      "pct": 0.098
+      "pct": 0.102
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.039
+      "pct": 0.041
     },
     {
       "lang": "判断总账 (theses)",
@@ -215,19 +200,19 @@ window.CLAWQ_ANALYTICS = {
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 33
+      "pv": 32
     },
     {
       "ref": "cynthia-git11.github.io",
       "pv": 9
     },
     {
-      "ref": "www.futurex.capital",
+      "ref": "futurex.capital",
       "pv": 3
     },
     {
-      "ref": "futurex.capital",
-      "pv": 3
+      "ref": "www.futurex.capital",
+      "pv": 2
     },
     {
       "ref": "weixin110.qq.com",
