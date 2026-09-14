@@ -1,0 +1,165 @@
+{
+ "Qwen": {
+  "repos": 465,
+  "downloads_30d": 314825808,
+  "top3": [
+   "Qwen/Qwen3-0.6B 20,036,436",
+   "Qwen/Qwen3-VL-8B-Instruct 16,859,084",
+   "Qwen/Qwen3-8B 12,799,189"
+  ]
+ },
+ "openai": {
+  "repos": 39,
+  "downloads_30d": 65119952,
+  "top3": [
+   "openai/clip-vit-base-patch32 21,331,361",
+   "openai/clip-vit-large-patch14 8,230,550",
+   "openai/whisper-large-v3-turbo 6,760,408"
+  ]
+ },
+ "nvidia": {
+  "repos": 934,
+  "downloads_30d": 49014922,
+  "top3": [
+   "nvidia/Qwen3.6-35B-A3B-NVFP4 9,297,420",
+   "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16 3,439,747",
+   "nvidia/Gemma-4-26B-A4B-NVFP4 1,879,761"
+  ]
+ },
+ "meta-llama": {
+  "repos": 70,
+  "downloads_30d": 25344354,
+  "top3": [
+   "meta-llama/Llama-3.2-1B-Instruct 6,200,831",
+   "meta-llama/Llama-3.1-8B-Instruct 5,574,752",
+   "meta-llama/Prompt-Guard-86M 4,535,161"
+  ]
+ },
+ "deepseek-ai": {
+  "repos": 105,
+  "downloads_30d": 23522239,
+  "top3": [
+   "deepseek-ai/DeepSeek-V4-Flash-0731 4,384,168",
+   "deepseek-ai/DeepSeek-OCR 2,373,629",
+   "deepseek-ai/DeepSeek-V3.2 1,888,898"
+  ]
+ },
+ "mistralai": {
+  "repos": 75,
+  "downloads_30d": 10989460,
+  "top3": [
+   "mistralai/Mistral-7B-Instruct-v0.3 2,381,998",
+   "mistralai/Voxtral-Mini-4B-Realtime-2602 2,304,886",
+   "mistralai/Mistral-7B-Instruct-v0.2 1,552,326"
+  ]
+ },
+ "google": {
+  "repos": 1134,
+  "downloads_30d": 145118773,
+  "top3": [
+   "google/electra-base-discriminator 59,196,856",
+   "google/gemma-4-26B-A4B-it 9,072,850",
+   "google/gemma-4-31B-it 8,755,607"
+  ]
+ },
+ "microsoft": {
+  "repos": 538,
+  "downloads_30d": 40913367,
+  "top3": [
+   "microsoft/mdeberta-v3-base 4,683,891",
+   "microsoft/Florence-2-base 2,946,075",
+   "microsoft/deberta-v3-base 2,903,677"
+  ]
+ },
+ "zai-org": {
+  "repos": 154,
+  "downloads_30d": 10619940,
+  "top3": [
+   "zai-org/GLM-OCR 1,904,001",
+   "zai-org/GLM-4.7-Flash 1,868,372",
+   "zai-org/GLM-5.3-Flash 1,576,209"
+  ]
+ },
+ "moonshotai": {
+  "repos": 19,
+  "downloads_30d": 4054993,
+  "top3": [
+   "moonshotai/Kimi-K3 2,207,101",
+   "moonshotai/Kimi-K2.6 538,100",
+   "moonshotai/Kimi-K2.5 369,240"
+  ]
+ },
+ "MiniMaxAI": {
+  "repos": 21,
+  "downloads_30d": 7258663,
+  "top3": [
+   "MiniMaxAI/MiniMax-H3 4,819,845",
+   "MiniMaxAI/MiniMax-M2.7 1,349,114",
+   "MiniMaxAI/MiniMax-M2.5 355,271"
+  ]
+ },
+ "XiaomiMiMo": {
+  "repos": 25,
+  "downloads_30d": 494331,
+  "top3": [
+   "XiaomiMiMo/MiMo-V2.5 305,043",
+   "XiaomiMiMo/MiMo-V2-Flash 92,798",
+   "XiaomiMiMo/MiMo-7B-RL 30,095"
+  ]
+ },
+ "stepfun-ai": {
+  "repos": 51,
+  "downloads_30d": 1111158,
+  "top3": [
+   "stepfun-ai/GOT-OCR2_0 661,607",
+   "stepfun-ai/GOT-OCR-2.0-hf 142,353",
+   "stepfun-ai/Step-3.7-Flash-NVFP4 120,978"
+  ]
+ },
+ "tencent": {
+  "repos": 157,
+  "downloads_30d": 1823495,
+  "top3": [
+   "tencent/HunyuanOCR 667,859",
+   "tencent/Hy-MT2-1.8B-GGUF 355,143",
+   "tencent/Hunyuan3D-2 97,955"
+  ]
+ },
+ "baidu": {
+  "repos": 36,
+  "downloads_30d": 2911884,
+  "top3": [
+   "baidu/Unlimited-OCR 2,562,374",
+   "baidu/Qianfan-OCR 251,839",
+   "baidu/ERNIE-4.5-VL-28B-A3B-PT 27,278"
+  ]
+ },
+ "ByteDance-Seed": {
+  "repos": 59,
+  "downloads_30d": 794065,
+  "top3": [
+   "ByteDance-Seed/UI-TARS-1.5-7B 589,306",
+   "ByteDance-Seed/Seed-OSS-36B-Base 49,402",
+   "ByteDance-Seed/Seed-OSS-36B-Instruct 45,368"
+  ]
+ },
+ "SenseTime": {
+  "repos": 5,
+  "downloads_30d": 26424,
+  "top3": [
+   "SenseTime/deformable-detr 24,938",
+   "SenseTime/deformable-detr-with-box-refine-two-stage 643",
+   "SenseTime/deformable-detr-single-scale 537"
+  ]
+ },
+ "sensenova": {
+  "repos": 35,
+  "downloads_30d": 40661,
+  "top3": [
+   "sensenova/SenseNova-U1-8B-MoT 16,532",
+   "sensenova/SenseNova-U1.5-8B-MoT 9,777",
+   "sensenova/SenseNova-U1-8B-MoT-Infographic-V3 8,689"
+  ]
+ },
+ "_pulled_at": "2026-09-14T11:20:58.738758+08:00"
+}
