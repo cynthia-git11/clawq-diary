@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-09-14",
+  "generated": "2026-09-15",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
     "pv": 49,
-    "uniques": 29,
-    "median_time_sec": 36,
-    "completion_rate": 0.034,
+    "uniques": 28,
+    "median_time_sec": 33,
+    "completion_rate": 0.036,
     "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-08-16",
-      "pv": 1,
-      "uniques": 2,
-      "shares": 0,
-      "median_time_sec": 25,
-      "completion_rate": 0
-    },
     {
       "date": "2026-08-18",
       "pv": 2,
@@ -142,10 +134,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-09-14",
-      "pv": 4,
-      "uniques": 2,
+      "pv": 5,
+      "uniques": 3,
       "shares": 0,
-      "median_time_sec": 8,
+      "median_time_sec": 9,
       "completion_rate": 0
     }
   ],
@@ -154,15 +146,15 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.592,
-      "pv": 29
+      "pct": 0.612,
+      "pv": 30
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.184,
-      "pv": 9
+      "pct": 0.163,
+      "pv": 8
     },
     {
       "name": "美国",
@@ -182,7 +174,7 @@ window.CLAWQ_ANALYTICS = {
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.837
+      "pct": 0.857
     },
     {
       "lang": "English (en)",
@@ -190,7 +182,7 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.041
+      "pct": 0.02
     },
     {
       "lang": "日本語 (ja)",
@@ -200,11 +192,11 @@ window.CLAWQ_ANALYTICS = {
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 31
+      "pv": 32
     },
     {
       "ref": "cynthia-git11.github.io",
-      "pv": 11
+      "pv": 10
     },
     {
       "ref": "www.futurex.capital",
