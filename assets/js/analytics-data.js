@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 46,
-    "uniques": 21,
-    "median_time_sec": 44,
-    "completion_rate": 0.048,
+    "pv": 47,
+    "uniques": 22,
+    "median_time_sec": 49,
+    "completion_rate": 0.045,
     "shares": 2
   },
   "daily": [
@@ -131,6 +131,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 24,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-09-20",
+      "pv": 1,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 78,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -138,53 +146,53 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.652,
-      "pv": 30
+      "pct": 0.66,
+      "pv": 31
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.174,
+      "pct": 0.17,
       "pv": 8
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.087,
+      "pct": 0.085,
       "pv": 4
     },
     {
       "name": "MY",
       "code": "MY",
       "flag": "🌐",
-      "pct": 0.087,
+      "pct": 0.085,
       "pv": 4
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.848
+      "pct": 0.851
     },
     {
       "lang": "English (en)",
-      "pct": 0.109
+      "pct": 0.106
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.022
+      "pct": 0.021
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.022
+      "pct": 0.021
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 31
+      "pv": 32
     },
     {
       "ref": "cynthia-git11.github.io",
