@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-09-21",
+  "generated": "2026-09-22",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 47,
-    "uniques": 22,
-    "median_time_sec": 49,
-    "completion_rate": 0.045,
+    "pv": 40,
+    "uniques": 21,
+    "median_time_sec": 44,
+    "completion_rate": 0.048,
     "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-08-23",
-      "pv": 7,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 1456,
-      "completion_rate": 0
-    },
     {
       "date": "2026-08-24",
       "pv": 4,
@@ -146,61 +138,57 @@ window.CLAWQ_ANALYTICS = {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.66,
-      "pv": 31
+      "pct": 0.6,
+      "pv": 24
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.17,
+      "pct": 0.2,
       "pv": 8
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.085,
+      "pct": 0.1,
       "pv": 4
     },
     {
       "name": "MY",
       "code": "MY",
       "flag": "🌐",
-      "pct": 0.085,
+      "pct": 0.1,
       "pv": 4
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.851
+      "pct": 0.825
     },
     {
       "lang": "English (en)",
-      "pct": 0.106
+      "pct": 0.125
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.021
+      "pct": 0.025
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.021
+      "pct": 0.025
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 32
+      "pv": 26
     },
     {
       "ref": "cynthia-git11.github.io",
       "pv": 10
-    },
-    {
-      "ref": "futurex.capital",
-      "pv": 2
     },
     {
       "ref": "www.futurex.capital",
@@ -212,6 +200,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "t.co",
+      "pv": 1
+    },
+    {
+      "ref": "futurex.capital",
       "pv": 1
     }
   ]
