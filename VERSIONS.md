@@ -5,6 +5,7 @@
 ---
 
 ## 🏷️ v6.0-business-first
+## 🏷️ v6.1-top-vc-cognition
 
 **日期**：2026-08-29
 **回滚**：`git checkout pre-v6 -- .`
