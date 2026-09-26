@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-09-25",
+  "generated": "2026-09-26",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 55,
-    "uniques": 20,
+    "pv": 51,
+    "uniques": 17,
     "median_time_sec": 55,
-    "completion_rate": 0.1,
+    "completion_rate": 0.118,
     "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-08-27",
-      "pv": 4,
-      "uniques": 3,
-      "shares": 0,
-      "median_time_sec": 134,
-      "completion_rate": 0
-    },
     {
       "date": "2026-08-29",
       "pv": 4,
@@ -130,53 +122,53 @@ window.CLAWQ_ANALYTICS = {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.509,
-      "pv": 28
+      "pct": 0.471,
+      "pv": 24
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.364,
+      "pct": 0.392,
       "pv": 20
     },
     {
       "name": "MY",
       "code": "MY",
       "flag": "🌐",
-      "pct": 0.073,
+      "pct": 0.078,
       "pv": 4
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.055,
+      "pct": 0.059,
       "pv": 3
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.873
+      "pct": 0.863
     },
     {
       "lang": "English (en)",
-      "pct": 0.091
+      "pct": 0.098
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.018
+      "pct": 0.02
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.018
+      "pct": 0.02
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 41
+      "pv": 37
     },
     {
       "ref": "cynthia-git11.github.io",
