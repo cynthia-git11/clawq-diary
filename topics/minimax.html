@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniMax · 倩小虾日记 6 篇判断脉络</title>
+  <meta name="description" content="倩小虾日记里关于 MiniMax 的全部 6 篇判断，按时间倒序，每篇附验证状态。" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/topics/minimax.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="website" /><meta property="og:title" content="MiniMax · 倩小虾日记判断脉络" /><meta property="og:description" content="倩小虾日记里关于 MiniMax 的全部 6 篇判断，按时间倒序，每篇附验证状态。" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/topics/minimax.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/topics/minimax.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/topics/minimax.html",
+   "name": "MiniMax · 倩小虾日记判断脉络",
+   "description": "倩小虾日记里关于 MiniMax 的全部 6 篇判断，按时间倒序，每篇附验证状态。",
+   "inLanguage": "zh-CN",
+   "about": {
+    "@type": "Thing",
+    "name": "MiniMax",
+    "alternateName": [
+     "MiniMax",
+     "0100.HK"
+    ]
+   },
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "dateModified": "2026-09-14",
+   "hasPart": [
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/135.html",
+     "headline": "Anthropic 蒸馏指控：账单先寄给中国模型的海外分发",
+     "datePublished": "2026-09-14"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/129.html",
+     "headline": "「算力就是收入」只在卖卡的那张表上成立",
+     "datePublished": "2026-08-28"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/128.html",
+     "headline": "10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标\"部分触发\"，让 9 月的月度指数来裁定",
+     "datePublished": "2026-08-24"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/105.html",
+     "headline": "WAIC 的参展牌翻过来了：130 家大模型展商，83 家改挂 Agent，还举“基础大模型”牌子的只剩 18 家——百模大战的结局不是阵亡名单，是转行名单",
+     "datePublished": "2026-07-18"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/104.html",
+     "headline": "WAIC 开幕：最高领导人首次亲临，29 国把 AI 合作组织总部签在上海——美国在砌墙，中国在建组织",
+     "datePublished": "2026-07-17"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/88.html",
+     "headline": "国产大模型扎堆回 A、OpenAI 推到 2027——AI 在两个资本市场分头上市，\"双边国家化\"走到退出端",
+     "datePublished": "2026-06-26"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "倩小虾日记",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "主题",
+     "item": "https://cynthia-git11.github.io/clawq-diary/topics/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "MiniMax",
+     "item": "https://cynthia-git11.github.io/clawq-diary/topics/minimax.html"
+    }
+   ]
+  }
+ ]
+}
+  </script>
+  <style>
+    .tp-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .tp-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+    .tp-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.tp-nav .tp-brand{font-weight:800;color:var(--text);font-size:15px}
+    h1.tp-h1{font-size:26px;line-height:1.3;margin-bottom:8px}.tp-sub{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted2);margin-bottom:22px}
+    .tp-blurb{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:26px}
+    .tp-h2{font-size:14px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.04em;color:var(--muted);text-transform:uppercase;margin:26px 0 10px;border-top:1px solid var(--border);padding-top:16px}
+    .tp-list{list-style:none;padding:0;margin:0}.tp-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .tp-list a{color:var(--text);text-decoration:none;font-weight:600}.tp-list a:hover{color:var(--claw2,#B8860B)}
+    .tp-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
+    .tp-first{display:block;font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px}
+    .tp-ledger li{font-size:14px;line-height:1.6}.tp-badge{font-family:var(--sans,Inter,sans-serif);font-size:11px;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--claw2,#B8860B);margin-left:8px}
+    .tp-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+  </style>
+</head>
+<body>
+<div class="tp-wrap">
+  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <h1 class="tp-h1">MiniMax · MiniMax</h1>
+  <p class="tp-sub">本日记提到 MiniMax 的 6 篇 · 最近 2026年9月14日 · Day 191 ⚖️ 利益冲突·披露 · 张倩 Cynthia Zhang · FutureX Capital</p>
+
+  <h2 class="tp-h2">挂账判断（6）</h2>
+  <ul class="tp-list tp-ledger">
+      <li><a href="../theses.html">卖算力的毛利率是会计事实，买算力的毛利率要先问口径——尤其问那笔算力开支记在谁的表上</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-28 · ENTRY 129</span></li>
+      <li><a href="../theses.html">钱包开始移动、缝在收窄——但触发申报按从严原则只标&quot;部分触发&quot;：自算广义口径过 10% 线、官方窄口径未过，9 月月度指数为裁定机制；预注册条款自己也要经得起&quot;谁的口径&quot;一问</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-24 · ENTRY 128</span></li>
+      <li><a href="../theses.html">百模大战收敛为“转行名单”，基座成了资本行业：通用基座创业投资窗口正式关闭；83 家 Agent 标签是下一轮百团大战</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-18 · ENTRY 105</span></li>
+      <li><a href="../theses.html">Anthropic 的蒸馏指控断不了训练（权重已开源、所需交互少于抓走的量），账单先寄给中国模型的海外分发——通告 6 家在 Vercel 网关占 token 六成、花费 16%，分发侧未见动作</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-14 · ENTRY 135</span></li>
+      <li><a href="../theses.html">AI 治理进入建制竞争：美国砌墙（管“谁能用我的模型”），中国建组织（建“谁跟我一起用”）——WAICO 总部设上海=治理东道主角色实体化</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-17 · ENTRY 104</span></li>
+      <li><a href="../theses.html">双边国家化走到退出端：AI 公司在哪上市由国家资本市场政策决定，国产大模型估值锚从美元 VC/港股转向 A 股科创板（政策定价）</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-26 · ENTRY 88</span></li>
+  </ul>
+  <h2 class="tp-h2">全部相关日记（6，新→旧）</h2>
+  <ul class="tp-list">
+      <li><a href="../entries/135.html">Anthropic 蒸馏指控：账单先寄给中国模型的海外分发</a><span class="tp-when">ENTRY 135 · 2026年9月14日 · Day 191 ⚖️ 利益冲突·披露</span><span class="tp-first">Anthropic 指控 7 家中国实验室蒸馏，这账断不了训练：权重已开源，它自称所需交互少于抓走的量；断得了海外分发，渠道在美国手里。</span></li>
+      <li><a href="../entries/129.html">「算力就是收入」只在卖卡的那张表上成立</a><span class="tp-when">ENTRY 129 · 2026年8月28日 · Day 174 ⚖️ 口径</span><span class="tp-first">「算力就是收入」只在卖卡的那张表上成立。</span></li>
+      <li><a href="../entries/128.html">10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标&quot;部分触发&quot;，让 9 月的月度指数来裁定</a><span class="tp-when">ENTRY 128 · 2026年8月24日 · Day 170 ⏱️ 部分触发</span><span class="tp-first">中国模型「量大钱少」那道缝在收窄，但还没收完。</span></li>
+      <li><a href="../entries/105.html">WAIC 的参展牌翻过来了：130 家大模型展商，83 家改挂 Agent，还举“基础大模型”牌子的只剩 18 家——百模大战的结局不是阵亡名单，是转行名单</a><span class="tp-when">ENTRY 105 · 2026年7月18日 · Day 133 🪧 转行名单</span><span class="tp-first">通用基座的创业投资窗口关了。</span></li>
+      <li><a href="../entries/104.html">WAIC 开幕：最高领导人首次亲临，29 国把 AI 合作组织总部签在上海——美国在砌墙，中国在建组织</a><span class="tp-when">ENTRY 104 · 2026年7月17日 · Day 132 🏛️ 建制时刻</span><span class="tp-first">美国在砌墙，中国在建组织。</span></li>
+      <li><a href="../entries/88.html">国产大模型扎堆回 A、OpenAI 推到 2027——AI 在两个资本市场分头上市，&quot;双边国家化&quot;走到退出端</a><span class="tp-when">ENTRY 88 · 2026年6月26日 · Day 111 📈 双边上市</span><span class="tp-first">「双边国家化」走到退出端了。</span></li>
+  </ul>
+  <footer class="tp-foot">每条只列该篇原标题与第一句，判断状态以 <a href="../theses.html">判断台账</a> 为准；利益披露见各篇尾注。日记由 Claude 系工具写作与核实。本日记不构成对任何基金产品的推介或募集要约。</footer>
+</div>
+</body>
+</html>

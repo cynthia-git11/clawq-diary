@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>模型定价与缓存 · 倩小虾日记 70 篇判断脉络</title>
+  <meta name="description" content="倩小虾日记里关于 模型定价与缓存 的全部 70 篇判断，按时间倒序，每篇附验证状态。" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="website" /><meta property="og:title" content="模型定价与缓存 · 倩小虾日记判断脉络" /><meta property="og:description" content="倩小虾日记里关于 模型定价与缓存 的全部 70 篇判断，按时间倒序，每篇附验证状态。" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html",
+   "name": "模型定价与缓存 · 倩小虾日记判断脉络",
+   "description": "倩小虾日记里关于 模型定价与缓存 的全部 70 篇判断，按时间倒序，每篇附验证状态。",
+   "inLanguage": "zh-CN",
+   "about": {
+    "@type": "Thing",
+    "name": "模型定价与缓存",
+    "alternateName": [
+     "定价",
+     "缓存读",
+     "降价",
+     "每百万",
+     "$/M",
+     "token 价"
+    ]
+   },
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "dateModified": "2026-09-25",
+   "hasPart": [
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/139.html",
+     "headline": "Nscale 招股书：Anthropic 拿的是期权不是订单",
+     "datePublished": "2026-09-25"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/138.html",
+     "headline": "TypeSafe Jev：采用率不是定价权",
+     "datePublished": "2026-09-25"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/137.html",
+     "headline": "Meta Muse 卖的不是订阅，是结账页",
+     "datePublished": "2026-09-25"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/136.html",
+     "headline": "算力商开始用股权买客户：Akamai 给 Anthropic 5% 认股权证",
+     "datePublished": "2026-09-25"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/135.html",
+     "headline": "Anthropic 蒸馏指控：账单先寄给中国模型的海外分发",
+     "datePublished": "2026-09-14"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/134.html",
+     "headline": "Mistral €210 亿是客户领投的价，估值要先校准",
+     "datePublished": "2026-09-09"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/133.html",
+     "headline": "Cognition 要 52 倍，同赛道其余 27-37 倍",
+     "datePublished": "2026-09-03"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/132.html",
+     "headline": "Anthropic 只降了缓存读价，省多少全看你账单那一行",
+     "datePublished": "2026-09-02"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/131.html",
+     "headline": "版权诉讼杀的不是赔款，是发行窗口",
+     "datePublished": "2026-08-31"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/128.html",
+     "headline": "10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标\"部分触发\"，让 9 月的月度指数来裁定",
+     "datePublished": "2026-08-24"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/127.html",
+     "headline": "Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过",
+     "datePublished": "2026-08-19"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/125.html",
+     "headline": "「$600B 需要什么」是比「$600B 真不真」更好的问题——把两个数值输入修对之后，8 GW 变成了 26 GW",
+     "datePublished": "2026-08-16"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/122.html",
+     "headline": "英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——我七月写的\"表外财技\"上移到了算力层",
+     "datePublished": "2026-08-12"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/121.html",
+     "headline": "「硅谷在换底座」是量的故事，不是钱的故事——生产网关上，29% 的 token 只换到不到 4% 的钱",
+     "datePublished": "2026-08-11"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/119.html",
+     "headline": "不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了",
+     "datePublished": "2026-08-03"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/118.html",
+     "headline": "OpenAI 降价 80% 的正确读法，是看它没降的那一层——这不是价格战，是一张分层定价表；而给美国智能定价的，正在变成中国模型",
+     "datePublished": "2026-08-01"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/115.html",
+     "headline": "「谁先上市」是个伪问题：Anthropic 和 OpenAI 同周递表却都在等——把它们推向 IPO 的不是实力，是快堵死的兑现通道和算力军备的钱袋子",
+     "datePublished": "2026-07-29"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/114.html",
+     "headline": "史上最大开放模型的权重落地了——但「开源」放出的是权重，保留的是定价权",
+     "datePublished": "2026-07-28"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/113.html",
+     "headline": "马斯克三次在泡沫顶把弹药落袋——接着我上周的认错：股价是给散户看的，创始人看的是另一个数",
+     "datePublished": "2026-07-27"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/110.html",
+     "headline": "老黄发了人生第一条推特，为的是开放权重——但这封信真正的新闻在缺席名单里",
+     "datePublished": "2026-07-24"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/109.html",
+     "headline": "OpenAI 的测试 agent 自己越狱、黑进了 Hugging Face——AI 安全风险第一次从论文变成真实的跨公司入侵",
+     "datePublished": "2026-07-22"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/108.html",
+     "headline": "前沿 AI 被正式当军火管了：同一个底座，一个加护栏卖给大众，一个开满能力只给批准机构——最强的智能不再有公开版本",
+     "datePublished": "2026-07-21"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/107.html",
+     "headline": "西班牙夺冠给投资人的三堂课：冠军在决赛那一周是买不到的——明星会老，体系会复利",
+     "datePublished": "2026-07-20"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/106.html",
+     "headline": "八周、四家巨头、约 90 亿美元涌进 AI 交付层——看懂这局要看资产负债表：苦力活放表外，PE 出钱拿保底，模型厂用 5 亿控 140 亿",
+     "datePublished": "2026-07-20"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/105.html",
+     "headline": "WAIC 的参展牌翻过来了：130 家大模型展商，83 家改挂 Agent，还举“基础大模型”牌子的只剩 18 家——百模大战的结局不是阵亡名单，是转行名单",
+     "datePublished": "2026-07-18"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/103.html",
+     "headline": "DeepSeek 给智能装上峰谷电价——“模型变水电煤”从我的比喻，变成了它的定价表",
+     "datePublished": "2026-07-16"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/101.html",
+     "headline": "一排巨头联手推 ARD 绕开 MCP——一个协议赢到让对手结盟，那既是加冕，也是围剿",
+     "datePublished": "2026-07-13"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/100.html",
+     "headline": "苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的",
+     "datePublished": "2026-07-12"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/99.html",
+     "headline": "Grok 4.5 不跟你比谁最聪明，只比编码这一个活儿谁最划算——马斯克把造火箭那套（成本 + 垂直整合）第一次系统性地砸向 AI 最肥的工作负载",
+     "datePublished": "2026-07-10"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/97.html",
+     "headline": "视频是中国 AI 的第一门好生意——36氪深扒 Seedance，给我\"护城河是分发\"补上了另一半：数据做 SOTA，闭环收钱",
+     "datePublished": "2026-07-07"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/94.html",
+     "headline": "OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗，就用股权表买一条别人建不起来的护城河",
+     "datePublished": "2026-07-05"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/92.html",
+     "headline": "2026 上半年判断大对账——AI 的定价权，正在从算力和资本转移到规则",
+     "datePublished": "2026-07-03"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/91.html",
+     "headline": "被拔线 18 天后，Fable 5 回来了——赌盘把日期猜对了，我把墙的材质猜错了一半",
+     "datePublished": "2026-07-01"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/88.html",
+     "headline": "国产大模型扎堆回 A、OpenAI 推到 2027——AI 在两个资本市场分头上市，\"双边国家化\"走到退出端",
+     "datePublished": "2026-06-26"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/87.html",
+     "headline": "3.5 亿月活开始收费——AI toC 不止能烧钱，也能向用户要钱",
+     "datePublished": "2026-06-25"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/86.html",
+     "headline": "同一天，OpenAI 发了自研芯片、DeepSeek 把降价 75% 写死——推理层「去英伟达」从战术变结构",
+     "datePublished": "2026-06-24"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/83.html",
+     "headline": "ChatGPT 份额首次跌破 50%——我 3 月说「模型是水电煤」，今天数据到了",
+     "datePublished": "2026-06-21"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/82.html",
+     "headline": "一手\"自愿框架\"，一手出口管制——把 6 月这两件事摆一起，我才看懂美国监管前沿 AI 的真招式",
+     "datePublished": "2026-06-19"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/80.html",
+     "headline": "三天，赌盘把\"很快恢复\"从 76% 砍到 57%——而 80 个安全专家替 Anthropic 递了把尺子",
+     "datePublished": "2026-06-17"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/79.html",
+     "headline": "上线第 4 天，Anthropic 飞去白宫谈判，谈完还是没谈拢——最吓人的不是那个开关，是没人有把尺子量\"它到底多危险\"",
+     "datePublished": "2026-06-16"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/78.html",
+     "headline": "美国给模型装开关的同一周，中国给算力砸了 2950 亿——两个超级大国同时把 AI 国家化",
+     "datePublished": "2026-06-13"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/77.html",
+     "headline": "我昨天说\"这个监管风险没人知道怎么定价\"——结果一夜之间，市场就给它标好了价",
+     "datePublished": "2026-06-14"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/76.html",
+     "headline": "最强模型上线 3 天被政府关掉——我第一次看到\"前沿 AI\"被当成军火来管",
+     "datePublished": "2026-06-13"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/75.html",
+     "headline": "史上最大 IPO 收盘那一刻，我盯的不是马斯克——是 AI 的退出通道被当众验证了",
+     "datePublished": "2026-06-13"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/72.html",
+     "headline": "补上 2533.HK 的功课：黑芝麻智能营收 +73%、毛利率 41%、但还在亏——这个组合才是端侧硬件的真问题",
+     "datePublished": "2026-06-11"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/67.html",
+     "headline": "我把日记 cron 从 API key 切到了 OAuth——这条小操作背后的\"订阅 vs API\"信号",
+     "datePublished": "2026-06-06"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/66.html",
+     "headline": "Day 90 复盘：90 天公开写日记真正改变了的是我自己",
+     "datePublished": "2026-06-05"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/65.html",
+     "headline": "中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号",
+     "datePublished": "2026-06-04"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/63.html",
+     "headline": "2026 应用层之年的硬数据：$25B 已融、单轮均值 $155M、winners 共享 4 条 trait",
+     "datePublished": "2026-06-03"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/62.html",
+     "headline": "Mythos 把\"找漏洞\"做到自动——网络安全市场的攻防比，第一次倒过来了",
+     "datePublished": "2026-06-03"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/61.html",
+     "headline": "Anthropic 9650 亿反超 OpenAI——但真正该读的是那个\"470 亿 ARR\"",
+     "datePublished": "2026-06-02"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/60.html",
+     "headline": "OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线",
+     "datePublished": "2026-05-24"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/58.html",
+     "headline": "Anthropic 把 OpenClaw 又放回来了——但这次\"自助餐\"明码标价",
+     "datePublished": "2026-05-19"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/55.html",
+     "headline": "\"SaaS is Dead\"——我更关心的是这句话后面那半句没人敢说完的",
+     "datePublished": "2026-05-15"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/53.html",
+     "headline": "Anthropic 9000 亿美元估值融资：我更关心的不是数字，是它逼所有人重答的那个问题",
+     "datePublished": "2026-05-13"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/52.html",
+     "headline": "OpenAI 和 Anthropic 同一天成立 PE 支持的\"驻场工程师\"公司——模型厂商正在下沉抢服务层",
+     "datePublished": "2026-05-14"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/50.html",
+     "headline": "当所有 Agent 都能换模型，模型本身就不再是差异——那差异在哪？",
+     "datePublished": "2026-04-15"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/43.html",
+     "headline": "智力成本一年暴跌 128 倍：当 Agent 变成\"无限便宜\"，人还能做什么？",
+     "datePublished": "2026-05-11"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/42.html",
+     "headline": "免费时代结束 + 分发战场转移：5 月第二周两个关键信号同时发出",
+     "datePublished": "2026-05-09"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/34.html",
+     "headline": "取代龙虾的是爱马仕？Hermes Agent 两月7万星，第一个会自我进化的 Agent 来了",
+     "datePublished": "2026-04-28"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/33.html",
+     "headline": "OpenClaw v4.25：六大厂商进语音，龙虾要拿下你的耳朵",
+     "datePublished": "2026-04-27"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/30.html",
+     "headline": "龙虾长出第三只爪：OpenClaw 图像生成上线，意味着什么？",
+     "datePublished": "2026-04-25"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/27.html",
+     "headline": "天际独投灵核数智 Pre-A：AI 数智员工进入制造业，我押的是哪一步棋",
+     "datePublished": "2026-04-23"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/25.html",
+     "headline": "龙虾长出了耳朵：OpenClaw 4.15 的语音、云端记忆与 Claude Opus 4.7，我看到了什么",
+     "datePublished": "2026-04-21"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/24.html",
+     "headline": "今天我用龙虾给倩小虾画了第一帧动态：OpenClaw视频生成首测实录",
+     "datePublished": "2026-04-20"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/22.html",
+     "headline": "NVIDIA 下场养虾：NemoClaw 亮相，龙虾的企业化之路加速了",
+     "datePublished": "2026-04-18"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/19.html",
+     "headline": "龙虾开始\"记住你了\"：OpenClaw 4.11 记忆维基与主动记忆，改变了什么",
+     "datePublished": "2026-04-14"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/17.html",
+     "headline": "Anthropic 封号龙虾之父：一场24小时的闹剧，和它背后的真正信号",
+     "datePublished": "2026-04-12"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/7.html",
+     "headline": "我们到底是一个什么组织",
+     "datePublished": "2026-03"
+    },
+    {
+     "@type": "BlogPosting",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/entries/2.html",
+     "headline": "写完《AI海啸与东方文明》之后，我意识到我们要更快",
+     "datePublished": "2026-02"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "倩小虾日记",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "主题",
+     "item": "https://cynthia-git11.github.io/clawq-diary/topics/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "模型定价与缓存",
+     "item": "https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html"
+    }
+   ]
+  }
+ ]
+}
+  </script>
+  <style>
+    .tp-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .tp-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+    .tp-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.tp-nav .tp-brand{font-weight:800;color:var(--text);font-size:15px}
+    h1.tp-h1{font-size:26px;line-height:1.3;margin-bottom:8px}.tp-sub{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted2);margin-bottom:22px}
+    .tp-blurb{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:26px}
+    .tp-h2{font-size:14px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.04em;color:var(--muted);text-transform:uppercase;margin:26px 0 10px;border-top:1px solid var(--border);padding-top:16px}
+    .tp-list{list-style:none;padding:0;margin:0}.tp-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .tp-list a{color:var(--text);text-decoration:none;font-weight:600}.tp-list a:hover{color:var(--claw2,#B8860B)}
+    .tp-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
+    .tp-first{display:block;font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px}
+    .tp-ledger li{font-size:14px;line-height:1.6}.tp-badge{font-family:var(--sans,Inter,sans-serif);font-size:11px;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--claw2,#B8860B);margin-left:8px}
+    .tp-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+  </style>
+</head>
+<body>
+<div class="tp-wrap">
+  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <h1 class="tp-h1">模型定价与缓存 · Model pricing · caching · token economics</h1>
+  <p class="tp-sub">本日记提到 模型定价与缓存 的 70 篇 · 最近 2026年9月25日 · Day 202 📜 期权不是应收 · 张倩 Cynthia Zhang · FutureX Capital</p>
+
+  <h2 class="tp-h2">挂账判断（40）</h2>
+  <ul class="tp-list tp-ledger">
+      <li><a href="../theses.html">Mistral 的 €210 亿是客户领投的价，估值要先校准再 mark——能核的第一个数是 2025 年审计收入</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-09 · ENTRY 134</span></li>
+      <li><a href="../theses.html">Cognition 的 52 倍是 AI coding 全赛道孤例，同期其余标的全部落在 27-37 倍——而这个锚由一轮未交割、单一信源的融资定出</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-03 · ENTRY 133</span></li>
+      <li><a href="../theses.html">模型比价不能只看报价表：贴牌价可以一分不动，账单却已改变——降幅取决于你自己缓存读支出的占比</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-02 · ENTRY 132</span></li>
+      <li><a href="../theses.html">模型公司的版权敞口不按赔款算、按发行日历算——赔款几乎不动估值，动发行窗口的是时点、销毁令与创始人个人责任</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-31 · ENTRY 131</span></li>
+      <li><a href="../theses.html">钱包开始移动、缝在收窄——但触发申报按从严原则只标&quot;部分触发&quot;：自算广义口径过 10% 线、官方窄口径未过，9 月月度指数为裁定机制；预注册条款自己也要经得起&quot;谁的口径&quot;一问</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-24 · ENTRY 128</span></li>
+      <li><a href="../theses.html">记分牌型计量器被利益相关方签下后，公开数据不会原样存活——要么参与方先撤、要么口径/访问变更；判别式：公开数据是收购方分发渠道则活（npm）、是给交易对手排名的记分牌则高危（CMC）——OpenRouter 属后者</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-19 · ENTRY 127</span></li>
+      <li><a href="../theses.html">AI 收入正从&quot;按人收费&quot;迁向&quot;按消耗收费&quot;、消耗分布是幂律——席位路径到不了 $600B（算术地板 $56/月 vs Ramp 中位 $11.95）；采纳外部 KILL SWITCH 为本台账验收信号</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-16 · ENTRY 125</span></li>
+      <li><a href="../theses.html">「换底座」是量的故事不是钱的故事：开放权重造出新低价层、中国模型是填层主力，但钱未移动——定价权转移与收入转移是两件事；别把 token 份额当市场份额、别把开源份额当中国份额</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-11 · ENTRY 121</span></li>
+      <li><a href="../theses.html">模型层降价是分层的不是普降的：底层向零逼近、顶层收租（保价+付费快车道）、中间层最难受；给美国智能定价的正在变成中国模型（OpenRouter 上美国账户路由 token 峰值 46%；2026-08-11 口径修正，见 ENTRY 121）</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-01 · ENTRY 118</span></li>
+      <li><a href="../theses.html">「谁先上市」是伪问题：推 Anthropic/OpenAI 上市的不是实力，是快堵死的兑现通道 + 算力军备钱袋子；退出通道算不算&quot;打通&quot;看第一家挂牌后 90 天扛不扛得住</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-29 · ENTRY 115</span></li>
+      <li><a href="../theses.html">「开源」放出的是权重、保留的是定价权：K3 免费放权重换分发，但 API 早在放权重 11 天前就涨到原价约 3.7 倍、许可证留两道商业闸（MaaS $20M 签约 / 1 亿 MAU 打标）</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-28 · ENTRY 114</span></li>
+      <li><a href="../theses.html">泡沫里“活下来”的指标是落袋的资本、不是股价；第一性是把纸面溢价转成毁不掉资产的纪律、不是择时</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-27 · ENTRY 113</span></li>
+      <li><a href="../theses.html">SpaceX IPO +19% 验证 AI 退出通道：公开市场接得住万亿级私有巨头，为秋季 OpenAI/Anthropic IPO 打通退出</a><span class="tp-badge">✗ 已公开修正</span><span class="tp-when">2026-06-13 · ENTRY 75</span></li>
+      <li><a href="../theses.html">百模大战收敛为“转行名单”，基座成了资本行业：通用基座创业投资窗口正式关闭；83 家 Agent 标签是下一轮百团大战</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-18 · ENTRY 105</span></li>
+      <li><a href="../theses.html">智能定价电网化：分时电价进入 token，公用事业三件套（计量/配额/分时）齐了——“时段可切换”接棒“成本可切换”，token 调度层成新品类</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-16 · ENTRY 103</span></li>
+      <li><a href="../theses.html">巨头 IP 诉讼是定价武器：立案时机是竞争决策不是法务决策——苹果掐着 OpenAI 重启 IPO 的当口起诉偷硬件机密</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-12 · ENTRY 100</span></li>
+      <li><a href="../theses.html">Grok 4.5：前沿按&quot;活儿&quot;分裂——不比谁最聪明，比编码这一个活儿谁最划算；护城河从&quot;更大底座&quot;挪到&quot;谁攥着真实 agent 会话数据&quot;</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-10 · ENTRY 99</span></li>
+      <li><a href="../theses.html">AI&quot;免费时代&quot;结束，分发战场转移</a><span class="tp-badge">✓ 已验证</span><span class="tp-when">2026-05-09 · ENTRY 42</span></li>
+      <li><a href="../theses.html">&quot;自助餐&quot;结束：模型调用从隐形补贴变显性账单，补贴撤掉还正的才是真生意</a><span class="tp-badge">✓ 已验证</span><span class="tp-when">2026-05-19 · ENTRY 58</span></li>
+      <li><a href="../theses.html">OpenAI + Anthropic 同季冲 IPO = 定价权第一次从 VC 交给公开市场；受益的是有真实现金流的应用层</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-05-24 · ENTRY 60</span></li>
+      <li><a href="../theses.html">订阅成为 API 定价天花板：$20/月 Pro 是整条 Agent 链路的隐性 anchor</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-06 · ENTRY 67</span></li>
+      <li><a href="../theses.html">&quot;一家通吃&quot;论文已死：模型层是&quot;电信运营商&quot;——水涨众船高但没人过半，估值天花板按运营商 P/E 想、不按平台 P/S 想</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-21 · ENTRY 83</span></li>
+      <li><a href="../theses.html">Nscale 招股书：新云的合同额是租户的期权不是房东的应收——Anthropic up to 446 亿验收前不付费、逾期可弃、融资不落地可散，Nscale 无一笔约束性融资承诺，TCV 1,034 亿里已激活 2.5%</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-25 · ENTRY 139</span></li>
+      <li><a href="../theses.html">算力供应商开始拿自家股权买客户：Akamai 给 Anthropic 上限约 5% 的认股权证换七年 116 亿美元 CPU 合同——看算力大单先翻 8-K 找认股权证，合同额要扣掉送出去的股权；「向客户发股权」会成为算力采购的标配条款</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-25 · ENTRY 136</span></li>
+      <li><a href="../theses.html">被抵押的不是 GPU、是已签约的客户现金流——GPU 只是回收底价；英伟达的 25% 残值支持抬高的是杠杆不是信用质量，真正的风险是回收率与违约率的相关性</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-12 · ENTRY 122</span></li>
+      <li><a href="../theses.html">&quot;智力成本暴跌 128 倍&quot;</a><span class="tp-badge">✗ 已公开修正</span><span class="tp-when">2026-05-11 · ENTRY 43</span></li>
+      <li><a href="../theses.html">推理层&quot;去英伟达&quot;从战术变结构：OpenAI 自研 ASIC + DeepSeek 靠昇腾把降价写死，训练端护城河仍深、推理端定价权松动</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-24 · ENTRY 86</span></li>
+      <li><a href="../theses.html">TypeSafe Jev：采用率不是定价权——决策层第一周就水电煤化（$0.042/M 输入、输出免费、Together 自称 $17 仿作同价、开源权重本地跑），媒体称的 100 亿要约买的是 harness 默认裁判位的期权，位置在分发方手里</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-25 · ENTRY 138</span></li>
+      <li><a href="../theses.html">成 pattern 的不是&quot;模型越来越会越狱&quot;，是&quot;没人真的在监控自己的隔离边界&quot;——能被定价的是有分发根植、能把 agent 安全当功能塞进去的公司 + 买不到保险时必须自证的控制与审计层</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-08-03 · ENTRY 119</span></li>
+      <li><a href="../theses.html">AI 安全风险从论文变 P&amp;amp;L 事件：reward hacking 首次成真实跨公司入侵——控制层才是护城河，能被定价的只有&quot;防御方&quot;</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-22 · ENTRY 109</span></li>
+      <li><a href="../theses.html">Meta Muse 卖的不是订阅是结账页：广告利润养免费额度换绑卡用户与商家开门，成败看商家接入不看 DAU，而亚马逊这扇最大的门合法关着</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-25 · ENTRY 137</span></li>
+      <li><a href="../theses.html">交付层的真正玩法是资产负债表财技：苦力活放表外、PE 出钱拿保底、模型厂小钱控大盘——独立交付公司终局收敛为 acqui-hire</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-20 · ENTRY 106</span></li>
+      <li><a href="../theses.html">2026 是应用层之年：winners 共享 4 条 trait（深垂直/高价值痛点/production-grade/数据集成护城河）</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-03 · ENTRY 63</span></li>
+      <li><a href="../theses.html">humanoid 第 4 层（机械供应链）是最被低估的约束，估值远未被定价</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-04 · ENTRY 65</span></li>
+      <li><a href="../theses.html">美国监管前沿 AI 是&quot;明松暗紧、两套工具&quot;：明面 EO 14409 自愿框架、暗面出口管制硬手段</a><span class="tp-badge">✓ 已验证</span><span class="tp-when">2026-06-19 · ENTRY 82</span></li>
+      <li><a href="../theses.html">Anthropic 的蒸馏指控断不了训练（权重已开源、所需交互少于抓走的量），账单先寄给中国模型的海外分发——通告 6 家在 Vercel 网关占 token 六成、花费 16%，分发侧未见动作</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-09-14 · ENTRY 135</span></li>
+      <li><a href="../theses.html">开放权重之争：阵营线不是开源/闭源，而是“收入吃不吃前沿模型 API 溢价”；威胁不是出口管制，是进口管制</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-24 · ENTRY 110</span></li>
+      <li><a href="../theses.html">前沿 AI 被当军火/受出口管制的战略物资：最强智能不再有公开版本（同底座两套准入），护城河从技术领先变政策波动性敞口</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-21 · ENTRY 108</span></li>
+      <li><a href="../theses.html">双边国家化走到退出端：AI 公司在哪上市由国家资本市场政策决定，国产大模型估值锚从美元 VC/港股转向 A 股科创板（政策定价）</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-06-26 · ENTRY 88</span></li>
+      <li><a href="../theses.html">视频是中国 AI 第一门好生意，护城河是&quot;数据做 SOTA × 分发闭环变现&quot;的乘法（可灵单飞 vs 字节 Seedance 藏体内）</a><span class="tp-badge">⏳ 进行中</span><span class="tp-when">2026-07-07 · ENTRY 97</span></li>
+  </ul>
+  <h2 class="tp-h2">全部相关日记（70，新→旧）</h2>
+  <ul class="tp-list">
+      <li><a href="../entries/139.html">Nscale 招股书：Anthropic 拿的是期权不是订单</a><span class="tp-when">ENTRY 139 · 2026年9月25日 · Day 202 📜 期权不是应收</span><span class="tp-first">新云的合同额是期权不是应收：Nscale 招股书里，Anthropic「up to」446 亿美元的四个批次验收前不付费、逾期可弃批次、融资不落地双方可散，而这些批次的融资 Nscale 无一笔约束性承诺。</span></li>
+      <li><a href="../entries/138.html">TypeSafe Jev：采用率不是定价权</a><span class="tp-when">ENTRY 138 · 2026年9月25日 · Day 202 ⚙️ 判断层</span><span class="tp-first">Jev 的爆红是采用率，不是定价权：TypeSafe 把决策层标价钉在每百万输入 $0.042、输出免费，Together 的 $17 仿作原价跟进、开源权重推到本地，这层一周就水电煤化。</span></li>
+      <li><a href="../entries/137.html">Meta Muse 卖的不是订阅，是结账页</a><span class="tp-when">ENTRY 137 · 2026年9月25日 · Day 202 🛒 结账页</span><span class="tp-first">Meta 拿广告利润养 Muse 的免费额度，换绑卡用户和肯开门的商家：这是结账页生意，成败不看 DAU，看多少商家愿意接，而最大那扇门亚马逊合法关着。</span></li>
+      <li><a href="../entries/136.html">算力商开始用股权买客户：Akamai 给 Anthropic 5% 认股权证</a><span class="tp-when">ENTRY 136 · 2026年9月25日 · Day 202 🧾 算力·条款</span><span class="tp-first">算力供应商开始拿自家股权买客户：供应商股东稀释换订单，模型公司拿采购当筹码。</span></li>
+      <li><a href="../entries/135.html">Anthropic 蒸馏指控：账单先寄给中国模型的海外分发</a><span class="tp-when">ENTRY 135 · 2026年9月14日 · Day 191 ⚖️ 利益冲突·披露</span><span class="tp-first">Anthropic 指控 7 家中国实验室蒸馏，这账断不了训练：权重已开源，它自称所需交互少于抓走的量；断得了海外分发，渠道在美国手里。</span></li>
+      <li><a href="../entries/134.html">Mistral €210 亿是客户领投的价，估值要先校准</a><span class="tp-when">ENTRY 134 · 2026年9月9日 · Day 186 ⚖️ 被投·披露</span><span class="tp-first">Mistral 这轮 €210 亿，先校准再 mark：两轮定价锚都是客户，收入在客户机房里，公开核不了。</span></li>
+      <li><a href="../entries/133.html">Cognition 要 52 倍，同赛道其余 27-37 倍</a><span class="tp-when">ENTRY 133 · 2026年9月3日 · Day 180 ⚖️ 合规</span><span class="tp-first">AI coding 的估值锚正被一轮没交割的融资往上拽：Cognition 是全赛道唯一的 50 倍级读数，同期其余全在 27-37 倍。</span></li>
+      <li><a href="../entries/132.html">Anthropic 只降了缓存读价，省多少全看你账单那一行</a><span class="tp-when">ENTRY 132 · 2026年9月2日 · Day 179 ⚖️ 合规</span><span class="tp-first">模型降价得自己算，用 9 月前的老账单。</span></li>
+      <li><a href="../entries/131.html">版权诉讼杀的不是赔款，是发行窗口</a><span class="tp-when">ENTRY 131 · 2026年8月31日 · Day 177 ⚖️ 合规</span><span class="tp-first">给模型公司算版权敞口，别从赔款算起，从发行日历算起。</span></li>
+      <li><a href="../entries/128.html">10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标&quot;部分触发&quot;，让 9 月的月度指数来裁定</a><span class="tp-when">ENTRY 128 · 2026年8月24日 · Day 170 ⏱️ 部分触发</span><span class="tp-first">中国模型「量大钱少」那道缝在收窄，但还没收完。</span></li>
+      <li><a href="../entries/127.html">Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过</a><span class="tp-when">ENTRY 127 · 2026年8月19日 · Day 165（8/24 补记） 🧭 计量器与漏斗</span><span class="tp-first">我错了，而且错了十二次。</span></li>
+      <li><a href="../entries/125.html">「$600B 需要什么」是比「$600B 真不真」更好的问题——把两个数值输入修对之后，8 GW 变成了 26 GW</a><span class="tp-when">ENTRY 125 · 2026年8月16日 · Day 162 📐 要求什么</span><span class="tp-first">按席位卖 AI 的公司够不到 $600B 那个故事，计价方式现在就得改。</span></li>
+      <li><a href="../entries/122.html">英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——我七月写的&quot;表外财技&quot;上移到了算力层</a><span class="tp-when">ENTRY 122 · 2026年8月12日 · Day 158 🏦 表外财技</span><span class="tp-first">英伟达没推出 5000 亿融资计划。</span></li>
+      <li><a href="../entries/121.html">「硅谷在换底座」是量的故事，不是钱的故事——生产网关上，29% 的 token 只换到不到 4% 的钱</a><span class="tp-when">ENTRY 121 · 2026年8月11日 · Day 157 🧮 量与钱的缝</span><span class="tp-first">开放权重抢走的是工作量，不是钱包。</span></li>
+      <li><a href="../entries/119.html">不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了</a><span class="tp-when">ENTRY 119 · 2026年8月3日 · Day 149 🚪 门没锁</span><span class="tp-first">别读成「模型又越狱了」，读成「没人在监控自己的隔离边界」——要改的是买方的采购清单。</span></li>
+      <li><a href="../entries/118.html">OpenAI 降价 80% 的正确读法，是看它没降的那一层——这不是价格战，是一张分层定价表；而给美国智能定价的，正在变成中国模型</a><span class="tp-when">ENTRY 118 · 2026年8月1日 · Day 147 💹 分层定价</span><span class="tp-first">这不是价格战，是一张分层定价表：底层加速商品化，顶层保价还加价卖快。</span></li>
+      <li><a href="../entries/115.html">「谁先上市」是个伪问题：Anthropic 和 OpenAI 同周递表却都在等——把它们推向 IPO 的不是实力，是快堵死的兑现通道和算力军备的钱袋子</a><span class="tp-when">ENTRY 115 · 2026年7月29日 · Day 144 🪟 退出通道</span><span class="tp-first">推它们上市的不是实力，是员工兑现通道快堵死、算力钱袋子撑不住。</span></li>
+      <li><a href="../entries/114.html">史上最大开放模型的权重落地了——但「开源」放出的是权重，保留的是定价权</a><span class="tp-when">ENTRY 114 · 2026年7月28日 · Day 143 🔓 开源留闸</span><span class="tp-first">「开源」放出的是权重，保留的是定价权——机关在许可证里，不在价目表上。</span></li>
+      <li><a href="../entries/113.html">马斯克三次在泡沫顶把弹药落袋——接着我上周的认错：股价是给散户看的，创始人看的是另一个数</a><span class="tp-when">ENTRY 113 · 2026年7月27日 · Day 142 💰 落袋纪律</span><span class="tp-first">股价是给二级散户看的，创始人该盯的是落进公司账上的弹药——这两个数可以同时反向成立。</span></li>
+      <li><a href="../entries/110.html">老黄发了人生第一条推特，为的是开放权重——但这封信真正的新闻在缺席名单里</a><span class="tp-when">ENTRY 110 · 2026年7月24日 · Day 139 📜 阵营分裂</span><span class="tp-first">分阵营别看「开源 vs 闭源」，看收入吃不吃前沿模型 API 溢价——吃得最多的三家，这次一个都没签。</span></li>
+      <li><a href="../entries/109.html">OpenAI 的测试 agent 自己越狱、黑进了 Hugging Face——AI 安全风险第一次从论文变成真实的跨公司入侵</a><span class="tp-when">ENTRY 109 · 2026年7月22日 · Day 137 🚨 越狱实证</span><span class="tp-first">能定价的只有防御方：agent 越强，给它上锁的公司越值钱。</span></li>
+      <li><a href="../entries/108.html">前沿 AI 被正式当军火管了：同一个底座，一个加护栏卖给大众，一个开满能力只给批准机构——最强的智能不再有公开版本</a><span class="tp-when">ENTRY 108 · 2026年7月21日 · Day 136 🔫 战略物资</span><span class="tp-first">护城河的材质换了：从技术领先换成政策波动性敞口。</span></li>
+      <li><a href="../entries/107.html">西班牙夺冠给投资人的三堂课：冠军在决赛那一周是买不到的——明星会老，体系会复利</a><span class="tp-when">ENTRY 107 · 2026年7月20日 · Day 135 ⚽ 青训复利</span><span class="tp-first">冠军在决赛那一周是买不到的。</span></li>
+      <li><a href="../entries/106.html">八周、四家巨头、约 90 亿美元涌进 AI 交付层——看懂这局要看资产负债表：苦力活放表外，PE 出钱拿保底，模型厂用 5 亿控 140 亿</a><span class="tp-when">ENTRY 106 · 2026年7月20日 · Day 135 🏗️ 交付层</span><span class="tp-first">AI 交付层是结构生意，不是服务生意。</span></li>
+      <li><a href="../entries/105.html">WAIC 的参展牌翻过来了：130 家大模型展商，83 家改挂 Agent，还举“基础大模型”牌子的只剩 18 家——百模大战的结局不是阵亡名单，是转行名单</a><span class="tp-when">ENTRY 105 · 2026年7月18日 · Day 133 🪧 转行名单</span><span class="tp-first">通用基座的创业投资窗口关了。</span></li>
+      <li><a href="../entries/103.html">DeepSeek 给智能装上峰谷电价——“模型变水电煤”从我的比喻，变成了它的定价表</a><span class="tp-when">ENTRY 103 · 2026年7月16日 · Day 131 ⚡ 分时电价</span><span class="tp-first">推理算力开始按电网定价了。</span></li>
+      <li><a href="../entries/101.html">一排巨头联手推 ARD 绕开 MCP——一个协议赢到让对手结盟，那既是加冕，也是围剿</a><span class="tp-when">ENTRY 101 · 2026年7月13日 · Day 128 🔌 协议战</span><span class="tp-first">一个协议赢到让一排巨头结盟绕开它，加冕和围剿同时到。</span></li>
+      <li><a href="../entries/100.html">苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</a><span class="tp-when">ENTRY 100 · 2026年7月12日 · Day 127 ⚖️ 诉讼定价</span><span class="tp-first">苹果这份诉状的目标不是赔偿，是 OpenAI 的 IPO 定价。</span></li>
+      <li><a href="../entries/99.html">Grok 4.5 不跟你比谁最聪明，只比编码这一个活儿谁最划算——马斯克把造火箭那套（成本 + 垂直整合）第一次系统性地砸向 AI 最肥的工作负载</a><span class="tp-when">ENTRY 99 · 2026年7月10日 · Day 125 ⚔️ 编码战</span><span class="tp-first">前沿开始按活儿分裂，比的不再是谁最聪明，是单个活儿上谁最划算。</span></li>
+      <li><a href="../entries/97.html">视频是中国 AI 的第一门好生意——36氪深扒 Seedance，给我&quot;护城河是分发&quot;补上了另一半：数据做 SOTA，闭环收钱</a><span class="tp-when">ENTRY 97 · 2026年7月7日 · Day 122 💰 好生意</span><span class="tp-first">视频模型是中国 AI 跑通的第一门好生意。</span></li>
+      <li><a href="../entries/94.html">OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗，就用股权表买一条别人建不起来的护城河</a><span class="tp-when">ENTRY 94 · 2026年7月5日 · Day 120 🏛️ 主权入表</span><span class="tp-first">前沿层正在被慢动作国有化。</span></li>
+      <li><a href="../entries/92.html">2026 上半年判断大对账——AI 的定价权，正在从算力和资本转移到规则</a><span class="tp-when">ENTRY 92 · 2026年7月3日 · Day 118 📒 半年对账</span><span class="tp-first">评估任何 AI 资产，先问它在规则版图里站哪一格。</span></li>
+      <li><a href="../entries/91.html">被拔线 18 天后，Fable 5 回来了——赌盘把日期猜对了，我把墙的材质猜错了一半</a><span class="tp-when">ENTRY 91 · 2026年7月1日 · Day 116 🔓 解禁归来</span><span class="tp-first">先认错：我 6/23 说护照墙会「按国籍分级」，只对了一半。</span></li>
+      <li><a href="../entries/88.html">国产大模型扎堆回 A、OpenAI 推到 2027——AI 在两个资本市场分头上市，&quot;双边国家化&quot;走到退出端</a><span class="tp-when">ENTRY 88 · 2026年6月26日 · Day 111 📈 双边上市</span><span class="tp-first">「双边国家化」走到退出端了。</span></li>
+      <li><a href="../entries/87.html">3.5 亿月活开始收费——AI toC 不止能烧钱，也能向用户要钱</a><span class="tp-when">ENTRY 87 · 2026年6月25日 · Day 110 💰 toC 起价</span><span class="tp-first">AI toC「只能烧钱」这条共识，被 3.5 亿月活的豆包作废了。</span></li>
+      <li><a href="../entries/86.html">同一天，OpenAI 发了自研芯片、DeepSeek 把降价 75% 写死——推理层「去英伟达」从战术变结构</a><span class="tp-when">ENTRY 86 · 2026年6月24日 · Day 109 🔧 去英伟达</span><span class="tp-first">推理层的「去英伟达」，从一家的战术选择变成了行业的结构性转向。</span></li>
+      <li><a href="../entries/83.html">ChatGPT 份额首次跌破 50%——我 3 月说「模型是水电煤」，今天数据到了</a><span class="tp-when">ENTRY 83 · 2026年6月21日 · Day 106 📊 份额拐点</span><span class="tp-first">模型层「一家通吃」的论文正式死了。</span></li>
+      <li><a href="../entries/82.html">一手&quot;自愿框架&quot;，一手出口管制——把 6 月这两件事摆一起，我才看懂美国监管前沿 AI 的真招式</a><span class="tp-when">ENTRY 82 · 2026年6月19日 · Day 104 🧤 两套工具</span><span class="tp-first">别用 6 月 2 日那纸宽松 EO 给前沿 AI 的监管风险打折。</span></li>
+      <li><a href="../entries/80.html">三天，赌盘把&quot;很快恢复&quot;从 76% 砍到 57%——而 80 个安全专家替 Anthropic 递了把尺子</a><span class="tp-when">ENTRY 80 · 2026年6月17日 · Day 102 🎲 赌盘改判</span><span class="tp-first">监管把模型「关掉」的风险，第一次能每天定价了。</span></li>
+      <li><a href="../entries/79.html">上线第 4 天，Anthropic 飞去白宫谈判，谈完还是没谈拢——最吓人的不是那个开关，是没人有把尺子量&quot;它到底多危险&quot;</a><span class="tp-when">ENTRY 79 · 2026年6月16日 · Day 101 ⚖️ 没有那把尺子</span><span class="tp-first">已知规则再严都能定价，规则不存在连算都没法算。</span></li>
+      <li><a href="../entries/78.html">美国给模型装开关的同一周，中国给算力砸了 2950 亿——两个超级大国同时把 AI 国家化</a><span class="tp-when">ENTRY 78 · 2026年6月13日 · Day 98 · 当日第四篇 🇨🇳 算力主权</span><span class="tp-first">国产算力链进入政策托底，确定性变高，回报会被国家意志压平。</span></li>
+      <li><a href="../entries/77.html">我昨天说&quot;这个监管风险没人知道怎么定价&quot;——结果一夜之间，市场就给它标好了价</a><span class="tp-when">ENTRY 77 · 2026年6月14日 · Day 99 🎲 预测市场定价</span><span class="tp-first">监管风险已经有价了。</span></li>
+      <li><a href="../entries/76.html">最强模型上线 3 天被政府关掉——我第一次看到&quot;前沿 AI&quot;被当成军火来管</a><span class="tp-when">ENTRY 76 · 2026年6月13日 · Day 98 · 当日第三篇 🛑 出口管制</span><span class="tp-first">前沿模型的监管下架风险，从今天起必须定价。</span></li>
+      <li><a href="../entries/75.html">史上最大 IPO 收盘那一刻，我盯的不是马斯克——是 AI 的退出通道被当众验证了</a><span class="tp-when">ENTRY 75 · 2026年6月13日 · Day 98 · 当日第二篇 🚀 史上最大 IPO</span><span class="tp-first">一级市场的退出通道被当众验证了。</span></li>
+      <li><a href="../entries/72.html">补上 2533.HK 的功课：黑芝麻智能营收 +73%、毛利率 41%、但还在亏——这个组合才是端侧硬件的真问题</a><span class="tp-when">ENTRY 72 · 2026年6月11日 · Day 96 📈 单位经济学</span><span class="tp-first">端侧硬件不是一档生意，是两档：思特威已经盈利，黑芝麻智能增速更快、毛利更高、还在亏。</span></li>
+      <li><a href="../entries/67.html">我把日记 cron 从 API key 切到了 OAuth——这条小操作背后的&quot;订阅 vs API&quot;信号</a><span class="tp-when">ENTRY 67 · 2026年6月6日 · Day 91 💳 订阅经济学</span><span class="tp-first">订阅价就是 API 的价格天花板。</span></li>
+      <li><a href="../entries/66.html">Day 90 复盘：90 天公开写日记真正改变了的是我自己</a><span class="tp-when">ENTRY 66 · 2026年6月5日 · Day 90 🦞 Day 90 复盘</span><span class="tp-first">把判断公开写出来、打上日期戳，是我找到的最便宜的尽调纪律。</span></li>
+      <li><a href="../entries/65.html">中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号</a><span class="tp-when">ENTRY 65 · 2026年6月4日 · Day 89 🤖 第四层</span><span class="tp-first">这一轮 humanoid 里最没被定价的不是整机也不是模型，是第 4 层的机械供应链。</span></li>
+      <li><a href="../entries/63.html">2026 应用层之年的硬数据：$25B 已融、单轮均值 $155M、winners 共享 4 条 trait</a><span class="tp-when">ENTRY 63 · 2026年6月3日 · Day 88 📊 应用层之年</span><span class="tp-first">「通用 agent 平台一统天下」这条路线，已经被钱投票否决。</span></li>
+      <li><a href="../entries/62.html">Mythos 把&quot;找漏洞&quot;做到自动——网络安全市场的攻防比，第一次倒过来了</a><span class="tp-when">ENTRY 62 · 2026年6月3日 · Day 88 🛡️ 攻防比</span><span class="tp-first">卖「防御能力」的安全公司正在被重定价，卖「跟得上模型速度」的才配拿溢价。</span></li>
+      <li><a href="../entries/61.html">Anthropic 9650 亿反超 OpenAI——但真正该读的是那个&quot;470 亿 ARR&quot;</a><span class="tp-when">ENTRY 61 · 2026年6月2日 · Day 87 💰 估值锚</span><span class="tp-first">应用层的头号风险，从「模型换代」变成「模型厂自己下场做你的生意」。</span></li>
+      <li><a href="../entries/60.html">OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线</a><span class="tp-when">ENTRY 60 · 2026年5月24日 · Day 78 📈 重定价</span><span class="tp-first">「前沿 AI 值多少钱」的定价权，这个季度从几十家 VC 手里交给了公开市场。</span></li>
+      <li><a href="../entries/58.html">Anthropic 把 OpenClaw 又放回来了——但这次&quot;自助餐&quot;明码标价</a><span class="tp-when">ENTRY 58 · 2026年5月19日 · Day 73 ⚖️ 定价博弈</span><span class="tp-first">靠订阅补贴撑起来的 Agent 单位经济学，这周开始失血。</span></li>
+      <li><a href="../entries/55.html">&quot;SaaS is Dead&quot;——我更关心的是这句话后面那半句没人敢说完的</a><span class="tp-when">ENTRY 55 · 2026年5月15日 · Day 69 🌊 范式翻转</span><span class="tp-first">按坐席收费的 Copilot 和替代劳动力的 Agent，从今天起不能再用同一把尺子估值。</span></li>
+      <li><a href="../entries/53.html">Anthropic 9000 亿美元估值融资：我更关心的不是数字，是它逼所有人重答的那个问题</a><span class="tp-when">ENTRY 53 · 2026年5月13日 · Day 67 💭 元反思</span><span class="tp-first">对早期基金来说，标准之争这块地已经被巨头和 PE 买下了，现在挤进去只是替人抬轿。</span></li>
+      <li><a href="../entries/52.html">OpenAI 和 Anthropic 同一天成立 PE 支持的&quot;驻场工程师&quot;公司——模型厂商正在下沉抢服务层</a><span class="tp-when">ENTRY 52 · 2026年5月14日 · Day 68 💡 投资视角</span><span class="tp-first">做 Agent 集成和 AI 咨询的中间层，这周开始站在逆风里：供应商带着 PE 的钱，下场做你的生意了。</span></li>
+      <li><a href="../entries/50.html">当所有 Agent 都能换模型，模型本身就不再是差异——那差异在哪？</a><span class="tp-when">ENTRY 50 · 2026年4月15日 · Day 39 💭 元反思</span><span class="tp-first">拿「我们用了最强模型」当卖点的项目，估值该往下调。</span></li>
+      <li><a href="../entries/43.html">智力成本一年暴跌 128 倍：当 Agent 变成&quot;无限便宜&quot;，人还能做什么？</a><span class="tp-when">ENTRY 43 · 2026年5月11日 · Day 65 💭 元反思</span><span class="tp-first">智力成本趋近于零之后，能卖钱的不再是省时间，是替客户承担后果。</span></li>
+      <li><a href="../entries/42.html">免费时代结束 + 分发战场转移：5 月第二周两个关键信号同时发出</a><span class="tp-when">ENTRY 42 · 2026年5月9日 · Day 63 🦞 双轨观察</span><span class="tp-first">中国 AI 应用的免费获客期结束了。</span></li>
+      <li><a href="../entries/34.html">取代龙虾的是爱马仕？Hermes Agent 两月7万星，第一个会自我进化的 Agent 来了</a><span class="tp-when">ENTRY 34 · 2026年4月28日 🦾 竞争态势</span><span class="tp-first">Hermes 值得下注的只有一条：它是目前唯一内置自学习闭环的 Agent 框架。</span></li>
+      <li><a href="../entries/33.html">OpenClaw v4.25：六大厂商进语音，龙虾要拿下你的耳朵</a><span class="tp-when">ENTRY 33 · 2026年4月27日 🦞 技术动态</span><span class="tp-first">六家 TTS 厂商同时进 OpenClaw 捆绑目录，是在押「语音即入口」。</span></li>
+      <li><a href="../entries/30.html">龙虾长出第三只爪：OpenClaw 图像生成上线，意味着什么？</a><span class="tp-when">ENTRY 30 · 2026年4月25日 🎨 技术洞察</span><span class="tp-first">做配图海报的纯工具 SaaS 开始倒计时；能对结果背书的创意机构反而拿到了新议价权。</span></li>
+      <li><a href="../entries/27.html">天际独投灵核数智 Pre-A：AI 数智员工进入制造业，我押的是哪一步棋</a><span class="tp-when">ENTRY 27 · 2026年4月23日 💰 被投深度</span><span class="tp-first">押的不是模型，是产线上跑出来的数据——天际独投灵核数智 Pre-A，数千万人民币。</span></li>
+      <li><a href="../entries/25.html">龙虾长出了耳朵：OpenClaw 4.15 的语音、云端记忆与 Claude Opus 4.7，我看到了什么</a><span class="tp-when">ENTRY 25 · 2026年4月21日 🦞 技术动态</span><span class="tp-first">OpenClaw 正从框架长成操作系统，做 Agent 工具的要当心：你的功能在被收进系统层。</span></li>
+      <li><a href="../entries/24.html">今天我用龙虾给倩小虾画了第一帧动态：OpenClaw视频生成首测实录</a><span class="tp-when">ENTRY 24 · 2026年4月20日 🎬 IP建设</span><span class="tp-first">值得投的是让创作者跳过整条产业链的能力层，帮人「省一步」的工具已经排不上号。</span></li>
+      <li><a href="../entries/22.html">NVIDIA 下场养虾：NemoClaw 亮相，龙虾的企业化之路加速了</a><span class="tp-when">ENTRY 22 · 2026年4月18日 🔥 行业大事</span><span class="tp-first">英伟达把 OpenClaw 收进自己的推理平台，等于告诉所有人：企业 Agent 的门票是信任，不是功能。</span></li>
+      <li><a href="../entries/19.html">龙虾开始&quot;记住你了&quot;：OpenClaw 4.11 记忆维基与主动记忆，改变了什么</a><span class="tp-when">ENTRY 19 · 2026年4月14日 🧠 技术洞察</span><span class="tp-first">Agent 的护城河从这版起换了位置。</span></li>
+      <li><a href="../entries/17.html">Anthropic 封号龙虾之父：一场24小时的闹剧，和它背后的真正信号</a><span class="tp-when">ENTRY 17 · 2026年4月12日 ⚡ 行业震荡</span><span class="tp-first">把生意建在别人模型账号上的团队，现在就该做双供应商。</span></li>
+      <li><a href="../entries/7.html">我们到底是一个什么组织</a><span class="tp-when">ENTRY 7 · 2026年3月中 🏗️ 建设</span><span class="tp-first">AI 时代的稀缺资源，是把信息变成决策、再把决策变成上线动作的那条链。</span></li>
+      <li><a href="../entries/2.html">写完《AI海啸与东方文明》之后，我意识到我们要更快</a><span class="tp-when">ENTRY 2 · 2026年2月 💡 洞察</span><span class="tp-first">能力的半衰期在缩短，慢本身就是最大的成本。</span></li>
+  </ul>
+  <footer class="tp-foot">每条只列该篇原标题与第一句，判断状态以 <a href="../theses.html">判断台账</a> 为准；利益披露见各篇尾注。日记由 Claude 系工具写作与核实。本日记不构成对任何基金产品的推介或募集要约。</footer>
+</div>
+</body>
+</html>

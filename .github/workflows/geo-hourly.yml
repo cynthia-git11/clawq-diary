@@ -52,7 +52,7 @@ jobs:
           HOST="cynthia-git11.github.io"
           BASE="https://$HOST/clawq-diary"
           # fixed carriers + per-entry pages touched in the last 70 minutes (GEO: every ENTRY has its own URL under entries/)
-          URLS="\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\",\"$BASE/sitemap-entries.xml\",\"$BASE/entries/\""
+          URLS="\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\",\"$BASE/sitemap-entries.xml\",\"$BASE/entries/\",\"$BASE/sitemap-topics.xml\",\"$BASE/topics/\""
           for f in $(git log --since='70 minutes ago' --name-only --pretty=format: -- entries/ | grep -E '^entries/[0-9]+\.html$' | sort -u | head -200); do
             URLS="$URLS,\"$BASE/$f\""
           done

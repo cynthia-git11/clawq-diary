@@ -1,0 +1,22 @@
+[
+  {"slug": "anthropic", "name": "Anthropic", "name_en": "Anthropic · Claude", "aliases": ["Claude", "Amodei", "Fable 5", "Mythos", "Opus 5", "Sonnet 5"]},
+  {"slug": "openai", "name": "OpenAI", "name_en": "OpenAI · GPT", "aliases": ["ChatGPT", "GPT-5", "GPT-6", "Altman", "Sol", "Luna", "Astra"]},
+  {"slug": "deepseek", "name": "DeepSeek", "name_en": "DeepSeek · 深度求索", "aliases": ["深度求索", "梁文锋", "V4 Flash", "V4.1"]},
+  {"slug": "moonshot-kimi", "name": "月之暗面 Kimi", "name_en": "Moonshot AI · Kimi", "aliases": ["月之暗面", "Kimi", "Moonshot"]},
+  {"slug": "zhipu-glm", "name": "智谱 GLM", "name_en": "Zhipu · Z.ai · GLM", "aliases": ["智谱", "GLM", "Z.ai", "Z.AI", "2513.HK", "02513"]},
+  {"slug": "alibaba-qwen", "name": "阿里 Qwen", "name_en": "Alibaba · Qwen", "aliases": ["阿里", "Qwen", "通义", "阿里云", "云栖"]},
+  {"slug": "bytedance-doubao", "name": "字节跳动 豆包", "name_en": "ByteDance · Doubao · Seed", "aliases": ["字节", "豆包", "Seedance", "火山引擎", "Seed"]},
+  {"slug": "meta-muse", "name": "Meta Muse", "name_en": "Meta · Muse · Llama", "aliases": ["Meta", "Muse", "扎克伯格", "Llama"]},
+  {"slug": "mistral", "name": "Mistral AI", "name_en": "Mistral AI", "aliases": ["Mistral", "Mensch"]},
+  {"slug": "nvidia", "name": "英伟达 NVIDIA", "name_en": "NVIDIA", "aliases": ["英伟达", "NVIDIA", "Nvidia", "黄仁勋", "Rubin", "GB300", "NVFP4"]},
+  {"slug": "hugging-face", "name": "Hugging Face", "name_en": "Hugging Face", "aliases": ["Hugging Face", "HF ", "HF、", "HF）", "Delangue"]},
+  {"slug": "vercel-gateway", "name": "Vercel AI Gateway 计量", "name_en": "Vercel AI Gateway · OpenRouter meters", "aliases": ["Vercel", "OpenRouter", "网关"]},
+  {"slug": "neocloud-compute", "name": "新云与算力合同", "name_en": "Neoclouds · compute contracts", "aliases": ["Nscale", "CoreWeave", "Nebius", "Lambda", "Crusoe", "Fluidstack", "Oracle", "算力合同", "GPU 租", "capex"]},
+  {"slug": "typesafe-jev", "name": "TypeSafe Jev 决策模型", "name_en": "TypeSafe · Jev", "aliases": ["TypeSafe", "Jev"]},
+  {"slug": "ai-coding", "name": "AI Coding 估值", "name_en": "AI coding · Cognition · Cursor", "aliases": ["Cognition", "Cursor", "Devin", "Anysphere", "AI coding", "Claude Code", "Lovable", "Replit"]},
+  {"slug": "xiaomi-mimo", "name": "小米 MiMo", "name_en": "Xiaomi · MiMo", "aliases": ["小米", "MiMo", "1810"]},
+  {"slug": "minimax", "name": "MiniMax", "name_en": "MiniMax", "aliases": ["MiniMax", "0100.HK"]},
+  {"slug": "us-china-ai-policy", "name": "中美 AI 监管与出口管制", "name_en": "US–China AI policy · export controls", "aliases": ["出口管制", "实体清单", "商务部", "BIS", "白宫", "AI Act", "网信办", "蒸馏", "特习", "关税"]},
+  {"slug": "ipo-exits", "name": "AI 公司上市与退出", "name_en": "AI IPOs & exits", "aliases": ["IPO", "上市", "S-1", "招股书", "港交所", "科创板", "退出", "配售"]},
+  {"slug": "model-pricing", "name": "模型定价与缓存", "name_en": "Model pricing · caching · token economics", "aliases": ["定价", "缓存读", "降价", "每百万", "$/M", "token 价", "分时"]}
+]
