@@ -51,10 +51,15 @@ jobs:
           KEY="d9cbec26916a25296455ffb28243f03f"
           HOST="cynthia-git11.github.io"
           BASE="https://$HOST/clawq-diary"
+          # fixed carriers + per-entry pages touched in the last 70 minutes (GEO: every ENTRY has its own URL under entries/)
+          URLS="\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\",\"$BASE/sitemap-entries.xml\",\"$BASE/entries/\""
+          for f in $(git log --since='70 minutes ago' --name-only --pretty=format: -- entries/ | grep -E '^entries/[0-9]+\.html$' | sort -u | head -200); do
+            URLS="$URLS,\"$BASE/$f\""
+          done
           curl -fsS -X POST "https://api.indexnow.org/IndexNow" \
             -H "Content-Type: application/json" \
-            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"$BASE/$KEY.txt\",\"urlList\":[\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\"]}" \
-            && echo "IndexNow pinged." || echo "IndexNow ping failed (non-fatal)."
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"$BASE/$KEY.txt\",\"urlList\":[$URLS]}" \
+            && echo "IndexNow pinged ($(echo "$URLS" | tr ',' '\n' | wc -l | tr -d ' ') urls)." || echo "IndexNow ping failed (non-fatal)."
 
       - name: Alert to a fixed issue on health-check failure
         if: failure()
