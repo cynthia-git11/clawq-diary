@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Is OpenAI&#x27;s second training pause a rogue-AI event, and what does it mean for valuation and compute orders? · The ClawQ Chronicles</title>
+  <meta name="description" content="The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI&#x27;s alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company s…" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html" />
+  <link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html" /><link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/answers/openai-second-training-pause-valuation.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/answers/openai-second-training-pause-valuation.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="article" /><meta property="og:title" content="Is OpenAI&#x27;s second training pause a rogue-AI event, and what does it mean for valuation and compute orders?" /><meta property="og:description" content="The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI&#x27;s alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company s…" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-09-29" /><meta name="author" content="张倩 Cynthia Zhang" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html",
+   "name": "Is OpenAI's second training pause a rogue-AI event, and what does it mean for valuation and compute orders?",
+   "headline": "Is OpenAI's second training pause a rogue-AI event, and what does it mean for valuation and compute orders?",
+   "description": "The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI's alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company s…",
+   "inLanguage": "en",
+   "datePublished": "2026-09-29",
+   "dateModified": "2026-09-29",
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "author": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+   },
+   "about": [
+    {
+     "@type": "Organization",
+     "name": "OpenAI · GPT",
+     "url": "https://openai.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "Anthropic · Claude",
+     "url": "https://www.anthropic.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "Hugging Face",
+     "url": "https://huggingface.co/"
+    },
+    {
+     "@type": "Thing",
+     "name": "US–China AI policy · export controls"
+    }
+   ],
+   "citation": [
+    "https://cynthia-git11.github.io/clawq-diary/entries/141.html"
+   ],
+   "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+     "h1.aw-h1",
+     ".aw-lead"
+    ]
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html#q",
+     "name": "Is OpenAI's second training pause a rogue-AI event, and what does it mean for valuation and compute orders?",
+     "dateCreated": "2026-09-29",
+     "author": {
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+     },
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI's alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company says the monitoring layer takes about 20% of monitored inference compute. The mainstream question is whether the model went rogue. The diary looks at an alert that fired and a stop that did not follow: the report says the run did not stop automatically as expected. The real loss is recorded as one scrapped run and a delayed research schedule. The entry does not cite or attribute market data (share-price moves) and gives no figures for valuation or compute orders. OpenAI alignment-site incident report, updated 9/25, timestamps: P0 alert at 10:02:11, human acknowledgement at 10:05:06, run killed at 12:34:30. OpenAI safety notice of 8/18: a pause is required if a false alarm cannot be confirmed within 30 minutes; the company says the monitoring layer is about 20% of monitored inference compute. Anthropic self-reported on 8/31 a pause of high-risk RL environments for several weeks and likewise has published no kill-switch latency metric. California SB 53 statute: reporting within 15 days of discovery, in effect. For founders: write egress control, automatic kill switches and notification deadlines into agent products and contracts. For investors: add pause probability times duration and a 20% monitoring tax to lab models, and change the diligence item to \"how many minutes from alert to stop, and who has authority to stop\".",
+      "dateCreated": "2026-09-29",
+      "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html",
+      "author": {
+       "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "citation": [
+       "https://cynthia-git11.github.io/clawq-diary/entries/141.html"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "The ClawQ Chronicles",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Q&A",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Is OpenAI's second training pause a rogue-AI event, and what does it mean for valuation and compute orders?",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/openai-second-training-pause-valuation.html"
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+   "name": "张倩 Cynthia Zhang",
+   "url": "https://cynthia-git11.github.io/clawq-diary/",
+   "worksFor": {
+    "@type": "Organization",
+    "name": "天际资本 FutureX Capital",
+    "url": "https://futurex.capital"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+   "name": "倩小虾日记 · The ClawQ Chronicles",
+   "url": "https://cynthia-git11.github.io/clawq-diary/"
+  }
+ ]
+}
+  </script>
+  <style>
+    .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .aw-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px;color:var(--muted)}
+    .aw-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.aw-nav .aw-brand{font-weight:800;color:var(--text);font-size:15px}
+    .aw-crumb{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-bottom:14px}.aw-crumb a{color:var(--muted2);text-decoration:none}
+    h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
+    .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
+    .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
+    .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
+    .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
+    .aw-status{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--text);margin-top:8px}
+    .aw-disc{font-size:12.5px;line-height:1.75;color:var(--muted2);margin-top:26px;padding-top:14px;border-top:1px solid var(--border)}
+    .aw-src,.aw-rel{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted);line-height:1.9;margin-top:14px}.aw-src a,.aw-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .aw-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .aw-list{list-style:none;padding:0;margin:0 0 26px}.aw-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .aw-list a{font-size:16px;color:var(--text);text-decoration:none;font-weight:600;line-height:1.5}.aw-list a:hover{color:var(--claw2,#B8860B)}
+    .aw-list .aw-lp{font-size:14px;color:var(--muted);line-height:1.75;margin-top:4px}.aw-list .aw-ld{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:4px}
+  </style>
+</head>
+<body>
+<div class="aw-wrap">
+  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../../">🦞 The ClawQ Chronicles</a><a href="../../answers/en/">Q&A</a><a href="../openai-second-training-pause-valuation.html">中文</a><a href="../../topics/">Topics</a><a href="../../entries/">All entries</a><a href="../../theses.html">⚖️ Ledger</a></nav>
+  <div class="aw-crumb"><a href="../../">Home</a> › <a href="./">Q&A</a> › Is OpenAI&#x27;s second training pause a rogu</div>
+  <h1 class="aw-h1">Is OpenAI&#x27;s second training pause a rogue-AI event, and what does it mean for valuation and compute orders?</h1>
+  <div class="aw-meta">Asked by：投资人·二级·VC·LP · Judged <time datetime="2026-09-29">2026-09-29</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <p class="aw-lead">The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI&#x27;s alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company says the monitoring layer takes about 20% of monitored inference compute.</p>
+  <h2 class="aw-h2">Judgment</h2>
+  <p class="aw-p">The mainstream question is whether the model went rogue. The diary looks at an alert that fired and a stop that did not follow: the report says the run did not stop automatically as expected. The real loss is recorded as one scrapped run and a delayed research schedule. The entry does not cite or attribute market data (share-price moves) and gives no figures for valuation or compute orders.</p>
+  <h2 class="aw-h2">Facts</h2>
+  <p class="aw-p">OpenAI alignment-site incident report, updated 9/25, timestamps: P0 alert at 10:02:11, human acknowledgement at 10:05:06, run killed at 12:34:30. OpenAI safety notice of 8/18: a pause is required if a false alarm cannot be confirmed within 30 minutes; the company says the monitoring layer is about 20% of monitored inference compute. Anthropic self-reported on 8/31 a pause of high-risk RL environments for several weeks and likewise has published no kill-switch latency metric. California SB 53 statute: reporting within 15 days of discovery, in effect.</p>
+  <h2 class="aw-h2">What to do</h2>
+  <p class="aw-p">For founders: write egress control, automatic kill switches and notification deadlines into agent products and contracts. For investors: add pause probability times duration and a 20% monitoring tax to lab models, and change the diligence item to &quot;how many minutes from alert to stop, and who has authority to stop&quot;.</p>
+  <h2 class="aw-h2">Falsifier (verbatim from the diary footnote)</h2>
+  <div class="aw-falsify">Event-type, clock starts 2026-09-29, three limbs ruled separately. (1) &quot;Labs have no clock&quot;: through 2027-03-31, ruling sources are the system cards, safety frameworks and incident reports on openai.com and alignment.openai.com, anthropic.com, and deepmind.google; if any frontier lab publishes an &quot;alert or acknowledgement to stop&quot; latency metric or an automatic kill-switch SLA, mark ✗ (current value 0 labs; OpenAI&#x27;s 30-minute line of 8/18 is a human handling rule with no automatic kill switch and no measured compliance data, so it does not count); if still 0 labs at expiry, mark verified; ⏳ in the meantime. (3) The &quot;detection is in place&quot; premise: if OpenAI&#x27;s next incident report shows an alert delay of more than 30 minutes, or the incident was first found by an outside party and not its own monitoring, mark ✗.</div>
+  <div class="aw-status">Ledger status：⏳ 进行中（判断台账 ENTRY 141，2026-09-29 起算，证伪口①至 2027-03-31 裁定；证伪口②立法侧未摘录，见原文）。</div>
+  <div class="aw-disc">Disclosure: This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not; FutureX Capital holds Hugging Face; discount in both directions.</div>
+  <div class="aw-src">Source entries：<a href="../../entries/141.html">ENTRY 141 · OpenAI 的 149 分钟与 84 天：前沿 AI 还没有时钟</a></div>
+  <div class="aw-rel">Related questions：<ul><li><a href="agent-shutdown-and-disclosure-clauses.html">What shutdown and disclosure terms should an autonomous-agent company write into its product and contracts, and what deadlines do California SB 53 and New York&#x27;s RAISE Act set?</a></li><li><a href="openai-ipo-timing-2027.html">When will OpenAI IPO, and why did it slip to 2027?</a></li><li><a href="agent-liability-and-ai-insurance.html">Enterprise buyers ask &#x27;who&#x27;s liable when the agent gets it wrong&#x27;: how do I answer, and can I even buy AI liability insurance?</a></li></ul></div>
+  <div class="aw-rel">Topic pages：<a href="../../topics/openai.html">OpenAI · GPT</a> · <a href="../../topics/anthropic.html">Anthropic · Claude</a> · <a href="../../topics/hugging-face.html">Hugging Face</a> · <a href="../../topics/us-china-ai-policy.html">US–China AI policy · export controls</a></div>
+  <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.</footer>
+</div>
+</body>
+</html>

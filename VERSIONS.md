@@ -9,7 +9,7 @@
 **日期**：2026-09-29
 **回滚**：`git checkout pre-geo-20260929 -- .`（只回滚 GEO 层）；`git checkout pre-e140-141 -- .`（连同 ENTRY 140、141 一起回滚）
 
-**核心**：作者指令「疯狂 GEO 给投资者和 AI 创始人们」。审计结论是内容有、收录没有：Google 只收录 1 页旧快照。本轮给每个判断一个能被引用的 URL：单篇页面 141、主题页 19、问答页 40 中文加 40 英文，全部由确定性脚本从 `index.html`、`theses.html`、`data/*.json` 生成。
+**核心**：作者指令「疯狂 GEO 给投资者和 AI 创始人们」。审计结论是内容有、收录没有：Google 只收录 1 页旧快照。本轮给每个判断一个能被引用的 URL：单篇页面 141、主题页 19、问答页 44 中文加 44 英文，全部由确定性脚本从 `index.html`、`theses.html`、`data/*.json` 生成。
 
 **改动**：
 - `scripts/gen-entry-pages.py`：单页 h1、`<time>`、真实 dateModified、主题 keywords 与 about、尾注标签自动归类、相关主题与问答互链；同时把 atom 的 alternate 链接与台账链接改指单页

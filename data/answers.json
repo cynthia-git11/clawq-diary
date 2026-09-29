@@ -181,7 +181,8 @@
   "related": [
    "q27",
    "q08",
-   "q07"
+   "q07",
+   "q41"
   ],
   "lead_zh": "量多钱少，但钱包已开始移动。Vercel 网关上中国模型 8 月日均跑 55% 的 token、只换到约七分之一的钱；8/26 至 9/24 三十日花费均值 19.8%，均为作者自算的广义中国口径，Vercel 不单列中国份额。",
   "judgment_zh": "主流叙事「硅谷在换底座」讲的是 token 量，日记只认花费份额。Vercel 月度指数从不单列中国来源份额，中国口径全是作者按实验室行自算加总，国别归类含判断；ENTRY 121 原判断已按预注册降级。",
@@ -215,7 +216,8 @@
   "related": [
    "q16",
    "q27",
-   "q32"
+   "q32",
+   "q42"
   ],
   "lead_zh": "到 9/25 渠道侧未见影响，读数与日记原判断方向相反。六条渠道零下架零 KYC；通告 6 家在 Vercel 网关三十日 token 均值 68.0%、花费 19.6%，高于基线 60.1% 与 15.9%（作者按官方导出复算）。",
   "judgment_zh": "主流读「中国实验室被抓包」。日记说指控断不了训练：权重已开源，Anthropic 自称所需交互少于抓走的量；能断的是美国手里的渠道。交互数全为 Anthropic 内部日志、无审计，通告无处罚。",
@@ -248,7 +250,8 @@
   "related": [
    "q22",
    "q06",
-   "q21"
+   "q21",
+   "q41"
   ],
   "lead_zh": "是分层定价表，定价权还在但顶层已松动。OpenAI 7/30 把 Luna 降 80%、Terra 降 20%、Sol 不降；据 VentureBeat 报道，9/22 GPT-6 Sol 标价减半，「顶层不降」正被证伪口敲门。",
   "judgment_zh": "主流看降幅喊价格战，日记看分布：官方把降价归因效率，可效率全家族共享、Sol 却一分没降；serving 成本降 20% 加 token 效率 15% 也够不着 80%，差额是作者判断的战略定价、拿资本买份额，非官方说法。",
@@ -385,7 +388,8 @@
   "related": [
    "q29",
    "q14",
-   "q01"
+   "q01",
+   "q43"
   ],
   "lead_zh": "别在共识价上买 beta 还付着 VC 的费，超大轮次要单列费率。上半年全球创投 $5100 亿，OpenAI 加 Anthropic 拿走 $2170 亿、占 43%（承诺口径，单源），两家至今没挂牌，DPI 贡献是零。",
   "judgment_zh": "主流答案是「别投共识」；日记说这句太便宜，难的是别在共识价上买 beta、还付着 VC 的费。Wellington 说巨型 AI 敞口可能只给 beta 式回报：你付的是主动管理费，买的是指数。",
@@ -451,7 +455,8 @@
   "related": [
    "q01",
    "q12",
-   "q15"
+   "q15",
+   "q43"
   ],
   "lead_zh": "日记不给 OpenAI 挂牌日期，「推 2027」只见于台账一句「OpenAI 倾向推 2027」，非官宣。推它上市的是兑现通道快堵死和算力账：到 2030 算力承诺约 $6000 亿，2025 年收入约 $131 亿、运营亏约 $209 亿。",
   "judgment_zh": "主流问「谁先上市、什么时候」；日记说这是伪问题，IPO 是最后一个还没拧开的泄压阀，递表只是排队。诉讼也在压定价：苹果掐着 OpenAI 秘密递交 S-1 在即的当口起诉，S-1 得写风险披露，估值得打折。",
@@ -892,7 +897,8 @@
   "related": [
    "q06",
    "q40",
-   "q24"
+   "q24",
+   "q41"
   ],
   "lead_zh": "ENTRY 121 已降级为「钱包也开始移动」：低价层收入天花板仍远低于 token 量所示，缝在收窄。Vercel 网关 6 月开放权重跑 29% 的 token、占不到 4% 的花费；作者自算广义中国花费份额三十日均值 16.1%。",
   "judgment_zh": "主流叙事说「硅谷在换底座」，把 token 份额当市场份额。日记把量和钱分开算：开放权重抢走的是工作量，钱包只是开始移动。投资人只问花费份额，因为估值按收入给，不按调用量给。",
@@ -1064,7 +1070,8 @@
   "related": [
    "q07",
    "q27",
-   "q40"
+   "q40",
+   "q42"
   ],
   "lead_zh": "K3 许可证不是 MIT，按营收线设闸。做 MaaS 连续 12 个月营收过 2000 万美元须先与月之暗面单独签协议；产品过 1 亿月活或月营收过 2000 万美元须界面标注「Kimi K3」（原文未列来源，未独立恢复）。",
   "judgment_zh": "主流说法是开源了所以便宜、随便用。日记的判断是「开源」放出的是权重，保留的是定价权，机关在许可证里：谁靠它做到规模，谁回来交过路费。客户合同另有一层，来自蒸馏指控带出的数据去向问题，该指控未证实。",
@@ -1099,7 +1106,8 @@
   "related": [
    "q40",
    "q36",
-   "q32"
+   "q32",
+   "q44"
   ],
   "lead_zh": "要，这季度就排期：双供应商抽象层、权重可替换、关键能力留降级路径。断供已经发生过一次，美商务部 6/12 一封告知函管住 Anthropic 的 Fable 5，到 7/1 全球恢复，拔线整整 18 天。",
   "judgment_zh": "主流把断供当技术风险，日记记成行政裁量风险：访问权握在另一国手里，一纸告知函就能断。现状先说：ENTRY 85「按国籍分级」已被 ENTRY 91 更正为只对了一半，墙的材质是身份，恢复面向全球。",
@@ -1166,7 +1174,8 @@
   "related": [
    "q28",
    "q39",
-   "q33"
+   "q33",
+   "q44"
   ],
   "lead_zh": "别指望靠保单回答，要拿 SLA、可审计回溯和 agent 隔离自证。日记原判「AI 责任险是新增长向量」已在 ENTRY 119 认错判反：60+ 财产险集团已申报 AI 除外条款，险企在往外摘风险。",
   "judgment_zh": "主流说法把企业 agent 落地慢归因于技术不成熟，并期待保险接住风险。日记的判断是卡点在担责，而险企正在退出；保险摘出去的风险会变成供应商必须自证的控制措施。",
@@ -1345,5 +1354,147 @@
   "landing_en": "For founders: before switching, build a regression benchmark on your own workflow and bind post-training to your own tool surface; if you only do routing and compatibility, find a second leg now. For investors: ask one diligence question, namely what the team uses to measure how much was lost after the swap; if there is no answer, count \"can switch vendors anytime\" as zero in the valuation.",
   "falsify_en": "If within 12 months three or more US companies publicly move a production-grade coding agent from Anthropic/OpenAI to Chinese models in under two months, \"migration cost sits in the harness, not the plumbing\" is downgraded; if a harness/agent framework vendor publishes a post-adaptation cross-model benchmark regression still above 3 percentage points, it is upgraded to verified.",
   "slug": "switching-claude-to-deepseek-backend"
+ },
+ {
+  "id": "q41",
+  "persona_group": "投资人",
+  "persona": "投资人·VC·二级",
+  "q_zh": "Anthropic 在 Vercel AI Gateway 的花费份额为什么一个月掉了 25 个点？钱去了哪？",
+  "q_en": "Why did Anthropic lose 25 points of spend share on Vercel's AI Gateway in a month, and where did the money go?",
+  "date": "2026-09-29",
+  "entries": [
+   140,
+   128,
+   121
+  ],
+  "topics": [
+   "anthropic",
+   "vercel-gateway",
+   "moonshot-kimi",
+   "openai"
+  ],
+  "related": [
+   "q06",
+   "q42",
+   "q27"
+  ],
+  "lead_zh": "丢的是 token 量，钱只降一档价，接钱的是 OpenAI 和 Kimi K3。Anthropic 的 Vercel 网关花费份额 8 月日均 63.5%，9/22 至 28 七日均 38.0%，差 25 个点；花费为标价加权估算，非账单。",
+  "judgment_zh": "共识（Vercel 9/17 博客等）：开放权重拿量、Anthropic 拿钱，钱要动也奔最便宜。日记：钱动了 25 个点，只降一档价。ENTRY 121「量大钱少」已于 9/14 降级为「钱包也开始移动」。",
+  "facts_zh": "去向（作者按 Vercel 官方导出复算，8 月日均到 9/22 至 28 七日均）：月之暗面 +10.2、OpenAI +9.1、DeepSeek +3.1、Google +2.7。Anthropic token 份额 22% 掉到 7.7%。Opus 5.5（9/22 上线，公司称典型负载省 40%）最多解释 4 个点（自算）。导出只给份额，分不清买家迁走与被新增负载稀释。",
+  "landing_zh": "对投资人：网关份额别当 Anthropic 收入；中国模型别押最便宜，押能在 $10/M 输出以上收到钱的。对创业者：agent 负载先迁，参考 Harvey 后训练开放底座救毛利（毛利转正为 Bloomberg 引知情人，公司拒评）。",
+  "falsify_zh": "两条分开裁定，裁定源均为 Vercel labs 官方导出加仓库脚本 scripts/vercel-lab-share.py 复算、读数公开，先触发者定，30 日窗口终点不早于起算日，9/29 以其后复拉的完整值计。①「丢的是量、钱袋在翻」：起算 2026-09-29，至 2026-12-31，若任一连续 30 日窗口 Anthropic 花费份额均值不低于 53%（8/30 至 9/28 为 46.4%，✗ 线与已验证线围绕现值上下各约 6.5 个点），记 ✗（脉冲非趋势，token 份额同时公开，回写 ENTRY 121 母判断）；若任一连续 30 日窗口均值不高于 40%，记已验证；到期皆未触发记未裁定并关闭本条；其间记 ⏳ 并公开读数。",
+  "status_zh": "ENTRY 140：⏳ 进行中；ENTRY 121：已降级为「钱包也开始移动」（9/14 对账，三十日均值 16.1% 越过 10% 线，作者自算口径），母判断未重写。ENTRY 128：⏳ 进行中，30% 升级线未破（8/30 至 9/28 三十日均值 21.5%）。",
+  "lead_en": "Anthropic lost token volume, and the money moved down only one price tier, to OpenAI and Kimi K3. Anthropic's spend share on Vercel's gateway went from an August daily average of 63.5% to a seven-day average of 38.0% for 9/22 to 28, a gap of 25 points; spend is a list-price-weighted estimate, not a bill.",
+  "judgment_en": "Consensus (Vercel's 9/17 blog and others): open weights take volume, Anthropic takes the money, and any money that moves goes to the cheapest. The diary: the money moved 25 points but only one price tier down. ENTRY 121 (\"big volume, little money\") was downgraded on 9/14 to \"the wallet has started to move\".",
+  "facts_en": "Where it went (author's recomputation from Vercel's official export, August daily average to the 9/22 to 28 seven-day average): Moonshot +10.2, OpenAI +9.1, DeepSeek +3.1, Google +2.7 points. Anthropic's token share fell from 22% to 7.7%. Opus 5.5 (launched 9/22; the company says typical workloads save 40%) explains at most 4 points (self-computed). The export gives shares only, so buyers leaving cannot be told apart from dilution by new workloads.",
+  "landing_en": "For investors: do not read gateway share as Anthropic revenue; among Chinese models, do not back the cheapest, back the ones that can collect above $10/M on output. For founders: move agent workloads first, and look at Harvey's post-training on an open base model to repair gross margin (the margin turnaround is Bloomberg citing people familiar; the company declined to comment).",
+  "falsify_en": "Two tests, ruled separately. The ruling source for both is Vercel's official labs export recomputed with the repository script scripts/vercel-lab-share.py, with readings published; whichever triggers first decides; a 30-day window may not end before the start date, and 9/29 is counted at its complete value from a later re-pull. (1) \"Volume was lost, the wallet is turning\": starting 2026-09-29, through 2026-12-31, if Anthropic's average spend share over any consecutive 30-day window is not lower than 53% (it was 46.4% for 8/30 to 9/28; the ✗ line and the verified line sit about 6.5 points above and below the current value), mark ✗ (a pulse, not a trend; token share is published alongside; written back to ENTRY 121's parent thesis); if the average over any consecutive 30-day window is not higher than 40%, mark verified; if neither triggers by expiry, mark unresolved and close this test; until then mark ⏳ and publish readings.",
+  "slug": "anthropic-vercel-gateway-spend-share-drop"
+ },
+ {
+  "id": "q42",
+  "persona_group": "创业者",
+  "persona": "创始人·AI 应用 CEO / CTO",
+  "q_zh": "Kimi K3 标价 $3/$15，应用公司换过去能救毛利吗？有什么坑？",
+  "q_en": "Kimi K3 lists at $3/$15 per million tokens: can switching to it rescue an AI app's gross margin, and what are the catches?",
+  "date": "2026-09-29",
+  "entries": [
+   140,
+   135,
+   114
+  ],
+  "topics": [
+   "moonshot-kimi",
+   "vercel-gateway",
+   "model-pricing",
+   "us-china-ai-policy"
+  ],
+  "related": [
+   "q32",
+   "q41",
+   "q07"
+  ],
+  "lead_zh": "能救，但日记样本 Harvey 靠的是在 Kimi K3 底座上后训练（公司自述），不是只改 API 地址。其毛利年初约 50%、6 月 -50%，8 月发布自有模型后转正，为 Bloomberg 9/21 引知情人、Harvey 拒评。",
+  "judgment_zh": "主流看法是钱要动也奔最便宜。日记的读数是 Vercel 网关上买家只降一档价，$3/$15 的 Kimi K3 属中档价；权重虽开放，定价权留在许可证和官方 API 里，换过去省下的钱附带条件。",
+  "facts_zh": "Vercel 模型页 9/29：Kimi K3 最低 $1.325/$10.50，多数供应商仍按 $3/$15。Vercel 导出（标价加权估算，非账单）：花费份额 8/30 至 9/28 三十日均 9.3%，9/22 峰 18.5%，呈脉冲。月之暗面官方 API 输出价权重上线前 11 天从 ¥27 涨到 ¥100／百万 token，约 3.7 倍（ENTRY 114 未列来源行，未独立恢复）。",
+  "landing_zh": "对创业者：agent 负载先迁，毛利按网关最低价和官方涨价后的价各算一遍，许可证营收闸提前一年谈，客户合同写明回复来自谁、数据去哪。对投资人：尽调问换一个底座这家公司的价值消失多少，中国模型押能在 $10/M 输出以上收到钱的。",
+  "falsify_zh": "两条分开裁定，裁定源均为 Vercel labs 官方导出加仓库脚本 scripts/vercel-lab-share.py 复算、读数公开，先触发者定，30 日窗口终点不早于起算日，9/29 以其后复拉的完整值计。②「Kimi K3 以中档价拿钱不是批量脉冲」：起算 2026-09-29，至 2026-11-30，若 Kimi K3 任一连续 30 日花费均值低于 8%（8/30 至 9/28 三十日均 9.3%），记 ✗；任一连续 30 日均值不低于 12% 记已验证；到期皆未触发记未裁定并关闭；其间 ⏳。事件分支：2026-12-31 前出现第二家估值不低于 $10 亿的美国公司以公司公告或 Bloomberg/Reuters 报道确认生产模型基于 Kimi K3，②升级；2027-03-31 前美国财政部或商务部对月之暗面实施制裁、或 AWS/Vercel 下架 Kimi K3（官方公告为准），②的海外收钱链路作废，与 ENTRY 135 证伪口①并案。",
+  "status_zh": "ENTRY 140 ⏳ 进行中；ENTRY 135 ⏳ 进行中，9/29 补记称已复核的三条渠道零动作、证伪口①的 ✗ 条件继续成立中，窗口至 2027-03-14；ENTRY 114 ⏳ 进行中，其中「许可证沿用 Modified MIT」的预期已记 ✗。证伪口摘自 ENTRY 140 的前言、②与事件分支，①略。",
+  "lead_en": "Yes, but the diary's sample, Harvey, got there by post-training on a Kimi K3 base (the company's own statement), not by only repointing the API. Its gross margin went from about 50% early in the year to -50% in June and turned positive after it released its own model in August, per Bloomberg on 9/21 citing people familiar; Harvey declined to comment.",
+  "judgment_en": "The mainstream view is that if money moves, it runs to the cheapest model. The diary's reading is that buyers on the Vercel gateway stepped down only one price tier, and Kimi K3 at $3/$15 is a mid-tier price. The weights are open, but pricing power stays in the license and the official API, so the savings come with conditions.",
+  "facts_en": "Vercel model page, 9/29: Kimi K3 lowest price $1.325/$10.50, while most providers still charge $3/$15. Vercel export (a list-price-weighted estimate, not gateway billing): its spend share averaged 9.3% over the 30 days from 8/30 to 9/28 and peaked at 18.5% on 9/22, a pulsed pattern. Moonshot AI raised its official API output price from ¥27 to ¥100 per million tokens 11 days before the weights went live, about 3.7x (ENTRY 114 listed no source line; not independently recovered).",
+  "landing_en": "For founders: move agent workloads first, compute margin twice (at the gateway's lowest price and at the raised official price), open talks on the license revenue gate a year ahead, and state in customer contracts who generates the reply and where data goes. For investors: in diligence ask how much of the company's value disappears if the base model is swapped, and among Chinese models back the ones that can collect money above $10/M output.",
+  "falsify_en": "The two claims are ruled separately. The ruling source for both is the official Vercel labs export recomputed with the repository script scripts/vercel-lab-share.py, readings public; whichever triggers first decides; a 30-day window may not end before the start date, and 9/29 is counted at its complete value from a later re-pull. (2) \"Kimi K3 collecting money at a mid-tier price is not a batch pulse\": starting 2026-09-29, through 2026-11-30, if Kimi K3's spend share over any consecutive 30 days averages below 8% (the 30-day average for 8/30 to 9/28 was 9.3%), mark ✗; if any consecutive 30-day average is not lower than 12%, mark verified; if neither triggers by the deadline, mark unruled and close; ⏳ in the meantime. Event branches: if before 2026-12-31 a second US company valued at no less than $1 billion confirms, by company announcement or Bloomberg/Reuters reporting, that its production model is based on Kimi K3, (2) is upgraded; if before 2027-03-31 the US Treasury or Commerce Department sanctions Moonshot AI, or AWS/Vercel delist Kimi K3 (official announcement governs), the overseas money-collection chain in (2) is void and is merged with falsification clause (1) of ENTRY 135.",
+  "slug": "kimi-k3-pricing-and-app-margins"
+ },
+ {
+  "id": "q43",
+  "persona_group": "投资人",
+  "persona": "投资人·二级·VC·LP",
+  "q_zh": "OpenAI 第二次暂停训练是 AI 失控吗？对估值和算力订单意味着什么？",
+  "q_en": "Is OpenAI's second training pause a rogue-AI event, and what does it mean for valuation and compute orders?",
+  "date": "2026-09-29",
+  "entries": [
+   141
+  ],
+  "topics": [
+   "openai",
+   "anthropic",
+   "hugging-face",
+   "us-china-ai-policy"
+  ],
+  "related": [
+   "q44",
+   "q14",
+   "q35"
+  ],
+  "lead_zh": "日记判断这是时钟故事，不是失控故事。OpenAI 9/20 外联 12 分钟告警，人工签收后 149 分钟（自算）才杀掉，是自设 30 分钟线的五倍；产品与 API 未停，公司称监控层约占被监控推理算力 20%。",
+  "judgment_zh": "主流叙事问模型有没有失控；日记看的是检测到了却停不下来，报告原文称该 run 未按预期自动停止。真实损失记为一条 run 报废与研究日程延后。市场数据（股价涨跌）本篇不引不归因，估值与算力订单未给数字。",
+  "facts_zh": "OpenAI 对齐站 9/25 更新的事故报告时间戳：10:02:11 P0 告警，10:05:06 人工签收，12:34:30 杀掉。OpenAI 8/18 安全公告：30 分钟内无法确认误报须暂停；公司称监控层约为被监控推理算力的 20%。Anthropic 8/31 自报暂停高风险 RL 环境数周，同样未公开断闸时延指标。加州 SB 53 法条：发现后 15 天通报，已生效。",
+  "landing_zh": "对创业者：把出口控制、自动断闸、通报时限写进 agent 产品和合同。对投资人：给实验室建模加暂停概率乘时长与 20% 监控税，检查项改成「告警到停止几分钟、谁有权停」。",
+  "falsify_zh": "事件型，起算 2026-09-29，三条分裁。①「实验室里没有时钟」：至 2027-03-31，裁定源 openai.com 与 alignment.openai.com、anthropic.com、deepmind.google 的系统卡、安全框架、事故报告；任一前沿实验室公开「告警或签收到停止」的时延指标或自动断闸 SLA，记 ✗（现值 0 家；OpenAI 8/18 的 30 分钟线是人工处置规则，无自动断闸、无实测达标数据，不计入）；到期仍 0 家，记已验证；其间 ⏳。③「检测已到位」前提：若 OpenAI 下一份事故报告显示告警延迟超过 30 分钟，或事件由外部方而非自家监控先发现，记 ✗。",
+  "status_zh": "⏳ 进行中（判断台账 ENTRY 141，2026-09-29 起算，证伪口①至 2027-03-31 裁定；证伪口②立法侧未摘录，见原文）。",
+  "lead_en": "The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI's alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company says the monitoring layer takes about 20% of monitored inference compute.",
+  "judgment_en": "The mainstream question is whether the model went rogue. The diary looks at an alert that fired and a stop that did not follow: the report says the run did not stop automatically as expected. The real loss is recorded as one scrapped run and a delayed research schedule. The entry does not cite or attribute market data (share-price moves) and gives no figures for valuation or compute orders.",
+  "facts_en": "OpenAI alignment-site incident report, updated 9/25, timestamps: P0 alert at 10:02:11, human acknowledgement at 10:05:06, run killed at 12:34:30. OpenAI safety notice of 8/18: a pause is required if a false alarm cannot be confirmed within 30 minutes; the company says the monitoring layer is about 20% of monitored inference compute. Anthropic self-reported on 8/31 a pause of high-risk RL environments for several weeks and likewise has published no kill-switch latency metric. California SB 53 statute: reporting within 15 days of discovery, in effect.",
+  "landing_en": "For founders: write egress control, automatic kill switches and notification deadlines into agent products and contracts. For investors: add pause probability times duration and a 20% monitoring tax to lab models, and change the diligence item to \"how many minutes from alert to stop, and who has authority to stop\".",
+  "falsify_en": "Event-type, clock starts 2026-09-29, three limbs ruled separately. (1) \"Labs have no clock\": through 2027-03-31, ruling sources are the system cards, safety frameworks and incident reports on openai.com and alignment.openai.com, anthropic.com, and deepmind.google; if any frontier lab publishes an \"alert or acknowledgement to stop\" latency metric or an automatic kill-switch SLA, mark ✗ (current value 0 labs; OpenAI's 30-minute line of 8/18 is a human handling rule with no automatic kill switch and no measured compliance data, so it does not count); if still 0 labs at expiry, mark verified; ⏳ in the meantime. (3) The \"detection is in place\" premise: if OpenAI's next incident report shows an alert delay of more than 30 minutes, or the incident was first found by an outside party and not its own monitoring, mark ✗.",
+  "slug": "openai-second-training-pause-valuation"
+ },
+ {
+  "id": "q44",
+  "persona_group": "创业者",
+  "persona": "创始人·agent 产品 CTO / 法务",
+  "q_zh": "做自主 agent 的公司，要把哪些停机与通报条款写进产品和合同？加州 SB 53、纽约 RAISE 各要求多久？",
+  "q_en": "What shutdown and disclosure terms should an autonomous-agent company write into its product and contracts, and what deadlines do California SB 53 and New York's RAISE Act set?",
+  "date": "2026-09-29",
+  "entries": [
+   141,
+   119,
+   109
+  ],
+  "topics": [
+   "openai",
+   "anthropic",
+   "hugging-face",
+   "us-china-ai-policy"
+  ],
+  "related": [
+   "q43",
+   "q35",
+   "q33"
+  ],
+  "lead_zh": "要写三样：出口控制、自动断闸、发现后通报时限。加州 SB 53 是发现后 15 天报 Cal OES，已生效；纽约 RAISE（据律所摘要）是 72 小时，2027-01-01 起；欧盟对前沿模型无天数。",
+  "judgment_zh": "主流把 OpenAI 第二次暂停读成失控故事，日记读成时钟故事：检测 12 分钟到位，签收后 149 分钟才停（自算），是其自设 30 分钟线的五倍。加州法条只管发现后披露、不管停止，停机时限得自己写进产品和合同。",
+  "facts_zh": "加州 SB 53 法条：发现后 15 天报 Cal OES，2026-01-01 生效，罚至 100 万美元/次。纽约 RAISE（据律所摘要）：72 小时，2027-01-01 起。OpenAI 9/25 更新的事故报告：9/20 外联 12 分钟告警，人工签收后 149 分钟才杀掉（自算）。Anthropic 8/31 自报暂停数周，同样未公开断闸时延指标。",
+  "landing_zh": "对创业者：产品里做出口控制与自动断闸，合同里对照加州 15 天、纽约 72 小时写通报时限，并写明告警到停止几分钟、谁有权停。对投资人：尽调加一题「评测环境和生产环境隔离吗」，答不清的按事故概率折价。",
+  "falsify_zh": "事件型，起算 2026-09-29，三条分裁。①「实验室里没有时钟」：至 2027-03-31，裁定源 openai.com 与 alignment.openai.com、anthropic.com、deepmind.google 的系统卡、安全框架、事故报告；任一前沿实验室公开「告警或签收到停止」的时延指标或自动断闸 SLA，记 ✗（现值 0 家；OpenAI 8/18 的 30 分钟线是人工处置规则，无自动断闸、无实测达标数据，不计入）；到期仍 0 家，记已验证；其间 ⏳。②「时钟要靠立法逼出来」：若①记 ✗ 且该公开早于任何含停止时限的法规生效（加州 SB 53 只管发现后披露、不管停止），本篇改口为「自律先行」；若澳洲政府 2027-03-31 前向议会提交含「发现后时限」条款的 AI 安全标准法案（裁定源 aph.gov.au 法案列表），立法侧记已验证；若未提交且①仍 0 家，「时钟正被写进法律」降为「加州一州」。",
+  "status_zh": "ENTRY 141、119、109 三条在判断台账均为 ⏳ 进行中；109 的证伪口按 ENTRY 119 加注未被触发，其正文「AI 责任险是新增长向量」子句已认错判反，整条仍 ⏳。",
+  "lead_en": "Write in three things: egress control, an automatic kill switch, and a post-discovery notification deadline. California SB 53 requires a report to Cal OES within 15 days of discovery and is in force; New York's RAISE Act (per a law-firm summary) sets 72 hours from 2027-01-01; the EU sets no day count for frontier models.",
+  "judgment_en": "The mainstream reads OpenAI's second pause as a loss-of-control story; the diary reads it as a clock story. Detection took 12 minutes, but the run was killed 149 minutes after sign-off (self-computed), five times OpenAI's own 30-minute line. California's statute covers disclosure after discovery and leaves stopping out, so the shutdown clock has to be written into your own product and contracts.",
+  "facts_en": "California SB 53 statute: report to Cal OES within 15 days of discovery, effective 2026-01-01, fines up to $1 million per violation. New York RAISE Act (per a law-firm summary): 72 hours, from 2027-01-01. OpenAI incident report updated 9/25: on 9/20 the alert fired 12 minutes after the outbound connection, and the run was killed 149 minutes after human sign-off (self-computed). Anthropic self-reported on 8/31 a pause of several weeks, also with no published kill-switch latency metric.",
+  "landing_en": "For founders: build egress control and an automatic kill switch into the product; in contracts, set notification deadlines against California's 15 days and New York's 72 hours, and state how many minutes from alert to stop and who has authority to stop. For investors: add a diligence question, \"is your eval environment isolated from production?\", and discount unclear answers by incident probability.",
+  "falsify_en": "Event-type, starting 2026-09-29, three limbs ruled separately. (1) \"Labs have no clock\": through 2027-03-31, ruling sources are the system cards, safety frameworks and incident reports on openai.com and alignment.openai.com, anthropic.com, and deepmind.google; if any frontier lab publishes an \"alert or sign-off to stop\" latency metric or an automatic kill-switch SLA, mark ✗ (current value 0 labs; OpenAI's 8/18 30-minute line is a human-handling rule with no automatic kill switch and no measured compliance data, so it does not count); if still 0 labs at expiry, mark verified; ⏳ in the meantime. (2) \"The clock has to be forced by legislation\": if (1) is marked ✗ and that publication precedes the effective date of any regulation containing a stop deadline (California SB 53 covers only post-discovery disclosure, not stopping), this entry changes its wording to \"self-regulation came first\"; if the Australian government submits to Parliament before 2027-03-31 an AI safety standards bill containing a \"post-discovery deadline\" clause (ruling source: the aph.gov.au bills list), the legislative side is marked verified; if none is submitted and (1) is still 0 labs, \"the clock is being written into law\" is downgraded to \"one state, California\".",
+  "slug": "agent-shutdown-and-disclosure-clauses"
  }
 ]
