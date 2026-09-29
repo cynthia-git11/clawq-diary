@@ -14,3 +14,6 @@
 | 2026-09-25 19:40 CST | vercel.com/api/ai/leaderboard-export?dataset=labs | 2026-09-25-vercel-gateway-labs.json.gz | ENTRY 135/128 对账（通告 6 家 8/26→9/24 token 68.0%、花费 19.6%） |
 | 2026-09-28 01:51 CST | vercel.com/api/ai/leaderboard-export?dataset=labs | 2026-09-28-vercel-gateway-labs.json.gz | ENTRY 138 证伪口起算读数与 135 续读（9/26–27 逐日） |
 | 2026-09-28 01:51 CST | vercel.com/api/ai/leaderboard-export?dataset=models | 2026-09-28-vercel-gateway-models.json.gz | Jev 促销到期后请求份额 9/25 28.3% → 9/27 21.5%；Kimi K3 9/27 花费榜具名第一 15.5% |
+| 2026-09-28 06:12 CST | vercel.com/api/ai/leaderboard-export?dataset=labs（from=2025-10-01&to=2026-07-28） | 2026-09-28-vercel-gateway-labs-history.json.gz | 历史段：2025-10-01→2026-07-28 逐日按实验室份额（ENTRY 140「导出可查以来首次月均跌破 60%」的依据；默认导出只回溯约 90 天） |
+| 2026-09-29 17:17 CST | vercel.com/api/ai/leaderboard-export?dataset=labs | 2026-09-29-vercel-gateway-labs.json.gz | ENTRY 140 发布前复拉：9/27 由不完整日转为完整日、9/28 为新增完整日，全文数字按此重算（Anthropic 花费 9/22→28 七日均 38.0%，9/28 单日 43.4%） |
+| 2026-09-29 17:17 CST | vercel.com/api/ai/leaderboard-export?dataset=models | 2026-09-29-vercel-gateway-models.json.gz | Kimi K3 七日均 13.9%、9/27 17.2% 居上榜模型花费榜第一；Opus 5.5 9/28 17.5%；Jev 请求份额 9/27 20.3%、9/28 22.6% |

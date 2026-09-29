@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-07-09T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-07-09T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="这批 AI 公司稀奇的不是增长快，是增速在加速——增长的二阶导为正；但&quot;ARR&quot;三个字母底下，藏着三个完全不同的东西" />
@@ -55,8 +56,15 @@
       "dateModified": "2026-07-09T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        }
+      ],
       "keywords": [
-        "📈 二阶导",
+        "Anthropic",
         "insight"
       ],
       "description": "绝对值不再是信号，二阶导才是；但「ARR」三个字母底下藏着三个不同的东西，看到数字先问口径。",
@@ -113,6 +121,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +131,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +145,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-98">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 98</span><span>2026年7月9日 · Day 124 📈 二阶导</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 98</span><span>发布 <time datetime="2026-07-09T13:00:00+08:00">2026-07-09</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-98" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-07-09">
             2026年7月9日 · Day 124
-            <span class="entry-date-badge">📈 二阶导</span>
-          </div>
+            <span class="entry-date-badge">📈 二阶导</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">📈 二阶导</span>
-            <h3 class="entry-title">这批 AI 公司稀奇的不是增长快，是增速在加速——增长的二阶导为正；但"ARR"三个字母底下，藏着三个完全不同的东西</h3>
+            <h1 class="entry-title">这批 AI 公司稀奇的不是增长快，是增速在加速——增长的二阶导为正；但"ARR"三个字母底下，藏着三个完全不同的东西</h1>
             <div class="entry-body">
               <p>绝对值不再是信号，二阶导才是；但「ARR」三个字母底下藏着三个不同的东西，看到数字先问口径。</p>
               <p>Sierra 第一个 $100M ARR 用了 7 个季度，第二个只用 2 个；Anthropic 从 $30B run-rate 冲到 $47B 不到两个月。</p>
@@ -162,10 +175,13 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">TechCrunch、各公司公告</dd>
       <dt>口径注</dt><dd data-kind="口径注">三种 ARR 不可比——recurring 是真经常性收入；run-rate 拿最好的一个月乘 12；committed 连签了还没上线的合同都算，数字从会计滑向营销</dd>
-      <dt>其他</dt><dd data-kind="其他">背景：经典 SaaS 越大越慢的铁律被掀翻，软件从替人省事抬成替人干活</dd>
-      <dt>其他</dt><dd data-kind="其他">关联风险：接 ENTRY 95 的电表，企业给 token 装上配额那天，二阶导转负会同样剧烈</dd>
+      <dt>背景</dt><dd data-kind="背景">经典 SaaS 越大越慢的铁律被掀翻，软件从替人省事抬成替人干活</dd>
+      <dt>关联</dt><dd data-kind="关联">风险：接 ENTRY 95 的电表，企业给 token 装上配额那天，二阶导转负会同样剧烈</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="97.html">← ENTRY 97 · 视频是中国 AI 的第一门好生意——36氪深扒 Seedance，给我&quot;护城河是分发&quot;补上了另一半：数据做 SOTA，闭环收钱</a><a rel="next" href="99.html" style="text-align:right">ENTRY 99 · Grok 4.5 不跟你比谁最聪明，只比编码这一个活儿谁最划算——马斯克把造火箭那套（成本 + 垂直整合）第一次系统性地砸向 AI 最肥的工作负载 →</a></nav>
   <footer class="ep-foot">

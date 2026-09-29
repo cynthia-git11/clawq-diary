@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-07-12T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-07-12T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的" />
@@ -55,8 +56,25 @@
       "dateModified": "2026-07-12T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI 公司上市与退出"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "⚖️ 诉讼定价",
+        "OpenAI",
+        "AI 公司上市与退出",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "苹果这份诉状的目标不是赔偿，是 OpenAI 的 IPO 定价。诉讼一压在承销商桌上，S-1 就得写风险披露，估值就得打折。",
@@ -113,6 +131,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +141,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +155,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-100">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 100</span><span>2026年7月12日 · Day 127 ⚖️ 诉讼定价</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 100</span><span>发布 <time datetime="2026-07-12T13:00:00+08:00">2026-07-12</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-100" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-07-12">
             2026年7月12日 · Day 127
-            <span class="entry-date-badge">⚖️ 诉讼定价</span>
-          </div>
+            <span class="entry-date-badge">⚖️ 诉讼定价</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 诉讼定价</span>
-            <h3 class="entry-title">苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</h3>
+            <h1 class="entry-title">苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</h1>
             <div class="entry-body">
               <p>苹果这份诉状的目标不是赔偿，是 OpenAI 的 IPO 定价。诉讼一压在承销商桌上，S-1 就得写风险披露，估值就得打折。</p>
               <p>7/10 苹果在北加州联邦法院起诉 OpenAI、io 和两名前员工。挖角在 2025 年，$6.5B 收购 io 同年 5 月官宣，法务不会今天才知道；现在动手，是因为 OpenAI 秘密递交 S-1 在即、最快 9 月挂牌。前例：Waymo 掐着 Uber 上市筹备期起诉，约 $245M 股权和解。</p>
@@ -161,14 +184,17 @@
     <h2>尾注 · 可核对项</h2>
     <dl>
       <dt>来源</dt><dd data-kind="来源">CNBC、Bloomberg、Fortune</dd>
-      <dt>其他</dt><dd data-kind="其他">指控内容：从面试带真实零件到教人绕离职安检</dd>
-      <dt>其他</dt><dd data-kind="其他">事实边界：单方指控、尚无判决，我不预判胜负</dd>
-      <dt>其他</dt><dd data-kind="其他">时点口径：挖角发生在 2025 年，$6.5B 收购 io 于当年 5 月官宣；S-1 为秘密递交、在即而非已公开，最快 9 月挂牌</dd>
-      <dt>其他</dt><dd data-kind="其他">回滚点：若走成 Waymo/Uber 式快速和解，对 IPO 冲击有限</dd>
+      <dt>指控内容</dt><dd data-kind="指控内容">从面试带真实零件到教人绕离职安检</dd>
+      <dt>事实边界</dt><dd data-kind="事实边界">单方指控、尚无判决，我不预判胜负</dd>
+      <dt>时点口径</dt><dd data-kind="时点口径">挖角发生在 2025 年，$6.5B 收购 io 于当年 5 月官宣；S-1 为秘密递交、在即而非已公开，最快 9 月挂牌</dd>
+      <dt>回滚点</dt><dd data-kind="回滚点">若走成 Waymo/Uber 式快速和解，对 IPO 冲击有限</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">若 OpenAI 九月如期挂牌、定价没有折扣，说明公开市场不把 IP 诉讼当回事，本篇判断降级</dd>
-      <dt>其他</dt><dd data-kind="其他">验收：S-1 怎么披露这场诉讼；io 首款硬件能否在诉讼未决期间发布</dd>
+      <dt>验收</dt><dd data-kind="验收">S-1 怎么披露这场诉讼；io 首款硬件能否在诉讼未决期间发布</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/openai.html">OpenAI</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="99.html">← ENTRY 99 · Grok 4.5 不跟你比谁最聪明，只比编码这一个活儿谁最划算——马斯克把造火箭那套（成本 + 垂直整合）第一次系统性地砸向 AI 最肥的工作负载</a><a rel="next" href="101.html" style="text-align:right">ENTRY 101 · 一排巨头联手推 ARD 绕开 MCP——一个协议赢到让对手结盟，那既是加冕，也是围剿 →</a></nav>
   <footer class="ep-foot">

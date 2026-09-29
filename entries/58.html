@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-05-19T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-05-19T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Anthropic 把 OpenClaw 又放回来了——但这次&quot;自助餐&quot;明码标价" />
@@ -55,8 +56,26 @@
       "dateModified": "2026-05-19T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "⚖️ 定价博弈",
+        "Anthropic",
+        "OpenAI",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "靠订阅补贴撑起来的 Agent 单位经济学，这周开始失血。",
@@ -113,6 +132,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +142,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +156,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-58">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 58</span><span>2026年5月19日 · Day 73 ⚖️ 定价博弈</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 58</span><span>发布 <time datetime="2026-05-19T13:00:00+08:00">2026-05-19</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-58" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-05-19">
             2026年5月19日 · Day 73
-            <span class="entry-date-badge">⚖️ 定价博弈</span>
-          </div>
+            <span class="entry-date-badge">⚖️ 定价博弈</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">⚖️ 定价博弈</span>
-            <h3 class="entry-title">Anthropic 把 OpenClaw 又放回来了——但这次"自助餐"明码标价</h3>
+            <h1 class="entry-title">Anthropic 把 OpenClaw 又放回来了——但这次"自助餐"明码标价</h1>
             <div class="entry-body">
               <p>靠订阅补贴撑起来的 Agent 单位经济学，这周开始失血。</p>
               <p>Anthropic 四月禁第三方 Agent 调 Claude 订阅，这周松口：新增一类 Agent SDK 额度给 harness，不走公共池，固定月度、不滚存、按 API 价计费。社区估算某些工作流的有效容量掉了 25 倍。同一周 OpenAI 反着来，给新企业客户两个月免费 Codex。</p>
@@ -163,10 +187,13 @@
       <dt>来源</dt><dd data-kind="来源">Anthropic 本周的额度政策调整与 OpenAI 的企业免费期公告；「有效容量掉 25 倍」为社区估算，单源、公司未确认</dd>
       <dt>口径注</dt><dd data-kind="口径注">25 倍是特定工作流的估算倍数，不是官方额度换算，不同工作流差异极大；新 Agent SDK 额度的口径（固定月度、不滚存、按 API 价计费）与旧订阅公共池不可直接比较</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">若 Anthropic 后续恢复订阅池共享或给出等价补贴，「补贴终结」的判断须撤回</dd>
-      <dt>其他</dt><dd data-kind="其他">关联：5 月 9 日「免费时代结束」一篇的加层</dd>
+      <dt>关联</dt><dd data-kind="关联">5 月 9 日「免费时代结束」一篇的加层</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">作者为 FutureX Capital 创始人，本条同时改写其自身的尽调口径</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="57.html">← ENTRY 57 · 一个反直觉的信号：Agent 越火，CPU 越值钱</a><a rel="next" href="59.html" style="text-align:right">ENTRY 59 · OpenClaw v2026.5.18 把&quot;跨模型一致性&quot;做成产品功能——这件事的二阶意义 →</a></nav>
   <footer class="ep-foot">

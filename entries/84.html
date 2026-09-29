@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-06-22T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-06-22T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="被拔线 5 天后，Amodei 在 G7 说&quot;建美国领导的 AI 联盟、排除中国&quot;——从被管到帮设规则" />
@@ -55,8 +56,26 @@
       "dateModified": "2026-06-22T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "中美 AI 监管与出口管制"
+        }
+      ],
       "keywords": [
-        "🤝 监管即壁垒",
+        "Anthropic",
+        "OpenAI",
+        "中美 AI 监管与出口管制",
         "insight"
       ],
       "description": "前沿模型公司正把自己从被管者变成规则共建者，教科书级的 regulatory capture。最惨的是中间层：进不了圈，也不被保护。",
@@ -113,6 +132,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +142,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +156,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-84">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 84</span><span>2026年6月22日 · Day 107 🤝 监管即壁垒</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 84</span><span>发布 <time datetime="2026-06-22T13:00:00+08:00">2026-06-22</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-84" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-06-22">
             2026年6月22日 · Day 107
-            <span class="entry-date-badge">🤝 监管即壁垒</span>
-          </div>
+            <span class="entry-date-badge">🤝 监管即壁垒</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🤝 监管即壁垒</span>
-            <h3 class="entry-title">被拔线 5 天后，Amodei 在 G7 说"建美国领导的 AI 联盟、排除中国"——从被管到帮设规则</h3>
+            <h1 class="entry-title">被拔线 5 天后，Amodei 在 G7 说"建美国领导的 AI 联盟、排除中国"——从被管到帮设规则</h1>
             <div class="entry-body">
               <p>前沿模型公司正把自己从被管者变成规则共建者，教科书级的 regulatory capture。最惨的是中间层：进不了圈，也不被保护。</p>
               <p>6 月 17 日 G7，Amodei、Hassabis、Altman 第一次同桌面对七国元首，产出一份自愿、非约束的承诺书。Amodei 提了「结构化准入」和芯片贸易排除中国。5 天前，正是这个政府拔了他自家 Fable 5 的线。</p>
@@ -162,10 +186,13 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">CNBC、Fortune、BeInCrypto、Capacity、AI Governance Lead</dd>
       <dt>口径注</dt><dd data-kind="口径注">G7 产出的安全承诺书为自愿、非约束性，无强制力；「结构化准入」的门槛尚未公布，由公司与监管者共同界定</dd>
-      <dt>其他</dt><dd data-kind="其他">承接 6 月 13 日「国安管制常态化」与 6 月 19 日「明松暗紧」，本条再升一级：够格被限的才是够格被保护的</dd>
+      <dt>承接</dt><dd data-kind="承接">6 月 13 日「国安管制常态化」与 6 月 19 日「明松暗紧」，本条再升一级：够格被限的才是够格被保护的</dd>
       <dt>其他</dt><dd data-kind="其他">Fable 5 自 6 月 12 日被出口管制关停，至今未恢复。</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="83.html">← ENTRY 83 · ChatGPT 份额首次跌破 50%——我 3 月说「模型是水电煤」，今天数据到了</a><a rel="next" href="85.html" style="text-align:right">ENTRY 85 · 7 月 8 日起交护照和脸——前沿 AI 从「付费墙」走向「护照墙」 →</a></nav>
   <footer class="ep-foot">

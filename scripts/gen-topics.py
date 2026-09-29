@@ -53,7 +53,7 @@ entries.sort(key=lambda e: -e["n"])
 # ledger cards: (claim text, badge, entry n)
 cards = []
 for m in re.finditer(r'<div class="call">(.*?)</div>\s*</div>\s*</div>', th, re.S):
-    c = m.group(1); n = re.search(r'index\.html#entry-(\d+)"', c); claim = re.search(r'<div class="claim"><a[^>]*>(.*?)</a>', c, re.S); badge = re.search(r'<span class="badge[^"]*">(.*?)</span>', c, re.S)
+    c = m.group(1); n = re.search(r'(?:index\.html#entry-|entries/)(\d+)(?:\.html)?"', c); claim = re.search(r'<div class="claim"><a[^>]*>(.*?)</a>', c, re.S); badge = re.search(r'<span class="badge[^"]*">(.*?)</span>', c, re.S)
     when = re.search(r'<div class="when"><b>([^<]*)</b>', c)
     if n and claim: cards.append(dict(n=int(n.group(1)), claim=strip(claim.group(1)), badge=strip(badge.group(1)) if badge else "", when=when.group(1) if when else ""))
 
@@ -63,6 +63,7 @@ CSS = """
     .tp-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.tp-nav .tp-brand{font-weight:800;color:var(--text);font-size:15px}
     h1.tp-h1{font-size:26px;line-height:1.3;margin-bottom:8px}.tp-sub{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted2);margin-bottom:22px}
     .tp-blurb{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:26px}
+    .tp-disc{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.75;color:var(--muted2);margin-bottom:22px;padding:10px 12px;border:1px dashed var(--border);border-radius:6px}
     .tp-h2{font-size:14px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.04em;color:var(--muted);text-transform:uppercase;margin:26px 0 10px;border-top:1px solid var(--border);padding-top:16px}
     .tp-list{list-style:none;padding:0;margin:0}.tp-list li{padding:12px 0;border-bottom:1px solid var(--border)}
     .tp-list a{color:var(--text);text-decoration:none;font-weight:600}.tp-list a:hover{color:var(--claw2,#B8860B)}
@@ -79,6 +80,8 @@ HEAD = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
 def match(t, e):
     return any(a.lower() in e["text"].lower() for a in [t["name"]] + t.get("aliases", []))
 
+ans_p = os.path.join(ROOT, "data/answers.json")
+answers = json.load(open(ans_p, encoding="utf-8")) if os.path.exists(ans_p) else []
 made = []
 for t in topics:
     hits = [e for e in entries if match(t, e)]
@@ -89,13 +92,17 @@ for t in topics:
     if len(desc) > 150: desc = desc[:147] + "…"
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": url, "url": url, "name": f"{t['name']} · 倩小虾日记判断脉络", "description": desc, "inLanguage": "zh-CN",
-         "about": {"@type": "Thing", "name": t["name"], "alternateName": t.get("aliases", [])[:6]},
+         "about": ({"@type": "Organization", "name": t["name"], "alternateName": t.get("aliases", [])[:6], "url": t["url"]} if t.get("url") else {"@type": "Thing", "name": t["name"], "alternateName": t.get("aliases", [])[:6]}),
          "isPartOf": {"@id": f"{BASE}#blog"}, "dateModified": hits[0]["date_d"],
          "hasPart": [{"@type": "BlogPosting", "@id": f"{BASE}entries/{e['n']}.html", "headline": e["title"], "datePublished": e["date_d"]} for e in hits]},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "倩小虾日记", "item": BASE}, {"@type": "ListItem", "position": 2, "name": "主题", "item": f"{BASE}topics/"}, {"@type": "ListItem", "position": 3, "name": t["name"], "item": url}]}]}
     rows = "\n".join(f'      <li><a href="../entries/{e["n"]}.html">{esc(e["title"])}</a><span class="tp-when">ENTRY {e["n"]} · {esc(e["date_txt"])}</span><span class="tp-first">{esc(e["first"])}</span></li>' for e in hits)
-    lrows = "\n".join(f'      <li><a href="../theses.html">{esc(c["claim"])}</a><span class="tp-badge">{esc(c["badge"])}</span><span class="tp-when">{esc(c["when"])} · ENTRY {c["n"]}</span></li>' for c in lcards) or "      <li>暂无挂账判断。</li>"
+    lrows = "\n".join(f'      <li><a href="../entries/{c["n"]}.html">{esc(c["claim"])}</a><span class="tp-badge">{esc(c["badge"])}</span><span class="tp-when">{esc(c["when"])} · ENTRY {c["n"]}</span></li>' for c in lcards) or "      <li>暂无挂账判断。</li>"
     blurb = f'  <p class="tp-blurb">{esc(t["blurb"])}</p>' if t.get("blurb") else ""
+    disc = "利益披露：本日记由 Claude 系工具写作与核实" + (("；" + t["disclosure"]) if t.get("disclosure") else "；本页公司按公开可查信息天际（FutureX Capital）不持有") + "。"
+    qa = [q for q in answers if t["slug"] in q.get("topics", [])]
+    qrows = "\n".join(f'      <li><a href="../answers/{q["slug"]}.html">{esc(q["q_zh"])}</a><span class="tp-when">{esc(q.get("date", ""))}</span></li>' for q in qa)
+    qblock = (f'  <h2 class="tp-h2">投资人与创业者问过（{len(qa)}）</h2>\n  <ul class="tp-list">\n{qrows}\n  </ul>\n' if qa else "")
     wr(f"topics/{t['slug']}.html", f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -114,11 +121,12 @@ for t in topics:
 </head>
 <body>
 <div class="tp-wrap">
-  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
   <h1 class="tp-h1">{esc(t['name'])}{(' · ' + esc(t['name_en'])) if t.get('name_en') else ''}</h1>
   <p class="tp-sub">本日记提到 {esc(t['name'])} 的 {len(hits)} 篇 · 最近 {esc(hits[0]['date_txt'])} · 张倩 Cynthia Zhang · FutureX Capital</p>
 {blurb}
-  <h2 class="tp-h2">挂账判断（{len(lcards)}）</h2>
+  <p class="tp-disc">{esc(disc)}</p>
+{qblock}  <h2 class="tp-h2">挂账判断（{len(lcards)}）</h2>
   <ul class="tp-list tp-ledger">
 {lrows}
   </ul>
@@ -147,7 +155,7 @@ wr("topics/index.html", f"""<!DOCTYPE html>
 </head>
 <body>
 <div class="tp-wrap">
-  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="../entries/">全部日记</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
   <h1 class="tp-h1">主题索引</h1>
   <p class="tp-sub">每个公司或议题一页：全部相关日记（新→旧）与挂账判断的当前状态。</p>
   <ul class="tp-list">

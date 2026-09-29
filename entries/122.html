@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-08-12T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-08-12T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——我七月写的&quot;表外财技&quot;上移到了算力层" />
@@ -55,8 +56,30 @@
       "dateModified": "2026-08-12T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "英伟达 NVIDIA",
+          "url": "https://www.nvidia.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "新云与算力合同"
+        },
+        {
+          "@type": "Thing",
+          "name": "中美 AI 监管与出口管制"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🏦 表外财技",
+        "英伟达 NVIDIA",
+        "新云与算力合同",
+        "中美 AI 监管与出口管制",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "英伟达没推出 5000 亿融资计划。它做的是给 GPU 残值写了个不收费的看跌期权，单项目最高兜 25%——剩下的残值风险，谁买卡谁扛。",
@@ -113,6 +136,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +146,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +160,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-122">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 122</span><span>2026年8月12日 · Day 158 🏦 表外财技</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 122</span><span>发布 <time datetime="2026-08-12T13:00:00+08:00">2026-08-12</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-122" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-08-12">
             2026年8月12日 · Day 158
-            <span class="entry-date-badge">🏦 表外财技</span>
-          </div>
+            <span class="entry-date-badge">🏦 表外财技</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🏦 表外财技</span>
-            <h3 class="entry-title">英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——我七月写的"表外财技"上移到了算力层</h3>
+            <h1 class="entry-title">英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——我七月写的"表外财技"上移到了算力层</h1>
             <div class="entry-body">
               <p>英伟达没推出 5000 亿融资计划。它做的是<strong>给 GPU 残值写了个不收费的看跌期权</strong>，单项目最高兜 25%——剩下的残值风险，谁买卡谁扛。</p>
               <p>一手稿是「未来若干年撬动 5000 亿第三方资本」的目标，六方只签不具约束力备忘录，公告日零元到位。平台独立，英伟达明说不提供主要融资。25% 残值支持逐笔审批。</p>
@@ -162,11 +190,14 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">NVIDIA 新闻稿与官方博客（8/10）、CNBC（8/10）、Fortune（美东 8/12）、BIS Bulletin No 120（2026-01-07）、BIS Quarterly Review（2026-03）、Bloomberg 债务数据（经 Insurance Journal 2026-02-03）、摩根大通 ABS/CMBS 预测、CoreWeave IR（3/31）、Nebius 新闻稿（7/17）、Olga Usvyatsky（4/4）、Structured Finance Association（7/23）、摩根士丹利 Joseph Moore 与 BlackRock Larry Fink 公开评论；CNBC 正文未能直接取证，以英伟达官方稿为准</dd>
       <dt>口径注</dt><dd data-kind="口径注">「5000 亿」先问口径——是动员目标，不是已承诺资本；六方各家额度未披露</dd>
-      <dt>其他</dt><dd data-kind="其他">ENTRY 106 写过这结构，本篇只复制一条腿：资本和风险放别人表上，自己留或有负债。本次不验证 106——层不同、只复制一条，验收口不变，继续 ⏳</dd>
+      <dt>关联</dt><dd data-kind="关联">ENTRY 106 写过这结构，本篇只复制一条腿：资本和风险放别人表上，自己留或有负债。本次不验证 106——层不同、只复制一条，验收口不变，继续 ⏳</dd>
       <dt>更正</dt><dd data-kind="更正">/澄清：CoreWeave、Nebius 两笔已披露融资抵押的是已签约客户现金流，GPU 只是回收底价；Fink 类比 MBS 诞生，可抵押率、残值假设第一天零披露；最像 2007 的是相关性——残值崩塌时几乎必然也是对手方违约时</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">12 个月内出现公开披露抵押率与残值假设的纯 GPU 抵押融资（贷款或证券化皆算）且定价进入投资级区间，「抵押的是签约现金流而非 GPU」降级；反向：同期算力类结构化产品以合约现金流或不动产为主抵押的占比仍超八成，升级为已验证。</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/nvidia.html">英伟达 NVIDIA</a> · <a href="../topics/neocloud-compute.html">新云与算力合同</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="121.html">← ENTRY 121 · 「硅谷在换底座」是量的故事，不是钱的故事——生产网关上，29% 的 token 只换到不到 4% 的钱</a><a rel="next" href="123.html" style="text-align:right">ENTRY 123 · DeepSeek 静默把 V4-Pro 转正了——而我两天前那句&quot;迁移成本低是最贵的幻觉&quot;，今天反而更成立 →</a></nav>
   <footer class="ep-foot">

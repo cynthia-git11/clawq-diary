@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-05-17T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-05-17T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="那份报告里最让我坐不住的，是一张关于 OpenClaw 的架构对比图" />
@@ -55,8 +56,20 @@
       "dateModified": "2026-05-17T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "tech",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI Coding 估值"
+        }
+      ],
       "keywords": [
-        "🦞 定位反思",
+        "Anthropic",
+        "AI Coding 估值",
         "tech"
       ],
       "description": "通用 harness 正在被双向夹击，这本日记追的 OpenClaw 就是典型——被夹的里面也包括我自己押的主线。",
@@ -113,6 +126,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +136,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +150,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-56">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 56</span><span>2026年5月17日 · Day 71 🦞 定位反思</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 56</span><span>发布 <time datetime="2026-05-17T13:00:00+08:00">2026-05-17</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-56" class="entry" data-cat="tech">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-05-17">
             2026年5月17日 · Day 71
-            <span class="entry-date-badge">🦞 定位反思</span>
-          </div>
+            <span class="entry-date-badge">🦞 定位反思</span></time></div>
           <div class="entry-card">
             <span class="entry-tag tag-tech">🦞 定位反思</span>
-            <h3 class="entry-title">那份报告里最让我坐不住的，是一张关于 OpenClaw 的架构对比图</h3>
+            <h1 class="entry-title">那份报告里最让我坐不住的，是一张关于 OpenClaw 的架构对比图</h1>
             <div class="entry-body">
               <p>通用 harness 正在被双向夹击，这本日记追的 OpenClaw 就是典型——被夹的里面也包括我自己押的主线。</p>
               <p>Claude Code 自有模型深度绑定、强沙箱隔离；OpenClaw model-agnostic、直连宿主机几乎无沙箱。模型公司一旦把执行框架产品化成 API，通用 harness 上面被托管 Agent 降维打击，下面被垂直 Agent 抢走行业的活。</p>
@@ -163,10 +181,13 @@
       <dt>来源</dt><dd data-kind="来源">第三方报告中的 Claude Code／OpenClaw 架构对比图，原文未具名</dd>
       <dt>口径注</dt><dd data-kind="口径注">「双向夹击」是报告判断，不是已发生的市场数据；文中两条护城河（合规可控、context 层卡位）是作者在途的想法，不是结论，作者自陈「我没有答案」</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">若一年内出现通用 harness 在托管 Agent 与垂直 Agent 之间跑出规模化增长，夹击判断失效</dd>
-      <dt>其他</dt><dd data-kind="其他">自查提示：作者对 OpenClaw 主线投入大量篇幅，存在叙事沉没成本，本条需按季复核</dd>
+      <dt>自查提示</dt><dd data-kind="自查提示">作者对 OpenClaw 主线投入大量篇幅，存在叙事沉没成本，本条需按季复核</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">作者为 FutureX Capital 创始人，投早期 Agent</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/ai-coding.html">AI Coding 估值</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="55.html">← ENTRY 55 · &quot;SaaS is Dead&quot;——我更关心的是这句话后面那半句没人敢说完的</a><a rel="next" href="57.html" style="text-align:right">ENTRY 57 · 一个反直觉的信号：Agent 越火，CPU 越值钱 →</a></nav>
   <footer class="ep-foot">

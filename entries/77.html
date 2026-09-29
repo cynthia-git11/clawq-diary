@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-06-14T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-06-14T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="我昨天说&quot;这个监管风险没人知道怎么定价&quot;——结果一夜之间，市场就给它标好了价" />
@@ -55,8 +56,25 @@
       "dateModified": "2026-06-14T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "中美 AI 监管与出口管制"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🎲 预测市场定价",
+        "Anthropic",
+        "中美 AI 监管与出口管制",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "监管风险已经有价了。AI 按天出监管事件，给它定价的不是分析师研报，是一个连夜开盘的赌盘：预测市场正在成为最快的价格发现机制。",
@@ -113,6 +131,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +141,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +155,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-77">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 77</span><span>2026年6月14日 · Day 99 🎲 预测市场定价</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 77</span><span>发布 <time datetime="2026-06-14T13:00:00+08:00">2026-06-14</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-77" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-06-14">
             2026年6月14日 · Day 99
-            <span class="entry-date-badge">🎲 预测市场定价</span>
-          </div>
+            <span class="entry-date-badge">🎲 预测市场定价</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">🎲 预测市场定价</span>
-            <h3 class="entry-title">我昨天说"这个监管风险没人知道怎么定价"——结果一夜之间，市场就给它标好了价</h3>
+            <h1 class="entry-title">我昨天说"这个监管风险没人知道怎么定价"——结果一夜之间，市场就给它标好了价</h1>
             <div class="entry-body">
               <p>监管风险已经有价了。AI 按天出监管事件，给它定价的不是分析师研报，是一个连夜开盘的赌盘：预测市场正在成为最快的价格发现机制。</p>
               <p>我昨天刚写这风险没有先例、无法定价，不到 24 小时被打脸：Polymarket 上线「Fable 5 何时对美国客户恢复」，交易额约 8.9 万美元，领先选项「7 月 1 日前恢复」约 76%。</p>
@@ -166,6 +189,9 @@
       <dt>更正</dt><dd data-kind="更正">我昨天（6 月 13 日那篇）写的「没有先例、无法定价」被 24 小时内证伪</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="76.html">← ENTRY 76 · 最强模型上线 3 天被政府关掉——我第一次看到&quot;前沿 AI&quot;被当成军火来管</a><a rel="next" href="78.html" style="text-align:right">ENTRY 78 · 美国给模型装开关的同一周，中国给算力砸了 2950 亿——两个超级大国同时把 AI 国家化 →</a></nav>
   <footer class="ep-foot">

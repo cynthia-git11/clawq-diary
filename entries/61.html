@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-06-02T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-06-02T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Anthropic 9650 亿反超 OpenAI——但真正该读的是那个&quot;470 亿 ARR&quot;" />
@@ -55,8 +56,26 @@
       "dateModified": "2026-06-02T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "💰 估值锚",
+        "Anthropic",
+        "OpenAI",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "应用层的头号风险，从「模型换代」变成「模型厂自己下场做你的生意」。只加一层 prompt 模板的公司，估值该打折了。",
@@ -113,6 +132,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +142,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +156,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-61">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 61</span><span>2026年6月2日 · Day 87 💰 估值锚</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 61</span><span>发布 <time datetime="2026-06-02T13:00:00+08:00">2026-06-02</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-61" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-06-02">
             2026年6月2日 · Day 87
-            <span class="entry-date-badge">💰 估值锚</span>
-          </div>
+            <span class="entry-date-badge">💰 估值锚</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">💰 估值锚</span>
-            <h3 class="entry-title">Anthropic 9650 亿反超 OpenAI——但真正该读的是那个"470 亿 ARR"</h3>
+            <h1 class="entry-title">Anthropic 9650 亿反超 OpenAI——但真正该读的是那个"470 亿 ARR"</h1>
             <div class="entry-body">
               <p>应用层的头号风险，从「模型换代」变成「模型厂自己下场做你的生意」。只加一层 prompt 模板的公司，估值该打折了。</p>
               <p>5 月 29 日 Anthropic 融资落定，估值 9650 亿反超 OpenAI；ARR 从年初 300 亿涨到 470 亿，1000 多个客户年付 100 万美元以上。同时预告 Mythos：能找漏洞、能链式利用，直奔网络安全企业单。</p>
@@ -163,9 +187,12 @@
       <dt>来源</dt><dd data-kind="来源">5 月 29 日 Anthropic 新一轮融资落定，估值 9650 亿美元；同日发布 Claude Opus 4.8，预告 Mythos 几周内推给所有客户；ARR 由年初 300 亿增至 470 亿，1000 多个客户年付 100 万美元以上</dd>
       <dt>口径注</dt><dd data-kind="口径注">ARR 为公司口径年化经常性收入，非审计财报；公司成立五年，此增速无同业可比样本</dd>
       <dt>其他</dt><dd data-kind="其他">Mythos 能力（攻防、找漏洞、链式利用）为公司说法，未独立验证</dd>
-      <dt>其他</dt><dd data-kind="其他">承接 5 月 24 日（公开市场最终按现金定价）与 5 月 20 日（跨模型可移植基础设施）两条</dd>
+      <dt>承接</dt><dd data-kind="承接">5 月 24 日（公开市场最终按现金定价）与 5 月 20 日（跨模型可移植基础设施）两条</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="60.html">← ENTRY 60 · OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线</a><a rel="next" href="62.html" style="text-align:right">ENTRY 62 · Mythos 把&quot;找漏洞&quot;做到自动——网络安全市场的攻防比，第一次倒过来了 →</a></nav>
   <footer class="ep-foot">

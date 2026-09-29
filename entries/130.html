@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-08-29T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-08-29T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="开放权重生态自己选了英伟达的私有格式" />
@@ -55,8 +56,33 @@
       "dateModified": "2026-08-29T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Meta Muse",
+          "url": "https://about.meta.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "英伟达 NVIDIA",
+          "url": "https://www.nvidia.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Hugging Face",
+          "url": "https://huggingface.co/"
+        }
+      ],
       "keywords": [
-        "⚖️ 格式",
+        "Anthropic",
+        "Meta Muse",
+        "英伟达 NVIDIA",
+        "Hugging Face",
         "insight"
       ],
       "description": "格式之争已经分出胜负：英伟达用私有格式拿下了开放权重的分发默认值。押 MXFP4 做工具链，等于把产品建在下载量只有对手四十分之一的标准上。",
@@ -113,6 +139,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +149,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +163,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-130">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 130</span><span>2026年8月29日 · Day 175 ⚖️ 格式</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 130</span><span>发布 <time datetime="2026-08-29T13:00:00+08:00">2026-08-29</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-130" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-08-29">
             2026年8月29日 · Day 175
-            <span class="entry-date-badge">⚖️ 格式</span>
-          </div>
+            <span class="entry-date-badge">⚖️ 格式</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 格式</span>
-            <h3 class="entry-title">开放权重生态自己选了英伟达的私有格式</h3>
+            <h1 class="entry-title">开放权重生态自己选了英伟达的私有格式</h1>
             <div class="entry-body">
               <p>格式之争已经分出胜负：英伟达用私有格式拿下了开放权重的分发默认值。押 MXFP4 做工具链，等于把产品建在下载量只有对手<strong>四十分之一</strong>的标准上。</p>
               <p>8/29 实测 Hugging Face：NVFP4 近 30 天下载 5110 万次，七家共签的开放标准 MXFP4 只有 129 万次。NVFP4 里 46.6% 的下载在英伟达组织之外，最大铺货方是社区量化者 unsloth，869 万次。</p>
@@ -166,6 +197,9 @@
       <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude 系工具写作与核实；本篇结论对英伟达不利、对开放标准阵营有利，打折读；FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸。</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/meta-muse.html">Meta Muse</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a> · <a href="../topics/hugging-face.html">Hugging Face</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="129.html">← ENTRY 129 · 「算力就是收入」只在卖卡的那张表上成立</a><a rel="next" href="131.html" style="text-align:right">ENTRY 131 · 版权诉讼杀的不是赔款，是发行窗口 →</a></nav>
   <footer class="ep-foot">

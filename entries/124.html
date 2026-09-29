@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-08-14T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-08-14T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="字节用自己赚的钱付 AI capex——但它对外计价那条线的覆盖率，是 AWS 的零头" />
@@ -55,8 +56,20 @@
       "dateModified": "2026-08-14T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "字节跳动 豆包",
+          "url": "https://www.bytedance.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "新云与算力合同"
+        }
+      ],
       "keywords": [
-        "🧾 谁在付这笔钱",
+        "字节跳动 豆包",
+        "新云与算力合同",
         "insight"
       ],
       "description": "字节的 AI capex 自己赚的钱付得起，但对外计价那条线还没长成生意。国内 MaaS 的估值故事，全押在这条还没跑通的线上。",
@@ -113,6 +126,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +136,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +150,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-124">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 124</span><span>2026年8月14日 · Day 160 🧾 谁在付这笔钱</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 124</span><span>发布 <time datetime="2026-08-14T13:00:00+08:00">2026-08-14</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-124" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-08-14">
             2026年8月14日 · Day 160
-            <span class="entry-date-badge">🧾 谁在付这笔钱</span>
-          </div>
+            <span class="entry-date-badge">🧾 谁在付这笔钱</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🧾 谁在付这笔钱</span>
-            <h3 class="entry-title">字节用自己赚的钱付 AI capex——但它对外计价那条线的覆盖率，是 AWS 的零头</h3>
+            <h1 class="entry-title">字节用自己赚的钱付 AI capex——但它对外计价那条线的覆盖率，是 AWS 的零头</h1>
             <div class="entry-body">
               <p>字节的 AI capex 自己赚的钱付得起，但<strong>对外计价那条线还没长成生意</strong>。国内 MaaS 的估值故事，全押在这条还没跑通的线上。</p>
               <p>同一覆盖率口径：火山 MaaS 已实现约 1%、目标 7.5%，整个火山 10-12%，AWS 77%。8/6 全员会那句「烧钱不能是常态」，潜台词是今天还是。</p>
@@ -167,6 +185,9 @@
       <dt>证伪口</dt><dd data-kind="证伪口">12 个月内出现经证实的 AI 基建债务或长期租赁/托管承诺（含表外，按 ENTRY 122 口径），「覆盖率高、外部依赖低」降级；字节或火山首次公开披露云/MaaS 分部收入（无论大小），「量级关没过」才可第一次检验。</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/bytedance-doubao.html">字节跳动 豆包</a> · <a href="../topics/neocloud-compute.html">新云与算力合同</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="123.html">← ENTRY 123 · DeepSeek 静默把 V4-Pro 转正了——而我两天前那句&quot;迁移成本低是最贵的幻觉&quot;，今天反而更成立</a><a rel="next" href="125.html" style="text-align:right">ENTRY 125 · 「$600B 需要什么」是比「$600B 真不真」更好的问题——把两个数值输入修对之后，8 GW 变成了 26 GW →</a></nav>
   <footer class="ep-foot">

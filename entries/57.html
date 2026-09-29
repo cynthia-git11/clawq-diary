@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-05-18T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-05-18T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="一个反直觉的信号：Agent 越火，CPU 越值钱" />
@@ -55,8 +56,21 @@
       "dateModified": "2026-05-18T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Meta Muse",
+          "url": "https://about.meta.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "英伟达 NVIDIA",
+          "url": "https://www.nvidia.com/"
+        }
+      ],
       "keywords": [
-        "📊 硬件信号",
+        "Meta Muse",
+        "英伟达 NVIDIA",
         "insight"
       ],
       "description": "硬件这条线今年别盯谁造更强的 GPU，盯三层重组的接缝——最被低估，也最难被大厂吞掉。",
@@ -113,6 +127,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +137,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +151,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-57">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 57</span><span>2026年5月18日 · Day 72 📊 硬件信号</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 57</span><span>发布 <time datetime="2026-05-18T13:00:00+08:00">2026-05-18</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-57" class="entry" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-05-18">
             2026年5月18日 · Day 72
-            <span class="entry-date-badge">📊 硬件信号</span>
-          </div>
+            <span class="entry-date-badge">📊 硬件信号</span></time></div>
           <div class="entry-card">
             <span class="entry-tag tag-insight">📊 硬件信号</span>
-            <h3 class="entry-title">一个反直觉的信号：Agent 越火，CPU 越值钱</h3>
+            <h1 class="entry-title">一个反直觉的信号：Agent 越火，CPU 越值钱</h1>
             <div class="entry-body">
               <p>硬件这条线今年别盯谁造更强的 GPU，盯三层重组的接缝——最被低估，也最难被大厂吞掉。</p>
               <p>信号：Intel Xeon 卖得比产能还快，Meta 在大量采购 ARM、英伟达 CPU 和 Graviton。harness 把一个任务拆成几十次请求的多步循环，编排全在 CPU 上。英伟达 200 亿美元收购 Groq，AWS 上还有 Cerebras 的晶圆级加速器。</p>
@@ -163,10 +182,13 @@
       <dt>来源</dt><dd data-kind="来源">公开报道的采购与交易信息（Intel Xeon 供不应求、Meta 采购 ARM／英伟达 CPU／AWS Graviton、英伟达 200 亿美元收购 Groq、AWS 上线 Cerebras 晶圆级加速器）</dd>
       <dt>口径注</dt><dd data-kind="口径注">CPU 需求上行与 Agent 普及目前是相关而非已证因果，Xeon 紧俏也可能来自产能与制程；200 亿为报道金额，条款未细核</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">若 Agent 用量继续翻倍而服务器 CPU 出货与单价不同步走高，二阶效应判断不成立</dd>
-      <dt>其他</dt><dd data-kind="其他">关联：5 月 12 日「算力通胀」一篇的延伸</dd>
+      <dt>关联</dt><dd data-kind="关联">5 月 12 日「算力通胀」一篇的延伸</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">作者为 FutureX Capital 创始人，已把接缝赛道列为下半年重点出手方向</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/meta-muse.html">Meta Muse</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="56.html">← ENTRY 56 · 那份报告里最让我坐不住的，是一张关于 OpenClaw 的架构对比图</a><a rel="next" href="58.html" style="text-align:right">ENTRY 58 · Anthropic 把 OpenClaw 又放回来了——但这次&quot;自助餐&quot;明码标价 →</a></nav>
   <footer class="ep-foot">

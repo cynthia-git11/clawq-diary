@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-08-19T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-08-19T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过" />
@@ -55,8 +56,20 @@
       "dateModified": "2026-08-19T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Vercel AI Gateway 计量",
+          "url": "https://vercel.com/ai-gateway"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🧭 计量器与漏斗",
+        "Vercel AI Gateway 计量",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "我错了，而且错了十二次。四篇日记引用 OpenRouter 十二次，我从没量化过这个计量器的漏斗：MIT 一月就发了，研究期内它只捕获全球 AI 推理支出约 1%，还专吸偏开源的用户。免责话术写了十二次，尺寸一次没查。",
@@ -113,6 +126,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +136,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +150,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-127">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 127</span><span>2026年8月19日 · Day 165（8/24 补记） 🧭 计量器与漏斗</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 127</span><span>发布 <time datetime="2026-08-19T13:00:00+08:00">2026-08-19</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-127" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-08-19">
             2026年8月19日 · Day 165（8/24 补记）
-            <span class="entry-date-badge">🧭 计量器与漏斗</span>
-          </div>
+            <span class="entry-date-badge">🧭 计量器与漏斗</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🧭 计量器与漏斗</span>
-            <h3 class="entry-title">Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过</h3>
+            <h1 class="entry-title">Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过</h1>
             <div class="entry-body">
               <p>我错了，而且错了十二次。四篇日记引用 OpenRouter 十二次，我从没量化过这个计量器的漏斗：MIT 一月就发了，研究期内它<strong>只捕获全球 AI 推理支出约 1%</strong>，还专吸偏开源的用户。免责话术写了十二次，尺寸一次没查。</p>
               <p>Stripe 签下 OpenRouter，已签署未交割，金额未披露。ENTRY 118 的证伪指标还挂在它身上。</p>
@@ -162,12 +180,15 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">Stripe 新闻稿与 OpenRouter 博文（8/19）、Bloomberg（8/16）、纽约时报、Axios、TechCrunch（8/16、8/19）、WSJ（7 月，经 Investing.com）、OpenRouter Series B 博文（5/28）、Menlo Ventures（5/26、8/19）、Sacra（第三方估计）、Stripe 2025 年度信（自报口径）、Metronome 收购报道（1/15）、Nagle &amp;amp; Yue《The Latent Role of Open Models in the AI Economy》（2026-01 经 MIT Sloan）、OpenRouter/a16z arXiv 论文、Mozilla.ai、CNBC（7/7）、Vercel AI Gateway 指数、Dataconomy（7/29）、OpenRouter 文档（Data API 条款）、CoinMarketCap/Binance 案（2020-04）、Alexa/Amazon（2022-05）、App Annie/Sensor Tower（2024-03）、npm/GitHub（2020 承诺）、LiveRamp/Publicis（5/17 拟议）、Forbes</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">Menlo 系 OpenRouter 在投投资人，其数字按 vendor 口径读</dd>
-      <dt>其他</dt><dd data-kind="其他">再更正一处：「中国模型占平台总量超 60%」分母错，应为「头部排名模型 token 的 60%+」——这句恰好出自我已更正过另两处的 ENTRY 121，更正机制本身会漏</dd>
-      <dt>其他</dt><dd data-kind="其他">台账手术：ENTRY 118 份额侧改双轨，口径「中国来源模型份额、阈值 30%」——OpenRouter 侧＝头部排名模型集内 token 份额，Vercel 侧＝实验室行中国合计；单侧跌破标部分触发、公开复核，两侧同向跌破才降级；它停更/改口径/收紧访问，单以 Vercel 侧判定。其数据降为方向指标，快照按月归档</dd>
+      <dt>再更正一处</dt><dd data-kind="再更正一处">「中国模型占平台总量超 60%」分母错，应为「头部排名模型 token 的 60%+」——这句恰好出自我已更正过另两处的 ENTRY 121，更正机制本身会漏</dd>
+      <dt>台账手术</dt><dd data-kind="台账手术">ENTRY 118 份额侧改双轨，口径「中国来源模型份额、阈值 30%」——OpenRouter 侧＝头部排名模型集内 token 份额，Vercel 侧＝实验室行中国合计；单侧跌破标部分触发、公开复核，两侧同向跌破才降级；它停更/改口径/收紧访问，单以 Vercel 侧判定。其数据降为方向指标，快照按月归档</dd>
       <dt>其他</dt><dd data-kind="其他">新判断「记分牌被利益方签下，公开数据不会原样存活」证伪口：12 个月内提供商公开撤退、改口径未发可比历史、访问实质收紧，任一即成立；三者皆无，标 ✗、按公开认错处理</dd>
       <dt>其他</dt><dd data-kind="其他">此后证伪口不再单挂第三方指标，一律配并行来源。</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/vercel-gateway.html">Vercel AI Gateway 计量</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="126.html">← ENTRY 126 · 英伟达没有借给 OpenAI 一分钱——它签的是一份 $1050 亿上限的残值担保，而担保标的其实是 OpenAI 缺失的信用评级</a><a rel="next" href="128.html" style="text-align:right">ENTRY 128 · 10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标&quot;部分触发&quot;，让 9 月的月度指数来裁定 →</a></nav>
   <footer class="ep-foot">

@@ -57,6 +57,21 @@ if latest_date:
         wr("sitemap.xml", sm)
         fixes.append("sitemap.xml 核心页 <lastmod> 已对齐最新一篇日期 " + latest_date)
 
+# ── A2. 新鲜度自动修：hub Blog.dateModified 与「N 篇真实判断」计数对齐最新一篇 ─────
+if latest_date:
+    h = rd("index.html"); h0 = h
+    try:
+        bi = h.index('"@type": "Blog"'); bj = h.index('"dateModified": "', bi); bk = h.index('"', bj + len('"dateModified": "'))
+        cur = h[bj + len('"dateModified": "'):bk]
+        latest_iso = (re.search(r'"datePublished": "([^"]+)"', h) or [None, latest_date + "T13:00:00+08:00"])[1]
+        if cur[:10] < latest_iso[:10]: h = h[:bj] + '"dateModified": "' + latest_iso + h[bk:]
+    except ValueError:
+        pass
+    n_entries = len(re.findall(r'<div id="entry-(\d+)"', h))
+    h = re.sub(r"\d+ 篇真实判断与公开复盘", f"{n_entries} 篇真实判断与公开复盘", h)
+    if h != h0:
+        wr("index.html", h); fixes.append("index.html Blog.dateModified / 篇数计数已对齐最新一篇")
+
 # ── B. 判断腐烂守卫：已公开修正的旧说法不得出现在「活」carrier ──────────
 # 每次做公开修正后，在这里加一条规则（token=旧说法, why=已被谁改, live=需检查的活文件）。
 # 归档快照（llms-full.txt / 各 @graph[entry-N] 描述 / atom 旧 entry）保留原文、不检查。

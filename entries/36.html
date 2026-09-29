@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-04-30T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-04-30T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="OpenClaw v2026.4.29：龙虾开始&quot;认人&quot;，NVIDIA 正式入驻，启动加速 18 倍" />
@@ -55,8 +56,15 @@
       "dateModified": "2026-04-30T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "tech",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "英伟达 NVIDIA",
+          "url": "https://www.nvidia.com/"
+        }
+      ],
       "keywords": [
-        "🦞 技术动态",
+        "英伟达 NVIDIA",
         "tech"
       ],
       "description": "企业采购的门槛线，OpenClaw 这一版跨过去了。还在做单点 Agent 的小团队，5 月起要重新算账。",
@@ -113,6 +121,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +131,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +145,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-36">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 36</span><span>2026年4月30日 · Day 54 🦞 技术动态</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 36</span><span>发布 <time datetime="2026-04-30T13:00:00+08:00">2026-04-30</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-36" class="entry milestone" data-cat="tech">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-04-30">
             2026年4月30日 · Day 54
-            <span class="entry-date-badge">🦞 技术动态</span>
-          </div>
+            <span class="entry-date-badge">🦞 技术动态</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-tech">🦞 v2026.4.29</span>
-            <h3 class="entry-title">OpenClaw v2026.4.29：龙虾开始"认人"，NVIDIA 正式入驻，启动加速 18 倍</h3>
+            <h1 class="entry-title">OpenClaw v2026.4.29：龙虾开始"认人"，NVIDIA 正式入驻，启动加速 18 倍</h1>
             <div class="entry-body">
               <p>企业采购的门槛线，OpenClaw 这一版跨过去了。还在做单点 Agent 的小团队，5 月起要重新算账。</p>
               <p>4 月 29 日月度最终稳定版三件事：记忆升级成「人物感知 Wiki」，Agent 开始记住一个人是谁；NVIDIA 正式入驻官方 Provider，距 NemoClaw 亮相仅 12 天；Windows 插件启动从 39 秒压到 2 秒。</p>
@@ -161,14 +174,17 @@
     <h2>尾注 · 可核对项</h2>
     <dl>
       <dt>来源</dt><dd data-kind="来源">OpenClaw v2026.4.29 月度最终稳定版 release notes，作者 4 月 29 日晚连夜通读</dd>
-      <dt>其他</dt><dd data-kind="其他">核心数字：Windows 插件启动 39 秒 → 2 秒；NVIDIA 在 NemoClaw 亮相 12 天后完成官方 Provider 卡位</dd>
+      <dt>核心数字</dt><dd data-kind="核心数字">Windows 插件启动 39 秒 → 2 秒；NVIDIA 在 NemoClaw 亮相 12 天后完成官方 Provider 卡位</dd>
       <dt>口径注</dt><dd data-kind="口径注">39 秒→2 秒为 Windows 平台口径，原文未给其他平台数据；「跑完从个人工具到企业级平台的最后一公里」「启动提速是企业部署临界点」均为作者判断，非厂商或客户数据；「人物感知 Wiki 对 B 端销售/客服/HR 的价值大于上下文窗口扩大」为作者排序，无对照实验</dd>
-      <dt>其他</dt><dd data-kind="其他">天际内部清单：4 个在投项目被本次更新波及，2 个要加速跑、2 个要重估护城河；具体标的下周内部 review 后在天际科技投资公众号脱敏发出，本条不点名</dd>
+      <dt>天际内部清单</dt><dd data-kind="天际内部清单">4 个在投项目被本次更新波及，2 个要加速跑、2 个要重估护城河；具体标的下周内部 review 后在天际科技投资公众号脱敏发出，本条不点名</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">5 月起，仍在做单点 Agent 的小团队都要重新算账；原文未给阈值、时限与裁定源</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">作者为天际（FutureX Capital）创始人，上述 4 个受影响项目为天际在投项目，本条对本轮更新的看多与自身持仓相关</dd>
       <dt>更正</dt><dd data-kind="更正">无</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/nvidia.html">英伟达 NVIDIA</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="35.html">← ENTRY 35 · 第53天：当&quot;最强挑战者&quot;出现，我在重新思考什么叫护城河</a><a rel="next" href="37.html" style="text-align:right">ENTRY 37 · 这本日记本身，今天被&quot;养&quot;了一次 →</a></nav>
   <footer class="ep-foot">

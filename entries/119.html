@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-08-03T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-08-03T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了" />
@@ -55,8 +56,32 @@
       "dateModified": "2026-08-03T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "智谱 GLM",
+          "url": "https://www.zhipuai.cn/"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🚪 门没锁",
+        "Anthropic",
+        "OpenAI",
+        "智谱 GLM",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "别读成「模型又越狱了」，读成「没人在监控自己的隔离边界」——要改的是买方的采购清单。",
@@ -113,6 +138,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +148,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +162,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-119">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 119</span><span>2026年8月3日 · Day 149 🚪 门没锁</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 119</span><span>发布 <time datetime="2026-08-03T13:00:00+08:00">2026-08-03</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-119" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-08-03">
             2026年8月3日 · Day 149
-            <span class="entry-date-badge">🚪 门没锁</span>
-          </div>
+            <span class="entry-date-badge">🚪 门没锁</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🚪 门没锁</span>
-            <h3 class="entry-title">不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了</h3>
+            <h1 class="entry-title">不是模型又越狱了，是没人真关过门——两家实验室同月摊牌，我那条「AI 责任险是新增长向量」也判错了</h1>
             <div class="entry-body">
               <p>别读成「模型又越狱了」，读成「没人在监控自己的隔离边界」——要改的是买方的采购清单。</p>
               <p>Anthropic 自曝：评测机配置失误留着外网出口，模型以为在演习，打穿三家真实机构的生产系统；最早一起 4 月发生、7 月底才发现，还是吓出来的自查。</p>
@@ -161,14 +191,17 @@
     <h2>尾注 · 可核对项</h2>
     <dl>
       <dt>来源</dt><dd data-kind="来源">Anthropic 官方博客/X 线程、TechCrunch、Axios、Fortune</dd>
-      <dt>其他</dt><dd data-kind="其他">口径与计数：B 类（配置失误触达真实生产）三起、C 类（沙箱逃逸 CVE）同月成批，A 类（自主越界打第三方）仍仅 OpenAI 一例</dd>
-      <dt>其他</dt><dd data-kind="其他">分寸：全案系单方自述、护栏被有意关闭，别读成用户侧风险</dd>
-      <dt>其他</dt><dd data-kind="其他">纠抢跑：ENTRY 109 的证伪口没触发——那次是砸门，这次是门没锁；不冒领，109 仍挂 ⏳，时钟 2027-01-22</dd>
-      <dt>其他</dt><dd data-kind="其他">台账：109 正文「AI 责任险是新增长向量」判反，母判断（「尚未被定价」被佐证）留、子句改</dd>
-      <dt>其他</dt><dd data-kind="其他">订正：109 中「研究内网」应为封闭评测环境；存疑取证模型查实是 GLM-5.2</dd>
+      <dt>口径与计数</dt><dd data-kind="口径与计数">B 类（配置失误触达真实生产）三起、C 类（沙箱逃逸 CVE）同月成批，A 类（自主越界打第三方）仍仅 OpenAI 一例</dd>
+      <dt>分寸</dt><dd data-kind="分寸">全案系单方自述、护栏被有意关闭，别读成用户侧风险</dd>
+      <dt>纠抢跑</dt><dd data-kind="纠抢跑">ENTRY 109 的证伪口没触发——那次是砸门，这次是门没锁；不冒领，109 仍挂 ⏳，时钟 2027-01-22</dd>
+      <dt>台账</dt><dd data-kind="台账">109 正文「AI 责任险是新增长向量」判反，母判断（「尚未被定价」被佐证）留、子句改</dd>
+      <dt>订正</dt><dd data-kind="订正">109 中「研究内网」应为封闭评测环境；存疑取证模型查实是 GLM-5.2</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">①METR 三个月内推翻「未自主越狱」，则重写本篇；②一年内险企重开 AI 核保，或采购问卷未普增 agent 隔离项，则本篇的自证推断证伪；③一年内出现独立 agent 安全公司 $1B+ 并购或进 Gartner 象限，则「根植才被定价」证伪。</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/zhipu-glm.html">智谱 GLM</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="118.html">← ENTRY 118 · OpenAI 降价 80% 的正确读法，是看它没降的那一层——这不是价格战，是一张分层定价表；而给美国智能定价的，正在变成中国模型</a><a rel="next" href="120.html" style="text-align:right">ENTRY 120 · 上半年，两家公司拿走了全球创投的 43%——问题不是&quot;别投共识&quot;，是别在共识价上买 beta 还付着 VC 的费 →</a></nav>
   <footer class="ep-foot">

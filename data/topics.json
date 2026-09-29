@@ -1,22 +1,283 @@
 [
-  {"slug": "anthropic", "name": "Anthropic", "name_en": "Anthropic · Claude", "aliases": ["Claude", "Amodei", "Fable 5", "Mythos", "Opus 5", "Sonnet 5"]},
-  {"slug": "openai", "name": "OpenAI", "name_en": "OpenAI · GPT", "aliases": ["ChatGPT", "GPT-5", "GPT-6", "Altman", "Sol", "Luna", "Astra"]},
-  {"slug": "deepseek", "name": "DeepSeek", "name_en": "DeepSeek · 深度求索", "aliases": ["深度求索", "梁文锋", "V4 Flash", "V4.1"]},
-  {"slug": "moonshot-kimi", "name": "月之暗面 Kimi", "name_en": "Moonshot AI · Kimi", "aliases": ["月之暗面", "Kimi", "Moonshot"]},
-  {"slug": "zhipu-glm", "name": "智谱 GLM", "name_en": "Zhipu · Z.ai · GLM", "aliases": ["智谱", "GLM", "Z.ai", "Z.AI", "2513.HK", "02513"]},
-  {"slug": "alibaba-qwen", "name": "阿里 Qwen", "name_en": "Alibaba · Qwen", "aliases": ["阿里", "Qwen", "通义", "阿里云", "云栖"]},
-  {"slug": "bytedance-doubao", "name": "字节跳动 豆包", "name_en": "ByteDance · Doubao · Seed", "aliases": ["字节", "豆包", "Seedance", "火山引擎", "Seed"]},
-  {"slug": "meta-muse", "name": "Meta Muse", "name_en": "Meta · Muse · Llama", "aliases": ["Meta", "Muse", "扎克伯格", "Llama"]},
-  {"slug": "mistral", "name": "Mistral AI", "name_en": "Mistral AI", "aliases": ["Mistral", "Mensch"]},
-  {"slug": "nvidia", "name": "英伟达 NVIDIA", "name_en": "NVIDIA", "aliases": ["英伟达", "NVIDIA", "Nvidia", "黄仁勋", "Rubin", "GB300", "NVFP4"]},
-  {"slug": "hugging-face", "name": "Hugging Face", "name_en": "Hugging Face", "aliases": ["Hugging Face", "HF ", "HF、", "HF）", "Delangue"]},
-  {"slug": "vercel-gateway", "name": "Vercel AI Gateway 计量", "name_en": "Vercel AI Gateway · OpenRouter meters", "aliases": ["Vercel", "OpenRouter", "网关"]},
-  {"slug": "neocloud-compute", "name": "新云与算力合同", "name_en": "Neoclouds · compute contracts", "aliases": ["Nscale", "CoreWeave", "Nebius", "Lambda", "Crusoe", "Fluidstack", "Oracle", "算力合同", "GPU 租", "capex"]},
-  {"slug": "typesafe-jev", "name": "TypeSafe Jev 决策模型", "name_en": "TypeSafe · Jev", "aliases": ["TypeSafe", "Jev"]},
-  {"slug": "ai-coding", "name": "AI Coding 估值", "name_en": "AI coding · Cognition · Cursor", "aliases": ["Cognition", "Cursor", "Devin", "Anysphere", "AI coding", "Claude Code", "Lovable", "Replit"]},
-  {"slug": "xiaomi-mimo", "name": "小米 MiMo", "name_en": "Xiaomi · MiMo", "aliases": ["小米", "MiMo", "1810"]},
-  {"slug": "minimax", "name": "MiniMax", "name_en": "MiniMax", "aliases": ["MiniMax", "0100.HK"]},
-  {"slug": "us-china-ai-policy", "name": "中美 AI 监管与出口管制", "name_en": "US–China AI policy · export controls", "aliases": ["出口管制", "实体清单", "商务部", "BIS", "白宫", "AI Act", "网信办", "蒸馏", "特习", "关税"]},
-  {"slug": "ipo-exits", "name": "AI 公司上市与退出", "name_en": "AI IPOs & exits", "aliases": ["IPO", "上市", "S-1", "招股书", "港交所", "科创板", "退出", "配售"]},
-  {"slug": "model-pricing", "name": "模型定价与缓存", "name_en": "Model pricing · caching · token economics", "aliases": ["定价", "缓存读", "降价", "每百万", "$/M", "token 价", "分时"]}
+ {
+  "slug": "anthropic",
+  "name": "Anthropic",
+  "name_en": "Anthropic · Claude",
+  "aliases": [
+   "Claude",
+   "Amodei",
+   "Fable 5",
+   "Mythos",
+   "Opus 5",
+   "Sonnet 5"
+  ],
+  "disclosure": "本日记由 Claude 系工具写作与核实，对 Anthropic 有利或不利的结论都请打折读",
+  "disclosure_en": "This diary is written with Claude, Anthropic's model; discount conclusions about Anthropic in either direction",
+  "url": "https://www.anthropic.com/"
+ },
+ {
+  "slug": "openai",
+  "name": "OpenAI",
+  "name_en": "OpenAI · GPT",
+  "aliases": [
+   "ChatGPT",
+   "GPT-5",
+   "GPT-6",
+   "Altman",
+   "Sol",
+   "Luna",
+   "Astra"
+  ],
+  "url": "https://openai.com/"
+ },
+ {
+  "slug": "deepseek",
+  "name": "DeepSeek",
+  "name_en": "DeepSeek · 深度求索",
+  "aliases": [
+   "深度求索",
+   "梁文锋",
+   "V4 Flash",
+   "V4.1"
+  ],
+  "url": "https://www.deepseek.com/"
+ },
+ {
+  "slug": "moonshot-kimi",
+  "name": "月之暗面 Kimi",
+  "name_en": "Moonshot AI · Kimi",
+  "aliases": [
+   "月之暗面",
+   "Kimi",
+   "Moonshot"
+  ],
+  "disclosure": "天际（FutureX Capital）持有美团，美团龙珠领投月之暗面 2026-05 轮，天际对月之暗面为间接权益，双向打折读",
+  "disclosure_en": "FutureX Capital holds Meituan, whose Dragonball fund led Moonshot AI's May 2026 round, so FutureX has an indirect interest in Moonshot; discount in both directions",
+  "url": "https://www.moonshot.cn/"
+ },
+ {
+  "slug": "zhipu-glm",
+  "name": "智谱 GLM",
+  "name_en": "Zhipu · Z.ai · GLM",
+  "aliases": [
+   "智谱",
+   "GLM",
+   "Z.ai",
+   "Z.AI",
+   "2513.HK",
+   "02513"
+  ],
+  "url": "https://www.zhipuai.cn/"
+ },
+ {
+  "slug": "alibaba-qwen",
+  "name": "阿里 Qwen",
+  "name_en": "Alibaba · Qwen",
+  "aliases": [
+   "阿里",
+   "Qwen",
+   "通义",
+   "阿里云",
+   "云栖"
+  ],
+  "url": "https://www.alibabagroup.com/"
+ },
+ {
+  "slug": "bytedance-doubao",
+  "name": "字节跳动 豆包",
+  "name_en": "ByteDance · Doubao · Seed",
+  "aliases": [
+   "字节",
+   "豆包",
+   "Seedance",
+   "火山引擎",
+   "Seed"
+  ],
+  "disclosure": "天际（FutureX Capital）是字节跳动 A 到 E 五轮投资人、持有其权益，双向打折读",
+  "disclosure_en": "FutureX Capital invested in ByteDance from its Series A through E and holds an interest; discount in both directions",
+  "url": "https://www.bytedance.com/"
+ },
+ {
+  "slug": "meta-muse",
+  "name": "Meta Muse",
+  "name_en": "Meta · Muse · Llama",
+  "aliases": [
+   "Meta",
+   "Muse",
+   "扎克伯格",
+   "Llama"
+  ],
+  "disclosure": "本日记由 Claude 系工具写作，Claude 是 Meta Muse 的竞品",
+  "disclosure_en": "This diary is written with Claude, which competes with Meta's Muse",
+  "url": "https://about.meta.com/"
+ },
+ {
+  "slug": "mistral",
+  "name": "Mistral AI",
+  "name_en": "Mistral AI",
+  "aliases": [
+   "Mistral",
+   "Mensch"
+  ],
+  "disclosure": "天际（FutureX Capital）持有 Mistral AI，双向打折读",
+  "disclosure_en": "FutureX Capital holds Mistral AI; discount in both directions",
+  "url": "https://mistral.ai/"
+ },
+ {
+  "slug": "nvidia",
+  "name": "英伟达 NVIDIA",
+  "name_en": "NVIDIA",
+  "aliases": [
+   "英伟达",
+   "NVIDIA",
+   "Nvidia",
+   "黄仁勋",
+   "Rubin",
+   "GB300",
+   "NVFP4"
+  ],
+  "url": "https://www.nvidia.com/"
+ },
+ {
+  "slug": "hugging-face",
+  "name": "Hugging Face",
+  "name_en": "Hugging Face",
+  "aliases": [
+   "Hugging Face",
+   "HF ",
+   "HF、",
+   "HF）",
+   "Delangue"
+  ],
+  "disclosure": "天际（FutureX Capital）持有 Hugging Face，双向打折读",
+  "disclosure_en": "FutureX Capital holds Hugging Face; discount in both directions",
+  "url": "https://huggingface.co/"
+ },
+ {
+  "slug": "vercel-gateway",
+  "name": "Vercel AI Gateway 计量",
+  "name_en": "Vercel AI Gateway · OpenRouter meters",
+  "aliases": [
+   "Vercel",
+   "OpenRouter",
+   "网关"
+  ],
+  "disclosure": "作者是 Vercel 客户；Vercel 排行榜的「花费」是按公开标价加权的估算，不是账单",
+  "disclosure_en": "The author is a Vercel customer; Vercel's leaderboard 'spend' is a list-price-weighted estimate, not billing",
+  "url": "https://vercel.com/ai-gateway"
+ },
+ {
+  "slug": "neocloud-compute",
+  "name": "新云与算力合同",
+  "name_en": "Neoclouds · compute contracts",
+  "aliases": [
+   "Nscale",
+   "CoreWeave",
+   "Nebius",
+   "Lambda",
+   "Crusoe",
+   "Fluidstack",
+   "Oracle",
+   "算力合同",
+   "GPU 租",
+   "capex"
+  ],
+  "disclosure": "按公开可查信息天际不持有 Nscale、CoreWeave、Nebius、NVIDIA、微软",
+  "disclosure_en": "On publicly available information FutureX does not hold Nscale, CoreWeave, Nebius, NVIDIA or Microsoft"
+ },
+ {
+  "slug": "typesafe-jev",
+  "name": "TypeSafe Jev 决策模型",
+  "name_en": "TypeSafe · Jev",
+  "aliases": [
+   "TypeSafe",
+   "Jev"
+  ]
+ },
+ {
+  "slug": "ai-coding",
+  "name": "AI Coding 估值",
+  "name_en": "AI coding · Cognition · Cursor",
+  "aliases": [
+   "Cognition",
+   "Cursor",
+   "Devin",
+   "Anysphere",
+   "AI coding",
+   "Claude Code",
+   "Lovable",
+   "Replit"
+  ],
+  "disclosure": "按公开可查信息天际不在 Cognition、Cursor 已披露投资方名单中",
+  "disclosure_en": "On publicly available information FutureX is not among the disclosed investors of Cognition or Cursor"
+ },
+ {
+  "slug": "xiaomi-mimo",
+  "name": "小米 MiMo",
+  "name_en": "Xiaomi · MiMo",
+  "aliases": [
+   "小米",
+   "MiMo",
+   "1810"
+  ],
+  "disclosure": "天际（FutureX Capital）持有小米，双向打折读",
+  "disclosure_en": "FutureX Capital holds Xiaomi; discount in both directions",
+  "url": "https://www.mi.com/"
+ },
+ {
+  "slug": "minimax",
+  "name": "MiniMax",
+  "name_en": "MiniMax",
+  "aliases": [
+   "MiniMax",
+   "0100.HK"
+  ],
+  "url": "https://www.minimaxi.com/"
+ },
+ {
+  "slug": "us-china-ai-policy",
+  "name": "中美 AI 监管与出口管制",
+  "name_en": "US–China AI policy · export controls",
+  "aliases": [
+   "出口管制",
+   "实体清单",
+   "商务部",
+   "BIS",
+   "白宫",
+   "AI Act",
+   "网信办",
+   "蒸馏",
+   "特习",
+   "关税"
+  ]
+ },
+ {
+  "slug": "ipo-exits",
+  "name": "AI 公司上市与退出",
+  "name_en": "AI IPOs & exits",
+  "aliases": [
+   "IPO",
+   "上市",
+   "S-1",
+   "招股书",
+   "港交所",
+   "科创板",
+   "退出",
+   "配售"
+  ]
+ },
+ {
+  "slug": "model-pricing",
+  "name": "模型定价与缓存",
+  "name_en": "Model pricing · caching · token economics",
+  "aliases": [
+   "定价",
+   "缓存读",
+   "降价",
+   "每百万",
+   "$/M",
+   "token 价",
+   "分时"
+  ]
+ }
 ]

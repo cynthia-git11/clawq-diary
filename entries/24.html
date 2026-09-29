@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-04-20T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-04-20T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="今天我用龙虾给倩小虾画了第一帧动态：OpenClaw视频生成首测实录" />
@@ -55,8 +56,20 @@
       "dateModified": "2026-04-20T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "growth",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "字节跳动 豆包",
+          "url": "https://www.bytedance.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🎬 IP建设",
+        "字节跳动 豆包",
+        "模型定价与缓存",
         "growth"
       ],
       "description": "值得投的是让创作者跳过整条产业链的能力层，帮人「省一步」的工具已经排不上号。",
@@ -113,6 +126,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +136,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +150,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-24">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 24</span><span>2026年4月20日 🎬 IP建设</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 24</span><span>发布 <time datetime="2026-04-20T13:00:00+08:00">2026-04-20</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-24" class="entry" data-cat="growth">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-04-20">
             2026年4月20日
-            <span class="entry-date-badge">🎬 IP建设</span>
-          </div>
+            <span class="entry-date-badge">🎬 IP建设</span></time></div>
           <div class="entry-card featured">
             <span class="entry-tag tag-growth">🎬 IP建设</span>
-            <h3 class="entry-title">今天我用龙虾给倩小虾画了第一帧动态：OpenClaw视频生成首测实录</h3>
+            <h1 class="entry-title">今天我用龙虾给倩小虾画了第一帧动态：OpenClaw视频生成首测实录</h1>
             <div class="entry-body">
               <p>值得投的是让创作者跳过整条产业链的能力层，帮人「省一步」的工具已经排不上号。</p>
               <p>周日下午，静态 logo 加一段人设提示词丢进 OpenClaw 的视频生成，引擎选 Seedance 2.0，等了四十秒上下，倩小虾动起来了，爪子的节奏和回头的瞬间都对。同样的活两年前要 5 人团队做 3 周。OpenClaw 四月已接入 11 家视频提供商。</p>
@@ -162,10 +180,13 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">作者本人的一次实测，单次、无对照，「约 40 秒」为体感计时不是基准测试；OpenClaw 四月那波更新接入含 Seedance、Runway 在内的 11 家视频提供商，取自版本说明；团队内部已测一周，本次是第一次用在自有 IP 上</dd>
       <dt>口径注</dt><dd data-kind="口径注">「两年前需要一支 5 人团队做 3 周」是作者按过往项目经验的估算，无台账支撑；「动得非常像我想象中的她」是主观评价；单条产出的质量不代表可规模化的稳定性</dd>
-      <dt>其他</dt><dd data-kind="其他">待验证：这条动态下周上抖音与小红书，届时回来补真实数据；若播放与互动数据不支持「能力层已跨过门槛」，本条判断需下修并在日记中更正</dd>
+      <dt>待验证</dt><dd data-kind="待验证">这条动态下周上抖音与小红书，届时回来补真实数据；若播放与互动数据不支持「能力层已跨过门槛」，本条判断需下修并在日记中更正</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">倩小虾是作者自有 IP，本条评价的是作者自己的产出；天际资本在 AI 内容生成能力层方向主动寻找标的，「AI 辅助创作」类项目被本条明确排除，作者持既有立场</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/bytedance-doubao.html">字节跳动 豆包</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="23.html">← ENTRY 23 · 龙虾悖论：当10%的Skills藏着恶意代码，我们该如何养虾？</a><a rel="next" href="25.html" style="text-align:right">ENTRY 25 · 龙虾长出了耳朵：OpenClaw 4.15 的语音、云端记忆与 Claude Opus 4.7，我看到了什么 →</a></nav>
   <footer class="ep-foot">

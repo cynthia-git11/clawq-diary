@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-06-04T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-06-04T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号" />
@@ -55,8 +56,14 @@
       "dateModified": "2026-06-04T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "tech",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🤖 第四层",
+        "模型定价与缓存",
         "tech"
       ],
       "description": "这一轮 humanoid 里最没被定价的不是整机也不是模型，是第 4 层的机械供应链。",
@@ -113,6 +120,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +130,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +144,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-65">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 65</span><span>2026年6月4日 · Day 89 🤖 第四层</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 65</span><span>发布 <time datetime="2026-06-04T13:00:00+08:00">2026-06-04</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-65" class="entry milestone" data-cat="tech">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-06-04">
             2026年6月4日 · Day 89
-            <span class="entry-date-badge">🤖 第四层</span>
-          </div>
+            <span class="entry-date-badge">🤖 第四层</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-tech">🤖 第四层</span>
-            <h3 class="entry-title">中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号</h3>
+            <h1 class="entry-title">中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号</h1>
             <div class="entry-body">
               <p>这一轮 humanoid 里最没被定价的不是整机也不是模型，是第 4 层的机械供应链。</p>
               <p>中国 embodied AI 今年融资已过 345 亿元，几乎全涌向整机和模型。麦肯锡 4 月那句被刷屏新闻盖掉了：供应链是 humanoid 规模化里最被低估的约束。谐波减速器、力矩传感器、关节伺服、电池能量密度，还压在老牌工业公司和隐形冠军手里。</p>
@@ -161,12 +173,15 @@
     <h2>尾注 · 可核对项</h2>
     <dl>
       <dt>来源</dt><dd data-kind="来源">中国 embodied AI 今年融资已超 345 亿元；麦肯锡 4 月报告原话「供应链是 humanoid 规模化里最被低估的约束」；Figure 估值 400 亿美元</dd>
-      <dt>其他</dt><dd data-kind="其他">整机样本：AgiBot、Figure、UBTECH</dd>
+      <dt>整机样本</dt><dd data-kind="整机样本">AgiBot、Figure、UBTECH</dd>
       <dt>口径注</dt><dd data-kind="口径注">融资额为公开披露口径；「第 4 层（机械供应链）」是本日记算力/产业分层框架的自定义口径，非行业通用说法</dd>
       <dt>其他</dt><dd data-kind="其他">Figure「早早签死电机、传感器、电池厂产能」为本条的归因判断，非公司披露</dd>
       <dt>其他</dt><dd data-kind="其他">第 4 层标的的风险已知：拿货周期长，回报期以年计</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="64.html">← ENTRY 64 · 今天三连发：Mythos + 应用层数据 + 我对 OpenClaw 这类工具的判断要修正了</a><a rel="next" href="66.html" style="text-align:right">ENTRY 66 · Day 90 复盘：90 天公开写日记真正改变了的是我自己 →</a></nav>
   <footer class="ep-foot">

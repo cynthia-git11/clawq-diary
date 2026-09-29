@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-04-14T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-04-14T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="龙虾开始&quot;记住你了&quot;：OpenClaw 4.11 记忆维基与主动记忆，改变了什么" />
@@ -55,8 +56,20 @@
       "dateModified": "2026-04-14T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "🧠 技术洞察",
+        "OpenAI",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "Agent 的护城河从这版起换了位置。会话里的聪明谁都买得到，跨会话的记忆才留得住人——做应用的今年该盯的指标是三个月后还在不在用。",
@@ -113,6 +126,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +136,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +150,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-19">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 19</span><span>2026年4月14日 🧠 技术洞察</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 19</span><span>发布 <time datetime="2026-04-14T13:00:00+08:00">2026-04-14</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-19" class="entry" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-04-14">
             2026年4月14日
-            <span class="entry-date-badge">🧠 技术洞察</span>
-          </div>
+            <span class="entry-date-badge">🧠 技术洞察</span></time></div>
           <div class="entry-card featured">
             <span class="entry-tag tag-insight">🧠 技术洞察</span>
-            <h3 class="entry-title">龙虾开始"记住你了"：OpenClaw 4.11 记忆维基与主动记忆，改变了什么</h3>
+            <h1 class="entry-title">龙虾开始"记住你了"：OpenClaw 4.11 记忆维基与主动记忆，改变了什么</h1>
             <div class="entry-body">
               <p>Agent 的护城河从这版起换了位置。会话里的聪明谁都买得到，<strong>跨会话的记忆才留得住人</strong>——做应用的今年该盯的指标是三个月后还在不在用。</p>
               <p>昨晚 OpenClaw 推 v2026.4.11。记忆维基把 memory/ 里的碎片整理成一部你自己的维基，新旧信息打架会标出来，还能导入 ChatGPT 历史；主动记忆把顺序倒过来，每次对话前先翻笔记再开口。</p>
@@ -162,11 +180,14 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">OpenClaw v2026.4.11 版本更新（昨夜推送）与本人两小时实测；功能描述以官方更新说明和实测为准，含记忆维基（提取持久事实、标注新旧信息冲突、过期知识在 Dreaming 页可见、可导入 ChatGPT 历史）与主动记忆（每次对话前先检索笔记再回答）</dd>
       <dt>口径注</dt><dd data-kind="口径注">「两小时实测」为单人短时试用，未做长期留存、跨模型或对照测试；记忆维基的事实提取准确率、冲突标注的漏报率均未量化</dd>
-      <dt>其他</dt><dd data-kind="其他">诚信标注：「会冒出一批记忆即服务与个人知识图谱公司」为本人预判，无第三方数据支撑</dd>
+      <dt>诚信标注</dt><dd data-kind="诚信标注">「会冒出一批记忆即服务与个人知识图谱公司」为本人预判，无第三方数据支撑</dd>
       <dt>证伪口</dt><dd data-kind="证伪口">起算日为版本发布日 2026-04-11，若 12 个月内主流模型厂把跨会话记忆做成免费默认能力，独立记忆层公司将失去单独收费空间，本条「卡位窗口」作废，裁定源为主流模型厂的官方产品说明与定价页，后果是撤回本条并公开更正尽调建议</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">天际资本正寻求在记忆层与个人知识图谱方向出手，本条构成对自身布局方向的公开表态</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/openai.html">OpenAI</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="17.html">← ENTRY 17 · Anthropic 封号龙虾之父：一场24小时的闹剧，和它背后的真正信号</a><a rel="next" href="20.html" style="text-align:right">ENTRY 20 · 微软来了：企业级龙虾的崛起，对中国市场意味着什么 →</a></nav>
   <footer class="ep-foot">

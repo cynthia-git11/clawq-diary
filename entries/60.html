@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-05-24T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-05-24T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线" />
@@ -55,8 +56,31 @@
       "dateModified": "2026-05-24T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI 公司上市与退出"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "📈 重定价",
+        "Anthropic",
+        "OpenAI",
+        "AI 公司上市与退出",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "「前沿 AI 值多少钱」的定价权，这个季度从几十家 VC 手里交给了公开市场。对应用层公司，这是一次强制体检。",
@@ -113,6 +137,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +147,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +161,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-60">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 60</span><span>2026年5月24日 · Day 78 📈 重定价</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 60</span><span>发布 <time datetime="2026-05-24T13:00:00+08:00">2026-05-24</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-60" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-05-24">
             2026年5月24日 · Day 78
-            <span class="entry-date-badge">📈 重定价</span>
-          </div>
+            <span class="entry-date-badge">📈 重定价</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">📈 重定价</span>
-            <h3 class="entry-title">OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线</h3>
+            <h1 class="entry-title">OpenAI、Anthropic 同一季度冲 IPO——这是重定价的发令枪，不是终点线</h1>
             <div class="entry-body">
               <p>「前沿 AI 值多少钱」的定价权，这个季度从几十家 VC 手里交给了公开市场。对应用层公司，这是一次强制体检。</p>
               <p>5 月 22 日 OpenAI 秘密递交 S-1；同一周 Anthropic 新一轮估值约 9000 亿美元，超过 OpenAI 三月的 8520 亿，目标最早 10 月上市。同期它包下了 SpaceX Colossus 整个数据中心的容量。</p>
@@ -162,11 +191,14 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">5 月 22 日 OpenAI 秘密递交 S-1；同周 Anthropic 新一轮融资估值约 9000 亿美元，OpenAI 三月为 8520 亿，Anthropic 目标最早 10 月上市；Anthropic 包下 SpaceX Colossus 整个数据中心容量</dd>
       <dt>口径注</dt><dd data-kind="口径注">以上均为私募融资轮估值，非公开市场市值；上市时间为公司目标，未定档</dd>
-      <dt>其他</dt><dd data-kind="其他">承接 5 月 19 日「明码标价」条目，本条是其二阶推论</dd>
-      <dt>其他</dt><dd data-kind="其他">背景判断：基础模型重资本、赢家通吃、与数据中心焊死，本日记不视其为多数人的牌桌</dd>
+      <dt>承接</dt><dd data-kind="承接">5 月 19 日「明码标价」条目，本条是其二阶推论</dd>
+      <dt>背景</dt><dd data-kind="背景">判断：基础模型重资本、赢家通吃、与数据中心焊死，本日记不视其为多数人的牌桌</dd>
       <dt>利益披露</dt><dd data-kind="利益披露">作者自己的跑道始终在应用层，本条给出的仓位方向与本人立场一致</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="59.html">← ENTRY 59 · OpenClaw v2026.5.18 把&quot;跨模型一致性&quot;做成产品功能——这件事的二阶意义</a><a rel="next" href="61.html" style="text-align:right">ENTRY 61 · Anthropic 9650 亿反超 OpenAI——但真正该读的是那个&quot;470 亿 ARR&quot; →</a></nav>
   <footer class="ep-foot">

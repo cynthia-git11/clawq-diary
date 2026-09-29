@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-06-03T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-06-03T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="2026 应用层之年的硬数据：$25B 已融、单轮均值 $155M、winners 共享 4 条 trait" />
@@ -55,8 +56,14 @@
       "dateModified": "2026-06-03T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "📊 应用层之年",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "「通用 agent 平台一统天下」这条路线，已经被钱投票否决。2026 的溢价全在垂直应用层。",
@@ -113,6 +120,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +130,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +144,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-63">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 63</span><span>2026年6月3日 · Day 88 📊 应用层之年</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 63</span><span>发布 <time datetime="2026-06-03T13:00:00+08:00">2026-06-03</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-63" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-06-03">
             2026年6月3日 · Day 88
-            <span class="entry-date-badge">📊 应用层之年</span>
-          </div>
+            <span class="entry-date-badge">📊 应用层之年</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">📊 应用层之年</span>
-            <h3 class="entry-title">2026 应用层之年的硬数据：$25B 已融、单轮均值 $155M、winners 共享 4 条 trait</h3>
+            <h1 class="entry-title">2026 应用层之年的硬数据：$25B 已融、单轮均值 $155M、winners 共享 4 条 trait</h1>
             <div class="entry-body">
               <p>「通用 agent 平台一统天下」这条路线，已经被钱投票否决。2026 的溢价全在垂直应用层。</p>
               <p>今年截至 4 月，agentic AI 融资 26.6 亿美元，去年同期 10.9 亿；单轮均值从 Q4 2025 到 Q1 2026 涨到 1.55 亿，接近翻倍；Top 25 累计 250 亿。钱只走两条线：coding agent 和客服。</p>
@@ -163,9 +175,12 @@
       <dt>来源</dt><dd data-kind="来源">agentic AI 公司今年截至 4 月融资 26.6 亿美元，去年同期 10.9 亿；Q4 2025 至 Q1 2026 单轮平均 1.55 亿美元；Top 25 agent 公司累计融资 250 亿美元；资金主线为 coding agents 与客服，均属 workflow-critical、高频、替代性强的场景</dd>
       <dt>其他</dt><dd data-kind="其他">winners 四条特征原文：深垂直聚焦、解决客户的钱痛点、生产级可靠性、用专有数据加深度集成建护城河</dd>
       <dt>口径注</dt><dd data-kind="口径注">融资额为公开披露口径，未含未披露轮次；「截至 4 月」为年内不完整区间</dd>
-      <dt>其他</dt><dd data-kind="其他">承接 5 月 17 日、5 月 19 日、5 月 24 日三条：技术差距收敛、模型层定价权外移、应用层成为主舞台</dd>
+      <dt>承接</dt><dd data-kind="承接">5 月 17 日、5 月 19 日、5 月 24 日三条：技术差距收敛、模型层定价权外移、应用层成为主舞台</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="62.html">← ENTRY 62 · Mythos 把&quot;找漏洞&quot;做到自动——网络安全市场的攻防比，第一次倒过来了</a><a rel="next" href="64.html" style="text-align:right">ENTRY 64 · 今天三连发：Mythos + 应用层数据 + 我对 OpenClaw 这类工具的判断要修正了 →</a></nav>
   <footer class="ep-foot">

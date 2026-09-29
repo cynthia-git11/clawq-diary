@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-06-11T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-06-11T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="补上 2533.HK 的功课：黑芝麻智能营收 +73%、毛利率 41%、但还在亏——这个组合才是端侧硬件的真问题" />
@@ -55,8 +56,14 @@
       "dateModified": "2026-06-11T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
       "keywords": [
-        "📈 单位经济学",
+        "模型定价与缓存",
         "insight"
       ],
       "description": "端侧硬件不是一档生意，是两档：思特威已经盈利，黑芝麻智能增速更快、毛利更高、还在亏。下注前先问它在哪一档，比问它是不是端侧 AI 有用。",
@@ -113,6 +120,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +130,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +144,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-72">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 72</span><span>2026年6月11日 · Day 96 📈 单位经济学</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 72</span><span>发布 <time datetime="2026-06-11T13:00:00+08:00">2026-06-11</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-72" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-06-11">
             2026年6月11日 · Day 96
-            <span class="entry-date-badge">📈 单位经济学</span>
-          </div>
+            <span class="entry-date-badge">📈 单位经济学</span></time></div>
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">📈 单位经济学</span>
-            <h3 class="entry-title">补上 2533.HK 的功课：黑芝麻智能营收 +73%、毛利率 41%、但还在亏——这个组合才是端侧硬件的真问题</h3>
+            <h1 class="entry-title">补上 2533.HK 的功课：黑芝麻智能营收 +73%、毛利率 41%、但还在亏——这个组合才是端侧硬件的真问题</h1>
             <div class="entry-body">
               <p>端侧硬件不是一档生意，是两档：思特威已经盈利，黑芝麻智能增速更快、毛利更高、还在亏。下注前先问它在哪一档，比问它是不是端侧 AI 有用。</p>
               <p>2533.HK 2025 年报：营收增 73.4%，毛利率 41.0% 持平，经调整亏损收窄 17.5%。具身智能业务从无到有，毛利率 48.7%，比基本盘智驾还高。</p>
@@ -162,9 +174,12 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">经济观察网转述公告、国信证券与东方财富研报（citability B），非一手年报原文</dd>
       <dt>口径注</dt><dd data-kind="口径注">亏损为经调整口径，非报表净亏损；毛利率 41.0% 为集团口径，48.7% 为具身智能分部口径；思特威对照数据见 6 月 10 日那篇</dd>
-      <dt>其他</dt><dd data-kind="其他">关联：本篇是 6 月 10 日那篇答应补的功课；具身智能高毛利是 6 月 4 日那篇 humanoid 第 4 层需求侧的财务映射</dd>
+      <dt>关联</dt><dd data-kind="关联">本篇是 6 月 10 日那篇答应补的功课；具身智能高毛利是 6 月 4 日那篇 humanoid 第 4 层需求侧的财务映射</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="71.html">← ENTRY 71 · 用真数据校验 6月9日那篇 的国产端侧窗口——思特威跑通、黑芝麻歧义、AI 眼镜是我漏掉的第五条线</a><a rel="next" href="73.html" style="text-align:right">ENTRY 73 · 把 AI 眼镜正式纳入算力框架——它不是一个场景，是端侧 AI 的第一个消费级载体，而瓶颈不在芯片在光学 →</a></nav>
   <footer class="ep-foot">

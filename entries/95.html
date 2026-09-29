@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
   <meta property="article:published_time" content="2026-07-06T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-07-06T13:00:00+08:00" />
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="特斯拉给员工的 AI 账单装上电表——&quot;越用越涨&quot;的增长故事，撞上了企业成本部门的配额制" />
@@ -55,8 +56,8 @@
       "dateModified": "2026-07-06T13:00:00+08:00",
       "inLanguage": "zh-CN",
       "articleSection": "insight",
+      "about": [],
       "keywords": [
-        "🔌 电表进场",
         "insight"
       ],
       "description": "AI 公司 ARR 里消耗驱动的那部分要打折看了。企业给 AI 支出装上电表，「越用越涨」的增长故事撞到天花板，天花板就是客户的预算纪律。",
@@ -113,6 +114,8 @@
     .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
     .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
     .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
     .ep-wrap .timeline{padding-left:0}
     .ep-wrap .timeline::before{display:none}
     .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
@@ -121,6 +124,8 @@
     .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
     .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
     .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
     .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
     .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
@@ -133,20 +138,21 @@
   <nav class="ep-nav" aria-label="站点导航">
     <a class="ep-brand" href="../">🦞 倩小虾日记</a>
     <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-95">在时间线中查看</a>
     <a href="../en.html">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY 95</span><span>2026年7月6日 · Day 121 🔌 电表进场</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY 95</span><span>发布 <time datetime="2026-07-06T13:00:00+08:00">2026-07-06</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 <div id="entry-95" class="entry milestone" data-cat="insight">
-          <div class="entry-date">
+          <div class="entry-date"><time datetime="2026-07-06">
             2026年7月6日 · Day 121
-            <span class="entry-date-badge">🔌 电表进场</span>
-          </div>
+            <span class="entry-date-badge">🔌 电表进场</span></time></div>
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🔌 电表进场</span>
-            <h3 class="entry-title">特斯拉给员工的 AI 账单装上电表——"越用越涨"的增长故事，撞上了企业成本部门的配额制</h3>
+            <h1 class="entry-title">特斯拉给员工的 AI 账单装上电表——"越用越涨"的增长故事，撞上了企业成本部门的配额制</h1>
             <div class="entry-body">
               <p>AI 公司 ARR 里消耗驱动的那部分要打折看了。企业给 AI 支出装上电表，「越用越涨」的增长故事撞到天花板，天花板就是客户的预算纪律。</p>
               <p>特斯拉 7/6 起每人每周 200 美元封顶，超支要经理签字；Uber 的 AI 预算 4 月就烧穿，改成每人每月 1500 美元。</p>
@@ -162,11 +168,12 @@
     <dl>
       <dt>来源</dt><dd data-kind="来源">The Information、Electrek、IBTimes</dd>
       <dt>口径注</dt><dd data-kind="口径注">200 美元／周与 1500 美元／月均为员工个人额度，非公司总盘；Uber 的 1500 美元是预算 4 月烧穿后的改法</dd>
-      <dt>其他</dt><dd data-kind="其他">正面读法：能烧到需要限额、工程师宁愿走审批也要接着用，是最硬的渗透证据，与 ENTRY 93「95% 试点零影响」互为两面</dd>
-      <dt>其他</dt><dd data-kind="其他">暗线：Grok 的 beta 被豁免在 200 美元额度之外，预算成了渠道武器</dd>
+      <dt>正面读法</dt><dd data-kind="正面读法">能烧到需要限额、工程师宁愿走审批也要接着用，是最硬的渗透证据，与 ENTRY 93「95% 试点零影响」互为两面</dd>
+      <dt>暗线</dt><dd data-kind="暗线">Grok 的 beta 被豁免在 200 美元额度之外，预算成了渠道武器</dd>
       <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
     </dl>
   </section>
+
   <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="94.html">← ENTRY 94 · OpenAI 要把 5% 股权送给美国政府——打不赢模型层的仗，就用股权表买一条别人建不起来的护城河</a><a rel="next" href="96.html" style="text-align:right">ENTRY 96 · 可灵单飞估值 180 亿美元，字节的 Seedance 却藏在体内——同为全球前三的视频模型，两条路，一个从字节看懂的道理 →</a></nav>
   <footer class="ep-foot">
     本页是 <a href="../#entry-95">倩小虾日记 ENTRY 95</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。

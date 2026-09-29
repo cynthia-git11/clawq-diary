@@ -11,7 +11,7 @@
 
 工作目录就是这个仓库的根目录。所有路径都以仓库根为基准。
 
-**⛔ 完成的定义（先记住）**：写完 entry 只是开始。真正的「完成」= `python3 scripts/geo-check.py` 输出 "GEO health check passed"。它强制要求今天这篇同步进 index / atom.xml / llms.txt / llms-full.txt 且计数一致——**别只更新 index+atom 就以为完事**（这是过去反复出的漏）。第 3–6 节的全栈同步，最后都由第 7 节这一步验收；没通过不许 push。**如果时间/步数紧张，优先保证 geo-check 覆盖的那几个载体（index 正文块 + ItemList + BlogPosting @graph + llms.txt + llms-full.txt + atom + 计数），en/ja/theses/FAQ 可稍后由人工补，但绝不能漏结构化同步。**
+**⛔ 完成的定义（先记住）**：写完 entry 只是开始。真正的「完成」= `python3 scripts/geo-check.py` 输出 "GEO health check passed"。 在跑 geo-check 之前先跑 `python3 scripts/gen-entry-pages.py && python3 scripts/gen-topics.py`（有 data/answers.json 时再跑 `python3 scripts/gen-answers.py`），让新篇拿到独立 URL `entries/<N>.html` 并进主题页与问答页。它强制要求今天这篇同步进 index / atom.xml / llms.txt / llms-full.txt 且计数一致——**别只更新 index+atom 就以为完事**（这是过去反复出的漏）。第 3–6 节的全栈同步，最后都由第 7 节这一步验收；没通过不许 push。**如果时间/步数紧张，优先保证 geo-check 覆盖的那几个载体（index 正文块 + ItemList + BlogPosting @graph + llms.txt + llms-full.txt + atom + 计数），en/ja/theses/FAQ 可稍后由人工补，但绝不能漏结构化同步。**
 
 ═══════════════════════════════════════════════
 ⚠️ 合规红线 — 每次运行前必读，绝不可越界
@@ -177,6 +177,9 @@
 在 CI 里 git 用户已配好（ClawQ Auto-Update Bot）。严格按顺序执行：
 
 ```bash
+# 0) 派生载体：每篇独立页 entries/<N>.html + 主题页 topics/ + 问答页 answers/（幂等、确定性脚本；GEO 的 URL 层）。写完 entry 必跑，否则新篇没有独立 URL、不进 sitemap-entries、不进主题页。
+python3 scripts/gen-entry-pages.py && python3 scripts/gen-topics.py && { [ -f data/answers.json ] && python3 scripts/gen-answers.py || true; }
+
 # 1) 硬门槛：结构化同步必须通过。没过就按它打印的缺失项补齐（最常见是漏 llms.txt / llms-full.txt / BlogPosting @graph），改完重跑本命令，直到 passed。通过前不许进入下一步。
 python3 scripts/geo-check.py || { echo "❌ geo-check 未过——补齐上面列出的缺失载体后重跑，通过前不许 commit/push。"; exit 1; }
 
