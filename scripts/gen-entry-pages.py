@@ -261,6 +261,7 @@ def page(e, prev_e, next_e):
     本页是 <a href="../#entry-{e['n']}">倩小虾日记 ENTRY {e['n']}</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
 """
@@ -307,6 +308,7 @@ wr("entries/index.html", f"""<!DOCTYPE html>
   </ul>
   <footer class="ep-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · 本日记不构成对任何基金产品的推介或募集要约。</footer>
 </div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
 """)

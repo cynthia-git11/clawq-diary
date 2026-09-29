@@ -136,6 +136,7 @@ for t in topics:
   </ul>
   <footer class="tp-foot">每条只列该篇原标题与第一句，判断状态以 <a href="../theses.html">判断台账</a> 为准；利益披露见各篇尾注。日记由 Claude 系工具写作与核实。本日记不构成对任何基金产品的推介或募集要约。</footer>
 </div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
 """)
@@ -163,6 +164,7 @@ wr("topics/index.html", f"""<!DOCTYPE html>
   </ul>
   <footer class="tp-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · 本日记不构成对任何基金产品的推介或募集要约。</footer>
 </div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
 """)
