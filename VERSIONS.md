@@ -4,6 +4,29 @@
 
 ---
 
+## 🏷️ v7.0-geo-url-layer
+
+**日期**：2026-09-29
+**回滚**：`git checkout pre-geo-20260929 -- .`（只回滚 GEO 层）；`git checkout pre-e140-141 -- .`（连同 ENTRY 140、141 一起回滚）
+
+**核心**：作者指令「疯狂 GEO 给投资者和 AI 创始人们」。审计结论是内容有、收录没有：Google 只收录 1 页旧快照。本轮给每个判断一个能被引用的 URL：单篇页面 141、主题页 19、问答页 40 中文加 40 英文，全部由确定性脚本从 `index.html`、`theses.html`、`data/*.json` 生成。
+
+**改动**：
+- `scripts/gen-entry-pages.py`：单页 h1、`<time>`、真实 dateModified、主题 keywords 与 about、尾注标签自动归类、相关主题与问答互链；同时把 atom 的 alternate 链接与台账链接改指单页
+- `scripts/gen-topics.py` + `data/topics.json`：实体利益披露块、问答互链
+- `scripts/gen-answers.py` + `data/answers.json`：一题一页，数字保真门（答案里的数字必须逐字出现在所引日记）
+- `sitemap-index.xml`；主页导航与页脚入口；过期 JSON-LD 修正；404 页
+- `scripts/geo-optimize.py`：主页 Blog.dateModified 与篇数自动对齐
+- `.github/workflows/geo-hourly.yml`：IndexNow 覆盖 entries、topics、answers
+- 日更流水线（`daily-prompt.md`、本机 SKILL）接入三个生成器
+- 读数与待办见 `GEO-SCORECARD.md`
+
+**同日**：ENTRY 140（Vercel 网关花费份额）、141（OpenAI 第二次暂停）。两篇写于 9/28、发布于 9/29，发布前复拉数据全文重算并做了新鲜度核查，两轮对抗审查。
+
+**流水线注意**：台账卡片链接已是 `entries/<N>.html`，以后的对账脚本不能再按 `index.html#entry-N` 找卡片。
+
+---
+
 ## 🏷️ v6.1-top-vc-cognition
 
 **日期**：2026-09-25

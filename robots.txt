@@ -76,3 +76,4 @@ Sitemap: https://cynthia-git11.github.io/clawq-diary/sitemap.xml
 # LLM 全文: https://cynthia-git11.github.io/clawq-diary/llms-full.txt
 Sitemap: https://cynthia-git11.github.io/clawq-diary/sitemap-entries.xml
 Sitemap: https://cynthia-git11.github.io/clawq-diary/sitemap-topics.xml
+Sitemap: https://cynthia-git11.github.io/clawq-diary/sitemap-index.xml

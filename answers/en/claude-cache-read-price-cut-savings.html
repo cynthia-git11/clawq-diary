@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How much does Anthropic&#x27;s cache-read price cut actually save on my bill? · The ClawQ Chronicles</title>
+  <meta name="description" content="Work it out yourself from your pre-September bill: share saved = 0.75 × (cache-read spend ÷ total), and it holds only for Fable 5.1 and Mythos 5.1. On 9/1 Anthropic cut the cache-read price from $1 to $0.25 and left input and output prices untouched." />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html" />
+  <link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html" /><link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/answers/claude-cache-read-price-cut-savings.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/answers/claude-cache-read-price-cut-savings.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="article" /><meta property="og:title" content="How much does Anthropic&#x27;s cache-read price cut actually save on my bill?" /><meta property="og:description" content="Work it out yourself from your pre-September bill: share saved = 0.75 × (cache-read spend ÷ total), and it holds only for Fable 5.1 and Mythos 5.1. On 9/1 Anthropic cut the cache-read price from $1 to $0.25 and left input and output prices untouched." /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-09-02" /><meta name="author" content="张倩 Cynthia Zhang" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html",
+   "name": "How much does Anthropic's cache-read price cut actually save on my bill?",
+   "headline": "How much does Anthropic's cache-read price cut actually save on my bill?",
+   "description": "Work it out yourself from your pre-September bill: share saved = 0.75 × (cache-read spend ÷ total), and it holds only for Fable 5.1 and Mythos 5.1. On 9/1 Anthropic cut the cache-read price from $1 to $0.25 and left input and output prices untouched.",
+   "inLanguage": "en",
+   "datePublished": "2026-09-02",
+   "dateModified": "2026-09-02",
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "author": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+   },
+   "about": [
+    {
+     "@type": "Organization",
+     "name": "Anthropic · Claude",
+     "url": "https://www.anthropic.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "OpenAI · GPT",
+     "url": "https://openai.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "DeepSeek · 深度求索",
+     "url": "https://www.deepseek.com/"
+    },
+    {
+     "@type": "Thing",
+     "name": "Model pricing · caching · token economics"
+    }
+   ],
+   "citation": [
+    "https://cynthia-git11.github.io/clawq-diary/entries/132.html"
+   ],
+   "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+     "h1.aw-h1",
+     ".aw-lead"
+    ]
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html#q",
+     "name": "How much does Anthropic's cache-read price cut actually save on my bill?",
+     "dateCreated": "2026-09-02",
+     "author": {
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+     },
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Work it out yourself from your pre-September bill: share saved = 0.75 × (cache-read spend ÷ total), and it holds only for Fable 5.1 and Mythos 5.1. On 9/1 Anthropic cut the cache-read price from $1 to $0.25 and left input and output prices untouched. The mainstream story repeats the press-release line of a typical bill falling around 25% and up to around 45%. The diary parts ways here: those are the declines in Anthropic's measured sample, which imply cache reads were 33% and 60% of the bill (the author's back-calculation, not an official figure). A different share gives a different saving. Anthropic released Fable 5.1 on 9/1; per its official pricing page, cache-read fell from $1 to $0.25 (0.025x the input price), with the other five items unchanged. Anthropic says typical bills fall around 25% and highly agentic ones up to around 45%, a range and not a committed value, and it did not disclose cache-read share. OpenAI and Google are at 0.1x and DeepSeek at about 0.032x (official pricing pages, fetched 2026-09-02). For founders: take your pre-September bill, count the cache_read share only on the Fable and Mythos SKUs, and multiply it by 0.75; mixing in Opus and Sonnet overstates the saving. For investors: compare vendors on absolute prices, since a low multiple only describes the shape of the bill.",
+      "dateCreated": "2026-09-02",
+      "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html",
+      "author": {
+       "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "citation": [
+       "https://cynthia-git11.github.io/clawq-diary/entries/132.html"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "The ClawQ Chronicles",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Q&A",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "How much does Anthropic's cache-read price cut actually save on my bill?",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/claude-cache-read-price-cut-savings.html"
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+   "name": "张倩 Cynthia Zhang",
+   "url": "https://cynthia-git11.github.io/clawq-diary/",
+   "worksFor": {
+    "@type": "Organization",
+    "name": "天际资本 FutureX Capital",
+    "url": "https://futurex.capital"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+   "name": "倩小虾日记 · The ClawQ Chronicles",
+   "url": "https://cynthia-git11.github.io/clawq-diary/"
+  }
+ ]
+}
+  </script>
+  <style>
+    .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .aw-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px;color:var(--muted)}
+    .aw-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.aw-nav .aw-brand{font-weight:800;color:var(--text);font-size:15px}
+    .aw-crumb{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-bottom:14px}.aw-crumb a{color:var(--muted2);text-decoration:none}
+    h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
+    .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
+    .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
+    .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
+    .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
+    .aw-status{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--text);margin-top:8px}
+    .aw-disc{font-size:12.5px;line-height:1.75;color:var(--muted2);margin-top:26px;padding-top:14px;border-top:1px solid var(--border)}
+    .aw-src,.aw-rel{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted);line-height:1.9;margin-top:14px}.aw-src a,.aw-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .aw-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .aw-list{list-style:none;padding:0;margin:0 0 26px}.aw-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .aw-list a{font-size:16px;color:var(--text);text-decoration:none;font-weight:600;line-height:1.5}.aw-list a:hover{color:var(--claw2,#B8860B)}
+    .aw-list .aw-lp{font-size:14px;color:var(--muted);line-height:1.75;margin-top:4px}.aw-list .aw-ld{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:4px}
+  </style>
+</head>
+<body>
+<div class="aw-wrap">
+  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../../">🦞 The ClawQ Chronicles</a><a href="../../answers/en/">Q&A</a><a href="../claude-cache-read-price-cut-savings.html">中文</a><a href="../../topics/">Topics</a><a href="../../entries/">All entries</a><a href="../../theses.html">⚖️ Ledger</a></nav>
+  <div class="aw-crumb"><a href="../../">Home</a> › <a href="./">Q&A</a> › How much does Anthropic&#x27;s cache-read pri</div>
+  <h1 class="aw-h1">How much does Anthropic&#x27;s cache-read price cut actually save on my bill?</h1>
+  <div class="aw-meta">Asked by：创始人·AI 应用 CTO / agent 产品负责人 · Judged <time datetime="2026-09-02">2026-09-02</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <p class="aw-lead">Work it out yourself from your pre-September bill: share saved = 0.75 × (cache-read spend ÷ total), and it holds only for Fable 5.1 and Mythos 5.1. On 9/1 Anthropic cut the cache-read price from $1 to $0.25 and left input and output prices untouched.</p>
+  <h2 class="aw-h2">Judgment</h2>
+  <p class="aw-p">The mainstream story repeats the press-release line of a typical bill falling around 25% and up to around 45%. The diary parts ways here: those are the declines in Anthropic&#x27;s measured sample, which imply cache reads were 33% and 60% of the bill (the author&#x27;s back-calculation, not an official figure). A different share gives a different saving.</p>
+  <h2 class="aw-h2">Facts</h2>
+  <p class="aw-p">Anthropic released Fable 5.1 on 9/1; per its official pricing page, cache-read fell from $1 to $0.25 (0.025x the input price), with the other five items unchanged. Anthropic says typical bills fall around 25% and highly agentic ones up to around 45%, a range and not a committed value, and it did not disclose cache-read share. OpenAI and Google are at 0.1x and DeepSeek at about 0.032x (official pricing pages, fetched 2026-09-02).</p>
+  <h2 class="aw-h2">What to do</h2>
+  <p class="aw-p">For founders: take your pre-September bill, count the cache_read share only on the Fable and Mythos SKUs, and multiply it by 0.75; mixing in Opus and Sonnet overstates the saving. For investors: compare vendors on absolute prices, since a low multiple only describes the shape of the bill.</p>
+  <h2 class="aw-h2">Falsifier (verbatim from the diary footnote)</h2>
+  <div class="aw-falsify">Within 12 months from 2026-09-02, if Google removes its hourly cache storage fee and the cache-write multiples of all four vendors fall within the 1.0-1.5x range, then &quot;price sheets are not comparable&quot; no longer holds, this entry&#x27;s main judgment is marked ✗, and the judgment ledger is downgraded to under observation; the adjudicating source is the four vendors&#x27; official pricing pages, to be fetched on the same day with readings published.</div>
+  <div class="aw-status">Ledger status：⏳ 进行中（判断台账）。证伪口裁定的是「报价表不可比」这一主判断，省钱公式本身无单独证伪口。2026-09-25 对账：Anthropic 9/22 发 Opus 5.5，缓存读 $0.20（0.05 倍），缓存读倍数现在分三档，0.75 公式只对 Fable/Mythos 档成立，Opus 5.5 档系数为 0.5。</div>
+  <div class="aw-disc">Disclosure: This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not; FutureX Capital does not, on publicly available information, hold the companies discussed here.</div>
+  <div class="aw-src">Source entries：<a href="../../entries/132.html">ENTRY 132 · Anthropic 只降了缓存读价，省多少全看你账单那一行</a></div>
+  <div class="aw-rel">Related questions：<ul><li><a href="openai-luna-cut-sol-margin-layer.html">OpenAI cut Luna 80% but left Sol untouched: which pricing tier should my product&#x27;s margin sit on?</a></li><li><a href="switching-claude-to-deepseek-backend.html">With Anthropic-compatible endpoints, is switching my backend from Claude to DeepSeek really just a base_url change?</a></li><li><a href="openai-80-percent-price-cut-pricing-power.html">Is OpenAI&#x27;s 80% price cut a price war? Does the model layer still have pricing power?</a></li></ul></div>
+  <div class="aw-rel">Topic pages：<a href="../../topics/anthropic.html">Anthropic · Claude</a> · <a href="../../topics/openai.html">OpenAI · GPT</a> · <a href="../../topics/deepseek.html">DeepSeek · 深度求索</a> · <a href="../../topics/model-pricing.html">Model pricing · caching · token economics</a></div>
+  <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.</footer>
+</div>
+</body>
+</html>
