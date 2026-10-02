@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-10-01",
+  "generated": "2026-10-02",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 49,
+    "pv": 52,
     "uniques": 18,
-    "median_time_sec": 40,
+    "median_time_sec": 39,
     "completion_rate": 0.111,
     "shares": 3
   },
   "daily": [
-    {
-      "date": "2026-09-02",
-      "pv": 1,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 49,
-      "completion_rate": 0
-    },
     {
       "date": "2026-09-03",
       "pv": 10,
@@ -123,6 +115,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 8,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-10-01",
+      "pv": 4,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 3,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -130,61 +130,61 @@ window.CLAWQ_ANALYTICS = {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.49,
+      "pct": 0.462,
       "pv": 24
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.327,
-      "pv": 16
+      "pct": 0.288,
+      "pv": 15
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.102,
-      "pv": 5
+      "pct": 0.173,
+      "pv": 9
     },
     {
       "name": "MY",
       "code": "MY",
       "flag": "🌐",
-      "pct": 0.082,
+      "pct": 0.077,
       "pv": 4
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.857
+      "pct": 0.846
     },
     {
       "lang": "English (en)",
-      "pct": 0.102
+      "pct": 0.096
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.02
+      "pct": 0.019
     },
     {
       "lang": "日本語 (ja)",
-      "pct": 0.02
+      "pct": 0.019
+    },
+    {
+      "lang": "entries/index",
+      "pct": 0.019
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 35
+      "pv": 39
     },
     {
       "ref": "cynthia-git11.github.io",
       "pv": 10
-    },
-    {
-      "ref": "futurex.capital",
-      "pv": 2
     },
     {
       "ref": "www.futurex.capital",
@@ -192,6 +192,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "weixin110.qq.com",
+      "pv": 1
+    },
+    {
+      "ref": "futurex.capital",
       "pv": 1
     }
   ]
