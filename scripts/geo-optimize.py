@@ -72,6 +72,21 @@ if latest_date:
     if h != h0:
         wr("index.html", h); fixes.append("index.html Blog.dateModified / 篇数计数已对齐最新一篇")
 
+# ── A3. 新鲜度自动修：press 页计数对齐（2026-10-02 起；此前停在 6/3 · Day 88 · 64 篇）────
+if latest_date:
+    h = rd("index.html")
+    n_entries = len(re.findall(r'<div id="entry-(\d+)"', h))
+    dm2 = re.search(r"倩小虾日记 · Day (\d+)", h); cur_day = dm2.group(1) if dm2 else None
+    if cur_day:
+        stamp = latest_date.replace("-", ".")
+        for pf, unit in (("press.html", " 篇"), ("press-en.html", " entries")):
+            if not os.path.exists(os.path.join(ROOT, pf)): continue
+            s0 = rd(pf)
+            s1 = re.sub(r"Last updated \d{4}\.\d{2}\.\d{2} · Day \d+", f"Last updated {stamp} · Day {cur_day}", s0)
+            s1 = re.sub(r"· Day \d+ · \d+" + re.escape(unit), f"· Day {cur_day} · {n_entries}{unit}", s1)
+            if s1 != s0:
+                wr(pf, s1); fixes.append(f"{pf} press 页计数已对齐 Day {cur_day} · {n_entries}{unit.strip()}")
+
 # ── B. 判断腐烂守卫：已公开修正的旧说法不得出现在「活」carrier ──────────
 # 每次做公开修正后，在这里加一条规则（token=旧说法, why=已被谁改, live=需检查的活文件）。
 # 归档快照（llms-full.txt / 各 @graph[entry-N] 描述 / atom 旧 entry）保留原文、不检查。

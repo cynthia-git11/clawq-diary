@@ -147,6 +147,7 @@ def page(q, zh):
     answer_txt = " ".join(x for x in [lead, judg, facts, land] if x)
     desc = (lead if len(lead) <= 300 else lead[:297] + "…")
     date = q.get("date") or max((edate.get(n, "") for n in q["entries"]), default="")
+    updated = max(q.get("updated", ""), date)
     src = " · ".join(f'<a href="{up}entries/{n}.html">ENTRY {n} · {esc(etitle.get(n, ""))}</a>' for n in q["entries"])
     rel = [BYID[r] for r in q.get("related", []) if r in BYID and r != q["id"]]
     rel_html = "".join(f'<li><a href="{(r["slug"] + ".html") if zh else (r["slug"] + ".html")}">{esc(r["q_zh"] if zh else r["q_en"])}</a></li>' for r in rel)
@@ -154,7 +155,7 @@ def page(q, zh):
     tops_html = " · ".join(f'<a href="{up}topics/{t["slug"]}.html">{esc(t["name"] if zh else t["name_en"])}</a>' for t in tops if os.path.exists(os.path.join(SRC, "topics", t["slug"] + ".html")))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": ["WebPage", "FAQPage"], "@id": url, "url": url, "name": title, "headline": title, "description": desc, "inLanguage": "zh-CN" if zh else "en",
-         "datePublished": date, "dateModified": date, "isPartOf": {"@id": f"{BASE}#blog"}, "author": {"@id": f"{BASE}#cynthia"},
+         "datePublished": date, "dateModified": updated, "isPartOf": {"@id": f"{BASE}#blog"}, "author": {"@id": f"{BASE}#cynthia"},
          "about": [{"@type": "Organization", "name": t["name_en"] if not zh else t["name"], "url": t.get("url", "")} if t.get("url") else {"@type": "Thing", "name": t["name_en"] if not zh else t["name"]} for t in tops],
          "citation": [f"{BASE}entries/{n}.html" for n in q["entries"]],
          "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1.aw-h1", ".aw-lead"]},
@@ -197,7 +198,7 @@ def page(q, zh):
   {nav(zh, depth, alt_rel)}
   <div class="aw-crumb"><a href="{up}">{L["home"]}</a> › <a href="{'./' if zh else './'}">{L["qa"]}</a> › {esc(title[:40])}</div>
   <h1 class="aw-h1">{esc(title)}</h1>
-  <div class="aw-meta">{L["who"]}：{esc(q.get("persona", ""))} · {L["judged"]} <time datetime="{date}">{date}</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <div class="aw-meta">{L["who"]}：{esc(q.get("persona", ""))} · {L["judged"]} <time datetime="{date}">{date}</time>{(' · ' + ('台账更新' if zh else 'Ledger updated') + f' <time datetime="{updated}">{updated}</time>') if updated != date else ''} · 张倩 Cynthia Zhang · FutureX Capital</div>
   <p class="aw-lead">{esc(lead)}</p>
 {chr(10).join(sections)}
   <div class="aw-disc">{esc(disclosure(q, zh))}</div>
@@ -269,9 +270,11 @@ def index_page(zh):
 for q in Q:
     wr(f"answers/{q['slug']}.html", page(q, True)); wr(f"answers/en/{q['slug']}.html", page(q, False))
 wr("answers/index.html", index_page(True)); wr("answers/en/index.html", index_page(False))
-last = max((q.get("date", "") for q in Q), default="")
+last = max((max(q.get("updated", ""), q.get("date", "")) for q in Q), default="")
 urls = [(f"{BASE}answers/", last, "0.9"), (f"{BASE}answers/en/", last, "0.8")]
-for q in Q: urls += [(f"{BASE}answers/{q['slug']}.html", q.get("date", last), "0.8"), (f"{BASE}answers/en/{q['slug']}.html", q.get("date", last), "0.7")]
+for q in Q:
+    lm = max(q.get("updated", ""), q.get("date", last))
+    urls += [(f"{BASE}answers/{q['slug']}.html", lm, "0.8"), (f"{BASE}answers/en/{q['slug']}.html", lm, "0.7")]
 wr("sitemap-answers.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
    "".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod><changefreq>weekly</changefreq><priority>{p}</priority></url>\n" for u, d, p in urls) + "</urlset>\n")
 rb = rd("robots.txt")
