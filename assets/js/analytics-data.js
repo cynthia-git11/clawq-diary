@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-10-02",
+  "generated": "2026-10-03",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 52,
-    "uniques": 18,
-    "median_time_sec": 39,
-    "completion_rate": 0.111,
-    "shares": 3
+    "pv": 42,
+    "uniques": 15,
+    "median_time_sec": 31,
+    "completion_rate": 0.133,
+    "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-09-03",
-      "pv": 10,
-      "uniques": 3,
-      "shares": 1,
-      "median_time_sec": 61,
-      "completion_rate": 0
-    },
     {
       "date": "2026-09-04",
       "pv": 3,
@@ -130,65 +122,57 @@ window.CLAWQ_ANALYTICS = {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.462,
-      "pv": 24
-    },
-    {
-      "name": "日本",
-      "code": "JP",
-      "flag": "🇯🇵",
-      "pct": 0.288,
-      "pv": 15
+      "pct": 0.548,
+      "pv": 23
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.173,
+      "pct": 0.214,
       "pv": 9
+    },
+    {
+      "name": "日本",
+      "code": "JP",
+      "flag": "🇯🇵",
+      "pct": 0.143,
+      "pv": 6
     },
     {
       "name": "MY",
       "code": "MY",
       "flag": "🌐",
-      "pct": 0.077,
+      "pct": 0.095,
       "pv": 4
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.846
-    },
-    {
-      "lang": "English (en)",
-      "pct": 0.096
+      "pct": 0.929
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.019
-    },
-    {
-      "lang": "日本語 (ja)",
-      "pct": 0.019
+      "pct": 0.024
     },
     {
       "lang": "entries/index",
-      "pct": 0.019
+      "pct": 0.024
+    },
+    {
+      "lang": "English (en)",
+      "pct": 0.024
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 39
+      "pv": 36
     },
     {
       "ref": "cynthia-git11.github.io",
-      "pv": 10
-    },
-    {
-      "ref": "www.futurex.capital",
-      "pv": 1
+      "pv": 4
     },
     {
       "ref": "weixin110.qq.com",
