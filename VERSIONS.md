@@ -4,6 +4,22 @@
 
 ---
 
+## 🏷️ v7.1-geo-entry-points
+
+**日期**：2026-10-04
+**回滚**：`git checkout pre-geo-20261004 -- .`
+
+**核心**：作者指令「疯狂 GEO」。v7.0 给每个判断造了 URL，但上次统计 7 天只有 6 次浏览，全部没有来路，说明外部入口太少。本轮补三个入口：公司官网、GitHub 仓库页、英文单篇。
+
+**改动**：
+- `scripts/gen-entries-en.py`：从 en.html 已发布条目生成 76 个英文单篇页，带 BlogPosting、translationOfWork 和中英 hreflang；配对不确定的 23 条跳过；另出 `entries/en/` 索引和 `sitemap-entries-en.xml`
+- `scripts/gen-entry-pages.py`：中文单篇页加 hreflang en 和可见的 EN 链接
+- `scripts/gen-readme.py`：仓库 README 自动生成；仓库主页链接、描述、话题标签已设
+- futurex.capital/diary（另一仓库，commit 7cd629d）：服务端渲染，直链单篇页，ItemList
+- 日更流水线顺序：gen-entries-en → gen-entry-pages → gen-topics → gen-readme
+
+---
+
 ## 🏷️ v7.0-geo-url-layer
 
 **日期**：2026-09-29
