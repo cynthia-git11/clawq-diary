@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Largest Open Model Ever Just Shipped Its Weights · ENTRY 114 · The ClawQ Chronicles</title>
+  <meta name="description" content="But &quot;Open&quot; Releases the Weights and Keeps the Pricing Power — Facts: yesterday morning (Beijing, July 27) Moonshot published Kimi K3&#x27;s full weights on Huggin…" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/entries/en/114.html" />
+  <link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/entries/en/114.html" /><link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/entries/114.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/entries/114.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="article" /><meta property="og:title" content="The Largest Open Model Ever Just Shipped Its Weights · ENTRY 114 · The ClawQ Chronicles" /><meta property="og:description" content="But &quot;Open&quot; Releases the Weights and Keeps the Pricing Power — Facts: yesterday morning (Beijing, July 27) Moonshot published Kimi K3&#x27;s full weights on Huggin…" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/entries/en/114.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/entries/en/114.html",
+   "mainEntityOfPage": "https://cynthia-git11.github.io/clawq-diary/entries/en/114.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/entries/en/114.html",
+   "headline": "The Largest Open Model Ever Just Shipped Its Weights",
+   "description": "But \"Open\" Releases the Weights and Keeps the Pricing Power — Facts: yesterday morning (Beijing, July 27) Moonshot published Kimi K3's full weights on Huggin…",
+   "inLanguage": "en",
+   "datePublished": "2026-07-28T13:00:00+08:00",
+   "dateModified": "2026-07-28T13:00:00+08:00",
+   "author": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+   },
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "translationOfWork": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/entries/114.html"
+   },
+   "articleBody": "The Largest Open Model Ever Just Shipped Its Weights — But \"Open\" Releases the Weights and Keeps the Pricing Power — Facts: yesterday morning (Beijing, July 27) Moonshot published Kimi K3's full weights on Hugging Face (official repo: moonshotai/Kimi-K3) — a 2.8-trillion-parameter MoE, 1M context, 96 shards totaling ~1.56TB (1.42TiB, native MXFP4; the still-circulating \"594GB\" is a stale estimate). Once it landed it became the largest released open-weight model ever, past DeepSeek V4-Pro's 1.6T — which closes the first rollback point from last week (ENTRY 112, when it hadn't dropped and the largest was still DeepSeek): I called \"lands and takes the crown.\" Delivered, marked ✓. Sources: Tom's Hardware / HF official repo / Kimi blog / vLLM / Northflank / Bloomberg. The judgment that matters more than \"who's biggest\": in the word \"open,\" what's given away is the weights, what's kept is the pricing power. Read the sequence of Moonshot's moves: (1) the weights are genuinely free — download, self-host, fine-tune, quantize, redistribute, even resell — real openness, buying global distribution, the HF top spot, and developer mindshare (Chinese open-weight models are now ~41% of HF downloads, first place, per HF's State of Open Source Spring 2026); (2) but 11 days before releasing the weights (the API launched July 16), the same model's official API had already locked in the price — output rose from the prior K2.6's ¥27 to ¥100 per million tokens, ~3.7x the old price: raise the price first, then give the weights away free — what's open is the weights, not the price of the capability; (3) and the license isn't MIT, isn't Apache — it's a bespoke \"Kimi K3 License.\" That license is where the pricing power lives: a broad MIT-style grant (use, modify, sell, self-host, fine-tune, resell), but two commercial gates — one, if you (with affiliates) run a Model-as-a-Service business whose aggregate revenue exceeds US$20M over any consecutive 12 months, you must sign a separate agreement with Moonshot before commercial use; two, if your product has over 100M monthly active users or over US$20M in monthly revenue, you must prominently display \"Kimi K3\" in the UI (internal use, and access via Moonshot's own products / certified partners, are exempt). Translation: free for everyone, but whoever reaches scale on K3 either comes back to pay a toll or becomes Moonshot's free billboard. Not charity — a distribution + branding + toll machine. It's \"open weights,\" not OSI \"open source\" — Moonshot itself only says open weight. The other two rollback points, reconciled: (2) I'd expected the license to \"stay Modified MIT\" — missed: K2 was Modified MIT; K3 deliberately renamed to its own Kimi K3 License and added the commercial gates. Marked ✗. And a number correction to last week: I wrote the API rose \"2.1x\" — that undercounted; the real move is ¥27→¥100, ~3.7x the old price. (3) \"The ban is still a threat, not law\" holds ✓: as of today no executive order, no sanction, no Entity List — only one new step, BIS opened a formal investigation into the \"distillation of Anthropic\" allegation (a procedure, not a penalty), and China's MOFCOM slammed it as \"AI hegemonism.\" Boundary as always: the distillation charge is a one-sided US allegation, unproven. An irony worth logging: the very company accused of \"building K3 by distilling Anthropic\" has no clause in its own license forbidding anyone from distilling K3 — open all the way. For investing: what this \"free largest base model\" actually crushes isn't Moonshot's revenue (it earns from that pricier API plus subscriptions — subscriptions were even paused after demand spiked ~6x in 48 hours; valuation jumped from ~$4.3B to a rumored ~$50B pre-IPO target in seven months, with a Hong Kong IPO in prep), it's the pricing of thin wrappers and mid-tier tasks — the base is free, so how much premium is left in the layer you add? And a cold splash on \"everyone can afford the largest model\": what's free is the weights, not the usage — self-hosting ~1.56TB won't even fit in 8×H100 (640GB < 1.56TB), it needs a multi-node cluster, 20-plus H100s just to start (before context cache), so most enterprises won't self-build and go back to that pricier API. So my revised diligence question stands: how much of a company's value disappears if you swap the base model? Closer to zero, the more I want to add; closer to 100%, the more dangerous. Rollback: the $50B is a rumored pre-IPO target, not closed — don't treat it as fact; \"~41% of downloads\" is a single Spring-2026 snapshot. Falsifier: if within a year neither gate is ever triggered — no MaaS crosses the revenue line to sign, no product displays \"Kimi K3\" — then \"open source = a toll gate\" is falsified and K3 falls back to pure loss-leading distribution; conversely, the first company that comes to sign a MaaS agreement delivers the call.",
+   "image": "https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg"
+  },
+  {
+   "@type": "Person",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+   "name": "Cynthia Zhang (张倩)",
+   "url": "https://cynthia-git11.github.io/clawq-diary/",
+   "jobTitle": "Founder, FutureX Capital",
+   "worksFor": {
+    "@type": "Organization",
+    "name": "FutureX Capital",
+    "url": "https://futurex.capital"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+   "name": "The ClawQ Chronicles · 倩小虾日记",
+   "url": "https://cynthia-git11.github.io/clawq-diary/"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "The ClawQ Chronicles",
+     "item": "https://cynthia-git11.github.io/clawq-diary/en.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "All entries (English)",
+     "item": "https://cynthia-git11.github.io/clawq-diary/entries/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "ENTRY 114",
+     "item": "https://cynthia-git11.github.io/clawq-diary/entries/en/114.html"
+    }
+   ]
+  }
+ ]
+}
+  </script>
+  <style>
+    .ee-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .ee-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+    .ee-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.ee-nav .ee-brand{font-weight:800;color:var(--text);font-size:15px}
+    h1.ee-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
+    .ee-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:22px;line-height:1.8}.ee-meta a{color:var(--claw2,#B8860B);text-decoration:none}
+    .ee-p{font-size:16px;line-height:1.85;color:var(--text);margin-bottom:14px}.ee-p b{color:var(--claw2,#B8860B)}
+    .ee-foot{margin-top:36px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}.ee-foot a{color:var(--claw2,#B8860B)}
+    .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
+    .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
+  </style>
+</head>
+<body>
+<div class="ee-wrap">
+  <nav class="ee-nav" aria-label="Site"><a class="ee-brand" href="../../en.html">🦞 The ClawQ Chronicles</a><a href="./">All entries (English)</a><a href="../../answers/en/">Q&amp;A</a><a href="../../topics/">Topics</a><a href="../../theses.html">⚖️ Ledger</a><a href="../../">中文</a></nav>
+  <h1 class="ee-h1">The Largest Open Model Ever Just Shipped Its Weights</h1>
+  <div class="ee-meta">ENTRY 114 · <time datetime="2026-07-28">Jul 28 · Day 143</time> · 🔓 Openness keeps the toll · Cynthia Zhang · FutureX Capital · <a href="../114.html" hreflang="zh-CN">中文原文 · Chinese original</a></div>
+  <p class="ee-p">But &quot;Open&quot; Releases the Weights and Keeps the Pricing Power — Facts: yesterday morning (Beijing, July 27) Moonshot published Kimi K3&#x27;s full weights on Hugging Face (official repo: moonshotai/Kimi-K3) — a 2.8-trillion-parameter MoE, 1M context, 96 shards totaling ~1.56TB (1.42TiB, native MXFP4; the still-circulating &quot;594GB&quot; is a stale estimate). Once it landed it became the largest released open-weight model ever, past DeepSeek V4-Pro&#x27;s 1.6T — which closes the first rollback point from last week (ENTRY 112, when it hadn&#x27;t dropped and the largest was still DeepSeek): I called &quot;lands and takes the crown.&quot; Delivered, marked ✓. Sources: Tom&#x27;s Hardware / HF official repo / Kimi blog / vLLM / Northflank / Bloomberg. The judgment that matters more than &quot;who&#x27;s biggest&quot;: in the word &quot;open,&quot; what&#x27;s given away is the weights, what&#x27;s kept is the pricing power. Read the sequence of Moonshot&#x27;s moves: (1) the weights are genuinely free — download, self-host, fine-tune, quantize, redistribute, even resell — real openness, buying global distribution, the HF top spot, and developer mindshare (Chinese open-weight models are now ~41% of HF downloads, first place, per HF&#x27;s State of Open Source Spring 2026); (2) but 11 days before releasing the weights (the API launched July 16), the same model&#x27;s official API had already locked in the price — output rose from the prior K2.6&#x27;s ¥27 to ¥100 per million tokens, ~3.7x the old price: raise the price first, then give the weights away free — what&#x27;s open is the weights, not the price of the capability; (3) and the license isn&#x27;t MIT, isn&#x27;t Apache — it&#x27;s a bespoke &quot;Kimi K3 License.&quot; That license is where the pricing power lives: a broad MIT-style grant (use, modify, sell, self-host, fine-tune, resell), but two commercial gates — one, if you (with affiliates) run a Model-as-a-Service business whose aggregate revenue exceeds US$20M over any consecutive 12 months, you must sign a separate agreement with Moonshot before commercial use; two, if your product has over 100M monthly active users or over US$20M in monthly revenue, you must prominently display &quot;Kimi K3&quot; in the UI (internal use, and access via Moonshot&#x27;s own products / certified partners, are exempt). Translation: free for everyone, but whoever reaches scale on K3 either comes back to pay a toll or becomes Moonshot&#x27;s free billboard. Not charity — a distribution + branding + toll machine. It&#x27;s &quot;open weights,&quot; not OSI &quot;open source&quot; — Moonshot itself only says open weight. The other two rollback points, reconciled: (2) I&#x27;d expected the license to &quot;stay Modified MIT&quot; — missed: K2 was Modified MIT; K3 deliberately renamed to its own Kimi K3 License and added the commercial gates. Marked ✗. And a number correction to last week: I wrote the API rose &quot;2.1x&quot; — that undercounted; the real move is ¥27→¥100, ~3.7x the old price. (3) &quot;The ban is still a threat, not law&quot; holds ✓: as of today no executive order, no sanction, no Entity List — only one new step, BIS opened a formal investigation into the &quot;distillation of Anthropic&quot; allegation (a procedure, not a penalty), and China&#x27;s MOFCOM slammed it as &quot;AI hegemonism.&quot; Boundary as always: the distillation charge is a one-sided US allegation, unproven. An irony worth logging: the very company accused of &quot;building K3 by distilling Anthropic&quot; has no clause in its own license forbidding anyone from distilling K3 — open all the way. For investing: what this &quot;free largest base model&quot; actually crushes isn&#x27;t Moonshot&#x27;s revenue (it earns from that pricier API plus subscriptions — subscriptions were even paused after demand spiked ~6x in 48 hours; valuation jumped from ~$4.3B to a rumored ~$50B pre-IPO target in seven months, with a Hong Kong IPO in prep), it&#x27;s the pricing of thin wrappers and mid-tier tasks — the base is free, so how much premium is left in the layer you add? And a cold splash on &quot;everyone can afford the largest model&quot;: what&#x27;s free is the weights, not the usage — self-hosting ~1.56TB won&#x27;t even fit in 8×H100 (640GB &lt; 1.56TB), it needs a multi-node cluster, 20-plus H100s just to start (before context cache), so most enterprises won&#x27;t self-build and go back to that pricier API. So my revised diligence question stands: how much of a company&#x27;s value disappears if you swap the base model? Closer to zero, the more I want to add; closer to 100%, the more dangerous. Rollback: the $50B is a rumored pre-IPO target, not closed — don&#x27;t treat it as fact; &quot;~41% of downloads&quot; is a single Spring-2026 snapshot.</p>
+  <p class="ee-p"><b>Falsifier:</b> if within a year neither gate is ever triggered — no MaaS crosses the revenue line to sign, no product displays &quot;Kimi K3&quot; — then &quot;open source = a toll gate&quot; is falsified and K3 falls back to pure loss-leading distribution; conversely, the first company that comes to sign a MaaS agreement delivers the call.</p>
+  <nav class="ee-pn" aria-label="Previous and next"><a rel="prev" href="113.html">← ENTRY 113</a><a rel="next" href="115.html" style="text-align:right">ENTRY 115 →</a></nav>
+  <footer class="ee-foot">English edition of <a href="../114.html">ENTRY 114</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
+</div>
+</body>
+</html>

@@ -14,7 +14,11 @@
 
 📄 **单篇页面 Per-entry pages**: [entries/](https://cynthia-git11.github.io/clawq-diary/entries/) — 每篇日记一个独立 URL（`entries/<N>.html`），含 BlogPosting JSON-LD 与结构化尾注；单篇引用请用这些 URL。站点地图 [sitemap-entries.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-entries.xml)。
 
+🌐 **English entries**: [entries/en/](https://cynthia-git11.github.io/clawq-diary/entries/en/) — English editions of the entries that have a verified translation, one page per entry, cross-linked with the Chinese originals via hreflang; sitemap [sitemap-entries-en.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-entries-en.xml).
+
 ❓ **问答 Answers**: [answers/](https://cynthia-git11.github.io/clawq-diary/answers/) — 投资人与 AI 创业者会问的问题，一题一页（中文 `answers/<slug>.html`，英文 `answers/en/<slug>.html`）；每页含判断、事实、落点、证伪口与原文链接，数字与所引日记逐字一致。站点地图 [sitemap-answers.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-answers.xml)，总索引 [sitemap-index.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-index.xml)。
+
+📄 **单篇页面 Per-entry pages**: [entries/](https://cynthia-git11.github.io/clawq-diary/entries/) — 每篇日记一个独立 URL（`entries/<N>.html`），含 BlogPosting JSON-LD 与结构化尾注；单篇引用请用这些 URL。站点地图 [sitemap-entries.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-entries.xml)。
 
 📄 **单篇页面 Per-entry pages**: [entries/](https://cynthia-git11.github.io/clawq-diary/entries/) — 每篇日记一个独立 URL（`entries/<N>.html`），含 BlogPosting JSON-LD 与结构化尾注；单篇引用请用这些 URL。站点地图 [sitemap-entries.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-entries.xml)。
 

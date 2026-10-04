@@ -125,6 +125,10 @@ try:
 except Exception:
     TOPICS = []
 try:
+    EN_MAP = json.load(open(os.path.join(SRC_ROOT, "data/entries-en-map.json"), encoding="utf-8"))
+except Exception:
+    EN_MAP = {}
+try:
     ANSWERS = json.load(open(os.path.join(SRC_ROOT, "data/answers.json"), encoding="utf-8"))
 except Exception:
     ANSWERS = []
@@ -214,7 +218,7 @@ def page(e, prev_e, next_e):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{esc(e['title'])} · ENTRY {e['n']} · 倩小虾日记</title>
   <meta name="description" content="{esc(desc)}" />
-  <link rel="canonical" href="{url}" />
+  <link rel="canonical" href="{url}" />{(chr(10) + f'  <link rel="alternate" hreflang="zh-CN" href="{url}" /><link rel="alternate" hreflang="en" href="{BASE}{EN_MAP[str(e["n"])]}" /><link rel="alternate" hreflang="x-default" href="{url}" />') if str(e["n"]) in EN_MAP else ""}
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{esc(e['title'])} · 倩小虾日记 ENTRY {e['n']}" />
@@ -243,7 +247,7 @@ def page(e, prev_e, next_e):
     <a href="../answers/">问答</a>
     <a href="../theses.html">⚖️ 判断台账</a>
     <a href="../#entry-{e['n']}">在时间线中查看</a>
-    <a href="../en.html">EN</a>
+    <a href="{(f"en/{e['n']}.html" if str(e["n"]) in EN_MAP else "../en.html")}" hreflang="en">EN</a>
   </nav>
   <div class="ep-meta"><span>ENTRY {e['n']}</span><span>发布 <time datetime="{iso(e)}">{esc(lastmod(e))}</time>{(' · 最后更正 <time datetime="' + mod + '">' + mod + '</time>') if mod and mod != e['date_d'] else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
