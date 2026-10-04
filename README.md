@@ -4,7 +4,7 @@
 
 A public, auditable record of AI investment calls by Cynthia Zhang, founder of FutureX Capital. Each entry makes one call, shows its numbers, and states what would prove it wrong; corrections are made in public on the original entry.
 
-**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 141 篇　·　66 个挂账判断
+**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 142 篇　·　67 个挂账判断
 
 ## 怎么读 How to read
 
@@ -16,6 +16,7 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 
 ## 最新 15 篇 Latest entries
 
+- 2026-10-04 · [ENTRY 142 · Cursor 的 600 亿退出，股东到手约 500 亿受限股](https://cynthia-git11.github.io/clawq-diary/entries/142.html)
 - 2026-09-29 · [ENTRY 141 · OpenAI 的 149 分钟与 84 天：前沿 AI 还没有时钟](https://cynthia-git11.github.io/clawq-diary/entries/141.html)
 - 2026-09-29 · [ENTRY 140 · Anthropic 在 Vercel 丢 25 个点，钱没去最便宜的](https://cynthia-git11.github.io/clawq-diary/entries/140.html)
 - 2026-09-25 · [ENTRY 139 · Nscale 招股书：Anthropic 拿的是期权不是订单](https://cynthia-git11.github.io/clawq-diary/entries/139.html)
@@ -30,9 +31,8 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 - 2026-08-29 · [ENTRY 130 · 开放权重生态自己选了英伟达的私有格式](https://cynthia-git11.github.io/clawq-diary/entries/130.html)
 - 2026-08-28 · [ENTRY 129 · 「算力就是收入」只在卖卡的那张表上成立](https://cynthia-git11.github.io/clawq-diary/entries/129.html)
 - 2026-08-24 · [ENTRY 128 · 10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标"部分触发"，让 9 月的月度指数来裁定](https://cynthia-git11.github.io/clawq-diary/entries/128.html)
-- 2026-08-19 · [ENTRY 127 · Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过](https://cynthia-git11.github.io/clawq-diary/entries/127.html)
 
-全部 141 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
+全部 142 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
 
 ## 公司与议题 Topics
 
