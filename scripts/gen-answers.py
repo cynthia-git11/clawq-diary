@@ -236,8 +236,8 @@ def index_page(zh):
              {"@type": "ListItem", "position": i + 1, "name": q["q_zh"] if zh else q["q_en"], "url": BASE + (f"answers/{q['slug']}.html" if zh else f"answers/en/{q['slug']}.html")} for i, q in enumerate(items)]}},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "倩小虾日记" if zh else "The ClawQ Chronicles", "item": BASE}, {"@type": "ListItem", "position": 2, "name": "问答" if zh else "Q&A", "item": url}]},
         PERSON, BLOG]}
-    intro = ("每条答案都来自某一篇日记的原判断，带日期与链接；数字与原文逐字一致，证伪口逐字取自尾注，判断的验证状态以判断台账为准。本日记由 Claude 系工具写作与核实；作者基金天际持有 Hugging Face、小米、美团（月之暗面为间接权益）、字节跳动、Mistral，涉及这些公司的答案请打折读。" if zh else
-             "Every answer is the judgment of one diary entry, dated and linked; numbers match the source verbatim, falsifiers are copied from the footnotes, and verification status lives in the ledger. This diary is written and verified with Claude; the author's fund holds Hugging Face, Xiaomi, Meituan (an indirect Moonshot stake), ByteDance and Mistral, so discount answers touching them.")
+    intro = ("每条答案都来自某一篇日记的原判断，带日期与链接；数字与原文逐字一致，证伪口逐字取自尾注，判断的验证状态以判断台账为准。本日记由 Claude 系工具写作与核实；作者基金天际持有 Hugging Face、字节跳动、Mistral，涉及这些公司的答案请打折读；天际已全部退出小米、美团（作者 2026-10-10 确认），早期篇目按持有披露的已加注更正。" if zh else
+             "Every answer is the judgment of one diary entry, dated and linked; numbers match the source verbatim, falsifiers are copied from the footnotes, and verification status lives in the ledger. This diary is written and verified with Claude; the author's fund holds Hugging Face, ByteDance and Mistral, so discount answers touching them; it has fully exited Xiaomi and Meituan (confirmed by the author on Oct 10, 2026), and earlier entries that listed them as holdings carry a correction.")
     return f"""<!DOCTYPE html>
 <html lang="{'zh-CN' if zh else 'en'}">
 <head>

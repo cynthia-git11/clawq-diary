@@ -98,6 +98,6 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 
 ## 说明 Notes
 
-- 本日记由 Claude 系工具辅助写作与核实；作者基金天际持有字节跳动、Mistral、小米、美团（月之暗面为间接权益）、Hugging Face，涉及这些公司的篇目在尾注首项披露并双向打折。
+- 本日记由 Claude 系工具辅助写作与核实；作者基金天际持有字节跳动、Mistral、Hugging Face 等，涉及持仓公司的篇目在尾注首项披露并双向打折；天际已全部退出小米、美团（作者 2026-10-10 确认），早期篇目按持有披露的已于 2026-10-11 加注更正。
 - 本日记不构成对任何基金产品的推介或募集要约。This diary does not constitute promotion of, or an offer to subscribe for, any fund product.
 - 本文件由 `scripts/gen-readme.py` 根据站点内容自动生成，请勿手改。

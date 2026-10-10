@@ -46,7 +46,7 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     paras = [strip(p) for p in re.findall(r"<p>(.*?)</p>", body, re.S)]
     first = re.split(r"(?<=[。！？])", paras[0])[0] if paras else ""
     quote = strip((re.search(r'<div class="entry-quote">(.*?)</div>', body, re.S) or [None, ""])[1])
-    text = strip(blk)
+    text = strip(re.sub(r'｜\d{4}-\d{2}-\d{2} 更新：[^｜<]*', '', blk))   # 带日期的「更新」说明不参与主题关键词匹配（如持仓更正里的「退出」）
     entries.append(dict(n=n, title=title, date_txt=date_txt, date_d=date_d, first=first, quote=quote, text=text))
 entries.sort(key=lambda e: -e["n"])
 

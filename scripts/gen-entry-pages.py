@@ -167,9 +167,15 @@ HEAD_LINKS = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
   <link rel="alternate" type="application/atom+xml" title="倩小虾日记 Atom" href="../atom.xml" />"""
 
+DESC_FIX = {  # n → [(原句, 摘要里的替换句)]：只用于搜索/社交摘要，正文与尾注保留原文
+    135: [("天际持有被点名的小米，打折读。", "天际原持有被点名的小米（作者 2026-10-10 确认已全部退出，见尾注更新），打折读。")],
+}
+
 def page(e, prev_e, next_e):
     url = f"{BASE}entries/{e['n']}.html"
     desc = (e["paras"][0] if e["paras"] else e["title"])
+    # 摘要字段（description/og/twitter）不复述已更正的事实；正文 articleBody 保留原文
+    for old, new in DESC_FIX.get(e["n"], []): desc = desc.replace(old, new)
     if len(desc) > 150: desc = desc[:147] + "…"
     body_txt = " ".join(e["paras"] + ([e["quote"]] if e["quote"] else []))
     items = foot_items(e["foot"])
