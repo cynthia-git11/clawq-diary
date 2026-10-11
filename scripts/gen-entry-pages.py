@@ -105,7 +105,7 @@ def foot_items(foot):
 
 # dateModified: latest date named in 更正/对账/补记/后续修正 segments (ISO or M/D in the entry year), never earlier than datePublished
 def modified(e, items):
-    best = e["date_d"] if len(e["date_d"]) == 10 else ""
+    best = e["date_d"] if len(e["date_d"]) == 10 else (e["date_d"] + "-01" if len(e["date_d"]) == 7 else "")  # 月份精度的旧条目也能记录后续更新
     yr = e["date_d"][:4] if e["date_d"] else "2026"
     for k, v in items:
         if k not in ("更正", "对账", "补记", "后续修正", "纠偏", "认错", "勘误", "赌盘对账", "待对账", "更新"): continue
@@ -362,7 +362,7 @@ if os.path.exists(os.path.join(ROOT, "theses.html")):
 # ---------- llms.txt / llms-full.txt / robots.txt ----------
 l = rd("llms.txt"); l2 = re.sub(r"(- \[ENTRY (\d+) · [^\]]*\]\([^)]*#entry-\2\)[^\n]*?)(?<! 单页 )$",
     lambda m: m.group(1) if ("entries/" in m.group(1)) else m.group(1) + f" · 单页 {BASE}entries/{m.group(2)}.html", l, flags=re.M)
-if "## 单篇页面" not in l2:
+if "**单篇页面 Per-entry pages**" not in l2:   # 2026-10-11 修：原守卫查「## 单篇页面」永不命中，每次运行都多插一行
     l2 = l2.replace("⚖️ **判断总账", f"📄 **单篇页面 Per-entry pages**: [entries/]({BASE}entries/) — 每篇日记一个独立 URL（`entries/<N>.html`），含 BlogPosting JSON-LD 与结构化尾注；单篇引用请用这些 URL。站点地图 [sitemap-entries.xml]({BASE}sitemap-entries.xml)。\n\n⚖️ **判断总账", 1)
 if l2 != l: wr("llms.txt", l2)
 lf = rd("llms-full.txt"); lf2 = re.sub(r"(^## ENTRY (\d+) · [^\n]*\n)(?!URL: )", lambda m: m.group(1) + f"URL: {BASE}entries/{m.group(2)}.html\n", lf, flags=re.M)
