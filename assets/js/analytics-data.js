@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 44,
-    "uniques": 13,
-    "median_time_sec": 40,
-    "completion_rate": 0.231,
+    "pv": 68,
+    "uniques": 16,
+    "median_time_sec": 32,
+    "completion_rate": 0.188,
     "shares": 2
   },
   "daily": [
@@ -86,11 +86,11 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-10-14",
-      "pv": 9,
-      "uniques": 2,
+      "pv": 33,
+      "uniques": 5,
       "shares": 0,
-      "median_time_sec": 670,
-      "completion_rate": 0.5
+      "median_time_sec": 426,
+      "completion_rate": 0.2
     }
   ],
   "countries": [
@@ -98,78 +98,78 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.477,
-      "pv": 21
+      "pct": 0.662,
+      "pv": 45
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.455,
+      "pct": 0.294,
       "pv": 20
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.068,
+      "pct": 0.044,
       "pv": 3
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.705
+      "pct": 0.559
     },
     {
       "lang": "entries/144",
-      "pct": 0.068
+      "pct": 0.088
     },
     {
-      "lang": "answers/meta-muse-agent-shopping-winners",
-      "pct": 0.045
-    },
-    {
-      "lang": "topics/meta-muse",
-      "pct": 0.023
-    },
-    {
-      "lang": "topics/index",
-      "pct": 0.023
-    },
-    {
-      "lang": "判断总账 (theses)",
-      "pct": 0.023
-    },
-    {
-      "lang": "entries/index",
-      "pct": 0.023
-    },
-    {
-      "lang": "entries/137",
-      "pct": 0.023
-    },
-    {
-      "lang": "answers/index",
-      "pct": 0.023
+      "lang": "entries/63",
+      "pct": 0.059
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.023
+      "pct": 0.044
+    },
+    {
+      "lang": "topics/meta-muse",
+      "pct": 0.029
+    },
+    {
+      "lang": "topics/index",
+      "pct": 0.029
+    },
+    {
+      "lang": "entries/5",
+      "pct": 0.029
+    },
+    {
+      "lang": "English (en)",
+      "pct": 0.029
+    },
+    {
+      "lang": "answers/meta-muse-agent-shopping-winners",
+      "pct": 0.029
+    },
+    {
+      "lang": "判断总账 (theses)",
+      "pct": 0.015
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 37
+      "pv": 44
     },
     {
       "ref": "cynthia-git11.github.io",
-      "pv": 5
+      "pv": 21
     },
     {
       "ref": "futurex.capital",
-      "pv": 2
+      "pv": 3
     }
   ]
 };
