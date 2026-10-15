@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 68,
-    "uniques": 16,
+    "pv": 73,
+    "uniques": 19,
     "median_time_sec": 32,
-    "completion_rate": 0.188,
+    "completion_rate": 0.263,
     "shares": 2
   },
   "daily": [
@@ -91,6 +91,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 426,
       "completion_rate": 0.2
+    },
+    {
+      "date": "2026-10-15",
+      "pv": 5,
+      "uniques": 3,
+      "shares": 0,
+      "median_time_sec": 540,
+      "completion_rate": 0.667
     }
   ],
   "countries": [
@@ -98,74 +106,88 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.662,
+      "pct": 0.616,
       "pv": 45
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.294,
+      "pct": 0.274,
       "pv": 20
+    },
+    {
+      "name": "中国香港",
+      "code": "HK",
+      "flag": "🇭🇰",
+      "pct": 0.055,
+      "pv": 4
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.044,
+      "pct": 0.041,
       "pv": 3
+    },
+    {
+      "name": "FR",
+      "code": "FR",
+      "flag": "🌐",
+      "pct": 0.014,
+      "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.559
+      "pct": 0.548
     },
     {
       "lang": "entries/144",
-      "pct": 0.088
+      "pct": 0.082
     },
     {
       "lang": "entries/63",
-      "pct": 0.059
+      "pct": 0.055
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.044
+      "pct": 0.041
     },
     {
       "lang": "topics/meta-muse",
-      "pct": 0.029
+      "pct": 0.027
     },
     {
       "lang": "topics/index",
-      "pct": 0.029
-    },
-    {
-      "lang": "entries/5",
-      "pct": 0.029
-    },
-    {
-      "lang": "English (en)",
-      "pct": 0.029
-    },
-    {
-      "lang": "answers/meta-muse-agent-shopping-winners",
-      "pct": 0.029
+      "pct": 0.027
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.015
+      "pct": 0.027
+    },
+    {
+      "lang": "entries/index",
+      "pct": 0.027
+    },
+    {
+      "lang": "entries/5",
+      "pct": 0.027
+    },
+    {
+      "lang": "English (en)",
+      "pct": 0.027
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 44
+      "pv": 47
     },
     {
       "ref": "cynthia-git11.github.io",
-      "pv": 21
+      "pv": 23
     },
     {
       "ref": "futurex.capital",
