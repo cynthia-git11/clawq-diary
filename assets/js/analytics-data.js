@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-10-22",
+  "generated": "2026-10-23",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 71,
-    "uniques": 17,
-    "median_time_sec": 24,
-    "completion_rate": 0.294,
+    "pv": 51,
+    "uniques": 16,
+    "median_time_sec": 8,
+    "completion_rate": 0.25,
     "shares": 2
   },
   "daily": [
-    {
-      "date": "2026-09-23",
-      "pv": 20,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 867,
-      "completion_rate": 1
-    },
     {
       "date": "2026-09-27",
       "pv": 1,
@@ -90,84 +82,77 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.634,
+      "pct": 0.882,
       "pv": 45
-    },
-    {
-      "name": "新加坡",
-      "code": "SG",
-      "flag": "🇸🇬",
-      "pct": 0.282,
-      "pv": 20
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.056,
+      "pct": 0.078,
       "pv": 4
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.014,
+      "pct": 0.02,
       "pv": 1
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.014,
+      "pct": 0.02,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.535
+      "pct": 0.353
     },
     {
       "lang": "entries/144",
-      "pct": 0.085
+      "pct": 0.118
     },
     {
       "lang": "entries/63",
-      "pct": 0.056
+      "pct": 0.078
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.042
+      "pct": 0.059
     },
     {
       "lang": "topics/meta-muse",
-      "pct": 0.028
+      "pct": 0.039
     },
     {
       "lang": "topics/index",
-      "pct": 0.028
+      "pct": 0.039
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.028
+      "pct": 0.039
     },
     {
       "lang": "entries/index",
-      "pct": 0.028
+      "pct": 0.039
     },
     {
       "lang": "entries/5",
-      "pct": 0.028
+      "pct": 0.039
     },
     {
       "lang": "English (en)",
-      "pct": 0.028
+      "pct": 0.039
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 45
+      "pv": 25
     },
     {
       "ref": "cynthia-git11.github.io",
