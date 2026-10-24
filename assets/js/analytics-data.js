@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 52,
-    "uniques": 17,
-    "median_time_sec": 24,
-    "completion_rate": 0.235,
+    "pv": 53,
+    "uniques": 18,
+    "median_time_sec": 20,
+    "completion_rate": 0.222,
     "shares": 2
   },
   "daily": [
@@ -83,6 +83,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 241,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-10-24",
+      "pv": 1,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 20,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -90,14 +98,14 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.865,
-      "pv": 45
+      "pct": 0.868,
+      "pv": 46
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.077,
+      "pct": 0.075,
       "pv": 4
     },
     {
@@ -118,19 +126,19 @@ window.CLAWQ_ANALYTICS = {
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.365
+      "pct": 0.358
     },
     {
       "lang": "entries/144",
-      "pct": 0.115
+      "pct": 0.113
     },
     {
       "lang": "entries/63",
-      "pct": 0.077
+      "pct": 0.075
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.058
+      "pct": 0.057
     },
     {
       "lang": "topics/meta-muse",
@@ -160,7 +168,7 @@ window.CLAWQ_ANALYTICS = {
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 26
+      "pv": 27
     },
     {
       "ref": "cynthia-git11.github.io",
