@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-10-26",
+  "generated": "2026-10-27",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
     "pv": 53,
     "uniques": 18,
-    "median_time_sec": 20,
+    "median_time_sec": 8,
     "completion_rate": 0.222,
-    "shares": 2
+    "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-09-27",
-      "pv": 1,
-      "uniques": 1,
-      "shares": 2,
-      "median_time_sec": 40,
-      "completion_rate": 0
-    },
     {
       "date": "2026-09-28",
       "pv": 1,
@@ -91,6 +83,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 20,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-10-26",
+      "pv": 1,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 0,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -98,8 +98,8 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.868,
-      "pv": 46
+      "pct": 0.849,
+      "pv": 45
     },
     {
       "name": "中国香港",
@@ -118,6 +118,13 @@ window.CLAWQ_ANALYTICS = {
     {
       "name": "FR",
       "code": "FR",
+      "flag": "🌐",
+      "pct": 0.019,
+      "pv": 1
+    },
+    {
+      "name": "EC",
+      "code": "EC",
       "flag": "🌐",
       "pct": 0.019,
       "pv": 1
@@ -168,7 +175,7 @@ window.CLAWQ_ANALYTICS = {
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 27
+      "pv": 28
     },
     {
       "ref": "cynthia-git11.github.io",
@@ -176,7 +183,7 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "futurex.capital",
-      "pv": 3
+      "pv": 2
     }
   ]
 };
