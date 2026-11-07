@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-11-06",
+  "generated": "2026-11-07",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 49,
-    "uniques": 17,
-    "median_time_sec": 0,
-    "completion_rate": 0.235,
+    "pv": 47,
+    "uniques": 15,
+    "median_time_sec": 10,
+    "completion_rate": 0.267,
     "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-10-08",
-      "pv": 2,
-      "uniques": 2,
-      "shares": 0,
-      "median_time_sec": 0,
-      "completion_rate": 0
-    },
     {
       "date": "2026-10-13",
       "pv": 4,
@@ -90,95 +82,95 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.837,
-      "pv": 41
+      "pct": 0.83,
+      "pv": 39
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.082,
+      "pct": 0.085,
       "pv": 4
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.02,
+      "pct": 0.021,
       "pv": 1
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.02,
+      "pct": 0.021,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.02,
+      "pct": 0.021,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.02,
+      "pct": 0.021,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.327
+      "pct": 0.298
     },
     {
       "lang": "entries/144",
-      "pct": 0.122
+      "pct": 0.128
     },
     {
       "lang": "entries/63",
-      "pct": 0.082
+      "pct": 0.085
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.061
+      "pct": 0.064
     },
     {
       "lang": "topics/meta-muse",
-      "pct": 0.041
+      "pct": 0.043
     },
     {
       "lang": "topics/index",
-      "pct": 0.041
+      "pct": 0.043
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.041
+      "pct": 0.043
     },
     {
       "lang": "entries/5",
-      "pct": 0.041
+      "pct": 0.043
     },
     {
       "lang": "English (en)",
-      "pct": 0.041
+      "pct": 0.043
     },
     {
       "lang": "answers/meta-muse-agent-shopping-winners",
-      "pct": 0.041
+      "pct": 0.043
     }
   ],
   "referrers": [
     {
-      "ref": "(direct)",
-      "pv": 24
-    },
-    {
       "ref": "cynthia-git11.github.io",
       "pv": 23
+    },
+    {
+      "ref": "(direct)",
+      "pv": 22
     },
     {
       "ref": "futurex.capital",
