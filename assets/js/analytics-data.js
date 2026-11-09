@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 47,
-    "uniques": 15,
-    "median_time_sec": 10,
-    "completion_rate": 0.267,
+    "pv": 48,
+    "uniques": 16,
+    "median_time_sec": 0,
+    "completion_rate": 0.25,
     "shares": 0
   },
   "daily": [
@@ -75,6 +75,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 0,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-11-09",
+      "pv": 1,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 0,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -82,15 +90,22 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.83,
+      "pct": 0.813,
       "pv": 39
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.085,
+      "pct": 0.083,
       "pv": 4
+    },
+    {
+      "name": "新加坡",
+      "code": "SG",
+      "flag": "🇸🇬",
+      "pct": 0.021,
+      "pv": 1
     },
     {
       "name": "日本",
@@ -124,43 +139,43 @@ window.CLAWQ_ANALYTICS = {
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.298
+      "pct": 0.312
     },
     {
       "lang": "entries/144",
-      "pct": 0.128
+      "pct": 0.125
     },
     {
       "lang": "entries/63",
-      "pct": 0.085
+      "pct": 0.083
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.064
+      "pct": 0.062
     },
     {
       "lang": "topics/meta-muse",
-      "pct": 0.043
+      "pct": 0.042
     },
     {
       "lang": "topics/index",
-      "pct": 0.043
+      "pct": 0.042
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.043
+      "pct": 0.042
     },
     {
       "lang": "entries/5",
-      "pct": 0.043
+      "pct": 0.042
     },
     {
       "lang": "English (en)",
-      "pct": 0.043
+      "pct": 0.042
     },
     {
       "lang": "answers/meta-muse-agent-shopping-winners",
-      "pct": 0.043
+      "pct": 0.042
     }
   ],
   "referrers": [
@@ -175,6 +190,10 @@ window.CLAWQ_ANALYTICS = {
     {
       "ref": "futurex.capital",
       "pv": 2
+    },
+    {
+      "ref": "weixin110.qq.com",
+      "pv": 1
     }
   ]
 };
