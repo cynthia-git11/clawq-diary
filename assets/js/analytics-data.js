@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 51,
-    "uniques": 18,
-    "median_time_sec": 20,
-    "completion_rate": 0.222,
+    "pv": 52,
+    "uniques": 19,
+    "median_time_sec": 10,
+    "completion_rate": 0.211,
     "shares": 0
   },
   "daily": [
@@ -86,10 +86,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-11-10",
-      "pv": 0,
-      "uniques": 1,
+      "pv": 1,
+      "uniques": 2,
       "shares": 0,
-      "median_time_sec": 46,
+      "median_time_sec": 23,
       "completion_rate": 0
     }
   ],
@@ -98,101 +98,101 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.765,
-      "pv": 39
+      "pct": 0.769,
+      "pv": 40
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.078,
+      "pct": 0.077,
       "pv": 4
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.078,
+      "pct": 0.077,
       "pv": 4
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.02,
+      "pct": 0.019,
       "pv": 1
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.02,
+      "pct": 0.019,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.02,
+      "pct": 0.019,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.02,
+      "pct": 0.019,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.333
+      "pct": 0.346
     },
     {
       "lang": "entries/144",
-      "pct": 0.118
+      "pct": 0.115
     },
     {
       "lang": "entries/63",
-      "pct": 0.078
+      "pct": 0.077
     },
     {
       "lang": "English (en)",
-      "pct": 0.059
+      "pct": 0.058
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.059
+      "pct": 0.058
     },
     {
       "lang": "topics/meta-muse",
-      "pct": 0.039
+      "pct": 0.038
     },
     {
       "lang": "topics/index",
-      "pct": 0.039
+      "pct": 0.038
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.039
+      "pct": 0.038
     },
     {
       "lang": "entries/5",
-      "pct": 0.039
+      "pct": 0.038
     },
     {
       "lang": "answers/meta-muse-agent-shopping-winners",
-      "pct": 0.039
+      "pct": 0.038
     }
   ],
   "referrers": [
     {
-      "ref": "cynthia-git11.github.io",
-      "pv": 24
+      "ref": "(direct)",
+      "pv": 25
     },
     {
-      "ref": "(direct)",
+      "ref": "cynthia-git11.github.io",
       "pv": 24
     },
     {
