@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 52,
-    "uniques": 19,
-    "median_time_sec": 10,
-    "completion_rate": 0.211,
+    "pv": 53,
+    "uniques": 20,
+    "median_time_sec": 5,
+    "completion_rate": 0.2,
     "shares": 0
   },
   "daily": [
@@ -91,6 +91,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 23,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-11-11",
+      "pv": 1,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 5,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -98,29 +106,29 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.769,
+      "pct": 0.755,
       "pv": 40
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.077,
+      "pct": 0.075,
       "pv": 4
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.077,
+      "pct": 0.075,
       "pv": 4
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.019,
-      "pv": 1
+      "pct": 0.038,
+      "pv": 2
     },
     {
       "name": "FR",
@@ -147,23 +155,23 @@ window.CLAWQ_ANALYTICS = {
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.346
+      "pct": 0.358
     },
     {
       "lang": "entries/144",
-      "pct": 0.115
+      "pct": 0.113
     },
     {
       "lang": "entries/63",
-      "pct": 0.077
+      "pct": 0.075
     },
     {
       "lang": "English (en)",
-      "pct": 0.058
+      "pct": 0.057
     },
     {
       "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.058
+      "pct": 0.057
     },
     {
       "lang": "topics/meta-muse",
@@ -201,6 +209,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "weixin110.qq.com",
+      "pv": 1
+    },
+    {
+      "ref": "t.co",
       "pv": 1
     }
   ]
