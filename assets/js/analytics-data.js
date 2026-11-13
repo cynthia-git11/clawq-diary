@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 22,
-    "uniques": 16,
-    "median_time_sec": 4,
-    "completion_rate": 0.125,
+    "pv": 23,
+    "uniques": 17,
+    "median_time_sec": 3,
+    "completion_rate": 0.118,
     "shares": 0
   },
   "daily": [
@@ -91,6 +91,14 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 4,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-11-13",
+      "pv": 1,
+      "uniques": 1,
+      "shares": 0,
+      "median_time_sec": 0,
+      "completion_rate": 0
     }
   ],
   "countries": [
@@ -98,89 +106,89 @@ window.CLAWQ_ANALYTICS = {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.273,
+      "pct": 0.261,
       "pv": 6
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.227,
+      "pct": 0.217,
       "pv": 5
-    },
-    {
-      "name": "中国香港",
-      "code": "HK",
-      "flag": "🇭🇰",
-      "pct": 0.182,
-      "pv": 4
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.136,
-      "pv": 3
+      "pct": 0.174,
+      "pv": 4
+    },
+    {
+      "name": "中国香港",
+      "code": "HK",
+      "flag": "🇭🇰",
+      "pct": 0.174,
+      "pv": 4
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.045,
+      "pct": 0.043,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.045,
+      "pct": 0.043,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.045,
+      "pct": 0.043,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.045,
+      "pct": 0.043,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.773
+      "pct": 0.783
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.045
+      "pct": 0.043
     },
     {
       "lang": "entries/index",
-      "pct": 0.045
+      "pct": 0.043
     },
     {
       "lang": "entries/34",
-      "pct": 0.045
+      "pct": 0.043
     },
     {
       "lang": "entries/145",
-      "pct": 0.045
+      "pct": 0.043
     },
     {
       "lang": "English (en)",
-      "pct": 0.045
+      "pct": 0.043
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 15
+      "pv": 16
     },
     {
       "ref": "weixin110.qq.com",
