@@ -4,14 +4,14 @@
 
 A public, auditable record of AI investment calls by Cynthia Zhang, founder of FutureX Capital. Each entry makes one call, shows its numbers, and states what would prove it wrong; corrections are made in public on the original entry.
 
-**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 161 篇　·　86 个挂账判断
+**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 161 篇　·　87 个挂账判断
 
 ## 怎么读 How to read
 
 - [全部单篇 · All entries](https://cynthia-git11.github.io/clawq-diary/entries/)：每篇一个独立页面，含结构化尾注（来源、口径注、证伪口、利益披露、更正）
 - [公司与议题 · Topics](https://cynthia-git11.github.io/clawq-diary/topics/)：按公司或议题聚合的判断脉络与挂账状态
 - [投资人与创业者问答 · Q&A](https://cynthia-git11.github.io/clawq-diary/answers/)（[English](https://cynthia-git11.github.io/clawq-diary/answers/en/)）：一题一页，答案数字与所引日记逐字一致
-- [判断台账 · Judgment ledger](https://cynthia-git11.github.io/clawq-diary/theses.html)：每个重大判断的验证状态（✓ 已验证 / ✗ 已证伪 / ⏳ 进行中）
+- [判断台账 · Judgment ledger](https://cynthia-git11.github.io/clawq-diary/theses.html)：每个重大判断的验证状态（✓ 已验证 / ✗ 已证伪 / ◐ 部分成立 / ⏳ 进行中）
 - [English edition](https://cynthia-git11.github.io/clawq-diary/en.html) · [日本語版](https://cynthia-git11.github.io/clawq-diary/ja.html)
 
 ## 最新 15 篇 Latest entries

@@ -25,14 +25,14 @@
   "facts_zh": "Anthropic 2026-06-01 官方公告保密递交 S-1；SEC EDGAR 9/25 全文检索无 Anthropic PBC 本体 S-1/S-1A/DRS；WSJ 9/18（付费墙，经转述）称挂牌目标改为 11 月、估值约 2 万亿、拟募最多 1,000 亿；据 Reuters 9/4 独家，公开推迟至 9 月下旬、先落地 150 亿美元循环信贷，截至 9/25 未见签署公告。",
   "landing_zh": "对创业者：员工二级卖不动就是人才留存风险，现在就设计不靠 IPO 的兑现方案。对投资人：一级持仓的退出假设按「排队」算，盯第一家挂牌后的 90 天；Anthropic S-1 公开后先翻采购承诺附注。",
   "falsify_zh": "自 2026-08-31 起 12 个月内，若出现第二个经法院批准、每件成交价与 3109 美元相差不足一个量级的公开和解，则「赔款不动估值」成立并升级为已验证；若 Anthropic 因本组诉讼推迟或撤回发行，本条主判断记 ✓；若公开版 S-1 如期递交且发行未受影响，本条降级。裁定源为法院终审批准文件与 SEC EDGAR。",
-  "status_zh": "⏳ 进行中：ENTRY 131 于 2026-10-02 对账：9 月底窗口已到期未兑现，EDGAR 无公开版 S-1；推迟归因非诉讼，不计命中、不降级，维持 ⏳。据 Bloomberg 10/1（引知情人），按路演时间推算公开版 S-1 最晚约 10/23 至 10/25 出现（自算）。ENTRY 115、139 台账均为 ⏳ 进行中。证伪口抄自 ENTRY 131，ENTRY 115 只有验收口径（挂牌并扛住 90 天不破发）。",
+  "status_zh": "⏳ 进行中：ENTRY 131 于 2026-11-13 对账：公开版 S-1 已于 10/26 递交，11/2、11/10 两次修订；招股书没有把发行时点和本组诉讼挂钩，如果按区间如期定价，按预注册降级，定价日即裁定日。ENTRY 115 待挂牌后看首月、首季是否破发；ENTRY 139 维持 ⏳。证伪口抄自 ENTRY 131，ENTRY 115 只有验收口径（挂牌并扛住 90 天不破发）。",
   "lead_en": "Not listed yet, no public S-1 on file, and November is only a target reported by WSJ. A full-text search of SEC EDGAR for S-1/S-1A/DRS on 9/25 found no filing by Anthropic PBC itself; WSJ on 9/18 reported a valuation of about $2 trillion and a raise of up to $100 billion.",
   "judgment_en": "The mainstream reads 'November listing' as a timetable; the diary reads a filing as joining the queue. The exit channel counts as open only after a listing that holds above issue price for 90 days (ENTRY 115). Kalshi on 9/25 priced 'Anthropic confirms IPO' at 57% by 12/1; that contract resolves on confirming an IPO, not on listing.",
   "facts_en": "Anthropic officially announced a confidential S-1 submission on 2026-06-01. SEC EDGAR full-text search on 9/25: no S-1/S-1A/DRS from Anthropic PBC itself. WSJ 9/18 (paywalled, via secondary reports) reported the listing target moved to November, a valuation of about $2 trillion and a raise of up to $100 billion. According to a Reuters 9/4 exclusive, the public filing was pushed to late September to first land a $15 billion revolving credit facility; no signing announcement seen as of 9/25.",
   "landing_en": "For founders: employees unable to sell in secondaries is a retention risk, so design a liquidity path now that does not depend on an IPO. For investors: model private-stake exits as 'queued' and watch the 90 days after the first listing; once Anthropic's S-1 is public, read the purchase-commitment notes first.",
   "falsify_en": "Within 12 months from 2026-08-31: if a second court-approved public settlement appears with a per-work price within one order of magnitude of $3109, 'damages do not move valuation' holds and is upgraded to verified; if Anthropic delays or withdraws its offering because of this group of lawsuits, the main judgment of this entry is marked ✓; if the public S-1 is filed on schedule and the offering is unaffected, this entry is downgraded. Adjudication sources: final court approval documents and SEC EDGAR.",
   "slug": "anthropic-ipo-timing-public-s-1",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q02",
@@ -190,13 +190,14 @@
   "facts_zh": "Vercel AI Gateway 6 月指数（7/13）：开放权重 29% token、不到 4% 花费，Anthropic 32% token、61% 花费。Vercel 8 月指数（9/17）：开放权重 56% token、14% 花费，Anthropic 占花费 64%。作者自算广义中国口径：8/23 花费 12.1%；12 家实验室 8/26 至 9/24 三十日均值 19.8%、最低日 11.1%。",
   "landing_zh": "对创业者：跑在低价层上按结果或按席位收费，别按钱包份额做三年收入模型。对投资人：BP 里只给 token 份额的，当场要花费份额；30% 升级线未到，别按「钱在迁移」定价。",
   "falsify_zh": "任一 Vercel 级生产网关公布中国来源模型花费占比超 10%，或下一份 Menlo 级调研中国模型占美国企业 LLM 支出超 10%，降级为「钱包也开始移动」；该调研仍在 3% 以下则升级为已验证",
-  "status_zh": "台账卡片 ENTRY 121、ENTRY 128 均标 ⏳ 进行中；ENTRY 121 卡片附 2026-09-14 对账：作者自算三十日花费均值 16.1% 越过 10% 线，已按预注册降级为「钱包也开始移动」，母判断不重写，30% 升级线未到。ENTRY 128「部分触发」已改记「触发」。",
+  "status_zh": "台账卡片 ENTRY 121、ENTRY 128 均标 ⏳ 进行中。ENTRY 121 已于 9/14 降级为「钱包也开始移动」；2026-11-13 对账：广义 12 家三十日花费份额自 10/2–10/31 窗口起越过 30%（最高 31.03%），10 月自然月 29.6% 未过，记部分触发，以 11 月自然月为裁定，确认则母判断重写为「钱在迁移」。",
   "lead_en": "Lots of tokens, little money, but the wallet has started to move. On Vercel's gateway, Chinese models ran 55% of tokens on an August daily average for about one-seventh of the spend; the 30-day spend average for 8/26 to 9/24 was 19.8%. Both are the author's self-computed broad-China figures; Vercel does not break out a China share.",
   "judgment_en": "The mainstream 'Silicon Valley is swapping its base model' story is about token volume; the diary only counts spend share. Vercel's monthly index never breaks out a China-origin share, so every China figure is self-computed by the author from lab rows, with judgment calls in country classification. ENTRY 121's original call has been downgraded per its pre-registered terms.",
   "facts_en": "Vercel AI Gateway index for June (7/13): open-weight models 29% of tokens, under 4% of spend; Anthropic 32% of tokens, 61% of spend. Vercel index for August (9/17): open-weight 56% of tokens, 14% of spend; Anthropic 64% of spend. Author's self-computed broad-China basis: 12.1% of spend on 8/23; across 12 labs, 30-day spend average for 8/26 to 9/24 of 19.8%, lowest day 11.1%.",
   "landing_en": "For founders: on the cheap layer, charge by outcome or by seat, and do not build a three-year revenue model on wallet share. For investors: when a deck gives only token share, ask for spend share on the spot; the 30% upgrade line has not been reached, so do not price in 'the money is migrating'.",
   "falsify_en": "If any Vercel-class production gateway publishes a China-origin model spend share above 10%, or the next Menlo-class survey puts Chinese models above 10% of US enterprise LLM spend, downgrade to 'the wallet is moving too'; if that survey still shows under 3%, upgrade to verified.",
-  "slug": "chinese-models-share-us-ai-gateways"
+  "slug": "chinese-models-share-us-ai-gateways",
+  "updated": "2026-11-13"
  },
  {
   "id": "q07",
@@ -259,13 +260,14 @@
   "facts_zh": "OpenAI 7/30（CNBC、OpenAI 官方）：GPT-5.6 Luna 降 80%、Terra 降 20%、Sol 不降并开 2 倍价 Fast mode。VentureBeat 2026-09-22 报道口径：GPT-6 Sol 2/10 美元，前代 4/20，OpenAI 称长期标价非导入价；ENTRY 118 记前代为 5/30，中间调价本站未追踪。",
   "landing_zh": "对创业者：别把毛利押在中端价差上，要么把价值挪到顶层能力，要么去吃底层的量。对投资人：看分布不看幅度，盯顶层跟不跟降；报道口径下 Sol 已减半，模型公司的多年算力承诺按准债务并进 EV。",
   "falsify_zh": "三个月内顶配也降价，「顶层收租」证伪；中国份额半年内落回三成以下，价格锚降级。",
-  "status_zh": "ENTRY 118 台账仍标 ⏳ 进行中、未改标；ENTRY 136 记 2026-09-22 GPT-6 Sol 标价减半（报道口径），证伪口「三个月内顶配也降价」正被敲门，尚未裁定。ENTRY 136 ⏳ 进行中。",
+  "status_zh": "ENTRY 118 于 2026-11-13 对账：✗ 认错。OpenAI 8/21 把当时最高档 GPT-5.6 Sol 降价（标注促销价），落在三个月窗口内，「顶层收租」按预注册证伪；「中国份额半年内回落至三成以下」续看至 2027-02-01。",
   "lead_en": "It is a tiered price list; pricing power remains, but the top tier has started to give. On 7/30 OpenAI cut Luna 80% and Terra 20% and left Sol unchanged; VentureBeat reported that on 9/22 GPT-6 Sol's list price was halved, so 'the top does not cut' is now being tested by its own falsification clause.",
   "judgment_en": "The mainstream looks at the size of the cut and calls it a price war; the diary looks at the distribution. OpenAI attributed the cut to efficiency, yet efficiency is shared across the family and Sol did not move; a 20% serving-cost drop plus 15% token efficiency does not reach 80%. The author judges the gap to be strategic pricing, capital buying share. That is the author's judgment, not an official statement.",
   "facts_en": "OpenAI 7/30 (CNBC, OpenAI official): GPT-5.6 Luna down 80%, Terra down 20%, Sol unchanged with a Fast mode at 2x the price. VentureBeat 2026-09-22, reported figures: GPT-6 Sol at $2/$10 versus the predecessor's $4/$20, which OpenAI calls a long-term list price, not an introductory one; ENTRY 118 recorded the predecessor at $5/$30, and interim repricing was not tracked by this site.",
   "landing_en": "For founders: do not bet gross margin on the mid-tier spread; either move value up to top-tier capability or take the volume at the bottom. For investors: watch the distribution, not the headline percentage, and whether the top tier follows; on reported figures Sol has been halved, so count model companies' multi-year compute commitments as quasi-debt inside EV.",
   "falsify_en": "If the top configuration also cuts price within three months, 'the top tier collects rent' is falsified; if China's share falls back below three-tenths within six months, the price anchor is downgraded.",
-  "slug": "openai-80-percent-price-cut-pricing-power"
+  "slug": "openai-80-percent-price-cut-pricing-power",
+  "updated": "2026-11-13"
  },
  {
   "id": "q09",
@@ -429,14 +431,14 @@
   "facts_zh": "2026-08-28 索尼与华纳系 35 家出版实体起诉 Anthropic，两位创始人列为个人被告。Bartz 图书案 15 亿美元和解、482460 件、每件 3109 美元，只兑现法定上限的 2.07%；3109 为毛额，是责任认定后的谈判价，本案责任尚未认定。WSJ 9/18（经 Investing.com 转述）称挂牌目标改为 11 月，知情人称与诉讼无关。",
   "landing_zh": "对投资人：盯公开版 S-1 递交日与和解落地日的先后，看风险因素章节是否列明本组诉讼；销毁令和创始人个人责任不按件计价，单独估。对创业者：语料采购凭证现在是融资材料的一部分，不是法务的事。",
   "falsify_zh": "自 2026-08-31 起 12 个月内，若出现第二个经法院批准、每件成交价与 3109 美元相差不足一个量级的公开和解，则「赔款不动估值」成立并升级为已验证；若 Anthropic 因本组诉讼推迟或撤回发行，本条主判断记 ✓；若公开版 S-1 如期递交且发行未受影响，本条降级。裁定源为法院终审批准文件与 SEC EDGAR。",
-  "status_zh": "⏳ 进行中。ENTRY 131 于 2026-10-02 对账：9 月底窗口已到期未兑现，EDGAR 无公开版 S-1；推迟归因非诉讼，不计命中、不降级，维持 ⏳。据 Bloomberg 10/1（引知情人），按路演时间推算公开版 S-1 最晚约 10/23 至 10/25 出现（自算）。若 11 月如期挂牌且发行未受本组诉讼影响，届时降级。",
+  "status_zh": "⏳ 进行中。ENTRY 131 于 2026-11-13 对账：公开版 S-1 已于 10/26 递交，11/2、11/10 两次修订；招股书把本案并入「Music Publisher Matters」，没有一手文件把发行时点和这组诉讼挂钩。如果按区间如期定价，按预注册降级，定价日即裁定日。",
   "lead_en": "The damages are computable and barely move the valuation; what can move the IPO is the offering window, a destruction order and the founders' personal liability. Taking the books case as reference ($1.5 billion settlement, 482460 works, $3109 per work), the same ratio applied to the music side comes to about two ten-thousandths of Anthropic's $965 billion post-money valuation.",
   "judgment_en": "The mainstream sizes exposure from the damages figure. The diary starts from the offering calendar: the public S-1 must be disclosed at least 15 days before the roadshow, and an unquantifiable contingent liability inside that countdown moves the offering window and the price range. As of 9/25 the public S-1 had not been filed, and the publicly stated reason for the delay is third-quarter financials. The diary's own note says the books case and the music case are not comparable.",
   "facts_en": "On 2026-08-28, 35 Sony and Warner publishing entities sued Anthropic, naming its two founders as individual defendants. Bartz books case: $1.5 billion settlement, 482460 works, $3109 per work, only 2.07% of the statutory maximum; $3109 is gross and is a price negotiated after liability was established, while liability in this case is not yet established. WSJ on 9/18 (as relayed by Investing.com) reported the listing target moved to November, with people familiar saying it was unrelated to the litigation.",
   "landing_en": "For investors: watch the order of the public S-1 filing date versus the settlement date, and check whether the risk factors section lists this litigation; the destruction order and founders' personal liability are not priced per work, so estimate them separately. For founders: proof of training-data procurement is now part of the fundraising materials, not a legal-department matter.",
   "falsify_en": "Within 12 months from 2026-08-31, if a second court-approved public settlement appears with a per-work price within one order of magnitude of $3109, 'damages do not move valuation' holds and is upgraded to verified; if Anthropic delays or withdraws its offering because of this litigation, the main judgment is marked ✓; if the public S-1 is filed on schedule and the offering is unaffected, this entry is downgraded. Adjudication sources: final court approval documents and SEC EDGAR.",
   "slug": "sony-warner-lawsuit-anthropic-ipo",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q14",
@@ -465,13 +467,14 @@
   "facts_zh": "OpenAI 到 2030 的算力承诺约 $6000 亿，私募轮喂不动；2025 年收入约 $131 亿、运营亏约 $209 亿，为被泄露、经 FT 核实的审计口径。两家均为保密递交 S-1、至今没挂牌。苹果 7/10 起诉 OpenAI、io 和两名前员工，单方指控、尚无判决；当时口径是 S-1 在即而非已公开、最快 9 月挂牌。前例 Waymo 起诉 Uber，约 $245M 股权和解。",
   "landing_zh": "对创业者：员工二级卖不动就是人才留存风险，现在就设计不靠 IPO 的兑现方案。对投资人：退出假设按「排队」算，盯第一家挂牌后的 90 天；给 OpenAI 老股的 SPV 报价把 IP 诉讼折价算进去。",
   "falsify_zh": "若 OpenAI 九月如期挂牌、定价没有折扣，说明公开市场不把 IP 诉讼当回事，本篇判断降级",
-  "status_zh": "⏳ 进行中（所引两篇在判断台账均为进行中，九月证伪口台账尚未裁定）；验收口径：挂牌并扛住完整周期（解禁+盈利兑现，起步 90 天）不破发才算数",
+  "status_zh": "⏳ 进行中。ENTRY 100 于 2026-11-13 补对账：OpenAI 没有在 9 月挂牌，「九月如期挂牌且定价无折扣」的降级条件已过期未触发，这不等于验证；ENTRY 115 待 Anthropic 挂牌后裁定。验收口径：挂牌并扛住完整周期（解禁+盈利兑现，起步 90 天）不破发才算数",
   "lead_en": "The diary gives no listing date for OpenAI; the 2027 slip appears only as one line in the judgment ledger, that OpenAI leans toward pushing to 2027, which is not an official announcement. What pushes it toward an IPO is a clogging employee-liquidity channel and the compute bill: about $600 billion of compute commitments through 2030, against 2025 revenue of about $13.1 billion and an operating loss of about $20.9 billion.",
   "judgment_en": "The consensus asks who lists first and when. The diary calls that a false question: the IPO is the last pressure valve not yet opened, and filing is only getting in line. Litigation also weighs on pricing: Apple sued just as OpenAI's confidential S-1 filing was imminent, so the S-1 must carry risk disclosure and the valuation takes a discount.",
   "facts_en": "OpenAI's compute commitments through 2030 are about $600 billion, beyond what private rounds can feed; 2025 revenue was about $13.1 billion and the operating loss about $20.9 billion, from leaked audited figures verified by the FT. Both companies filed confidential S-1s and neither has listed. Apple sued OpenAI, io and two former employees on 7/10, a one-sided allegation with no ruling yet; at that time the S-1 was imminent rather than public, with a listing in September at the earliest. Precedent: Waymo sued Uber and settled for about $245M in equity.",
   "landing_en": "For founders: if employees cannot sell in secondaries, that is a retention risk, so design liquidity that does not depend on an IPO now. For investors: model exits as 'in the queue' and watch the 90 days after the first listing; when quoting SPVs on OpenAI secondaries, build in an IP-litigation discount.",
   "falsify_en": "If OpenAI lists on schedule in September with no pricing discount, the public market does not take IP litigation seriously and this entry's judgment is downgraded.",
-  "slug": "openai-ipo-timing-2027"
+  "slug": "openai-ipo-timing-2027",
+  "updated": "2026-11-13"
  },
  {
   "id": "q15",
@@ -568,14 +571,14 @@
   "facts_zh": "TypeSafe docs（9/15）：$0.042/M 输入、输出免费。Together 博客（9/23）自称 $17 训出仿作。Vercel 官方导出 9/24：请求 26.7%、token 2.0%，处免费促销期。TypeSafe 自家评测：Jev 67.8%，与 Luna 同分。The Information 与 FT 均援引知情人士：估值超 100 亿，未签、公司未公告。",
   "landing_zh": "对创业者：把分类、路由、守门挪到 Jev 类模型上试，别当安全边界，自建校准测试。对投资人：不按媒体称的 100 亿要约估值进场；要投就投握默认位的 harness 与评测工具，等 TypeSafe 披露非 token 收入。",
   "falsify_zh": "起算 2026-09-26（Vercel 免费促销到期次日），三条分开裁定。②「$0.042 是天花板不是地板」：至 2027-03-31 若 docs.typesafe.ai 把输入价上调或对输出计费，记 ✗（它有定价权）；若 OpenRouter 或 Vercel 网关目录出现任一公开定价不高于 $0.02/M 或免费的开源决策模型托管，记已验证；TypeSafe 自行降价亦记已验证；两者皆无记 ⏳。③「100 亿买的不是现金流」：至 2026-12-31 若 Jev 进入 Vercel 花费榜前十（不低于当日榜末，现约 2.4 至 3.4%），或 TypeSafe 以官方公告披露不低于 10 亿美元融资并同时披露收入或付费客户数，记 ✗；若至期 TypeSafe 官宣融资但未同时披露收入或付费客户数，或 Jev 仍未进花费前十，记已验证；两者皆无记 ⏳。",
-  "status_zh": "⏳ 进行中（ENTRY 138 于 2026-10-02 对账：促销后六个完整日 Jev 请求份额均值 23.1%，证伪口①的 ✗ 条件成立中、10/31 裁定；五家跟进决策模型，但 OpenRouter 与 Vercel 目录仍无 $0.02/M 以下或免费的决策模型托管，证伪口②未触发，Jev 标价仍为 $0.042/M）。",
+  "status_zh": "⏳ 进行中（ENTRY 138 于 2026-11-13 对账：证伪口①到期记 ✗，促销后首个完整 7 日窗口 Jev 请求份额均值 23.4%，「促销一停采用就掉」判错；②③未到期，Jev 仍未进 Vercel 花费榜单列）。",
   "lead_en": "Do not enter at the media-reported $10 billion offer valuation; $0.042 is a ceiling, and the diary has no cost data to say whether it makes money. Jev lists at $0.042 per million input tokens with free output; on Vercel on 9/24, during a free promotion, it had 26.7% of requests, 2.0% of tokens, and was absent from the spend top ten.",
   "judgment_en": "The mainstream story reads Jev's breakout as pricing power. The diary reads it as adoption: the decision layer commoditized within a week, and the media-reported $10 billion offer buys an option on the harness's default-judge seat, which the distributor controls. Jev is invisible on the spend board because it was free.",
   "facts_en": "TypeSafe docs (9/15): $0.042/M input, output free. Together's blog (9/23) claims it trained an imitation for $17. Vercel official export, 9/24: 26.7% of requests, 2.0% of tokens, during a free promotion. TypeSafe's own eval: Jev 67.8%, tied with Luna. The Information and FT, both citing people familiar: valuation above $10 billion, not signed, not announced by the company.",
   "landing_en": "For founders: move classification, routing and gatekeeping onto Jev-class models as a trial, do not treat it as a security boundary, and build your own calibration tests. For investors: do not enter at the media-reported $10 billion offer valuation; if you invest, back the harnesses and eval tools that hold the default seat, and wait for TypeSafe to disclose non-token revenue.",
   "falsify_en": "Clock starts 2026-09-26 (the day after Vercel's free promotion expires); three claims are ruled separately. (2) \"$0.042 is a ceiling, not a floor\": by 2027-03-31, if docs.typesafe.ai raises the input price or starts charging for output, mark ✗ (it has pricing power); if the OpenRouter or Vercel gateway catalog shows any hosted open-source decision model publicly priced at or below $0.02/M or free, mark verified; a price cut by TypeSafe itself also counts as verified; if neither, mark ⏳. (3) \"The $10 billion is not buying cash flow\": by 2026-12-31, if Jev enters the Vercel spend top ten (no lower than that day's last-place share, currently about 2.4 to 3.4%), or TypeSafe officially announces financing of no less than $1 billion and at the same time discloses revenue or paying-customer count, mark ✗; if by the deadline TypeSafe announces financing without disclosing revenue or paying-customer count, or Jev is still outside the spend top ten, mark verified; if neither, mark ⏳.",
   "slug": "typesafe-jev-valuation-token-pricing",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q18",
@@ -741,13 +744,14 @@
   "facts_zh": "OpenAI GPT-5.6 家族上线三周改价：Luna 降 80%、Terra 降 20%、Sol 不降。VentureBeat 9/22 报道口径：GPT-6 Sol 2/10 美元，前代 4/20；ENTRY 118 于 7/30 记的前价 5/30，中间调价本站未追踪。Anthropic 5 月改按 API 价计费，某些工作流有效容量掉 25 倍（社区估算，单源、公司未确认）。",
   "landing_zh": "对创业者：现在就按零补贴重算模型调用成本，毛利撑不住就改架构，缓存、小模型下沉、贵模型只留在决策点。对投资人：尽调按 API 实价重算单位经济学，并盯顶层跟不跟降。",
   "falsify_zh": "ENTRY 118：三个月内顶配也降价，「顶层收租」证伪。ENTRY 58：若 Anthropic 后续恢复订阅池共享或给出等价补贴，「补贴终结」的判断须撤回",
-  "status_zh": "ENTRY 118「分层定价、顶层收租」台账 ⏳ 进行中：ENTRY 136 记 9/22 GPT-6 Sol 标价减半（报道口径），正被三个月证伪口敲门，台账尚未裁定；ENTRY 58「明码标价」✓ 已验证。",
+  "status_zh": "ENTRY 118「分层定价、顶层收租」于 2026-11-13 对账记 ✗ 认错：OpenAI 8/21 把当时最高档 GPT-5.6 Sol 降价（标注促销价），落在三个月窗口内；ENTRY 58「明码标价」✓ 已验证。",
   "lead_en": "Do not park your margin on the mid-tier price spread, and do not park it on \"the top tier never gets cut\" either, because that is no longer the standing conclusion. ENTRY 118 recorded on 7/30 that Luna fell 80% while Sol was untouched; VentureBeat reported that on 9/22 GPT-6 Sol's list price was halved to $2/$10.",
   "judgment_en": "The mainstream read the cut as a price war. The diary read it as a tiered price list: the bottom commoditizes faster, the top holds price and charges extra for speed, and the middle is squeezed hardest. The top-tier half of that call is now being tested by its own falsification clause, so margin has to come from your own architecture, not from an upstream tier staying expensive.",
   "facts_en": "OpenAI repriced the GPT-5.6 family three weeks after launch: Luna down 80%, Terra down 20%, Sol unchanged. As reported by VentureBeat on 9/22: GPT-6 Sol at $2/$10 versus $4/$20 for the prior generation; ENTRY 118 had recorded a prior price of $5/$30 on 7/30, and the diary did not track the adjustment in between. In May Anthropic moved to API-rate billing, and effective capacity for some workflows fell 25x (community estimate, single source, not confirmed by the company).",
   "landing_en": "For founders: recompute model-call cost at zero subsidy now, and if margin does not hold, change the architecture with caching, pushing work down to small models, and keeping the expensive model only at decision points. For investors: in diligence, recompute unit economics at actual API prices and watch whether the top tier follows the cuts.",
   "falsify_en": "ENTRY 118: if the top-tier model is also cut within three months, \"top tier collects rent\" is falsified. ENTRY 58: if Anthropic later restores shared subscription-pool access or offers an equivalent subsidy, the \"end of subsidy\" call must be withdrawn",
-  "slug": "openai-luna-cut-sol-margin-layer"
+  "slug": "openai-luna-cut-sol-margin-layer",
+  "updated": "2026-11-13"
  },
  {
   "id": "q23",
@@ -774,14 +778,15 @@
   "facts_zh": "DeepSeek V4 上线同步落地分时定价：每日 9-12、14-18 点 API 价格翻倍，谷时维持现价，主流厂商第一次在 API 层这么做（ENTRY 103，2026年7月16日，来源新浪财经、澎湃、证券时报）。DeepSeek 5/22 把限时折扣转成永久降价，一个月后用分时把高峰价收回来。ENTRY 123（2026年8月13日）：同一个 Opus 4.6 只换 harness 实测差 4.5 个点（来源 Bustamante，5/3）。",
   "landing_zh": "对创业者：今晚就把批量重构、数据清洗、离线评测排到谷时，实时请求留在峰时直通；为省钱换底座前先量掉了多少。对投资人：靠 API 差价套利的中间商调低估值，估模型公司看容量利用率和负载曲线。",
   "falsify_zh": "一：三个月内若没有第二家主流厂商跟进，它就只是 DeepSeek 自家的负载管理，我会降级 ｜ 二：两倍峰谷价差能否真驱动企业挪负载没验证，企业不挪，调度层的机会就不成立",
-  "status_zh": "⏳ 进行中。判断台账里 ENTRY 103「智能定价电网化」与 ENTRY 123「迁移成本在 harness 不在管道」两条均为进行中，三个月跟进窗口尚未裁定；验收项为字节、阿里、智谱、Kimi 是否跟进与夜间 token 用量占比。",
+  "status_zh": "ENTRY 103 于 2026-11-13 对账：✗ 认错。证伪口一 10/16 到期，字节、阿里、智谱、Kimi 没有一家给自家模型跟进分时价，「公用事业三件套齐了」撤回，降为「DeepSeek 自家的负载管理」；证伪口二（企业是否挪负载）没有数据，不裁。ENTRY 123 ⏳ 进行中。",
   "lead_en": "Yes: move work that can wait, such as batch refactoring, data cleaning and offline evals, to off-peak hours and the bill drops at once. DeepSeek V4 doubles its API price daily during 9-12 and 14-18, while off-peak stays at the current price.",
   "judgment_en": "A common reading is a disguised price increase. The diary reads it as a change in how inference is priced: compute is now priced like a power grid, and a model company has admitted for the first time that what it sells is capacity utilization, with intelligence as the label. Whether a two-fold spread really makes enterprises shift load is marked by the diary itself as not verified.",
   "facts_en": "DeepSeek launched time-of-use pricing together with V4: the API price doubles daily during 9-12 and 14-18 and off-peak stays at the current price, the first time a mainstream vendor has done this at the API layer (ENTRY 103, July 16, 2026; sources Sina Finance, The Paper, Securities Times). On 5/22 DeepSeek turned a limited-time discount into a permanent cut, and one month later it took the peak price back through time-of-use pricing. ENTRY 123 (Aug 13, 2026): in testing, the same Opus 4.6 with only the harness changed differed by 4.5 points (source Bustamante, 5/3).",
   "landing_en": "For founders: tonight, schedule batch refactoring, data cleaning and offline evals into off-peak hours and keep real-time requests on the peak path; before switching base models to save money, measure what you lose. For investors: mark down middlemen that live on API price arbitrage, and value model companies on capacity utilization and load curves.",
   "falsify_en": "One: if no second mainstream vendor follows within three months, this is only DeepSeek's own load management and I will downgrade the call | Two: whether a two-fold peak/off-peak spread really makes enterprises shift load is not verified; if enterprises do not shift, the scheduling-layer opportunity does not hold",
   "status_en": "⏳ In progress. In the thesis ledger, both ENTRY 103 (grid-style pricing of intelligence) and ENTRY 123 (migration cost sits in the harness, not the pipe) are in progress; the three-month follow-on window has not been ruled on. Acceptance checks: whether ByteDance, Alibaba, Zhipu and Kimi follow, and the share of token usage at night.",
-  "slug": "deepseek-peak-off-peak-pricing-batch-jobs"
+  "slug": "deepseek-peak-off-peak-pricing-batch-jobs",
+  "updated": "2026-11-13"
  },
  {
   "id": "q24",
@@ -808,13 +813,14 @@
   "facts_zh": "特斯拉 7/6 起每人每周 200 美元封顶，超支要经理签字；Uber 的 AI 预算 4 月烧穿后改成每人每月 1500 美元（据 The Information、Electrek、IBTimes，均为员工个人额度，非公司总盘）。Ramp Economics Lab 7 月中位 $11.95，够到 $600B 叙事要 $56/月；$600B 是投资人 Doyle 的 2030 base case，非 Anthropic 内部估计。",
   "landing_zh": "对创业者：别拿「无限用量」讲增长，讲清每个 token 换回多少业务；席位定价改成按消耗或按结果。对投资人：先拆出 ARR 里消耗驱动的比例再给倍数，每月拉一次 Ramp 中位对账。",
   "falsify_zh": "12 个月内 Ramp 中位突破 $56/月，「席位到不了 $600B」重写；中位仍低于 $20/月、且用量计费占比（披露或第三方）仍高于三分之二，「按人收费迁向按消耗收费」升级为已验证",
-  "status_zh": "ENTRY 125「按人收费迁向按消耗收费、席位路径到不了 $600B」在台账为 ⏳ 进行中；ENTRY 95 配额制判断未入台账，该篇尾注无证伪口，上列证伪口出自 ENTRY 125。",
+  "status_zh": "ENTRY 125 于 2026-11-13 对账：◐ 部分成立。升级条件按字面已满足（Ramp 10 月中位 $16.32，Anthropic S-1 消耗计费占前九月收入 79%），但同一披露显示消耗占比从 2025 年 83% 回落，「正在迁向消耗」没有一手支持，不升 ✓。ENTRY 95 配额制判断未入台账，上列证伪口出自 ENTRY 125。",
   "lead_en": "It holds, but discount the consumption-driven part: the ceiling is your customer's budget discipline. Per The Information, Electrek and IBTimes, Tesla capped spend at $200 per person per week from July 6, and Uber moved to $1500 per person per month.",
   "judgment_en": "The mainstream reads caps as demand peaking. The diary reads both sides: usage heavy enough to need a cap, with engineers choosing approval queues over stopping, is the hardest adoption evidence. Meanwhile per-seat pricing cannot reach the $600B narrative, so pricing should move to consumption or outcomes and growth should be told through token efficiency.",
   "facts_en": "Tesla: from July 6, a cap of $200 per person per week, with overspend needing a manager's sign-off. Uber: after its AI budget burned through in April, it moved to $1500 per person per month (both per The Information, Electrek, IBTimes; both are per-employee allowances, not company totals). Ramp Economics Lab: the July median was $11.95, against the $56/month needed to reach the $600B narrative; the $600B is investor Doyle's 2030 base case, not an Anthropic internal estimate.",
   "landing_en": "For founders: stop pitching \"unlimited usage\"; show how much business each token buys, and move seat pricing to consumption or outcome pricing. For investors: split out the consumption-driven share of ARR before assigning a multiple, and check the Ramp median once a month.",
   "falsify_en": "If the Ramp median breaks above $56/month within 12 months, \"seats cannot reach $600B\" gets rewritten; if the median stays below $20/month and the usage-billed share (disclosed or third-party) stays above two-thirds, \"per-seat billing migrating to consumption billing\" is upgraded to verified.",
-  "slug": "enterprise-ai-spend-caps-token-pricing"
+  "slug": "enterprise-ai-spend-caps-token-pricing",
+  "updated": "2026-11-13"
  },
  {
   "id": "q25",
@@ -909,13 +915,14 @@
   "facts_zh": "Vercel AI Gateway Production Index（6 月）：开放权重 29% 的 token、不到 4% 的花费，Anthropic 32% 的 token、61% 的钱。8/15 至 9/13 广义中国 12 家实验室花费份额三十日均值 16.1%、最低日 10.4%（作者自算，导出与脚本已公开），越过 10% 线。a16z「80%」经 Casado 澄清，实际约 16-24%。",
   "landing_zh": "对创业者：产品价值别随 token 量计价，改成按结果或按席位收；扩产能可以，按钱包份额做三年收入模型不行。对投资人：BP 里只给 token 份额的，当场要花费份额，两者差一个数量级的项目估值按收入给。",
   "falsify_zh": "任一 Vercel 级生产网关公布中国来源模型花费占比超 10%，或下一份 Menlo 级调研中国模型占美国企业 LLM 支出超 10%，降级为「钱包也开始移动」；该调研仍在 3% 以下则升级为已验证",
-  "status_zh": "ENTRY 121 台账标 ⏳ 进行中，上述证伪口已触发：2026-09-14 对账按作者自算口径降级为「钱包也开始移动」，母判断不重写，30% 升级线未到；ENTRY 128 台账 ⏳ 进行中，「部分触发」改记「触发」；ENTRY 135 ⏳ 进行中。",
+  "status_zh": "ENTRY 121、ENTRY 128 台账标 ⏳ 进行中：2026-11-13 对账记 30% 升级线部分触发（三十日花费份额最高 31.03%，10 月自然月 29.6%），以 11 月自然月为裁定；ENTRY 135 ⏳ 进行中，通告 6 家三十日 token 份额 49.0%，首次低于 50%，✗ 条件不再成立。",
   "lead_en": "ENTRY 121 has been downgraded to \"the wallet is starting to move too\": the revenue ceiling of the low-price layer still sits far below what token volume implies, and the gap is narrowing. On Vercel's gateway in June, open-weight models ran 29% of tokens for under 4% of spend; the author's self-computed broad-China spend share averaged 16.1% over thirty days.",
   "judgment_en": "The mainstream story says Silicon Valley is switching its base models and reads token share as market share. The diary counts volume and money separately: open weights took the workload, and the wallet has only started to move. Investors ask for spend share because valuation is set on revenue, not on call volume.",
   "facts_en": "Vercel AI Gateway Production Index (June): open-weight models took 29% of tokens and under 4% of spend, while Anthropic took 32% of tokens and 61% of the money. From 8/15 to 9/13, the spend share of 12 broad-China labs averaged 16.1% over thirty days, with a lowest day of 10.4% (self-computed by the author, export and script published), crossing the 10% line. The a16z \"80%\" figure, after Casado's clarification, is actually about 16-24%.",
   "landing_en": "For founders: stop pricing product value by token volume and charge by outcome or by seat; expanding capacity is fine, but building a three-year revenue model on wallet share is not. For investors: when a deck gives only token share, ask for spend share on the spot, and where the two differ by an order of magnitude, value the company on revenue, not call volume.",
   "falsify_en": "If any Vercel-grade production gateway publishes a spend share for China-origin models above 10%, or the next Menlo-grade survey shows Chinese models above 10% of US enterprise LLM spend, the call is downgraded to \"the wallet is starting to move too\"; if that survey still shows under 3%, it is upgraded to verified.",
-  "slug": "low-cost-inference-open-weight-revenue-ceiling"
+  "slug": "low-cost-inference-open-weight-revenue-ceiling",
+  "updated": "2026-11-13"
  },
  {
   "id": "q28",
@@ -1150,14 +1157,14 @@
   "facts_zh": "8/28，索尼与华纳系 35 家出版实体起诉 Anthropic，两位创始人被列为个人被告（非首例）。图书案和解 15 亿美元、482460 件，每件 3109 美元为毛额，是责任认定后的谈判价；口径注：两案不可比，本案责任尚未认定。9/25 对账：EDGAR 无本体递交；WSJ 9/18（经 Investing.com 转述）称挂牌目标改为 11 月，知情人称与诉讼无关。",
   "landing_zh": "对创业者：把语料采购凭证整理进融资材料，别只留在法务手里。对投资人：盯公开版 S-1 递交日与和解落地日的先后，尽调先问销毁令和创始人个人责任，这两样都不按件计价。",
   "falsify_zh": "自 2026-08-31 起 12 个月内，若出现第二个经法院批准、每件成交价与 3109 美元相差不足一个量级的公开和解，则「赔款不动估值」成立并升级为已验证；若 Anthropic 因本组诉讼推迟或撤回发行，本条主判断记 ✓；若公开版 S-1 如期递交且发行未受影响，本条降级。裁定源为法院终审批准文件与 SEC EDGAR。",
-  "status_zh": "⏳ 进行中。9/8、9/25 与 10/2 三次对账：发行推迟已发生，但公开归因是循环信贷与三季报而非本组诉讼，不计命中也不降级；9 月底窗口 10/2 确认未兑现，下一个可核时点是公开版 S-1 的风险因素章节。",
+  "status_zh": "⏳ 进行中。9/8、9/25、10/2 与 11/13 四次对账：公开版 S-1 已于 10/26 递交，招股书没有把发行时点和本组诉讼挂钩；如期定价则按预注册降级，定价日即裁定日。",
   "lead_en": "Prepare corpus purchase records first; they are now part of the financing file. A copyright suit hurts a round through timing, destruction orders and founders' personal liability, while damages can be computed: the book case settled for $1.5B, 3109 dollars per work, only 2.07% of the statutory cap. This call is still in progress.",
   "judgment_en": "The mainstream view watches the damages figure. The diary starts from the offering calendar: applying the same ratio to the music side gives roughly two ten-thousandths of Anthropic's $965B post-money valuation, which barely moves valuation. What moves the window and the price range is a contingent liability that cannot be quantified.",
   "facts_en": "On 8/28, 35 publishing entities of Sony and Warner sued Anthropic and named two founders as individual defendants (not the first such case). The book case settled for $1.5B over 482460 works; 3109 dollars per work is a gross figure and a price negotiated after liability was found. Scope note: the two cases are not comparable, and liability in this case is not yet established. Reconciliation on 9/25: no filing by the company itself on EDGAR; WSJ on 9/18 (as relayed by Investing.com) reportedly put the listing target at November, with people familiar saying it is unrelated to the litigation.",
   "landing_en": "For founders: put corpus purchase records into the financing file rather than leaving them with legal. For investors: watch the order of the public S-1 filing date and the settlement date, and ask first about destruction orders and founders' personal liability, neither of which is priced per work.",
   "falsify_en": "Within 12 months from 2026-08-31, if a second court-approved public settlement appears with a per-work price within one order of magnitude of 3109 dollars, then \"damages do not move valuation\" holds and is upgraded to verified; if Anthropic delays or withdraws its offering because of this group of lawsuits, the main call is marked ✓; if the public S-1 is filed on schedule and the offering is unaffected, this call is downgraded. Adjudication sources are the court's final approval documents and SEC EDGAR.",
   "slug": "training-data-provenance-due-diligence",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q35",
@@ -1187,13 +1194,14 @@
   "facts_zh": "ENTRY 119：60+ 财产险集团已申报 AI 除外条款；Anthropic 自曝评测机配置失误，模型打穿三家真实机构，最早一起 4 月发生、7 月底才发现，全案系单方自述、护栏被有意关闭。ENTRY 109：OpenAI 7/21 认领测试模型入侵 Hugging Face 生产环境，立场以外媒转述为准。ENTRY 49：制造业 CIO 口头估计改错停一条线损失几百万；单方陈述，三人样本。",
   "landing_zh": "对创业者：把 SLA、可审计回溯和 agent 隔离写进合同与产品，做成采购问卷答得出来的样子，别停在「仅供参考」。对投资人：尽调加问「评测环境和生产环境隔离吗」，答不清楚的按事故概率折价。",
   "falsify_zh": "ENTRY 119：②一年内险企重开 AI 核保，或采购问卷未普增 agent 隔离项，则本篇的自证推断证伪。ENTRY 109：半年内没有第二起 agent 自主越界攻击真实系统，就降级为一次性警告",
-  "status_zh": "ENTRY 119 ⏳ 进行中。ENTRY 109 ⏳ 进行中，证伪口未触发，时钟 2027-01-22；其正文「AI 责任险是新增长向量」子句已更正为判反，母判断保留。ENTRY 49 未入台账，其「保险」建议以 ENTRY 119 的更正为准。",
+  "status_zh": "ENTRY 119 于 2026-11-13 对账：◐ 部分成立。Anthropic 9/9 撤回「模型以为在演习」的解释，「门没锁」成立、「不是模型问题」只对一半，②③续看至 2027-08-03。ENTRY 109 ⏳ 进行中，降级条件已不可能成立，2027-01-22 结案。ENTRY 49 未入台账，其「保险」建议以 ENTRY 119 的更正为准。",
   "lead_en": "Do not count on a policy to answer this; prove it yourself with an SLA, an auditable rollback trail and agent isolation. The diary's earlier call that AI liability insurance was a new growth vector was retracted in ENTRY 119 as wrong: 60+ property and casualty groups have filed AI exclusion clauses, so insurers are carving the risk out.",
   "judgment_en": "The mainstream view blames slow enterprise agent adoption on immature technology and expects insurance to absorb the risk. The diary's view is that the blocker is liability and insurers are stepping back; risk carved out of a policy becomes a control the vendor must prove.",
   "facts_en": "ENTRY 119: 60+ property and casualty groups have filed AI exclusion clauses; Anthropic's own disclosure says a misconfigured evaluation machine let a model breach three real organisations, the earliest in April and found only in late July. The whole account is self-reported, and guardrails were deliberately switched off. ENTRY 109: on 7/21 OpenAI claimed its test model as the intruder in Hugging Face's production environment; its position is known only via press reports. ENTRY 49: a manufacturing CIO's verbal estimate was several million in losses if an agent error stops one line; one-sided account, sample of three.",
   "landing_en": "For founders: write the SLA, auditable rollback and agent isolation into the contract and the product so a procurement questionnaire can be answered, and do not stop at \"for reference only\". For investors: add the diligence question \"are your evaluation and production environments isolated?\" and discount unclear answers by incident probability.",
   "falsify_en": "ENTRY 119: (2) If within one year insurers reopen AI underwriting, or procurement questionnaires do not broadly add agent isolation items, this entry's self-proof inference is falsified. ENTRY 109: If within half a year there is no second case of an agent autonomously crossing its boundary to attack a real system, downgrade to a one-off warning",
-  "slug": "agent-liability-and-ai-insurance"
+  "slug": "agent-liability-and-ai-insurance",
+  "updated": "2026-11-13"
  },
  {
   "id": "q36",
@@ -1221,13 +1229,14 @@
   "facts_zh": "6 月底开发者逆向发现 Claude Code 内置检测机制，查时区和代理、识别中国相关用户；官方称属 3 月上线的「实验性」措施、7/2 已删。7/8 工信部 NVDB 发风险提示，定调「安全后门、危害严重」。7/10 起阿里内部全面禁用，列入高风险软件名单。来源为 IT之家、智东西、观察者网；该机制算不算技术意义上的「后门」有争议，日记不下技术结论。",
   "landing_zh": "对创业者：把「可审计、可本地部署、可断供生存」做成产品首页三条，现在就去接大厂的替换预算。对投资人：中国区开发工具的尽调加一条「供应商国别与断供预案」，收入高度依赖美系模型 API 的中国标的调低估值。",
   "falsify_zh": "若阿里之外没有第二家大厂跟进禁用、且 Claude API 在华中转用量没有下降，「采购层脱钩」就是我过度外推",
-  "status_zh": "⏳ 进行中（判断台账）。证伪口原文未写截止日与裁定源；尾注验收项为一个月内跟进拉黑的大厂数、国产编码 agent 的企业签约量，该窗口已过，日记与台账尚未记录验收结果。",
+  "status_zh": "ENTRY 102 于 2026-11-13 补对账：✗ 认错。一个月验收的读数是 0，阿里之外没有第二家大厂跟进禁用 Claude Code，「采购层脱钩」是过度外推；字节 11 月起限制员工用外部 AI 工具接触内部代码，晚了约三个月、理由是数据安全，不追认。",
   "lead_en": "The enterprise window is open. The diary gives no size for it and only calls it procurement demand with a deadline. Lead with three things: auditable, locally deployable, able to survive a supply cutoff. The basis: on 7/8 MIIT's NVDB issued a risk notice, and from 7/10 Alibaba banned Claude Code internally across the board.",
   "judgment_en": "The mainstream story treats decoupling as the result of government bans. The diary holds that this round started from one large company's procurement list: the MIIT notice is a posture, while Alibaba's blacklist is a real-money procurement decision. The risk sits in procurement decisions and has nothing to do with technical quality.",
   "facts_en": "In late June developers reverse-engineered a detection mechanism built into Claude Code that checked time zone and proxy to identify China-related users; the company said it was an \"experimental\" measure launched in March and removed on 7/2. On 7/8 MIIT's NVDB issued a risk notice calling it a \"security backdoor, serious harm\". From 7/10 Alibaba banned it internally across the board and put it on its high-risk software list. Sources are ITHome, Zhidx and Guancha; whether the mechanism is a \"backdoor\" in the technical sense is disputed, and the diary draws no technical conclusion.",
   "landing_en": "For founders: put \"auditable, locally deployable, able to survive a supply cutoff\" as the three lines on your product homepage and go after large companies' replacement budgets now. For investors: add \"supplier nationality and cutoff contingency plan\" to diligence on China developer tools, and mark down Chinese targets whose revenue depends heavily on US model APIs.",
   "falsify_en": "If no second large company beyond Alibaba follows with a ban, and Claude API relay usage in China has not declined, then \"procurement-level decoupling\" is my over-extrapolation.",
-  "slug": "domestic-coding-agent-window-after-claude-code-ban"
+  "slug": "domestic-coding-agent-window-after-claude-code-ban",
+  "updated": "2026-11-13"
  },
  {
   "id": "q37",
@@ -1318,14 +1327,14 @@
   "facts_zh": "TypeSafe 官方 docs（9/15）：每百万输入 $0.042、输出免费，限速「可不经通知变更」。Octomind 博客（9/18，n=1 单次集成测试）：伪造批准后阻止概率 0.76 降到 0.48、置信度 0.64 降到 0.22，最高概率项仍是阻止，截至 9/25 未见公司直接回应。evals.typesafe.ai（公司自建四条工作流）：Jev 67.8%、0.4 秒。",
   "landing_zh": "对创业者：把分类、路由、守门挪到 Jev 类模型试，别当安全边界，自建校准测试。对投资人：不按媒体称的 100 亿估值进场；要投就投握默认位的 harness 与评测工具，等 TypeSafe 披露非 token 收入。",
   "falsify_zh": "",
-  "status_zh": "⏳ 进行中（ENTRY 138 于 2026-10-02 对账：Jev 份额未因五家跟进而下降，定价未变）。ENTRY 138 三条证伪口裁定采用率、定价与估值，没有针对安全边界的条款，故证伪口留空。",
+  "status_zh": "⏳ 进行中（ENTRY 138 于 2026-11-13 对账：证伪口①记 ✗，Jev 份额在促销结束后没有掉；②③未到期）。ENTRY 138 三条证伪口裁定采用率、定价与估值，没有针对安全边界的条款，故证伪口留空。",
   "lead_en": "No. Try Jev only for classification, routing and gating, and build your own calibration tests. In Octomind's n=1 single integration test, a forged \"user approved\" state cut block probability from 0.76 to 0.48; jev-guard describes itself as \"NOT a security boundary\".",
   "judgment_en": "The mainstream story treats Jev's speed and viral adoption as grounds to trust it as a gatekeeper. The diary's view is that a decision model at the same price and same score commoditised within a week: on the company's own evals Jev scores 67.8%, level with Luna and Sonnet 5, and no party has published ECE or Brier figures for \"calibration\", so the diary does not count it as a moat.",
   "facts_en": "TypeSafe official docs (9/15): $0.042 per million input tokens, output free, rate limits that \"may change without notice\". Octomind blog (9/18, n=1 single integration test): after a forged approval, block probability fell from 0.76 to 0.48 and confidence from 0.64 to 0.22, with block still the top-probability option; as of 9/25 the diary had seen no direct company response. evals.typesafe.ai (four company-built workflows): Jev 67.8%, 0.4 seconds.",
   "landing_en": "For founders: move classification, routing and gating to Jev-class models on a trial basis, do not use them as a security boundary, and build your own calibration tests. For investors: do not enter at the media-reported $10B offer valuation; if you invest, back the harness that holds the default slot and the eval tooling, and wait for TypeSafe to disclose non-token revenue.",
   "falsify_en": "",
   "slug": "jev-as-agent-security-boundary",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q40",
@@ -1353,13 +1362,14 @@
   "facts_zh": "DeepSeek 静默把 V4-Pro 转正（ENTRY 123，8/13；口径注：公告小到要靠社区考古，0813 未开权重），Claude Code 改 base_url 即可切。实测同一个 Opus 4.6 只换 harness 差 4.5 个点（Bustamante，5/3，单一来源）。Lindy 迁移 6-9 个月，在协议兼容前，只能当上限。",
   "landing_zh": "对创业者：切换前先在自己工作流上建回归基准，把后训练和自己的工具面绑死；只做路由和兼容层的，现在找第二条腿。对投资人：尽调只问一句，换完底座用什么衡量掉了多少；答不上来的，「随时可切供应商」按零计入估值。",
   "falsify_zh": "12 个月内三家以上美国公司公开把生产级 coding agent 从 Anthropic/OpenAI 迁到中国模型、耗时短于两个月，「迁移成本在 harness 不在管道」降级；harness/agent 框架厂商公布跨模型适配后基准回归仍超 3 个百分点，升级为已验证",
-  "status_zh": "ENTRY 123 台账状态：⏳ 进行中。ENTRY 121 台账卡片标 ⏳ 进行中，其尾注 2026-09-14 对账已按预注册降级为「钱包也开始移动」；「迁移成本低是最贵的幻觉」一句已被 ENTRY 123 收紧。",
+  "status_zh": "ENTRY 123 台账状态：⏳ 进行中。ENTRY 121 卡片标 ⏳ 进行中：9/14 已按预注册降级为「钱包也开始移动」，2026-11-13 对账记 30% 升级线部分触发，待 11 月自然月裁定；「迁移成本低是最贵的幻觉」一句已被 ENTRY 123 收紧。",
   "lead_en": "At the plumbing level, yes; at the capability level, no. The cost of switching sits in the harness, not the interface. ENTRY 123 records a measured result: the same Opus 4.6 differs by 4.5 points when only the harness changes (ledger note: Bustamante, 5/3, single source).",
   "judgment_en": "The mainstream view says protocol compatibility makes vendors swappable at will. The diary parts ways here: compatibility only pushes plumbing cost to near zero, and plumbing was never a moat. Models are post-trained against a specific tool surface, so a new shell leaks capability. A product whose moat is \"multi-model support\" has a moat of zero.",
   "facts_en": "DeepSeek quietly promoted V4-Pro to general release (ENTRY 123, 8/13; scope note: the announcement was small enough to need community digging, and 0813 weights are not open), and Claude Code can switch by changing base_url. In a measured test the same Opus 4.6 differs by 4.5 points when only the harness changes (Bustamante, 5/3, single source). Lindy's migration took 6-9 months, happened before protocol compatibility, and counts only as an upper bound.",
   "landing_en": "For founders: before switching, build a regression benchmark on your own workflow and bind post-training to your own tool surface; if you only do routing and compatibility, find a second leg now. For investors: ask one diligence question, namely what the team uses to measure how much was lost after the swap; if there is no answer, count \"can switch vendors anytime\" as zero in the valuation.",
   "falsify_en": "If within 12 months three or more US companies publicly move a production-grade coding agent from Anthropic/OpenAI to Chinese models in under two months, \"migration cost sits in the harness, not the plumbing\" is downgraded; if a harness/agent framework vendor publishes a post-adaptation cross-model benchmark regression still above 3 percentage points, it is upgraded to verified.",
-  "slug": "switching-claude-to-deepseek-backend"
+  "slug": "switching-claude-to-deepseek-backend",
+  "updated": "2026-11-13"
  },
  {
   "id": "q41",
@@ -1389,14 +1399,14 @@
   "facts_zh": "去向（作者按 Vercel 官方导出复算，8 月日均到 9/22 至 28 七日均）：月之暗面 +10.2、OpenAI +9.1、DeepSeek +3.1、Google +2.7。Anthropic token 份额 22% 掉到 7.7%。Opus 5.5（9/22 上线，公司称典型负载省 40%）最多解释 4 个点（自算）。导出只给份额，分不清买家迁走与被新增负载稀释。",
   "landing_zh": "对投资人：网关份额别当 Anthropic 收入；中国模型别押最便宜，押能在 $10/M 输出以上收到钱的。对创业者：agent 负载先迁，参考 Harvey 后训练开放底座救毛利（毛利转正为 Bloomberg 引知情人，公司拒评）。",
   "falsify_zh": "两条分开裁定，裁定源均为 Vercel labs 官方导出加仓库脚本 scripts/vercel-lab-share.py 复算、读数公开，先触发者定，30 日窗口终点不早于起算日，9/29 以其后复拉的完整值计。①「丢的是量、钱袋在翻」：起算 2026-09-29，至 2026-12-31，若任一连续 30 日窗口 Anthropic 花费份额均值不低于 53%（8/30 至 9/28 为 46.4%，✗ 线与已验证线围绕现值上下各约 6.5 个点），记 ✗（脉冲非趋势，token 份额同时公开，回写 ENTRY 121 母判断）；若任一连续 30 日窗口均值不高于 40%，记已验证；到期皆未触发记未裁定并关闭本条；其间记 ⏳ 并公开读数。",
-  "status_zh": "ENTRY 140 于 2026-10-02 对账：Anthropic 三十日均花费份额 44.8%，证伪口①的 53% 与 40% 两线均未触及，⏳ 进行中；ENTRY 121：已降级为「钱包也开始移动」（9/14 对账），母判断未重写；ENTRY 128：⏳ 进行中，30% 升级线未破。",
+  "status_zh": "ENTRY 140 于 2026-11-13 对账：◐ 部分成立。①Anthropic 连续 30 日花费份额 9/14–10/13 窗口首次 ≤40%（39.6%），记已验证；②Kimi K3 10/1–10/30 窗口首次低于 8%（7.7%），记 ✗。ENTRY 121、128：30% 升级线部分触发，待 11 月自然月裁定。",
   "lead_en": "Anthropic lost token volume, and the money moved down only one price tier, to OpenAI and Kimi K3. Anthropic's spend share on Vercel's gateway went from an August daily average of 63.5% to a seven-day average of 38.0% for 9/22 to 28, a gap of 25 points; spend is a list-price-weighted estimate, not a bill.",
   "judgment_en": "Consensus (Vercel's 9/17 blog and others): open weights take volume, Anthropic takes the money, and any money that moves goes to the cheapest. The diary: the money moved 25 points but only one price tier down. ENTRY 121 (\"big volume, little money\") was downgraded on 9/14 to \"the wallet has started to move\".",
   "facts_en": "Where it went (author's recomputation from Vercel's official export, August daily average to the 9/22 to 28 seven-day average): Moonshot +10.2, OpenAI +9.1, DeepSeek +3.1, Google +2.7 points. Anthropic's token share fell from 22% to 7.7%. Opus 5.5 (launched 9/22; the company says typical workloads save 40%) explains at most 4 points (self-computed). The export gives shares only, so buyers leaving cannot be told apart from dilution by new workloads.",
   "landing_en": "For investors: do not read gateway share as Anthropic revenue; among Chinese models, do not back the cheapest, back the ones that can collect above $10/M on output. For founders: move agent workloads first, and look at Harvey's post-training on an open base model to repair gross margin (the margin turnaround is Bloomberg citing people familiar; the company declined to comment).",
   "falsify_en": "Two tests, ruled separately. The ruling source for both is Vercel's official labs export recomputed with the repository script scripts/vercel-lab-share.py, with readings published; whichever triggers first decides; a 30-day window may not end before the start date, and 9/29 is counted at its complete value from a later re-pull. (1) \"Volume was lost, the wallet is turning\": starting 2026-09-29, through 2026-12-31, if Anthropic's average spend share over any consecutive 30-day window is not lower than 53% (it was 46.4% for 8/30 to 9/28; the ✗ line and the verified line sit about 6.5 points above and below the current value), mark ✗ (a pulse, not a trend; token share is published alongside; written back to ENTRY 121's parent thesis); if the average over any consecutive 30-day window is not higher than 40%, mark verified; if neither triggers by expiry, mark unresolved and close this test; until then mark ⏳ and publish readings.",
   "slug": "anthropic-vercel-gateway-spend-share-drop",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q42",
@@ -1426,14 +1436,14 @@
   "facts_zh": "Vercel 模型页 9/29：Kimi K3 最低 $1.325/$10.50，多数供应商仍按 $3/$15。Vercel 导出（标价加权估算，非账单）：花费份额 8/30 至 9/28 三十日均 9.3%，9/22 峰 18.5%，呈脉冲。月之暗面官方 API 输出价权重上线前 11 天从 ¥27 涨到 ¥100／百万 token，约 3.7 倍（ENTRY 114 未列来源行，未独立恢复）。",
   "landing_zh": "对创业者：agent 负载先迁，毛利按网关最低价和官方涨价后的价各算一遍，许可证营收闸提前一年谈，客户合同写明回复来自谁、数据去哪。对投资人：尽调问换一个底座这家公司的价值消失多少，中国模型押能在 $10/M 输出以上收到钱的。",
   "falsify_zh": "两条分开裁定，裁定源均为 Vercel labs 官方导出加仓库脚本 scripts/vercel-lab-share.py 复算、读数公开，先触发者定，30 日窗口终点不早于起算日，9/29 以其后复拉的完整值计。②「Kimi K3 以中档价拿钱不是批量脉冲」：起算 2026-09-29，至 2026-11-30，若 Kimi K3 任一连续 30 日花费均值低于 8%（8/30 至 9/28 三十日均 9.3%），记 ✗；任一连续 30 日均值不低于 12% 记已验证；到期皆未触发记未裁定并关闭；其间 ⏳。事件分支：2026-12-31 前出现第二家估值不低于 $10 亿的美国公司以公司公告或 Bloomberg/Reuters 报道确认生产模型基于 Kimi K3，②升级；2027-03-31 前美国财政部或商务部对月之暗面实施制裁、或 AWS/Vercel 下架 Kimi K3（官方公告为准），②的海外收钱链路作废，与 ENTRY 135 证伪口①并案。",
-  "status_zh": "ENTRY 140 于 2026-10-02 对账：Kimi K3 三十日均花费份额 10.4%，证伪口②的 8% 与 12% 两线均未触及，10/1 单日跌到 5.0% 无一手解释、不作归因；ENTRY 135 ⏳ 进行中，10/2 对账记 OpenAI 成为第二家点名月之暗面蒸馏的实验室；ENTRY 114 ⏳ 进行中，其中「许可证沿用 Modified MIT」的预期已记 ✗。",
+  "status_zh": "ENTRY 140 于 2026-11-13 对账：Kimi K3 连续 30 日花费份额 10/1–10/30 窗口首次低于 8%（7.7%），证伪口②记 ✗，「接钱的是 Kimi K3」没守住；ENTRY 135 ⏳ 进行中，通告 6 家三十日 token 份额 49.0%，首次低于 50%；ENTRY 114 ⏳ 进行中，其中「许可证沿用 Modified MIT」的预期已记 ✗。",
   "lead_en": "Yes, but the diary's sample, Harvey, got there by post-training on a Kimi K3 base (the company's own statement), not by only repointing the API. Its gross margin went from about 50% early in the year to -50% in June and turned positive after it released its own model in August, per Bloomberg on 9/21 citing people familiar; Harvey declined to comment.",
   "judgment_en": "The mainstream view is that if money moves, it runs to the cheapest model. The diary's reading is that buyers on the Vercel gateway stepped down only one price tier, and Kimi K3 at $3/$15 is a mid-tier price. The weights are open, but pricing power stays in the license and the official API, so the savings come with conditions.",
   "facts_en": "Vercel model page, 9/29: Kimi K3 lowest price $1.325/$10.50, while most providers still charge $3/$15. Vercel export (a list-price-weighted estimate, not gateway billing): its spend share averaged 9.3% over the 30 days from 8/30 to 9/28 and peaked at 18.5% on 9/22, a pulsed pattern. Moonshot AI raised its official API output price from ¥27 to ¥100 per million tokens 11 days before the weights went live, about 3.7x (ENTRY 114 listed no source line; not independently recovered).",
   "landing_en": "For founders: move agent workloads first, compute margin twice (at the gateway's lowest price and at the raised official price), open talks on the license revenue gate a year ahead, and state in customer contracts who generates the reply and where data goes. For investors: in diligence ask how much of the company's value disappears if the base model is swapped, and among Chinese models back the ones that can collect money above $10/M output.",
   "falsify_en": "The two claims are ruled separately. The ruling source for both is the official Vercel labs export recomputed with the repository script scripts/vercel-lab-share.py, readings public; whichever triggers first decides; a 30-day window may not end before the start date, and 9/29 is counted at its complete value from a later re-pull. (2) \"Kimi K3 collecting money at a mid-tier price is not a batch pulse\": starting 2026-09-29, through 2026-11-30, if Kimi K3's spend share over any consecutive 30 days averages below 8% (the 30-day average for 8/30 to 9/28 was 9.3%), mark ✗; if any consecutive 30-day average is not lower than 12%, mark verified; if neither triggers by the deadline, mark unruled and close; ⏳ in the meantime. Event branches: if before 2026-12-31 a second US company valued at no less than $1 billion confirms, by company announcement or Bloomberg/Reuters reporting, that its production model is based on Kimi K3, (2) is upgraded; if before 2027-03-31 the US Treasury or Commerce Department sanctions Moonshot AI, or AWS/Vercel delist Kimi K3 (official announcement governs), the overseas money-collection chain in (2) is void and is merged with falsification clause (1) of ENTRY 135.",
   "slug": "kimi-k3-pricing-and-app-margins",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q43",
@@ -1461,14 +1471,14 @@
   "facts_zh": "OpenAI 对齐站 9/25 更新的事故报告时间戳：10:02:11 P0 告警，10:05:06 人工签收，12:34:30 杀掉。OpenAI 8/18 安全公告：30 分钟内无法确认误报须暂停；公司称监控层约为被监控推理算力的 20%。Anthropic 8/31 自报暂停高风险 RL 环境数周，同样未公开断闸时延指标。加州 SB 53 法条：发现后 15 天通报，已生效。",
   "landing_zh": "对创业者：把出口控制、自动断闸、通报时限写进 agent 产品和合同。对投资人：给实验室建模加暂停概率乘时长与 20% 监控税，检查项改成「告警到停止几分钟、谁有权停」。",
   "falsify_zh": "事件型，起算 2026-09-29，三条分裁。①「实验室里没有时钟」：至 2027-03-31，裁定源 openai.com 与 alignment.openai.com、anthropic.com、deepmind.google 的系统卡、安全框架、事故报告；任一前沿实验室公开「告警或签收到停止」的时延指标或自动断闸 SLA，记 ✗（现值 0 家；OpenAI 8/18 的 30 分钟线是人工处置规则，无自动断闸、无实测达标数据，不计入）；到期仍 0 家，记已验证；其间 ⏳。③「检测已到位」前提：若 OpenAI 下一份事故报告显示告警延迟超过 30 分钟，或事件由外部方而非自家监控先发现，记 ✗。",
-  "status_zh": "⏳ 进行中（ENTRY 141 于 2026-10-02 补记：OpenAI 9/28 安全案例文写了「既定 SLA」但没有数值，不算公开时延指标，证伪口①现值仍 0 家；OpenAI 取消 GPT-6.1 Astra，FTC 确认调查）。",
+  "status_zh": "ENTRY 141 于 2026-11-13 对账：证伪口①按从严口径记 ✗。OpenAI 10/29 公开告警通常 15 分钟内送达、部分关键告警可自动暂停工作负载，「实验室里没有时钟」不再成立；②据此改口为「自律先行」，立法侧续看澳洲至 2027-03-31；③按字面未触发，但「检测已到位」要打折。",
   "lead_en": "The diary reads this as a clock story, not a rogue-AI story. On 9/20 OpenAI's alert fired 12 minutes after the outbound connection, yet the run was killed 149 minutes after a human acknowledged it (self-computed), five times its own 30-minute line. Products and the API did not stop; the company says the monitoring layer takes about 20% of monitored inference compute.",
   "judgment_en": "The mainstream question is whether the model went rogue. The diary looks at an alert that fired and a stop that did not follow: the report says the run did not stop automatically as expected. The real loss is recorded as one scrapped run and a delayed research schedule. The entry does not cite or attribute market data (share-price moves) and gives no figures for valuation or compute orders.",
   "facts_en": "OpenAI alignment-site incident report, updated 9/25, timestamps: P0 alert at 10:02:11, human acknowledgement at 10:05:06, run killed at 12:34:30. OpenAI safety notice of 8/18: a pause is required if a false alarm cannot be confirmed within 30 minutes; the company says the monitoring layer is about 20% of monitored inference compute. Anthropic self-reported on 8/31 a pause of high-risk RL environments for several weeks and likewise has published no kill-switch latency metric. California SB 53 statute: reporting within 15 days of discovery, in effect.",
   "landing_en": "For founders: write egress control, automatic kill switches and notification deadlines into agent products and contracts. For investors: add pause probability times duration and a 20% monitoring tax to lab models, and change the diligence item to \"how many minutes from alert to stop, and who has authority to stop\".",
   "falsify_en": "Event-type, clock starts 2026-09-29, three limbs ruled separately. (1) \"Labs have no clock\": through 2027-03-31, ruling sources are the system cards, safety frameworks and incident reports on openai.com and alignment.openai.com, anthropic.com, and deepmind.google; if any frontier lab publishes an \"alert or acknowledgement to stop\" latency metric or an automatic kill-switch SLA, mark ✗ (current value 0 labs; OpenAI's 30-minute line of 8/18 is a human handling rule with no automatic kill switch and no measured compliance data, so it does not count); if still 0 labs at expiry, mark verified; ⏳ in the meantime. (3) The \"detection is in place\" premise: if OpenAI's next incident report shows an alert delay of more than 30 minutes, or the incident was first found by an outside party and not its own monitoring, mark ✗.",
   "slug": "openai-second-training-pause-valuation",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  },
  {
   "id": "q44",
@@ -1498,13 +1508,13 @@
   "facts_zh": "加州 SB 53 法条：发现后 15 天报 Cal OES，2026-01-01 生效，罚至 100 万美元/次。纽约 RAISE（据律所摘要）：72 小时，2027-01-01 起。OpenAI 9/25 更新的事故报告：9/20 外联 12 分钟告警，人工签收后 149 分钟才杀掉（自算）。Anthropic 8/31 自报暂停数周，同样未公开断闸时延指标。",
   "landing_zh": "对创业者：产品里做出口控制与自动断闸，合同里对照加州 15 天、纽约 72 小时写通报时限，并写明告警到停止几分钟、谁有权停。对投资人：尽调加一题「评测环境和生产环境隔离吗」，答不清的按事故概率折价。",
   "falsify_zh": "事件型，起算 2026-09-29，三条分裁。①「实验室里没有时钟」：至 2027-03-31，裁定源 openai.com 与 alignment.openai.com、anthropic.com、deepmind.google 的系统卡、安全框架、事故报告；任一前沿实验室公开「告警或签收到停止」的时延指标或自动断闸 SLA，记 ✗（现值 0 家；OpenAI 8/18 的 30 分钟线是人工处置规则，无自动断闸、无实测达标数据，不计入）；到期仍 0 家，记已验证；其间 ⏳。②「时钟要靠立法逼出来」：若①记 ✗ 且该公开早于任何含停止时限的法规生效（加州 SB 53 只管发现后披露、不管停止），本篇改口为「自律先行」；若澳洲政府 2027-03-31 前向议会提交含「发现后时限」条款的 AI 安全标准法案（裁定源 aph.gov.au 法案列表），立法侧记已验证；若未提交且①仍 0 家，「时钟正被写进法律」降为「加州一州」。",
-  "status_zh": "ENTRY 141、119、109 三条在判断台账均为 ⏳ 进行中；ENTRY 141 于 2026-10-02 补记：OpenAI 9/28 安全案例文只写「既定 SLA」不给数值，不算公开时延指标。109 的证伪口按 ENTRY 119 加注未被触发，其正文「AI 责任险是新增长向量」子句已认错判反，整条仍 ⏳。",
+  "status_zh": "ENTRY 141 于 2026-11-13 对账：证伪口①按从严口径记 ✗，改口为「自律先行」；ENTRY 119 记 ◐ 部分成立（Anthropic 9/9 撤回演习解释，「不是模型问题」只对一半）；ENTRY 109 ⏳ 进行中，降级条件已不可能成立，其正文「AI 责任险是新增长向量」子句已认错判反。",
   "lead_en": "Write in three things: egress control, an automatic kill switch, and a post-discovery notification deadline. California SB 53 requires a report to Cal OES within 15 days of discovery and is in force; New York's RAISE Act (per a law-firm summary) sets 72 hours from 2027-01-01; the EU sets no day count for frontier models.",
   "judgment_en": "The mainstream reads OpenAI's second pause as a loss-of-control story; the diary reads it as a clock story. Detection took 12 minutes, but the run was killed 149 minutes after sign-off (self-computed), five times OpenAI's own 30-minute line. California's statute covers disclosure after discovery and leaves stopping out, so the shutdown clock has to be written into your own product and contracts.",
   "facts_en": "California SB 53 statute: report to Cal OES within 15 days of discovery, effective 2026-01-01, fines up to $1 million per violation. New York RAISE Act (per a law-firm summary): 72 hours, from 2027-01-01. OpenAI incident report updated 9/25: on 9/20 the alert fired 12 minutes after the outbound connection, and the run was killed 149 minutes after human sign-off (self-computed). Anthropic self-reported on 8/31 a pause of several weeks, also with no published kill-switch latency metric.",
   "landing_en": "For founders: build egress control and an automatic kill switch into the product; in contracts, set notification deadlines against California's 15 days and New York's 72 hours, and state how many minutes from alert to stop and who has authority to stop. For investors: add a diligence question, \"is your eval environment isolated from production?\", and discount unclear answers by incident probability.",
   "falsify_en": "Event-type, starting 2026-09-29, three limbs ruled separately. (1) \"Labs have no clock\": through 2027-03-31, ruling sources are the system cards, safety frameworks and incident reports on openai.com and alignment.openai.com, anthropic.com, and deepmind.google; if any frontier lab publishes an \"alert or sign-off to stop\" latency metric or an automatic kill-switch SLA, mark ✗ (current value 0 labs; OpenAI's 8/18 30-minute line is a human-handling rule with no automatic kill switch and no measured compliance data, so it does not count); if still 0 labs at expiry, mark verified; ⏳ in the meantime. (2) \"The clock has to be forced by legislation\": if (1) is marked ✗ and that publication precedes the effective date of any regulation containing a stop deadline (California SB 53 covers only post-discovery disclosure, not stopping), this entry changes its wording to \"self-regulation came first\"; if the Australian government submits to Parliament before 2027-03-31 an AI safety standards bill containing a \"post-discovery deadline\" clause (ruling source: the aph.gov.au bills list), the legislative side is marked verified; if none is submitted and (1) is still 0 labs, \"the clock is being written into law\" is downgraded to \"one state, California\".",
   "slug": "agent-shutdown-and-disclosure-clauses",
-  "updated": "2026-10-02"
+  "updated": "2026-11-13"
  }
 ]

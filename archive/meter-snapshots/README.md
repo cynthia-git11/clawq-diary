@@ -18,3 +18,5 @@
 | 2026-09-29 17:17 CST | vercel.com/api/ai/leaderboard-export?dataset=labs | 2026-09-29-vercel-gateway-labs.json.gz | ENTRY 140 发布前复拉：9/27 由不完整日转为完整日、9/28 为新增完整日，全文数字按此重算（Anthropic 花费 9/22→28 七日均 38.0%，9/28 单日 43.4%） |
 | 2026-09-29 17:17 CST | vercel.com/api/ai/leaderboard-export?dataset=models | 2026-09-29-vercel-gateway-models.json.gz | Kimi K3 七日均 13.9%、9/27 17.2% 居上榜模型花费榜第一；Opus 5.5 9/28 17.5%；Jev 请求份额 9/27 20.3%、9/28 22.6% |
 | 2026-11-13 06:25–06:40 CST | openrouter.ai 模型页公开 JSON：Kimi K3.1 Pro 各 endpoint 统计三次读数、Kimi K3 endpoint 统计、K3.1 Pro 日请求量 | 2026-11-13-openrouter-kimi-k31pro-endpoints-read1/2/3、-k3-endpoints、-k31pro-daily-requests（.json.gz） | ENTRY 152 引用（自营份额、同价托管方均值、日请求量）；复算：scripts/kimi-openrouter-share.py |
+| 2026-11-13 05:59 CST | vercel.com/api/ai/leaderboard-export?dataset=labs（from=2026-08-01&to=2026-11-13，数据至 11/12） | 2026-11-13-vercel-gateway-labs.json.gz | 2026-11-13 台账对账：ENTRY 140、128、121、135、99 读数（三十日滚动窗口自算） |
+| 2026-11-13 05:59 CST | vercel.com/api/ai/leaderboard-export?dataset=models（同上） | 2026-11-13-vercel-gateway-models.json.gz | ENTRY 138 Jev 请求份额（各版本合并与单行）、ENTRY 140 Kimi K3（含 K3.1 Pro 合并）读数 |

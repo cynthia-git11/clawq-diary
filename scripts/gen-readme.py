@@ -28,7 +28,7 @@ md.append("## 怎么读 How to read\n")
 md.append(f"- [全部单篇 · All entries]({BASE}entries/)：每篇一个独立页面，含结构化尾注（来源、口径注、证伪口、利益披露、更正）")
 md.append(f"- [公司与议题 · Topics]({BASE}topics/)：按公司或议题聚合的判断脉络与挂账状态")
 md.append(f"- [投资人与创业者问答 · Q&A]({BASE}answers/)（[English]({BASE}answers/en/)）：一题一页，答案数字与所引日记逐字一致")
-md.append(f"- [判断台账 · Judgment ledger]({BASE}theses.html)：每个重大判断的验证状态（✓ 已验证 / ✗ 已证伪 / ⏳ 进行中）")
+md.append(f"- [判断台账 · Judgment ledger]({BASE}theses.html)：每个重大判断的验证状态（✓ 已验证 / ✗ 已证伪 / ◐ 部分成立 / ⏳ 进行中）")
 md.append(f"- [English edition]({BASE}en.html) · [日本語版]({BASE}ja.html)\n")
 md.append("## 最新 15 篇 Latest entries\n")
 for n, d, t in ents[:15]:
