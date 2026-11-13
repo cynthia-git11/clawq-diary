@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-11-12",
+  "generated": "2026-11-13",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 55,
-    "uniques": 21,
+    "pv": 22,
+    "uniques": 16,
     "median_time_sec": 4,
-    "completion_rate": 0.143,
+    "completion_rate": 0.125,
     "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-10-14",
-      "pv": 33,
-      "uniques": 5,
-      "shares": 0,
-      "median_time_sec": 426,
-      "completion_rate": 0.2
-    },
     {
       "date": "2026-10-15",
       "pv": 5,
@@ -103,120 +95,100 @@ window.CLAWQ_ANALYTICS = {
   ],
   "countries": [
     {
-      "name": "美国",
-      "code": "US",
-      "flag": "🇺🇸",
-      "pct": 0.655,
-      "pv": 36
-    },
-    {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.109,
+      "pct": 0.273,
       "pv": 6
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.091,
+      "pct": 0.227,
       "pv": 5
     },
     {
       "name": "中国香港",
       "code": "HK",
       "flag": "🇭🇰",
-      "pct": 0.073,
+      "pct": 0.182,
       "pv": 4
+    },
+    {
+      "name": "美国",
+      "code": "US",
+      "flag": "🇺🇸",
+      "pct": 0.136,
+      "pv": 3
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.018,
+      "pct": 0.045,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.018,
+      "pct": 0.045,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.018,
+      "pct": 0.045,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.018,
+      "pct": 0.045,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.455
-    },
-    {
-      "lang": "entries/63",
-      "pct": 0.073
-    },
-    {
-      "lang": "entries/144",
-      "pct": 0.055
-    },
-    {
-      "lang": "English (en)",
-      "pct": 0.055
-    },
-    {
-      "lang": "answers/general-agent-platform-fundraising-bars",
-      "pct": 0.055
-    },
-    {
-      "lang": "topics/meta-muse",
-      "pct": 0.036
-    },
-    {
-      "lang": "topics/index",
-      "pct": 0.036
+      "pct": 0.773
     },
     {
       "lang": "判断总账 (theses)",
-      "pct": 0.036
+      "pct": 0.045
     },
     {
-      "lang": "entries/5",
-      "pct": 0.036
+      "lang": "entries/index",
+      "pct": 0.045
     },
     {
-      "lang": "answers/meta-muse-agent-shopping-winners",
-      "pct": 0.036
+      "lang": "entries/34",
+      "pct": 0.045
+    },
+    {
+      "lang": "entries/145",
+      "pct": 0.045
+    },
+    {
+      "lang": "English (en)",
+      "pct": 0.045
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 25
-    },
-    {
-      "ref": "cynthia-git11.github.io",
-      "pv": 24
+      "pv": 15
     },
     {
       "ref": "weixin110.qq.com",
       "pv": 3
     },
     {
-      "ref": "futurex.capital",
-      "pv": 2
+      "ref": "cynthia-git11.github.io",
+      "pv": 3
     },
     {
       "ref": "t.co",
