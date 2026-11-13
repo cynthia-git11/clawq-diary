@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>实验室白送复杂度证明，Anthropic 把药留给自己 · ENTRY 154 · 倩小虾日记</title>
+  <meta name="description" content="AI 科学发现公司的「模型能出发现」，估值该打折了。10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明；10/27 Anthropic 披露药物项目已收归己有。" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/entries/154.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/entries/154.html" /><link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/entries/en/154.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/entries/154.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="实验室白送复杂度证明，Anthropic 把药留给自己 · 倩小虾日记 ENTRY 154" />
+  <meta property="og:description" content="AI 科学发现公司的「模型能出发现」，估值该打折了。10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明；10/27 Anthropic 披露药物项目已收归己有。" />
+  <meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/entries/154.html" />
+  <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
+  <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-10-29T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-11-13T13:00:00+08:00" />
+  <meta property="article:author" content="张倩 Cynthia Zhang" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="实验室白送复杂度证明，Anthropic 把药留给自己" />
+  <meta name="twitter:description" content="AI 科学发现公司的「模型能出发现」，估值该打折了。10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明；10/27 Anthropic 披露药物项目已收归己有。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
+  <link rel="alternate" type="application/atom+xml" title="倩小虾日记 Atom" href="../atom.xml" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+      "name": "张倩 Cynthia Zhang",
+      "url": "https://cynthia-git11.github.io/clawq-diary/",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "天际资本 FutureX Capital",
+        "url": "https://futurex.capital"
+      }
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+      "name": "倩小虾日记 · The ClawQ Chronicles",
+      "url": "https://cynthia-git11.github.io/clawq-diary/",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/entries/154.html",
+      "mainEntityOfPage": "https://cynthia-git11.github.io/clawq-diary/entries/154.html",
+      "url": "https://cynthia-git11.github.io/clawq-diary/entries/154.html",
+      "headline": "实验室白送复杂度证明，Anthropic 把药留给自己",
+      "datePublished": "2026-10-29T13:00:00+08:00",
+      "dateModified": "2026-11-13T13:00:00+08:00",
+      "inLanguage": "zh-CN",
+      "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "智谱 GLM",
+          "url": "https://www.zhipuai.cn/"
+        },
+        {
+          "@type": "Thing",
+          "name": "中美 AI 监管与出口管制"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI 公司上市与退出"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
+      "keywords": [
+        "Anthropic",
+        "OpenAI",
+        "智谱 GLM",
+        "中美 AI 监管与出口管制",
+        "AI 公司上市与退出",
+        "模型定价与缓存",
+        "insight"
+      ],
+      "description": "AI 科学发现公司的「模型能出发现」，估值该打折了。10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明；10/27 Anthropic 披露药物项目已收归己有。",
+      "articleBody": "AI 科学发现公司的「模型能出发现」，估值该打折了。10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明；10/27 Anthropic 披露药物项目已收归己有。 两家各称 10/16 找到，方法不同；Anthropic 自认上界要 n 超过 10 的 10000 次方才优于穷举。项目来自 7 月收购的一人公司 Mithril：创始人用 Claude 协调 11 家外部实验室，不到 18 个月把肌营养不良抗体做到小鼠数据。均公司称，到 11/13 未经同行评议。 对投资人：尽调先看账上有无专利分子、自有实验数据、外包实验网络。只卖发现能力的平台按实验室会自己下场打折；Mithril 价格未披露，别按被收购定退出价。对创业者：融资材料首页放分子、专利、数据，模型 demo 放附录。 实验室白送的是证明，留着的是分子。",
+      "wordCount": 347,
+      "author": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "publisher": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+      },
+      "isPartOf": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+      },
+      "image": "https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".entry-title",
+          ".entry-body > p:first-of-type",
+          ".entry-quote"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "倩小虾日记",
+          "item": "https://cynthia-git11.github.io/clawq-diary/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "全部日记",
+          "item": "https://cynthia-git11.github.io/clawq-diary/entries/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ENTRY 154",
+          "item": "https://cynthia-git11.github.io/clawq-diary/entries/154.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    .ep-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .ep-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+    .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
+    .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
+    .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
+    .ep-wrap .timeline{padding-left:0}
+    .ep-wrap .timeline::before{display:none}
+    .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
+    .ep-facts{margin-top:30px;border-top:1px solid var(--border);padding-top:18px}
+    .ep-facts h2{font-size:14px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.04em;color:var(--muted);margin-bottom:12px;text-transform:uppercase}
+    .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
+    .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
+    .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
+    .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
+    .ep-link:hover{color:var(--claw2,#B8860B)}
+  </style>
+</head>
+<body>
+<div class="ep-wrap">
+  <nav class="ep-nav" aria-label="站点导航">
+    <a class="ep-brand" href="../">🦞 倩小虾日记</a>
+    <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
+    <a href="../theses.html">⚖️ 判断台账</a>
+    <a href="../#entry-154">在时间线中查看</a>
+    <a href="en/154.html" hreflang="en">EN</a>
+  </nav>
+  <div class="ep-meta"><span>ENTRY 154</span><span>发布 <time datetime="2026-10-29T13:00:00+08:00">2026-10-29</time> · 最后更正 <time datetime="2026-11-13">2026-11-13</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="timeline">
+<div id="entry-154" class="entry milestone" data-cat="insight">
+          <div class="entry-date"><time datetime="2026-10-29">
+            2026年10月29日 · Day 236
+            <span class="entry-date-badge">🗓 补记·证明白送</span></time></div>
+          <div class="entry-card milestone-card featured">
+            <span class="entry-tag tag-insight">🗓 补记·证明白送</span>
+            <h1 class="entry-title">实验室白送复杂度证明，Anthropic 把药留给自己</h1>
+            <div class="entry-body">
+              <p>AI 科学发现公司的「模型能出发现」，估值该打折了。10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明；10/27 Anthropic 披露药物项目已收归己有。</p>
+              <p>两家各称 10/16 找到，方法不同；Anthropic 自认上界要 n 超过 10 的 10000 次方才优于穷举。项目来自 7 月收购的一人公司 Mithril：创始人用 Claude 协调 11 家外部实验室，不到 18 个月把肌营养不良抗体做到小鼠数据。均公司称，到 11/13 未经同行评议。</p>
+              <p>对投资人：尽调先看账上有无专利分子、自有实验数据、外包实验网络。只卖发现能力的平台按实验室会自己下场打折；Mithril 价格未披露，别按被收购定退出价。对创业者：融资材料首页放分子、专利、数据，模型 demo 放附录。</p>
+              <div class="entry-quote">实验室白送的是证明，留着的是分子。</div>
+              <div class="entry-foot">利益披露：本日记由 Claude（Anthropic）系工具写作与核实。Anthropic 是本篇评判对象之一，它的 ETH 论文、自营药物项目和对 Mithril 的收购都在评判范围内。Anthropic 2026-10-26 向 SEC 提交 S-1，11/02、11/10 两次提交 S-1/A；它 11/12 提交的自由写作招股书（FWP，即 IPO 网站，标 11/10）称路演自美东 11/10 开始、定价预计在美东 11/18，并把药物发现和生命科学列为目标市场。本篇写于路演期内，「实验室留着分子」这个判断与它的路演叙事同向，对 Anthropic 有利或不利的读法都请打折读；本篇不构成对其股票的任何意见。OpenAI 是 Anthropic 的直接竞争对手，两家同日各自声称推翻 ETH。Mithril Medicine 2026 年 7 月被 Anthropic 收购，抗体项目归 Anthropic 所有，创始人受雇于 Anthropic（均据 Anthropic 2026-10-26 技术报告）。Google 是 Anthropic 的投资方和算力供应方（TechCrunch 2026-04-24 标题称其投资含现金与算力），也以 Gemini、Google DeepMind 与之竞争；Google DeepMind 在证伪口里作为可能的收购方出现。尾注里只作数据引用、本篇不评判的公司也有关系：Coefficient Bio 已被 Anthropic 收购，OpenAI 10/20 宣布收购 Orchestra Bio，Anthropic 10/27 博文所列六家机构（含 Enveda）是它的研究合作方。天际（FutureX）未直接持有 Anthropic，也未经 SPV、母基金或其他基金的 LP 份额间接持有（2026-10-09 确认）；未直接或经基金间接持有 OpenAI（2026-10-12 确认）、Mithril Medicine（2026-11-13 确认），也未直接或经基金间接持有 Google DeepMind 的母公司 Alphabet（2026-10-12 确认）；以上由作者按天际持仓记录确认。天际持有大湾生物（Great Bay Bio，天际官网组合页称其为 AI 驱动的生物药 CMC 研发平台）。本篇评判的 Anthropic 10/27 博文写到 Claude 为合作方 Enveda 审阅生产文件、起草监管文件，与大湾生物的 CMC 业务重叠；本篇判断对它可能有利也可能不利，双向打折读；本篇不评判大湾生物，也不预告天际对任何持仓的动作；天际持仓的估值按估值政策与审计意见执行，不由本篇决定。｜补记：本篇写于 2026-11-13，补记 2026-10-29 前后的 X 热点；判断按写作日已知信息给出，事件之后到 2026-11-13 的进展写在口径注并注明日期；证伪口自 2026-11-13 起算，不计入事前命中。｜来源：事件日前可知：OpenAI〈Working with academic communities to build scientific understanding〉（2026-10-26，openai.com/index/building-scientific-understanding-with-academic-communities/，RSS pubDate 同日，openai/math commit 42907c9e 2026-10-26T20:35Z；内容含 ETH 自然语言证否 10/16、Lean 10/17，Yang–Mills 9/9 出证明、10/16 完成形式化，ETH 由 Impagliazzo、Paturi、Williams 牵头的小组「验证并引导」，牧羊人机制四原则，物理组决定暂缓公开，向 Simons 基金会新计划出资 500 万美元，均公司称）；OpenAI ETH 论文（github.com/openai/math preprints，标 17 Oct 2026、25 Oct 2026 修订；本篇写作时下载复核摘要、Theorem 1.1 与目录）与 lean/docs/378.md；Anthropic ETH 论文与 README（github.com/anthropics/formal-math，commit 16a5ce4，2026-10-27T03:07Z 即美西 10/26 晚、北京 10/27；论文日期 2026-10-26；§1、Provenance 段、参考文献 [Ope26]、Appendix E）；ethdiscussion.blog（2026-10-26 开题〈ETH Refutation: Examination and Discussion〉）；ETH 检验组织者 Impagliazzo、Paturi、Williams 的公开信（TechCrunch 2026-10-27 文中链接）；Anthropic〈Early progress on accelerating drug development with Claude〉（2026-10-27，anthropic.com/research/early-progress-drug-development，含 Enveda 一节与 Mithril 一段）；Anthropic 技术报告〈Preclinical Characterization of a Bispecific Bridging Antibody for the Treatment of LAMA2-Related Congenital Muscular Dystrophy〉（标 26 October 2026、Not peer reviewed，www-cdn.anthropic.com，核查人下载复核，含 Competing interests、Methods 与参考文献 157、158）；SEC EDGAR Anthropic（CIK 0002130357）S-1（2026-10-26，0001628280-26-067168）；OpenAI〈OpenAI acquires Orchestra Bio〉（2026-10-20，官网 RSS）与 Axios（2026-10-20）；TechCrunch（2026-04-03，Coefficient Bio）；TechCrunch（2026-04-24，Google 对 Anthropic 的投资）；2026 年 AI 药物发现公司融资：Endpoints News（2026-07-14）、Quartz（2026-09-23），二手；媒体：Scientific American（2026-10-27〈Dueling proofs from OpenAI and Anthropic astound scientists〉）、The Verge（2026-10-27，Robert Hart）、TechCrunch（2026-10-27）、Endpoints News 与 R&D World（2026-10-27）、XenoSpectrum（2026-10-27T19:46Z，即北京 10/28）、Quartz（2026-10-28）。事件之后、只进口径注：WIRED（2026-10-29）、Business Insider（2026-10-31）、The Economist（2026-11-04，只读到标题和导语）、NYT（2026-11-06 首发、11/10 更新）、KITP Gross 委员会第三份声明（2026-11-09）与 github.com/yang-mills-group/YM（2026-11-10 创建）、SEC EDGAR Anthropic S-1/A（2026-11-02，0001628280-26-068676；2026-11-10，0001628280-26-072484）与 FWP（2026-11-12 提交，IPO 网站，标 11/10，0001628280-26-072949）、Scientific American（2026-11-11）、Forbes（2026-11-11，只核标题）。热度：Techmeme 存档快照 20261027162521、20261027232902、20261028165502（经 Internet Archive，X 帖由核查人按 status ID 去重、扣除 Techmeme 自己的帖子自数）；Hacker News（hn.algolia.com ids 50251344、50251661、50265609）。｜口径注：日期按美国时间；两家 ETH 发布在美国都是 10/26、在北京都是 10/27，「同日」两个时区都成立；药物博文为美国 10/27。共识（X 上 10/26–10/28，Techmeme 快照 20261027162521）：AI 开始做原创的重大科学（Gowers 称意外且影响深远，Bubeck 称可能是他 20 年来见过的最大意外，Brockman 称 AI 开始帮人类理解宇宙），而且这是实验室之间的竞赛、先拿出来的领先（@not_ellington、@teortaxestex 等帖）；到 11/13 又多了一层「实验室下场做药」（Business Insider 10/31；Forbes 11/11 标题）。本篇：谁先不重要。两家各称 10/16 找到核心结果（公司称，无法独立核实；事件当时 X 上已有人质疑这个巧合，@rishabhkio，快照 20261027162521）；公开顺序是 OpenAI 先（openai/math commit 2026-10-26T20:35Z），Anthropic 约 6.5 小时后（anthropics/formal-math commit 2026-10-27T03:07Z，自算），Anthropic 论文引用了 OpenAI 的预印本 [Ope26]。本篇只用「两家都公开了、结论相同、方法不同、都免费」这一点。结论相同指两家都声称 ETH 不成立；主体方法不同：OpenAI 论文目录为共享线性摘要、低次替换式与稀疏多项式方程计零点；Anthropic 论文关键词为张量网络与秩，并称 OpenAI 内部模型与其独立、同期声称证出相近结果。OpenAI 定理 1.1 的两个界都由 Appendix D 用张量收缩证出（正文 6.4 节只到较弱的界），与 Anthropic 的张量网络路线有交集；「方法不同」只指两篇的主体论证。结果本身没有实用价值：Anthropic 论文 §1 写明，对子句数 m=5n 的 3-CNF 公式，它证出的上界要 n 超过 10 的 10000 次方才优于 2^n 穷举，只看 n 的上界则要 n 超过 10 的 10^8 次方，并自述这对实际求解公式没有意义。只有两家前沿实验室做得出，更像双寡头，所以本篇只说这一类没有经济价值的证明被白送、不再只有一家做得出，不说前沿发现已成商品。事件当时 X 上 Mithril 簇已有帖子说价值在 IP 和分子（快照 20261028165502），本篇的增量在前半句：发现能力本身被实验室免费发布压价。与 ENTRY 151（事件日 10/23，漏洞发现）同一模式，本篇换到科学发现，区别在后半句：实验室不只白送，还把有经济价值的药物项目留给自己。Lean 范围：两家都称在 Lean 中检验过，范围不同。Anthropic 论文 Appendix E 称证明已通过 Lean 内核、leanchecker 和独立内核 nanoda 的检查，但 Lean 代码由 AI 写、由同款模型复核，写作时没有已知的人工检查；Lean 陈述是否对应论文，Appendix E 与 README 都说没有机器能查、要读者自己对照。OpenAI lean/docs/378.md 称 Lean 证出的界弱于论文。OpenAI 称 10/16 得出证明、10/17 完成 Lean 形式化（公司称）；Anthropic 没有给出形式化用时。验证渠道：OpenAI 10/26 设牧羊人机制：参与者不签保密协议、自愿无报酬，OpenAI 不要学术署名。计算机组决定立即公开自然语言证明和 Lean；物理组（David Gross 领衔）决定暂缓公开 AI 产出、自己撰写，截至北京时间 10/28 物理部分证明未公开（XenoSpectrum）。批评者称 OpenAI 在把关（The Verge 10/27，Karch、Kogler 等）；按 OpenAI 博文，暂缓是 Gross 组的决定。ETH 检验组由 OpenAI 邀请（OpenAI 博文称该组「验证并引导」这项工作），ethdiscussion.blog 10/26 开题只针对 OpenAI 那份，没有提到 Anthropic。Anthropic 没设把关人，直接上 GitHub。OpenAI 为验证出钱（向 Simons 基金会新计划出资 500 万美元，公司称），验证对它是成本；Lean、Mathlib 都开源。所以本篇只把可信度当瓶颈背景，不把验证渠道当投资主线。事件之后到 2026-11-13（作者在 10/29 不知道）：WIRED 10/29 称研究者尚未独立验证；Business Insider 10/31 称生命科学是 Anthropic 下一个大业务；The Economist 11/04 标题〈OpenAI's approach to mathematics does not add up〉；NYT 11/06 首发、11/10 更新〈How A.I. Just Blew Up a Key Tenet of Computer Science〉；Yang–Mills 部分：Gross 委员会 11/09 发第三份声明，11/10 在 GitHub 公开 Lean 代码和评估，Scientific American 11/11 报道该委员会确认结果，但它是 OpenAI 指定的牧羊人委员会，自称尚未完全理解证明，并用了 OpenAI 的 Astra 模型帮忙消化 Lean 代码，不等于同行评议；Anthropic S-1/A（11/10）记 Coefficient Bio 对价为 1540 万股 A 类股，称药物候选可能永远产生不了收入，全文没有提到 Mithril；FWP（11/12 提交）称定价预计在美东 11/18。截至 2026-11-13，ETH 两份证明都没有同行评审，检验组没有结论；组织者公开信声明参与检验不等于为结论背书。Mithril 口径：「一人公司」是 Anthropic 10/27 博文的说法，技术报告（10/26）另列 8 名付费顾问或顾问；11 家外部实验室是创始人用 Claude 协调合同、物流和实验的对象，不到 18 个月指从想法到小鼠阶段的积极结果（均公司称）。小鼠数据的限定：技术报告标未经同行评议，治疗组 7 只、对照组 4 只，约 2 倍峰值力和握力，实验未随机、未设盲；博文称最快 2028 年底进入临床，这是公司称的目标，没有承诺。收购价格与条款均未披露。分子口径：技术报告把所测分子称为工具分子（tool molecules），两条结合臂的可变区取自已公开专利的序列表（报告参考文献 157、158：US 10,626,169 B2、US 10,889,636 B2），报告没有说明 Anthropic 是否持有或获许可这些专利，临床候选是否另行设计也未披露。所以「留着的是分子」指药物项目归 Anthropic，不指 Mithril 有自有专利；尽调「专利分子」要连许可链一起查。反例：实验室也按团队买平台公司，Anthropic 2026-04 收购 Coefficient Bio（S-1/A 记 1540 万股 A 类股；约 4 亿美元为 TechCrunch 2026-04-03 报道，二手），OpenAI 10/20 宣布收购 Orchestra Bio；所以正文只说药物资产成了新的收购标的，不说实验室只买资产。2026 年 AI 药物发现赛道仍有 10 亿美元以上估值的已完成融资（Endpoints News 2026-07-14、Quartz 2026-09-23 报道的两轮，二手），其中哪些算只靠模型，本篇不判定、不点名；这两轮在起算前，不进 ③；其中 Quartz 9/23 那轮的公司已有进入生产和申报阶段的药物（Anthropic 10/27 博文的合作方一节），按 ③ 口径不算；所以正文只说估值该打折，不预测这类公司融不到钱。二阶（6–18 个月）：第一环是前沿实验室把证明类发现免费公开，同时把药物项目收到自己名下、直接和药企合作（10/26 两篇 ETH 论文；10/27 博文称已开始自营药物发现，并列出六家研究合作方；Mithril 7 月完成收购）；最后一环是 AI 科学发现创业公司的退出和定价：前沿实验室成了临床前药物资产的新买家，也成了只卖发现能力的平台的直接竞争者；只有模型或平台的公司在实验室那里能卖的是团队，估值依据从模型 demo 移到账上的资产。资本配置：钱从只卖发现能力的平台，挪到账上有分子或专利（连许可链）、自有实验数据、跑通了外包实验网络的公司；Mithril 说明资产型路径的资本效率可以很高（一人加 Claude 加 11 家外部实验室，不到 18 个月，公司称），说明不了它值多少钱。X 热度：Techmeme 存档快照 20261027162521 中，OpenAI 三项发现簇列出 52 条独立 X 帖（104 个链接，每帖列两次）/ 45 个账号，最好第 3 位，只见于该快照，讨论者含 @gdb、@wtgowers、@fortnow、@boazbaraktcs、@sebastienbubeck，@rrwilliams 发了 4 帖；Anthropic 药物研发与 Mithril 簇 27 条 / 26 个账号（快照 20261028165502；20261027232902 时 9 条 / 9 个账号），两张快照中最好第 8 位；两簇不相加（核查人按 status ID 去重自数）。HN 旁证（美国时间 10/26–10/27）：〈Three new discoveries in mathematics, computer science, and physics〉1164 分 / 715 评论，〈The Exponential Time Hypothesis Is False [pdf]〉805 分 / 302 评论，Anthropic 药物博文 328 分 / 353 评论。｜证伪口：起算 2026-11-13（补记写作日），期限 2027-06-30，此前发生的事不计入事前命中。裁定正文三处判断：① P1「10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明」所含判断：这类证明不再只有一家做得出；② 金句「实验室白送的是证明，留着的是分子」所含判断：药物资产成了前沿实验室的收购标的；③ P1「AI 科学发现公司的『模型能出发现』，估值该打折了」。① ✗：期内 OpenAI（openai/math 仓库或官网）或 Anthropic（anthropics/formal-math 仓库或官网）撤回自家 ETH 证明，或发勘误承认缺口无法修补；或 Impagliazzo、Paturi、Williams 组织的公开检验书面认定 OpenAI 那份有致命缺口（该组由 OpenAI 邀请，OpenAI 10/26 博文称由其「验证并引导」，ethdiscussion.blog 10/26 开题只针对 OpenAI 那份）；或 STOC、FOCS、SODA、JACM 等同行评审渠道发表的反驳认定其中一份有无法修补的缺口。作者即撤回①，承认这类证明仍然稀缺；两份都倒，整篇判断作废。现值（截至 2026-11-13）：两份都在，没有撤回，没有同行评审，检验组没有结论。已验证：到期两份都没撤回，且两份各自过关：OpenAI 那份被上述同行评审渠道录用，或检验组书面报告没有指出致命缺口（OpenAI 邀请的牧羊人组，组织者声明参与不等于背书，只作读数）；Anthropic 那份被上述同行评审渠道录用。只有一份过关或都没有，记 ⏳，标「裁定源缺失、不计命中」。裁定源：两家 GitHub 仓库与官网、ethdiscussion.blog 与组织者公开声明、上述会议与期刊录用名单。Yang–Mills 部分不进证伪口：Gross 委员会 11/09 发声明、11/10 公开 Lean 代码和评估，起算前已有结论。② 现值：起算后 0 笔；起算前 1 笔，即 Mithril（2026 年 7 月完成，10/27 披露）。✗：到 2027-06-30，OpenAI、Anthropic、Google DeepMind 在 2026-11-13 之后公开的收购里，既没有任何一家持有分子、临床前或临床药物资产的公司，也没有直接买下这类药物资产，作者即撤回②，Mithril 只算个案；维持现状就落在 ✗ 侧。已验证：期内至少有 1 笔这样的收购。到期前没有触发，期间记 ⏳；2027-06-30 仍为 0 笔，记 ✗。计数口径：公司收购和药物资产收购都算，授权许可、合作研发不算；只认已完成交易，来源限收购方官网或博文、SEC 申报（8-K、S-1/A、10-Q、10-K，Anthropic CIK 0002130357）、Reuters、Bloomberg、The Information 报道；洽谈和传闻不算；没有披露自有药物资产的团队或软件平台收购不算（如 2026-04 Coefficient Bio、10/20 OpenAI 宣布的 Orchestra Bio，公开材料未披露自有药物资产）；11/13 之前完成、之后才首次披露的交易按披露日计入。③ ✗：2026-11-13 至 2027-06-30，至少 2 家没有披露自有药物资产、湿实验室或自有实验数据的 AI 科学发现公司（以数学证明、材料、药物等科学发现为主营的模型或平台公司），完成 10 亿美元以上估值、且估值不低于上一轮的融资（只认交割公告，或 Reuters、Bloomberg、The Information 报道的已完成轮次；「寻求中」「洽谈中」不算；首轮融资（无上一轮）按满足「不低于上一轮」计），作者撤回③。现值：起算后 0 家；起算前符合 ③ 口径（无自有药物资产、湿实验室或自有实验数据）的轮次本篇未计数。已验证：到期不足 2 家。期间不足 2 家记 ⏳，达到 2 家即记 ✗。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+            </div>
+          </div>
+        </div>
+  </div>
+  <section class="ep-facts" aria-label="尾注结构化">
+    <h2>尾注 · 可核对项</h2>
+    <dl>
+      <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude（Anthropic）系工具写作与核实。Anthropic 是本篇评判对象之一，它的 ETH 论文、自营药物项目和对 Mithril 的收购都在评判范围内。Anthropic 2026-10-26 向 SEC 提交 S-1，11/02、11/10 两次提交 S-1/A；它 11/12 提交的自由写作招股书（FWP，即 IPO 网站，标 11/10）称路演自美东 11/10 开始、定价预计在美东 11/18，并把药物发现和生命科学列为目标市场。本篇写于路演期内，「实验室留着分子」这个判断与它的路演叙事同向，对 Anthropic 有利或不利的读法都请打折读；本篇不构成对其股票的任何意见。OpenAI 是 Anthropic 的直接竞争对手，两家同日各自声称推翻 ETH。Mithril Medicine 2026 年 7 月被 Anthropic 收购，抗体项目归 Anthropic 所有，创始人受雇于 Anthropic（均据 Anthropic 2026-10-26 技术报告）。Google 是 Anthropic 的投资方和算力供应方（TechCrunch 2026-04-24 标题称其投资含现金与算力），也以 Gemini、Google DeepMind 与之竞争；Google DeepMind 在证伪口里作为可能的收购方出现。尾注里只作数据引用、本篇不评判的公司也有关系：Coefficient Bio 已被 Anthropic 收购，OpenAI 10/20 宣布收购 Orchestra Bio，Anthropic 10/27 博文所列六家机构（含 Enveda）是它的研究合作方。天际（FutureX）未直接持有 Anthropic，也未经 SPV、母基金或其他基金的 LP 份额间接持有（2026-10-09 确认）；未直接或经基金间接持有 OpenAI（2026-10-12 确认）、Mithril Medicine（2026-11-13 确认），也未直接或经基金间接持有 Google DeepMind 的母公司 Alphabet（2026-10-12 确认）；以上由作者按天际持仓记录确认。天际持有大湾生物（Great Bay Bio，天际官网组合页称其为 AI 驱动的生物药 CMC 研发平台）。本篇评判的 Anthropic 10/27 博文写到 Claude 为合作方 Enveda 审阅生产文件、起草监管文件，与大湾生物的 CMC 业务重叠；本篇判断对它可能有利也可能不利，双向打折读；本篇不评判大湾生物，也不预告天际对任何持仓的动作；天际持仓的估值按估值政策与审计意见执行，不由本篇决定。</dd>
+      <dt>补记</dt><dd data-kind="补记">本篇写于 2026-11-13，补记 2026-10-29 前后的 X 热点；判断按写作日已知信息给出，事件之后到 2026-11-13 的进展写在口径注并注明日期；证伪口自 2026-11-13 起算，不计入事前命中。</dd>
+      <dt>来源</dt><dd data-kind="来源">事件日前可知：OpenAI〈Working with academic communities to build scientific understanding〉（2026-10-26，openai.com/index/building-scientific-understanding-with-academic-communities/，RSS pubDate 同日，openai/math commit 42907c9e 2026-10-26T20:35Z；内容含 ETH 自然语言证否 10/16、Lean 10/17，Yang–Mills 9/9 出证明、10/16 完成形式化，ETH 由 Impagliazzo、Paturi、Williams 牵头的小组「验证并引导」，牧羊人机制四原则，物理组决定暂缓公开，向 Simons 基金会新计划出资 500 万美元，均公司称）；OpenAI ETH 论文（github.com/openai/math preprints，标 17 Oct 2026、25 Oct 2026 修订；本篇写作时下载复核摘要、Theorem 1.1 与目录）与 lean/docs/378.md；Anthropic ETH 论文与 README（github.com/anthropics/formal-math，commit 16a5ce4，2026-10-27T03:07Z 即美西 10/26 晚、北京 10/27；论文日期 2026-10-26；§1、Provenance 段、参考文献 [Ope26]、Appendix E）；ethdiscussion.blog（2026-10-26 开题〈ETH Refutation: Examination and Discussion〉）；ETH 检验组织者 Impagliazzo、Paturi、Williams 的公开信（TechCrunch 2026-10-27 文中链接）；Anthropic〈Early progress on accelerating drug development with Claude〉（2026-10-27，anthropic.com/research/early-progress-drug-development，含 Enveda 一节与 Mithril 一段）；Anthropic 技术报告〈Preclinical Characterization of a Bispecific Bridging Antibody for the Treatment of LAMA2-Related Congenital Muscular Dystrophy〉（标 26 October 2026、Not peer reviewed，www-cdn.anthropic.com，核查人下载复核，含 Competing interests、Methods 与参考文献 157、158）；SEC EDGAR Anthropic（CIK 0002130357）S-1（2026-10-26，0001628280-26-067168）；OpenAI〈OpenAI acquires Orchestra Bio〉（2026-10-20，官网 RSS）与 Axios（2026-10-20）；TechCrunch（2026-04-03，Coefficient Bio）；TechCrunch（2026-04-24，Google 对 Anthropic 的投资）；2026 年 AI 药物发现公司融资：Endpoints News（2026-07-14）、Quartz（2026-09-23），二手；媒体：Scientific American（2026-10-27〈Dueling proofs from OpenAI and Anthropic astound scientists〉）、The Verge（2026-10-27，Robert Hart）、TechCrunch（2026-10-27）、Endpoints News 与 R&amp;D World（2026-10-27）、XenoSpectrum（2026-10-27T19:46Z，即北京 10/28）、Quartz（2026-10-28）。事件之后、只进口径注：WIRED（2026-10-29）、Business Insider（2026-10-31）、The Economist（2026-11-04，只读到标题和导语）、NYT（2026-11-06 首发、11/10 更新）、KITP Gross 委员会第三份声明（2026-11-09）与 github.com/yang-mills-group/YM（2026-11-10 创建）、SEC EDGAR Anthropic S-1/A（2026-11-02，0001628280-26-068676；2026-11-10，0001628280-26-072484）与 FWP（2026-11-12 提交，IPO 网站，标 11/10，0001628280-26-072949）、Scientific American（2026-11-11）、Forbes（2026-11-11，只核标题）。热度：Techmeme 存档快照 20261027162521、20261027232902、20261028165502（经 Internet Archive，X 帖由核查人按 status ID 去重、扣除 Techmeme 自己的帖子自数）；Hacker News（hn.algolia.com ids 50251344、50251661、50265609）。</dd>
+      <dt>口径注</dt><dd data-kind="口径注">日期按美国时间；两家 ETH 发布在美国都是 10/26、在北京都是 10/27，「同日」两个时区都成立；药物博文为美国 10/27。共识（X 上 10/26–10/28，Techmeme 快照 20261027162521）：AI 开始做原创的重大科学（Gowers 称意外且影响深远，Bubeck 称可能是他 20 年来见过的最大意外，Brockman 称 AI 开始帮人类理解宇宙），而且这是实验室之间的竞赛、先拿出来的领先（@not_ellington、@teortaxestex 等帖）；到 11/13 又多了一层「实验室下场做药」（Business Insider 10/31；Forbes 11/11 标题）。本篇：谁先不重要。两家各称 10/16 找到核心结果（公司称，无法独立核实；事件当时 X 上已有人质疑这个巧合，@rishabhkio，快照 20261027162521）；公开顺序是 OpenAI 先（openai/math commit 2026-10-26T20:35Z），Anthropic 约 6.5 小时后（anthropics/formal-math commit 2026-10-27T03:07Z，自算），Anthropic 论文引用了 OpenAI 的预印本 [Ope26]。本篇只用「两家都公开了、结论相同、方法不同、都免费」这一点。结论相同指两家都声称 ETH 不成立；主体方法不同：OpenAI 论文目录为共享线性摘要、低次替换式与稀疏多项式方程计零点；Anthropic 论文关键词为张量网络与秩，并称 OpenAI 内部模型与其独立、同期声称证出相近结果。OpenAI 定理 1.1 的两个界都由 Appendix D 用张量收缩证出（正文 6.4 节只到较弱的界），与 Anthropic 的张量网络路线有交集；「方法不同」只指两篇的主体论证。结果本身没有实用价值：Anthropic 论文 §1 写明，对子句数 m=5n 的 3-CNF 公式，它证出的上界要 n 超过 10 的 10000 次方才优于 2^n 穷举，只看 n 的上界则要 n 超过 10 的 10^8 次方，并自述这对实际求解公式没有意义。只有两家前沿实验室做得出，更像双寡头，所以本篇只说这一类没有经济价值的证明被白送、不再只有一家做得出，不说前沿发现已成商品。事件当时 X 上 Mithril 簇已有帖子说价值在 IP 和分子（快照 20261028165502），本篇的增量在前半句：发现能力本身被实验室免费发布压价。与 ENTRY 151（事件日 10/23，漏洞发现）同一模式，本篇换到科学发现，区别在后半句：实验室不只白送，还把有经济价值的药物项目留给自己。Lean 范围：两家都称在 Lean 中检验过，范围不同。Anthropic 论文 Appendix E 称证明已通过 Lean 内核、leanchecker 和独立内核 nanoda 的检查，但 Lean 代码由 AI 写、由同款模型复核，写作时没有已知的人工检查；Lean 陈述是否对应论文，Appendix E 与 README 都说没有机器能查、要读者自己对照。OpenAI lean/docs/378.md 称 Lean 证出的界弱于论文。OpenAI 称 10/16 得出证明、10/17 完成 Lean 形式化（公司称）；Anthropic 没有给出形式化用时。验证渠道：OpenAI 10/26 设牧羊人机制：参与者不签保密协议、自愿无报酬，OpenAI 不要学术署名。计算机组决定立即公开自然语言证明和 Lean；物理组（David Gross 领衔）决定暂缓公开 AI 产出、自己撰写，截至北京时间 10/28 物理部分证明未公开（XenoSpectrum）。批评者称 OpenAI 在把关（The Verge 10/27，Karch、Kogler 等）；按 OpenAI 博文，暂缓是 Gross 组的决定。ETH 检验组由 OpenAI 邀请（OpenAI 博文称该组「验证并引导」这项工作），ethdiscussion.blog 10/26 开题只针对 OpenAI 那份，没有提到 Anthropic。Anthropic 没设把关人，直接上 GitHub。OpenAI 为验证出钱（向 Simons 基金会新计划出资 500 万美元，公司称），验证对它是成本；Lean、Mathlib 都开源。所以本篇只把可信度当瓶颈背景，不把验证渠道当投资主线。事件之后到 2026-11-13（作者在 10/29 不知道）：WIRED 10/29 称研究者尚未独立验证；Business Insider 10/31 称生命科学是 Anthropic 下一个大业务；The Economist 11/04 标题〈OpenAI&#x27;s approach to mathematics does not add up〉；NYT 11/06 首发、11/10 更新〈How A.I. Just Blew Up a Key Tenet of Computer Science〉；Yang–Mills 部分：Gross 委员会 11/09 发第三份声明，11/10 在 GitHub 公开 Lean 代码和评估，Scientific American 11/11 报道该委员会确认结果，但它是 OpenAI 指定的牧羊人委员会，自称尚未完全理解证明，并用了 OpenAI 的 Astra 模型帮忙消化 Lean 代码，不等于同行评议；Anthropic S-1/A（11/10）记 Coefficient Bio 对价为 1540 万股 A 类股，称药物候选可能永远产生不了收入，全文没有提到 Mithril；FWP（11/12 提交）称定价预计在美东 11/18。截至 2026-11-13，ETH 两份证明都没有同行评审，检验组没有结论；组织者公开信声明参与检验不等于为结论背书。Mithril 口径：「一人公司」是 Anthropic 10/27 博文的说法，技术报告（10/26）另列 8 名付费顾问或顾问；11 家外部实验室是创始人用 Claude 协调合同、物流和实验的对象，不到 18 个月指从想法到小鼠阶段的积极结果（均公司称）。小鼠数据的限定：技术报告标未经同行评议，治疗组 7 只、对照组 4 只，约 2 倍峰值力和握力，实验未随机、未设盲；博文称最快 2028 年底进入临床，这是公司称的目标，没有承诺。收购价格与条款均未披露。分子口径：技术报告把所测分子称为工具分子（tool molecules），两条结合臂的可变区取自已公开专利的序列表（报告参考文献 157、158：US 10,626,169 B2、US 10,889,636 B2），报告没有说明 Anthropic 是否持有或获许可这些专利，临床候选是否另行设计也未披露。所以「留着的是分子」指药物项目归 Anthropic，不指 Mithril 有自有专利；尽调「专利分子」要连许可链一起查。反例：实验室也按团队买平台公司，Anthropic 2026-04 收购 Coefficient Bio（S-1/A 记 1540 万股 A 类股；约 4 亿美元为 TechCrunch 2026-04-03 报道，二手），OpenAI 10/20 宣布收购 Orchestra Bio；所以正文只说药物资产成了新的收购标的，不说实验室只买资产。2026 年 AI 药物发现赛道仍有 10 亿美元以上估值的已完成融资（Endpoints News 2026-07-14、Quartz 2026-09-23 报道的两轮，二手），其中哪些算只靠模型，本篇不判定、不点名；这两轮在起算前，不进 ③；其中 Quartz 9/23 那轮的公司已有进入生产和申报阶段的药物（Anthropic 10/27 博文的合作方一节），按 ③ 口径不算；所以正文只说估值该打折，不预测这类公司融不到钱。二阶（6–18 个月）：第一环是前沿实验室把证明类发现免费公开，同时把药物项目收到自己名下、直接和药企合作（10/26 两篇 ETH 论文；10/27 博文称已开始自营药物发现，并列出六家研究合作方；Mithril 7 月完成收购）；最后一环是 AI 科学发现创业公司的退出和定价：前沿实验室成了临床前药物资产的新买家，也成了只卖发现能力的平台的直接竞争者；只有模型或平台的公司在实验室那里能卖的是团队，估值依据从模型 demo 移到账上的资产。资本配置：钱从只卖发现能力的平台，挪到账上有分子或专利（连许可链）、自有实验数据、跑通了外包实验网络的公司；Mithril 说明资产型路径的资本效率可以很高（一人加 Claude 加 11 家外部实验室，不到 18 个月，公司称），说明不了它值多少钱。X 热度：Techmeme 存档快照 20261027162521 中，OpenAI 三项发现簇列出 52 条独立 X 帖（104 个链接，每帖列两次）/ 45 个账号，最好第 3 位，只见于该快照，讨论者含 @gdb、@wtgowers、@fortnow、@boazbaraktcs、@sebastienbubeck，@rrwilliams 发了 4 帖；Anthropic 药物研发与 Mithril 簇 27 条 / 26 个账号（快照 20261028165502；20261027232902 时 9 条 / 9 个账号），两张快照中最好第 8 位；两簇不相加（核查人按 status ID 去重自数）。HN 旁证（美国时间 10/26–10/27）：〈Three new discoveries in mathematics, computer science, and physics〉1164 分 / 715 评论，〈The Exponential Time Hypothesis Is False [pdf]〉805 分 / 302 评论，Anthropic 药物博文 328 分 / 353 评论。</dd>
+      <dt>证伪口</dt><dd data-kind="证伪口">起算 2026-11-13（补记写作日），期限 2027-06-30，此前发生的事不计入事前命中。裁定正文三处判断：① P1「10/26 OpenAI、Anthropic 同日白送声称推翻复杂度假设 ETH 的证明」所含判断：这类证明不再只有一家做得出；② 金句「实验室白送的是证明，留着的是分子」所含判断：药物资产成了前沿实验室的收购标的；③ P1「AI 科学发现公司的『模型能出发现』，估值该打折了」。① ✗：期内 OpenAI（openai/math 仓库或官网）或 Anthropic（anthropics/formal-math 仓库或官网）撤回自家 ETH 证明，或发勘误承认缺口无法修补；或 Impagliazzo、Paturi、Williams 组织的公开检验书面认定 OpenAI 那份有致命缺口（该组由 OpenAI 邀请，OpenAI 10/26 博文称由其「验证并引导」，ethdiscussion.blog 10/26 开题只针对 OpenAI 那份）；或 STOC、FOCS、SODA、JACM 等同行评审渠道发表的反驳认定其中一份有无法修补的缺口。作者即撤回①，承认这类证明仍然稀缺；两份都倒，整篇判断作废。现值（截至 2026-11-13）：两份都在，没有撤回，没有同行评审，检验组没有结论。已验证：到期两份都没撤回，且两份各自过关：OpenAI 那份被上述同行评审渠道录用，或检验组书面报告没有指出致命缺口（OpenAI 邀请的牧羊人组，组织者声明参与不等于背书，只作读数）；Anthropic 那份被上述同行评审渠道录用。只有一份过关或都没有，记 ⏳，标「裁定源缺失、不计命中」。裁定源：两家 GitHub 仓库与官网、ethdiscussion.blog 与组织者公开声明、上述会议与期刊录用名单。Yang–Mills 部分不进证伪口：Gross 委员会 11/09 发声明、11/10 公开 Lean 代码和评估，起算前已有结论。② 现值：起算后 0 笔；起算前 1 笔，即 Mithril（2026 年 7 月完成，10/27 披露）。✗：到 2027-06-30，OpenAI、Anthropic、Google DeepMind 在 2026-11-13 之后公开的收购里，既没有任何一家持有分子、临床前或临床药物资产的公司，也没有直接买下这类药物资产，作者即撤回②，Mithril 只算个案；维持现状就落在 ✗ 侧。已验证：期内至少有 1 笔这样的收购。到期前没有触发，期间记 ⏳；2027-06-30 仍为 0 笔，记 ✗。计数口径：公司收购和药物资产收购都算，授权许可、合作研发不算；只认已完成交易，来源限收购方官网或博文、SEC 申报（8-K、S-1/A、10-Q、10-K，Anthropic CIK 0002130357）、Reuters、Bloomberg、The Information 报道；洽谈和传闻不算；没有披露自有药物资产的团队或软件平台收购不算（如 2026-04 Coefficient Bio、10/20 OpenAI 宣布的 Orchestra Bio，公开材料未披露自有药物资产）；11/13 之前完成、之后才首次披露的交易按披露日计入。③ ✗：2026-11-13 至 2027-06-30，至少 2 家没有披露自有药物资产、湿实验室或自有实验数据的 AI 科学发现公司（以数学证明、材料、药物等科学发现为主营的模型或平台公司），完成 10 亿美元以上估值、且估值不低于上一轮的融资（只认交割公告，或 Reuters、Bloomberg、The Information 报道的已完成轮次；「寻求中」「洽谈中」不算；首轮融资（无上一轮）按满足「不低于上一轮」计），作者撤回③。现值：起算后 0 家；起算前符合 ③ 口径（无自有药物资产、湿实验室或自有实验数据）的轮次本篇未计数。已验证：到期不足 2 家。期间不足 2 家记 ⏳，达到 2 家即记 ✗。</dd>
+      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+    </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/zhipu-glm.html">智谱 GLM</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
+  </section>
+  <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="153.html">← ENTRY 153 · Anthropic 招股书：一年内的算力账单约等于年化收入</a><a rel="next" href="155.html" style="text-align:right">ENTRY 155 · 币安被盗 63 亿美元：AI 工具够得着的机器，按热钱包管 →</a></nav>
+  <footer class="ep-foot">
+    本页是 <a href="../#entry-154">倩小虾日记 ENTRY 154</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
+  </footer>
+</div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
+</body>
+</html>

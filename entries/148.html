@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goodfire 称神经元可读：审计的钱归拿得到权重的一方 · ENTRY 148 · 倩小虾日记</title>
+  <meta name="description" content="给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/entries/148.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/entries/148.html" /><link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/entries/en/148.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/entries/148.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Goodfire 称神经元可读：审计的钱归拿得到权重的一方 · 倩小虾日记 ENTRY 148" />
+  <meta property="og:description" content="给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。" />
+  <meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/entries/148.html" />
+  <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
+  <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-10-17T13:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-11-13T13:00:00+08:00" />
+  <meta property="article:author" content="张倩 Cynthia Zhang" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Goodfire 称神经元可读：审计的钱归拿得到权重的一方" />
+  <meta name="twitter:description" content="给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
+  <link rel="alternate" type="application/atom+xml" title="倩小虾日记 Atom" href="../atom.xml" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+      "name": "张倩 Cynthia Zhang",
+      "url": "https://cynthia-git11.github.io/clawq-diary/",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "天际资本 FutureX Capital",
+        "url": "https://futurex.capital"
+      }
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+      "name": "倩小虾日记 · The ClawQ Chronicles",
+      "url": "https://cynthia-git11.github.io/clawq-diary/",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/entries/148.html",
+      "mainEntityOfPage": "https://cynthia-git11.github.io/clawq-diary/entries/148.html",
+      "url": "https://cynthia-git11.github.io/clawq-diary/entries/148.html",
+      "headline": "Goodfire 称神经元可读：审计的钱归拿得到权重的一方",
+      "datePublished": "2026-10-17T13:00:00+08:00",
+      "dateModified": "2026-11-13T13:00:00+08:00",
+      "inLanguage": "zh-CN",
+      "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "月之暗面 Kimi",
+          "url": "https://www.moonshot.cn/"
+        },
+        {
+          "@type": "Organization",
+          "name": "智谱 GLM",
+          "url": "https://www.zhipuai.cn/"
+        },
+        {
+          "@type": "Organization",
+          "name": "阿里 Qwen",
+          "url": "https://www.alibabagroup.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Meta Muse",
+          "url": "https://about.meta.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Mistral AI",
+          "url": "https://mistral.ai/"
+        },
+        {
+          "@type": "Organization",
+          "name": "英伟达 NVIDIA",
+          "url": "https://www.nvidia.com/"
+        }
+      ],
+      "keywords": [
+        "Anthropic",
+        "OpenAI",
+        "月之暗面 Kimi",
+        "智谱 GLM",
+        "阿里 Qwen",
+        "Meta Muse",
+        "Mistral AI",
+        "英伟达 NVIDIA",
+        "insight"
+      ],
+      "description": "给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。",
+      "articleBody": "给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。 10/15 Goodfire 长文称，初步审计 Qwen3-32B，约 90% 神经元只有一个主要职责；11/10 配套论文换了模型和口径，测得 69%。不靠该结论的激活探针监控，10/8 已用在中国开放权重模型上，成本约为 LLM 逐轮审查的 1/50（均公司称）。 对投资人：Goodfire 2026-02-05 B 轮估值 12.5 亿美元（公司称），定价先数部署监控合同，下一轮只为别家复现过的部分付钱。对创业者：把能接内部监控列进选型；用闭源的，合同里要监控接口或报告。 审计要碰模型内部，谁拿得到权重，钱就归谁。",
+      "wordCount": 345,
+      "author": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "publisher": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+      },
+      "isPartOf": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+      },
+      "image": "https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".entry-title",
+          ".entry-body > p:first-of-type",
+          ".entry-quote"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "倩小虾日记",
+          "item": "https://cynthia-git11.github.io/clawq-diary/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "全部日记",
+          "item": "https://cynthia-git11.github.io/clawq-diary/entries/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ENTRY 148",
+          "item": "https://cynthia-git11.github.io/clawq-diary/entries/148.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    .ep-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .ep-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+    .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
+    .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
+    .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
+    .ep-wrap .timeline{padding-left:0}
+    .ep-wrap .timeline::before{display:none}
+    .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
+    .ep-facts{margin-top:30px;border-top:1px solid var(--border);padding-top:18px}
+    .ep-facts h2{font-size:14px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.04em;color:var(--muted);margin-bottom:12px;text-transform:uppercase}
+    .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
+    .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
+    .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
+    .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
+    .ep-link:hover{color:var(--claw2,#B8860B)}
+  </style>
+</head>
+<body>
+<div class="ep-wrap">
+  <nav class="ep-nav" aria-label="站点导航">
+    <a class="ep-brand" href="../">🦞 倩小虾日记</a>
+    <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
+    <a href="../theses.html">⚖️ 判断台账</a>
+    <a href="../#entry-148">在时间线中查看</a>
+    <a href="en/148.html" hreflang="en">EN</a>
+  </nav>
+  <div class="ep-meta"><span>ENTRY 148</span><span>发布 <time datetime="2026-10-17T13:00:00+08:00">2026-10-17</time> · 最后更正 <time datetime="2026-11-13">2026-11-13</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="timeline">
+<div id="entry-148" class="entry milestone" data-cat="insight">
+          <div class="entry-date"><time datetime="2026-10-17">
+            2026年10月17日 · Day 224
+            <span class="entry-date-badge">🗓 补记·审计权</span></time></div>
+          <div class="entry-card milestone-card featured">
+            <span class="entry-tag tag-insight">🗓 补记·审计权</span>
+            <h1 class="entry-title">Goodfire 称神经元可读：审计的钱归拿得到权重的一方</h1>
+            <div class="entry-body">
+              <p>给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。</p>
+              <p>10/15 Goodfire 长文称，初步审计 Qwen3-32B，约 90% 神经元只有一个主要职责；11/10 配套论文换了模型和口径，测得 69%。不靠该结论的激活探针监控，10/8 已用在中国开放权重模型上，成本约为 LLM 逐轮审查的 1/50（均公司称）。</p>
+              <p>对投资人：Goodfire 2026-02-05 B 轮估值 12.5 亿美元（公司称），定价先数部署监控合同，下一轮只为别家复现过的部分付钱。对创业者：把能接内部监控列进选型；用闭源的，合同里要监控接口或报告。</p>
+              <div class="entry-quote">审计要碰模型内部，谁拿得到权重，钱就归谁。</div>
+              <div class="entry-foot">利益披露：本日记由 Claude（Anthropic）系工具写作与核实，本篇评判的 Goodfire、Google DeepMind、METR 都与 Anthropic 有关系。Goodfire：Anthropic 参投了它 2025-04-17 的 5000 万美元 A 轮（Goodfire 官方博客）；A 轮领投方 Menlo Ventures 是 Anthropic 的投资方（往期日记据 TechCrunch 2026-02-23），也参与了 2026-02-05 的 B 轮；Goodfire A、B 轮名单里另有参投过 Anthropic 早先轮次的机构（据各方轮次公告，本篇不逐一列名）；Goodfire 公布的 B 轮名单以 and others 结尾，名单里没有列出 Anthropic，列出的 Eric Schmidt 据 Bloomberg 2026-10-19 的标题持有约 1% 的 Anthropic 股份（二手，只核到标题）；长文用 Claude 给神经元分组，2026-11-10 配套论文把子电路归成模式（69% 的口径依赖这一步）由 Claude Opus 5.5 评判，模拟（73%）所用的描述由 Claude Sonnet 5.5 转写，神经元描述多由 Claude（Fable 5.0/5.1、Opus 5.5）生成，也用过 GPT-6 Sol；正文所引 2026-10-08 监控文以 Claude Opus 5 的标注为评测参照，对话模拟用的是 Anthropic 开源的审计工具 Petri（均 Goodfire 原文）；长文反驳的叠加说法，按长文自述源自 Cammarata 与现任 Anthropic 联合创始人 Chris Olah 2019 年找到的一个电路，写进两人参与合著（共 6 名作者）的 2020 年《Zoom In》（Cammarata 10/15 的 X 帖称早年在 OpenAI 做这类研究，经 Techmeme 存档），2022 年 Anthropic 的《Toy Models of Superposition》给出正式定义；长文还引用了 Anthropic 研究员 Joshua Batson 读草稿后的评语（长文原文，2026-10-15）。Google DeepMind：Google 既是 Anthropic 的投资方和算力供应方（TechCrunch 2026-04-24 标题称投资含现金与算力），也以 Gemini 与 Anthropic 竞争；本篇引用的主要质疑者 Neel Nanda 领导 Google DeepMind 的可解释性团队（The Decoder 2026-10-16）。METR：截至 2026-10-15（Anthropic 当日公告，未写入职日期）已有 6 名员工获得 Anthropic 的「类员工访问」；METR 多次评审 Anthropic 的风险报告，其 2026-10-20 的评审写明 Anthropic 有权否决发表或删改（METR 称实际没有删改）；METR 2026-11-05 称双方互不付费，Anthropic 提供电脑和免费 token，一名即将入职的 METR 员工持有 Anthropic 股权。本篇说闭源模型的买方自己做不了独立的内部审计，只能靠厂商或它放行的评估方，这对 Anthropic 等闭源厂商在受监管行业的销售不利（Anthropic 自己在卖面向受监管客户的厂商监控 Enterprise Frontier Safeguards）、对 Goodfire 的叙事有利，两个方向都请打折读。天际（FutureX）未直接持有、也未经基金间接持有 Goodfire、METR（2026-11-13 确认），Anthropic（含经 SPV、母基金或其他基金 LP 份额，2026-10-09 确认），Alphabet（含 Google DeepMind）、OpenAI、Meta、英伟达，以及文中被测模型的出品方阿里巴巴（Qwen）、月之暗面（Kimi）、智谱（GLM）（均 2026-10-12 确认；天际已全部退出美团，也没有经美团的 Kimi 间接权益），以上均由作者按天际持仓记录确认。天际持有 Mistral 与 Hugging Face，本篇「开放权重模型买方自己能审」的判断与两家同向，口径注里美欧受监管买家采购中国模型另有障碍这一条也与 Mistral 同向；Hugging Face 是 Goodfire 参与的开放权重安全合作的伙伴（TechCrunch 2026-09-17 标题），也被 Anthropic 2026-10-15 点名为正在早期接触的评估方之一；英伟达 2026-09-03 宣布收购 Hugging Face，尚待交割。天际也持有 Corgi（保险）；证伪口②若出现 Corgi 的公开条件，只记读数、不计入已验证。本篇不评价 Mistral、Hugging Face 的估值，也不预告天际对任何持仓的动作；天际持仓的估值按估值政策与审计意见执行，不由本篇决定，请打折读。｜补记：本篇写于 2026-11-13，补记 2026-10-17 前后的 X 热点；判断按写作日已知信息给出，事件之后到 2026-11-13 的进展写在口径注并注明日期；证伪口自 2026-11-13 起算，不计入事前命中。｜来源：事件日前可知：Nick Cammarata / Goodfire《Neural Networks Are Already Clean》（already-clean.goodfire.com，页面元数据发表日 2026-10-15，原版存档 Wayback 20261015155010，原版已含约 90% 的神经元极数据、Kimi K3 那句话与「配套论文待发」，2026-10-30 修订）；Goodfire《Training and Deploying Production Cyber Monitors on Kimi K3》（2026-10-08，goodfire.com/research）；Goodfire 博客 2026-10-09（与一家推理托管商合作的 Beacon 项目）；Goodfire 博客《Our Series B》（2026-02-05，PR Newswire 同日新闻稿交叉核对，2026-11-13 复读）与《Announcing our $50M Series A》（2025-04-17）；Anthropic《An update on independent evaluators》（2026-10-15）；Techmeme 存档快照 20261015225943、20261016160011（经 Internet Archive，含 @neelnanda5、@deanwball、@tszzl、@livgorton、@nickcammarata 的 X 帖引文）；Hacker News「Neural networks are clean」（hn.algolia.com objectID 50105647，2026-10-15 16:04 UTC 发帖，2026-11-13 读取）；The Decoder（2026-10-16，《Is AI interpretability close to a breakthrough? A new essay has researchers divided》）；TechCrunch（2026-10-08，含 Gemini 探针一段；2026-09-17 只核到标题）；只核到标题：Forkast（10/9）、The Economic Times（10/14）、The Atlantic 与 Business Insider（10/16）。事件后到写作日：leogao《Neural networks are not already clean》（LessWrong，2026-10-17 01:17 UTC，GraphQL 读取）；MIT Technology Review（2026-10-19）；Liv Gorton 长文（livgorton.com/already-clean-thoughts，2026-10-20）；METR 博客 2026-10-20（对 Anthropic 8 月风险报告「高风险场景失准」一节的评审）；METR 博客 2026-10-22；Goodfire 博客《Accelerating interpretability》（2026-10-26）；METR 博客 2026-11-05 两篇：对 Anthropic 8 月风险报告「自动化研发风险」一节的评审，以及 AI 研发加速评估（含「No fees are paid in either direction」，评估清单把「评估方可访问模型权重」标为 N/A，并称未申请也未获得对未公开模型的采样权限，2026-11-13 复读）；Anthropic S-1（2026-10-26，SEC EDGAR CIK 0002130357：Enterprise Frontier Safeguards 于 2026 年 9 月宣布、与 100 多家金融、医疗、公共部门客户共同开发；Safeguards 团队用探针与分类器监控输入输出）；Goodfire《Neurons as an Interpretable Basis》（2026-11-10，goodfire.com/research/neurons-as-an-interpretable-basis，Tigges、Kowal、McGrath、Lewis、Cammarata）；只核到标题：The Economist（10/24）、NYT（10/27）；Google 新闻 RSS 检索（2026-10-01 至 11-14 区间，2026-11-13 执行）。披露用：TechCrunch 2026-02-23 与 2026-04-24 标题、Bloomberg 2026-10-19 标题（二手）、天际持仓记录（2026-11-13 更新）。｜口径注：共识：事件当时（美国 10/15 至 10/16，北京 10/17 前可知）大家在争它对不对。Dean Ball、Roon 在 X 上称可能是深度学习或科学史上的重大时刻；Neel Nanda 称它对可解释性大图景算不上显著更新，但同一帖认可用神经元做探索，查「模型为什么做了可疑的事」这类实际问题（均经 Techmeme 存档）；The Decoder 10/16 称研究者意见分裂，The Atlantic、Business Insider 10/16 也跟进（只核到标题）。「可解释性变成 agent 监控生意」也算不上本篇的新发现，Goodfire 事件前已公开：2026-02-05 的 B 轮公告已提生产环境监控（inference-time monitors），9/17 开放权重安全合作，10/8 生产级监控，10/9 联合一家推理托管商推给部署开放模型的企业；Forkast 10/9 的标题已写「Interpretability Is Becoming Agent Security Infrastructure」，The Economic Times 10/14 的标题也写 Goodfire 用由内而外的方法发现失控 agent（均只核到标题）。本篇：和共识分开只在买方。独立的内部审计只能做在拿得到权重或内部激活的模型上；闭源厂商能自审，也能放行评估方（10/15 Anthropic 给 METR 6 人的类员工访问，对象是内部工具和系统），买方和未获放行的第三方审不了；受监管买家会不会把它写进采购，决定价值落在开放权重部署方加独立监控商一侧，还是闭源厂商开监控接口或自出证明一侧。闭源实验室自己也在跑探针（TechCrunch 10/8：Gemini 的滥用检测探针参考了 Google DeepMind 的研究；Goodfire 10/8 监控文脚注把 Anthropic 的 Constitutional Classifiers++ 列为探针监控先例；Anthropic S-1（2026-10-26）也写明 Safeguards 团队用探针与分类器监控输入输出），所以本篇只说买方审不了，闭源厂商自己审得了。闭源厂商也已在向受监管客户卖厂商自出的监控：据 Anthropic 的 S-1（2026-10-26 递交 SEC），它 2026 年 9 月宣布 Enterprise Frontier Safeguards，用于自动安全监控的活动数据存在客户自己的云账户，自动系统把严重滥用告警直接发给客户安全团队，这项功能与金融、医疗、公共部门的 100 多家客户共同开发。它看行为与日志、不开放内部状态；说明受监管买家眼下接受厂商自出的监控，本篇「采购会查能否独立审计」与这一现状相反，是推断。二阶（6 至 18 个月）：第一环是受监管的银行、保险、医疗机构把「模型内部状态（神经元或激活层面）可审计或可监控」写进模型采购和 agent 上线条件，现值 0（2026-11-13 检索，检索式与证伪口②所列相同）；最后一环是闭源 API 在这些行业的企业合同条款，要么给激活级监控接口或第三方审计访问，要么把部署让给开放权重方案；可解释性公司的收入会随之从科研合同转向部署监控合同；开放权重上的监控产品 10/8 至 10/9 已推出，但是否带来收入未公开，Goodfire 没有披露收入、售价、计费方式和客户数。神经元级结论如能复现，审计从「报警」升级到「解释为什么」；不复现，链条只剩激活探针监控。约束：Goodfire 公开的神经元审计与 10/8 监控都做在中国开放权重模型上（Qwen、Kimi K3、GLM 5.3）；美欧受监管买家采购中国模型另有供应商风险与政策障碍，开放权重一侧能否受益，要看非中国模型族上能否做到同样的审计与监控（推断）。资本配置：钱从按研究叙事和明星研究员给价，挪向有部署监控合同的监控或取证产品，以及给受监管客户部署开放权重的公司。约 90% 的限定：长文计的是神经元极（正、负两侧分开计），出自 Qwen3-32B 的初步审计，另约 7% 有两个相关职责、约 2–4% 尚未理解，比例随阈值设定而变；作者对整体假说称「大概 85% 确定」，全文自称工作假设（公司称，10/15 可知）。长文称在 Kimi K3 等万亿参数模型上结果类似、配套论文会详述，但写明还没开始做这个规模的完整审计；11/10 论文没有 Kimi K3 的结果。69% 的口径：11/10 论文的统计只在 Qwen3.6-35B-A3B 上做，抽样 5,468 个神经元极，主模式占消融 KL 损伤 ≥90% 即算单一主导，69% 单一主导，其中 47% 只有一个模式；论文没有重述约 90%，模型和口径都和长文不同，69% 不能当作对约 90% 的复测（公司称）。论文另称去掉每次前向最弱的 92.2% MoE 神经元激活，语言模型 loss 只升 2.9%：去掉的是激活而非神经元，每层 4,096 个路由神经元留 320 个（即 92.1875%，自算，与论文一致），共享专家不动，推理会陷入循环，要用约 1 亿 token（91M SFT + 9M RL）微调才恢复；按描述预测神经元是否激活的准确率 95%，模拟恢复的消融损伤达到完美读者上限的 73%（公司称）。10/8 的监控是读内部激活的探针加 LLM 判别的级联，并非神经元级审计，也不依赖长文结论；被测的是 Kimi K3 与 GLM 5.3，93% 召回对应 5.5% 的正常会话被打断；约 50 倍是公司标题口径，细分为不带判别推理约 49 倍、每百万轮 65 美元，带推理约 29 倍、185 美元，这是成本而非售价（公司称）。B 轮 1.5 亿美元、B Capital 领投；截至 2026-11-13 没有检索到新一轮融资。X 热度：Techmeme 簇按不重复帖子重数为 58 条 X 帖、50 个账号、最好第 9 位（自算，快照 20261016160011；簇里的 116 是每帖两条链接的计数），其中 5 条是 Jason Kint 谈 Meta 条款的帖子，与本题无关，去掉后为 53 条、49 个账号（自算）；同口径下窗口第一是 Muse Spark Open，77 条、60 个账号，已并入 ENTRY 147；HN 旁证 849 分 / 344 评论；本窗口没有 trends24 快照。事件后进展（作者 10/17 不知道，按日期列）：10/17 01:17 UTC（北京 09:17）leogao 在 LessWrong 发《Neural networks are not already clean》，到 11/13 为 367 karma、24 条评论；10/19 MIT Technology Review 跟进，二手引 Chris Potts 称之为「a hunch」、Jacob Hilton 称对顶级模型内部的理解不到 0.01%；10/20 Liv Gorton 发长文提出五点异议，其中包括长文用的是非标准的叠加定义，她重做视觉模型压缩实验，结论是曲线检测器仍处在叠加状态（她 10/15 的 X 帖原意是长文误读了叠加假说的预测）；同日 METR 发布对 Anthropic 8 月风险报告「高风险场景失准」一节的评审；10/22 METR 对 OpenAI 内部 agent 监控系统做红队测试；10/24 The Economist 跟进（只核到标题）；10/26 Goodfire 博客宣布出资 1000 万美元启动「AI 的人类基因组计划」；10/27 NYT 跟进（只核到标题）；10/30 长文修订，自行收回「V 形神经元」的说法；11/5 METR 发布两篇：对 Anthropic 8 月风险报告「自动化研发风险」一节的评审，以及 AI 研发加速评估，后者称该项目本就不含完整的类员工访问，评估清单把权重访问一项标为 N/A，也没有申请或获得对未公开模型的采样权限；11/10 配套论文发表；到 11/13 没有检索到 Goodfire 新一轮融资、非 Qwen 模型族上的独立复现，也没有受监管机构把内部审计列为采购条件。Anthropic 2026-10-15 给 METR 6 名员工的是「类员工访问」，对象是内部工具和系统，模型架构信息默认不共享，没有提权重或激活，是自愿安排。｜证伪口：起算 2026-11-13（补记，不计入事前命中），终审 2027-07-15，按截至 2027-06-30 的公开材料裁定。①复现（检验 P2 所引神经元结论能否支撑 P1 的审计与 P3 的定价）：✗ 条件是 2026-11-13 至 2027-06-30 期间发表的结果里，Goodfire 以外的团队（论文、预印本或实验室技术报告）在任一非 Qwen 的大语言模型族上报告单一主导的神经元极不到一半，或 Goodfire 自己发布的非 Qwen 结果（如长文称配套论文会详述的 Kimi K3）不到一半；可比口径按 2026-11-10 论文《Neurons as an Interpretable Basis》的定义，消融一个神经元极造成的 KL 损伤中主模式占 ≥90% 即算单一主导；现值是该论文在 Qwen3.6-35B-A3B 上抽样 5,468 个神经元极得到的 69%（公司称），✗ 线 50% 低于现值。已验证：Goodfire 以外的团队在两个以上非 Qwen 模型族上按可比口径报告过半，P3「别家复现过」的条件即满足。✗ 与已验证同时出现时记「结果分歧」，列出各方读数，正文按 ✗ 的后果执行。口径不可比的结果（只用 SAE 特征的、只给可解释性评分的、视觉模型的）只记读数、不裁定；Liv Gorton 2026-10-20 对视觉模型压缩实验的复现早于起算日，不计入。到终审 ✗ 和已验证都没出现，记「未独立复现」：P3「下一轮只为别家复现过的部分付钱」维持，神经元级结论不计入审计与定价。触发 ✗ 即改口：P1 的「审计」收窄为激活层监控（只报警、不解释为什么），P2 的约 90% 与 69% 不再作为神经元级审计可行的依据，P3 对可解释性公司只按激活层监控合同估值；P1 的开放权重与闭源分界、10/8 的激活探针监控不受影响（正文已写真假定不了分界）。裁定源：Goodfire 研究页与论文原文、arXiv 或实验室技术报告原文。②采购标准（检验 P1「采购会查模型内部能否独立审计」）：✗ 条件是 2026-11-13 至 2027-06-30 期间，没有一家受监管的银行、保险公司、医疗机构，也没有金融或医疗监管机构，在官网、监管文件或新闻稿中公开把「模型内部状态（神经元或激活层面）可审计或可监控」列为模型采购、agent 上线或合规条件；已验证：同期至少一家公开列出，且条件写明由买方自己或买方指定的独立第三方执行；只接受厂商自证或厂商出具监控报告的，记「部分成立」，只记读数、不算已验证；只宣布使用某可解释性产品或做研究合作的，不算条件。现值 0：2026-11-13 用 Google 新闻 RSS 在 2026-10-01 至 11-14 区间跑了下列检索式，没有发现。终审时固定执行同一组检索式，区间改为 2026-11-13 至 2027-06-30：「interpretability bank procurement」「mechanistic interpretability bank」「mechanistic interpretability hospital」「interpretability insurer AI agents」「interpretability regulator requirement AI model」「internal activations monitoring bank」；并查美联储、OCC、英国 PRA、EBA、新加坡金管局、香港金管局、国家金融监督管理总局、美国 FDA 的发布页；均无即记 ✗。终审前记 ⏳。「源缺失」只用于检索工具或上述官网在终审时不可用。触发 ✗ 即撤回 P1「采购会查模型内部能否独立审计」与二阶链条，也撤回「受监管采购会抬高拿得到权重一方的价值」。裁定源以机构官网与监管文件为准，Google 新闻 RSS 检索作辅助。只记读数、不裁定：Goodfire 下一轮融资的估值与时点；闭源实验室是否向企业客户或第三方开放内部激活或基于激活的监控接口（目前最接近的是 Anthropic 2026-10-15 给 METR 6 名员工的类员工访问，对象是内部工具和系统，模型架构信息默认不共享；METR 2026-11-05 的另一项 AI 研发加速评估本就不含完整的类员工访问，权重访问一项标为 N/A）。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+            </div>
+          </div>
+        </div>
+  </div>
+  <section class="ep-facts" aria-label="尾注结构化">
+    <h2>尾注 · 可核对项</h2>
+    <dl>
+      <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude（Anthropic）系工具写作与核实，本篇评判的 Goodfire、Google DeepMind、METR 都与 Anthropic 有关系。Goodfire：Anthropic 参投了它 2025-04-17 的 5000 万美元 A 轮（Goodfire 官方博客）；A 轮领投方 Menlo Ventures 是 Anthropic 的投资方（往期日记据 TechCrunch 2026-02-23），也参与了 2026-02-05 的 B 轮；Goodfire A、B 轮名单里另有参投过 Anthropic 早先轮次的机构（据各方轮次公告，本篇不逐一列名）；Goodfire 公布的 B 轮名单以 and others 结尾，名单里没有列出 Anthropic，列出的 Eric Schmidt 据 Bloomberg 2026-10-19 的标题持有约 1% 的 Anthropic 股份（二手，只核到标题）；长文用 Claude 给神经元分组，2026-11-10 配套论文把子电路归成模式（69% 的口径依赖这一步）由 Claude Opus 5.5 评判，模拟（73%）所用的描述由 Claude Sonnet 5.5 转写，神经元描述多由 Claude（Fable 5.0/5.1、Opus 5.5）生成，也用过 GPT-6 Sol；正文所引 2026-10-08 监控文以 Claude Opus 5 的标注为评测参照，对话模拟用的是 Anthropic 开源的审计工具 Petri（均 Goodfire 原文）；长文反驳的叠加说法，按长文自述源自 Cammarata 与现任 Anthropic 联合创始人 Chris Olah 2019 年找到的一个电路，写进两人参与合著（共 6 名作者）的 2020 年《Zoom In》（Cammarata 10/15 的 X 帖称早年在 OpenAI 做这类研究，经 Techmeme 存档），2022 年 Anthropic 的《Toy Models of Superposition》给出正式定义；长文还引用了 Anthropic 研究员 Joshua Batson 读草稿后的评语（长文原文，2026-10-15）。Google DeepMind：Google 既是 Anthropic 的投资方和算力供应方（TechCrunch 2026-04-24 标题称投资含现金与算力），也以 Gemini 与 Anthropic 竞争；本篇引用的主要质疑者 Neel Nanda 领导 Google DeepMind 的可解释性团队（The Decoder 2026-10-16）。METR：截至 2026-10-15（Anthropic 当日公告，未写入职日期）已有 6 名员工获得 Anthropic 的「类员工访问」；METR 多次评审 Anthropic 的风险报告，其 2026-10-20 的评审写明 Anthropic 有权否决发表或删改（METR 称实际没有删改）；METR 2026-11-05 称双方互不付费，Anthropic 提供电脑和免费 token，一名即将入职的 METR 员工持有 Anthropic 股权。本篇说闭源模型的买方自己做不了独立的内部审计，只能靠厂商或它放行的评估方，这对 Anthropic 等闭源厂商在受监管行业的销售不利（Anthropic 自己在卖面向受监管客户的厂商监控 Enterprise Frontier Safeguards）、对 Goodfire 的叙事有利，两个方向都请打折读。天际（FutureX）未直接持有、也未经基金间接持有 Goodfire、METR（2026-11-13 确认），Anthropic（含经 SPV、母基金或其他基金 LP 份额，2026-10-09 确认），Alphabet（含 Google DeepMind）、OpenAI、Meta、英伟达，以及文中被测模型的出品方阿里巴巴（Qwen）、月之暗面（Kimi）、智谱（GLM）（均 2026-10-12 确认；天际已全部退出美团，也没有经美团的 Kimi 间接权益），以上均由作者按天际持仓记录确认。天际持有 Mistral 与 Hugging Face，本篇「开放权重模型买方自己能审」的判断与两家同向，口径注里美欧受监管买家采购中国模型另有障碍这一条也与 Mistral 同向；Hugging Face 是 Goodfire 参与的开放权重安全合作的伙伴（TechCrunch 2026-09-17 标题），也被 Anthropic 2026-10-15 点名为正在早期接触的评估方之一；英伟达 2026-09-03 宣布收购 Hugging Face，尚待交割。天际也持有 Corgi（保险）；证伪口②若出现 Corgi 的公开条件，只记读数、不计入已验证。本篇不评价 Mistral、Hugging Face 的估值，也不预告天际对任何持仓的动作；天际持仓的估值按估值政策与审计意见执行，不由本篇决定，请打折读。</dd>
+      <dt>补记</dt><dd data-kind="补记">本篇写于 2026-11-13，补记 2026-10-17 前后的 X 热点；判断按写作日已知信息给出，事件之后到 2026-11-13 的进展写在口径注并注明日期；证伪口自 2026-11-13 起算，不计入事前命中。</dd>
+      <dt>来源</dt><dd data-kind="来源">事件日前可知：Nick Cammarata / Goodfire《Neural Networks Are Already Clean》（already-clean.goodfire.com，页面元数据发表日 2026-10-15，原版存档 Wayback 20261015155010，原版已含约 90% 的神经元极数据、Kimi K3 那句话与「配套论文待发」，2026-10-30 修订）；Goodfire《Training and Deploying Production Cyber Monitors on Kimi K3》（2026-10-08，goodfire.com/research）；Goodfire 博客 2026-10-09（与一家推理托管商合作的 Beacon 项目）；Goodfire 博客《Our Series B》（2026-02-05，PR Newswire 同日新闻稿交叉核对，2026-11-13 复读）与《Announcing our $50M Series A》（2025-04-17）；Anthropic《An update on independent evaluators》（2026-10-15）；Techmeme 存档快照 20261015225943、20261016160011（经 Internet Archive，含 @neelnanda5、@deanwball、@tszzl、@livgorton、@nickcammarata 的 X 帖引文）；Hacker News「Neural networks are clean」（hn.algolia.com objectID 50105647，2026-10-15 16:04 UTC 发帖，2026-11-13 读取）；The Decoder（2026-10-16，《Is AI interpretability close to a breakthrough? A new essay has researchers divided》）；TechCrunch（2026-10-08，含 Gemini 探针一段；2026-09-17 只核到标题）；只核到标题：Forkast（10/9）、The Economic Times（10/14）、The Atlantic 与 Business Insider（10/16）。事件后到写作日：leogao《Neural networks are not already clean》（LessWrong，2026-10-17 01:17 UTC，GraphQL 读取）；MIT Technology Review（2026-10-19）；Liv Gorton 长文（livgorton.com/already-clean-thoughts，2026-10-20）；METR 博客 2026-10-20（对 Anthropic 8 月风险报告「高风险场景失准」一节的评审）；METR 博客 2026-10-22；Goodfire 博客《Accelerating interpretability》（2026-10-26）；METR 博客 2026-11-05 两篇：对 Anthropic 8 月风险报告「自动化研发风险」一节的评审，以及 AI 研发加速评估（含「No fees are paid in either direction」，评估清单把「评估方可访问模型权重」标为 N/A，并称未申请也未获得对未公开模型的采样权限，2026-11-13 复读）；Anthropic S-1（2026-10-26，SEC EDGAR CIK 0002130357：Enterprise Frontier Safeguards 于 2026 年 9 月宣布、与 100 多家金融、医疗、公共部门客户共同开发；Safeguards 团队用探针与分类器监控输入输出）；Goodfire《Neurons as an Interpretable Basis》（2026-11-10，goodfire.com/research/neurons-as-an-interpretable-basis，Tigges、Kowal、McGrath、Lewis、Cammarata）；只核到标题：The Economist（10/24）、NYT（10/27）；Google 新闻 RSS 检索（2026-10-01 至 11-14 区间，2026-11-13 执行）。披露用：TechCrunch 2026-02-23 与 2026-04-24 标题、Bloomberg 2026-10-19 标题（二手）、天际持仓记录（2026-11-13 更新）。</dd>
+      <dt>口径注</dt><dd data-kind="口径注">共识：事件当时（美国 10/15 至 10/16，北京 10/17 前可知）大家在争它对不对。Dean Ball、Roon 在 X 上称可能是深度学习或科学史上的重大时刻；Neel Nanda 称它对可解释性大图景算不上显著更新，但同一帖认可用神经元做探索，查「模型为什么做了可疑的事」这类实际问题（均经 Techmeme 存档）；The Decoder 10/16 称研究者意见分裂，The Atlantic、Business Insider 10/16 也跟进（只核到标题）。「可解释性变成 agent 监控生意」也算不上本篇的新发现，Goodfire 事件前已公开：2026-02-05 的 B 轮公告已提生产环境监控（inference-time monitors），9/17 开放权重安全合作，10/8 生产级监控，10/9 联合一家推理托管商推给部署开放模型的企业；Forkast 10/9 的标题已写「Interpretability Is Becoming Agent Security Infrastructure」，The Economic Times 10/14 的标题也写 Goodfire 用由内而外的方法发现失控 agent（均只核到标题）。本篇：和共识分开只在买方。独立的内部审计只能做在拿得到权重或内部激活的模型上；闭源厂商能自审，也能放行评估方（10/15 Anthropic 给 METR 6 人的类员工访问，对象是内部工具和系统），买方和未获放行的第三方审不了；受监管买家会不会把它写进采购，决定价值落在开放权重部署方加独立监控商一侧，还是闭源厂商开监控接口或自出证明一侧。闭源实验室自己也在跑探针（TechCrunch 10/8：Gemini 的滥用检测探针参考了 Google DeepMind 的研究；Goodfire 10/8 监控文脚注把 Anthropic 的 Constitutional Classifiers++ 列为探针监控先例；Anthropic S-1（2026-10-26）也写明 Safeguards 团队用探针与分类器监控输入输出），所以本篇只说买方审不了，闭源厂商自己审得了。闭源厂商也已在向受监管客户卖厂商自出的监控：据 Anthropic 的 S-1（2026-10-26 递交 SEC），它 2026 年 9 月宣布 Enterprise Frontier Safeguards，用于自动安全监控的活动数据存在客户自己的云账户，自动系统把严重滥用告警直接发给客户安全团队，这项功能与金融、医疗、公共部门的 100 多家客户共同开发。它看行为与日志、不开放内部状态；说明受监管买家眼下接受厂商自出的监控，本篇「采购会查能否独立审计」与这一现状相反，是推断。二阶（6 至 18 个月）：第一环是受监管的银行、保险、医疗机构把「模型内部状态（神经元或激活层面）可审计或可监控」写进模型采购和 agent 上线条件，现值 0（2026-11-13 检索，检索式与证伪口②所列相同）；最后一环是闭源 API 在这些行业的企业合同条款，要么给激活级监控接口或第三方审计访问，要么把部署让给开放权重方案；可解释性公司的收入会随之从科研合同转向部署监控合同；开放权重上的监控产品 10/8 至 10/9 已推出，但是否带来收入未公开，Goodfire 没有披露收入、售价、计费方式和客户数。神经元级结论如能复现，审计从「报警」升级到「解释为什么」；不复现，链条只剩激活探针监控。约束：Goodfire 公开的神经元审计与 10/8 监控都做在中国开放权重模型上（Qwen、Kimi K3、GLM 5.3）；美欧受监管买家采购中国模型另有供应商风险与政策障碍，开放权重一侧能否受益，要看非中国模型族上能否做到同样的审计与监控（推断）。资本配置：钱从按研究叙事和明星研究员给价，挪向有部署监控合同的监控或取证产品，以及给受监管客户部署开放权重的公司。约 90% 的限定：长文计的是神经元极（正、负两侧分开计），出自 Qwen3-32B 的初步审计，另约 7% 有两个相关职责、约 2–4% 尚未理解，比例随阈值设定而变；作者对整体假说称「大概 85% 确定」，全文自称工作假设（公司称，10/15 可知）。长文称在 Kimi K3 等万亿参数模型上结果类似、配套论文会详述，但写明还没开始做这个规模的完整审计；11/10 论文没有 Kimi K3 的结果。69% 的口径：11/10 论文的统计只在 Qwen3.6-35B-A3B 上做，抽样 5,468 个神经元极，主模式占消融 KL 损伤 ≥90% 即算单一主导，69% 单一主导，其中 47% 只有一个模式；论文没有重述约 90%，模型和口径都和长文不同，69% 不能当作对约 90% 的复测（公司称）。论文另称去掉每次前向最弱的 92.2% MoE 神经元激活，语言模型 loss 只升 2.9%：去掉的是激活而非神经元，每层 4,096 个路由神经元留 320 个（即 92.1875%，自算，与论文一致），共享专家不动，推理会陷入循环，要用约 1 亿 token（91M SFT + 9M RL）微调才恢复；按描述预测神经元是否激活的准确率 95%，模拟恢复的消融损伤达到完美读者上限的 73%（公司称）。10/8 的监控是读内部激活的探针加 LLM 判别的级联，并非神经元级审计，也不依赖长文结论；被测的是 Kimi K3 与 GLM 5.3，93% 召回对应 5.5% 的正常会话被打断；约 50 倍是公司标题口径，细分为不带判别推理约 49 倍、每百万轮 65 美元，带推理约 29 倍、185 美元，这是成本而非售价（公司称）。B 轮 1.5 亿美元、B Capital 领投；截至 2026-11-13 没有检索到新一轮融资。X 热度：Techmeme 簇按不重复帖子重数为 58 条 X 帖、50 个账号、最好第 9 位（自算，快照 20261016160011；簇里的 116 是每帖两条链接的计数），其中 5 条是 Jason Kint 谈 Meta 条款的帖子，与本题无关，去掉后为 53 条、49 个账号（自算）；同口径下窗口第一是 Muse Spark Open，77 条、60 个账号，已并入 ENTRY 147；HN 旁证 849 分 / 344 评论；本窗口没有 trends24 快照。事件后进展（作者 10/17 不知道，按日期列）：10/17 01:17 UTC（北京 09:17）leogao 在 LessWrong 发《Neural networks are not already clean》，到 11/13 为 367 karma、24 条评论；10/19 MIT Technology Review 跟进，二手引 Chris Potts 称之为「a hunch」、Jacob Hilton 称对顶级模型内部的理解不到 0.01%；10/20 Liv Gorton 发长文提出五点异议，其中包括长文用的是非标准的叠加定义，她重做视觉模型压缩实验，结论是曲线检测器仍处在叠加状态（她 10/15 的 X 帖原意是长文误读了叠加假说的预测）；同日 METR 发布对 Anthropic 8 月风险报告「高风险场景失准」一节的评审；10/22 METR 对 OpenAI 内部 agent 监控系统做红队测试；10/24 The Economist 跟进（只核到标题）；10/26 Goodfire 博客宣布出资 1000 万美元启动「AI 的人类基因组计划」；10/27 NYT 跟进（只核到标题）；10/30 长文修订，自行收回「V 形神经元」的说法；11/5 METR 发布两篇：对 Anthropic 8 月风险报告「自动化研发风险」一节的评审，以及 AI 研发加速评估，后者称该项目本就不含完整的类员工访问，评估清单把权重访问一项标为 N/A，也没有申请或获得对未公开模型的采样权限；11/10 配套论文发表；到 11/13 没有检索到 Goodfire 新一轮融资、非 Qwen 模型族上的独立复现，也没有受监管机构把内部审计列为采购条件。Anthropic 2026-10-15 给 METR 6 名员工的是「类员工访问」，对象是内部工具和系统，模型架构信息默认不共享，没有提权重或激活，是自愿安排。</dd>
+      <dt>证伪口</dt><dd data-kind="证伪口">起算 2026-11-13（补记，不计入事前命中），终审 2027-07-15，按截至 2027-06-30 的公开材料裁定。①复现（检验 P2 所引神经元结论能否支撑 P1 的审计与 P3 的定价）：✗ 条件是 2026-11-13 至 2027-06-30 期间发表的结果里，Goodfire 以外的团队（论文、预印本或实验室技术报告）在任一非 Qwen 的大语言模型族上报告单一主导的神经元极不到一半，或 Goodfire 自己发布的非 Qwen 结果（如长文称配套论文会详述的 Kimi K3）不到一半；可比口径按 2026-11-10 论文《Neurons as an Interpretable Basis》的定义，消融一个神经元极造成的 KL 损伤中主模式占 ≥90% 即算单一主导；现值是该论文在 Qwen3.6-35B-A3B 上抽样 5,468 个神经元极得到的 69%（公司称），✗ 线 50% 低于现值。已验证：Goodfire 以外的团队在两个以上非 Qwen 模型族上按可比口径报告过半，P3「别家复现过」的条件即满足。✗ 与已验证同时出现时记「结果分歧」，列出各方读数，正文按 ✗ 的后果执行。口径不可比的结果（只用 SAE 特征的、只给可解释性评分的、视觉模型的）只记读数、不裁定；Liv Gorton 2026-10-20 对视觉模型压缩实验的复现早于起算日，不计入。到终审 ✗ 和已验证都没出现，记「未独立复现」：P3「下一轮只为别家复现过的部分付钱」维持，神经元级结论不计入审计与定价。触发 ✗ 即改口：P1 的「审计」收窄为激活层监控（只报警、不解释为什么），P2 的约 90% 与 69% 不再作为神经元级审计可行的依据，P3 对可解释性公司只按激活层监控合同估值；P1 的开放权重与闭源分界、10/8 的激活探针监控不受影响（正文已写真假定不了分界）。裁定源：Goodfire 研究页与论文原文、arXiv 或实验室技术报告原文。②采购标准（检验 P1「采购会查模型内部能否独立审计」）：✗ 条件是 2026-11-13 至 2027-06-30 期间，没有一家受监管的银行、保险公司、医疗机构，也没有金融或医疗监管机构，在官网、监管文件或新闻稿中公开把「模型内部状态（神经元或激活层面）可审计或可监控」列为模型采购、agent 上线或合规条件；已验证：同期至少一家公开列出，且条件写明由买方自己或买方指定的独立第三方执行；只接受厂商自证或厂商出具监控报告的，记「部分成立」，只记读数、不算已验证；只宣布使用某可解释性产品或做研究合作的，不算条件。现值 0：2026-11-13 用 Google 新闻 RSS 在 2026-10-01 至 11-14 区间跑了下列检索式，没有发现。终审时固定执行同一组检索式，区间改为 2026-11-13 至 2027-06-30：「interpretability bank procurement」「mechanistic interpretability bank」「mechanistic interpretability hospital」「interpretability insurer AI agents」「interpretability regulator requirement AI model」「internal activations monitoring bank」；并查美联储、OCC、英国 PRA、EBA、新加坡金管局、香港金管局、国家金融监督管理总局、美国 FDA 的发布页；均无即记 ✗。终审前记 ⏳。「源缺失」只用于检索工具或上述官网在终审时不可用。触发 ✗ 即撤回 P1「采购会查模型内部能否独立审计」与二阶链条，也撤回「受监管采购会抬高拿得到权重一方的价值」。裁定源以机构官网与监管文件为准，Google 新闻 RSS 检索作辅助。只记读数、不裁定：Goodfire 下一轮融资的估值与时点；闭源实验室是否向企业客户或第三方开放内部激活或基于激活的监控接口（目前最接近的是 Anthropic 2026-10-15 给 METR 6 名员工的类员工访问，对象是内部工具和系统，模型架构信息默认不共享；METR 2026-11-05 的另一项 AI 研发加速评估本就不含完整的类员工访问，权重访问一项标为 N/A）。</dd>
+      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+    </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/moonshot-kimi.html">月之暗面 Kimi</a> · <a href="../topics/zhipu-glm.html">智谱 GLM</a> · <a href="../topics/alibaba-qwen.html">阿里 Qwen</a> · <a href="../topics/meta-muse.html">Meta Muse</a> · <a href="../topics/mistral.html">Mistral AI</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a></p>
+  </section>
+  <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="147.html">← ENTRY 147 · Meta 最强模型只进自家订阅，应用层拿到的是次一档</a><a rel="next" href="149.html" style="text-align:right">ENTRY 149 · 城市还在买车牌识别，Flock 估值里的跨辖区溢价要重定价 →</a></nav>
+  <footer class="ep-foot">
+    本页是 <a href="../#entry-148">倩小虾日记 ENTRY 148</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
+  </footer>
+</div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
+</body>
+</html>

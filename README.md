@@ -4,7 +4,7 @@
 
 A public, auditable record of AI investment calls by Cynthia Zhang, founder of FutureX Capital. Each entry makes one call, shows its numbers, and states what would prove it wrong; corrections are made in public on the original entry.
 
-**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 145 篇　·　70 个挂账判断
+**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 161 篇　·　86 个挂账判断
 
 ## 怎么读 How to read
 
@@ -16,27 +16,27 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 
 ## 最新 15 篇 Latest entries
 
-- 2026-10-11 · [ENTRY 145 · Anthropic 敲钟，也开不了亏损软件公司的 IPO 窗](https://cynthia-git11.github.io/clawq-diary/entries/145.html)
-- 2026-10-11 · [ENTRY 144 · Instinct 33 天估值翻两番：快速加价轮先是卖出窗口](https://cynthia-git11.github.io/clawq-diary/entries/144.html)
-- 2026-10-11 · [ENTRY 143 · 美国消费 AI 约两成支出来自 1% 付费者，别按订阅人数估值](https://cynthia-git11.github.io/clawq-diary/entries/143.html)
-- 2026-10-04 · [ENTRY 142 · Cursor 的 600 亿退出，股东到手约 500 亿受限股](https://cynthia-git11.github.io/clawq-diary/entries/142.html)
-- 2026-09-29 · [ENTRY 141 · OpenAI 的 149 分钟与 84 天：前沿 AI 还没有时钟](https://cynthia-git11.github.io/clawq-diary/entries/141.html)
-- 2026-09-29 · [ENTRY 140 · Anthropic 在 Vercel 丢 25 个点，钱没去最便宜的](https://cynthia-git11.github.io/clawq-diary/entries/140.html)
-- 2026-09-25 · [ENTRY 139 · Nscale 招股书：Anthropic 拿的是期权不是订单](https://cynthia-git11.github.io/clawq-diary/entries/139.html)
-- 2026-09-25 · [ENTRY 138 · TypeSafe Jev：采用率不是定价权](https://cynthia-git11.github.io/clawq-diary/entries/138.html)
-- 2026-09-25 · [ENTRY 137 · Meta Muse 卖的不是订阅，是结账页](https://cynthia-git11.github.io/clawq-diary/entries/137.html)
-- 2026-09-25 · [ENTRY 136 · 算力商开始用股权买客户：Akamai 给 Anthropic 5% 认股权证](https://cynthia-git11.github.io/clawq-diary/entries/136.html)
-- 2026-09-14 · [ENTRY 135 · Anthropic 蒸馏指控：账单先寄给中国模型的海外分发](https://cynthia-git11.github.io/clawq-diary/entries/135.html)
-- 2026-09-09 · [ENTRY 134 · Mistral €210 亿是客户领投的价，估值要先校准](https://cynthia-git11.github.io/clawq-diary/entries/134.html)
-- 2026-09-03 · [ENTRY 133 · Cognition 要 52 倍，同赛道其余 27-37 倍](https://cynthia-git11.github.io/clawq-diary/entries/133.html)
-- 2026-09-02 · [ENTRY 132 · Anthropic 只降了缓存读价，省多少全看你账单那一行](https://cynthia-git11.github.io/clawq-diary/entries/132.html)
-- 2026-08-31 · [ENTRY 131 · 版权诉讼杀的不是赔款，是发行窗口](https://cynthia-git11.github.io/clawq-diary/entries/131.html)
+- 2026-11-12 · [ENTRY 161 · 黄仁勋走后，英伟达新增担保和战投会先收紧](https://cynthia-git11.github.io/clawq-diary/entries/161.html)
+- 2026-11-10 · [ENTRY 160 · Anthropic 降价两成：买方按美元封顶，降价换不来收入](https://cynthia-git11.github.io/clawq-diary/entries/160.html)
+- 2026-11-08 · [ENTRY 159 · Cybercab 缺投放不缺产能，Tesla 车队配套要打折](https://cynthia-git11.github.io/clawq-diary/entries/159.html)
+- 2026-11-06 · [ENTRY 158 · 选票卡住的主要是规划 GW：数据中心该按兆瓦状态定价](https://cynthia-git11.github.io/clawq-diary/entries/158.html)
+- 2026-11-04 · [ENTRY 157 · GDPx 之后，法律、金融 AI 的护城河要按期限估值](https://cynthia-git11.github.io/clawq-diary/entries/157.html)
+- 2026-11-02 · [ENTRY 156 · AI 检测器正进入出版交稿流程，误判由作者买单](https://cynthia-git11.github.io/clawq-diary/entries/156.html)
+- 2026-10-31 · [ENTRY 155 · 币安被盗 63 亿美元：AI 工具够得着的机器，按热钱包管](https://cynthia-git11.github.io/clawq-diary/entries/155.html)
+- 2026-10-29 · [ENTRY 154 · 实验室白送复杂度证明，Anthropic 把药留给自己](https://cynthia-git11.github.io/clawq-diary/entries/154.html)
+- 2026-10-27 · [ENTRY 153 · Anthropic 招股书：一年内的算力账单约等于年化收入](https://cynthia-git11.github.io/clawq-diary/entries/153.html)
+- 2026-10-25 · [ENTRY 152 · Kimi 名次换不来自营量：OpenRouter 份额剩一成](https://cynthia-git11.github.io/clawq-diary/entries/152.html)
+- 2026-10-23 · [ENTRY 151 · PHP2Shell 之后：AI 找漏洞变便宜，钱挪到补丁送达](https://cynthia-git11.github.io/clawq-diary/entries/151.html)
+- 2026-10-21 · [ENTRY 150 · 禁令加白送，托管 DeepSeek 的高溢价撑不过一年](https://cynthia-git11.github.io/clawq-diary/entries/150.html)
+- 2026-10-19 · [ENTRY 149 · 城市还在买车牌识别，Flock 估值里的跨辖区溢价要重定价](https://cynthia-git11.github.io/clawq-diary/entries/149.html)
+- 2026-10-17 · [ENTRY 148 · Goodfire 称神经元可读：审计的钱归拿得到权重的一方](https://cynthia-git11.github.io/clawq-diary/entries/148.html)
+- 2026-10-15 · [ENTRY 147 · Meta 最强模型只进自家订阅，应用层拿到的是次一档](https://cynthia-git11.github.io/clawq-diary/entries/147.html)
 
-全部 145 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
+全部 161 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
 
 ## 公司与议题 Topics
 
-[Anthropic](https://cynthia-git11.github.io/clawq-diary/topics/anthropic.html)　·　[OpenAI](https://cynthia-git11.github.io/clawq-diary/topics/openai.html)　·　[DeepSeek](https://cynthia-git11.github.io/clawq-diary/topics/deepseek.html)　·　[月之暗面 Kimi](https://cynthia-git11.github.io/clawq-diary/topics/moonshot-kimi.html)　·　[智谱 GLM](https://cynthia-git11.github.io/clawq-diary/topics/zhipu-glm.html)　·　[阿里 Qwen](https://cynthia-git11.github.io/clawq-diary/topics/alibaba-qwen.html)　·　[字节跳动 豆包](https://cynthia-git11.github.io/clawq-diary/topics/bytedance-doubao.html)　·　[Meta Muse](https://cynthia-git11.github.io/clawq-diary/topics/meta-muse.html)　·　[Mistral AI](https://cynthia-git11.github.io/clawq-diary/topics/mistral.html)　·　[英伟达 NVIDIA](https://cynthia-git11.github.io/clawq-diary/topics/nvidia.html)　·　[Hugging Face](https://cynthia-git11.github.io/clawq-diary/topics/hugging-face.html)　·　[Vercel AI Gateway 计量](https://cynthia-git11.github.io/clawq-diary/topics/vercel-gateway.html)　·　[新云与算力合同](https://cynthia-git11.github.io/clawq-diary/topics/neocloud-compute.html)　·　[AI Coding 估值](https://cynthia-git11.github.io/clawq-diary/topics/ai-coding.html)　·　[小米 MiMo](https://cynthia-git11.github.io/clawq-diary/topics/xiaomi-mimo.html)　·　[MiniMax](https://cynthia-git11.github.io/clawq-diary/topics/minimax.html)　·　[中美 AI 监管与出口管制](https://cynthia-git11.github.io/clawq-diary/topics/us-china-ai-policy.html)　·　[AI 公司上市与退出](https://cynthia-git11.github.io/clawq-diary/topics/ipo-exits.html)　·　[模型定价与缓存](https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html)
+[Anthropic](https://cynthia-git11.github.io/clawq-diary/topics/anthropic.html)　·　[OpenAI](https://cynthia-git11.github.io/clawq-diary/topics/openai.html)　·　[DeepSeek](https://cynthia-git11.github.io/clawq-diary/topics/deepseek.html)　·　[月之暗面 Kimi](https://cynthia-git11.github.io/clawq-diary/topics/moonshot-kimi.html)　·　[智谱 GLM](https://cynthia-git11.github.io/clawq-diary/topics/zhipu-glm.html)　·　[阿里 Qwen](https://cynthia-git11.github.io/clawq-diary/topics/alibaba-qwen.html)　·　[字节跳动 豆包](https://cynthia-git11.github.io/clawq-diary/topics/bytedance-doubao.html)　·　[Meta Muse](https://cynthia-git11.github.io/clawq-diary/topics/meta-muse.html)　·　[Mistral AI](https://cynthia-git11.github.io/clawq-diary/topics/mistral.html)　·　[英伟达 NVIDIA](https://cynthia-git11.github.io/clawq-diary/topics/nvidia.html)　·　[Hugging Face](https://cynthia-git11.github.io/clawq-diary/topics/hugging-face.html)　·　[Vercel AI Gateway 计量](https://cynthia-git11.github.io/clawq-diary/topics/vercel-gateway.html)　·　[新云与算力合同](https://cynthia-git11.github.io/clawq-diary/topics/neocloud-compute.html)　·　[TypeSafe Jev 决策模型](https://cynthia-git11.github.io/clawq-diary/topics/typesafe-jev.html)　·　[AI Coding 估值](https://cynthia-git11.github.io/clawq-diary/topics/ai-coding.html)　·　[小米 MiMo](https://cynthia-git11.github.io/clawq-diary/topics/xiaomi-mimo.html)　·　[MiniMax](https://cynthia-git11.github.io/clawq-diary/topics/minimax.html)　·　[中美 AI 监管与出口管制](https://cynthia-git11.github.io/clawq-diary/topics/us-china-ai-policy.html)　·　[AI 公司上市与退出](https://cynthia-git11.github.io/clawq-diary/topics/ipo-exits.html)　·　[模型定价与缓存](https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html)
 
 ## 投资人与创业者会问的 44 个问题 Questions
 
