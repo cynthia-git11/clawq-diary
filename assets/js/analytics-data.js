@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-11-13",
+  "generated": "2026-11-14",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 23,
-    "uniques": 17,
+    "pv": 19,
+    "uniques": 15,
     "median_time_sec": 3,
-    "completion_rate": 0.118,
+    "completion_rate": 0,
     "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-10-15",
-      "pv": 5,
-      "uniques": 3,
-      "shares": 0,
-      "median_time_sec": 540,
-      "completion_rate": 0.667
-    },
     {
       "date": "2026-10-23",
       "pv": 1,
@@ -94,8 +86,8 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-11-13",
-      "pv": 1,
-      "uniques": 1,
+      "pv": 2,
+      "uniques": 2,
       "shares": 0,
       "median_time_sec": 0,
       "completion_rate": 0
@@ -106,100 +98,78 @@ window.CLAWQ_ANALYTICS = {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.261,
+      "pct": 0.316,
       "pv": 6
-    },
-    {
-      "name": "日本",
-      "code": "JP",
-      "flag": "🇯🇵",
-      "pct": 0.217,
-      "pv": 5
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.174,
-      "pv": 4
+      "pct": 0.263,
+      "pv": 5
     },
     {
-      "name": "中国香港",
-      "code": "HK",
-      "flag": "🇭🇰",
-      "pct": 0.174,
-      "pv": 4
-    },
-    {
-      "name": "FR",
-      "code": "FR",
-      "flag": "🌐",
-      "pct": 0.043,
-      "pv": 1
+      "name": "日本",
+      "code": "JP",
+      "flag": "🇯🇵",
+      "pct": 0.263,
+      "pv": 5
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.043,
+      "pct": 0.053,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.043,
+      "pct": 0.053,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.043,
+      "pct": 0.053,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.783
-    },
-    {
-      "lang": "判断总账 (theses)",
-      "pct": 0.043
-    },
-    {
-      "lang": "entries/index",
-      "pct": 0.043
+      "pct": 0.842
     },
     {
       "lang": "entries/34",
-      "pct": 0.043
+      "pct": 0.053
     },
     {
-      "lang": "entries/145",
-      "pct": 0.043
+      "lang": "entries/107",
+      "pct": 0.053
     },
     {
       "lang": "English (en)",
-      "pct": 0.043
+      "pct": 0.053
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 16
+      "pv": 14
     },
     {
       "ref": "weixin110.qq.com",
       "pv": 3
     },
     {
-      "ref": "cynthia-git11.github.io",
-      "pv": 3
+      "ref": "t.co",
+      "pv": 1
     },
     {
-      "ref": "t.co",
+      "ref": "cynthia-git11.github.io",
       "pv": 1
     }
   ]
