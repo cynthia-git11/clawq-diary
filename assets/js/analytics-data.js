@@ -5,9 +5,9 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 19,
-    "uniques": 15,
-    "median_time_sec": 3,
+    "pv": 23,
+    "uniques": 19,
+    "median_time_sec": 0,
     "completion_rate": 0,
     "shares": 0
   },
@@ -91,74 +91,82 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 0,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-11-15",
+      "pv": 4,
+      "uniques": 4,
+      "shares": 0,
+      "median_time_sec": 0,
+      "completion_rate": 0
     }
   ],
   "countries": [
     {
-      "name": "新加坡",
-      "code": "SG",
-      "flag": "🇸🇬",
-      "pct": 0.316,
-      "pv": 6
-    },
-    {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.263,
-      "pv": 5
+      "pct": 0.391,
+      "pv": 9
+    },
+    {
+      "name": "新加坡",
+      "code": "SG",
+      "flag": "🇸🇬",
+      "pct": 0.261,
+      "pv": 6
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.263,
+      "pct": 0.217,
       "pv": 5
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.053,
+      "pct": 0.043,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.053,
+      "pct": 0.043,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.053,
+      "pct": 0.043,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.842
+      "pct": 0.87
     },
     {
       "lang": "entries/34",
-      "pct": 0.053
+      "pct": 0.043
     },
     {
       "lang": "entries/107",
-      "pct": 0.053
+      "pct": 0.043
     },
     {
       "lang": "English (en)",
-      "pct": 0.053
+      "pct": 0.043
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 14
+      "pv": 18
     },
     {
       "ref": "weixin110.qq.com",
