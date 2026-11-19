@@ -5,7 +5,7 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 29,
+    "pv": 31,
     "uniques": 22,
     "median_time_sec": 0,
     "completion_rate": 0,
@@ -110,10 +110,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-11-19",
-      "pv": 1,
+      "pv": 3,
       "uniques": 1,
       "shares": 0,
-      "median_time_sec": 0,
+      "median_time_sec": 455,
       "completion_rate": 0
     }
   ],
@@ -122,79 +122,79 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.31,
+      "pct": 0.29,
       "pv": 9
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.31,
+      "pct": 0.29,
       "pv": 9
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.207,
+      "pct": 0.194,
       "pv": 6
     },
     {
       "name": "英国",
       "code": "GB",
       "flag": "🇬🇧",
-      "pct": 0.034,
-      "pv": 1
+      "pct": 0.097,
+      "pv": 3
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.034,
+      "pct": 0.032,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.034,
+      "pct": 0.032,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.034,
+      "pct": 0.032,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.034,
+      "pct": 0.032,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.828
+      "pct": 0.839
     },
     {
       "lang": "entries/161",
-      "pct": 0.069
+      "pct": 0.065
     },
     {
       "lang": "entries/34",
-      "pct": 0.034
+      "pct": 0.032
     },
     {
       "lang": "entries/107",
-      "pct": 0.034
+      "pct": 0.032
     },
     {
       "lang": "English (en)",
-      "pct": 0.034
+      "pct": 0.032
     }
   ],
   "referrers": [
@@ -203,11 +203,11 @@ window.CLAWQ_ANALYTICS = {
       "pv": 22
     },
     {
-      "ref": "weixin110.qq.com",
-      "pv": 3
+      "ref": "cynthia-git11.github.io",
+      "pv": 5
     },
     {
-      "ref": "cynthia-git11.github.io",
+      "ref": "weixin110.qq.com",
       "pv": 3
     },
     {
