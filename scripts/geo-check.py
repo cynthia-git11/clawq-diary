@@ -30,7 +30,9 @@ Checks:
  10. No dead URL in the discovery files: every <loc> and xhtml:link href in sitemap-index.xml and the sitemaps it lists, and
      every markdown link target on this site in llms.txt, is a file in the repo (a directory URL → its index.html). The
      press-ja.html hreflang alternate was a 404 for weeks: geo-work/hygiene0928.py add_ja copied every hreflang="en" link
-     to a ja one without checking that the page exists.
+     to a ja one without checking that the page exists. Names are compared exactly (git ls-files: tracked + untracked, not
+     ignored; os.walk when not in a git checkout), because macOS ignores case and Pages does not: topics/MiniMax.html
+     passes os.path.exists on a Mac and is a 404 online.
 """
 import re, json, sys, os, glob, html as _html
 from xml.etree import ElementTree as ET
@@ -242,19 +244,40 @@ BASE = "https://cynthia-git11.github.io/clawq-diary/"
 def _url_file(u):
     r = u[len(BASE):].split("#")[0].split("?")[0]
     return r + "index.html" if r == "" or r.endswith("/") else r
+def _site_files():
+    """exact (case-sensitive) relative paths that GitHub Pages will serve: tracked plus untracked-not-ignored files (the
+    publish scripts run this check before `git add -A`, so a new entries/<N>.html is still untracked here). os.path.exists
+    ignores case on macOS, where the publish scripts run this check, while Pages and the ubuntu CI do not."""
+    import subprocess
+    try:
+        _r = subprocess.run(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard"], capture_output=True, timeout=60)
+        _s = {p for p in _r.stdout.decode("utf-8").split("\0") if p} if _r.returncode == 0 else set()
+    except (OSError, subprocess.SubprocessError, UnicodeDecodeError):
+        _s = set()
+    if _s:
+        return _s
+    _s = set()      # not a git checkout (e.g. a plain copy for a rehearsal): every file on disk, exact names
+    for _d, _sub, _fs in os.walk("."):
+        _sub[:] = [x for x in _sub if x != ".git"]
+        _s.update(os.path.relpath(os.path.join(_d, x), ".").replace(os.sep, "/") for x in _fs)
+    return _s
+def _served(u, files):
+    p = _url_file(u)
+    return p in files and os.path.isfile(p)     # a tracked file deleted from the work tree is gone after `git add -A`
 try:
     _dead = []
+    _files = _site_files()
     _maps = ["sitemap-index.xml"] + [u[len(BASE):] for u in re.findall(r"<loc>([^<]+)</loc>", read("sitemap-index.xml")) if u.startswith(BASE)]
     for _f in dict.fromkeys(_maps + ["sitemap.xml"]):
-        if not os.path.exists(_f):
+        if _f not in _files or not os.path.isfile(_f):
             _dead.append(f"sitemap-index.xml → {_f} (missing sitemap)")
             continue
         _s = read(_f)
         for _u in re.findall(r"<loc>([^<]+)</loc>", _s) + re.findall(r'<xhtml:link[^>]*href="([^"]+)"', _s):
-            if _u.startswith(BASE) and not os.path.exists(_url_file(_u)):
+            if _u.startswith(BASE) and not _served(_u, _files):
                 _dead.append(f"{_f} → {_u}")
     for _u in re.findall(r"\]\((" + re.escape(BASE) + r"[^)\s]*)\)", read("llms.txt")):
-        if not os.path.exists(_url_file(_u)):
+        if not _served(_u, _files):
             _dead.append(f"llms.txt → {_u}")
     for _x in _dead[:10]:
         errors.append(f"dead URL — {_x}")
