@@ -13,7 +13,7 @@ GEO 每日优化器 · geo-optimize.py
      B 的规则 2026-11-21 起自动并入 data/ledger.json 的撤回原话 / 判错分项；index / en / ja 的 FAQ 答案逐条整段判。
   C. 体检：死锚（#entry-N 指向不存在的条目）、篇数计数跨 carrier 一致、
      AI 爬虫清单是否覆盖 2026 主力 bot、最新一篇是否已进 FAQ、判断台账派生文件同步、
-     单篇页台账状态条与徽章一致且 JSON-LD 可解析、FAQ 复述已 ✗/◐ 判断须带对账指针（C7，scripts/hub_sync.py）。
+     单篇页台账状态条与徽章一致且 JSON-LD 可解析、FAQ 复述已 ✗/◐ 判断须带对账指针、已有指针须与判断现状一致（C7，scripts/hub_sync.py）。
   A3 的计数锚点表与 gen-ledger.py 共用 scripts/hub_sync.py（en hero、press、带日期的 FAQ 篇数、theses 导语）。
   D. GEO 健康分（0–100）+ 人读报告，打到 stdout（进 CI 日志）。
 
@@ -79,6 +79,7 @@ if latest_date:
 #    scripts/hub_sync.py 的同一张锚点表，与 gen-ledger.py 共用：en hero「DAY N」、en「Public entries written」、
 #    index/ja FAQ 里带日期的篇数、theses 导语、press / press-en 的 Day 与篇数、en/ja Blog.dateModified）────
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.dont_write_bytecode = True   # no scripts/__pycache__ for geo-daily.yml's `git add -A`
 import hub_sync as HS
 if latest_date:
     try:
@@ -149,7 +150,8 @@ for r in DECAY_RULES:
         except FileNotFoundError:
             pass
 # C7（2026-11-21）：FAQ 答案复述了已 ✗ / ◐ 的判断（按导语 ENTRY / 日期、faq_calls 覆盖表、原话命中）却缺对账指针，
-# 或「台账现状」/ 带日期的篇数过期——这些由 gen-ledger.py 写；这里只告警，不在 CI 里改内容。
+# 或已有指针的状态与 data/ledger.json 不符（含改判 ✓ / ⏳）、位置不在利益披露之前，或「台账现状」过期——
+# 这些由 gen-ledger.py 写；这里只告警，不在 CI 里改内容。
 try:
     import json as _json, html as _html
     _L = _json.load(io.open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))

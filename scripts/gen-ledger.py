@@ -15,7 +15,9 @@ Writes: data/ledger.json, ledger.csv (UTF-8 BOM), theses-en.html, data/ledger-co
         sitemap.xml (plain <url> for theses-en.html, no xhtml:link so hygiene0928.add_ja leaves it alone); through
         scripts/hub_sync.py also the Day / entry-count spans buildN.py does not bump (en hero 「DAY N」, en 「Public entries
         written」, dated FAQ counts, theses lede, press.html / press-en.html) and the dated pointers to the ledger card on
-        FAQ answers that restate a call now ✗ / ◐ (data/ledger-overrides.json "faq_calls" settles ambiguous lead dates).
+        FAQ answers that restate a call now ✗ / ◐ (data/ledger-overrides.json "faq_calls" settles ambiguous lead dates;
+        pointers already present follow their call's status, ✓ and ⏳ included), plus the ENTRY 114 number note on the
+        en.html ENTRY 112 row.
 Status comes ONLY from the badge class (b-ok / b-bad / b-part / b-open); nothing is inferred from prose. Dates are machine-read
         only from fixed wordings on the card (「DATE 终审」「终审 DATE」「续看至 DATE」「期限 DATE」「维持 ⏳ 至 DATE」, 「（DATE 对账：」
         「DATE 对账（ENTRY N）：」, 「（DATE 读数：」); a card without them is labelled "not machine-read", never "no date".
@@ -120,6 +122,7 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
         written = w2
     E[n] = dict(raw=raw.strip(), title=strip(raw), date=date_d, written=written)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 import hub_sync as HS
 try: SITE = HS.site_state(idx)
 except ValueError as e: die(str(e))
@@ -591,6 +594,8 @@ for f in ("index.html", "en.html", "ja.html", "press.html", "press-en.html"):
         OUT[f], acts, ws = HS.faq_sync(f, OUT[f], calls, stats, updated, DATES, over.get("faq_calls"), NUM)
         for x in acts: print(f"  {f} FAQ: {x}")
         for x in ws: warn(x)
+        OUT[f], acts = HS.row_fixes(f, OUT[f], NUM, DATES)   # en.html entry rows: the same dated number note (ENTRY 112 ~2.1x)
+        for x in acts: print(f"  {f} {x}")
 for f in ("index.html", "en.html", "ja.html"):
     for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', OUT[f], re.S): json.loads(b)
 

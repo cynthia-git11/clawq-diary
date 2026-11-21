@@ -2,9 +2,14 @@
  "_doc": "Hand-filled, checked against index.html. correction_entry: the separate entry that publicly corrected a ✗ call (its entry date becomes corrected_on). 43 → ENTRY 44 (2026-05-12, footnote 「更正：本条对 Day 65「智力成本一年跌 128 倍」作补充修正」); 68 → ENTRY 70 (2026-06-09, 「本篇公开修正 6 月 7 日那篇」); 75 → ENTRY 111 (2026-07-25, 「判断总账：ENTRY 75（6/13）标 ✗，今日公开修正」). Calls corrected at a dated reconciliation (102, 103, 110, 118, 141 on 2026-11-13) have no entry here: their corrected_on is the reconciliation date on the card.",
  "correction_entry": {"43": 44, "68": 70, "75": 111},
  "faq_calls": {
-  "_doc": "Hand-checked 2026-11-21 against index.html / en.html. FAQ answer (exact question) → the ledger calls it restates, for answers whose lead date has several entries (scripts/hub_sync.py rule c; [] = restates none of the ✗/◐ calls of that date). 2026-06-13 = ENTRY 74/75/76/78 (only 75, the SpaceX IPO call, is on the ledger; ✗ via ENTRY 111); 2026-09-29 = ENTRY 140 (Vercel gateway, ◐) and 141 (OpenAI 149 minutes, ✗). The ENTRY 125 answer also restates ENTRY 118's status (「并补报 ENTRY 118 证伪口：Sol 从未降价…继续进行中」), now ✗.",
+  "_doc": "Hand-checked 2026-11-21 against index.html / en.html. FAQ answer (exact question) → the ledger calls it restates, for answers whose lead date has several entries (scripts/hub_sync.py rule c; [] = restates none of the ✗/◐ calls of that date). 2026-06-13 = ENTRY 74/75/76/78 (only 75, the SpaceX IPO call, is on the ledger; ✗ via ENTRY 111); 2026-09-29 = ENTRY 140 (Vercel gateway, ◐) and 141 (OpenAI 149 minutes, ✗). The ENTRY 125 answer also restates ENTRY 118's status (「并补报 ENTRY 118 证伪口：Sol 从未降价…继续进行中」), now ✗. 2026-09-25 = ENTRY 136 (Akamai warrant), 137 (Meta Muse), 138 (TypeSafe Jev), 139 (Nscale S-1), one answer each; the TypeSafe Jev answer is ENTRY 138 (⏳, its sub-claim 「促销一停采用就掉」 judged wrong on 2026-11-13). The ENTRY 127 answer calls Stripe–OpenRouter 「系 ENTRY 125 判断的外部验证」, and 125 is now ◐.",
   "index.html": {
    "Anthropic 的 $600B ARR 传闻靠谱吗？张倩怎么核这笔账？": [118, 125],
+   "TypeSafe 的决策模型 Jev 一周被网关和开发者追捧，它有定价权吗？": [138],
+   "Nscale 招股书里 Anthropic 那 446 亿美元合同，对新云和 Anthropic 分别意味着什么？": [139],
+   "Meta Muse 上线 10 天登顶美区 App Store，它的商业模式跑得通吗？": [137],
+   "Akamai 给 Anthropic 的认股权证意味着什么？算力合同里的股权条款怎么看？": [136],
+   "Stripe 收购 OpenRouter 对 AI 数据引用意味着什么？张倩为何说更该认的错是自己的？": [127, 125],
    "OpenAI 为什么第二次暂停最强模型的训练？这对 AI 创业者和投资人意味着什么？": [141],
    "Vercel AI Gateway 上 Anthropic 的花费份额为什么从 64% 跌到不足四成？钱去了哪里？": [140],
    "张倩怎么看 Fable 5 被美国政府叫停？": [],
