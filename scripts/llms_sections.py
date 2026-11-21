@@ -7,6 +7,11 @@ anchors on (the 「⚖️ **判断总账」 ledger line, the 「- [ENTRY N · Da
 A block that is not there yet is inserted before the first anchor of `before` that exists (an anchor starting with "\n" is a
 line start), followed by `sep`; with no anchor found it is appended.
 Guard: a block may not carry a line buildN.py / gen-entry-pages.py would match ("- [ENTRY", "⚖️ **判断总账", "个重大判断").
+
+months() (llms-full.txt, called by gen-entry-pages.py): one 「# YYYY 年 M 月 · 倩小虾日记存档」 heading before each run of entry sections
+of the same month, taken from each section's own date. buildN.py inserts every new section in front of the previous newest one,
+so before 2026-11-21 ENTRY 84–161 (June–November) all sat under the May heading. Only headings directly followed by a section are
+regenerated; buildN.py's anchor (「## ENTRY N · Day D · 」) and the section text are never touched. Idempotent.
 """
 import re
 
@@ -27,3 +32,18 @@ def put(text, name, body, before=("\n## 引用规范",), sep="\n\n"):
             j = i + 1 if a.startswith("\n") else i   # keep the blank line in front of a heading
             return text[:j] + blk + sep + text[j:]
     return text.rstrip("\n") + "\n\n" + blk + "\n"
+
+
+MONTH_H = re.compile(r"^# \d{4} 年 \d{1,2} 月 · 倩小虾日记存档\n\n(?=## )", re.M)
+TOP_H = re.compile(r"^# \d{4} 年 \d{1,2} 月 · 倩小虾日记存档\n\n(?=> )", re.M)   # the archive intro, not a month
+SEC_H = re.compile(r"^## (?:ENTRY \d+ · Day \d+ · (\d{4})-(\d{2})-\d{2}|(\d{4})-(\d{2})-\d{2} · Day \d+ · ENTRY \d+ · )", re.M)
+
+
+def months(text):
+    t = TOP_H.sub("# 倩小虾日记存档 · 逐篇全文\n\n", MONTH_H.sub("", text), count=1)
+    out, pos, last = [], 0, None
+    for m in SEC_H.finditer(t):
+        ym = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
+        if ym != last:
+            out += [t[pos:m.start()], f"# {ym[0]} 年 {int(ym[1])} 月 · 倩小虾日记存档\n\n"]; pos, last = m.start(), ym
+    return "".join(out) + t[pos:]

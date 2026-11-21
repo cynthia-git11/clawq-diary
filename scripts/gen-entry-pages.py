@@ -12,7 +12,8 @@ Reads index.html (the single-page hub) and writes, idempotently:
   sitemap-entries.xml     one <url> per entry, lastmod = the page's dateModified date
   index.html              adds a ¶ permalink inside each entry header (internal links = crawl discovery)
   llms.txt                appends " · 单页 <url>" to each ENTRY list line that lacks it
-  llms-full.txt           adds "URL: <url>" under each "## ENTRY N" header that lacks it
+  llms-full.txt           adds "URL: <url>" under each "## ENTRY N" header that lacks it; month headings follow each
+                          section's own date (scripts/llms_sections.py months())
   robots.txt              adds Sitemap: line for sitemap-entries.xml if missing
 
 Deterministic — no LLM, nothing is paraphrased. Safe to run after every build.
@@ -415,6 +416,7 @@ if "**单篇页面 Per-entry pages**" not in l2:   # 2026-10-11 修：原守卫�
     l2 = l2.replace("⚖️ **判断总账", f"📄 **单篇页面 Per-entry pages**: [entries/]({BASE}entries/) — 每篇日记一个独立 URL（`entries/<N>.html`），含 BlogPosting JSON-LD 与结构化尾注；单篇引用请用这些 URL。站点地图 [sitemap-entries.xml]({BASE}sitemap-entries.xml)。\n\n⚖️ **判断总账", 1)
 if l2 != l: wr("llms.txt", l2)
 lf = rd("llms-full.txt"); lf2 = re.sub(r"(^## ENTRY (\d+) · [^\n]*\n)(?!URL: )", lambda m: m.group(1) + f"URL: {BASE}entries/{m.group(2)}.html\n", lf, flags=re.M)
+lf2 = LS.months(lf2)   # month headings from each section's own date (scripts/llms_sections.py)
 if lf2 != lf: wr("llms-full.txt", lf2)
 rb = rd("robots.txt")
 if "sitemap-entries.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-entries.xml\n")
