@@ -13,6 +13,12 @@ Checks:
   4. The newest entry (ItemList position 1) is synced across carriers
   4b. BlogPosting @graph contains all ItemList top-5 (anti silent drift)
   5. Day count is consistent (title vs stats) in index.html
+  6. atom.xml entries: no duplicates, descending, newest == ItemList position 1
+  7. Judgment ledger: theses.html card count == badge count == "N 个重大" (×3) == numberOfItems,
+     one date-only dateModified, and the llms.txt ledger line a/b/c/d == the badge counts.
+     These hold after buildN.py alone (it bumps all of them together); the files derived by
+     scripts/gen-ledger.py (tiles, data/ledger.json, theses-en.html) are checked as warnings
+     in geo-optimize.py instead, so a publish that skips gen-ledger never turns CI red.
 """
 import re, json, sys
 from xml.etree import ElementTree as ET
@@ -30,7 +36,7 @@ def jsonld_blocks(html):
 
 
 # 1. JSON-LD valid
-for f in ["index.html", "en.html", "ja.html"]:
+for f in ["index.html", "en.html", "ja.html", "theses.html", "theses-en.html"]:
     try:
         for i, b in enumerate(jsonld_blocks(read(f))):
             try:
@@ -107,10 +113,37 @@ try:
 except Exception as _e:
     errors.append(f"atom.xml: order/duplicate check crashed — {_e}")
 
+# 7. Judgment ledger invariants (2026-11-21, with scripts/gen-ledger.py). buildN.py asserts the first three
+#    before it adds a card; if they break, the next daily build stops half-way through theses.html.
+try:
+    _th = read("theses.html")
+    _cards = len(re.findall(r'<div class="call"[^>]*>', _th))
+    _cnt = {k: len(re.findall(r'<span class="badge %s">' % k, _th)) for k in ("b-ok", "b-bad", "b-part", "b-open")}
+    if sum(_cnt.values()) != _cards:
+        errors.append(f"theses.html: {_cards} cards but {sum(_cnt.values())} status badges")
+    _tot = re.search(r"(\d+) 个重大", _th)
+    if not _tot or int(_tot.group(1)) != _cards or _th.count(f"{_cards} 个重大") != 3:
+        errors.append(f"theses.html: '{_cards} 个重大' must appear exactly 3 times and match the {_cards} cards (buildN.py)")
+    if _th.count('"numberOfItems"') != 1 or f'"numberOfItems": {_cards}' not in _th:
+        errors.append(f"theses.html: exactly one numberOfItems, equal to {_cards} (buildN.py)")
+    _dm = re.search(r'"dateModified": "(\d{4}-\d{2}-\d{2})"', _th)
+    if not _dm or _th.count(f'"dateModified": "{_dm.group(1)}"') != 1:
+        errors.append("theses.html: the first date-only dateModified must be unique in the file (buildN.py)")
+    _ll = re.search(r"(\d+) 个重大判断的可审计台账（(\d+) 已验证 / (\d+) 已公开修正 / (?:(\d+) 部分成立 / )?(\d+) 进行中，(\d{4}-\d{2}-\d{2}) 更新）", read("llms.txt"))
+    if not _ll:
+        errors.append("llms.txt: ledger line not in the format buildN.py parses")
+    else:
+        _got = [int(_ll.group(1)), int(_ll.group(2)), int(_ll.group(3)), int(_ll.group(4) or 0), int(_ll.group(5))]
+        _want = [_cards, _cnt["b-ok"], _cnt["b-bad"], _cnt["b-part"], _cnt["b-open"]]
+        if _got != _want:
+            errors.append(f"llms.txt: ledger line {_got} ≠ theses.html badges {_want} (total/✓/✗/◐/⏳) — run scripts/gen-ledger.py")
+except FileNotFoundError as _e:
+    errors.append(f"ledger check: file missing — {_e}")
+
 if errors:
     print("GEO health check FAILED:")
     for e in errors:
         print("  ✗", e)
     sys.exit(1)
 
-print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok")
+print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok")

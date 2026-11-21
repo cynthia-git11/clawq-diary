@@ -196,6 +196,30 @@ covered = (not toks) or any(t in faq_blob for t in toks)
 if not covered:
     notes.append("最新一篇（entry-%d，关键词 %s）似未进 FAQ——补一条 Q&A 可提升被直接引用率" % (latest, "/".join(toks)))
 
+# ── C5. 判断台账派生文件同步（scripts/gen-ledger.py 产出；2026-11-21 起）──────
+# buildN.py 只改卡片、"N 个重大"、numberOfItems 和 llms.txt 台账行（这些由 geo-check 第 7 项硬拦）；
+# 数字牌、id="call-N"、Claim JSON-LD、data/ledger.json、theses-en.html 要等 gen-ledger 跑过才同步。
+# 这里只告警（geo-daily 会开待办 issue），不让每小时 CI 变红。
+try:
+    import json as _json
+    th = rd("theses.html")
+    cnt = {k: len(re.findall(r'<span class="badge %s">' % k, th)) for k in ("b-ok", "b-bad", "b-part", "b-open")}
+    cards = len(re.findall(r'<div class="call"[^>]*>', th))
+    tiles = {"b-" + k: int(v) for k, v in re.findall(r'<div class="s (ok|bad|part|open)"><div class="v">(\d+)</div>', th)}
+    probs = []
+    if tiles != cnt: probs.append("数字牌 %s ≠ 徽章 %s" % (tiles, cnt))
+    no_id = cards - len(re.findall(r'<div class="call" id="call-\d+"', th))
+    if no_id: probs.append("%d 张卡没有 id=call-N" % no_id)
+    if th.count('"@type": "Claim"') != cards: probs.append("Claim JSON-LD %d 条 ≠ 卡片 %d 张" % (th.count('"@type": "Claim"'), cards))
+    st = _json.load(io.open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))["stats"]
+    if [st["total"], st["verified"], st["corrected"], st["partly"], st["open"]] != [cards, cnt["b-ok"], cnt["b-bad"], cnt["b-part"], cnt["b-open"]]:
+        probs.append("data/ledger.json 计数过期")
+    if len(re.findall(r'id="call-\d+"', rd("theses-en.html"))) != cards: probs.append("theses-en.html 条数过期")
+    if probs:
+        warns.append("判断台账派生文件与徽章计数不一致：" + "；".join(probs) + "——跑 python3 scripts/gen-ledger.py")
+except FileNotFoundError:
+    warns.append("判断台账派生文件缺失（data/ledger.json 或 theses-en.html）——跑 python3 scripts/gen-ledger.py")
+
 # ── D. GEO 健康分 ──────────────────────────────────────────────────
 score = 100 - 12 * len(warns) - 3 * len(notes)
 score = max(0, min(100, score))
