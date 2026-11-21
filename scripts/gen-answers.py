@@ -8,24 +8,33 @@ Input : data/answers.json  — list of items:
          lead_zh, judgment_zh, facts_zh, landing_zh, falsify_zh (verbatim from the ENTRY footnote), status_zh,
          lead_en, judgment_en, facts_en, landing_en, falsify_en,
          optional: verdict_zh (str or list: verbatim quote(s) of a dated reconciliation note on a cited entry), status_en
-         (hand-written English status, CJK-free), entities [record names for the holdings disclosure]}
+         (hand-written English status, CJK-free), entities [record names for the holdings disclosure],
+         notes_reviewed {entry: date}: a newer dated note that was read and does not bear on this answer (it stays out of
+         the lead; the STALE warning comes back as soon as a note newer than that date lands)}
         q20's lead may carry the placeholder {holdings}: it is replaced by holdings_lib.portfolio() (never typed by hand).
 Reads : index.html (number-fidelity gate: every number in every text field must appear verbatim in a cited ENTRY, allowing
         亿↔B/M unit conversions ×/÷10,100,1000; falsify_zh must be verbatim, clause by clause, after the same normalisation),
-        theses.html + index.html footnotes (dated reconciliation notes 「（D 对账：…）」「｜D 对账：…」), data/ledger.json (status),
+        theses.html + index.html footnotes (dated notes 「（D 对账/补对账/读数/更正：…）」「｜D 对账：…」), data/ledger.json (status),
         data/entries-en-map.json + entries/en/<N>.html (English h1 for source links), data/topics.json (entity names,
         non-holdings disclosure sentences), holdings.json via scripts/holdings_lib.py (every holdings sentence).
 Verdict-first lead (2026-11-21): when a cited card changed after the question's date, the lead opens with the dated note
-        「D 对账（ENTRY N）：<verdict_zh>」 and then 「原判断（date）：<lead>」. verdict_zh is allowed only as a verbatim quote of a
-        note dated after the question; it is required (else a ledger-template line + WARN, never a failed build) when a cited
-        call was judged ✗ / ◐ / ✓, or had a sub-claim judged wrong, after the question's date. English pages never translate the
+        「D 对账（ENTRY N）：<verdict_zh>」 and then 「原判断（date）：<lead>」, newest note first. verdict_zh is allowed only as a
+        verbatim quote (≥12 characters, starting and ending at a clause boundary of the note) of a 对账 / 补对账 / 读数 / 更正 note
+        dated after the question; it is required (else a ledger-template line + WARN, never a failed build) when a cited call's
+        status changed to ✗ / ◐ / ✓, or a sub-claim was judged wrong, after the question's date (the change date is the first
+        note carrying that verdict, not the last reconciliation). A cited card whose newest dated note (any label) is later
+        than both the question and every quoted verdict is listed as 'WARN STALE'. A cited entry written after the question
+        gets a 「后续日记」/ 'Later entry' line (its own title / English h1 only). English pages never translate the
         note: the line is a template from data/ledger.json (status, dates; retracted wording quoted as Chinese original), and
         the status bar is status_en or, when no faithful English exists, a ledger.json template (WARN lists those questions);
         a hand-written status_en that no longer shows a cited call's ✗ / ◐ / ✓ is treated as stale and replaced the same way.
         Template text carries only ledger.json fields (dates, ENTRY numbers) and quotes already gated on the Chinese side.
 Writes: answers/<slug>.html, answers/en/<slug>.html, answers/index.html, answers/en/index.html, sitemap-answers.xml,
         robots.txt Sitemap line if missing. Slugs are frozen into data/answers.json on first build (never renamed after publish).
-Guards: number / verdict / falsifier gate → exit 1 before writing; a banned phrase in any written page → exit 1;
+        Pages that print the portfolio sentence (q20's {holdings}, the two index pages) take holdings.json's 'updated' as a
+        modification date.
+Guards: number / verdict / falsifier gate → exit 1 before writing; a banned phrase in any rendered page → exit 1 before
+        anything is written; a record name / alias the question's text names but its disclosure omits → WARN (never printed);
         companies a question names that are not in holdings.json are printed as 'PENDING disclosure qNN: X' and nothing is
         said about holding them (--strict-disclosure makes that exit 1). geo-check.py repeats the page checks hourly in CI.
 Usage : python3 scripts/gen-answers.py [--root DIR] [--dry] [--no-verify] [--strict-disclosure]   (root: --root, else $CLAWQ_ROOT)
@@ -108,41 +117,70 @@ def paren_at(s, i):
             d -= 1
             if d == 0: return s[i + 1:j]
     return s[i + 1:]
-NOTE_CARD = re.compile(r"（(\d{4}-\d{2}-\d{2}) ?(补?对账)")
-NOTE_FOOT = re.compile(r"^\s*(\d{4}-\d{2}-\d{2}) ?(补?对账)")
-_notes = {}
+LABELS = r"(补?对账|读数|更正)"          # quotable dated notes (the author's ledger wording); 更新 footnotes are holdings updates
+NOTE_CARD = re.compile(r"（(\d{4}-\d{2}-\d{2}) ?" + LABELS)
+NOTE_FOOT = re.compile(r"^\s*(\d{4}-\d{2}-\d{2}) ?" + LABELS)
+NOTE_ANY = re.compile(r"（(\d{4}-\d{2}-\d{2}) ?([^：（）\s]{1,10})：")   # any dated card note (分母修正, 补记 …): staleness only
+_notes = {}; _cardseg = {}
+def card_seg(n):
+    if n not in _cardseg:
+        i = th_raw.find(f'<div class="call" id="call-{n}"'); j = th_raw.find('<div class="call"', i + 10) if i != -1 else -1
+        _cardseg[n] = plain(th_raw[i:j if j != -1 else len(th_raw)]) if i != -1 else ""
+    return _cardseg[n]
 def notes_for(n):
-    """dated reconciliation notes on ENTRY n → [(date, label, text, where)]: the theses.html card 「（D 对账：…）」 and the
-    index.html footnote 「｜D 对账：…」 (both are the author's published wording; the verdict quotes one of them verbatim)"""
+    """dated notes on ENTRY n → [(date, label, text, where)]: the theses.html card 「（D 对账：…）」 and the index.html
+    footnote 「｜D 对账：…」, labels 对账 / 补对账 / 读数 / 更正 (the author's published wording; a verdict quotes one verbatim)"""
     if n in _notes: return _notes[n]
-    out = []; i = th_raw.find(f'<div class="call" id="call-{n}"')
-    if i != -1:
-        j = th_raw.find('<div class="call"', i + 10); seg = plain(th_raw[i:j if j != -1 else len(th_raw)])
-        for m in NOTE_CARD.finditer(seg):
-            body = paren_at(seg, m.start()); k = body.find("：")
-            out.append((m.group(1), m.group(2), body[k + 1:] if k != -1 else body, "card"))
+    out = []; seg = card_seg(n)
+    for m in NOTE_CARD.finditer(seg):
+        body = paren_at(seg, m.start()); k = body.find("：")
+        out.append((m.group(1), m.group(2), body[k + 1:] if k != -1 else body, "card"))
     for part in plain(eblk.get(n, "")).split("｜"):
         m = NOTE_FOOT.match(part)
         if m: out.append((m.group(1), m.group(2), part[m.end():].lstrip("：，, "), "footnote"))
     _notes[n] = out; return out
-def decision_date(c):
-    """the date a call was judged ✗ / ◐ / ✓, or had a sub-claim judged wrong / wording retracted; None while plainly open"""
-    if c["status"] == "corrected": return c.get("corrected_on") or c.get("reconciled")
-    if c["status"] in ("partly", "verified"): return c.get("reconciled")
-    return c.get("reconciled") if (c.get("subclaim_judged_wrong") or c.get("retracted")) else None
+def newest_note(n):
+    """(date, label) of the newest dated note on ENTRY n: any label on the card, the quotable labels in the footnote"""
+    xs = [(m.group(1), m.group(2)) for m in NOTE_ANY.finditer(card_seg(n))] + [(d, lab) for d, lab, _, w in notes_for(n) if w == "footnote"]
+    return max(xs) if xs else None
+BOUND = "：，；。"                        # clause boundaries; a quote may also start after an em dash 「——」
+def quoted_in(v, body):
+    """v is a verbatim quote of body: ≥12 characters, starting and ending at a clause boundary (or the note's start / end)"""
+    v = plain(v).rstrip("。"); b = plain(body)
+    if len(v) < 12: return False
+    i = b.find(v)
+    while i != -1:
+        z = i + len(v)
+        if (i == 0 or b[i - 1] in BOUND + "（—") and (z == len(b) or b[z] in BOUND + "）"): return True
+        i = b.find(v, i + 1)
+    return False
+MARK = {"corrected": ("记 ✗", "✗ 认错"), "partly": ("◐", "部分成立"), "verified": ("✓", "已验证"), "open": ("记 ✗",)}   # a bare ✗ also
+# appears in falsifier wording (「✗ 线」「✗ 条件成立中」), so an open card is matched only on 「记 ✗」 or the judged-wrong wording itself
+def decision_date(n, c):
+    """the date a call's status changed to ✗ / ◐ / ✓, or a sub-claim was judged wrong / wording retracted; None while plainly
+    open. The change date is the first dated note that carries the verdict (a later reconciliation that keeps the status does
+    not move it); ledger.json's reconciled (the last reconciliation) is only the fallback."""
+    st = c["status"]
+    if st == "corrected" and c.get("correction_entry") and c.get("corrected_on"): return c["corrected_on"]
+    if st == "open" and not (c.get("subclaim_judged_wrong") or c.get("retracted")): return None
+    marks = MARK.get(st, ()) + tuple(x for x in (c.get("subclaim_judged_wrong"), c.get("retracted")) if x)
+    ds = sorted(d for d, lab, body, w in notes_for(n) if w == "card" and any(k in body for k in marks))
+    return ds[0] if ds else (c.get("corrected_on") if st == "corrected" else None) or c.get("reconciled")
+def written_of(n): return (LEDGER.get(n) or {}).get("written_date") or edate.get(n, "")
 
 LE = {"verified": "✓ Verified", "corrected": "✗ Publicly corrected", "partly": "◐ Partly right", "open": "⏳ Open"}   # = gen-entries-en.py
-def status_en_phrase(c, lead=False, quote=None):
+NOTE_EN = {"对账": "reconciliation note", "补对账": "reconciliation note", "读数": "reading note", "更正": "correction note"}
+def status_en_phrase(c, lead=False, quote=None, label="对账"):
     """English status from data/ledger.json fields only; the author's Chinese wording is quoted, never translated"""
-    st = c["status"]; k = c.get("correction_entry")
-    if st == "corrected": s = f'{LE[st]} on {c.get("corrected_on") or c.get("reconciled")}' + (f" in ENTRY {k}" if k else " at the dated ledger reconciliation")
-    elif st == "partly": s = f'{LE[st]} (reconciled {c["reconciled"]})'
-    else: s = LE[st] + (" · resolution source missing" if c.get("unresolvable") else "") + (f' (reconciled {c["reconciled"]})' if c.get("reconciled") else "")
+    st = c["status"]; k = c.get("correction_entry"); rc = c.get("reconciled"); lr = c.get("last_reading")
+    if st == "corrected": s = f'{LE[st]} on {c.get("corrected_on") or rc}' + (f" in ENTRY {k}" if k else " at the dated ledger reconciliation")
+    elif st == "partly": s = f'{LE[st]} (reconciled {rc})'
+    else: s = LE[st] + (" · resolution source missing" if c.get("unresolvable") else "") + (f' (reconciled {rc})' if rc else "")
+    if lr and (not rc or lr > rc): s += f"; last reading {lr}"
     if lead:
         if c.get("retracted"): s += f'; retracted wording (Chinese original): 「{c["retracted"]}」'
         if c.get("subclaim_judged_wrong"): s += f'; sub-claim judged wrong at reconciliation (Chinese original): 「{c["subclaim_judged_wrong"]}」'
-        if st in ("corrected", "partly"): s += "; the original call below is kept as written"
-        if st == "open" and not (c.get("retracted") or c.get("subclaim_judged_wrong")) and quote: s += f"; reconciliation note (Chinese only): 「{quote}」"
+        if st == "open" and not (c.get("retracted") or c.get("subclaim_judged_wrong")) and quote: s += f"; {NOTE_EN.get(label, 'dated note')} (Chinese only): 「{quote}」"
     else:
         if c.get("retracted"): s += "; the retracted wording is quoted in Chinese on the ledger card"
         if c.get("subclaim_judged_wrong"): s += "; a sub-claim was judged wrong at reconciliation (wording in Chinese on the ledger card)"
@@ -157,32 +195,45 @@ def verdict_template_zh(n, c, d):
     if c["status"] == "corrected" and k: return f"{d} 更正（ENTRY {n}）：在 ENTRY {k} 记 ✗ 已公开修正，原判断照原文保留，见判断台账"
     if c["status"] == "corrected": return f"{d} 对账（ENTRY {n}）：记 ✗ 已公开修正，原判断照原文保留，见判断台账"
     if c["status"] in ZH_ST: return f"{d} 对账（ENTRY {n}）：记 {ZH_ST[c['status']]}，见判断台账"
-    return f"{d} 对账（ENTRY {n}）：一条子判断记 ✗，卡片维持 ⏳ 进行中，见判断台账"
+    if c.get("subclaim_judged_wrong"): return f"{d} 对账（ENTRY {n}）：一条子判断记 ✗，卡片维持 ⏳ 进行中，见判断台账"
+    return f"{d} 对账（ENTRY {n}）：撤回措辞「{c['retracted']}」，卡片维持 ⏳ 进行中，见判断台账"
 
 # ---------- verdicts (verbatim dated notes) ----------
 problems = []
-VERD = {}
+VERD = {}; REVIEWED = []
 for q in Q:
     q["entries"] = [int(n) for n in q["entries"]]
     vs = q.get("verdict_zh") or []
     vs = [vs] if isinstance(vs, str) else list(vs)
     got = []
-    for v in vs:
-        hits = [(d, lab, n, w) for n in q["entries"] for d, lab, body, w in notes_for(n) if d > q["date"] and norm(v) in norm(body)]
+    for k, v in enumerate(vs):
+        hits = [(d, lab, n, w) for n in q["entries"] for d, lab, body, w in notes_for(n) if d > q["date"] and quoted_in(v, body)]
         if not hits:
-            problems.append(f"{q['id']} verdict_zh: not a verbatim quote of a reconciliation note dated after {q['date']} on a cited entry — {v[:40]}"); continue
+            problems.append(f"{q['id']} verdict_zh: not a verbatim quote (≥12 characters, clause to clause) of a 对账/读数/更正 note dated after {q['date']} on a cited entry — {v[:40]}"); continue
         d, lab, n, w = max(hits, key=lambda h: (h[0], h[3] == "card"))
-        newer = max(x[0] for x in notes_for(n))
-        if newer > d: WARN.append(f"{q['id']}: verdict quotes the {d} note of ENTRY {n}; ENTRY {n} has a newer note dated {newer}")
-        c = LEDGER.get(n)
-        got.append(dict(entry=n, date=d, zh=f"{d} {lab}（ENTRY {n}）：{v}",
-                        en=f"Ledger update {d} (ENTRY {n}): " + (status_en_phrase(c, True, v) if c else f"reconciliation note (Chinese only): 「{v}」")))
-    for n in q["entries"]:       # required: a cited call judged after the question was written
-        c = LEDGER.get(n); d = decision_date(c) if c else None
+        c = LEDGER.get(n); v = v.rstrip("。")
+        same = any(g["entry"] == n and g["date"] == d for g in got)   # a second quote from the same note: no repeated status
+        got.append(dict(entry=n, date=d, rank=(0, k), zh=f"{d} {lab}（ENTRY {n}）：{v}",
+                        en=(f"Same {d} {NOTE_EN.get(lab, 'dated note')} (ENTRY {n}, Chinese only): 「{v}」" if same else
+                            f"Ledger update {d} (ENTRY {n}): " + (status_en_phrase(c, True, v, lab) if c else f"{NOTE_EN.get(lab, 'dated note')} (Chinese only): 「{v}」"))))
+    for n in q["entries"]:       # required: a cited call whose status changed after the question was written
+        c = LEDGER.get(n); d = decision_date(n, c) if c else None
         if not d or d <= q["date"] or any(g["entry"] == n and g["date"] >= d for g in got): continue
         WARN.append(f"VERDICT missing {q['id']}: ENTRY {n} is {c['status']} since {d} — lead shows the ledger template; quote the dated note into verdict_zh")
-        got.append(dict(entry=n, date=d, zh=verdict_template_zh(n, c, d), en=f"Ledger update {d} (ENTRY {n}): " + status_en_phrase(c, True)))
-    VERD[q["id"]] = sorted(got, key=lambda g: (q["entries"].index(g["entry"]), g["date"]))
+        got.append(dict(entry=n, date=d, rank=(1, q["entries"].index(n)), zh=verdict_template_zh(n, c, d), en=f"Ledger update {d} (ENTRY {n}): " + status_en_phrase(c, True)))
+    seen_ok = {int(k): v for k, v in (q.get("notes_reviewed") or {}).items()}
+    for n in q["entries"]:       # staleness: a dated note on a cited card that is newer than the question and every quoted verdict
+        nn = newest_note(n)
+        if not nn or nn[0] <= q["date"] or any(g["entry"] == n and g["date"] >= nn[0] for g in got): continue
+        if seen_ok.get(n, "") >= nn[0]: REVIEWED.append(f"{q['id']}/ENTRY {n} ({nn[0]})"); continue
+        WARN.append(f"STALE {q['id']}: ENTRY {n} has a {nn[1]} note dated {nn[0]} after the question and no verdict quotes it — quote it into verdict_zh")
+    for n in q["entries"]:       # a cited entry written after the question: its own title / English h1, nothing else
+        wd = written_of(n)
+        if wd and wd > q["date"]:
+            en = f"Later entry (English): ENTRY {n} · {EN_TITLE[n]} (written {wd})" if n in EN_TITLE else f"Later entry: ENTRY {n} (written {wd}; Chinese only)"
+            got.append(dict(entry=n, date=wd, rank=(2, q["entries"].index(n)), zh=f"后续日记（ENTRY {n}，写于 {wd}）：{etitle.get(n, '')}", en=en, later=True))
+            if f"ENTRY {n}" not in (q.get("status_zh") or ""): WARN.append(f"{q['id']} status_zh: says nothing about ENTRY {n}, written {wd} after the question")
+    VERD[q["id"]] = sorted(got, key=lambda g: (g["date"], (-g["rank"][0], -g["rank"][1])), reverse=True)   # newest first
 
 # ---------- number-fidelity gate (+ verbatim falsifier, + CJK-free status_en) ----------
 FIELDS_ZH = ["lead_zh", "judgment_zh", "facts_zh", "landing_zh", "falsify_zh", "status_zh", "verdict_zh"]
@@ -243,7 +294,24 @@ def disclosure(q, zh):
         d = re.sub(r"^本日记由 Claude 系工具写作(与核实)?，", "", d); d = re.sub(r"^This diary is written with Claude, which", "Claude", d)
         if d and d not in parts: parts.append(d)
     return ("利益披露：" if zh else "Disclosure: ") + ("；".join(parts) if zh else ". ".join(parts)) + ("。" if zh else ".")
+def uses_portfolio(q): return any("{holdings}" in (q.get(f) or "") for f in ("lead_zh", "lead_en"))
 def fill(s, zh): return (s or "").replace("{holdings}", ("；".join(HL.portfolio(HOLD, True)) if zh else ". ".join(HL.portfolio(HOLD, False))))
+TEXT_F = ["q_zh", "q_en", "lead_zh", "lead_en", "judgment_zh", "judgment_en", "facts_zh", "facts_en", "landing_zh", "landing_en",
+          "falsify_zh", "falsify_en", "status_zh", "status_en", "verdict_zh"]
+def named_not_disclosed(q):
+    """record names / aliases the question's own text names (Latin: whole word, case-sensitive; CJK: substring) that its
+    disclosure does not cover — a WARN for the author's checklist only; nothing is ever printed from this scan"""
+    t = " ".join(" ".join(v) if isinstance(v, list) else (v or "") for v in (q.get(f) for f in TEXT_F))
+    have = {(HL.lookup(HOLD, x) or {}).get("name") for x in entity_names(q)}; out = []
+    if uses_portfolio(q): have |= {r["name"] for r in HOLD["rows"].values() if r["kind"] in ("held", "exited")}
+    for r in HOLD["rows"].values():
+        if r["name"] in have or r["kind"] == "fund": continue
+        for a in [r["name"]] + r["aliases"] + SCAN_ONLY.get(r["name"], []):
+            hit = (a in t) if HL.CJK.search(a) else re.search(r"(?<![A-Za-z0-9])" + re.escape(a) + r"(?![A-Za-z0-9])", t)
+            if hit: out.append(f"{r['name']} (as {a})"); break
+    return out
+SCAN_ONLY = {"字节跳动": ["字节", "火山引擎"]}   # short forms the site writes; used by the WARN scan only, never printed
+HOLD_UPD = HOLD.get("updated", "")
 
 CSS = """
     .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
@@ -285,7 +353,15 @@ def nav(zh, depth, alt_href):
 
 ZHQ = re.compile(r"「[^「」]*(?:「[^「」]*」[^「」]*)*」")
 def zh_spans(h): return ZHQ.sub(lambda m: f'<span lang="zh-CN">{m.group(0)}</span>', h)   # Chinese quotes on English pages
-def cut300(s): return s if len(s) <= 300 else s[:297] + "…"
+def cut300(s, n=300):
+    """meta descriptions only: cut at a sentence end (。；！？ or '. ' / '; '), else a clause comma, else a space that does not
+    split a number from its unit — never inside a number or a quote's unit"""
+    if len(s) <= n: return s
+    w = s[:n - 2]; cut = w.rstrip()
+    for pat in (r"[。；！？]|[.;](?= )", r"[，,](?= ?\S)", r"(?<=[^\d.,$%–-]) (?=[^\d$%])"):
+        ends = [m.end() for m in re.finditer(pat, w) if m.end() >= n // 2]
+        if ends: cut = w[:ends[-1]].rstrip(" ，,；;"); break
+    return cut + "…" + "」" * max(0, cut.count("「") - cut.count("」"))   # a cut inside a quote closes it
 def lead_parts(q, zh):
     """→ (verdict line, lead line, description, last verdict date): the verdict-first lead"""
     lead = fill(q.get("lead_zh" if zh else "lead_en"), zh)
@@ -293,8 +369,16 @@ def lead_parts(q, zh):
     if not vs: return "", lead, cut300(lead), ""
     end = lambda x, z: x if x[-1:] in ("。", "！", "？", ".") else x + ("。" if z else ".")
     vline = ("" if zh else " ").join(end(v["zh" if zh else "en"], zh) for v in vs)
+    if not zh and any(not v.get("later") and (LEDGER.get(v["entry"]) or {}).get("status") in ("corrected", "partly") or
+                      (LEDGER.get(v["entry"]) or {}).get("subclaim_judged_wrong") for v in vs):
+        vline += " The original call below is kept as written."
     orig = f"原判断（{q['date']}）：{lead}" if zh else f"Original call ({q['date']}): {lead}"
     return vline, orig, cut300(vline + " " + orig), max(v["date"] for v in vs)
+def page_updated(q):
+    """→ (date, label kind): the newest of the question's own update, its verdicts, and the holdings record for {holdings}"""
+    vdate = lead_parts(q, True)[3]
+    u = max(q.get("updated", ""), q.get("date", ""), vdate, HOLD_UPD if uses_portfolio(q) else "")
+    return u, ("ledger" if u == vdate else "page")
 def status_en_html(q, up):
     """→ (html, plain): hand-written status_en, else one template line per cited entry from data/ledger.json"""
     if q.get("status_en"): return esc(q["status_en"]), q["status_en"]
@@ -323,7 +407,7 @@ def page(q, zh):
     answer_txt = " ".join(x for x in [vline, orig, judg, facts, land, (("证伪口：" if zh else "Falsifier: ") + fals) if fals else "",
                                       (("台账状态：" if zh else "Ledger status: ") + status) if status else ""] if x)
     date = q.get("date") or max((edate.get(n, "") for n in q["entries"]), default="")
-    updated = max(q.get("updated", ""), date, vdate)
+    updated, ukind = page_updated(q)
     def src1(n):
         if zh: return f'<a href="{up}entries/{n}.html">ENTRY {n} · {esc(etitle.get(n, ""))}</a>'
         if n in EN_TITLE: return f'<a href="{up}entries/en/{n}.html">ENTRY {n} · {esc(EN_TITLE[n])}</a>'
@@ -363,7 +447,8 @@ def page(q, zh):
     mod = f'<meta property="article:modified_time" content="{updated}" />' if updated != date else ""
     rel_div = ('  <div class="aw-rel">' + L["rel"] + C + '<ul>' + rel_html + '</ul></div>') if rel_html else ''
     top_div = ('  <div class="aw-rel">' + L["topics"] + C + tops_html + '</div>') if tops_html else ''
-    upd_meta = (' · ' + ('台账更新' if zh else 'Ledger updated') + f' <time datetime="{updated}">{updated}</time>') if updated != date else ''
+    ulab = ("台账更新" if zh else "Ledger updated") if ukind == "ledger" else ("更新" if zh else "Updated")
+    upd_meta = (f' · {ulab} <time datetime="{updated}">{updated}</time>') if updated != date else ''
     return f"""<!DOCTYPE html>
 <html lang="{'zh-CN' if zh else 'en'}">
 <head>
@@ -406,12 +491,14 @@ def index_page(zh):
     items = [q for q in Q if q.get("lead_zh" if zh else "lead_en")]
     groups = [("投资人", "投资人 · 估值、退出、算力合同、份额" if zh else "Investors · valuation, exits, compute contracts, share"),
               ("创业者", "创业者 · 定价、融资、算力采购、合规、选型" if zh else "Founders · pricing, fundraising, compute, compliance, model choice")]
-    upd = {q["id"]: max(q.get("updated", ""), q.get("date", ""), lead_parts(q, zh)[3]) for q in items}
+    upd = {q["id"]: page_updated(q) for q in items}
     T = (lambda h: h) if zh else zh_spans
     def li(q):
-        u = upd[q["id"]]; ul = (" · " + ("台账更新 " if zh else "ledger updated ") + u) if u != q.get("date", "") else ""
+        u, uk = upd[q["id"]]
+        ul = (" · " + (("台账更新 " if zh else "ledger updated ") if uk == "ledger" else ("更新 " if zh else "updated ")) + u) if u != q.get("date", "") else ""
+        vline, orig = lead_parts(q, zh)[:2]      # the full lead, never the cut meta description
         return (f'    <li><a href="{q["slug"]}.html">{esc(q["q_zh"] if zh else q["q_en"])}</a>\n'
-                f'      <div class="aw-lp">{T(esc(lead_parts(q, zh)[2]))}</div>\n'
+                f'      <div class="aw-lp">{T(esc((vline + " " + orig) if vline else orig))}</div>\n'
                 f'      <div class="aw-ld">{esc(q.get("date", ""))}{ul} · {" · ".join("ENTRY " + str(n) for n in q["entries"])}</div></li>')
     secs = []
     for key, label in groups:
@@ -423,7 +510,7 @@ def index_page(zh):
             "Cynthia Zhang (founder, FutureX Capital) answers the questions investors and AI founders ask right now — valuation multiples, IPO timing, compute contracts, model pricing, gateway share, regulation. One page per question, each dated, with its falsifier and a link to the diary entry it comes from.")
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": url, "url": url, "name": title, "description": desc, "inLanguage": "zh-CN" if zh else "en", "isPartOf": {"@id": f"{BASE}#blog"}, "author": {"@id": f"{BASE}#cynthia"},
-         "dateModified": max(upd.values(), default=""),
+         "dateModified": max([u for u, _ in upd.values()] + [HOLD_UPD]),
          "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": [
              {"@type": "ListItem", "position": i + 1, "name": q["q_zh"] if zh else q["q_en"], "url": BASE + (f"answers/{q['slug']}.html" if zh else f"answers/en/{q['slug']}.html")} for i, q in enumerate(items)]}},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "倩小虾日记" if zh else "The ClawQ Chronicles", "item": BASE}, {"@type": "ListItem", "position": 2, "name": "问答" if zh else "Q&A", "item": url}]},
@@ -459,17 +546,28 @@ def index_page(zh):
 </html>
 """
 
-for q in Q: disclosure(q, True)       # collects PENDING before anything is written
+for q in Q:
+    disclosure(q, True)               # collects PENDING before anything is written
+    miss = named_not_disclosed(q)
+    if miss: WARN.append(f"DISCLOSURE {q['id']}: the text names {', '.join(miss)} but its disclosure does not — add to entities if it is the company")
 if PENDING:
     for qid, nme in PENDING: print(f"PENDING disclosure {qid}: {nme}")
     if STRICT_DISC: print("--strict-disclosure: the companies above are not in holdings.json"); sys.exit(1)
-WRITTEN = []
-def wr_page(f, s): wr(f, s); WRITTEN.append(f)
+OUT = {}
 for q in Q:
-    wr_page(f"answers/{q['slug']}.html", page(q, True)); wr_page(f"answers/en/{q['slug']}.html", page(q, False))
-wr_page("answers/index.html", index_page(True)); wr_page("answers/en/index.html", index_page(False))
-LM = {q["id"]: max(q.get("updated", ""), q.get("date", ""), lead_parts(q, True)[3]) for q in Q}
-last = max(LM.values(), default="")
+    OUT[f"answers/{q['slug']}.html"] = page(q, True); OUT[f"answers/en/{q['slug']}.html"] = page(q, False)
+OUT["answers/index.html"] = index_page(True); OUT["answers/en/index.html"] = index_page(False)
+# output guard, before anything is written: no banned disclosure phrase in any rendered page (a clause quoted verbatim from
+# ENTRY 131–139 is exempt)
+ORIG = " ".join(plain(eblk.get(n, "")) for n in range(131, 140))
+bad = [(f, h) for f, s in OUT.items() for h in HL.banned_hits(plain(s), ORIG)]
+for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
+if bad:
+    for w in WARN: print("WARN " + w)
+    print("gen-answers FAILED: banned disclosure phrase in output — nothing written"); sys.exit(1)
+for f, s in OUT.items(): wr(f, s)
+LM = {q["id"]: page_updated(q)[0] for q in Q}
+last = max(list(LM.values()) + [HOLD_UPD])
 urls = [(f"{BASE}answers/", last, "0.9"), (f"{BASE}answers/en/", last, "0.8")]
 for q in Q:
     lm = LM[q["id"]] or last
@@ -478,10 +576,6 @@ wr("sitemap-answers.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns
    "".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod><changefreq>weekly</changefreq><priority>{p}</priority></url>\n" for u, d, p in urls) + "</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-answers.xml" not in rb and "sitemap-index.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-answers.xml\n")
-# output guard: no banned disclosure phrase in any page written here (a clause quoted verbatim from ENTRY 131–139 is exempt)
-ORIG = " ".join(plain(eblk.get(n, "")) for n in range(131, 140))
-bad = [(f, h) for f in WRITTEN for h in HL.banned_hits(plain(rd(f)), ORIG)]
-for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
 for w in WARN: print("WARN " + w)
-if bad: print("gen-answers FAILED: banned disclosure phrase in output"); sys.exit(1)
+if REVIEWED: print(f"reviewed newer notes kept out of the lead (notes_reviewed): {', '.join(REVIEWED)}")
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · questions {len(Q)} · pages {2*len(Q)+2} · fidelity problems {len(problems)}{' (bypassed)' if problems and not VERIFY else ''}")

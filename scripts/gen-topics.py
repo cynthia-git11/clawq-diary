@@ -11,7 +11,8 @@ Writes: topics/<slug>.html, topics/index.html, sitemap-topics.xml (robots.txt Si
 
 Deterministic: the timeline items are the entry's own title + first sentence (verbatim, no paraphrase);
 the optional blurb is the only authored prose and must be verified before it lands in data/topics.json.
-Guard: a banned disclosure phrase in any written page → exit 1 (a clause quoted verbatim from ENTRY 131–139 is exempt).
+Guard: a banned disclosure phrase in any rendered page → exit 1 before anything is written (a clause quoted verbatim from
+ENTRY 131–139 is exempt).
 Usage: python3 scripts/gen-topics.py [--root DIR] [--dry]   (root: --root, else $CLAWQ_ROOT)
 """
 import re, os, sys, json, html, shutil, tempfile
@@ -90,7 +91,7 @@ def match(t, e):
 
 ans_p = os.path.join(ROOT, "data/answers.json")
 answers = json.load(open(ans_p, encoding="utf-8")) if os.path.exists(ans_p) else []
-made = []; PENDING = []; WRITTEN = []
+made = []; PENDING = []; OUT = {}
 for t in topics:
     hits = [e for e in entries if match(t, e)]
     if len(hits) < t.get("min_entries", 3): continue
@@ -118,8 +119,7 @@ for t in topics:
     qa = [q for q in answers if t["slug"] in q.get("topics", [])]
     qrows = "\n".join(f'      <li><a href="../answers/{q["slug"]}.html">{esc(q["q_zh"])}</a><span class="tp-when">{esc(q.get("date", ""))}</span></li>' for q in qa)
     qblock = (f'  <h2 class="tp-h2">投资人与创业者问过（{len(qa)}）</h2>\n  <ul class="tp-list">\n{qrows}\n  </ul>\n' if qa else "")
-    WRITTEN.append(f"topics/{t['slug']}.html")
-    wr(f"topics/{t['slug']}.html", f"""<!DOCTYPE html>
+    OUT[f"topics/{t['slug']}.html"] = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -155,11 +155,11 @@ for t in topics:
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
-""")
+"""
     made.append(dict(slug=t["slug"], name=t["name"], name_en=t.get("name_en", ""), n=len(hits), last=hits[0]["date_d"]))
 
 rows = "\n".join(f'      <li><a href="{m["slug"]}.html">{esc(m["name"])}</a>{(" · " + esc(m["name_en"])) if m["name_en"] else ""}<span class="tp-when">{m["n"]} 篇 · 最近 {m["last"]}</span></li>' for m in made)
-wr("topics/index.html", f"""<!DOCTYPE html>
+OUT["topics/index.html"] = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -183,14 +183,15 @@ wr("topics/index.html", f"""<!DOCTYPE html>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
-""")
+"""
+for p in PENDING: print(p)
+bad = [(f, h) for f, s in OUT.items() for h in HL.banned_hits(html.unescape(strip(s)), " ".join(ORIG))]
+for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
+if bad: print("gen-topics FAILED: banned disclosure phrase in output — nothing written"); sys.exit(1)
+for f, s in OUT.items(): wr(f, s)
 urls = [f"  <url><loc>{BASE}topics/</loc><lastmod>{max(m['last'] for m in made) if made else ''}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>"]
 urls += [f"  <url><loc>{BASE}topics/{m['slug']}.html</loc><lastmod>{m['last'] if len(m['last']) == 10 else m['last'] + '-01'}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>" for m in made]
 wr("sitemap-topics.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-topics.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-topics.xml\n")
-for p in PENDING: print(p)
-bad = [(f, h) for f in WRITTEN + ["topics/index.html"] for h in HL.banned_hits(html.unescape(strip(rd(f))), " ".join(ORIG))]
-for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
-if bad: print("gen-topics FAILED: banned disclosure phrase in output"); sys.exit(1)
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · topics {len(made)}/{len(topics)} · " + ", ".join(f"{m['slug']}={m['n']}" for m in made))
