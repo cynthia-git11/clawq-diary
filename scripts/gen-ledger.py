@@ -11,7 +11,7 @@ Reads : theses.html (cards: date, Day, claim, badge class, ev text), index.html 
         and is already on origin/main, so a commit later rewritten by `git pull --rebase` is never frozen)
 Writes: data/ledger.json, ledger.csv (UTF-8 BOM), theses-en.html, data/ledger-commits.json (new calls only), and patches
         theses.html (id="call-N", computed tiles, first-commit links, backfill marks, Dataset + Claim JSON-LD, hreflang),
-        llms.txt (ledger counts, exact buildN format), index.html / en.html / ja.html (track-record FAQ answers, en ledger link),
+        llms.txt (ledger counts, exact buildN format; the ledger files in its own <!-- gen:ledger --> block), index.html / en.html / ja.html (track-record FAQ answers, en ledger link),
         sitemap.xml (plain <url> for theses-en.html, no xhtml:link so hygiene0928.add_ja leaves it alone); through
         scripts/hub_sync.py also the Day / entry-count spans buildN.py does not bump (en hero 「DAY N」, en 「Public entries
         written」, dated FAQ counts, theses lede, press.html / press-en.html) and the dated pointers to the ledger card on
@@ -124,6 +124,7 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 import hub_sync as HS
+import llms_sections as LS
 try: SITE = HS.site_state(idx)
 except ValueError as e: die(str(e))
 DATES = HS.entry_dates(idx)
@@ -539,6 +540,12 @@ lines[li[0]] = pre + ("最新动态：" + post if post is not None else "")
 OUT["llms.txt"] = "\n".join(lines)
 mm = LL.search(OUT["llms.txt"])
 if [int(x) for x in mm.groups()[:5]] != [T, S["verified"], S["corrected"], S["partly"], S["open"]]: die("llms.txt: rewritten counts do not parse back")
+# 数据源 / 元数据: the ledger files, in this script's own <!-- gen:ledger --> block (scripts/llms_sections.py); no counts here, so
+# the block never goes stale between buildN.py (which bumps the ledger line) and the next run of this script
+OUT["llms.txt"] = LS.put(OUT["llms.txt"], "ledger",
+    f"- 判断台账 Judgment ledger: [theses.html]({BASE}theses.html)（中文）· [theses-en.html]({BASE}theses-en.html)（English）· "
+    f"逐条数据 [ledger.csv]({BASE}ledger.csv)（UTF-8 BOM）· [data/ledger.json]({BASE}data/ledger.json)：每个判断一行，含状态、对账日、裁定日、"
+    "事后补记标注与首次公开提交链接", before=("\n- 主仓库:", "\n## 合规声明"), sep="\n")
 
 # ---------------- index.html / en.html FAQ answers (anchor or warn; never widen) ----------------
 ZH_A = (f"截至 {updated}，{T} 个重大判断：{S['verified']} 个已验证、{S['corrected']} 个被她自己公开修正、{S['partly']} 个部分成立、{S['open']} 个进行中，"

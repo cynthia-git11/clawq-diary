@@ -7,7 +7,8 @@ Input : data/topics.json  [{slug, name, name_en, aliases[], blurb(optional, veri
 Reads : index.html (entries), theses.html (ledger cards), holdings.json via scripts/holdings_lib.py (every holdings sentence:
         fixed table, TOPIC_ENTITIES[slug] + the topic's entities; names not in the record are printed as PENDING and nothing
         is said about holding them — no fallback sentence)
-Writes: topics/<slug>.html, topics/index.html, sitemap-topics.xml (robots.txt Sitemap line added if missing)
+Writes: topics/<slug>.html, topics/index.html, sitemap-topics.xml (robots.txt Sitemap line added if missing), and the llms.txt
+        topic-hub list (only its own <!-- gen:topics --> block, through scripts/llms_sections.py: the topics index rows)
 
 Deterministic: the timeline items are the entry's own title + first sentence (verbatim, no paraphrase);
 the optional blurb is the only authored prose and must be verified before it lands in data/topics.json.
@@ -23,10 +24,12 @@ if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
 DRY = "--dry" in sys.argv
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import holdings_lib as HL
+import llms_sections as LS
 HOLD = HL.load()
 if DRY:
     W = tempfile.mkdtemp(prefix="topics-")
-    for f in ["index.html", "theses.html", "robots.txt"]: shutil.copy(os.path.join(ROOT, f), W)
+    for f in ["index.html", "theses.html", "robots.txt", "llms.txt"]:
+        if os.path.exists(os.path.join(ROOT, f)): shutil.copy(os.path.join(ROOT, f), W)
     os.makedirs(os.path.join(W, "data")); shutil.copy(os.path.join(ROOT, "data/topics.json"), os.path.join(W, "data"))
     ROOT = W
 def rd(f): return open(os.path.join(ROOT, f), encoding="utf-8").read()
@@ -194,4 +197,13 @@ urls += [f"  <url><loc>{BASE}topics/{m['slug']}.html</loc><lastmod>{m['last'] if
 wr("sitemap-topics.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-topics.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-topics.xml\n")
+# llms.txt topic hubs: the same rows as topics/index.html (name · English name — entries · latest date)
+if os.path.exists(os.path.join(ROOT, "llms.txt")):
+    _rows = [f"- [{m['name']}]({BASE}topics/{m['slug']}.html)" + (f" · {m['name_en']}" if m["name_en"] else "") + f" — {m['n']} 篇 · 最近 {m['last']}" for m in made]
+    _ll = rd("llms.txt")
+    _ll2 = LS.put(_ll, "topics", f"## 主题页 Topic hubs\n\n{len(made)} 个公司与议题各一页（中文），列出全部相关日记（新→旧）与挂账判断的当前状态；"
+                  f"每行：主题 · 英文名 — 相关日记篇数 · 最近一篇的日期。总索引 [topics/]({BASE}topics/)，站点地图 [sitemap-topics.xml]({BASE}sitemap-topics.xml)。\n\n"
+                  + "\n".join(_rows))
+    if _ll2 != _ll: wr("llms.txt", _ll2)
+else: print("WARN llms.txt not found — topic hubs not listed there")
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · topics {len(made)}/{len(topics)} · " + ", ".join(f"{m['slug']}={m['n']}" for m in made))

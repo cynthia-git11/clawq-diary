@@ -30,7 +30,9 @@ Verdict-first lead (2026-11-21): when a cited card changed after the question's 
         a hand-written status_en that no longer shows a cited call's ✗ / ◐ / ✓ is treated as stale and replaced the same way.
         Template text carries only ledger.json fields (dates, ENTRY numbers) and quotes already gated on the Chinese side.
 Writes: answers/<slug>.html, answers/en/<slug>.html, answers/index.html, answers/en/index.html, sitemap-answers.xml,
-        robots.txt Sitemap line if missing. Slugs are frozen into data/answers.json on first build (never renamed after publish).
+        robots.txt Sitemap line if missing, and the llms.txt Q&A index (only its own <!-- gen:answers --> block, through
+        scripts/llms_sections.py: one line per question with the zh + en URL, the question, the index page's dates and each
+        cited entry's ledger status from data/ledger.json). Slugs are frozen into data/answers.json on first build (never renamed after publish).
         Pages that print the portfolio sentence (q20's {holdings}, the two index pages) take holdings.json's 'updated' as a
         modification date.
 Guards: number / verdict / falsifier gate → exit 1 before writing; a banned phrase in any rendered page → exit 1 before
@@ -47,11 +49,13 @@ if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
 DRY = "--dry" in sys.argv; VERIFY = "--no-verify" not in sys.argv; STRICT_DISC = "--strict-disclosure" in sys.argv
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import holdings_lib as HL
+import llms_sections as LS
 HOLD = HL.load()
 SRC = ROOT
 if DRY:
     W = tempfile.mkdtemp(prefix="answers-")
-    for f in ["index.html", "robots.txt"]: shutil.copy(os.path.join(ROOT, f), W)
+    for f in ["index.html", "robots.txt", "llms.txt"]:
+        if os.path.exists(os.path.join(ROOT, f)): shutil.copy(os.path.join(ROOT, f), W)
     shutil.copytree(os.path.join(ROOT, "data"), os.path.join(W, "data"))
     ROOT = W
 def rd(f): return open(os.path.join(ROOT, f), encoding="utf-8").read()
@@ -557,15 +561,42 @@ OUT = {}
 for q in Q:
     OUT[f"answers/{q['slug']}.html"] = page(q, True); OUT[f"answers/en/{q['slug']}.html"] = page(q, False)
 OUT["answers/index.html"] = index_page(True); OUT["answers/en/index.html"] = index_page(False)
+# llms.txt Q&A index: its own <!-- gen:answers --> block (scripts/llms_sections.py), one line per question with both URLs, the
+# question as the page title, the same dates as the index page and each cited entry's status from data/ledger.json
+SYM = {"verified": "✓", "corrected": "✗", "partly": "◐", "open": "⏳"}
+def llms_line(q):
+    u, uk = page_updated(q)
+    when = q.get("date", "") + ((" · " + ("台账更新 " if uk == "ledger" else "更新 ") + u) if u != q.get("date", "") else "")
+    st = []
+    for n in q["entries"]:
+        c = LEDGER.get(n)
+        st.append(f"ENTRY {n}" + ((f" {SYM[c['status']]}" + ("（补记）" if c.get("backfill") else "")) if c else ""))
+    return (f"- [{q['q_zh']}]({BASE}answers/{q['slug']}.html) · [{q['q_en']}]({BASE}answers/en/{q['slug']}.html)"
+            f" — {when} · {' · '.join(st)}")
+LLMS = None
+if os.path.exists(os.path.join(ROOT, "llms.txt")):
+    _llq = [q for q in Q if q.get("lead_zh")]
+    _llb = [f"## 问答索引 Q&A index\n\n{len(_llq)} 个投资人与 AI 创业者会问的问题，一题一页，中文与英文各一个 URL，链接文字照抄页面上的问题。"
+            "每行之后：判断日（「台账更新 / 更新」日期与问答总索引页一致）· 所引日记及其在判断台账里的当前状态（✓ 已验证 / ✗ 已公开修正 / "
+            "◐ 部分成立 / ⏳ 进行中，取自 data/ledger.json；「补记」为事后补记、单独计数；不在台账的只列编号）。"
+            f"总索引 [answers/]({BASE}answers/) · [answers/en/]({BASE}answers/en/)，站点地图 [sitemap-answers.xml]({BASE}sitemap-answers.xml)。"]
+    for key, label in (("投资人", "### 投资人 Investors"), ("创业者", "### 创业者 Founders")):
+        qs = [q for q in _llq if q.get("persona_group") == key]
+        if qs: _llb.append(label + "\n" + "\n".join(llms_line(q) for q in qs))
+    LLMS = "\n\n".join(_llb)
+else: WARN.append("llms.txt not found — Q&A index not written")
 # output guard, before anything is written: no banned disclosure phrase in any rendered page (a clause quoted verbatim from
 # ENTRY 131–139 is exempt)
 ORIG = " ".join(plain(eblk.get(n, "")) for n in range(131, 140))
-bad = [(f, h) for f, s in OUT.items() for h in HL.banned_hits(plain(s), ORIG)]
+bad = [(f, h) for f, s in list(OUT.items()) + [("llms.txt <!-- gen:answers -->", LLMS or "")] for h in HL.banned_hits(plain(s), ORIG)]
 for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
 if bad:
     for w in WARN: print("WARN " + w)
     print("gen-answers FAILED: banned disclosure phrase in output — nothing written"); sys.exit(1)
 for f, s in OUT.items(): wr(f, s)
+if LLMS is not None:
+    _ll = rd("llms.txt"); _ll2 = LS.put(_ll, "answers", LLMS, before=("<!-- gen:topics -->", "\n## 引用规范"))
+    if _ll2 != _ll: wr("llms.txt", _ll2)
 LM = {q["id"]: page_updated(q)[0] for q in Q}
 last = max(list(LM.values()) + [HOLD_UPD])
 urls = [(f"{BASE}answers/", last, "0.9"), (f"{BASE}answers/en/", last, "0.8")]
