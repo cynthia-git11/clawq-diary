@@ -7,19 +7,28 @@ Reads : theses.html (cards: date, Day, claim, badge class, ev text), index.html 
         and 「（M/D 补记）」 backfill markers, correction-entry dates), data/entries-en-map.json + entries/en/<N>.html
         (English h1, never machine-translated), data/ledger-overrides.json (hand-filled correction entries),
         data/ledger-commits.json (first public commit per call, verified and frozen; new calls are looked up with
-        `git log --reverse -S '<title>' -- index.html` and accepted only if that commit has id="entry-N" with the same title)
+        `git log --reverse -S '<title>' -- index.html` and accepted only if that commit has id="entry-N" with the same title
+        and is already on origin/main, so a commit later rewritten by `git pull --rebase` is never frozen)
 Writes: data/ledger.json, ledger.csv (UTF-8 BOM), theses-en.html, data/ledger-commits.json (new calls only), and patches
         theses.html (id="call-N", computed tiles, first-commit links, backfill marks, Dataset + Claim JSON-LD, hreflang),
-        llms.txt (ledger counts, exact buildN format), index.html / en.html (track-record FAQ answers, en ledger link),
+        llms.txt (ledger counts, exact buildN format), index.html / en.html / ja.html (track-record FAQ answers, en ledger link),
         sitemap.xml (plain <url> for theses-en.html, no xhtml:link so hygiene0928.add_ja leaves it alone).
-Status comes ONLY from the badge class (b-ok / b-bad / b-part / b-open); nothing is inferred from prose.
+Status comes ONLY from the badge class (b-ok / b-bad / b-part / b-open); nothing is inferred from prose. Dates are machine-read
+        only from fixed wordings on the card (「DATE 终审」「终审 DATE」「续看至 DATE」「期限 DATE」「维持 ⏳ 至 DATE」, 「（DATE 对账：」
+        「DATE 对账（ENTRY N）：」, 「（DATE 读数：」); a card without them is labelled "not machine-read", never "no date".
+        Retracted wording = a 「…」 quote directly followed by a retraction verb in the latest reconciliation note.
+Date-dependent: overdue / next_resolution and the Upcoming list on theses-en.html depend on --today (default: today, Beijing),
+        so a rerun on a later day can change theses-en.html without any card change; same-day reruns change nothing.
 Guards: exit 1 when a card cannot be parsed, counts disagree, a backfill marker on the card contradicts index.html,
         or the buildN invariants on theses.html would break; also when the total drops, a call_id disappears, or a
         resolved call goes back to open (re-run with --accept after checking). Normal status changes are only printed.
 Backfill: written_date comes from index.html only — 「本篇写于 YYYY-MM-DD」, or the date line's 「（M/D 补记）」 (ENTRY 126/127);
-        a backfill (written_date > event date) is shown as 补记 / Retrospective and counted separately from pre-registered calls.
+        a backfill (written_date > event date) is shown as 补记 / Retrospective and counted separately from calls written before the outcome.
 Root  : --root DIR, else $CLAWQ_ROOT, else the repo this script lives in. Pipeline slot: after gen-entries-en.py, before
         gen-entry-pages.py (needs the fresh data/entries-en-map.json; accepts both index.html#entry-N and entries/N.html card links).
+        gen-entries-en.py runs this script itself at its end (skip with its --no-ledger); buildN.py runs gen-entries-en.py after it
+        adds a card, and publish_daily.sh / publish_backfill.sh / ledger_apply.sh run it again, so all of them pick the ledger up
+        without changes; running it again explicitly is harmless (idempotent). A guard stop makes gen-entries-en.py exit 1.
 Usage : python3 scripts/gen-ledger.py [--root DIR] [--dry] [--accept] [--no-git] [--today YYYY-MM-DD]
 """
 import re, os, sys, json, html, csv, io, subprocess, datetime
@@ -33,6 +42,7 @@ DRY = "--dry" in sys.argv; ACCEPT = "--accept" in sys.argv; NO_GIT = "--no-git" 
 BJ = datetime.timezone(datetime.timedelta(hours=8))
 TODAY = sys.argv[sys.argv.index("--today") + 1] if "--today" in sys.argv else datetime.datetime.now(BJ).strftime("%Y-%m-%d")
 DISC_EN = "This diary does not constitute promotion of, or an offer to subscribe for, any fund product."
+CLAUDE_EN = "This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not"   # same sentence as gen-answers.py
 
 def rd(f): return open(os.path.join(ROOT, f), encoding="utf-8").read()
 def strip(s): return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s))).strip()
@@ -58,6 +68,34 @@ def paren_at(s, i):
             if depth == 0: return s[i + 1:j]
     return s[i + 1:]
 def cut(s, n): return s if len(s) <= n else s[:n - 1].rstrip("，、；：。 ") + "…"
+# sentences that carry holdings / LP / disclosure wording are never copied into the JSON-LD excerpts
+DISCL = re.compile(r"利益披露|天际|持有|持仓|头寸|LP|被投|股东")
+def drop_notes(ev):
+    """the card's own text: later dated notes 「（YYYY-MM-DD …）」 removed (they are quoted separately)."""
+    out = []; i = 0
+    while i < len(ev):
+        if ev[i] == "（" and re.match(r"（\d{4}-\d{2}-\d{2}", ev[i:i + 12]):
+            i += len(paren_at(ev, i)) + 2; continue
+        out.append(ev[i]); i += 1
+    return re.sub(r"\s+", " ", "".join(out)).strip()
+def excerpt(ev, prefer=None, n=140):
+    """consecutive sentences of the card's own text, starting at the first one matching `prefer` (else the first one),
+    stopping before any disclosure sentence; cut to n characters."""
+    ss = [x.strip() for x in re.split(r"(?<=[。！？])", drop_notes(ev)) if x.strip()]
+    ok = [i for i, x in enumerate(ss) if not DISCL.search(x)]
+    if not ok: return ""
+    start = next((i for i in ok if prefer and re.search(prefer, ss[i])), ok[0])
+    out = ""
+    for x in ss[start:]:
+        if DISCL.search(x) or len(out) >= n: break
+        out += x
+    out = cut(out, n).rstrip("。")
+    return out.rstrip("、，；：") + "…" if out[-1:] in ("、", "，", "；", "：") else out
+RB_RE = re.compile(r"(\d{4}-\d{2}-\d{2}) ?(?:前后)?终[审裁]|终[审裁] ?(\d{4}-\d{2}-\d{2})|续看至 ?(\d{4}-\d{2}-\d{2})|期限 ?(\d{4}-\d{2}-\d{2})|维持 ⏳ 至 ?(\d{4}-\d{2}-\d{2})")
+REC_RE = re.compile(r"（(\d{4}-\d{2}-\d{2}) 补?对账：|(?<!（)(\d{4}-\d{2}-\d{2}) 对账（ENTRY \d+）：")
+READ_RE = re.compile(r"（(\d{4}-\d{2}-\d{2}) 读数[：，]")
+RETR_RE = re.compile(r"「([^「」]{2,40})」(?:撤回|不准|是过度外推|判错|不再成立|按预注册证伪|记为自我加压|收回)")
+COI_RE = re.compile(r"利益披露|天际持有|天际不持有|天际持仓|天际已全部退出|天际已退出")
 
 # ---------------- index.html: entries ----------------
 idx = rd("index.html")
@@ -118,16 +156,24 @@ for m in CARD_RE.finditer(th):
     if len(cw) > 1 or (cw and cw != {written}): die(f"card {n}: card says written {sorted(cw)}, index.html says {written}")
     if E[n]["written"] and not cw: warn(f"card {n}: index.html marks it written {written}, the card text has no 补记 marker")
     if written < event: warn(f"card {n}: written {written} earlier than event {event} — marker ignored, written = event"); written = event
-    recs = list(re.finditer(r"（(\d{4}-\d{2}-\d{2}) 补?对账：", ev))
-    reconciled = recs[-1].group(1) if recs else None
-    rtext = paren_at(ev, recs[-1].start()) if recs else ""
-    rtext = re.sub(r"^\d{4}-\d{2}-\d{2} 补?对账：", "", rtext)
-    rb = re.findall(r"(?:终审|续看至) ?(\d{4}-\d{2}-\d{2})", ev)
-    resolve_by = max(rb) if rb else None
-    retracted = None
-    if rtext and re.search(r"✗|撤回|不准|过度外推", rtext):
-        rr = [x for x in re.findall(r"「([^「」]{3,20})」", rtext)]
-        retracted = rr[0] if rr else None
+    recs = list(REC_RE.finditer(ev))
+    reconciled = (recs[-1].group(1) or recs[-1].group(2)) if recs else None
+    if not recs: rtext = ""
+    elif recs[-1].group(1):          # 「（DATE 对账：…）」
+        rtext = re.sub(r"^\d{4}-\d{2}-\d{2} 补?对账：", "", paren_at(ev, recs[-1].start()))
+    else:                            # 「DATE 对账（ENTRY N）：…。」 (ENTRY 89 style): up to the end of that sentence
+        rest = ev[recs[-1].end():]; d = 0; j = len(rest)
+        for k, ch in enumerate(rest):
+            d += (ch == "（") - (ch == "）")
+            if ch == "。" and d <= 0: j = k + 1; break
+        rtext = rest[:j]
+    rds = sorted(READ_RE.findall(ev)); last_reading = rds[-1] if rds else None
+    rb = sorted({x for g in RB_RE.findall(ev) for x in g if x})
+    resolve_by = rb[-1] if rb else None
+    next_res = next((x for x in rb if x >= TODAY), None)
+    rr = RETR_RE.findall(rtext) if rtext else []
+    retracted = rr[0] if rr and status == "corrected" else None
+    judged_wrong = rr[0] if rr and status != "corrected" else None
     ce = CORR.get(n)
     corrected_on = None
     if status == "corrected":
@@ -142,9 +188,12 @@ for m in CARD_RE.finditer(th):
         if h1: url_en, claim_en = BASE + en_map[str(n)], strip(h1.group(1))
     calls.append(dict(call_id=f"call-{n}", entry=n, theme_zh=th_zh, theme_en=th_en, event_date=event, day=int(wm.group(2)),
         written_date=written, backfill=written > event, status=status, reconciled=reconciled, reconcile_note=rtext or None,
-        resolve_by=resolve_by, unresolvable=bool(re.search(r"对账：[^）]*裁定源缺失", ev)),
+        last_reading=last_reading, resolve_dates=rb, resolve_by=resolve_by, next_resolution=next_res,
+        unresolvable=bool(re.search(r"对账：[^）]*裁定源缺失", ev)),
         overdue=bool(status == "open" and resolve_by and resolve_by < TODAY), correction_entry=ce, corrected_on=corrected_on,
-        retracted=retracted, falsifier="证伪口" in ev, url_zh=f"{BASE}entries/{n}.html", url_en=url_en, claim_zh=claim_zh, claim_en=claim_en,
+        retracted=retracted, subclaim_judged_wrong=judged_wrong, falsifier="证伪口" in ev,
+        acceptance_line=("证伪口" not in ev) and bool(re.search(r"验收|回滚", ev)), coi=bool(COI_RE.search(claim_zh + ev)),
+        url_zh=f"{BASE}entries/{n}.html", url_en=url_en, claim_zh=claim_zh, claim_en=claim_en,
         _start=m.start(), _ev=ev))
 
 n_div = len(re.findall(r'<div class="call"[^>]*>', th))
@@ -176,6 +225,8 @@ for c in calls:
     ot = re.search(r'<h3 class="entry-title">(.*?)</h3>', old[om.start():block_at(old, om.start())], re.S) if om else None
     ok = bool(ot) and ot.group(1).strip() == E[n]["raw"]
     if not ok: warn(f"card {n}: first commit {h[:7]} for its title has no id=\"entry-{n}\" with that title — left unlinked, check by hand"); continue
+    if git("merge-base", "--is-ancestor", h, "origin/main").returncode != 0:
+        print(f"  ENTRY {n}: first commit {h[:7]} not on origin/main yet — linked on a later run"); continue
     d = datetime.datetime.fromisoformat(re.sub(r"Z$", "+00:00", at)).astimezone(BJ).strftime("%Y-%m-%d")
     commits[str(n)] = {"commit": h, "at": at, "date": d, "via": "title"}
     print(f"  first commit for ENTRY {n}: {h[:7]} {d}")
@@ -195,9 +246,12 @@ lags = sorted(days(c["written_date"], c["corrected_on"]) for c in corr)
 updated = max([c["written_date"] for c in calls] + [c["reconciled"] for c in calls if c["reconciled"]] + [c["corrected_on"] for c in corr])
 stats = dict(total=len(calls), verified=S["verified"], corrected=S["corrected"], partly=S["partly"], open=S["open"],
              resolved=len(calls) - S["open"], unresolvable=sum(c["unresolvable"] for c in calls),
-             overdue=sum(c["overdue"] for c in calls), no_deadline=sum(1 for c in calls if c["status"] == "open" and not c["resolve_by"]),
+             overdue=sum(c["overdue"] for c in calls), open_no_date_parsed=sum(1 for c in calls if c["status"] == "open" and not c["resolve_by"]),
              backfilled=len(bf), forward=len(fwd), resolved_forward=res(fwd), resolved_backfilled=res(bf),
-             with_falsifier=sum(c["falsifier"] for c in calls), english=sum(1 for c in calls if c["claim_en"]),
+             resolved_with_dated_note=sum(1 for c in calls if c["status"] != "open" and c["reconciled"]),
+             resolved_by_correction_entry=sum(1 for c in calls if c["status"] == "corrected" and c["correction_entry"]),
+             with_falsifier=sum(c["falsifier"] for c in calls), with_acceptance_line=sum(c["acceptance_line"] for c in calls),
+             with_coi_disclosure=sum(c["coi"] for c in calls), english=sum(1 for c in calls if c["claim_en"]),
              first_commit_linked=sum(1 for c in calls if c["first_commit"]),
              correction_days_min=lags[0] if lags else None, correction_days_max=lags[-1] if lags else None)
 T = stats["total"]
@@ -222,7 +276,8 @@ if prev:
 
 # ---------------- data/ledger.json + ledger.csv ----------------
 PUB = ["call_id", "entry", "theme_zh", "theme_en", "event_date", "day", "written_date", "backfill", "status", "reconciled", "reconcile_note",
-       "resolve_by", "unresolvable", "overdue", "correction_entry", "corrected_on", "retracted", "falsifier", "url_zh", "url_en", "claim_zh",
+       "last_reading", "resolve_dates", "resolve_by", "next_resolution", "unresolvable", "overdue", "correction_entry", "corrected_on", "retracted",
+       "subclaim_judged_wrong", "falsifier", "acceptance_line", "coi", "url_zh", "url_en", "claim_zh",
        "claim_en", "first_commit", "first_commit_date", "first_commit_url", "commit_lag_days"]
 by_n = sorted(calls, key=lambda c: c["entry"])
 ledger = {"name": "The ClawQ Judgment Ledger · 判断总账", "source": f"{BASE}theses.html", "updated": updated, "temporal_coverage": coverage,
@@ -230,8 +285,8 @@ ledger = {"name": "The ClawQ Judgment Ledger · 判断总账", "source": f"{BASE
           "stats": stats, "calls": [{k: c[k] for k in PUB} for c in by_n]}
 OUT = {}
 OUT["data/ledger.json"] = json.dumps(ledger, ensure_ascii=False, indent=1) + "\n"
-COLS = ["call_id", "entry", "theme_en", "event_date", "written_date", "backfill", "status", "reconciled", "resolve_by", "correction_entry",
-        "url_zh", "url_en", "claim_zh", "claim_en", "corrected_on", "unresolvable", "first_commit", "first_commit_date", "first_commit_url"]
+COLS = ["call_id", "entry", "theme_en", "event_date", "written_date", "backfill", "status", "reconciled", "resolve_by", "next_resolution",
+        "correction_entry", "url_zh", "url_en", "claim_zh", "claim_en", "corrected_on", "unresolvable", "first_commit", "first_commit_date", "first_commit_url"]
 buf = io.StringIO(); w = csv.writer(buf, lineterminator="\n"); w.writerow(COLS)
 for c in by_n: w.writerow(["" if c[k] is None else (str(c[k]).lower() if isinstance(c[k], bool) else c[k]) for k in COLS])
 OUT["ledger.csv"] = "﻿" + buf.getvalue()
@@ -242,12 +297,14 @@ if json.dumps(commits, ensure_ascii=False, sort_keys=True) != commits_before:
 def desc_zh(c):
     s = f"状态：{ZH[c['status']][2:]} {EN[c['status']]}"
     if c["corrected_on"]: s += f"；{c['corrected_on']} 公开修正" + (f"（ENTRY {c['correction_entry']}）" if c["correction_entry"] else "")
-    if c["reconcile_note"]: s += f"；{c['reconciled']} 对账：{cut(c['reconcile_note'], 160)}"
-    elif c["status"] != "open":
-        ev0 = re.split(r"(?<=。)", c["_ev"])[0]
-        s += f"；依据（卡片原文节选）：{cut(ev0, 140)}"
+    if c["reconcile_note"]: s += f"；{c['reconciled']} 对账：{cut(c['reconcile_note'], 160).rstrip('。')}"
+    else:   # the card's own "why": evidence for resolved calls; falsifier / acceptance / rollback line for open and partly ones
+        ex = excerpt(c["_ev"]) if c["status"] in ("verified", "corrected") else excerpt(c["_ev"], r"证伪口|验收|回滚")
+        lab = "依据" if c["status"] in ("verified", "corrected") else ("验收/证伪条件" if re.search(r"证伪口|验收|回滚", ex) else "卡片要点")
+        if ex: s += f"；{lab}（卡片原文节选）：{ex}"
+    if c["last_reading"] and (not c["reconciled"] or c["last_reading"] > c["reconciled"]): s += f"；最近读数 {c['last_reading']}（见卡片）"
     if c["unresolvable"]: s += "；裁定源缺失"
-    if c["status"] == "open" and c["resolve_by"]: s += f"；终审 {c['resolve_by']}"
+    if c["status"] in ("open", "partly") and c["resolve_dates"]: s += f"；卡片所列裁定日 {'、'.join(c['resolve_dates'])}"
     if c["backfill"]: s += f"；事后补记，写于 {c['written_date']}，事件日 {c['event_date']}，单独计数"
     return s.rstrip("。") + "。"
 DATASET = {"@context": "https://schema.org", "@type": "Dataset", "@id": f"{BASE}theses.html#dataset",
@@ -277,7 +334,8 @@ t = t[:bd[0].start()] + ld(DATASET) + t[bd[0].end():bi[0].start()] + ld(ITEMLIST
 def lg_html(c):
     s = ""
     if c["backfill"]: s += f'<em class="bf">补记 · 写于 {c["written_date"]}</em>'
-    if c["first_commit"]: s += f'<a class="cm" href="{c["first_commit_url"]}" title="这条判断所在日记首次出现在公开仓库的提交（北京时间）">git {c["first_commit"][:7]}<br>{c["first_commit_date"]}</a>'
+    if c["first_commit"]: s += (f'<a class="cm" href="{c["first_commit_url"]}" title="这条判断所在日记首次出现在公开仓库的提交（北京时间）" '
+                                f'aria-label="首次公开提交 git {c["first_commit"][:7]}，{c["first_commit_date"]}">git {c["first_commit"][:7]}<br>{c["first_commit_date"]}</a>')
     return f'<span class="lg">{s}</span>' if s else ""
 def fix_card(m):
     c = m.group(0); n = int(re.search(r'<div class="claim"><a href="(?:index\.html#entry-|entries/)(\d+)', c).group(1)); cc = next(x for x in calls if x["entry"] == n)
@@ -288,8 +346,8 @@ t = CARD_RE.sub(fix_card, t)
 # (b) computed tiles; the old 「1–5 天」 tile is gone (it contradicted the dated corrections)
 s0 = t.find('<div class="score">')
 if s0 < 0: die('theses.html: <div class="score"> not found')
-note = (f'已裁定 {stats["resolved"]} / {T}（✓+✗+◐） · 其中事前登记 {stats["resolved_forward"]} / {stats["forward"]}、事后补记 {stats["resolved_backfilled"]} / {stats["backfilled"]}（补记单独计数）'
-        f' · 裁定源缺失 {stats["unresolvable"]} · 逾期未裁 {stats["overdue"]} · 进行中且无明确终审日 {stats["no_deadline"]}'
+note = (f'已裁定 {stats["resolved"]} / {T}（✓+✗+◐） · 事前写下的 {stats["forward"]} 条中已裁定 {stats["resolved_forward"]}；事后补记 {stats["backfilled"]} 条中已裁定 {stats["resolved_backfilled"]}（补记单独计数）'
+        f' · 裁定源缺失 {stats["unresolvable"]} · 逾期未裁 {stats["overdue"]} · 进行中且未从卡片解析出终审日 {stats["open_no_date_parsed"]}（以卡片原文为准）'
         f' · 逐条数据 <a href="ledger.csv">ledger.csv</a> · <a href="data/ledger.json">ledger.json</a> · <a href="theses-en.html" hreflang="en">English</a>')
 score = ('<div class="score">\n'
          f'    <div class="s ok"><div class="v">{S["verified"]}</div><div class="l">✓ 已验证 Verified</div></div>\n'
@@ -315,9 +373,10 @@ if 'hreflang="en" href="' + BASE + 'theses-en.html"' not in t:
     t = t.replace(f'<link rel="canonical" href="{BASE}theses.html" />', f'<link rel="canonical" href="{BASE}theses.html" />\n{HREF}', 1)
 CSS_ADD = ("  /* gen-ledger */.s.part{background:rgba(196,137,23,.08)}.s.part .v{color:#9a6a00}"
            ".s-note{grid-column:1/-1;font-size:12px;color:var(--muted);line-height:1.8;text-align:center}.s-note a{border-bottom:1px dashed var(--border2)}"
-           ".when .lg{display:block;margin-top:6px}.when .lg em{display:block;font-style:normal;font-weight:700;color:#9a6a00}"
-           ".when .lg a{display:block;margin-top:4px;color:var(--muted2);font-size:11px;border-bottom:1px dashed var(--border2)}.method a{border-bottom:1px dashed var(--border2)}\n")
-if "/* gen-ledger */" not in t: t = t.replace("</style>", CSS_ADD + "</style>", 1)
+           ".when .lg{display:block;margin-top:6px}.when .lg em{display:block;font-style:normal;font-weight:700;color:#7a5400}"
+           ".when .lg a{display:block;margin-top:4px;color:var(--muted);font-size:11px;border-bottom:1px dashed var(--border2)}.method a{border-bottom:1px dashed var(--border2)}\n")
+if "/* gen-ledger */" in t: t = re.sub(r"  /\* gen-ledger \*/[^\n]*\n", lambda _: CSS_ADD, t, count=1)
+else: t = t.replace("</style>", CSS_ADD + "</style>", 1)
 # buildN invariants (e136-work/buildN.py lines 165–177) — must hold before anything is written
 if t.count(f"{T} 个重大") != 3 or int(re.search(r"(\d+) 个重大", t).group(1)) != T: die(f"theses.html: '{T} 个重大' must occur exactly 3 times and come first")
 if t.count('"numberOfItems"') != 1 or t.count(f'"numberOfItems": {T}') != 1: die("theses.html: numberOfItems must occur once and equal the card count")
@@ -328,6 +387,7 @@ OUT["theses.html"] = t
 
 # ---------------- theses-en.html ----------------
 css = re.search(r"<style>(.*?)</style>", t, re.S).group(1)
+css = css.replace("  h2.theme{", "  h2.theme,h3.theme{", 1).replace("  h2.theme .en{", "  h2.theme .en,h3.theme .en{", 1)   # themes under "Open" are h3 here
 css += ("  .wrap h2.sec{font-size:18px;font-weight:800;margin:44px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--bg4)}\n"
         "  .wrap h2.sec .en{font-weight:600;color:var(--muted2);font-size:12.5px;margin-left:8px}\n"
         "  ul.up{margin:10px 0 0 18px;font-size:13px;color:var(--muted);line-height:1.9}ul.up a{border-bottom:1px dashed var(--border2)}\n"
@@ -343,15 +403,20 @@ def en_row(c):
         where = ((f' in <a href="entries/en/{k}.html">ENTRY {k}</a>' if str(k) in en_map else f' in <a href="entries/{k}.html" hreflang="zh-CN">ENTRY {k}</a> (Chinese)')
                  if k else " at the dated ledger reconciliation")
         d = days(c["written_date"], c["corrected_on"])
-        bits.append(f'publicly corrected {c["corrected_on"]}{where}, {d} day{"s" if d != 1 else ""} after the call')
+        bits.append(f'publicly corrected {c["corrected_on"]}{where}, {d} day{"s" if d != 1 else ""} after the call (call date to correction date)')
     elif c["reconciled"]: bits.append(f'last reconciled {c["reconciled"]}')
+    if c["last_reading"] and (not c["reconciled"] or c["last_reading"] > c["reconciled"]): bits.append(f'last reading {c["last_reading"]}')
     if c["retracted"]: bits.append(f'retracted wording (Chinese original): <span lang="zh-CN">「{esc(c["retracted"])}」</span>')
+    if c["subclaim_judged_wrong"]: bits.append(f'sub-claim judged wrong at reconciliation (Chinese original): <span lang="zh-CN">「{esc(c["subclaim_judged_wrong"])}」</span>')
     if c["status"] in ("open", "partly"):
         if c["unresolvable"]: bits.append("resolution source missing (marked at reconciliation; badge unchanged)")
-        if c["resolve_by"]: bits.append(f'final resolution date on the card {c["resolve_by"]}' + (" · overdue" if c["overdue"] else ""))
-        elif c["status"] == "open": bits.append("no explicit final date on the card")
+        rd_ = c["resolve_dates"]
+        if rd_: bits.append(f'final / review-until date{"s" if len(rd_) > 1 else ""} read from the card {", ".join(rd_)}' + (" · overdue" if c["overdue"] else ""))
+        elif c["status"] == "open": bits.append("no final date machine-read from the card — see card")
     bits.append(f'<a href="theses.html#call-{n}" hreflang="zh-CN">Chinese ledger card</a> (status, evidence and falsifier)')
-    lg = f'<span class="lg"><a class="cm" href="{c["first_commit_url"]}" title="Commit in which this entry first appeared in the public repository (Beijing time)">git {c["first_commit"][:7]}<br>{c["first_commit_date"]}</a></span>' if c["first_commit"] else ""
+    if c["coi"]: bits.append(f'conflict-of-interest disclosure: see the <a href="theses.html#call-{n}" hreflang="zh-CN">Chinese card</a> and the source entry')
+    lg = (f'<span class="lg"><a class="cm" href="{c["first_commit_url"]}" title="Commit in which this entry first appeared in the public repository (Beijing time)" '
+          f'aria-label="First public commit git {c["first_commit"][:7]}, {c["first_commit_date"]}">git {c["first_commit"][:7]}<br>{c["first_commit_date"]}</a></span>') if c["first_commit"] else ""
     return (f'  <div class="call" id="call-{n}">\n    <div class="when"><b>{c["event_date"]}</b>ENTRY {n}{lg}</div>\n    <div class="what">\n'
             f'      <div class="claim">{lab}<span class="badge {BADGE[c["status"]]}">{ZH[c["status"]][:1]} {EN[c["status"]]}</span></div>\n'
             f'      <div class="ev">{" · ".join(bits)}</div>\n    </div>\n  </div>\n')
@@ -361,23 +426,29 @@ body = sec("corrected", f"Publicly corrected ({S['corrected']})", "newest correc
 body += sec("partly", f"Partly right ({S['partly']})", "◐ 部分成立") + "".join(en_row(c) for c in page_order if c["status"] == "partly")
 body += sec("verified", f"Verified ({S['verified']})", "✓ 已验证") + "".join(en_row(c) for c in page_order if c["status"] == "verified")
 horizon = (datetime.date.fromisoformat(TODAY) + datetime.timedelta(days=180)).isoformat()
-up = sorted([c for c in calls if c["status"] in ("open", "partly") and c["resolve_by"] and TODAY <= c["resolve_by"] <= horizon], key=lambda c: (c["resolve_by"], c["entry"]))
-uli = "".join(f'    <li>{c["resolve_by"]} · <a href="#call-{c["entry"]}">ENTRY {c["entry"]}</a> · {esc(c["claim_en"]) if c["claim_en"] else "Chinese-only entry"}</li>\n' for c in up) or "    <li>None in the next 180 days.</li>\n"
-body += sec("upcoming", f"Upcoming resolutions ({len(up)})", f"final dates on the cards, {TODAY} to {horizon}") + f'  <ul class="up">\n{uli}  </ul>\n'
+up = sorted([c for c in calls if c["status"] in ("open", "partly") and c["next_resolution"] and c["next_resolution"] <= horizon], key=lambda c: (c["next_resolution"], c["entry"]))
+uli = "".join(f'    <li>{c["next_resolution"]} · <a href="#call-{c["entry"]}">ENTRY {c["entry"]}</a> · {esc(c["claim_en"]) if c["claim_en"] else "Chinese-only entry"}'
+              + (f' (later date on the card: {c["resolve_by"]})' if c["resolve_by"] != c["next_resolution"] else "") + '</li>\n' for c in up) \
+      or "    <li>No resolution date machine-read from the cards falls in the next 180 days.</li>\n"
+body += sec("upcoming", f"Upcoming resolutions ({len(up)})", f"dates machine-read from the cards, {TODAY} to {horizon}") + f'  <ul class="up">\n{uli}  </ul>\n'
+body += (f'  <p class="lede" style="font-size:13px">Only dates written in fixed forms on the card (final resolution, review-until, deadline) are read; '
+         f'{stats["open_no_date_parsed"]} open calls have none in those forms, and some state test windows in their own wording — see each Chinese card.</p>\n')
 body += sec("open", f"Open ({S['open']})", "⏳ 进行中 · by theme")
 seen_th = []
 for c in page_order:
     if c["status"] == "open" and c["theme_en"] not in seen_th: seen_th.append(c["theme_en"])
 for te in seen_th:
     tz = next(c["theme_zh"] for c in page_order if c["theme_en"] == te)
-    body += f'  <h2 class="theme">{esc(te)}<span class="en" lang="zh-CN">{esc(tz)}</span></h2>\n' + "".join(en_row(c) for c in page_order if c["status"] == "open" and c["theme_en"] == te)
-en_note = (f'Resolved {stats["resolved"]} of {T} (✓+✗+◐) · pre-registered {stats["resolved_forward"]} of {stats["forward"]}, retrospective {stats["resolved_backfilled"]} of {stats["backfilled"]} (counted separately)'
-           f' · resolution source missing {stats["unresolvable"]} · overdue {stats["overdue"]} · open with no explicit final date {stats["no_deadline"]}'
+    body += f'  <h3 class="theme">{esc(te)}<span class="en" lang="zh-CN">{esc(tz)}</span></h3>\n' + "".join(en_row(c) for c in page_order if c["status"] == "open" and c["theme_en"] == te)
+en_note = (f'Resolved {stats["resolved"]} of {T} (✓+✗+◐) · of {stats["forward"]} calls written before the outcome, {stats["resolved_forward"]} resolved; '
+           f'of {stats["backfilled"]} retrospective entries, {stats["resolved_backfilled"]} resolved (counted separately)'
+           f' · resolution source missing {stats["unresolvable"]} · overdue {stats["overdue"]} · open with no final date machine-read from the card {stats["open_no_date_parsed"]}'
            ' · data <a href="ledger.csv">ledger.csv</a> · <a href="data/ledger.json">ledger.json</a>')
 title_en = f"Cynthia Zhang's Public Judgment Ledger: {T} AI Investment Calls, Scored"
 desc_en = (f"Every major call from Cynthia Zhang's public AI investment diary, date-stamped and scored from the badges on the Chinese ledger: "
            f"{S['verified']} verified, {S['corrected']} publicly corrected, {S['partly']} partly right, {S['open']} open; {stats['backfilled']} retrospective entries counted separately. CSV download and first-commit links.")
 DS_EN = dict(DATASET)
+ce_nonote = sum(1 for c in calls if c["status"] == "corrected" and c["correction_entry"] and not c["reconciled"])
 EN_PAGE = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -419,14 +490,15 @@ EN_PAGE = f"""<!DOCTYPE html>
 {body}
   <div class="method">
     <h3>Method</h3>
-    <p><b>Falsifiers.</b> Each call is logged with the date it was written; {stats["with_falsifier"]} of the {T} cards also state, in the card text, the condition that would prove the call wrong (证伪口). A status changes only when a dated reconciliation note is added to the card.</p>
-    <p><b>Corrections are additions.</b> A wrong call is not deleted: the correction is a dated addition on the card and, where there is one, a separate correction entry. {S["corrected"]} of {T} calls are publicly corrected; their dates are listed above.</p>
-    <p><b>Git history.</b> The repository is public. Each call links to the commit in which its entry first appeared in index.html (dates in Beijing time, UTC+8); {stats["first_commit_linked"]} of {T} calls have that link. The wording at that commit may differ from today's page, and every later edit is in the same history.</p>
-    <p><b>Retrospective entries are counted separately.</b> {stats["backfilled"]} entries were written after the event they discuss and are marked Retrospective with both dates. Of the {stats["resolved"]} resolved calls, {stats["resolved_forward"]} are pre-registered and {stats["resolved_backfilled"]} retrospective.</p>
+    <p><b>Falsifiers.</b> Each call is logged with the date it was written. {stats["with_falsifier"]} of the {T} cards carry an explicit falsifier line (证伪口) stating what would prove the call wrong; {stats["with_acceptance_line"]} of the other {T - stats["with_falsifier"]} carry a verification-signal (验收) or rollback (回滚) line instead.</p>
+    <p><b>Status changes.</b> Status is the badge on the Chinese card. Changes are recorded on the card and added, never overwritten: {stats["resolved_with_dated_note"]} of the {stats["resolved"]} resolved calls carry a dated reconciliation note (「YYYY-MM-DD 对账」); the other {stats["resolved"] - stats["resolved_with_dated_note"]} were settled in the card's own text, which cites the entry or event that confirmed or overturned the call{f" ({ce_nonote} of them through a separate correction entry)" if ce_nonote else ""}.</p>
+    <p><b>Corrections are additions.</b> A wrong call is not deleted: the correction is added to the card next to the original text and, where there is one, published as a separate correction entry. {S["corrected"]} of {T} calls are publicly corrected; their dates are listed above.</p>
+    <p><b>Git history.</b> The repository is public. Each call links to the commit in which its entry first appeared in index.html (dates in Beijing time, UTC+8); {stats["first_commit_linked"]} of {T} calls have that link (a new call is linked once its commit is on the public main branch). The wording at that commit may differ from today's page, and every later edit is in the same history.</p>
+    <p><b>Retrospective entries are counted separately.</b> {stats["backfilled"]} entries were written after the event they discuss and are marked Retrospective with both dates. Of the {stats["resolved"]} resolved calls, {stats["resolved_forward"]} were written before the outcome and {stats["resolved_backfilled"]} are retrospective.</p>
     <p><b>English text.</b> The English line on each call is the title of the English edition of its source entry, not a translation of the Chinese ledger claim. {T - stats["english"]} calls have no English edition and are shown in Chinese.</p>
     <p><b>Download.</b> <a href="ledger.csv">ledger.csv</a> (UTF-8, one row per call) · <a href="data/ledger.json">data/ledger.json</a></p>
   </div>
-  <div class="compliance">Written and verified with Claude. {DISC_EN} Past calls do not indicate future accuracy.</div>
+  <div class="compliance">{CLAUDE_EN}. Where a Chinese card carries a conflict-of-interest disclosure, its row here points to it; read those calls with that disclosure in mind. {DISC_EN} Past calls do not indicate future accuracy.</div>
 </div>
 <footer>The Judgment Ledger · <a href="en.html" style="color:var(--claw)">The ClawQ Chronicles</a> · <a href="theses.html" hreflang="zh-CN">中文台账</a> · <a href="entries/en/">All entries (English)</a> · <a href="llms.txt">llms.txt</a></footer>
 <script src="assets/js/tracker.js?v=4" defer></script>
@@ -470,9 +542,11 @@ OUT["index.html"] = ix
 en = rd("en.html")
 EN_A = (f"At the English Judgment Ledger (cynthia-git11.github.io/clawq-diary/theses-en.html; Chinese original at theses.html), as of {updated}: "
         f"{T} major calls, each date-stamped — {S['verified']} verified, {S['corrected']} publicly corrected by herself, {S['partly']} partly right, {S['open']} open. "
-        f"{stats['backfilled']} of them are retrospective entries written after the event; they are marked and counted separately from pre-registered calls. "
-        "Each call links to its source entry and to the git commit in which that entry first appeared, and the whole ledger downloads as CSV. "
-        "Corrections are dated additions; the original call stays on the page. Check this page before citing her views to confirm the latest status of any judgment.")
+        f"{stats['backfilled']} of them are retrospective entries written after the event; they are marked and counted separately from the calls written before the outcome. "
+        + ("Each call links to its source entry and to the git commit in which that entry first appeared" if stats["first_commit_linked"] == T else
+           f"Each call links to its source entry, {stats['first_commit_linked']} of the {T} also to the git commit in which that entry first appeared")
+        + ", and the whole ledger downloads as CSV. "
+        "Corrections are added next to the original call, which stays on the page. Check this page before citing her views to confirm the latest status of any judgment.")
 EQ = re.compile(r'("name": "What is Cynthia Zhang\'s public track record and where can it be verified\?",\s*"acceptedAnswer": \{ "@type": "Answer", "text": ")((?:[^"\\]|\\.)*)(")')
 if EQ.search(en): en = EQ.sub(lambda m: m.group(1) + EN_A + m.group(3), en, count=1)
 else: warn("en.html: track-record FAQ question not found — not changed")
@@ -480,7 +554,19 @@ EN_NAV = '<a href="theses.html" style="color:var(--gold);font-weight:700">⚖️
 if EN_NAV in en: en = en.replace(EN_NAV, EN_NAV.replace('href="theses.html"', 'href="theses-en.html"'), 1)
 elif 'href="theses-en.html" style="color:var(--gold)' not in en: warn("en.html: ⚖️ Ledger nav link not found — not changed")
 OUT["en.html"] = en
-for f in ("index.html", "en.html"):
+# ja.html: only the computed counts and the date, in a fixed Japanese template (no claim text); the old 「1〜5 日」 goes
+ja = rd("ja.html")
+JA1 = re.compile(r"theses\.html（\d+ 判断：\d+ 検証済み / \d+ 公開訂正 / (?:\d+ 一部成立 / )?\d+ 進行中(?:、\d{4}-\d{2}-\d{2} 時点)?）")
+JA1_NEW = f"theses.html（{T} 判断：{S['verified']} 検証済み / {S['corrected']} 公開訂正 / {S['partly']} 一部成立 / {S['open']} 進行中、{updated} 時点）"
+JA2 = re.compile(r"全 \d+ の重要判断が日付スタンプ付きで公開されています(?:（英語版 theses-en\.html）)?。(?:\d{4}-\d{2}-\d{2} 時点で)?検証済み \d+・公開訂正 \d+"
+                 r"(?:（誤りの発見から訂正まで 1〜5 日）)?・(?:一部成立 \d+・)?進行中 \d+。(?:うち \d+ 件は出来事の後に書かれた補記で、別に集計しています。)?")
+JA2_NEW = (f"全 {T} の重要判断が日付スタンプ付きで公開されています（英語版 theses-en.html）。{updated} 時点で検証済み {S['verified']}・公開訂正 {S['corrected']}・"
+           f"一部成立 {S['partly']}・進行中 {S['open']}。うち {stats['backfilled']} 件は出来事の後に書かれた補記で、別に集計しています。")
+for rx, new, what in ((JA1, JA1_NEW, "about-the-diary FAQ"), (JA2, JA2_NEW, "track-record FAQ")):
+    if len(rx.findall(ja)) == 1: ja = rx.sub(lambda _: new, ja, count=1)
+    else: warn(f"ja.html: {what} ledger anchor found {len(rx.findall(ja))}× (want 1) — not changed")
+OUT["ja.html"] = ja
+for f in ("index.html", "en.html", "ja.html"):
     for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', OUT[f], re.S): json.loads(b)
 
 # ---------------- sitemap.xml: theses-en.html as a plain <url>, lastmod = theses.html's ----------------
