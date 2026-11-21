@@ -27,6 +27,10 @@ Checks:
      theses.html#call-N pointer; every such pointer names a call on the ledger and carries that call's current status word
      (scripts/hub_sync.py STATUS_WORD); and no English answer or en.html entry row states "~2.1x" without the ~3.7x
      correction (all written by scripts/gen-ledger.py through scripts/hub_sync.py, in the same run as data/ledger.json).
+ 10. No dead URL in the discovery files: every <loc> and xhtml:link href in sitemap-index.xml and the sitemaps it lists, and
+     every markdown link target on this site in llms.txt, is a file in the repo (a directory URL → its index.html). The
+     press-ja.html hreflang alternate was a 404 for weeks: geo-work/hygiene0928.py add_ja copied every hreflang="en" link
+     to a ja one without checking that the page exists.
 """
 import re, json, sys, os, glob, html as _html
 from xml.etree import ElementTree as ET
@@ -233,10 +237,36 @@ try:
 except Exception as _e:
     errors.append(f"FAQ ledger-pointer check crashed — {_e}")
 
+# 10. Discovery files point only at pages that exist (2026-11-21)
+BASE = "https://cynthia-git11.github.io/clawq-diary/"
+def _url_file(u):
+    r = u[len(BASE):].split("#")[0].split("?")[0]
+    return r + "index.html" if r == "" or r.endswith("/") else r
+try:
+    _dead = []
+    _maps = ["sitemap-index.xml"] + [u[len(BASE):] for u in re.findall(r"<loc>([^<]+)</loc>", read("sitemap-index.xml")) if u.startswith(BASE)]
+    for _f in dict.fromkeys(_maps + ["sitemap.xml"]):
+        if not os.path.exists(_f):
+            _dead.append(f"sitemap-index.xml → {_f} (missing sitemap)")
+            continue
+        _s = read(_f)
+        for _u in re.findall(r"<loc>([^<]+)</loc>", _s) + re.findall(r'<xhtml:link[^>]*href="([^"]+)"', _s):
+            if _u.startswith(BASE) and not os.path.exists(_url_file(_u)):
+                _dead.append(f"{_f} → {_u}")
+    for _u in re.findall(r"\]\((" + re.escape(BASE) + r"[^)\s]*)\)", read("llms.txt")):
+        if not os.path.exists(_url_file(_u)):
+            _dead.append(f"llms.txt → {_u}")
+    for _x in _dead[:10]:
+        errors.append(f"dead URL — {_x}")
+    if len(_dead) > 10:
+        errors.append(f"... {len(_dead) - 10} more dead URLs")
+except Exception as _e:
+    errors.append(f"dead-URL check crashed — {_e}")
+
 if errors:
     print("GEO health check FAILED:")
     for e in errors:
         print("  ✗", e)
     sys.exit(1)
 
-print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok · FAQ ledger pointers ok")
+print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok · FAQ ledger pointers ok · no dead sitemap / llms.txt URLs")
