@@ -24,10 +24,11 @@ Checks:
      JSON-LD block parses. gen-answers.py / gen-topics.py stop on the same conditions, but the publish scripts pipe
      their output, so this hourly check is the one that actually blocks.
   9. FAQ answers (index/en/ja) that quote a wording data/ledger.json lists as retracted or judged wrong carry the dated
-     theses.html#call-N pointer, and no English answer states "~2.1x" without the ~3.7x correction (both written by
-     scripts/gen-ledger.py through scripts/hub_sync.py).
+     theses.html#call-N pointer; every such pointer names a call on the ledger and carries that call's current status word
+     (scripts/hub_sync.py STATUS_WORD); and no English answer or en.html entry row states "~2.1x" without the ~3.7x
+     correction (all written by scripts/gen-ledger.py through scripts/hub_sync.py, in the same run as data/ledger.json).
 """
-import re, json, sys, glob, html as _html
+import re, json, sys, os, glob, html as _html
 from xml.etree import ElementTree as ET
 
 errors = []
@@ -197,21 +198,38 @@ except Exception as _e:
 #    carry the dated pointer to that card (#call-N), and no English answer states "~2.1x" without the 3.7x correction
 #    (2026-11-21). The wordings come from data/ledger.json, which gen-ledger.py writes in the same run as the pointers
 #    (scripts/hub_sync.py), so a reconciliation that has not been through gen-ledger.py yet does not turn this red.
+#    Each pointer's status word must equal the call's status in data/ledger.json (a call moved to ✓ / ⏳ is refreshed too),
+#    and the en.html entry rows follow the same ~2.1x rule.
 try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    sys.dont_write_bytecode = True
+    import hub_sync as _HS
     _L = json.loads(read("data/ledger.json"))
+    _C = {c["entry"]: c for c in _L["calls"]}
     _ph = [(c["entry"], p) for c in _L["calls"] for p in (c.get("retracted"), c.get("subclaim_judged_wrong")) if p]
     for _f in ["index.html", "en.html", "ja.html"]:
         _fb = next((b for b in jsonld_blocks(read(_f)) if '"FAQPage"' in b), None)
         if _fb is None:
             errors.append(f"{_f}: FAQPage block not found")
             continue
+        _lang = _HS.LANG[_f]
         for _q in json.loads(_fb)["mainEntity"]:
             _t = _q["acceptedAnswer"]["text"]
             for _n, _p in _ph:
                 if _p in _t and not re.search(r"#call-%d\b" % _n, _t):
                     errors.append(f"{_f}: FAQ 「{_q['name'][:30]}」 quotes 「{_p}」 (ENTRY {_n}, ledger) without the theses.html#call-{_n} pointer — run scripts/gen-ledger.py")
+            if _q["name"] not in _HS.TRACK_Q:
+                for _m in _HS.PTR_RE[_lang].finditer(_t):
+                    _n = int(_m.group(1)); _w = _HS.status_words(_lang, _m.group(0))
+                    if _n not in _C:
+                        errors.append(f"{_f}: FAQ 「{_q['name'][:30]}」 points to call-{_n}, which is not on the ledger")
+                    elif _w != {_C[_n]["status"]}:
+                        errors.append(f"{_f}: FAQ 「{_q['name'][:30]}」 pointer to call-{_n} says {sorted(_w)}, ledger says {_C[_n]['status']} — run scripts/gen-ledger.py")
             if _f == "en.html" and "~2.1x" in _t and "3.7" not in _t:
                 errors.append(f"en.html: FAQ 「{_q['name'][:30]}」 states ~2.1x without the ENTRY 114 ~3.7x correction — run scripts/gen-ledger.py")
+    for _m in _HS.ROW_TITLE_RE.finditer(read("en.html")):
+        if "~2.1x" in _m.group(2) and "3.7" not in _m.group(2):
+            errors.append(f"en.html: entry row {_m.group(4) or '?'} states ~2.1x without the ENTRY 114 ~3.7x correction — run scripts/gen-ledger.py")
 except Exception as _e:
     errors.append(f"FAQ ledger-pointer check crashed — {_e}")
 
