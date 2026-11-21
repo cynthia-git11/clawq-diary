@@ -2,20 +2,27 @@
 # -*- coding: utf-8 -*-
 """GEO: entity hub pages — one URL per company/theme, aggregating every ENTRY that mentions it.
 
-Input : data/topics.json  [{slug, name, name_en, aliases[], blurb(optional, verified prose), blurb_en(optional)}]
-Reads : index.html (entries), theses.html (ledger cards)
+Input : data/topics.json  [{slug, name, name_en, aliases[], blurb(optional, verified prose), blurb_en(optional),
+                           entities(optional: holdings-record names for the disclosure), disclosure(optional, non-holdings only)}]
+Reads : index.html (entries), theses.html (ledger cards), holdings.json via scripts/holdings_lib.py (every holdings sentence:
+        fixed table, TOPIC_ENTITIES[slug] + the topic's entities; names not in the record are printed as PENDING and nothing
+        is said about holding them — no fallback sentence)
 Writes: topics/<slug>.html, topics/index.html, sitemap-topics.xml (robots.txt Sitemap line added if missing)
 
 Deterministic: the timeline items are the entry's own title + first sentence (verbatim, no paraphrase);
 the optional blurb is the only authored prose and must be verified before it lands in data/topics.json.
-Usage: python3 scripts/gen-topics.py [--root DIR] [--dry]
+Guard: a banned disclosure phrase in any written page → exit 1 (a clause quoted verbatim from ENTRY 131–139 is exempt).
+Usage: python3 scripts/gen-topics.py [--root DIR] [--dry]   (root: --root, else $CLAWQ_ROOT)
 """
 import re, os, sys, json, html, shutil, tempfile
 
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+ROOT = os.environ.get("CLAWQ_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
 DRY = "--dry" in sys.argv
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import holdings_lib as HL
+HOLD = HL.load()
 if DRY:
     W = tempfile.mkdtemp(prefix="topics-")
     for f in ["index.html", "theses.html", "robots.txt"]: shutil.copy(os.path.join(ROOT, f), W)
@@ -35,9 +42,10 @@ def block_at(s, start):
     while True:
         m = tag.search(s, i); depth += -1 if m.group(1) else 1; i = m.end()
         if depth == 0: return i
-entries = []
+entries = []; ORIG = []
 for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     n = int(m.group(1)); blk = idx[m.start():block_at(idx, m.start())]
+    if 131 <= n <= 139: ORIG.append(html.unescape(strip(blk)))
     title = strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, ""])[1])
     date_txt = strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1]).replace(" ¶", "")
     dm = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", date_txt); ym = re.search(r"(\d{4})年(\d{1,2})月", date_txt)
@@ -82,7 +90,7 @@ def match(t, e):
 
 ans_p = os.path.join(ROOT, "data/answers.json")
 answers = json.load(open(ans_p, encoding="utf-8")) if os.path.exists(ans_p) else []
-made = []
+made = []; PENDING = []; WRITTEN = []
 for t in topics:
     hits = [e for e in entries if match(t, e)]
     if len(hits) < t.get("min_entries", 3): continue
@@ -99,10 +107,18 @@ for t in topics:
     rows = "\n".join(f'      <li><a href="../entries/{e["n"]}.html">{esc(e["title"])}</a><span class="tp-when">ENTRY {e["n"]} · {esc(e["date_txt"])}</span><span class="tp-first">{esc(e["first"])}</span></li>' for e in hits)
     lrows = "\n".join(f'      <li><a href="../entries/{c["n"]}.html">{esc(c["claim"])}</a><span class="tp-badge">{esc(c["badge"])}</span><span class="tp-when">{esc(c["when"])} · ENTRY {c["n"]}</span></li>' for c in lcards) or "      <li>暂无挂账判断。</li>"
     blurb = f'  <p class="tp-blurb">{esc(t["blurb"])}</p>' if t.get("blurb") else ""
-    disc = "利益披露：本日记由 Claude 系工具写作与核实" + (("；" + t["disclosure"]) if t.get("disclosure") else "；本页公司按公开可查信息天际（FutureX Capital）不持有") + "。"
+    hs, pend = HL.statement(HOLD, HL.TOPIC_ENTITIES.get(t["slug"], []) + t.get("entities", []), True)
+    PENDING.extend(f"PENDING disclosure topic {t['slug']}: {p}" for p in pend)
+    extra = t.get("disclosure") or ""
+    if re.search(r"天际|FutureX", extra) or HL.banned_hits(extra):     # holdings wording comes only from holdings.json
+        print(f"WARN topics.json {t['slug']}: disclosure carries holdings wording — ignored"); extra = ""
+    head = "本日记由 Claude 系工具写作与核实"
+    if re.match(r"本日记由 Claude 系工具写作(与核实)?，", extra): head += "，" + re.sub(r"^本日记由 Claude 系工具写作(与核实)?，", "", extra); extra = ""   # a Claude sentence stays with its subject
+    disc = "利益披露：" + "；".join([head] + hs + ([extra] if extra else [])) + "。"
     qa = [q for q in answers if t["slug"] in q.get("topics", [])]
     qrows = "\n".join(f'      <li><a href="../answers/{q["slug"]}.html">{esc(q["q_zh"])}</a><span class="tp-when">{esc(q.get("date", ""))}</span></li>' for q in qa)
     qblock = (f'  <h2 class="tp-h2">投资人与创业者问过（{len(qa)}）</h2>\n  <ul class="tp-list">\n{qrows}\n  </ul>\n' if qa else "")
+    WRITTEN.append(f"topics/{t['slug']}.html")
     wr(f"topics/{t['slug']}.html", f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -173,4 +189,8 @@ urls += [f"  <url><loc>{BASE}topics/{m['slug']}.html</loc><lastmod>{m['last'] if
 wr("sitemap-topics.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-topics.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-topics.xml\n")
+for p in PENDING: print(p)
+bad = [(f, h) for f in WRITTEN + ["topics/index.html"] for h in HL.banned_hits(html.unescape(strip(rd(f))), " ".join(ORIG))]
+for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
+if bad: print("gen-topics FAILED: banned disclosure phrase in output"); sys.exit(1)
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · topics {len(made)}/{len(topics)} · " + ", ".join(f"{m['slug']}={m['n']}" for m in made))

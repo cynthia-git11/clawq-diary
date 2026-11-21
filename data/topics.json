@@ -51,8 +51,6 @@
    "Kimi",
    "Moonshot"
   ],
-  "disclosure": "天际（FutureX Capital）已全部退出美团（作者 2026-10-10 确认），对月之暗面已无经美团的间接权益",
-  "disclosure_en": "FutureX Capital has fully exited Meituan (confirmed by the author on Oct 10, 2026), so it no longer has an indirect interest in Moonshot AI through Meituan",
   "url": "https://www.moonshot.cn/"
  },
  {
@@ -93,8 +91,6 @@
    "火山引擎",
    "Seed"
   ],
-  "disclosure": "天际（FutureX Capital）是字节跳动 A 到 E 五轮投资人、持有其权益，双向打折读",
-  "disclosure_en": "FutureX Capital invested in ByteDance from its Series A through E and holds an interest; discount in both directions",
   "url": "https://www.bytedance.com/"
  },
  {
@@ -119,8 +115,6 @@
    "Mistral",
    "Mensch"
   ],
-  "disclosure": "天际（FutureX Capital）持有 Mistral AI，双向打折读",
-  "disclosure_en": "FutureX Capital holds Mistral AI; discount in both directions",
   "url": "https://mistral.ai/"
  },
  {
@@ -149,8 +143,6 @@
    "HF）",
    "Delangue"
   ],
-  "disclosure": "天际（FutureX Capital）持有 Hugging Face，双向打折读",
-  "disclosure_en": "FutureX Capital holds Hugging Face; discount in both directions",
   "url": "https://huggingface.co/"
  },
  {
@@ -182,8 +174,17 @@
    "GPU 租",
    "capex"
   ],
-  "disclosure": "按公开可查信息天际不持有 Nscale、CoreWeave、Nebius、NVIDIA、微软",
-  "disclosure_en": "On publicly available information FutureX does not hold Nscale, CoreWeave, Nebius, NVIDIA or Microsoft"
+  "entities": [
+   "Nscale",
+   "CoreWeave",
+   "Nebius",
+   "IREN",
+   "Hut 8",
+   "Core Scientific",
+   "Applied Digital",
+   "Nvidia",
+   "Microsoft"
+  ]
  },
  {
   "slug": "typesafe-jev",
@@ -208,8 +209,12 @@
    "Lovable",
    "Replit"
   ],
-  "disclosure": "按公开可查信息天际不在 Cognition、Cursor 已披露投资方名单中",
-  "disclosure_en": "On publicly available information FutureX is not among the disclosed investors of Cognition or Cursor"
+  "entities": [
+   "Cognition",
+   "Cursor",
+   "Replit",
+   "Lovable"
+  ]
  },
  {
   "slug": "xiaomi-mimo",
@@ -220,8 +225,6 @@
    "MiMo",
    "1810"
   ],
-  "disclosure": "天际（FutureX Capital）已全部退出小米与美团（作者 2026-10-10 确认）；日记 ENTRY 135、137、140、141 曾按持有披露，已于 2026-10-11 加注更正",
-  "disclosure_en": "FutureX Capital has fully exited Xiaomi and Meituan (confirmed by the author on Oct 10, 2026); entries 135, 137, 140 and 141 disclosed them as holdings and carry a correction dated Oct 11, 2026",
   "url": "https://www.mi.com/"
  },
  {

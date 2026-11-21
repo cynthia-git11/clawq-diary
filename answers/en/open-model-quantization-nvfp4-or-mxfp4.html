@@ -49,7 +49,7 @@
     }
    ],
    "citation": [
-    "https://cynthia-git11.github.io/clawq-diary/entries/130.html"
+    "https://cynthia-git11.github.io/clawq-diary/entries/en/130.html"
    ],
    "speakable": {
     "@type": "SpeakableSpecification",
@@ -69,14 +69,14 @@
      },
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ship NVFP4 first. Nvidia's proprietary format has taken the distribution default for open weights: measured on Hugging Face on 8/29, NVFP4 had 51.1M downloads over the trailing 30 days versus 1.29M for MXFP4, the open standard co-signed by seven companies, forty to one. The mainstream narrative expects the open standard co-signed by seven companies to become the default format. The diary reads the download counts: the open-weights ecosystem chose Nvidia's proprietary format on its own, nearly half of the distribution is done for free by the community, and Nvidia is itself a signatory of MXFP4. Full paginated pull of the unauthenticated HF API on 2026-08-29: NVFP4 had 51.1M downloads over the trailing 30 days (3330 repos), MXFP4 1.29M (1608 repos). 46.6% of NVFP4 downloads sit outside the Nvidia organization; the largest distributor is community quantizer unsloth at 8.69M. Nvidia is reportedly seeking to buy Hugging Face for $12.9B; as of 8/29 the deal is not signed and both sides declined to comment. For founders: do not put \"supports the open standard\" in your pitch; ship NVFP4 weights first and measure distribution only by third-party repo downloads. For investors: mark down quantization and inference toolchains that bet only on MXFP4, and value distribution built on HF as a rented channel, since the platform terms allow service to be terminated at any time.",
+      "text": "Ship NVFP4 first. Nvidia's proprietary format has taken the distribution default for open weights: measured on Hugging Face on 8/29, NVFP4 had 51.1M downloads over the trailing 30 days versus 1.29M for MXFP4, the open standard co-signed by seven companies, forty to one. The mainstream narrative expects the open standard co-signed by seven companies to become the default format. The diary reads the download counts: the open-weights ecosystem chose Nvidia's proprietary format on its own, nearly half of the distribution is done for free by the community, and Nvidia is itself a signatory of MXFP4. Full paginated pull of the unauthenticated HF API on 2026-08-29: NVFP4 had 51.1M downloads over the trailing 30 days (3330 repos), MXFP4 1.29M (1608 repos). 46.6% of NVFP4 downloads sit outside the Nvidia organization; the largest distributor is community quantizer unsloth at 8.69M. Nvidia is reportedly seeking to buy Hugging Face for $12.9B; as of 8/29 the deal is not signed and both sides declined to comment. For founders: do not put \"supports the open standard\" in your pitch; ship NVFP4 weights first and measure distribution only by third-party repo downloads. For investors: mark down quantization and inference toolchains that bet only on MXFP4, and value distribution built on HF as a rented channel, since the platform terms allow service to be terminated at any time. Falsifier: Within 12 months of this entry's publication date, if MXFP4's 30-day downloads overtake NVFP4's, this entry does not hold; the adjudicating source is the unauthenticated HF API. Ledger status: ENTRY 130: ⏳ Open. Generated from the judgment ledger; the dated reconciliation notes are in Chinese on the ledger cards.",
       "dateCreated": "2026-08-29",
       "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/open-model-quantization-nvfp4-or-mxfp4.html",
       "author": {
        "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
       },
       "citation": [
-       "https://cynthia-git11.github.io/clawq-diary/entries/130.html"
+       "https://cynthia-git11.github.io/clawq-diary/entries/en/130.html"
       ]
      }
     }
@@ -133,6 +133,7 @@
     h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
     .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
     .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-lead .aw-orig{display:inline-block;margin-top:8px;font-weight:500;color:var(--muted)}
     .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
     .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
     .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
@@ -147,10 +148,10 @@
 </head>
 <body>
 <div class="aw-wrap">
-  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../../">🦞 The ClawQ Chronicles</a><a href="../../answers/en/">Q&A</a><a href="../open-model-quantization-nvfp4-or-mxfp4.html">中文</a><a href="../../topics/">Topics</a><a href="../../entries/">All entries</a><a href="../../theses.html">⚖️ Ledger</a></nav>
+  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../../">🦞 The ClawQ Chronicles</a><a href="../../answers/en/">Q&A</a><a href="../open-model-quantization-nvfp4-or-mxfp4.html">中文</a><a href="../../topics/">Topics</a><a href="../../entries/">All entries</a><a href="../../theses-en.html">⚖️ Ledger</a></nav>
   <div class="aw-crumb"><a href="../../">Home</a> › <a href="./">Q&A</a> › We&#x27;re open-sourcing a model: which quant</div>
   <h1 class="aw-h1">We&#x27;re open-sourcing a model: which quantization format ships first, NVFP4 or MXFP4?</h1>
-  <div class="aw-meta">Asked by：创始人·开源模型团队 CTO · Judged <time datetime="2026-08-29">2026-08-29</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <div class="aw-meta">Asked by: Founder · Judged <time datetime="2026-08-29">2026-08-29</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
   <p class="aw-lead">Ship NVFP4 first. Nvidia&#x27;s proprietary format has taken the distribution default for open weights: measured on Hugging Face on 8/29, NVFP4 had 51.1M downloads over the trailing 30 days versus 1.29M for MXFP4, the open standard co-signed by seven companies, forty to one.</p>
   <h2 class="aw-h2">Judgment</h2>
   <p class="aw-p">The mainstream narrative expects the open standard co-signed by seven companies to become the default format. The diary reads the download counts: the open-weights ecosystem chose Nvidia&#x27;s proprietary format on its own, nearly half of the distribution is done for free by the community, and Nvidia is itself a signatory of MXFP4.</p>
@@ -160,11 +161,11 @@
   <p class="aw-p">For founders: do not put &quot;supports the open standard&quot; in your pitch; ship NVFP4 weights first and measure distribution only by third-party repo downloads. For investors: mark down quantization and inference toolchains that bet only on MXFP4, and value distribution built on HF as a rented channel, since the platform terms allow service to be terminated at any time.</p>
   <h2 class="aw-h2">Falsifier (verbatim from the diary footnote)</h2>
   <div class="aw-falsify">Within 12 months of this entry&#x27;s publication date, if MXFP4&#x27;s 30-day downloads overtake NVFP4&#x27;s, this entry does not hold; the adjudicating source is the unauthenticated HF API.</div>
-  <div class="aw-status">Ledger status：判断台账：ENTRY 130 ⏳ 进行中（2026-08-29 立，证伪窗口 12 个月，台账卡片尚无对账记录）。</div>
-  <div class="aw-disc">Disclosure: This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not; FutureX Capital holds Hugging Face; discount in both directions.</div>
-  <div class="aw-src">Source entries：<a href="../../entries/130.html">ENTRY 130 · 开放权重生态自己选了英伟达的私有格式</a></div>
-  <div class="aw-rel">Related questions：<ul><li><a href="kimi-k3-backend-license-and-contracts.html">Building on Kimi K3 as my backend: what has to go into my license review and customer contracts?</a></li><li><a href="low-cost-inference-open-weight-revenue-ceiling.html">We run a low-cost inference layer on open-weight models: where&#x27;s the revenue ceiling, and why do investors keep asking for spend share instead of token share?</a></li><li><a href="futurex-capital-holdings-disclosure.html">What AI companies does FutureX Capital (Cynthia Zhang) hold, and how does the diary disclose conflicts?</a></li></ul></div>
-  <div class="aw-rel">Topic pages：<a href="../../topics/nvidia.html">NVIDIA</a> · <a href="../../topics/hugging-face.html">Hugging Face</a></div>
+  <div class="aw-status">Ledger status: <a href="../../theses-en.html#call-130">ENTRY 130</a>: ⏳ Open. Generated from the judgment ledger; the dated reconciliation notes are in Chinese on the ledger cards.</div>
+  <div class="aw-disc">Disclosure: This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not. FutureX holds Hugging Face; discount conclusions touching Hugging Face either way. Nvidia announced on Sep 3, 2026 that it would acquire Hugging Face, which FutureX holds (pending closing). FutureX holds no direct or fund-level stake in Nvidia (confirmed by the author, 2026-10-12).</div>
+  <div class="aw-src">Source entries: <a href="../../entries/en/130.html">ENTRY 130 · The Open-Weight Ecosystem Chose Nvidia&#x27;s Proprietary Format on Its Own</a></div>
+  <div class="aw-rel">Related questions: <ul><li><a href="kimi-k3-backend-license-and-contracts.html">Building on Kimi K3 as my backend: what has to go into my license review and customer contracts?</a></li><li><a href="low-cost-inference-open-weight-revenue-ceiling.html">We run a low-cost inference layer on open-weight models: where&#x27;s the revenue ceiling, and why do investors keep asking for spend share instead of token share?</a></li><li><a href="futurex-capital-holdings-disclosure.html">What AI companies does FutureX Capital (Cynthia Zhang) hold, and how does the diary disclose conflicts?</a></li></ul></div>
+  <div class="aw-rel">Topic pages (Chinese): <a href="../../topics/nvidia.html">NVIDIA</a> · <a href="../../topics/hugging-face.html">Hugging Face</a></div>
   <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.</footer>
 </div>
 <script src="../../assets/js/tracker.js?v=4" defer></script>

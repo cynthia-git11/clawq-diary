@@ -78,7 +78,7 @@
      },
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "认股权证是供应商的获客成本，估值时从合同额里扣掉再算倍数。Akamai 9/24 公告：Anthropic 承诺七年付 116 亿美元买 CPU 算力，另发认股权证，上限约 5% 股份（新闻稿口径）、行权价 111.33 美元。 主流把 116 亿读成 Akamai 的收入确定性；日记读成供应商拿自家股权买客户：合同额要扣掉送出去的股权，Anthropic 一侧的七年承诺按准债务并进 EV，七年固定支出对着据报道一周减半的 Sol 标价。 Akamai 8-K（2026-09-24）：Anthropic 承诺约 116 亿美元、七年；新闻稿口径认股权证 ≈ 流通股 5%、行权价 111.33 美元，约 2% 随现有承诺归属、每新增 30 亿美元约 1%。AMD 8-K（2025-10-06）：向 OpenAI 发最多 1.6 亿股、行权价 0.01 美元。据 VentureBeat（9/22）报道，GPT-6 Sol 标价减半。 对投资人：算力大单先翻 8-K 找认股权证，摊薄从合同额扣掉再算倍数，模型公司的多年承诺按准债务并进 EV。对创业者：卖算力的把客户要的股权算进获客成本；买算力的在多年承诺前先要认股权证或价格重置。",
+      "text": "认股权证是供应商的获客成本，估值时从合同额里扣掉再算倍数。Akamai 9/24 公告：Anthropic 承诺七年付 116 亿美元买 CPU 算力，另发认股权证，上限约 5% 股份（新闻稿口径）、行权价 111.33 美元。 主流把 116 亿读成 Akamai 的收入确定性；日记读成供应商拿自家股权买客户：合同额要扣掉送出去的股权，Anthropic 一侧的七年承诺按准债务并进 EV，七年固定支出对着据报道一周减半的 Sol 标价。 Akamai 8-K（2026-09-24）：Anthropic 承诺约 116 亿美元、七年；新闻稿口径认股权证 ≈ 流通股 5%、行权价 111.33 美元，约 2% 随现有承诺归属、每新增 30 亿美元约 1%。AMD 8-K（2025-10-06）：向 OpenAI 发最多 1.6 亿股、行权价 0.01 美元。据 VentureBeat（9/22）报道，GPT-6 Sol 标价减半。 对投资人：算力大单先翻 8-K 找认股权证，摊薄从合同额扣掉再算倍数，模型公司的多年承诺按准债务并进 EV。对创业者：卖算力的把客户要的股权算进获客成本；买算力的在多年承诺前先要认股权证或价格重置。 证伪口：本篇判断「供应商向客户发股权会成为算力采购的标配条款」。自 2026-09-25 起 12 个月内（至 2027-09-25），统计上市算力、芯片、云或数据中心供应商与前沿模型公司（OpenAI、Anthropic、xAI、Google、Meta、Mistral 及中国头部实验室）新签、单笔合同额 ≥ 50 亿美元、经供应商 8-K、港交所公告或官方新闻稿披露的算力供应合同，不含 Akamai–Anthropic 与 AMD–OpenAI 两单：其中含向客户发放认股权证、股权或可转换工具的 ≥ 3 单记已验证；0 单记 ✗；1–2 单记 ⏳ 并公开清单。口径：认股权证须见于供应商 8-K Item 1.01/3.02 或等效监管公告原文，媒体转述不算；供应商向客户投资（如英伟达对 OpenAI，ENTRY 126）是反向，不计入。裁定源：SEC EDGAR、港交所披露易、供应商官网新闻稿，逐单列明。触发后果：✗ 则本篇判断在判断总账标 ✗、llms.txt 加注；已验证则把「合同额扣认股权证」写进本站算力估值口径并回溯标注 ENTRY 122、126、129。 台账状态：⏳ 进行中，至 2027-09-25 按 SEC EDGAR、港交所披露易与供应商官网新闻稿逐单裁定",
       "dateCreated": "2026-09-25",
       "url": "https://cynthia-git11.github.io/clawq-diary/answers/compute-vendor-warrants-akamai-anthropic.html",
       "author": {
@@ -142,6 +142,7 @@
     h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
     .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
     .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-lead .aw-orig{display:inline-block;margin-top:8px;font-weight:500;color:var(--muted)}
     .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
     .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
     .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
@@ -170,7 +171,7 @@
   <h2 class="aw-h2">证伪口（逐字取自日记尾注）</h2>
   <div class="aw-falsify">本篇判断「供应商向客户发股权会成为算力采购的标配条款」。自 2026-09-25 起 12 个月内（至 2027-09-25），统计上市算力、芯片、云或数据中心供应商与前沿模型公司（OpenAI、Anthropic、xAI、Google、Meta、Mistral 及中国头部实验室）新签、单笔合同额 ≥ 50 亿美元、经供应商 8-K、港交所公告或官方新闻稿披露的算力供应合同，不含 Akamai–Anthropic 与 AMD–OpenAI 两单：其中含向客户发放认股权证、股权或可转换工具的 ≥ 3 单记已验证；0 单记 ✗；1–2 单记 ⏳ 并公开清单。口径：认股权证须见于供应商 8-K Item 1.01/3.02 或等效监管公告原文，媒体转述不算；供应商向客户投资（如英伟达对 OpenAI，ENTRY 126）是反向，不计入。裁定源：SEC EDGAR、港交所披露易、供应商官网新闻稿，逐单列明。触发后果：✗ 则本篇判断在判断总账标 ✗、llms.txt 加注；已验证则把「合同额扣认股权证」写进本站算力估值口径并回溯标注 ENTRY 122、126、129。</div>
   <div class="aw-status">台账状态：⏳ 进行中，至 2027-09-25 按 SEC EDGAR、港交所披露易与供应商官网新闻稿逐单裁定</div>
-  <div class="aw-disc">利益披露：本日记由 Claude 系工具写作与核实，涉及 Anthropic 的判断（有利或不利）都请打折读；按公开可查信息天际不持有 Nscale、CoreWeave、Nebius、NVIDIA、微软；天际（FutureX Capital）持有 Mistral AI，双向打折读。</div>
+  <div class="aw-disc">利益披露：本日记由 Claude 系工具写作与核实，涉及 Anthropic 的判断（有利或不利）都请打折读；天际持有 Mistral，涉及 Mistral 的结论请双向打折读；英伟达 2026-09-03 宣布收购天际持有的 Hugging Face（待交割）；天际不直接或经基金间接持有 Anthropic（作者 2026-10-09 确认）、OpenAI、Nvidia、Microsoft（作者 2026-10-12 确认）、CoreWeave、IREN、Hut 8、Core Scientific、Applied Digital（作者 2026-11-13 确认）。</div>
   <div class="aw-src">原文：<a href="../entries/136.html">ENTRY 136 · 算力商开始用股权买客户：Akamai 给 Anthropic 5% 认股权证</a></div>
   <div class="aw-rel">相关问题：<ul><li><a href="selling-compute-prepayment-and-equity.html">我做算力/新云，客户预付低于多少不能签？客户要股权怎么算账？</a></li><li><a href="nvidia-openai-105-billion-backstop.html">英伟达给 OpenAI 的 1050 亿美元担保是什么？英伟达有多少表外风险？</a></li><li><a href="anthropic-nscale-contract-order-or-option.html">Anthropic 和 Nscale 的 446 亿美元合同是订单还是期权？违约了谁赔？</a></li></ul></div>
   <div class="aw-rel">主题页：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/neocloud-compute.html">新云与算力合同</a> · <a href="../topics/mistral.html">Mistral AI</a></div>

@@ -6,19 +6,39 @@ Input : data/answers.json  — list of items:
         {id, slug(optional; frozen on first build), persona_group ("投资人"|"创业者"), persona, q_zh, q_en, date (YYYY-MM-DD),
          entries [int], topics [slug from data/topics.json], related [ids],
          lead_zh, judgment_zh, facts_zh, landing_zh, falsify_zh (verbatim from the ENTRY footnote), status_zh,
-         lead_en, judgment_en, facts_en, landing_en, falsify_en}
+         lead_en, judgment_en, facts_en, landing_en, falsify_en,
+         optional: verdict_zh (str or list: verbatim quote(s) of a dated reconciliation note on a cited entry), status_en
+         (hand-written English status, CJK-free), entities [record names for the holdings disclosure]}
+        q20's lead may carry the placeholder {holdings}: it is replaced by holdings_lib.portfolio() (never typed by hand).
 Reads : index.html (number-fidelity gate: every number in every text field must appear verbatim in a cited ENTRY, allowing
-        亿↔B/M unit conversions ×/÷10,100,1000), data/topics.json (entity names + fixed disclosure sentences)
+        亿↔B/M unit conversions ×/÷10,100,1000; falsify_zh must be verbatim, clause by clause, after the same normalisation),
+        theses.html + index.html footnotes (dated reconciliation notes 「（D 对账：…）」「｜D 对账：…」), data/ledger.json (status),
+        data/entries-en-map.json + entries/en/<N>.html (English h1 for source links), data/topics.json (entity names,
+        non-holdings disclosure sentences), holdings.json via scripts/holdings_lib.py (every holdings sentence).
+Verdict-first lead (2026-11-21): when a cited card changed after the question's date, the lead opens with the dated note
+        「D 对账（ENTRY N）：<verdict_zh>」 and then 「原判断（date）：<lead>」. verdict_zh is allowed only as a verbatim quote of a
+        note dated after the question; it is required (else a ledger-template line + WARN, never a failed build) when a cited
+        call was judged ✗ / ◐ / ✓, or had a sub-claim judged wrong, after the question's date. English pages never translate the
+        note: the line is a template from data/ledger.json (status, dates; retracted wording quoted as Chinese original), and
+        the status bar is status_en or, when no faithful English exists, a ledger.json template (WARN lists those questions);
+        a hand-written status_en that no longer shows a cited call's ✗ / ◐ / ✓ is treated as stale and replaced the same way.
+        Template text carries only ledger.json fields (dates, ENTRY numbers) and quotes already gated on the Chinese side.
 Writes: answers/<slug>.html, answers/en/<slug>.html, answers/index.html, answers/en/index.html, sitemap-answers.xml,
         robots.txt Sitemap line if missing. Slugs are frozen into data/answers.json on first build (never renamed after publish).
-Usage : python3 scripts/gen-answers.py [--root DIR] [--dry] [--no-verify]
+Guards: number / verdict / falsifier gate → exit 1 before writing; a banned phrase in any written page → exit 1;
+        companies a question names that are not in holdings.json are printed as 'PENDING disclosure qNN: X' and nothing is
+        said about holding them (--strict-disclosure makes that exit 1). geo-check.py repeats the page checks hourly in CI.
+Usage : python3 scripts/gen-answers.py [--root DIR] [--dry] [--no-verify] [--strict-disclosure]   (root: --root, else $CLAWQ_ROOT)
 """
 import re, os, sys, json, html, shutil, tempfile
 
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+ROOT = os.environ.get("CLAWQ_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
-DRY = "--dry" in sys.argv; VERIFY = "--no-verify" not in sys.argv
+DRY = "--dry" in sys.argv; VERIFY = "--no-verify" not in sys.argv; STRICT_DISC = "--strict-disclosure" in sys.argv
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import holdings_lib as HL
+HOLD = HL.load()
 SRC = ROOT
 if DRY:
     W = tempfile.mkdtemp(prefix="answers-")
@@ -30,6 +50,10 @@ def wr(f, s):
     p = os.path.join(ROOT, f); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, "w", encoding="utf-8").write(s)
 def strip(s): return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s)).strip()
 def esc(s): return html.escape(s or "", quote=True)
+TAG = re.compile(r"</?[A-Za-z][^>]*>")          # real tags only: card text has a literal "<8%"
+def plain(s): return re.sub(r"\s+", " ", html.unescape(TAG.sub("", s or ""))).strip()
+def norm(s): return re.sub(r"\s+", " ", html.unescape(s or "").replace(",", "").replace("，", "")).strip()   # = etext normalisation
+WARN = []
 
 Q = json.load(open(os.path.join(ROOT, "data/answers.json"), encoding="utf-8"))
 TOPICS = {t["slug"]: t for t in json.load(open(os.path.join(ROOT, "data/topics.json"), encoding="utf-8"))}
@@ -39,9 +63,9 @@ def block_at(s, start):
     while True:
         m = tag.search(s, i); depth += -1 if m.group(1) else 1; i = m.end()
         if depth == 0: return i
-etext = {}; etitle = {}; edate = {}
+etext = {}; etitle = {}; edate = {}; eblk = {}
 for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
-    n = int(m.group(1)); blk = idx[m.start():block_at(idx, m.start())]
+    n = int(m.group(1)); blk = idx[m.start():block_at(idx, m.start())]; eblk[n] = blk
     etext[n] = strip(blk).replace(",", "").replace("，", ""); etitle[n] = strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, ""])[1])
     dm = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", blk); edate[n] = f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else ""
 
@@ -61,44 +85,165 @@ if changed and not DRY:
     json.dump(Q, open(os.path.join(SRC, "data/answers.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 assert len(seen) == len(Q), "duplicate slugs"
 
-# ---------- number-fidelity gate ----------
-FIELDS_ZH = ["lead_zh", "judgment_zh", "facts_zh", "landing_zh", "falsify_zh", "status_zh"]
-FIELDS_EN = ["lead_en", "judgment_en", "facts_en", "landing_en", "falsify_en"]
-NUM = re.compile(r"\d+(?:\.\d+)?")
-SMALL = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "24", "30", "60", "90", "100"}
+# ---------- ledger status, English titles, dated reconciliation notes ----------
+LEDGER = {}
+try:
+    for c in json.load(open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))["calls"]: LEDGER[int(c["entry"])] = c
+except FileNotFoundError:
+    WARN.append("data/ledger.json missing — English status bars only point to the ledger (run scripts/gen-ledger.py)")
+EN_TITLE = {}
+try:
+    for k, rel in json.load(open(os.path.join(SRC, "data/entries-en-map.json"), encoding="utf-8")).items():
+        fp = os.path.join(SRC, rel)
+        h1 = re.search(r'<h1 class="ee-h1">(.*?)</h1>', open(fp, encoding="utf-8").read(), re.S) if os.path.exists(fp) else None
+        if h1: EN_TITLE[int(k)] = plain(h1.group(1))
+except FileNotFoundError: pass
+HAS_EN_LEDGER = os.path.exists(os.path.join(SRC, "theses-en.html"))
+th_raw = open(os.path.join(SRC, "theses.html"), encoding="utf-8").read() if os.path.exists(os.path.join(SRC, "theses.html")) else ""
+def paren_at(s, i):
+    d = 0
+    for j in range(i, len(s)):
+        if s[j] == "（": d += 1
+        elif s[j] == "）":
+            d -= 1
+            if d == 0: return s[i + 1:j]
+    return s[i + 1:]
+NOTE_CARD = re.compile(r"（(\d{4}-\d{2}-\d{2}) ?(补?对账)")
+NOTE_FOOT = re.compile(r"^\s*(\d{4}-\d{2}-\d{2}) ?(补?对账)")
+_notes = {}
+def notes_for(n):
+    """dated reconciliation notes on ENTRY n → [(date, label, text, where)]: the theses.html card 「（D 对账：…）」 and the
+    index.html footnote 「｜D 对账：…」 (both are the author's published wording; the verdict quotes one of them verbatim)"""
+    if n in _notes: return _notes[n]
+    out = []; i = th_raw.find(f'<div class="call" id="call-{n}"')
+    if i != -1:
+        j = th_raw.find('<div class="call"', i + 10); seg = plain(th_raw[i:j if j != -1 else len(th_raw)])
+        for m in NOTE_CARD.finditer(seg):
+            body = paren_at(seg, m.start()); k = body.find("：")
+            out.append((m.group(1), m.group(2), body[k + 1:] if k != -1 else body, "card"))
+    for part in plain(eblk.get(n, "")).split("｜"):
+        m = NOTE_FOOT.match(part)
+        if m: out.append((m.group(1), m.group(2), part[m.end():].lstrip("：，, "), "footnote"))
+    _notes[n] = out; return out
+def decision_date(c):
+    """the date a call was judged ✗ / ◐ / ✓, or had a sub-claim judged wrong / wording retracted; None while plainly open"""
+    if c["status"] == "corrected": return c.get("corrected_on") or c.get("reconciled")
+    if c["status"] in ("partly", "verified"): return c.get("reconciled")
+    return c.get("reconciled") if (c.get("subclaim_judged_wrong") or c.get("retracted")) else None
+
+LE = {"verified": "✓ Verified", "corrected": "✗ Publicly corrected", "partly": "◐ Partly right", "open": "⏳ Open"}   # = gen-entries-en.py
+def status_en_phrase(c, lead=False, quote=None):
+    """English status from data/ledger.json fields only; the author's Chinese wording is quoted, never translated"""
+    st = c["status"]; k = c.get("correction_entry")
+    if st == "corrected": s = f'{LE[st]} on {c.get("corrected_on") or c.get("reconciled")}' + (f" in ENTRY {k}" if k else " at the dated ledger reconciliation")
+    elif st == "partly": s = f'{LE[st]} (reconciled {c["reconciled"]})'
+    else: s = LE[st] + (" · resolution source missing" if c.get("unresolvable") else "") + (f' (reconciled {c["reconciled"]})' if c.get("reconciled") else "")
+    if lead:
+        if c.get("retracted"): s += f'; retracted wording (Chinese original): 「{c["retracted"]}」'
+        if c.get("subclaim_judged_wrong"): s += f'; sub-claim judged wrong at reconciliation (Chinese original): 「{c["subclaim_judged_wrong"]}」'
+        if st in ("corrected", "partly"): s += "; the original call below is kept as written"
+        if st == "open" and not (c.get("retracted") or c.get("subclaim_judged_wrong")) and quote: s += f"; reconciliation note (Chinese only): 「{quote}」"
+    else:
+        if c.get("retracted"): s += "; the retracted wording is quoted in Chinese on the ledger card"
+        if c.get("subclaim_judged_wrong"): s += "; a sub-claim was judged wrong at reconciliation (wording in Chinese on the ledger card)"
+        if st == "open" and c.get("resolve_dates"):
+            r = c["resolve_dates"]; s += f'; final / review-until date{"s" if len(r) > 1 else ""} read from the card: {", ".join(r)}' + ("; overdue" if c.get("overdue") else "")
+        if c.get("backfill"): s += f'; retrospective, written {c["written_date"]}, not scored as a forward call'
+    return s
+ZH_ST = {"verified": "✓ 已验证", "corrected": "✗ 已公开修正", "partly": "◐ 部分成立"}
+def verdict_template_zh(n, c, d):
+    """the lead line when no dated note has been quoted yet: ledger status words only"""
+    k = c.get("correction_entry")
+    if c["status"] == "corrected" and k: return f"{d} 更正（ENTRY {n}）：在 ENTRY {k} 记 ✗ 已公开修正，原判断照原文保留，见判断台账"
+    if c["status"] == "corrected": return f"{d} 对账（ENTRY {n}）：记 ✗ 已公开修正，原判断照原文保留，见判断台账"
+    if c["status"] in ZH_ST: return f"{d} 对账（ENTRY {n}）：记 {ZH_ST[c['status']]}，见判断台账"
+    return f"{d} 对账（ENTRY {n}）：一条子判断记 ✗，卡片维持 ⏳ 进行中，见判断台账"
+
+# ---------- verdicts (verbatim dated notes) ----------
 problems = []
+VERD = {}
 for q in Q:
     q["entries"] = [int(n) for n in q["entries"]]
+    vs = q.get("verdict_zh") or []
+    vs = [vs] if isinstance(vs, str) else list(vs)
+    got = []
+    for v in vs:
+        hits = [(d, lab, n, w) for n in q["entries"] for d, lab, body, w in notes_for(n) if d > q["date"] and norm(v) in norm(body)]
+        if not hits:
+            problems.append(f"{q['id']} verdict_zh: not a verbatim quote of a reconciliation note dated after {q['date']} on a cited entry — {v[:40]}"); continue
+        d, lab, n, w = max(hits, key=lambda h: (h[0], h[3] == "card"))
+        newer = max(x[0] for x in notes_for(n))
+        if newer > d: WARN.append(f"{q['id']}: verdict quotes the {d} note of ENTRY {n}; ENTRY {n} has a newer note dated {newer}")
+        c = LEDGER.get(n)
+        got.append(dict(entry=n, date=d, zh=f"{d} {lab}（ENTRY {n}）：{v}",
+                        en=f"Ledger update {d} (ENTRY {n}): " + (status_en_phrase(c, True, v) if c else f"reconciliation note (Chinese only): 「{v}」")))
+    for n in q["entries"]:       # required: a cited call judged after the question was written
+        c = LEDGER.get(n); d = decision_date(c) if c else None
+        if not d or d <= q["date"] or any(g["entry"] == n and g["date"] >= d for g in got): continue
+        WARN.append(f"VERDICT missing {q['id']}: ENTRY {n} is {c['status']} since {d} — lead shows the ledger template; quote the dated note into verdict_zh")
+        got.append(dict(entry=n, date=d, zh=verdict_template_zh(n, c, d), en=f"Ledger update {d} (ENTRY {n}): " + status_en_phrase(c, True)))
+    VERD[q["id"]] = sorted(got, key=lambda g: (q["entries"].index(g["entry"]), g["date"]))
+
+# ---------- number-fidelity gate (+ verbatim falsifier, + CJK-free status_en) ----------
+FIELDS_ZH = ["lead_zh", "judgment_zh", "facts_zh", "landing_zh", "falsify_zh", "status_zh", "verdict_zh"]
+FIELDS_EN = ["lead_en", "judgment_en", "facts_en", "landing_en", "falsify_en", "status_en"]
+NUM = re.compile(r"\d+(?:\.\d+)?")
+SMALL = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "24", "30", "60", "90", "100"}
+def enorm(s): return strip(s or "").replace(",", "").replace("，", "")   # exactly how etext is normalised
+for q in Q:
     cited = " ".join(etext.get(n, "") for n in q["entries"])
     for n in q["entries"]:
         if n not in etext: problems.append(f"{q['id']}: cites ENTRY {n} which does not exist")
     for t in q.get("topics", []):
         if t not in TOPICS: problems.append(f"{q['id']}: unknown topic slug {t}")
     for f in FIELDS_ZH + FIELDS_EN:
-        txt = (q.get(f) or "").replace(",", "")
+        v = q.get(f) or ""; v = "　".join(v) if isinstance(v, list) else v
+        txt = v.replace(",", "")
         txt = re.sub(r"ENTRY\s*\d+(?:\s*[/、和与&]\s*\d+)*", " ", txt)   # entry ids are references, not data
         for tok in set(NUM.findall(txt)):
             if tok in SMALL or re.fullmatch(r"20\d\d", tok): continue
             # unit conversions the English side makes: 亿↔B/M (×/÷10, 100, 1000) and 万↔absolute (×/÷10000)
             v = float(tok); alts = {tok} | {f"{v*10:g}", f"{v/10:g}", f"{v*100:g}", f"{v/100:g}", f"{v*1000:g}", f"{v/1000:g}", f"{v*10000:g}", f"{v/10000:g}"}
             if not any(a in cited for a in alts): problems.append(f"{q['id']} {f}: number {tok} not found in cited entries {q['entries']}")
+    # falsify_zh is labelled 逐字取自日记尾注: every clause must be verbatim in a cited entry, after the etext normalisation
+    for seg in re.split(r"[。；｜]|ENTRY \d+：", enorm(q.get("falsify_zh"))):
+        if len(seg.strip()) >= 8 and seg.strip() not in cited: problems.append(f"{q['id']} falsify_zh: clause not verbatim in cited entries — {seg.strip()[:40]}")
+    if q.get("status_en") and HL.CJK.search(q["status_en"]): problems.append(f"{q['id']} status_en: contains CJK characters")
+    if q.get("status_en"):          # a hand-written English status that no longer shows a cited call's ✗ / ◐ / ✓ is stale: template instead
+        miss = [n for n in q["entries"] if n in LEDGER and {"corrected": "✗", "partly": "◐", "verified": "✓"}.get(LEDGER[n]["status"], "") not in q["status_en"]]
+        if miss: WARN.append(f"{q['id']} status_en disagrees with the ledger for ENTRY {', '.join(map(str, miss))} — ledger template used"); q.pop("status_en")
+    for f in ("lead_zh", "lead_en", "judgment_zh", "judgment_en", "facts_zh", "facts_en", "landing_zh", "landing_en", "status_zh", "status_en", "verdict_zh"):
+        v = q.get(f) or ""; v = " ".join(v) if isinstance(v, list) else v
+        if HL.banned_hits(v): problems.append(f"{q['id']} {f}: banned disclosure phrase {HL.banned_hits(v)}")
 if VERIFY and problems:
     print("NUMBER-FIDELITY GATE FAILED:"); [print("  ✗", p) for p in problems]; sys.exit(1)
+no_en = [q["id"] for q in Q if not q.get("status_en")]
+if no_en: WARN.append(f"status_en: no faithful English status for {len(no_en)} questions — English status bars generated from data/ledger.json: {', '.join(no_en)}")
 
-# ---------- disclosure (fixed template, from data/topics.json) ----------
+# ---------- disclosure: Claude sentence + holdings_lib (holdings.json, fixed sentences) + non-holdings topic sentences ----------
 CLAUDE_ZH = "本日记由 Claude 系工具写作与核实，涉及 Anthropic 的判断（有利或不利）都请打折读"
 CLAUDE_EN = "This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not"
+PENDING = []
+def entity_names(q):
+    names = list(q.get("entities", []))
+    for t in q.get("topics", []): names += HL.TOPIC_ENTITIES.get(t, []) + TOPICS.get(t, {}).get("entities", [])
+    return names
 def disclosure(q, zh):
     parts = [CLAUDE_ZH if zh else CLAUDE_EN]
-    held = []
+    hs, pend = HL.statement(HOLD, entity_names(q), zh)
+    if zh: PENDING.extend((q["id"], p) for p in pend if (q["id"], p) not in PENDING)
+    parts += hs
     for t in q.get("topics", []):
         d = TOPICS.get(t, {}).get("disclosure" if zh else "disclosure_en")
         if not d or t == "anthropic": continue          # the Claude sentence above already covers Anthropic
+        if re.search(r"天际|FutureX", d) or HL.banned_hits(d):   # holdings wording comes only from holdings.json
+            w = f"topics.json {t}: disclosure carries holdings wording — ignored (holdings come from holdings.json)"
+            if zh and w not in WARN: WARN.append(w)
+            continue
         d = re.sub(r"^本日记由 Claude 系工具写作(与核实)?，", "", d); d = re.sub(r"^This diary is written with Claude, which", "Claude", d)
-        if d and d not in held: held.append(d)
-    parts += held
-    if not held: parts.append("本题涉及的公司，按公开可查信息天际（FutureX Capital）不持有" if zh else "FutureX Capital does not, on publicly available information, hold the companies discussed here")
-    return ("利益披露：" if zh else "Disclosure: ") + ("；".join(parts) if zh else "; ".join(parts)) + ("。" if zh else ".")
+        if d and d not in parts: parts.append(d)
+    return ("利益披露：" if zh else "Disclosure: ") + ("；".join(parts) if zh else ". ".join(parts)) + ("。" if zh else ".")
+def fill(s, zh): return (s or "").replace("{holdings}", ("；".join(HL.portfolio(HOLD, True)) if zh else ". ".join(HL.portfolio(HOLD, False))))
 
 CSS = """
     .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
@@ -108,6 +253,7 @@ CSS = """
     h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
     .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
     .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-lead .aw-orig{display:inline-block;margin-top:8px;font-weight:500;color:var(--muted)}
     .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
     .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
     .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
@@ -133,8 +279,35 @@ def nav(zh, depth, alt_href):
     up = "../" * depth
     L = (["🦞 倩小虾日记", "问答", "EN", "主题", "全部日记", "⚖️ 判断台账"] if zh else ["🦞 The ClawQ Chronicles", "Q&A", "中文", "Topics", "All entries", "⚖️ Ledger"])
     idxh = f"{up}answers/" if zh else f"{up}answers/en/"
+    ledger = f"{up}theses.html" if zh or not HAS_EN_LEDGER else f"{up}theses-en.html"
     return (f'<nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="{up}">{L[0]}</a><a href="{idxh}">{L[1]}</a><a href="{alt_href}">{L[2]}</a>'
-            f'<a href="{up}topics/">{L[3]}</a><a href="{up}entries/">{L[4]}</a><a href="{up}theses.html">{L[5]}</a></nav>')
+            f'<a href="{up}topics/">{L[3]}</a><a href="{up}entries/">{L[4]}</a><a href="{ledger}">{L[5]}</a></nav>')
+
+ZHQ = re.compile(r"「[^「」]*(?:「[^「」]*」[^「」]*)*」")
+def zh_spans(h): return ZHQ.sub(lambda m: f'<span lang="zh-CN">{m.group(0)}</span>', h)   # Chinese quotes on English pages
+def cut300(s): return s if len(s) <= 300 else s[:297] + "…"
+def lead_parts(q, zh):
+    """→ (verdict line, lead line, description, last verdict date): the verdict-first lead"""
+    lead = fill(q.get("lead_zh" if zh else "lead_en"), zh)
+    vs = VERD.get(q["id"], [])
+    if not vs: return "", lead, cut300(lead), ""
+    end = lambda x, z: x if x[-1:] in ("。", "！", "？", ".") else x + ("。" if z else ".")
+    vline = ("" if zh else " ").join(end(v["zh" if zh else "en"], zh) for v in vs)
+    orig = f"原判断（{q['date']}）：{lead}" if zh else f"Original call ({q['date']}): {lead}"
+    return vline, orig, cut300(vline + " " + orig), max(v["date"] for v in vs)
+def status_en_html(q, up):
+    """→ (html, plain): hand-written status_en, else one template line per cited entry from data/ledger.json"""
+    if q.get("status_en"): return esc(q["status_en"]), q["status_en"]
+    ledger = f"{up}theses-en.html" if HAS_EN_LEDGER else f"{up}theses.html"
+    if not LEDGER: return f'see the <a href="{ledger}">judgment ledger</a>', "see the judgment ledger"
+    hs, ps = [], []
+    for n in q["entries"]:
+        c = LEDGER.get(n)
+        if not c: hs.append(f"ENTRY {n}: not on the judgment ledger"); ps.append(hs[-1]); continue
+        t = status_en_phrase(c); ps.append(f"ENTRY {n}: {t}")
+        hs.append(f'<a href="{ledger}#call-{n}">ENTRY {n}</a>: {esc(t)}')
+    tail = "Generated from the judgment ledger; the dated reconciliation notes are in Chinese on the ledger cards."
+    return " · ".join(hs) + ". " + tail, " · ".join(ps) + ". " + tail
 
 def page(q, zh):
     depth = 1 if zh else 2; up = "../" * depth
@@ -142,40 +315,55 @@ def page(q, zh):
     alt = BASE + (f"answers/en/{q['slug']}.html" if zh else f"answers/{q['slug']}.html")
     alt_rel = f"en/{q['slug']}.html" if zh else f"../{q['slug']}.html"
     g = lambda k: q.get(k + ("_zh" if zh else "_en")) or ""
-    title = g("q"); lead, judg, facts, land, fals = g("lead"), g("judgment"), g("facts"), g("landing"), g("falsify")
-    status = q.get("status_zh", "")
-    answer_txt = " ".join(x for x in [lead, judg, facts, land] if x)
-    desc = (lead if len(lead) <= 300 else lead[:297] + "…")
+    title = g("q"); judg, facts, land, fals = g("judgment"), g("facts"), g("landing"), g("falsify")
+    vline, orig, desc, vdate = lead_parts(q, zh)
+    if zh: status_h = esc(q.get("status_zh", "")); status = q.get("status_zh", "")
+    else: status_h, status = status_en_html(q, up)
+    C = "：" if zh else ": "
+    answer_txt = " ".join(x for x in [vline, orig, judg, facts, land, (("证伪口：" if zh else "Falsifier: ") + fals) if fals else "",
+                                      (("台账状态：" if zh else "Ledger status: ") + status) if status else ""] if x)
     date = q.get("date") or max((edate.get(n, "") for n in q["entries"]), default="")
-    updated = max(q.get("updated", ""), date)
-    src = " · ".join(f'<a href="{up}entries/{n}.html">ENTRY {n} · {esc(etitle.get(n, ""))}</a>' for n in q["entries"])
+    updated = max(q.get("updated", ""), date, vdate)
+    def src1(n):
+        if zh: return f'<a href="{up}entries/{n}.html">ENTRY {n} · {esc(etitle.get(n, ""))}</a>'
+        if n in EN_TITLE: return f'<a href="{up}entries/en/{n}.html">ENTRY {n} · {esc(EN_TITLE[n])}</a>'
+        return f'<a href="{up}entries/{n}.html" hreflang="zh-CN">ENTRY {n} · <span lang="zh-CN">{esc(etitle.get(n, ""))}</span></a> (Chinese)'
+    src = " · ".join(src1(n) for n in q["entries"])
+    cites = [f"{BASE}entries/{n}.html" if zh or n not in EN_TITLE else f"{BASE}entries/en/{n}.html" for n in q["entries"]]
     rel = [BYID[r] for r in q.get("related", []) if r in BYID and r != q["id"]]
-    rel_html = "".join(f'<li><a href="{(r["slug"] + ".html") if zh else (r["slug"] + ".html")}">{esc(r["q_zh"] if zh else r["q_en"])}</a></li>' for r in rel)
+    rel_html = "".join(f'<li><a href="{r["slug"]}.html">{esc(r["q_zh"] if zh else r["q_en"])}</a></li>' for r in rel)
     tops = [TOPICS[t] for t in q.get("topics", []) if t in TOPICS]
     tops_html = " · ".join(f'<a href="{up}topics/{t["slug"]}.html">{esc(t["name"] if zh else t["name_en"])}</a>' for t in tops if os.path.exists(os.path.join(SRC, "topics", t["slug"] + ".html")))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": ["WebPage", "FAQPage"], "@id": url, "url": url, "name": title, "headline": title, "description": desc, "inLanguage": "zh-CN" if zh else "en",
          "datePublished": date, "dateModified": updated, "isPartOf": {"@id": f"{BASE}#blog"}, "author": {"@id": f"{BASE}#cynthia"},
          "about": [{"@type": "Organization", "name": t["name_en"] if not zh else t["name"], "url": t.get("url", "")} if t.get("url") else {"@type": "Thing", "name": t["name_en"] if not zh else t["name"]} for t in tops],
-         "citation": [f"{BASE}entries/{n}.html" for n in q["entries"]],
+         "citation": cites,
          "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1.aw-h1", ".aw-lead"]},
          "mainEntity": [{"@type": "Question", "@id": f"{url}#q", "name": title, "dateCreated": date, "author": {"@id": f"{BASE}#cynthia"},
-                         "acceptedAnswer": {"@type": "Answer", "text": answer_txt, "dateCreated": date, "url": url, "author": {"@id": f"{BASE}#cynthia"},
-                                            "citation": [f"{BASE}entries/{n}.html" for n in q["entries"]]}}]},
+                         "acceptedAnswer": {"@type": "Answer", "text": answer_txt, "dateCreated": date, **({"dateModified": updated} if updated != date else {}),
+                                            "url": url, "author": {"@id": f"{BASE}#cynthia"}, "citation": cites}}]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "倩小虾日记" if zh else "The ClawQ Chronicles", "item": BASE},
             {"@type": "ListItem", "position": 2, "name": "问答" if zh else "Q&A", "item": BASE + ("answers/" if zh else "answers/en/")},
             {"@type": "ListItem", "position": 3, "name": title, "item": url}]},
         PERSON, BLOG]}
     L = {"lead": "", "judg": "判断" if zh else "Judgment", "facts": "事实" if zh else "Facts", "land": "落点" if zh else "What to do", "fals": "证伪口（逐字取自日记尾注）" if zh else "Falsifier (verbatim from the diary footnote)",
-         "status": "台账状态" if zh else "Ledger status", "src": "原文" if zh else "Source entries", "rel": "相关问题" if zh else "Related questions", "topics": "主题页" if zh else "Topic pages",
+         "status": "台账状态" if zh else "Ledger status", "src": "原文" if zh else "Source entries", "rel": "相关问题" if zh else "Related questions", "topics": "主题页" if zh else "Topic pages (Chinese)",
          "judged": "判断日期" if zh else "Judged", "who": "提问者" if zh else "Asked by", "home": "首页" if zh else "Home", "qa": "问答" if zh else "Q&A"}
+    who = q.get("persona", "") if zh else {"投资人": "Investor", "创业者": "Founder"}.get(q.get("persona_group"), "")
+    T = (lambda h: h) if zh else zh_spans
+    lead_html = (f'<span class="aw-verdict">{T(esc(vline))}</span><br /> <span class="aw-orig">{T(esc(orig))}</span>' if vline else T(esc(orig)))
     sections = []
     if judg: sections.append(f'  <h2 class="aw-h2">{L["judg"]}</h2>\n  <p class="aw-p">{esc(judg)}</p>')
     if facts: sections.append(f'  <h2 class="aw-h2">{L["facts"]}</h2>\n  <p class="aw-p">{esc(facts)}</p>')
     if land: sections.append(f'  <h2 class="aw-h2">{L["land"]}</h2>\n  <p class="aw-p">{esc(land)}</p>')
-    if fals: sections.append(f'  <h2 class="aw-h2">{L["fals"]}</h2>\n  <div class="aw-falsify">{esc(fals)}</div>' + (f'\n  <div class="aw-status">{L["status"]}：{esc(status)}</div>' if status else ""))
-    elif status: sections.append(f'  <div class="aw-status">{L["status"]}：{esc(status)}</div>')
+    if fals: sections.append(f'  <h2 class="aw-h2">{L["fals"]}</h2>\n  <div class="aw-falsify">{esc(fals)}</div>' + (f'\n  <div class="aw-status">{L["status"]}{C}{status_h}</div>' if status else ""))
+    elif status: sections.append(f'  <div class="aw-status">{L["status"]}{C}{status_h}</div>')
+    mod = f'<meta property="article:modified_time" content="{updated}" />' if updated != date else ""
+    rel_div = ('  <div class="aw-rel">' + L["rel"] + C + '<ul>' + rel_html + '</ul></div>') if rel_html else ''
+    top_div = ('  <div class="aw-rel">' + L["topics"] + C + tops_html + '</div>') if tops_html else ''
+    upd_meta = (' · ' + ('台账更新' if zh else 'Ledger updated') + f' <time datetime="{updated}">{updated}</time>') if updated != date else ''
     return f"""<!DOCTYPE html>
 <html lang="{'zh-CN' if zh else 'en'}">
 <head>
@@ -186,7 +374,7 @@ def page(q, zh):
   <link rel="alternate" hreflang="{'zh-CN' if zh else 'en'}" href="{url}" /><link rel="alternate" hreflang="{'en' if zh else 'zh-CN'}" href="{alt}" /><link rel="alternate" hreflang="x-default" href="{BASE}answers/{q['slug']}.html" />
   <meta name="robots" content="index,follow,max-snippet:-1" />
   <meta property="og:type" content="article" /><meta property="og:title" content="{esc(title)}" /><meta property="og:description" content="{esc(desc)}" /><meta property="og:url" content="{url}" /><meta property="og:image" content="{BASE}assets/clawq-banner.jpg" />
-  <meta property="article:published_time" content="{date}" /><meta name="author" content="张倩 Cynthia Zhang" />
+  <meta property="article:published_time" content="{date}" />{mod}<meta name="author" content="张倩 Cynthia Zhang" />
 {head_links(depth)}
   <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
@@ -196,15 +384,15 @@ def page(q, zh):
 <body>
 <div class="aw-wrap">
   {nav(zh, depth, alt_rel)}
-  <div class="aw-crumb"><a href="{up}">{L["home"]}</a> › <a href="{'./' if zh else './'}">{L["qa"]}</a> › {esc(title[:40])}</div>
+  <div class="aw-crumb"><a href="{up}">{L["home"]}</a> › <a href="./">{L["qa"]}</a> › {esc(title[:40])}</div>
   <h1 class="aw-h1">{esc(title)}</h1>
-  <div class="aw-meta">{L["who"]}：{esc(q.get("persona", ""))} · {L["judged"]} <time datetime="{date}">{date}</time>{(' · ' + ('台账更新' if zh else 'Ledger updated') + f' <time datetime="{updated}">{updated}</time>') if updated != date else ''} · 张倩 Cynthia Zhang · FutureX Capital</div>
-  <p class="aw-lead">{esc(lead)}</p>
+  <div class="aw-meta">{L["who"]}{C}{esc(who)} · {L["judged"]} <time datetime="{date}">{date}</time>{upd_meta} · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <p class="aw-lead">{lead_html}</p>
 {chr(10).join(sections)}
   <div class="aw-disc">{esc(disclosure(q, zh))}</div>
-  <div class="aw-src">{L["src"]}：{src}</div>
-{('  <div class="aw-rel">' + L["rel"] + '：<ul>' + rel_html + '</ul></div>') if rel_html else ''}
-{('  <div class="aw-rel">' + L["topics"] + '：' + tops_html + '</div>') if tops_html else ''}
+  <div class="aw-src">{L["src"]}{C}{src}</div>
+{rel_div}
+{top_div}
   <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · {'本日记不构成对任何基金产品的推介或募集要约；数字与原文逐字一致，判断的验证状态以判断台账为准。' if zh else 'Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.'}</footer>
 </div>
 <script src="{up}assets/js/tracker.js?v=4" defer></script>
@@ -218,26 +406,30 @@ def index_page(zh):
     items = [q for q in Q if q.get("lead_zh" if zh else "lead_en")]
     groups = [("投资人", "投资人 · 估值、退出、算力合同、份额" if zh else "Investors · valuation, exits, compute contracts, share"),
               ("创业者", "创业者 · 定价、融资、算力采购、合规、选型" if zh else "Founders · pricing, fundraising, compute, compliance, model choice")]
+    upd = {q["id"]: max(q.get("updated", ""), q.get("date", ""), lead_parts(q, zh)[3]) for q in items}
+    T = (lambda h: h) if zh else zh_spans
+    def li(q):
+        u = upd[q["id"]]; ul = (" · " + ("台账更新 " if zh else "ledger updated ") + u) if u != q.get("date", "") else ""
+        return (f'    <li><a href="{q["slug"]}.html">{esc(q["q_zh"] if zh else q["q_en"])}</a>\n'
+                f'      <div class="aw-lp">{T(esc(lead_parts(q, zh)[2]))}</div>\n'
+                f'      <div class="aw-ld">{esc(q.get("date", ""))}{ul} · {" · ".join("ENTRY " + str(n) for n in q["entries"])}</div></li>')
     secs = []
     for key, label in groups:
         qs = [q for q in items if q.get("persona_group") == key]
         if not qs: continue
-        lis = "\n".join(f'''    <li><a href="{q['slug']}.html">{esc(q['q_zh'] if zh else q['q_en'])}</a>
-      <div class="aw-lp">{esc(q.get('lead_zh' if zh else 'lead_en') or '')}</div>
-      <div class="aw-ld">{esc(q.get('date',''))} · {' · '.join('ENTRY ' + str(n) for n in q['entries'])}</div></li>''' for q in qs)
-        secs.append(f'  <h2 class="aw-h2">{esc(label)}</h2>\n  <ul class="aw-list">\n{lis}\n  </ul>')
+        secs.append(f'  <h2 class="aw-h2">{esc(label)}</h2>\n  <ul class="aw-list">\n' + "\n".join(li(q) for q in qs) + '\n  </ul>')
     title = f"投资人与 AI 创业者会问的 {len(items)} 个问题" if zh else f"{len(items)} questions investors and AI founders ask"
     desc = ("张倩（FutureX Capital 创始人）用日记里的一手判断回答投资人与 AI 创业者此刻最常问的问题：估值倍数、上市时间表、算力合同、模型定价、网关份额、监管与出海。一题一页，每页带判断日期、证伪口与原文链接。" if zh else
             "Cynthia Zhang (founder, FutureX Capital) answers the questions investors and AI founders ask right now — valuation multiples, IPO timing, compute contracts, model pricing, gateway share, regulation. One page per question, each dated, with its falsifier and a link to the diary entry it comes from.")
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": url, "url": url, "name": title, "description": desc, "inLanguage": "zh-CN" if zh else "en", "isPartOf": {"@id": f"{BASE}#blog"}, "author": {"@id": f"{BASE}#cynthia"},
-         "dateModified": max((q.get("date", "") for q in items), default=""),
+         "dateModified": max(upd.values(), default=""),
          "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": [
              {"@type": "ListItem", "position": i + 1, "name": q["q_zh"] if zh else q["q_en"], "url": BASE + (f"answers/{q['slug']}.html" if zh else f"answers/en/{q['slug']}.html")} for i, q in enumerate(items)]}},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "倩小虾日记" if zh else "The ClawQ Chronicles", "item": BASE}, {"@type": "ListItem", "position": 2, "name": "问答" if zh else "Q&A", "item": url}]},
         PERSON, BLOG]}
-    intro = ("每条答案都来自某一篇日记的原判断，带日期与链接；数字与原文逐字一致，证伪口逐字取自尾注，判断的验证状态以判断台账为准。本日记由 Claude 系工具写作与核实；作者基金天际持有 Hugging Face、字节跳动、Mistral，涉及这些公司的答案请打折读；天际已全部退出小米、美团（作者 2026-10-10 确认），早期篇目按持有披露的已加注更正。" if zh else
-             "Every answer is the judgment of one diary entry, dated and linked; numbers match the source verbatim, falsifiers are copied from the footnotes, and verification status lives in the ledger. This diary is written and verified with Claude; the author's fund holds Hugging Face, ByteDance and Mistral, so discount answers touching them; it has fully exited Xiaomi and Meituan (confirmed by the author on Oct 10, 2026), and earlier entries that listed them as holdings carry a correction.")
+    intro = ("每条答案都来自某一篇日记的原判断，带日期与链接；数字与原文逐字一致，证伪口逐字取自尾注，判断的验证状态以判断台账为准；原判断之后有对账结论的，答案先写对账结论、再写原判断。本日记由 Claude 系工具写作与核实，涉及 Anthropic 的答案请打折读。利益披露：" + "；".join(HL.portfolio(HOLD, True)) + "。" if zh else
+             "Every answer is the judgment of one diary entry, dated and linked; numbers match the source verbatim, falsifiers are copied from the footnotes, and verification status lives in the ledger; where a later ledger reconciliation exists, the answer opens with it and then gives the original call. This diary is written and verified with Claude; discount answers touching Anthropic. Disclosure: " + ". ".join(HL.portfolio(HOLD, False)) + ".")
     return f"""<!DOCTYPE html>
 <html lang="{'zh-CN' if zh else 'en'}">
 <head>
@@ -267,16 +459,29 @@ def index_page(zh):
 </html>
 """
 
+for q in Q: disclosure(q, True)       # collects PENDING before anything is written
+if PENDING:
+    for qid, nme in PENDING: print(f"PENDING disclosure {qid}: {nme}")
+    if STRICT_DISC: print("--strict-disclosure: the companies above are not in holdings.json"); sys.exit(1)
+WRITTEN = []
+def wr_page(f, s): wr(f, s); WRITTEN.append(f)
 for q in Q:
-    wr(f"answers/{q['slug']}.html", page(q, True)); wr(f"answers/en/{q['slug']}.html", page(q, False))
-wr("answers/index.html", index_page(True)); wr("answers/en/index.html", index_page(False))
-last = max((max(q.get("updated", ""), q.get("date", "")) for q in Q), default="")
+    wr_page(f"answers/{q['slug']}.html", page(q, True)); wr_page(f"answers/en/{q['slug']}.html", page(q, False))
+wr_page("answers/index.html", index_page(True)); wr_page("answers/en/index.html", index_page(False))
+LM = {q["id"]: max(q.get("updated", ""), q.get("date", ""), lead_parts(q, True)[3]) for q in Q}
+last = max(LM.values(), default="")
 urls = [(f"{BASE}answers/", last, "0.9"), (f"{BASE}answers/en/", last, "0.8")]
 for q in Q:
-    lm = max(q.get("updated", ""), q.get("date", last))
+    lm = LM[q["id"]] or last
     urls += [(f"{BASE}answers/{q['slug']}.html", lm, "0.8"), (f"{BASE}answers/en/{q['slug']}.html", lm, "0.7")]
 wr("sitemap-answers.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
    "".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod><changefreq>weekly</changefreq><priority>{p}</priority></url>\n" for u, d, p in urls) + "</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-answers.xml" not in rb and "sitemap-index.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-answers.xml\n")
+# output guard: no banned disclosure phrase in any page written here (a clause quoted verbatim from ENTRY 131–139 is exempt)
+ORIG = " ".join(plain(eblk.get(n, "")) for n in range(131, 140))
+bad = [(f, h) for f in WRITTEN for h in HL.banned_hits(plain(rd(f)), ORIG)]
+for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
+for w in WARN: print("WARN " + w)
+if bad: print("gen-answers FAILED: banned disclosure phrase in output"); sys.exit(1)
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · questions {len(Q)} · pages {2*len(Q)+2} · fidelity problems {len(problems)}{' (bypassed)' if problems and not VERIFY else ''}")
