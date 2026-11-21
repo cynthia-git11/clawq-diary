@@ -5,7 +5,9 @@ Mapping row -> ENTRY N is by "Day D" (rows with a Day that has a different numbe
 within a day with several entries, the assignment is chosen by shared number tokens (EN text vs ZH entry text), and
 any row whose best match shares too few numbers is skipped rather than guessed. Writes entries/en/index.html,
 sitemap-entries-en.xml, data/entries-en-map.json (read by gen-entry-pages.py for hreflang), and per-row
-"Read the entry" links on en.html, then runs scripts/gen-ledger.py on the same root (skip with --no-ledger).
+"Read the entry" links on en.html, then runs scripts/gen-ledger.py on the same root (skip with --no-ledger) and rebuilds
+the pages whose ledger status line (from data/ledger.json; template text + ledger fields, never translated) changed.
+dateModified = max(published, ledger reconciliation / correction dates, the Chinese page's dateModified from its last build).
 Deterministic, idempotent. Usage: python3 scripts/gen-entries-en.py [--root DIR] [--no-ledger]"""
 import os, re, sys, json, html, itertools, collections
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
@@ -62,6 +64,10 @@ CSS = """
     .ee-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:22px;line-height:1.8}.ee-meta a{color:var(--claw2,#B8860B);text-decoration:none}
     .ee-p{font-size:16px;line-height:1.85;color:var(--text);margin-bottom:14px}.ee-p b{color:var(--claw2,#B8860B)}
     .ee-foot{margin-top:36px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}.ee-foot a{color:var(--claw2,#B8860B)}
+    .ee-ledger{margin:0 0 20px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ee-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}.ee-ledger p+p{margin-top:6px}
+    .ee-ledger b{color:var(--text);font-weight:700}.ee-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ee-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ee-ledger .st-corrected b{color:var(--red,#B5462A)}.ee-ledger .st-partly{border-left-color:#9a6a00}.ee-ledger .st-verified{border-left-color:#1B9E7C}
     .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
 """
@@ -82,7 +88,7 @@ def head(title, desc, url, alt_zh, depth=2, og="article"):
   <link rel="stylesheet" href="{up}assets/css/main.css?v=10" />
   <link rel="icon" type="image/png" href="{up}assets/clawq-square.jpg" />"""
 NAV = lambda up: (f'<nav class="ee-nav" aria-label="Site"><a class="ee-brand" href="{up}en.html">🦞 The ClawQ Chronicles</a><a href="./">All entries (English)</a>'
-                  f'<a href="{up}answers/en/">Q&amp;A</a><a href="{up}topics/">Topics</a><a href="{up}theses.html">⚖️ Ledger</a><a href="{up}">中文</a></nav>')
+                  f'<a href="{up}answers/en/">Q&amp;A</a><a href="{up}topics/">Topics</a><a href="{up}theses-en.html">⚖️ Ledger</a><a href="{up}">中文</a></nav>')
 LABELS = ["Investors:", "Founders:", "Falsifier:", "Ledger update", "Disclosure:", "Correction", "Verification point:", "Cross-reference:"]
 def paragraphs(text):
     t = text
@@ -96,20 +102,77 @@ def paragraphs(text):
         out.append(f'  <p class="ee-p">{e}</p>')
     return "\n".join(out)
 
-pages = []; written = 0
-for n in sorted(mapping, reverse=True):
+# judgment ledger status (2026-11-21): one line per data/ledger.json card, template text + ledger fields only (no translation;
+# the author's Chinese wording is quoted as Chinese). Pages are built twice: before gen-ledger.py (which reads the English h1s
+# written here) and again after it with the fresh ledger.json, so a status change reaches the English pages in the same run.
+LE = {"verified": "✓ Verified", "corrected": "✗ Publicly corrected", "partly": "◐ Partly right", "open": "⏳ Open"}
+def load_ledger():
+    L = {}
+    try:
+        for c in json.load(open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))["calls"]: L.setdefault(int(c["entry"]), []).append(c)
+    except FileNotFoundError:
+        print("WARN gen-entries-en: data/ledger.json missing — ledger status lines skipped (run scripts/gen-ledger.py)")
+    return L
+def ledger_line_en(c):
+    """→ (html, plain text of the status part, CorrectionComment date or None); links are relative to entries/en/"""
+    n, st, k = c["entry"], c["status"], c["correction_entry"]
+    if st == "corrected" and c["corrected_on"]:
+        where = ((f' in <a href="{k}.html">ENTRY {k}</a>' if k in mapping else f' in <a href="../{k}.html" hreflang="zh-CN">ENTRY {k}</a> (Chinese)')
+                 if k else " at the dated ledger reconciliation")
+        head = f'{LE[st]} on {c["corrected_on"]}{where}'
+    elif c["unresolvable"] and c["reconciled"]: head = f'{LE[st]} · resolution source missing (reconciled {c["reconciled"]})'
+    elif c["reconciled"]: head = f'{LE[st]} (reconciled {c["reconciled"]})'
+    else: head = LE[st]
+    bits = [f"<b>{head}</b>"]
+    if c["retracted"]: bits.append(f'retracted wording (Chinese original): <span lang="zh-CN">「{esc(c["retracted"])}」</span>')
+    if c["subclaim_judged_wrong"]: bits.append(f'sub-claim judged wrong at reconciliation (Chinese original): <span lang="zh-CN">「{esc(c["subclaim_judged_wrong"])}」</span>')
+    if st in ("corrected", "partly"): bits.append("the original call is kept as written")
+    if st == "open" and c["resolve_dates"]:
+        rd_ = c["resolve_dates"]; bits.append(f'final / review-until date{"s" if len(rd_) > 1 else ""} read from the card {", ".join(rd_)}' + (" · overdue" if c["overdue"] else ""))
+    if c["backfill"]: bits.append(f'Retrospective, written {c["written_date"]}; event {c["event_date"]}; not scored as a forward call')
+    status = "Ledger status: " + " · ".join(bits)
+    h = "⚖️ " + status + f' → <a href="../../theses-en.html#call-{n}">Ledger #call-{n}</a>'
+    if c.get("first_commit"):
+        h += (f' · first public commit <a href="{esc(c["first_commit_url"])}" aria-label="First public commit git {c["first_commit"][:7]}, {c["first_commit_date"]}">'
+              f'git {c["first_commit"][:7]}</a> ({c["first_commit_date"]})')
+    return h, strip(status), (c["corrected_on"] if st == "corrected" else (c["reconciled"] if st == "partly" else None))
+def zh_modified(n):
+    """dateModified of the Chinese page from its last build (gen-entry-pages.py runs after this script)"""
+    p = os.path.join(ROOT, f"entries/{n}.html")
+    m = re.search(r'"dateModified": "([^"]+)"', open(p, encoding="utf-8").read()) if os.path.exists(p) else None
+    return m.group(1) if m else ""
+
+def build_pages(LG):
+  pages = []; written = 0
+  for n in sorted(mapping, reverse=True):
     d, raw, tag, _ = rows[mapping[n]]; z = zh[n]
     text = strip(raw)
     if " — " in text[:420]: title, body = text.split(" — ", 1)
     else:
         cut = re.search(r"[.!?](\s|$)", text[:300]); title = text[:cut.end()].strip() if cut else text[:120]; body = text[len(title):].strip()
     title = title.strip().rstrip(".")
-    desc = body[:157] + "…" if len(body) > 160 else body
+    cs = LG.get(n, []); lines = [ledger_line_en(c) for c in cs]
+    c0 = next((c for c in cs if c["status"] == "corrected"), None) or next((c for c in cs if c["status"] == "partly"), None)
+    suf = ""   # ✗ / ◐: dated status at the end of the summary, cut from the English text, never from the suffix
+    if c0 and c0["status"] == "corrected": suf = f' (publicly corrected{" on " + c0["corrected_on"] if c0["corrected_on"] else ""}; see the judgment ledger)'
+    elif c0: suf = f' (reconciled{" " + c0["reconciled"] if c0["reconciled"] else ""}: partly right; see the judgment ledger)'
+    lead = body or title   # rows that are all title (ENTRY 36, 42) had an empty description
+    desc = (lead[:157 - len(suf)] + "…" if len(lead) > 160 - len(suf) else lead) + suf
     url = f"{BASE}entries/en/{n}.html"; zurl = f"{BASE}entries/{n}.html"
     pub = z["pub"] or (z["date"] + "T13:00:00+08:00" if z["date"] else "")
+    # dateModified = max(published, ledger reconciliation / correction dates, the Chinese page's dateModified)
+    mod = max([x for x in [pub, zh_modified(n)] + [dd + "T13:00:00+08:00" for c in cs for dd in (c["reconciled"], c["corrected_on"]) if dd] if x] or [""])
+    corr = [{"@type": "CorrectionComment", "text": t, **({"datePublished": w} if w else {}), "url": f"{BASE}theses-en.html#{c['call_id']}"}
+            for c, (_, t, w) in zip(cs, lines) if c["status"] in ("corrected", "partly")]
+    strip_html = (f'\n  <div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status">'
+                  + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>") if cs else ""
+    # visible date = the Chinese page's 最后更正 when it has one; worded "updated" because that date can also be a reconciliation
+    # that kept ⏳ or the write date of a 补记 entry, not only a correction (the status line says which)
+    last = f' · Last updated <time datetime="{mod[:10]}">{mod[:10]}</time>' if pub and mod[:10] > pub[:10] else ""
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "BlogPosting", "@id": url, "mainEntityOfPage": url, "url": url, "headline": title[:110], "description": desc, "inLanguage": "en",
-         "datePublished": pub, "dateModified": pub, "author": {"@id": f"{BASE}#cynthia"}, "isPartOf": {"@id": f"{BASE}#blog"},
+         "datePublished": pub, "dateModified": mod or pub, **({"correction": corr[0] if len(corr) == 1 else corr} if corr else {}),
+         "author": {"@id": f"{BASE}#cynthia"}, "isPartOf": {"@id": f"{BASE}#blog"},
          "translationOfWork": {"@id": zurl}, "articleBody": text, "image": f"{BASE}assets/clawq-banner.jpg"},
         {"@type": "Person", "@id": f"{BASE}#cynthia", "name": "Cynthia Zhang (张倩)", "url": BASE, "jobTitle": "Founder, FutureX Capital",
          "worksFor": {"@type": "Organization", "name": "FutureX Capital", "url": "https://futurex.capital"}},
@@ -131,15 +194,17 @@ for n in sorted(mapping, reverse=True):
 <div class="ee-wrap">
   {NAV("../../")}
   <h1 class="ee-h1">{esc(title)}</h1>
-  <div class="ee-meta">ENTRY {n} · <time datetime="{esc(z['date'])}">{esc(d)}</time> · {esc(tag)} · Cynthia Zhang · FutureX Capital · <a href="../{n}.html" hreflang="zh-CN">中文原文 · Chinese original</a></div>
+  <div class="ee-meta">ENTRY {n} · <time datetime="{esc(z['date'])}">{esc(d)}</time> · {esc(tag)} · Cynthia Zhang · FutureX Capital · <a href="../{n}.html" hreflang="zh-CN">中文原文 · Chinese original</a>{last}</div>{strip_html}
 {paragraphs(body)}
   <nav class="ee-pn" aria-label="Previous and next">{pn}</nav>
-  <footer class="ee-foot">English edition of <a href="../{n}.html">ENTRY {n}</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
+  <footer class="ee-foot">English edition of <a href="../{n}.html">ENTRY {n}</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
 </div>
 </body>
 </html>
 """
     written += wr(f"entries/en/{n}.html", page)
+  return pages, written
+pages, written = build_pages(load_ledger())
 rowsli = "\n".join(f'    <li><a href="{p["n"]}.html">{esc(p["title"])}</a><span class="ee-when">ENTRY {p["n"]} · {esc(p["date"])} · Day {p["day"]} · {esc(p["tag"])}</span></li>' for p in pages)
 ld_idx = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "The ClawQ Chronicles · All entries (English)", "url": f"{BASE}entries/en/", "inLanguage": "en",
           "isPartOf": {"@id": f"{BASE}#blog"}, "hasPart": [{"@type": "BlogPosting", "@id": f"{BASE}entries/en/{p['n']}.html", "headline": p["title"][:110], "datePublished": p["date"]} for p in pages]}
@@ -181,10 +246,14 @@ if 'href="entries/en/"' not in en2:
     if i > 0: en2 = en2[:i] + '  <p style="font-size:12px;opacity:.75"><a href="entries/en/">All entries in English</a></p>\n' + en2[i:]
 written += wr("en.html", en2)
 print(f"OK · EN pages {len(pages)} of {len(rows)} rows · skipped {len(skipped)}: {skipped} · files changed {written}")
-# judgment ledger (2026-11-21): gen-ledger.py reads the data/entries-en-map.json written above, so it runs here — buildN.py runs
-# this script at its end (and asserts exit 0), and publish_daily.sh / publish_backfill.sh / ledger_apply.sh run it again. Idempotent.
+# judgment ledger (2026-11-21): gen-ledger.py reads the data/entries-en-map.json and the English h1s written above, so it runs here —
+# buildN.py runs this script at its end (and asserts exit 0), and publish_daily.sh / publish_backfill.sh / ledger_apply.sh run it
+# again; gen-entry-pages.py runs after this script and reads the same fresh ledger.json. Idempotent.
 if "--no-ledger" not in sys.argv:
     import subprocess
     sys.stdout.flush()
     r = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen-ledger.py"), "--root", ROOT])
     if r.returncode: sys.exit(r.returncode)
+    # second pass: the English status lines now read the ledger.json gen-ledger.py just wrote (no-op when nothing changed)
+    _, w2 = build_pages(load_ledger())
+    if w2: print(f"OK · EN pages refreshed from the fresh ledger: {w2}")
