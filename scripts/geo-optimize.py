@@ -10,9 +10,11 @@ GEO 每日优化器 · geo-optimize.py
   B. 判断腐烂守卫（本日记 GEO 命根子「喂给世界永远是 HEAD」）：
      扫 DECAY_RULES 里已被公开修正的旧数字/旧说法，若出现在「活」carrier
      （llms.txt / index.html 的 FAQ+ItemList+置顶卡，而非归档快照）里就告警。
+     B 的规则 2026-11-21 起自动并入 data/ledger.json 的撤回原话 / 判错分项；index / en / ja 的 FAQ 答案逐条整段判。
   C. 体检：死锚（#entry-N 指向不存在的条目）、篇数计数跨 carrier 一致、
      AI 爬虫清单是否覆盖 2026 主力 bot、最新一篇是否已进 FAQ、判断台账派生文件同步、
-     单篇页台账状态条与徽章一致且 JSON-LD 可解析。
+     单篇页台账状态条与徽章一致且 JSON-LD 可解析、FAQ 复述已 ✗/◐ 判断须带对账指针（C7，scripts/hub_sync.py）。
+  A3 的计数锚点表与 gen-ledger.py 共用 scripts/hub_sync.py（en hero、press、带日期的 FAQ 篇数、theses 导语）。
   D. GEO 健康分（0–100）+ 人读报告，打到 stdout（进 CI 日志）。
 
 退出码：0=无需改动且无告警 · 10=已做安全新鲜度修复（CI 应提交）· 20=有告警需人看
@@ -73,20 +75,21 @@ if latest_date:
     if h != h0:
         wr("index.html", h); fixes.append("index.html Blog.dateModified / 篇数计数已对齐最新一篇")
 
-# ── A3. 新鲜度自动修：press 页计数对齐（2026-10-02 起；此前停在 6/3 · Day 88 · 64 篇）────
+# ── A3. 新鲜度自动修：buildN 不改的 Day / 篇数锚点对齐 index.html（2026-10-02 起 press；2026-11-21 起改用
+#    scripts/hub_sync.py 的同一张锚点表，与 gen-ledger.py 共用：en hero「DAY N」、en「Public entries written」、
+#    index/ja FAQ 里带日期的篇数、theses 导语、press / press-en 的 Day 与篇数、en/ja Blog.dateModified）────
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import hub_sync as HS
 if latest_date:
-    h = rd("index.html")
-    n_entries = len(re.findall(r'<div id="entry-(\d+)"', h))
-    dm2 = re.search(r"倩小虾日记 · Day (\d+)", h); cur_day = dm2.group(1) if dm2 else None
-    if cur_day:
-        stamp = latest_date.replace("-", ".")
-        for pf, unit in (("press.html", " 篇"), ("press-en.html", " entries")):
+    try:
+        _site = HS.site_state(rd("index.html"))
+        for pf in HS.COUNT_RULES:
             if not os.path.exists(os.path.join(ROOT, pf)): continue
-            s0 = rd(pf)
-            s1 = re.sub(r"Last updated \d{4}\.\d{2}\.\d{2} · Day \d+", f"Last updated {stamp} · Day {cur_day}", s0)
-            s1 = re.sub(r"· Day \d+ · \d+" + re.escape(unit), f"· Day {cur_day} · {n_entries}{unit}", s1)
+            s0 = rd(pf); s1, ch, _miss = HS.sync_counts(pf, s0, _site)
             if s1 != s0:
-                wr(pf, s1); fixes.append(f"{pf} press 页计数已对齐 Day {cur_day} · {n_entries}{unit.strip()}")
+                wr(pf, s1); fixes.append(f"{pf} 计数/日期已对齐 Day {_site['day']} · {_site['entries']} 篇（{'、'.join(ch)}）")
+    except ValueError as _e:
+        warns.append("计数对齐跳过：" + str(_e))
 
 # ── B. 判断腐烂守卫：已公开修正的旧说法不得出现在「活」carrier ──────────
 # 每次做公开修正后，在这里加一条规则（token=旧说法, why=已被谁改, live=需检查的活文件）。
@@ -97,22 +100,40 @@ DECAY_RULES = [
     # ENTRY 114 更正了 ENTRY 112 的数：K3 API 涨幅 2.1→3.7 倍
     {"token": "2.1 倍", "why": "ENTRY 114 更正 K3 API 涨幅为约原价 3.7 倍",
      "fix": ["3.7", "更正", "已修正"], "live": ["llms.txt", "index.html"]},
+    {"token": "~2.1x", "why": "ENTRY 114 corrected the K3 API rise to ~3.7x the old price",
+     "fix": ["3.7"], "live": ["en.html"]},
+    # 2026-11-13 对账：ENTRY 140 ◐，「接钱的是 Kimi K3 与 OpenAI」不准（FAQ 原句换了说法，原文不改，靠对账指针）
+    {"token": "接钱的是标价 $3/$15 的 Kimi K3", "why": "ENTRY 140 ◐ 部分成立，接钱的不是 Kimi K3 与 OpenAI",
+     "fix": ["theses.html#call-140"], "live": ["index.html"]},
 ]
+# 2026-11-21 起自动并入 data/ledger.json：每条 ✗ 的撤回原话（retracted）与对账判错的分项原话（subclaim_judged_wrong）。
+# FAQ 答案里出现即须带 gen-ledger.py（scripts/hub_sync.py）写的对账指针 theses.html#call-N。
+try:
+    import json as _json
+    for _c in _json.load(io.open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))["calls"]:
+        for _k, _lab in (("retracted", "已认错撤回"), ("subclaim_judged_wrong", "对账判错的分项")):
+            if _c.get(_k):
+                DECAY_RULES.append({"token": _c[_k], "why": "ENTRY %d %s（判断台账 theses.html#call-%d）" % (_c["entry"], _lab, _c["entry"]),
+                                    "fix": ["theses.html#call-%d" % _c["entry"], "theses-en.html#call-%d" % _c["entry"]],
+                                    "live": ["llms.txt", "index.html", "en.html", "ja.html"]})
+except (FileNotFoundError, ValueError, KeyError):
+    pass
 def answer_surface(fp):
-    """腐烂守卫只查「答案面」——真正会被 AI 当 HEAD 直接引用的：
-    llms.txt 全量（prose 索引/最新日记/判断台账）；index.html 只取 FAQPage 答案 + 置顶卡。
+    """腐烂守卫只查「答案面」——真正会被 AI 当 HEAD 直接引用的，返回 [(文本, 是否整段判)]：
+    llms.txt 全量（prose 索引/最新日记/判断台账，按 token 前后 80 字判）；index.html / en.html / ja.html 取
+    FAQPage 的每条答案（整条答案算一段：对账指针写在答案末尾）+ 置顶卡。
     刻意排除 ItemList/@graph 的 per-entry 描述与 timeline 正文——那些是各条目的存档快照，
     HEAD 由最新条目自带的更正 + theses ✗ + llms 台账承载（本站「不改原文、喂 HEAD」模型）。"""
     t = rd(fp)
-    if fp == "index.html":
-        s = t.find("FAQPage JSON-LD"); e = t.find("</script>", s) if s >= 0 else -1
-        faq = t[s:e] if s >= 0 and e >= 0 else ""
+    if fp in HS.LANG:
+        units = [(a, True) for _q, a in HS.faq_answers(fp, t)]
         fs = t.find('class="latest-feature"'); fe = t.find("</a>", fs) if fs >= 0 else -1
-        feat = t[fs:fe] if fs >= 0 else ""
-        return faq + "\n" + feat
-    return t
-def uncorrected(text, token, markers, window=80):
-    """逐处检查 token：若其前后 window 字内都没有任何纠正关键词，则算「未就地纠正」。返回 True=有裸露旧说法。"""
+        if fs >= 0: units.append((t[fs:fe], False))
+        return units
+    return [(t, False)]
+def uncorrected(text, token, markers, window=80, whole=False):
+    """逐处检查 token：若其前后 window 字内（whole=True 时整段）都没有任何纠正关键词，则算「未就地纠正」。返回 True=有裸露旧说法。"""
+    if whole: return token in text and not any(mk in text for mk in markers)
     i, bare = text.find(token), False
     while i != -1:
         ctx = text[max(0, i - window): i + len(token) + window]
@@ -123,10 +144,26 @@ def uncorrected(text, token, markers, window=80):
 for r in DECAY_RULES:
     for fp in r["live"]:
         try:
-            if uncorrected(answer_surface(fp), r["token"], r.get("fix", [])):
+            if any(uncorrected(u, r["token"], r.get("fix", []), whole=w) for u, w in answer_surface(fp)):
                 warns.append("判断腐烂：活文件 %s 仍有裸露的已修正旧说法「%s」（%s）——喂给世界的应是 HEAD" % (fp, r["token"], r["why"]))
         except FileNotFoundError:
             pass
+# C7（2026-11-21）：FAQ 答案复述了已 ✗ / ◐ 的判断（按导语 ENTRY / 日期、faq_calls 覆盖表、原话命中）却缺对账指针，
+# 或「台账现状」/ 带日期的篇数过期——这些由 gen-ledger.py 写；这里只告警，不在 CI 里改内容。
+try:
+    import json as _json, html as _html
+    _L = _json.load(io.open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))
+    _ov = _json.load(io.open(os.path.join(ROOT, "data/ledger-overrides.json"), encoding="utf-8")).get("faq_calls")
+    _idx = rd("index.html")
+    _plain = lambda p: re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", "", rd(p)))).strip() if os.path.exists(os.path.join(ROOT, p)) else None
+    _num, _ = HS.number_fixes(_plain)
+    for fp in HS.LANG:
+        _t, _acts, _ = HS.faq_sync(fp, rd(fp), _L["calls"], _L["stats"], _L["updated"], HS.entry_dates(_idx), _ov, _num)
+        if _acts:
+            warns.append("判断腐烂：%s 的 FAQ 答案缺对账指针或台账现状过期 %d 处（%s）——跑 python3 scripts/gen-ledger.py"
+                         % (fp, len(_acts), "；".join(_acts[:4])))
+except (FileNotFoundError, ValueError, KeyError) as _e:
+    warns.append("FAQ 对账指针检查跳过：%s" % _e)
 
 # 通用腐烂守卫：theses.html 每条 ✗（已公开修正）都应能在 llms.txt 里被追溯到
 try:

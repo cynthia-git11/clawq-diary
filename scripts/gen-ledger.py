@@ -12,7 +12,10 @@ Reads : theses.html (cards: date, Day, claim, badge class, ev text), index.html 
 Writes: data/ledger.json, ledger.csv (UTF-8 BOM), theses-en.html, data/ledger-commits.json (new calls only), and patches
         theses.html (id="call-N", computed tiles, first-commit links, backfill marks, Dataset + Claim JSON-LD, hreflang),
         llms.txt (ledger counts, exact buildN format), index.html / en.html / ja.html (track-record FAQ answers, en ledger link),
-        sitemap.xml (plain <url> for theses-en.html, no xhtml:link so hygiene0928.add_ja leaves it alone).
+        sitemap.xml (plain <url> for theses-en.html, no xhtml:link so hygiene0928.add_ja leaves it alone); through
+        scripts/hub_sync.py also the Day / entry-count spans buildN.py does not bump (en hero 「DAY N」, en 「Public entries
+        written」, dated FAQ counts, theses lede, press.html / press-en.html) and the dated pointers to the ledger card on
+        FAQ answers that restate a call now ✗ / ◐ (data/ledger-overrides.json "faq_calls" settles ambiguous lead dates).
 Status comes ONLY from the badge class (b-ok / b-bad / b-part / b-open); nothing is inferred from prose. Dates are machine-read
         only from fixed wordings on the card (「DATE 终审」「终审 DATE」「续看至 DATE」「期限 DATE」「维持 ⏳ 至 DATE」, 「（DATE 对账：」
         「DATE 对账（ENTRY N）：」, 「（DATE 读数：」); a card without them is labelled "not machine-read", never "no date".
@@ -116,6 +119,11 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
         if written and written != w2: die(f"ENTRY {n}: 本篇写于 {written} vs date line 补记 {w2}")
         written = w2
     E[n] = dict(raw=raw.strip(), title=strip(raw), date=date_d, written=written)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import hub_sync as HS
+try: SITE = HS.site_state(idx)
+except ValueError as e: die(str(e))
+DATES = HS.entry_dates(idx)
 
 # ---------------- theses.html: cards ----------------
 th = rd("theses.html")
@@ -377,6 +385,9 @@ CSS_ADD = ("  /* gen-ledger */.s.part{background:rgba(196,137,23,.08)}.s.part .v
            ".when .lg a{display:block;margin-top:4px;color:var(--muted);font-size:11px;border-bottom:1px dashed var(--border2)}.method a{border-bottom:1px dashed var(--border2)}\n")
 if "/* gen-ledger */" in t: t = re.sub(r"  /\* gen-ledger \*/[^\n]*\n", lambda _: CSS_ADD, t, count=1)
 else: t = t.replace("</style>", CSS_ADD + "</style>", 1)
+# lede 「这本日记写到 Day N、N 篇」 = index.html (buildN.py replaces exactly the previous Day / count once)
+t, _, miss = HS.sync_counts("theses.html", t, SITE)
+for x in miss: warn(f"theses.html: count anchor 「{x}」 not found — not changed")
 # buildN invariants (e136-work/buildN.py lines 165–177) — must hold before anything is written
 if t.count(f"{T} 个重大") != 3 or int(re.search(r"(\d+) 个重大", t).group(1)) != T: die(f"theses.html: '{T} 个重大' must occur exactly 3 times and come first")
 if t.count('"numberOfItems"') != 1 or t.count(f'"numberOfItems": {T}') != 1: die("theses.html: numberOfItems must occur once and equal the card count")
@@ -566,6 +577,20 @@ for rx, new, what in ((JA1, JA1_NEW, "about-the-diary FAQ"), (JA2, JA2_NEW, "tra
     if len(rx.findall(ja)) == 1: ja = rx.sub(lambda _: new, ja, count=1)
     else: warn(f"ja.html: {what} ledger anchor found {len(rx.findall(ja))}× (want 1) — not changed")
 OUT["ja.html"] = ja
+# hub sync (scripts/hub_sync.py): Day / entry-count spans buildN.py does not bump (en hero, en stats, dated FAQ counts, press kits),
+# and dated pointers to the ledger card on FAQ answers that restate a call now ✗ / ◐ (answer text itself untouched)
+NUM, nw = HS.number_fixes(lambda p: strip(rd(p)) if os.path.exists(os.path.join(ROOT, p)) else None)
+for x in nw: warn(x)
+for f in ("index.html", "en.html", "ja.html", "press.html", "press-en.html"):
+    if f not in OUT:
+        if not os.path.exists(os.path.join(ROOT, f)): continue    # buildN.py --dry copies no press kit
+        OUT[f] = rd(f)
+    OUT[f], _, miss = HS.sync_counts(f, OUT[f], SITE)
+    for x in miss: warn(f"{f}: count anchor 「{x}」 not found — not changed")
+    if f in HS.LANG:
+        OUT[f], acts, ws = HS.faq_sync(f, OUT[f], calls, stats, updated, DATES, over.get("faq_calls"), NUM)
+        for x in acts: print(f"  {f} FAQ: {x}")
+        for x in ws: warn(x)
 for f in ("index.html", "en.html", "ja.html"):
     for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', OUT[f], re.S): json.loads(b)
 
