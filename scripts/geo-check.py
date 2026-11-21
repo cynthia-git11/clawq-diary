@@ -19,8 +19,12 @@ Checks:
      These hold after buildN.py alone (it bumps all of them together); the files derived by
      scripts/gen-ledger.py (tiles, data/ledger.json, theses-en.html) are checked as warnings
      in geo-optimize.py instead, so a publish that skips gen-ledger never turns CI red.
+  8. Q&A and topic pages (answers/, answers/en/, topics/): no banned disclosure phrase (a clause quoted verbatim
+     from the original ENTRY 131–139 text is exempt), every English .aw-status is free of CJK characters, and every
+     JSON-LD block parses. gen-answers.py / gen-topics.py stop on the same conditions, but the publish scripts pipe
+     their output, so this hourly check is the one that actually blocks.
 """
-import re, json, sys
+import re, json, sys, glob, html as _html
 from xml.etree import ElementTree as ET
 
 errors = []
@@ -140,10 +144,56 @@ try:
 except FileNotFoundError as _e:
     errors.append(f"ledger check: file missing — {_e}")
 
+# 8. Q&A / topic pages (2026-11-21). BANNED: keep in sync with scripts/holdings_lib.py
+BANNED = ["按公开可查信息", "按公开信息无头寸", "本篇未核实", "on publicly available information"]
+CJK = re.compile(r"[\u3000-\u303f\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]")
+def _plain(s):
+    return re.sub(r"\s+", " ", _html.unescape(re.sub(r"</?[A-Za-z][^>]*>", "", s))).strip()
+try:
+    _orig = []
+    for _n in range(131, 140):     # original entries whose footnotes predate the rule; never rewritten
+        _i = idx.find(f'<div id="entry-{_n}"')
+        if _i != -1:
+            _j = idx.find('<div id="entry-', _i + 10)
+            _orig.append(_plain(idx[_i:_j if _j != -1 else len(idx)]))
+    _orig = " ".join(_orig)
+    _pages = sorted(glob.glob("answers/*.html") + glob.glob("answers/en/*.html") + glob.glob("topics/*.html"))
+    _ban, _cjk, _ld = [], [], []
+    for _f in _pages:
+        _h = read(_f); _t = _plain(_h)
+        for _b in BANNED:
+            for _m in re.finditer(re.escape(_b), _t, re.I):
+                _a = max(_t.rfind(c, 0, _m.start()) for c in "。；｜") + 1
+                _z = min([x for x in (_t.find(c, _m.end()) for c in "。；｜") if x != -1] or [len(_t)])
+                _cl = _t[_a:_z].strip()
+                if not (len(_cl) >= 12 and _cl in _orig):
+                    _ban.append(f"{_f}: {_cl[:60]}")
+        if _f.startswith("answers/en/"):
+            for _st in re.findall(r'<div class="aw-status">(.*?)</div>', _h, re.S):
+                if CJK.search(_plain(_st)):
+                    _cjk.append(_f)
+        for _i, _blk in enumerate(jsonld_blocks(_h)):
+            try:
+                json.loads(_blk)
+            except Exception as _e:
+                _ld.append(f"{_f} block {_i}: {_e}")
+    if not _pages:
+        errors.append("answers/ and topics/: no pages found")
+    for _x in _ban[:10]:
+        errors.append(f"banned disclosure phrase — {_x}")
+    if len(_ban) > 10:
+        errors.append(f"... {len(_ban) - 10} more banned-phrase hits")
+    for _x in sorted(set(_cjk))[:10]:
+        errors.append(f"{_x}: English .aw-status contains CJK characters")
+    for _x in _ld[:10]:
+        errors.append(f"JSON-LD invalid — {_x}")
+except Exception as _e:
+    errors.append(f"Q&A/topic page check crashed — {_e}")
+
 if errors:
     print("GEO health check FAILED:")
     for e in errors:
         print("  ✗", e)
     sys.exit(1)
 
-print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok")
+print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok")
