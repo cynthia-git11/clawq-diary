@@ -9,7 +9,7 @@ Reads index.html (the single-page hub) and writes, idempotently:
                           entries with a judgment-ledger card get a status strip above .entry-body from data/ledger.json
                           (✗ / ◐ also get a CorrectionComment and a dated suffix on the description; title and body unchanged)
   entries/index.html      archive list, newest first
-  sitemap-entries.xml     one <url> per entry, lastmod = entry date
+  sitemap-entries.xml     one <url> per entry, lastmod = the page's dateModified date
   index.html              adds a ¶ permalink inside each entry header (internal links = crawl discovery)
   llms.txt                appends " · 单页 <url>" to each ENTRY list line that lacks it
   llms-full.txt           adds "URL: <url>" under each "## ENTRY N" header that lacks it
@@ -19,6 +19,9 @@ Deterministic — no LLM, nothing is paraphrased. Safe to run after every build.
 Usage: python3 scripts/gen-entry-pages.py [--root DIR] [--dry]
 """
 import re, os, sys, json, html, shutil, tempfile, datetime
+sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading
 
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -60,18 +63,13 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     cat = (re.search(r'data-cat="([a-z]+)"', m.group(0)) or [None, "insight"])[1]
     title = strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, f"ENTRY {n}"])[1])
     date_txt = strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1])
-    dm = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", date_txt)
-    ym = re.search(r"(\d{4})年(\d{1,2})月", date_txt)
     day = (re.search(r"Day (\d+)", date_txt) or [None, ""])[1]
-    # full date when present; early entries only carry a month ("2026年2月初") → partial ISO "2026-02" (valid schema.org Date)
-    yy = re.search(r"(\d{4})年", date_txt)
-    date_d = f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else (f"{ym.group(1)}-{int(ym.group(2)):02d}" if ym else (yy.group(1) if yy else ""))
+    date_d = entry_date_d(date_txt)   # full date, or "2026-02" for early month-only entries
     badge = strip((re.search(r'entry-date-badge">(.*?)</span>', blk, re.S) or [None, ""])[1])
     body = (re.search(r'<div class="entry-body">(.*?)$', blk, re.S) or [None, ""])[1]
     paras = [strip(p) for p in re.findall(r"<p>(.*?)</p>", body, re.S)]
     quote = strip((re.search(r'<div class="entry-quote">(.*?)</div>', body, re.S) or [None, ""])[1])
-    foot_html = (re.search(r'<div class="entry-foot">(.*?)</div>', body, re.S) or [None, ""])[1]
-    foot = strip(foot_html)
+    foot_html, foot = foot_of(blk)
     entries.append(dict(n=n, a=a, b=b, blk=blk, cat=cat, title=title, date_txt=date_txt, date_d=date_d, day=day,
                         badge=badge, paras=paras, quote=quote, foot=foot, foot_html=foot_html))
 entries.sort(key=lambda e: -e["n"])
@@ -83,47 +81,8 @@ pub = dict(re.findall(r'"url": "[^"]*#entry-(\d+)",\s*"datePublished": "([^"]+)"
 def iso(e): return pub.get(str(e["n"])) or ((e["date_d"] + "T13:00:00+08:00") if len(e["date_d"]) == 10 else e["date_d"])
 def lastmod(e): return e["date_d"] if len(e["date_d"]) == 10 else (e["date_d"] + "-01" if len(e["date_d"]) == 7 else (e["date_d"] + "-01-01" if e["date_d"] else ""))
 
-# ---------- footnote → machine-readable items ----------
-KINDS = ["来源", "证伪口", "口径注", "更正", "利益披露", "对账", "免责", "附注", "单源", "自首", "裁定", "升级线", "认错", "勘误",
-         "诚信标注", "原文引语", "合规依据", "关联", "承接", "回滚点", "验收指标", "验收", "验证时限", "时限", "纠偏", "补记", "背景", "专名注",
-         "类比出处", "待对账", "赌盘对账", "反向预登记", "后续修正", "事实边界", "时点口径", "工作量口径", "指控内容", "新规", "判断框架验证",
-         "引用过往条目", "收获项存档", "纠三个错数", "历史尺子与口径", "表外敞口", "预注册", "金句", "共识", "更新", "注"]
-DATED = re.compile(r"^(\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2})")
-def foot_items(foot):
-    parts = [p.strip() for p in re.split(r"｜", foot) if p.strip()]
-    out = []
-    for p in parts:
-        k = "其他"
-        for kk in KINDS:
-            if p.startswith(kk): k = kk; break
-        if k == "其他" and DATED.match(p): k = "更正" if re.search(r"更正|纠|勘误|回写|改口|认错", p[:40]) else "补记"
-        if k == "其他" and p.startswith("ENTRY "): k = "关联"
-        if k == "其他":
-            lm = re.match(r"^([^：:，。；\s]{2,8})[：:]", p)
-            if lm: k = lm.group(1)
-        if "不构成对任何基金产品的推介" in p: k = "免责"
-        out.append((k, p))
-    return out
-
-# dateModified: latest date named in 更正/对账/补记/后续修正 segments (ISO or M/D in the entry year), never earlier than datePublished
-def modified(e, items):
-    best = e["date_d"] if len(e["date_d"]) == 10 else (e["date_d"] + "-01" if len(e["date_d"]) == 7 else "")  # 月份精度的旧条目也能记录后续更新
-    yr = e["date_d"][:4] if e["date_d"] else "2026"
-    for k, v in items:
-        if k not in ("更正", "对账", "补记", "后续修正", "纠偏", "认错", "勘误", "赌盘对账", "待对账", "更新"): continue
-        # a note that opens with its own date (「2026-11-13 读数：…11/19 开始交易」) cannot record a change after that date:
-        # later dates inside it are event dates, and without this cap the page's 最后更正 moved forward as days passed (2026-11-21)
-        lead = re.match(r"(\d{4}-\d{2}-\d{2})|(\d{1,2})/(\d{1,2})(?![\d/])", (v[len(k):] if v.startswith(k) else v).lstrip("：: "))
-        cap = (lead.group(1) or f"{yr}-{int(lead.group(2)):02d}-{int(lead.group(3)):02d}") if lead else TODAY
-        for m in re.finditer(r"(\d{4})-(\d{2})-(\d{2})", v):
-            d = m.group(0)
-            if best and d > best and d <= min(cap, TODAY): best = d
-        for m in re.finditer(r"(?<![\d/])(\d{1,2})/(\d{1,2})(?![\d/])", v):
-            d = f"{yr}-{int(m.group(1)):02d}-{int(m.group(2)):02d}"
-            if best and d > best and d <= min(cap, TODAY): best = d
-    return best
-import datetime as _dt
-TODAY = (_dt.datetime.utcnow() + _dt.timedelta(hours=8)).strftime("%Y-%m-%d")
+# ---------- footnote → machine-readable items, dateModified (scripts/entry_dates.py, shared with gen-entries-en.py) ----------
+# foot_items(foot) → [(kind, text)]; modified(date_d, items) → latest dated change named in the footnote; ledger_dates(card)
 
 # keywords / about: entities from data/topics.json whose aliases appear in the entry
 try:
@@ -145,16 +104,30 @@ try:
     for _c in json.load(open(os.path.join(SRC_ROOT, "data/ledger.json"), encoding="utf-8"))["calls"]: LEDGER.setdefault(int(_c["entry"]), []).append(_c)
 except FileNotFoundError:
     print("WARN gen-entry-pages: data/ledger.json missing — ledger status strips skipped (run scripts/gen-ledger.py)")
+# a ledger edit to theses.html without gen-ledger.py (gen-entries-en.py runs it) leaves data/ledger.json stale: say so, the strips would be outdated
+if LEDGER and os.path.exists(os.path.join(SRC_ROOT, "theses.html")):
+    _th = open(os.path.join(SRC_ROOT, "theses.html"), encoding="utf-8").read(); _bad = []
+    _ST = {"b-ok": "verified", "b-bad": "corrected", "b-part": "partly", "b-open": "open"}
+    _cards = re.split(r'(?=<div class="call"[^>]*>)', _th)[1:]
+    for _c in _cards:
+        _n = re.search(r'<div class="claim"><a href="(?:index\.html#entry-|entries/)(\d+)', _c); _b = re.search(r'<span class="badge (b-ok|b-bad|b-part|b-open)">', _c)
+        if _n and _b and [x["status"] for x in LEDGER.get(int(_n.group(1)), [])] != [_ST[_b.group(1)]]: _bad.append(_n.group(1))
+    if _bad or len(_cards) != sum(len(v) for v in LEDGER.values()):
+        print(f"WARN gen-entry-pages: data/ledger.json disagrees with theses.html (cards {len(_cards)} vs {sum(len(v) for v in LEDGER.values())}; "
+              f"status differs for ENTRY {', '.join(_bad) or '—'}) — run scripts/gen-entries-en.py (it runs gen-ledger.py) before this script")
 LZ = {"verified": "✓ 已验证", "corrected": "✗ 已公开修正", "partly": "◐ 部分成立", "open": "⏳ 进行中"}
 def ledger_line(c):
     """one status line per ledger card → (html, plain text of the status part, CorrectionComment date or None)"""
     n, st, k = c["entry"], c["status"], c["correction_entry"]
     if st == "corrected" and c["corrected_on"]:
-        head = f'{LZ[st]}（{c["corrected_on"]}；更正见 <a href="{k}.html">ENTRY {k}</a>）' if k else f'{LZ[st]}（{c["corrected_on"]} 对账）'
+        # the correction entry is named by its own h1 (author text), so the strip says what was corrected
+        kt = f'《{esc(html.unescape(byn[k]["title"]))}》' if k in byn else ""
+        head = f'{LZ[st]}（{c["corrected_on"]}；更正见 <a href="{k}.html">ENTRY {k}{kt}</a>）' if k else f'{LZ[st]}（{c["corrected_on"]} 对账）'
     elif c["unresolvable"] and c["reconciled"]: head = f'{LZ[st]} · 裁定源缺失（{c["reconciled"]} 对账）'
     elif c["reconciled"]: head = f'{LZ[st]}（{c["reconciled"]} 对账）'
     else: head = LZ[st]
     bits = [f"<b>{head}</b>"]
+    if later_reading(c): bits.append(f'最近读数 {c["last_reading"]}（见台账卡片）')
     if c["retracted"]: bits.append(f'对账收回的说法「{esc(c["retracted"])}」')
     if c["subclaim_judged_wrong"]: bits.append(f'对账判错的子判断「{esc(c["subclaim_judged_wrong"])}」')
     if st in ("corrected", "partly"): bits.append("原文保留不改")
@@ -163,14 +136,17 @@ def ledger_line(c):
     status = "台账状态：" + " · ".join(bits)
     h = "⚖️ " + status + f' → <a href="../theses.html#call-{n}">判断台账 #call-{n}</a>'
     if c.get("first_commit"):
-        h += (f' · 首次公开提交 <a href="{esc(c["first_commit_url"])}" aria-label="首次公开提交 git {c["first_commit"][:7]}，{c["first_commit_date"]}">'
-              f'git {c["first_commit"][:7]}</a>（{c["first_commit_date"]}）')
+        lag = c.get("commit_lag_days")
+        h += (f' · 首次公开提交 <a href="{esc(c["first_commit_url"])}" title="本篇首次出现在公开仓库的提交（北京时间）" '
+              f'aria-label="首次公开提交 git {c["first_commit"][:7]}，{c["first_commit_date"]}">'
+              f'git {c["first_commit"][:7]}</a>（{c["first_commit_date"]}' + (f'，晚于标注日 {lag} 天' if lag and lag > 1 and not c["backfill"] else "") + "）")
     when = c["corrected_on"] if st == "corrected" else (c["reconciled"] if st == "partly" else None)
     return h, html.unescape(strip(status)), when
 def ledger_bits(e):
-    """strip html, CorrectionComment list, description suffix and ledger dates for one entry ("" / [] / "" / [] without cards)"""
+    """strip html, CorrectionComment list, description suffix, the ledger dates the strip shows, and the subset that are
+    ✗ correction dates, for one entry ("" / [] / "" / [] / [] without cards)"""
     cs = LEDGER.get(e["n"], [])
-    if not cs: return "", [], "", []
+    if not cs: return "", [], "", [], []
     lines = [ledger_line(c) for c in cs]
     strip_html = ('<div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态">'
                   + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>")
@@ -181,8 +157,9 @@ def ledger_bits(e):
     if c0 and c0["status"] == "corrected": suf = f'（{c0["corrected_on"] + " " if c0["corrected_on"] else ""}已公开修正，见判断台账）'
     elif c0 and c0["reconciled"]: suf = f'（{c0["reconciled"]} 对账：部分成立）'
     elif c0: suf = "（对账：部分成立，见判断台账）"
-    dates = [d for c in cs for d in (c["reconciled"], c["corrected_on"]) if d and d <= TODAY]
-    return strip_html, corr, suf, dates
+    dates = [d for c in cs for d in ledger_dates(c)]
+    corr_dates = [c["corrected_on"] for c in cs if c["status"] == "corrected" and c["corrected_on"]]
+    return strip_html, corr, suf, dates, corr_dates
 
 def topics_for(e):
     txt = strip(e["blk"]).lower()
@@ -216,7 +193,7 @@ CSS = """
     .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
     .ep-ledger p+p{margin-top:6px}
     .ep-ledger b{color:var(--text);font-weight:700}
-    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
 """
@@ -235,7 +212,7 @@ def page(e, prev_e, next_e):
     desc = (e["paras"][0] if e["paras"] else e["title"])
     # 摘要字段（description/og/twitter）不复述已更正的事实；正文 articleBody 保留原文
     for old, new in DESC_FIX.get(e["n"], []): desc = desc.replace(old, new)
-    lg_html, lg_corr, lg_suf, lg_dates = ledger_bits(e)
+    lg_html, lg_corr, lg_suf, lg_dates, lg_corr_dates = ledger_bits(e)
     # ✗ / ◐: the summary keeps the original opening and ends with the dated ledger status (cut from the original, never from the suffix)
     if len(desc) > 150 - len(lg_suf): desc = desc[:147 - len(lg_suf)] + "…"
     desc += lg_suf
@@ -243,8 +220,11 @@ def page(e, prev_e, next_e):
     items = foot_items(e["foot"])
     tops = topics_for(e)
     kw = [t["name"] for t in tops][:8] + [e["cat"]]
-    mod = modified(e, items)
-    if lg_dates and len(e["date_d"]) == 10 and max(lg_dates) > (mod or e["date_d"]): mod = max(lg_dates)   # ledger reconciliation / correction dates
+    mod = modified(e["date_d"], items); mod_lab = "最后更正"
+    if lg_dates and len(e["date_d"]) == 10 and max(lg_dates) > (mod or e["date_d"]):   # dates the ledger strip shows on this page
+        mod = max(lg_dates)
+        mod_lab = "最后更正" if mod in lg_corr_dates else "最后更新"   # a reconciliation that kept ⏳, a later reading or a 补记 write date is not a correction
+    MODS[e["n"]] = mod or lastmod(e)
     mod_iso = (mod + "T13:00:00+08:00") if (mod and mod != e["date_d"]) else iso(e)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Person", "@id": f"{BASE}#cynthia", "name": "张倩 Cynthia Zhang", "url": BASE,
@@ -322,7 +302,7 @@ def page(e, prev_e, next_e):
     <a href="../#entry-{e['n']}">在时间线中查看</a>
     <a href="{(f"en/{e['n']}.html" if str(e["n"]) in EN_MAP else "../en.html")}" hreflang="en">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY {e['n']}</span><span>发布 <time datetime="{iso(e)}">{esc(lastmod(e))}</time>{(' · 最后更正 <time datetime="' + mod + '">' + mod + '</time>') if mod and mod != e['date_d'] else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY {e['n']}</span><span>发布 <time datetime="{iso(e)}">{esc(lastmod(e))}</time>{(f' · {mod_lab} <time datetime="{mod}">{mod}</time>') if mod and mod != lastmod(e) else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 {blk}
   </div>
@@ -344,7 +324,7 @@ def page(e, prev_e, next_e):
 """
 
 # ---------- write pages ----------
-written = 0
+written = 0; MODS = {}   # n → dateModified date (YYYY-MM-DD), for sitemap-entries.xml
 for i, e in enumerate(entries):
     newer = entries[i - 1] if i > 0 else None      # list is newest-first: index i-1 is newer
     older = entries[i + 1] if i + 1 < len(entries) else None
@@ -391,8 +371,9 @@ wr("entries/index.html", f"""<!DOCTYPE html>
 """)
 
 # ---------- sitemap-entries.xml ----------
-urls = [f"  <url><loc>{BASE}entries/</loc><lastmod>{entries[0]['date_d']}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>"]
-urls += [f"  <url><loc>{BASE}entries/{e['n']}.html</loc><lastmod>{lastmod(e)}</lastmod><changefreq>monthly</changefreq><priority>{'0.9' if i < 10 else '0.6'}</priority></url>" for i, e in enumerate(entries) if e["date_d"]]
+# lastmod = the page's dateModified date (ledger strips and dated corrections are changes crawlers should re-fetch)
+urls = [f"  <url><loc>{BASE}entries/</loc><lastmod>{max(MODS.values())}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>"]
+urls += [f"  <url><loc>{BASE}entries/{e['n']}.html</loc><lastmod>{MODS[e['n']]}</lastmod><changefreq>monthly</changefreq><priority>{'0.9' if i < 10 else '0.6'}</priority></url>" for i, e in enumerate(entries) if e["date_d"]]
 wr("sitemap-entries.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 
 # ---------- hub: ¶ permalink inside each entry header (idempotent) ----------

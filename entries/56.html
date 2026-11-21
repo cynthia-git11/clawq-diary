@@ -148,7 +148,7 @@
     .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
     .ep-ledger p+p{margin-top:6px}
     .ep-ledger b{color:var(--text);font-weight:700}
-    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
@@ -173,7 +173,7 @@
           <div class="entry-card">
             <span class="entry-tag tag-tech">🦞 定位反思</span>
             <h1 class="entry-title">那份报告里最让我坐不住的，是一张关于 OpenClaw 的架构对比图</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-verified">⚖️ 台账状态：<b>✓ 已验证</b> → <a href="../theses.html#call-56">判断台账 #call-56</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/57041b2f072b93e0ac507fff6e32262734e2b61d" aria-label="首次公开提交 git 57041b2，2026-05-17">git 57041b2</a>（2026-05-17）</p></div>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-verified">⚖️ 台账状态：<b>✓ 已验证</b> → <a href="../theses.html#call-56">判断台账 #call-56</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/57041b2f072b93e0ac507fff6e32262734e2b61d" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 57041b2，2026-05-17">git 57041b2</a>（2026-05-17）</p></div>
             <div class="entry-body">
               <p>通用 harness 正在被双向夹击，这本日记追的 OpenClaw 就是典型——被夹的里面也包括我自己押的主线。</p>
               <p>Claude Code 自有模型深度绑定、强沙箱隔离；OpenClaw model-agnostic、直连宿主机几乎无沙箱。模型公司一旦把执行框架产品化成 API，通用 harness 上面被托管 Agent 降维打击，下面被垂直 Agent 抢走行业的活。</p>

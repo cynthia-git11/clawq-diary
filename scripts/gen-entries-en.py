@@ -7,9 +7,13 @@ any row whose best match shares too few numbers is skipped rather than guessed. 
 sitemap-entries-en.xml, data/entries-en-map.json (read by gen-entry-pages.py for hreflang), and per-row
 "Read the entry" links on en.html, then runs scripts/gen-ledger.py on the same root (skip with --no-ledger) and rebuilds
 the pages whose ledger status line (from data/ledger.json; template text + ledger fields, never translated) changed.
-dateModified = max(published, ledger reconciliation / correction dates, the Chinese page's dateModified from its last build).
+dateModified = max(published, the ledger dates the status line shows); a later dated footnote note on the Chinese original
+(read from index.html with scripts/entry_dates.py, the same code gen-entry-pages.py uses) is named as not included here.
 Deterministic, idempotent. Usage: python3 scripts/gen-entries-en.py [--root DIR] [--no-ledger]"""
 import os, re, sys, json, html, itertools, collections
+sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import entry_dates as ED   # shared with gen-entry-pages.py: entry date, footnote items, dated changes, ledger dates
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
@@ -38,8 +42,10 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     dtxt = strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1])
     dm = re.search(r"Day (\d+)", dtxt); ymd = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", dtxt)
     pub = (re.search(r'"url": "[^"]*#entry-%d",\s*"datePublished": "([^"]+)"' % n, idx) or [None, None])[1]
+    date_d = ED.entry_date_d(ED.strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1]))
     zh[n] = dict(n=n, day=int(dm.group(1)) if dm else None, date=f"{ymd.group(1)}-{int(ymd.group(2)):02d}-{int(ymd.group(3)):02d}" if ymd else "",
-                 pub=pub, title=strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, ""])[1]), text=strip(blk))
+                 pub=pub, title=strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, ""])[1]), text=strip(blk),
+                 date_d=date_d, foot_mod=ED.modified(date_d, ED.foot_items(ED.foot_of(blk)[1])))   # same footnote date as the Chinese page
 byday = collections.defaultdict(list)
 for z in zh.values(): byday[z["day"]].append(z["n"])
 rday = collections.defaultdict(list)
@@ -66,7 +72,7 @@ CSS = """
     .ee-foot{margin-top:36px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}.ee-foot a{color:var(--claw2,#B8860B)}
     .ee-ledger{margin:0 0 20px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
     .ee-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}.ee-ledger p+p{margin-top:6px}
-    .ee-ledger b{color:var(--text);font-weight:700}.ee-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ee-ledger b{color:var(--text);font-weight:700}.ee-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ee-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ee-ledger .st-corrected b{color:var(--red,#B5462A)}.ee-ledger .st-partly{border-left-color:#9a6a00}.ee-ledger .st-verified{border-left-color:#1B9E7C}
     .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
@@ -113,17 +119,27 @@ def load_ledger():
     except FileNotFoundError:
         print("WARN gen-entries-en: data/ledger.json missing — ledger status lines skipped (run scripts/gen-ledger.py)")
     return L
+def split_row(n):
+    """English row of ENTRY n → (title, body, full text); the title is what the page's h1 shows"""
+    text = strip(rows[mapping[n]][1])
+    if " — " in text[:420]: title, body = text.split(" — ", 1)
+    else:
+        cut = re.search(r"[.!?](\s|$)", text[:300]); title = text[:cut.end()].strip() if cut else text[:120]; body = text[len(title):].strip()
+    return title.strip().rstrip("."), body, text
 def ledger_line_en(c):
     """→ (html, plain text of the status part, CorrectionComment date or None); links are relative to entries/en/"""
     n, st, k = c["entry"], c["status"], c["correction_entry"]
     if st == "corrected" and c["corrected_on"]:
-        where = ((f' in <a href="{k}.html">ENTRY {k}</a>' if k in mapping else f' in <a href="../{k}.html" hreflang="zh-CN">ENTRY {k}</a> (Chinese)')
-                 if k else " at the dated ledger reconciliation")
+        # the correction entry is named by its own title: the English h1 when it has an English edition, else the Chinese h1, in Chinese
+        if not k: where = " at the dated ledger reconciliation"
+        elif k in mapping: where = f' in <a href="{k}.html">ENTRY {k} “{esc(split_row(k)[0])}”</a>'
+        else: where = (f' in <a href="../{k}.html" hreflang="zh-CN">ENTRY {k}' + (f' <span lang="zh-CN">《{esc(zh[k]["title"])}》</span>' if k in zh else "") + "</a> (Chinese)")
         head = f'{LE[st]} on {c["corrected_on"]}{where}'
     elif c["unresolvable"] and c["reconciled"]: head = f'{LE[st]} · resolution source missing (reconciled {c["reconciled"]})'
     elif c["reconciled"]: head = f'{LE[st]} (reconciled {c["reconciled"]})'
     else: head = LE[st]
     bits = [f"<b>{head}</b>"]
+    if ED.later_reading(c): bits.append(f'last reading {c["last_reading"]} (see the ledger card)')
     if c["retracted"]: bits.append(f'retracted wording (Chinese original): <span lang="zh-CN">「{esc(c["retracted"])}」</span>')
     if c["subclaim_judged_wrong"]: bits.append(f'sub-claim judged wrong at reconciliation (Chinese original): <span lang="zh-CN">「{esc(c["subclaim_judged_wrong"])}」</span>')
     if st in ("corrected", "partly"): bits.append("the original call is kept as written")
@@ -133,42 +149,43 @@ def ledger_line_en(c):
     status = "Ledger status: " + " · ".join(bits)
     h = "⚖️ " + status + f' → <a href="../../theses-en.html#call-{n}">Ledger #call-{n}</a>'
     if c.get("first_commit"):
-        h += (f' · first public commit <a href="{esc(c["first_commit_url"])}" aria-label="First public commit git {c["first_commit"][:7]}, {c["first_commit_date"]}">'
-              f'git {c["first_commit"][:7]}</a> ({c["first_commit_date"]})')
+        lag = c.get("commit_lag_days")
+        h += (f' · first public commit <a href="{esc(c["first_commit_url"])}" title="Commit in which this entry first appeared in the public repository (Beijing time)" '
+              f'aria-label="First public commit git {c["first_commit"][:7]}, {c["first_commit_date"]}">'
+              f'git {c["first_commit"][:7]}</a> ({c["first_commit_date"]}' + (f', first committed {lag} days after the stated date' if lag and lag > 1 and not c["backfill"] else "") + ")")
     return h, strip(status), (c["corrected_on"] if st == "corrected" else (c["reconciled"] if st == "partly" else None))
-def zh_modified(n):
-    """dateModified of the Chinese page from its last build (gen-entry-pages.py runs after this script)"""
-    p = os.path.join(ROOT, f"entries/{n}.html")
-    m = re.search(r'"dateModified": "([^"]+)"', open(p, encoding="utf-8").read()) if os.path.exists(p) else None
-    return m.group(1) if m else ""
 
 def build_pages(LG):
   pages = []; written = 0
   for n in sorted(mapping, reverse=True):
     d, raw, tag, _ = rows[mapping[n]]; z = zh[n]
-    text = strip(raw)
-    if " — " in text[:420]: title, body = text.split(" — ", 1)
-    else:
-        cut = re.search(r"[.!?](\s|$)", text[:300]); title = text[:cut.end()].strip() if cut else text[:120]; body = text[len(title):].strip()
-    title = title.strip().rstrip(".")
+    title, body, text = split_row(n)
     cs = LG.get(n, []); lines = [ledger_line_en(c) for c in cs]
     c0 = next((c for c in cs if c["status"] == "corrected"), None) or next((c for c in cs if c["status"] == "partly"), None)
     suf = ""   # ✗ / ◐: dated status at the end of the summary, cut from the English text, never from the suffix
     if c0 and c0["status"] == "corrected": suf = f' (publicly corrected{" on " + c0["corrected_on"] if c0["corrected_on"] else ""}; see the judgment ledger)'
     elif c0: suf = f' (reconciled{" " + c0["reconciled"] if c0["reconciled"] else ""}: partly right; see the judgment ledger)'
-    lead = body or title   # rows that are all title (ENTRY 36, 42) had an empty description
+    # rows that are all title (ENTRY 36, 42) had an empty description; a body that opens mid-sentence in lowercase (the title split
+    # at a dash) reads as broken, so those summaries start at the title
+    lead = text if (body and body[:1].islower()) else (body or title)
     desc = (lead[:157 - len(suf)] + "…" if len(lead) > 160 - len(suf) else lead) + suf
     url = f"{BASE}entries/en/{n}.html"; zurl = f"{BASE}entries/{n}.html"
     pub = z["pub"] or (z["date"] + "T13:00:00+08:00" if z["date"] else "")
-    # dateModified = max(published, ledger reconciliation / correction dates, the Chinese page's dateModified)
-    mod = max([x for x in [pub, zh_modified(n)] + [dd + "T13:00:00+08:00" for c in cs for dd in (c["reconciled"], c["corrected_on"]) if dd] if x] or [""])
+    # dateModified = max(published, the ledger dates this page's status line shows; same filter as the Chinese page: <= today,
+    # full-date entries only). The Chinese page's later footnote dates are not claimed for this edition, which has no footnotes.
+    lds = [dd for c in cs for dd in ED.ledger_dates(c)] if len(z["date_d"]) == 10 else []
+    mod = max([x for x in [pub] + [dd + "T13:00:00+08:00" for dd in lds] if x] or [""])
     corr = [{"@type": "CorrectionComment", "text": t, **({"datePublished": w} if w else {}), "url": f"{BASE}theses-en.html#{c['call_id']}"}
             for c, (_, t, w) in zip(cs, lines) if c["status"] in ("corrected", "partly")]
     strip_html = (f'\n  <div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status">'
                   + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>") if cs else ""
-    # visible date = the Chinese page's 最后更正 when it has one; worded "updated" because that date can also be a reconciliation
-    # that kept ⏳ or the write date of a 补记 entry, not only a correction (the status line says which)
+    # visible date: only a date the status line explains ("updated", not "corrected": it can be a reconciliation that kept ⏳,
+    # a later reading or a 补记 write date); a later dated note in the Chinese footnotes is named as not included here
     last = f' · Last updated <time datetime="{mod[:10]}">{mod[:10]}</time>' if pub and mod[:10] > pub[:10] else ""
+    zf = z["foot_mod"] if (pub and len(z["date_d"]) == 10) else ""
+    if zf and zf > max(pub[:10], mod[:10]):
+        last += (f' · The Chinese original has a footnote note dated <time datetime="{zf}">{zf}</time> that this English edition does not include'
+                 f' → <a href="../{n}.html" hreflang="zh-CN">中文原文</a>')
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "BlogPosting", "@id": url, "mainEntityOfPage": url, "url": url, "headline": title[:110], "description": desc, "inLanguage": "en",
          "datePublished": pub, "dateModified": mod or pub, **({"correction": corr[0] if len(corr) == 1 else corr} if corr else {}),
@@ -181,7 +198,7 @@ def build_pages(LG):
             {"@type": "ListItem", "position": 1, "name": "The ClawQ Chronicles", "item": f"{BASE}en.html"},
             {"@type": "ListItem", "position": 2, "name": "All entries (English)", "item": f"{BASE}entries/en/"},
             {"@type": "ListItem", "position": 3, "name": f"ENTRY {n}", "item": url}]}]}
-    pages.append(dict(n=n, title=title, date=z["date"], day=z["day"], tag=tag))
+    pages.append(dict(n=n, title=title, date=z["date"], day=z["day"], tag=tag, mod=(mod or pub)[:10]))
     older = next((m for m in sorted(mapping, reverse=True) if m < n), None); newer = next((m for m in sorted(mapping) if m > n), None)
     pn = (f'<a rel="prev" href="{older}.html">← ENTRY {older}</a>' if older else "<span></span>") + (f'<a rel="next" href="{newer}.html" style="text-align:right">ENTRY {newer} →</a>' if newer else "")
     page = head(f"{title} · ENTRY {n} · The ClawQ Chronicles", desc, url, zurl) + f"""
@@ -227,8 +244,8 @@ written += wr("entries/en/index.html", head(f"All entries in English · {len(pag
 </body>
 </html>
 """)
-urls = [f"  <url><loc>{BASE}entries/en/</loc><lastmod>{max(p['date'] for p in pages)}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>"]
-urls += [f"  <url><loc>{BASE}entries/en/{p['n']}.html</loc><lastmod>{p['date']}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>" for p in pages if p["date"]]
+urls = [f"  <url><loc>{BASE}entries/en/</loc><lastmod>{max(p['mod'] or p['date'] for p in pages)}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>"]
+urls += [f"  <url><loc>{BASE}entries/en/{p['n']}.html</loc><lastmod>{p['mod'] or p['date']}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>" for p in pages if p["date"]]   # lastmod = dateModified date
 written += wr("sitemap-entries-en.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 written += wr("data/entries-en-map.json", json.dumps({str(p["n"]): f"entries/en/{p['n']}.html" for p in pages}, ensure_ascii=False, indent=1) + "\n")
 # en.html: give each mapped row a crawlable link to its page (idempotent)

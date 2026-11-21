@@ -11,7 +11,8 @@ GEO 每日优化器 · geo-optimize.py
      扫 DECAY_RULES 里已被公开修正的旧数字/旧说法，若出现在「活」carrier
      （llms.txt / index.html 的 FAQ+ItemList+置顶卡，而非归档快照）里就告警。
   C. 体检：死锚（#entry-N 指向不存在的条目）、篇数计数跨 carrier 一致、
-     AI 爬虫清单是否覆盖 2026 主力 bot、最新一篇是否已进 FAQ。
+     AI 爬虫清单是否覆盖 2026 主力 bot、最新一篇是否已进 FAQ、判断台账派生文件同步、
+     单篇页台账状态条与徽章一致且 JSON-LD 可解析。
   D. GEO 健康分（0–100）+ 人读报告，打到 stdout（进 CI 日志）。
 
 退出码：0=无需改动且无告警 · 10=已做安全新鲜度修复（CI 应提交）· 20=有告警需人看
@@ -219,6 +220,31 @@ try:
         warns.append("判断台账派生文件与徽章计数不一致：" + "；".join(probs) + "——跑 python3 scripts/gen-ledger.py")
 except FileNotFoundError:
     warns.append("判断台账派生文件缺失（data/ledger.json 或 theses-en.html）——跑 python3 scripts/gen-ledger.py")
+
+# ── C6. 单篇页：台账状态条与 theses.html 徽章一致、JSON-LD 可解析（2026-11-21 起；只告警）──────
+# 状态条由 gen-entry-pages.py / gen-entries-en.py 从 data/ledger.json 生成；ledger.json 过期或页面没重建时，
+# 单篇页会给出与台账不同的状态。geo-check.py（每小时 CI）不读 entries/，所以放在这里。
+try:
+    import json as _json, glob as _glob
+    _ST = {"b-ok": "verified", "b-bad": "corrected", "b-part": "partly", "b-open": "open"}
+    want = {}
+    for _c in re.split(r'(?=<div class="call"[^>]*>)', rd("theses.html"))[1:]:
+        _n = re.search(r'<div class="claim"><a href="(?:index\.html#entry-|entries/)(\d+)', _c); _b = re.search(r'<span class="badge (b-ok|b-bad|b-part|b-open)">', _c)
+        if _n and _b: want[int(_n.group(1))] = _ST[_b.group(1)]
+    off, badld = [], []
+    for fp in sorted(_glob.glob(os.path.join(ROOT, "entries", "*.html")) + _glob.glob(os.path.join(ROOT, "entries", "en", "*.html"))):
+        s = io.open(fp, encoding="utf-8").read(); rel = os.path.relpath(fp, ROOT)
+        for _blk in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
+            try: _json.loads(_blk)
+            except ValueError: badld.append(rel); break
+        _m = re.match(r"(\d+)\.html$", os.path.basename(fp))
+        if not _m: continue
+        got = re.findall(r'<p class="st-(verified|corrected|partly|open)">', (re.search(r'<div class="e[pe]-ledger"[^>]*>(.*?)</div>', s, re.S) or [None, ""])[1])
+        if got != ([want[int(_m.group(1))]] if int(_m.group(1)) in want else []): off.append(rel)
+    if off: warns.append("单篇页台账状态条与 theses.html 徽章不一致：%d 页（%s）——先跑 scripts/gen-entries-en.py（含 gen-ledger.py）再跑 scripts/gen-entry-pages.py" % (len(off), ", ".join(off[:8])))
+    if badld: warns.append("单篇页 JSON-LD 解析失败（与生成器输出不一致）：%d 页（%s）" % (len(badld), ", ".join(badld[:8])))
+except FileNotFoundError:
+    pass
 
 # ── D. GEO 健康分 ──────────────────────────────────────────────────
 score = 100 - 12 * len(warns) - 3 * len(notes)
