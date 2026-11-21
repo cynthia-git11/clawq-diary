@@ -16,6 +16,10 @@ Status comes ONLY from the badge class (b-ok / b-bad / b-part / b-open); nothing
 Guards: exit 1 when a card cannot be parsed, counts disagree, a backfill marker on the card contradicts index.html,
         or the buildN invariants on theses.html would break; also when the total drops, a call_id disappears, or a
         resolved call goes back to open (re-run with --accept after checking). Normal status changes are only printed.
+Backfill: written_date comes from index.html only — 「本篇写于 YYYY-MM-DD」, or the date line's 「（M/D 补记）」 (ENTRY 126/127);
+        a backfill (written_date > event date) is shown as 补记 / Retrospective and counted separately from pre-registered calls.
+Root  : --root DIR, else $CLAWQ_ROOT, else the repo this script lives in. Pipeline slot: after gen-entries-en.py, before
+        gen-entry-pages.py (needs the fresh data/entries-en-map.json; accepts both index.html#entry-N and entries/N.html card links).
 Usage : python3 scripts/gen-ledger.py [--root DIR] [--dry] [--accept] [--no-git] [--today YYYY-MM-DD]
 """
 import re, os, sys, json, html, csv, io, subprocess, datetime
