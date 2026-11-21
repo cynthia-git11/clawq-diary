@@ -146,7 +146,8 @@ def ledger_line(c):
     return h, html.unescape(strip(status)), when
 def ledger_bits(e):
     """strip html, CorrectionComment list, description suffix, the ledger dates the strip shows, and the subset that are
-    ✗ correction dates, for one entry ("" / [] / "" / [] / [] without cards)"""
+    correction dates (✗ corrected_on; the reconciliation date of a ◐ call or of a sub-claim judged wrong), for one entry
+    ("" / [] / "" / [] / [] without cards)"""
     cs = LEDGER.get(e["n"], [])
     if not cs: return "", [], "", [], []
     lines = [ledger_line(c) for c in cs]
@@ -160,7 +161,8 @@ def ledger_bits(e):
     elif c0 and c0["reconciled"]: suf = f'（{c0["reconciled"]} 对账：部分成立）'
     elif c0: suf = "（对账：部分成立，见判断台账）"
     dates = [d for c in cs for d in ledger_dates(c)]
-    corr_dates = [c["corrected_on"] for c in cs if c["status"] == "corrected" and c["corrected_on"]]
+    corr_dates = ([c["corrected_on"] for c in cs if c["status"] == "corrected" and c["corrected_on"]]
+                  + [c["reconciled"] for c in cs if c["reconciled"] and (c["status"] == "partly" or c.get("subclaim_judged_wrong"))])
     return strip_html, corr, suf, dates, corr_dates
 
 def topics_for(e):
@@ -222,7 +224,12 @@ def page(e, prev_e, next_e):
     items = foot_items(e["foot"])
     tops = topics_for(e)
     kw = [t["name"] for t in tops][:8] + [e["cat"]]
-    mod = modified(e["date_d"], items); mod_lab = "最后更正"
+    mod = modified(e["date_d"], items)
+    # 「最后更正」 only when the date shown is a correction: a footnote 更正 / 勘误 / 纠偏 / 认错 / 后续修正 segment (foot_items
+    # files a dated segment under 更正 only when a correction word is in its first 40 characters) or a ledger correction date; a 补记 write date,
+    # a reading or a reconciliation that kept the status is 「最后更新」 (2026-11-21: 35 pages said 最后更正 with nothing corrected)
+    mod_corr = modified(e["date_d"], [(k, v) for k, v in items if k in ("更正", "勘误", "纠偏", "认错", "后续修正")])
+    mod_lab = "最后更正" if mod and (mod in lg_corr_dates or mod_corr == mod != modified(e["date_d"], [])) else "最后更新"
     if lg_dates and len(e["date_d"]) == 10 and max(lg_dates) > (mod or e["date_d"]):   # dates the ledger strip shows on this page
         mod = max(lg_dates)
         mod_lab = "最后更正" if mod in lg_corr_dates else "最后更新"   # a reconciliation that kept ⏳, a later reading or a 补记 write date is not a correction
