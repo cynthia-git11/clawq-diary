@@ -109,12 +109,16 @@ def modified(e, items):
     yr = e["date_d"][:4] if e["date_d"] else "2026"
     for k, v in items:
         if k not in ("更正", "对账", "补记", "后续修正", "纠偏", "认错", "勘误", "赌盘对账", "待对账", "更新"): continue
+        # a note that opens with its own date (「2026-11-13 读数：…11/19 开始交易」) cannot record a change after that date:
+        # later dates inside it are event dates, and without this cap the page's 最后更正 moved forward as days passed (2026-11-21)
+        lead = re.match(r"(\d{4}-\d{2}-\d{2})|(\d{1,2})/(\d{1,2})(?![\d/])", (v[len(k):] if v.startswith(k) else v).lstrip("：: "))
+        cap = (lead.group(1) or f"{yr}-{int(lead.group(2)):02d}-{int(lead.group(3)):02d}") if lead else TODAY
         for m in re.finditer(r"(\d{4})-(\d{2})-(\d{2})", v):
             d = m.group(0)
-            if best and d > best and d <= TODAY: best = d
+            if best and d > best and d <= min(cap, TODAY): best = d
         for m in re.finditer(r"(?<![\d/])(\d{1,2})/(\d{1,2})(?![\d/])", v):
             d = f"{yr}-{int(m.group(1)):02d}-{int(m.group(2)):02d}"
-            if best and d > best and d <= TODAY: best = d
+            if best and d > best and d <= min(cap, TODAY): best = d
     return best
 import datetime as _dt
 TODAY = (_dt.datetime.utcnow() + _dt.timedelta(hours=8)).strftime("%Y-%m-%d")
