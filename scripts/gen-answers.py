@@ -32,7 +32,9 @@ Verdict-first lead (2026-11-21): when a cited card changed after the question's 
 Writes: answers/<slug>.html, answers/en/<slug>.html, answers/index.html, answers/en/index.html, sitemap-answers.xml,
         robots.txt Sitemap line if missing, and the llms.txt Q&A index (only its own <!-- gen:answers --> block, through
         scripts/llms_sections.py: one line per question with the zh + en URL, the question, the index page's dates and each
-        cited entry's ledger status from data/ledger.json). Slugs are frozen into data/answers.json on first build (never renamed after publish).
+        cited entry's ledger status from data/ledger.json, as of its 'updated' date; a cited card that data/ledger.json lacks
+        or shows with another badge than theses.html is printed 台账待同步 + WARN; the block text is built and checked before
+        any page is written). Slugs are frozen into data/answers.json on first build (never renamed after publish).
         Pages that print the portfolio sentence (q20's {holdings}, the two index pages) take holdings.json's 'updated' as a
         modification date.
 Guards: number / verdict / falsifier gate → exit 1 before writing; a banned phrase in any rendered page → exit 1 before
@@ -48,6 +50,7 @@ ROOT = os.environ.get("CLAWQ_ROOT") or os.path.abspath(os.path.join(os.path.dirn
 if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
 DRY = "--dry" in sys.argv; VERIFY = "--no-verify" not in sys.argv; STRICT_DISC = "--strict-disclosure" in sys.argv
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 import holdings_lib as HL
 import llms_sections as LS
 HOLD = HL.load()
@@ -99,9 +102,10 @@ if changed and not DRY:
 assert len(seen) == len(Q), "duplicate slugs"
 
 # ---------- ledger status, English titles, dated reconciliation notes ----------
-LEDGER = {}
+LEDGER = {}; LEDGER_UPD = ""
 try:
-    for c in json.load(open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8"))["calls"]: LEDGER[int(c["entry"])] = c
+    _lj = json.load(open(os.path.join(ROOT, "data/ledger.json"), encoding="utf-8")); LEDGER_UPD = _lj.get("updated", "")
+    for c in _lj["calls"]: LEDGER[int(c["entry"])] = c
 except FileNotFoundError:
     WARN.append("data/ledger.json missing — English status bars only point to the ledger (run scripts/gen-ledger.py)")
 EN_TITLE = {}
@@ -564,13 +568,25 @@ OUT["answers/index.html"] = index_page(True); OUT["answers/en/index.html"] = ind
 # llms.txt Q&A index: its own <!-- gen:answers --> block (scripts/llms_sections.py), one line per question with both URLs, the
 # question as the page title, the same dates as the index page and each cited entry's status from data/ledger.json
 SYM = {"verified": "✓", "corrected": "✗", "partly": "◐", "open": "⏳"}
+# the badge on each theses.html card (the ledger's source of truth): a card data/ledger.json does not have yet (buildN.py added
+# it, gen-ledger.py has not run) or whose badge changed since (a reconciliation without gen-ledger.py) is marked 台账待同步,
+# never printed with a stale status or as a bare number (which the legend reserves for entries without a card)
+TH_ST = {}
+for _c in re.split(r'(?=<div class="call"[^>]*>)', th_raw)[1:]:
+    _n = re.search(r'<div class="claim"><a href="(?:index\.html#entry-|entries/)(\d+)', _c); _b = re.search(r'<span class="badge (b-ok|b-bad|b-part|b-open)">', _c)
+    if _n and _b: TH_ST[int(_n.group(1))] = {"b-ok": "verified", "b-bad": "corrected", "b-part": "partly", "b-open": "open"}[_b.group(1)]
+_unsynced = set()
 def llms_line(q):
     u, uk = page_updated(q)
     when = q.get("date", "") + ((" · " + ("台账更新 " if uk == "ledger" else "更新 ") + u) if u != q.get("date", "") else "")
     st = []
     for n in q["entries"]:
         c = LEDGER.get(n)
-        st.append(f"ENTRY {n}" + ((f" {SYM[c['status']]}" + ("（补记）" if c.get("backfill") else "")) if c else ""))
+        if c and (n not in TH_ST or TH_ST[n] == c["status"]):
+            st.append(f"ENTRY {n} {SYM[c['status']]}" + ("（子判断 ✗）" if c.get("subclaim_judged_wrong") else "") + ("（补记）" if c.get("backfill") else ""))
+        elif n in TH_ST:
+            st.append(f"ENTRY {n}（台账待同步）"); _unsynced.add(n)
+        else: st.append(f"ENTRY {n}")
     return (f"- [{q['q_zh']}]({BASE}answers/{q['slug']}.html) · [{q['q_en']}]({BASE}answers/en/{q['slug']}.html)"
             f" — {when} · {' · '.join(st)}")
 LLMS = None
@@ -578,11 +594,17 @@ if os.path.exists(os.path.join(ROOT, "llms.txt")):
     _llq = [q for q in Q if q.get("lead_zh")]
     _llb = [f"## 问答索引 Q&A index\n\n{len(_llq)} 个投资人与 AI 创业者会问的问题，一题一页，中文与英文各一个 URL，链接文字照抄页面上的问题。"
             "每行之后：判断日（「台账更新 / 更新」日期与问答总索引页一致）· 所引日记及其在判断台账里的当前状态（✓ 已验证 / ✗ 已公开修正 / "
-            "◐ 部分成立 / ⏳ 进行中，取自 data/ledger.json；「补记」为事后补记、单独计数；不在台账的只列编号）。"
+            f"◐ 部分成立 / ⏳ 进行中，取自 data/ledger.json{'（' + LEDGER_UPD + ' 更新）' if LEDGER_UPD else ''}；「子判断 ✗」为对账时判错的子判断、卡片状态不变；"
+            "「补记」为事后补记、单独计数；「台账待同步」为台账页已有卡片、data/ledger.json 尚未更新，以台账页为准；不在台账的只列编号）。"
             f"总索引 [answers/]({BASE}answers/) · [answers/en/]({BASE}answers/en/)，站点地图 [sitemap-answers.xml]({BASE}sitemap-answers.xml)。"]
-    for key, label in (("投资人", "### 投资人 Investors"), ("创业者", "### 创业者 Founders")):
-        qs = [q for q in _llq if q.get("persona_group") == key]
-        if qs: _llb.append(label + "\n" + "\n".join(llms_line(q) for q in qs))
+    _groups = [("投资人", "### 投资人 Investors"), ("创业者", "### 创业者 Founders")]
+    _groups += [(g, f"### {g}") for g in dict.fromkeys(q.get("persona_group") or "其他" for q in _llq) if g not in ("投资人", "创业者")]
+    _nl = 0
+    for key, label in _groups:
+        qs = [q for q in _llq if (q.get("persona_group") or "其他") == key]
+        if qs: _llb.append(label + "\n" + "\n".join(llms_line(q) for q in qs)); _nl += len(qs)
+    assert _nl == len(_llq), "llms.txt Q&A index: a question fell out of every group"
+    if _unsynced: WARN.append(f"llms.txt Q&A index: ENTRY {', '.join(map(str, sorted(_unsynced)))} marked 台账待同步 — data/ledger.json disagrees with theses.html (run scripts/gen-ledger.py, then this script)")
     LLMS = "\n\n".join(_llb)
 else: WARN.append("llms.txt not found — Q&A index not written")
 # output guard, before anything is written: no banned disclosure phrase in any rendered page (a clause quoted verbatim from
@@ -593,10 +615,11 @@ for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
 if bad:
     for w in WARN: print("WARN " + w)
     print("gen-answers FAILED: banned disclosure phrase in output — nothing written"); sys.exit(1)
-for f, s in OUT.items(): wr(f, s)
-if LLMS is not None:
+_ll = _ll2 = None
+if LLMS is not None:      # before anything is written: LS.put refuses a block carrying a buildN.py anchor (ValueError)
     _ll = rd("llms.txt"); _ll2 = LS.put(_ll, "answers", LLMS, before=("<!-- gen:topics -->", "\n## 引用规范"))
-    if _ll2 != _ll: wr("llms.txt", _ll2)
+for f, s in OUT.items(): wr(f, s)
+if _ll2 is not None and _ll2 != _ll: wr("llms.txt", _ll2)
 LM = {q["id"]: page_updated(q)[0] for q in Q}
 last = max(list(LM.values()) + [HOLD_UPD])
 urls = [(f"{BASE}answers/", last, "0.9"), (f"{BASE}answers/en/", last, "0.8")]
