@@ -1,8 +1,9 @@
 name: GEO Hourly (crawl-ping + health check)
 
 # 每小时巡检 GEO 健康度（结构化数据 / XML / robots / 最新一篇同步 / 计数一致），
-# 并在内容近 1 小时内有变更时催 IndexNow 重抓。
-# 只读内容、不改不空提交；巡检失败 → 工作流失败 + 写入固定 issue 提醒。
+# 并把「上次成功推送以来」变更的公开页面推给 IndexNow（scripts/indexnow-ping.py；上次推送的 commit 存在 actions cache，
+# 没有记录时退到 push 事件的 before，再退到最近 26 小时）。
+# 只读内容、不改不空提交；巡检失败 → 工作流失败 + 写入固定 issue 提醒（IndexNow 推送失败不算巡检失败，下一次从同一基点重推）。
 on:
   schedule:
     - cron: '0 * * * *'        # 每小时整点（UTC）
@@ -14,6 +15,11 @@ on:
       - '**.xml'
       - 'archive/**'
   workflow_dispatch:
+    inputs:
+      full:
+        description: 'Push every URL in the sitemaps to IndexNow (one-off full resubmission)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -30,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 20
+          fetch-depth: 0             # the IndexNow base can be the last pushed commit, hours or days back
 
       - uses: actions/setup-python@v5
         with:
@@ -39,27 +45,31 @@ jobs:
       - name: GEO health check (read-only)
         run: python3 scripts/geo-check.py
 
-      - name: Ping IndexNow when content changed (Bing / Yandex / Seznam / Naver)
+      - name: Restore the commit last pushed to IndexNow
         if: success()
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            if [ -z "$(git log --since='70 minutes ago' --oneline)" ]; then
-              echo "No content change in the last hour — skip IndexNow (avoid no-op spam)."
-              exit 0
-            fi
-          fi
-          KEY="d9cbec26916a25296455ffb28243f03f"
-          HOST="cynthia-git11.github.io"
-          BASE="https://$HOST/clawq-diary"
-          # fixed carriers + per-entry pages touched in the last 70 minutes (GEO: every ENTRY has its own URL under entries/)
-          URLS="\"$BASE/\",\"$BASE/en.html\",\"$BASE/ja.html\",\"$BASE/theses.html\",\"$BASE/atom.xml\",\"$BASE/llms.txt\",\"$BASE/llms-full.txt\",\"$BASE/sitemap.xml\",\"$BASE/sitemap-entries.xml\",\"$BASE/entries/\",\"$BASE/sitemap-topics.xml\",\"$BASE/topics/\",\"$BASE/sitemap-answers.xml\",\"$BASE/answers/\",\"$BASE/answers/en/\""
-          for f in $(git log --since='70 minutes ago' --name-only --pretty=format: -- entries/ topics/ answers/ | grep -E '^(entries|topics|answers)/.*\.html$' | sort -u | head -200); do
-            URLS="$URLS,\"$BASE/$f\""
-          done
-          curl -fsS -X POST "https://api.indexnow.org/IndexNow" \
-            -H "Content-Type: application/json" \
-            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"$BASE/$KEY.txt\",\"urlList\":[$URLS]}" \
-            && echo "IndexNow pinged ($(echo "$URLS" | tr ',' '\n' | wc -l | tr -d ' ') urls)." || echo "IndexNow ping failed (non-fatal)."
+        continue-on-error: true      # no cache → the ping falls back to github.event.before, then to the last 26 hours
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/clawq-indexnow
+          key: indexnow-last-${{ github.sha }}
+          restore-keys: indexnow-last-
+
+      - name: Ping IndexNow with every page changed since the last successful push (Bing / Yandex / Seznam / Naver)
+        id: ping
+        if: success()
+        continue-on-error: true      # a failed ping is retried next run; it is not a health-check failure
+        env:
+          BEFORE: ${{ github.event.before }}
+          FULL: ${{ inputs.full && '--all' || '' }}
+        run: python3 scripts/indexnow-ping.py --last-file "$HOME/.cache/clawq-indexnow/last-sha" --before "$BEFORE" --window-hours 26 $FULL
+
+      - name: Remember the commit just pushed to IndexNow
+        if: success() && steps.ping.outputs.advance == 'true'
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/clawq-indexnow
+          key: indexnow-last-${{ github.sha }}
 
       - name: Alert to a fixed issue on health-check failure
         if: failure()
