@@ -102,7 +102,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -155,6 +156,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -177,6 +185,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🛡️ 信用替代</span>
             <h1 class="entry-title">英伟达没有借给 OpenAI 一分钱——它签的是一份 $1050 亿上限的残值担保，而担保标的其实是 OpenAI 缺失的信用评级</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 补记：写于 2026-08-24（事件日 2026-08-17），单独计数，不计入事前命中 → <a href="../theses.html#call-126">判断台账 #call-126</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/4b04585f8f5765fca7241638ab2b8945c6247c42" aria-label="首次公开提交 git 4b04585，2026-08-24">git 4b04585</a>（2026-08-24）</p></div>
             <div class="entry-body">
               <p>英伟达没借给 OpenAI 一分钱，<strong>它卖的是 OpenAI 缺的那个信用评级</strong>。这是算力资产估值里最大的隐藏项。</p>
               <p>8-K：给软银系 SB Energy 那份 4.25 GW、20 年期 OpenAI 租约签残值担保，上限 $1050 亿，触发条件是破产或断租；真金白银只有入股开发商 $15 亿。终止条件之一：OpenAI 拿到「满意的信用评级」。对价：园区独占英伟达算力。</p>

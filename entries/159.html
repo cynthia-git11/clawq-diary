@@ -96,7 +96,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -149,6 +150,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -171,6 +179,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🗓 补记·投放闸</span>
             <h1 class="entry-title">Cybercab 缺投放不缺产能，Tesla 车队配套要打折</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 卡片所列裁定日 2027-11-15、2028-02-15 · 补记：写于 2026-11-13（事件日 2026-11-08），单独计数，不计入事前命中 → <a href="../theses.html#call-159">判断台账 #call-159</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/b4f5f8452dbbe874e7f6bd2e5b5f075245760e50" aria-label="首次公开提交 git b4f5f84，2026-11-13">git b4f5f84</a>（2026-11-13）</p></div>
             <div class="entry-body">
               <p>想给 Tesla 车队做配套的 robotaxi 创业公司该降预期。Musk 11/6 说约 2027 年中停 Cybertruck 为 Cybercab 增产，可它缺的是投放，不是产能。</p>
               <p>得州 Cybercab 已装年产能超 12.5 万辆（10/21，公司称）；截至 10/29 Tesla 在 TxDMV 登记在营的自动驾驶车 1,080 辆（含各车型），约合 3 天产能（自算）。10/21 电话会上 Tesla 称产线快过投放、年底起开卖，Musk 称车大多自持（均二手）。10-Q（10/22）称在搭清洁、充电、远程操作、车队管理的专用设施。</p>

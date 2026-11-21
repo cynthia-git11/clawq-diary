@@ -5,7 +5,9 @@
 Reads index.html (the single-page hub) and writes, idempotently:
   entries/<N>.html        one static page per ENTRY (same markup/classes as the hub, so main.css applies),
                           with BlogPosting + BreadcrumbList JSON-LD, canonical, og/twitter, speakable,
-                          and a machine-readable breakdown of the footnote (来源｜证伪口｜口径注｜更正｜利益披露)
+                          and a machine-readable breakdown of the footnote (来源｜证伪口｜口径注｜更正｜利益披露);
+                          entries with a judgment-ledger card get a status strip above .entry-body from data/ledger.json
+                          (✗ / ◐ also get a CorrectionComment and a dated suffix on the description; title and body unchanged)
   entries/index.html      archive list, newest first
   sitemap-entries.xml     one <url> per entry, lastmod = entry date
   index.html              adds a ¶ permalink inside each entry header (internal links = crawl discovery)
@@ -136,6 +138,52 @@ try:
     ANSWERS = json.load(open(os.path.join(SRC_ROOT, "data/answers.json"), encoding="utf-8"))
 except Exception:
     ANSWERS = []
+# judgment ledger (2026-11-21): data/ledger.json is written by scripts/gen-ledger.py, which gen-entries-en.py runs just before
+# this script, so the status is fresh. Every word of the status strip is template text; every value is a ledger.json field.
+LEDGER = {}
+try:
+    for _c in json.load(open(os.path.join(SRC_ROOT, "data/ledger.json"), encoding="utf-8"))["calls"]: LEDGER.setdefault(int(_c["entry"]), []).append(_c)
+except FileNotFoundError:
+    print("WARN gen-entry-pages: data/ledger.json missing — ledger status strips skipped (run scripts/gen-ledger.py)")
+LZ = {"verified": "✓ 已验证", "corrected": "✗ 已公开修正", "partly": "◐ 部分成立", "open": "⏳ 进行中"}
+def ledger_line(c):
+    """one status line per ledger card → (html, plain text of the status part, CorrectionComment date or None)"""
+    n, st, k = c["entry"], c["status"], c["correction_entry"]
+    if st == "corrected" and c["corrected_on"]:
+        head = f'{LZ[st]}（{c["corrected_on"]}；更正见 <a href="{k}.html">ENTRY {k}</a>）' if k else f'{LZ[st]}（{c["corrected_on"]} 对账）'
+    elif c["unresolvable"] and c["reconciled"]: head = f'{LZ[st]} · 裁定源缺失（{c["reconciled"]} 对账）'
+    elif c["reconciled"]: head = f'{LZ[st]}（{c["reconciled"]} 对账）'
+    else: head = LZ[st]
+    bits = [f"<b>{head}</b>"]
+    if c["retracted"]: bits.append(f'对账收回的说法「{esc(c["retracted"])}」')
+    if c["subclaim_judged_wrong"]: bits.append(f'对账判错的子判断「{esc(c["subclaim_judged_wrong"])}」')
+    if st in ("corrected", "partly"): bits.append("原文保留不改")
+    if st == "open" and c["resolve_dates"]: bits.append("卡片所列裁定日 " + "、".join(c["resolve_dates"]) + ("（已过期，待对账）" if c["overdue"] else ""))
+    if c["backfill"]: bits.append(f'补记：写于 {c["written_date"]}（事件日 {c["event_date"]}），单独计数，不计入事前命中')
+    status = "台账状态：" + " · ".join(bits)
+    h = "⚖️ " + status + f' → <a href="../theses.html#call-{n}">判断台账 #call-{n}</a>'
+    if c.get("first_commit"):
+        h += (f' · 首次公开提交 <a href="{esc(c["first_commit_url"])}" aria-label="首次公开提交 git {c["first_commit"][:7]}，{c["first_commit_date"]}">'
+              f'git {c["first_commit"][:7]}</a>（{c["first_commit_date"]}）')
+    when = c["corrected_on"] if st == "corrected" else (c["reconciled"] if st == "partly" else None)
+    return h, html.unescape(strip(status)), when
+def ledger_bits(e):
+    """strip html, CorrectionComment list, description suffix and ledger dates for one entry ("" / [] / "" / [] without cards)"""
+    cs = LEDGER.get(e["n"], [])
+    if not cs: return "", [], "", []
+    lines = [ledger_line(c) for c in cs]
+    strip_html = ('<div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态">'
+                  + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>")
+    corr = [{"@type": "CorrectionComment", "text": t, **({"datePublished": w} if w else {}), "url": f"{BASE}theses.html#{c['call_id']}"}
+            for c, (_, t, w) in zip(cs, lines) if c["status"] in ("corrected", "partly")]
+    suf = ""
+    c0 = next((c for c in cs if c["status"] == "corrected"), None) or next((c for c in cs if c["status"] == "partly"), None)
+    if c0 and c0["status"] == "corrected": suf = f'（{c0["corrected_on"] + " " if c0["corrected_on"] else ""}已公开修正，见判断台账）'
+    elif c0 and c0["reconciled"]: suf = f'（{c0["reconciled"]} 对账：部分成立）'
+    elif c0: suf = "（对账：部分成立，见判断台账）"
+    dates = [d for c in cs for d in (c["reconciled"], c["corrected_on"]) if d and d <= TODAY]
+    return strip_html, corr, suf, dates
+
 def topics_for(e):
     txt = strip(e["blk"]).lower()
     return [t for t in TOPICS if any(a.lower() in txt for a in [t["name"]] + t.get("aliases", []))]
@@ -164,6 +212,13 @@ CSS = """
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
 """
 HEAD_LINKS = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -180,24 +235,29 @@ def page(e, prev_e, next_e):
     desc = (e["paras"][0] if e["paras"] else e["title"])
     # 摘要字段（description/og/twitter）不复述已更正的事实；正文 articleBody 保留原文
     for old, new in DESC_FIX.get(e["n"], []): desc = desc.replace(old, new)
-    if len(desc) > 150: desc = desc[:147] + "…"
+    lg_html, lg_corr, lg_suf, lg_dates = ledger_bits(e)
+    # ✗ / ◐: the summary keeps the original opening and ends with the dated ledger status (cut from the original, never from the suffix)
+    if len(desc) > 150 - len(lg_suf): desc = desc[:147 - len(lg_suf)] + "…"
+    desc += lg_suf
     body_txt = " ".join(e["paras"] + ([e["quote"]] if e["quote"] else []))
     items = foot_items(e["foot"])
     tops = topics_for(e)
     kw = [t["name"] for t in tops][:8] + [e["cat"]]
     mod = modified(e, items)
+    if lg_dates and len(e["date_d"]) == 10 and max(lg_dates) > (mod or e["date_d"]): mod = max(lg_dates)   # ledger reconciliation / correction dates
     mod_iso = (mod + "T13:00:00+08:00") if (mod and mod != e["date_d"]) else iso(e)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Person", "@id": f"{BASE}#cynthia", "name": "张倩 Cynthia Zhang", "url": BASE,
          "worksFor": {"@type": "Organization", "name": "天际资本 FutureX Capital", "url": "https://futurex.capital"}},
         {"@type": "Blog", "@id": f"{BASE}#blog", "name": "倩小虾日记 · The ClawQ Chronicles", "url": BASE, "inLanguage": "zh-CN"},
         {"@type": "BlogPosting", "@id": url, "mainEntityOfPage": url, "url": url, "headline": e["title"],
-         "datePublished": iso(e), "dateModified": mod_iso, "inLanguage": "zh-CN", "articleSection": e["cat"],
+         "datePublished": iso(e), "dateModified": mod_iso, **({"correction": lg_corr[0] if len(lg_corr) == 1 else lg_corr} if lg_corr else {}),
+         "inLanguage": "zh-CN", "articleSection": e["cat"],
          "about": [({"@type": "Organization", "name": t["name"], "url": t["url"]} if t.get("url") else {"@type": "Thing", "name": t["name"]}) for t in tops][:8],
          "keywords": kw, "description": desc, "articleBody": body_txt, "wordCount": len(re.sub(r"\s", "", body_txt)),
          "author": {"@id": f"{BASE}#cynthia"}, "publisher": {"@id": f"{BASE}#blog"}, "isPartOf": {"@id": f"{BASE}#blog"},
          "image": f"{BASE}assets/clawq-banner.jpg",
-         "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".entry-title", ".entry-body > p:first-of-type", ".entry-quote"]}},
+         "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".entry-title", ".entry-body > p:first-of-type", ".entry-quote"] + ([".ep-ledger"] if lg_html else [])}},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "倩小虾日记", "item": BASE},
             {"@type": "ListItem", "position": 2, "name": "全部日记", "item": f"{BASE}entries/"},
@@ -218,6 +278,9 @@ def page(e, prev_e, next_e):
     # entry block: drop the (最新) comment if any, keep classes; strip the ¶ permalink if present (page is the permalink)
     blk = re.sub(r'\s*<a class="ep-link"[^>]*>¶</a>', "", e["blk"])
     blk = blk.replace('<h3 class="entry-title">', '<h1 class="entry-title">', 1).replace("</h3>", "</h1>", 1) if '<h3 class="entry-title">' in blk else blk
+    if lg_html:   # ledger status strip between the title and .entry-body; the body itself stays byte-identical to the hub
+        blk, k = re.subn(r'(\n[ \t]*)(<div class="entry-body">)', lambda m: m.group(1) + lg_html + m.group(1) + m.group(2), blk, count=1)
+        if not k: print(f"WARN gen-entry-pages: ENTRY {e['n']} has no .entry-body — ledger status strip not placed")
     lm = lastmod(e)
     if lm and e["date_txt"]:
         blk = re.sub(r'(<div class="entry-date">)(.*?)(</div>)', lambda m: m.group(1) + f'<time datetime="{lm}">' + m.group(2) + "</time>" + m.group(3), blk, count=1, flags=re.S)

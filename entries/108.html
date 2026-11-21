@@ -102,7 +102,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -155,6 +156,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -177,6 +185,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🔫 战略物资</span>
             <h1 class="entry-title">前沿 AI 被正式当军火管了：同一个底座，一个加护栏卖给大众，一个开满能力只给批准机构——最强的智能不再有公开版本</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-108">判断台账 #call-108</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/5eeb0a21e7259df4c029d7ff833a6d021c60ff62" aria-label="首次公开提交 git 5eeb0a2，2026-07-22">git 5eeb0a2</a>（2026-07-22）</p></div>
             <div class="entry-body">
               <p>护城河的材质换了：从技术领先换成政策波动性敞口。押注单一前沿 API 的产品，得把断供定价进去。</p>
               <p>Google 的 Gemini 3.5 Flash Cyber 只给政府和受信伙伴试点；Anthropic 的 Fable 5 和 Mythos 同一底座，一个加护栏卖大众，一个开满能力只给批准机构。6/12 美商务部一封「Is-Informed Letter」，责令两模型出口申领许可，一个月内管制、豁免、解除来回三次。</p>

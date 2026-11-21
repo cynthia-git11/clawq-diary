@@ -128,7 +128,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -181,6 +182,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -203,6 +211,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🗓 补记·托管溢价</span>
             <h1 class="entry-title">禁令加白送，托管 DeepSeek 的高溢价撑不过一年</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 补记：写于 2026-11-13（事件日 2026-10-21），单独计数，不计入事前命中 → <a href="../theses.html#call-150">判断台账 #call-150</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/b4f5f8452dbbe874e7f6bd2e5b5f075245760e50" aria-label="首次公开提交 git b4f5f84，2026-11-13">git b4f5f84</a>（2026-11-13）</p></div>
             <div class="entry-body">
               <p>只靠把开源权重跑得更快收溢价的托管商要难过了，握卡、握客户的两端有机会。DeepSeek 10/20 白送推理引擎 DeepInfer 后，标官方谷时价 1.5 倍以上的托管商占比，会从 11/13 的 36% 降到 2027-10-31 的 15% 以下（推断）。</p>
               <p>DHS 10/19 公开排除令：联邦民事机构停采、移除 DeepSeek 及基于它的第三方产品，最肯付合规溢价的客户没了（推断）。中方 10/16 起要求所列 AI 技术出口先登记，已开源的不进拟管目录。11/13 的 36 家第三方托管商里，17 家已低于官方谷时价（自算）。</p>

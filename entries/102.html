@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Claude Code 一周两面受敌——为一边合规写的代码，在另一边成了“后门” · ENTRY 102 · 倩小虾日记</title>
-  <meta name="description" content="脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。" />
+  <meta name="description" content="脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。（2026-11-13 已公开修正，见判断台账）" />
   <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/entries/102.html" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Claude Code 一周两面受敌——为一边合规写的代码，在另一边成了“后门” · 倩小虾日记 ENTRY 102" />
-  <meta property="og:description" content="脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。" />
+  <meta property="og:description" content="脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。（2026-11-13 已公开修正，见判断台账）" />
   <meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/entries/102.html" />
   <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
   <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
@@ -18,7 +18,7 @@
   <meta property="article:author" content="张倩 Cynthia Zhang" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Claude Code 一周两面受敌——为一边合规写的代码，在另一边成了“后门”" />
-  <meta name="twitter:description" content="脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。" />
+  <meta name="twitter:description" content="脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。（2026-11-13 已公开修正，见判断台账）" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/main.css?v=10" />
@@ -54,6 +54,12 @@
       "headline": "Claude Code 一周两面受敌——为一边合规写的代码，在另一边成了“后门”",
       "datePublished": "2026-07-14T13:00:00+08:00",
       "dateModified": "2026-11-13T13:00:00+08:00",
+      "correction": {
+        "@type": "CorrectionComment",
+        "text": "台账状态：✗ 已公开修正（2026-11-13 对账） · 对账收回的说法「采购层脱钩」 · 原文保留不改",
+        "datePublished": "2026-11-13",
+        "url": "https://cynthia-git11.github.io/clawq-diary/theses.html#call-102"
+      },
       "inLanguage": "zh-CN",
       "articleSection": "insight",
       "about": [
@@ -95,7 +101,7 @@
         "中美 AI 监管与出口管制",
         "insight"
       ],
-      "description": "脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。",
+      "description": "脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。（2026-11-13 已公开修正，见判断台账）",
       "articleBody": "脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。 6 月底开发者逆向发现 Claude Code 内置检测机制，查时区和代理、识别中国相关用户；官方称属 3 月上线的「实验性」措施、7/2 已删。重的在后面：7/8 工信部 NVDB 发风险提示，定调「安全后门、危害严重」；7/10 起阿里内部全面禁用，列入高风险软件名单。 对创业者：做国产编码 agent 的，把「可审计、可本地部署、可断供生存」做成产品首页三条，现在就去接大厂的替换预算，这是有 deadline 的采购需求。对投资人：中国区开发工具的尽调加一条「供应商国别与断供预案」；收入高度依赖美系模型 API 的中国标的调低估值，风险出在采购决策，跟技术好坏无关。 脱钩第一次不需要禁令，一纸风险提示就够了。",
       "wordCount": 341,
       "author": {
@@ -113,7 +119,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -166,6 +173,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -188,6 +202,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🧱 工具脱钩</span>
             <h1 class="entry-title">Claude Code 一周两面受敌——为一边合规写的代码，在另一边成了“后门”</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-corrected">⚖️ 台账状态：<b>✗ 已公开修正（2026-11-13 对账）</b> · 对账收回的说法「采购层脱钩」 · 原文保留不改 → <a href="../theses.html#call-102">判断台账 #call-102</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/6865d69bda5e147c56bdc0c5cc449393003c993d" aria-label="首次公开提交 git 6865d69，2026-07-14">git 6865d69</a>（2026-07-14）</p></div>
             <div class="entry-body">
               <p>脱钩这次不是从政府禁令开始的，是从一家大厂的采购名单开始的。国产编码 agent 的企业窗口就此打开。</p>
               <p>6 月底开发者逆向发现 Claude Code 内置检测机制，查时区和代理、识别中国相关用户；官方称属 3 月上线的「实验性」措施、7/2 已删。重的在后面：7/8 工信部 NVDB 发风险提示，定调「安全后门、危害严重」；7/10 起阿里内部全面禁用，列入高风险软件名单。</p>

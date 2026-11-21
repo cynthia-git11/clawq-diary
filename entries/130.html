@@ -104,7 +104,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -157,6 +158,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -179,6 +187,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 格式</span>
             <h1 class="entry-title">开放权重生态自己选了英伟达的私有格式</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-130">判断台账 #call-130</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/399c9a25e6f9776b297029ea566162f3d5f22dbd" aria-label="首次公开提交 git 399c9a2，2026-08-29">git 399c9a2</a>（2026-08-29）</p></div>
             <div class="entry-body">
               <p>格式之争已经分出胜负：英伟达用私有格式拿下了开放权重的分发默认值。押 MXFP4 做工具链，等于把产品建在下载量只有对手<strong>四十分之一</strong>的标准上。</p>
               <p>8/29 实测 Hugging Face：NVFP4 近 30 天下载 5110 万次，七家共签的开放标准 MXFP4 只有 129 万次。NVFP4 里 46.6% 的下载在英伟达组织之外，最大铺货方是社区量化者 unsloth，869 万次。</p>

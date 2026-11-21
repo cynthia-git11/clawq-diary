@@ -128,7 +128,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -181,6 +182,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -203,6 +211,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🗓 补记·封顶</span>
             <h1 class="entry-title">Anthropic 降价两成：买方按美元封顶，降价换不来收入</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 卡片所列裁定日 2027-04-15、2027-05-31 · 补记：写于 2026-11-13（事件日 2026-11-10），单独计数，不计入事前命中 → <a href="../theses.html#call-160">判断台账 #call-160</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/b4f5f8452dbbe874e7f6bd2e5b5f075245760e50" aria-label="首次公开提交 git b4f5f84，2026-11-13">git b4f5f84</a>（2026-11-13）</p></div>
             <div class="entry-body">
               <p>看 Anthropic 上市的投资人：买方按美元封顶，降价换不来收入。11/9 Fable 5.2 每 token 降两成，封顶客户同样的钱多买 25% token（自算），份额不变则收入不变、成本上升（推断）。增量只靠不封顶客户或抢份额。</p>
               <p>苹果 10 月把部分工程师每日 AI 额度从 $300 降到 $200（Bloomberg 11/4，二手），少有人用满。服务成本占 Q3 收入 14.3%（S-1/A 11/2，自算），降价后封顶与否都先升（推断）。X 帖数取不到，热度看 HN。</p>

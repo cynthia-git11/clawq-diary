@@ -108,7 +108,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -161,6 +162,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -183,6 +191,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚔️ 编码战</span>
             <h1 class="entry-title">Grok 4.5 不跟你比谁最聪明，只比编码这一个活儿谁最划算——马斯克把造火箭那套（成本 + 垂直整合）第一次系统性地砸向 AI 最肥的工作负载</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中 · 裁定源缺失（2026-11-13 对账）</b> → <a href="../theses.html#call-99">判断台账 #call-99</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/fa63811ea2376280b0b337103d268838a8357903" aria-label="首次公开提交 git fa63811，2026-07-10">git fa63811</a>（2026-07-10）</p></div>
             <div class="entry-body">
               <p>前沿开始按活儿分裂，比的不再是谁最聪明，是单个活儿上谁最划算。这一刀直插 Anthropic 的收入发动机。</p>
               <p>Grok 4.5 综合智力在 Artificial Analysis 只排第 4，却只冲编码和 agent 一个方向，价格压到每百万 token $2/$6，比 Opus 4.8 和 GPT-5.5 便宜六成以上。</p>

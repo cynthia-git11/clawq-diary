@@ -126,7 +126,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -179,6 +180,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -201,6 +209,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🗓 补记·兆瓦状态</span>
             <h1 class="entry-title">选票卡住的主要是规划 GW：数据中心该按兆瓦状态定价</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 卡片所列裁定日 2027-03-31 · 补记：写于 2026-11-13（事件日 2026-11-06），单独计数，不计入事前命中 → <a href="../theses.html#call-158">判断台账 #call-158</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/b4f5f8452dbbe874e7f6bd2e5b5f075245760e50" aria-label="首次公开提交 git b4f5f84，2026-11-13">git b4f5f84</a>（2026-11-13）</p></div>
             <div class="entry-body">
               <p>靠暂停州规划 GW 撑估值的该打折，超大厂也一样；手握已通电兆瓦的该拿溢价。选票卡住的主要是这批没拿证的规划，需求、已通电和多数在建兆瓦没被卡。</p>
               <p>Cleanview 11/6：约 41% 规划容量在州长或当选州长主张暂停的州（二手）。11/4 按公司类型分，微软涨 6.7%、Core Scientific 跌 10.4%；11/12 两家都回到 11/3 收盘 1% 以内（自算）。CoreWeave 11/10 季报：积压约 1,325 亿美元，已通电仅占签约电力约 37%（公司称，自算）。</p>

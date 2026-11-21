@@ -96,7 +96,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -149,6 +150,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -171,6 +179,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 诉讼定价</span>
             <h1 class="entry-title">苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中（2026-11-13 对账）</b> → <a href="../theses.html#call-100">判断台账 #call-100</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/cfcdfc2b215d8a83e139f9b5f5c6cc7bc6670d9e" aria-label="首次公开提交 git cfcdfc2，2026-07-12">git cfcdfc2</a>（2026-07-12）</p></div>
             <div class="entry-body">
               <p>苹果这份诉状的目标不是赔偿，是 OpenAI 的 IPO 定价。诉讼一压在承销商桌上，S-1 就得写风险披露，估值就得打折。</p>
               <p>7/10 苹果在北加州联邦法院起诉 OpenAI、io 和两名前员工。挖角在 2025 年，$6.5B 收购 io 同年 5 月官宣，法务不会今天才知道；现在动手，是因为 OpenAI 秘密递交 S-1 在即、最快 9 月挂牌。前例：Waymo 掐着 Uber 上市筹备期起诉，约 $245M 股权和解。</p>

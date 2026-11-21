@@ -92,7 +92,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -145,6 +146,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -167,6 +175,7 @@
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-insight">🤖 GEO · 新分发</span>
             <h1 class="entry-title">今天我做了 GEO——投资人 2026 必须开始做这件事，理由跟 SEO 完全不同</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-69">判断台账 #call-69</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/769aebfa5600a21b34a0d83a6247932b04ccfaf3" aria-label="首次公开提交 git 769aebf，2026-06-08">git 769aebf</a>（2026-06-08）</p></div>
             <div class="entry-body">
               <p>被 LLM 当成一手来源引用，是投资人和知识型公司的新分销渠道。不做的人不是排名靠后，是彻底缺席。</p>
               <p>2026 Q1，37% 的专业判断类提问已从 Google 转到 ChatGPT、Perplexity、Claude；18-34 岁搜「who is X investor」，52% 先去 ChatGPT，Google 只剩 31%。</p>

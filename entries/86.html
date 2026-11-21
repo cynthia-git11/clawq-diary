@@ -103,7 +103,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -156,6 +157,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -178,6 +186,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🔧 去英伟达</span>
             <h1 class="entry-title">同一天，OpenAI 发了自研芯片、DeepSeek 把降价 75% 写死——推理层「去英伟达」从战术变结构</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-86">判断台账 #call-86</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/312676367779202d8c46945b0025ba591981ecf8" aria-label="首次公开提交 git 3126763，2026-06-25">git 3126763</a>（2026-06-25）</p></div>
             <div class="entry-body">
               <p>推理层的「去英伟达」，从一家的战术选择变成了行业的结构性转向。红利归应用层。</p>
               <p>OpenAI 和 Broadcom 发布首颗自研推理芯片 Jalapeño，推理成本比英伟达 GPU 低约 50%，年底部署；一个月前 DeepSeek 已把 75% 降价写死为永久，底气是华为昇腾 950。全球最大的两个推理出货方，同时在建绕过英伟达的供应链。</p>

@@ -92,7 +92,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -145,6 +146,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -167,6 +175,7 @@
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-tech">🦞 可靠性 II</span>
             <h1 class="entry-title">OpenClaw v2026.5.18 把"跨模型一致性"做成产品功能——这件事的二阶意义</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-verified">⚖️ 台账状态：<b>✓ 已验证</b> → <a href="../theses.html#call-59">判断台账 #call-59</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/ed01999c01a94e3d9b7e7a354edaed280e007807" aria-label="首次公开提交 git ed01999，2026-05-21">git ed01999</a>（2026-05-21）</p></div>
             <div class="entry-body">
               <p>有没有做跨模型一致性测试，从今天起进我的<strong>硬筛选</strong>，没做的先放一放。</p>
               <p>OpenClaw v2026.5.18 里最不起眼的一条：runtime parity scenarios，同一个任务在 Codex 和 Pi 两个后端各跑一遍，比对行为是否一致。可靠性 v1 是单机房不掉链子，v2 是换后端结果不变。同一周它还接通了 ChatGPT 登录。</p>

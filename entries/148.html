@@ -128,7 +128,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -181,6 +182,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -203,6 +211,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🗓 补记·审计权</span>
             <h1 class="entry-title">Goodfire 称神经元可读：审计的钱归拿得到权重的一方</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 卡片所列裁定日 2027-07-15 · 补记：写于 2026-11-13（事件日 2026-10-17），单独计数，不计入事前命中 → <a href="../theses.html#call-148">判断台账 #call-148</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/b4f5f8452dbbe874e7f6bd2e5b5f075245760e50" aria-label="首次公开提交 git b4f5f84，2026-11-13">git b4f5f84</a>（2026-11-13）</p></div>
             <div class="entry-body">
               <p>给银行、保险、医院做 agent，要准备一道新门槛：采购会查模型内部能否独立审计（推断）。开放权重，买方自己能审；闭源模型只有厂商和它放行的评估方能审。结论真假只定 Goodfire 的价，定不了这条分界。</p>
               <p>10/15 Goodfire 长文称，初步审计 Qwen3-32B，约 90% 神经元只有一个主要职责；11/10 配套论文换了模型和口径，测得 69%。不靠该结论的激活探针监控，10/8 已用在中国开放权重模型上，成本约为 LLM 逐轮审查的 1/50（均公司称）。</p>

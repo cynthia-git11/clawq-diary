@@ -102,7 +102,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -155,6 +156,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -177,6 +185,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">💰 落袋纪律</span>
             <h1 class="entry-title">马斯克三次在泡沫顶把弹药落袋——接着我上周的认错：股价是给散户看的，创始人看的是另一个数</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-113">判断台账 #call-113</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/aea5d97ae383cb4f8d3346255ee7be426d51500d" aria-label="首次公开提交 git aea5d97，2026-07-27">git aea5d97</a>（2026-07-27）</p></div>
             <div class="entry-body">
               <p>股价是给二级散户看的，创始人该盯的是落进公司账上的弹药——这两个数可以同时反向成立。</p>
               <p>SpaceX 从 $135 发行价破发到约 $115，IPO 当天却已把约 $857 亿募进账上。Tesla 当年高位增发把溢价锁进三座超级工厂，2022 年股价回撤约 75%，产能还在。OpenAI、Anthropic 估值近万亿，都没闭环，全在纸上。</p>

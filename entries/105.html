@@ -125,7 +125,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -178,6 +179,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -200,6 +208,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🪧 转行名单</span>
             <h1 class="entry-title">WAIC 的参展牌翻过来了：130 家大模型展商，83 家改挂 Agent，还举“基础大模型”牌子的只剩 18 家——百模大战的结局不是阵亡名单，是转行名单</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-105">判断台账 #call-105</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/6056cd076df0657e7d4a66ad393016b0ae42ced1" aria-label="首次公开提交 git 6056cd0，2026-07-18">git 6056cd0</a>（2026-07-18）</p></div>
             <div class="entry-body">
               <p>通用基座的创业投资窗口关了。现在进基座的新钱，买的是退出通道和国家站位，跟技术赔率无关。</p>
               <p>甲子光年统计 WAIC 大模型赛道 130 家展商：83 家把主标签换成 Agent，还举「基础大模型」牌子的只剩 18 家。所谓淘汰多是转行——零一万物并入阿里云做政企定制，百川停训基座转医疗；「六小虎」还在通用基座牌桌的只剩智谱、MiniMax、月之暗面、阶跃，独立纯血只剩月之暗面。</p>

@@ -103,7 +103,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -156,6 +157,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -178,6 +186,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🔓 开放即生意</span>
             <h1 class="entry-title">今晚史上最大的开放模型落地，还开源就涨价——开放权重从来不是慈善，是一门生意</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 卡片所列裁定日 2027-07-26 → <a href="../theses.html#call-112">判断台账 #call-112</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/d2a2b80d304c1f9e13439d94d29f582a36d3971f" aria-label="首次公开提交 git d2a2b80，2026-07-26">git d2a2b80</a>（2026-07-26）</p></div>
             <div class="entry-body">
               <p>开放权重是生意，不是慈善：权重免费送，钱在下游的自营 API、订阅和本地部署上收。</p>
               <p>月之暗面今晚放出 Kimi K3 完整权重，2.8 万亿参数，落地即史上最大；同一时刻官方 API 反而涨价，输出比 K2.6 涨约 2.1 倍。中国开源模型已占 HuggingFace 下载量 17.1%，美国 15.8%。</p>

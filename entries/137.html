@@ -128,7 +128,8 @@
         "cssSelector": [
           ".entry-title",
           ".entry-body > p:first-of-type",
-          ".entry-quote"
+          ".entry-quote",
+          ".ep-ledger"
         ]
       }
     },
@@ -181,6 +182,13 @@
     .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
     .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
     .ep-link:hover{color:var(--claw2,#B8860B)}
+    .ep-ledger{margin:0 0 16px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}
+    .ep-ledger p+p{margin-top:6px}
+    .ep-ledger b{color:var(--text);font-weight:700}
+    .ep-ledger a{color:var(--claw2,#B8860B);text-decoration:none;border-bottom:1px dashed var(--border2)}
+    .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
+    .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
   </style>
 </head>
 <body>
@@ -203,6 +211,7 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🛒 结账页</span>
             <h1 class="entry-title">Meta Muse 卖的不是订阅，是结账页</h1>
+            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中（2026-10-02 对账）</b> → <a href="../theses.html#call-137">判断台账 #call-137</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/1e46834c6b77de3f5f024ca839f4a2a045c427c1" aria-label="首次公开提交 git 1e46834，2026-09-25">git 1e46834</a>（2026-09-25）</p></div>
             <div class="entry-body">
               <p>Meta 拿广告利润养 Muse 的免费额度，换绑卡用户和肯开门的商家：这是结账页生意，成败不看 DAU，看多少商家愿意接，而最大那扇门亚马逊合法关着。</p>
               <p>9/8 上线，注册即绑卡，结账走 Stripe Link；扎克伯格在 Connect 说大量 token 免费、靠交易小额抽成赚钱。亚马逊 9/20 封锁，法院留了服务条款的路；随后 Shopify 的 Shop Pay、Walmart、PayPal 宣布接入。第三方估算至 9/19 美区下载 250 万、DAU 55.7 万，Meta 零官方数。</p>
