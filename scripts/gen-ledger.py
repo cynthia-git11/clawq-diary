@@ -11,7 +11,8 @@ Reads : theses.html (cards: date, Day, claim, badge class, ev text), index.html 
         and is already on origin/main, so a commit later rewritten by `git pull --rebase` is never frozen)
 Writes: data/ledger.json, ledger.csv (UTF-8 BOM), theses-en.html, data/ledger-commits.json (new calls only), and patches
         theses.html (id="call-N", computed tiles, first-commit links, backfill marks, Dataset + Claim JSON-LD, hreflang),
-        llms.txt (ledger counts, exact buildN format; the ledger files in its own <!-- gen:ledger --> block), index.html / en.html / ja.html (track-record FAQ answers, en ledger link),
+        llms.txt (ledger counts, exact buildN format; the ledger files in its own <!-- gen:ledger --> block; the calls due in the
+        next 90 days in <!-- gen:due -->, dated --today), index.html / en.html / ja.html (track-record FAQ answers, en ledger link),
         sitemap.xml (plain <url> for theses-en.html, no xhtml:link so hygiene0928.add_ja leaves it alone); through
         scripts/hub_sync.py also the Day / entry-count spans buildN.py does not bump (en hero 「DAY N」, en 「Public entries
         written」, dated FAQ counts, theses lede, press.html / press-en.html) and the dated pointers to the ledger card on
@@ -22,7 +23,7 @@ Status comes ONLY from the badge class (b-ok / b-bad / b-part / b-open); nothing
         only from fixed wordings on the card (「DATE 终审」「终审 DATE」「续看至 DATE」「期限 DATE」「维持 ⏳ 至 DATE」, 「（DATE 对账：」
         「DATE 对账（ENTRY N）：」, 「（DATE 读数：」); a card without them is labelled "not machine-read", never "no date".
         Retracted wording = a 「…」 quote directly followed by a retraction verb in the latest reconciliation note.
-Date-dependent: overdue / next_resolution and the Upcoming list on theses-en.html depend on --today (default: today, Beijing),
+Date-dependent: overdue / next_resolution, the Upcoming list on theses-en.html and the llms.txt 即将裁定 block depend on --today (default: today, Beijing),
         so a rerun on a later day can change theses-en.html without any card change; same-day reruns change nothing.
 Guards: exit 1 when a card cannot be parsed, counts disagree, a backfill marker on the card contradicts index.html,
         or the buildN invariants on theses.html would break; also when the total drops, a call_id disappears, or a
@@ -546,6 +547,29 @@ OUT["llms.txt"] = LS.put(OUT["llms.txt"], "ledger",
     f"- 判断台账 Judgment ledger: [theses.html]({BASE}theses.html)（中文）· [theses-en.html]({BASE}theses-en.html)（English）· "
     f"逐条数据 [ledger.csv]({BASE}ledger.csv)（UTF-8 BOM）· [data/ledger.json]({BASE}data/ledger.json)：每个判断一行，含状态、对账日、裁定日、"
     "事后补记标注与首次公开提交链接", before=("\n- 主仓库:", "\n## 合规声明"), sep="\n")
+# 「## 即将裁定」: calls (⏳ / ◐) whose next resolution date read from the card falls in the next 90 days, in this script's own
+# <!-- gen:due --> block. Same dates as the Upcoming list on theses-en.html (RB_RE: only the fixed forms 终审 / 终裁 / 续看至 / 期限 /
+# 维持 ⏳ 至 — a bare 「至 D」 is not read: it also ends test windows already decided at a reconciliation, e.g. ENTRY 140's
+# 「②至 2026-11-30」, settled 2026-11-13, and appears in prose like 「推至 2027-12-02」), so the block says it is not complete.
+# Claim text is the card's own; a claim naming 天际 / FutureX / LP (holdings wording comes only from holdings.json) is not printed.
+h90 = (datetime.date.fromisoformat(TODAY) + datetime.timedelta(days=90)).isoformat()
+due = [c for c in up if c["next_resolution"] <= h90]
+n_nodate = sum(1 for c in calls if c["status"] in ("open", "partly") and not c["next_resolution"])
+def due_claim(c):
+    t = c["claim_zh"]
+    if re.search(r"天际|FutureX|\bLP\b", t) or any(b in t for b in LS.FORBIDDEN): return "判断原文见卡片"
+    return t
+due_rows = [f'- {c["next_resolution"]} · ENTRY {c["entry"]} {ZH[c["status"]]}' + ("（补记）" if c["backfill"] else "") + f' · {due_claim(c)}'
+            + (f'（卡片另有更晚的裁定日 {c["resolve_by"]}）' if c["resolve_by"] != c["next_resolution"] else "")
+            + f' → [theses.html#call-{c["entry"]}]({BASE}theses.html#call-{c["entry"]})' for c in due] \
+           or ["- 这 90 天内没有卡片以上述固定写法写明的裁定日。"]
+try:
+    OUT["llms.txt"] = LS.put(OUT["llms.txt"], "due",
+        f"## 即将裁定 Due for resolution\n\n{TODAY} 生成：其后 90 天内（至 {h90}）卡片写明了裁定日的判断，按日期排列。日期照抄卡片里固定写法的裁定日"
+        f"（终审 / 终裁 / 续看至 / 期限 / 维持 ⏳ 至），状态即台账页徽章。这不是完整清单：另有 {n_nodate} 个进行中或部分成立的判断没有用这些写法写出"
+        f"今后的裁定日（有的只写了证伪窗口），以卡片原文为准。英文台账的 180 天清单见 [theses-en.html#upcoming]({BASE}theses-en.html#upcoming)。\n\n"
+        + "\n".join(due_rows), before=("<!-- gen:answers -->", "<!-- gen:topics -->", "\n## 引用规范"))
+except ValueError as e: warn(f"llms.txt 即将裁定 block not updated: {e}")
 
 # ---------------- index.html / en.html FAQ answers (anchor or warn; never widen) ----------------
 ZH_A = (f"截至 {updated}，{T} 个重大判断：{S['verified']} 个已验证、{S['corrected']} 个被她自己公开修正、{S['partly']} 个部分成立、{S['open']} 个进行中，"
