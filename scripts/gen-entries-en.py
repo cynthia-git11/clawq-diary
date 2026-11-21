@@ -5,7 +5,8 @@ Mapping row -> ENTRY N is by "Day D" (rows with a Day that has a different numbe
 within a day with several entries, the assignment is chosen by shared number tokens (EN text vs ZH entry text), and
 any row whose best match shares too few numbers is skipped rather than guessed. Writes entries/en/index.html,
 sitemap-entries-en.xml, data/entries-en-map.json (read by gen-entry-pages.py for hreflang), and per-row
-"Read the entry" links on en.html. Deterministic, idempotent. Usage: python3 scripts/gen-entries-en.py [--root DIR]"""
+"Read the entry" links on en.html, then runs scripts/gen-ledger.py on the same root (skip with --no-ledger).
+Deterministic, idempotent. Usage: python3 scripts/gen-entries-en.py [--root DIR] [--no-ledger]"""
 import os, re, sys, json, html, itertools, collections
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -180,3 +181,10 @@ if 'href="entries/en/"' not in en2:
     if i > 0: en2 = en2[:i] + '  <p style="font-size:12px;opacity:.75"><a href="entries/en/">All entries in English</a></p>\n' + en2[i:]
 written += wr("en.html", en2)
 print(f"OK · EN pages {len(pages)} of {len(rows)} rows · skipped {len(skipped)}: {skipped} · files changed {written}")
+# judgment ledger (2026-11-21): gen-ledger.py reads the data/entries-en-map.json written above, so it runs here — buildN.py runs
+# this script at its end (and asserts exit 0), and publish_daily.sh / publish_backfill.sh / ledger_apply.sh run it again. Idempotent.
+if "--no-ledger" not in sys.argv:
+    import subprocess
+    sys.stdout.flush()
+    r = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen-ledger.py"), "--root", ROOT])
+    if r.returncode: sys.exit(r.returncode)
