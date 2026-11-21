@@ -52,7 +52,7 @@ entries.sort(key=lambda e: -e["n"])
 
 # ledger cards: (claim text, badge, entry n)
 cards = []
-for m in re.finditer(r'<div class="call">(.*?)</div>\s*</div>\s*</div>', th, re.S):
+for m in re.finditer(r'<div class="call"[^>]*>(.*?)</div>\s*</div>\s*</div>', th, re.S):   # cards carry id="call-N" since 2026-11-21 (gen-ledger.py)
     c = m.group(1); n = re.search(r'(?:index\.html#entry-|entries/)(\d+)(?:\.html)?"', c); claim = re.search(r'<div class="claim"><a[^>]*>(.*?)</a>', c, re.S); badge = re.search(r'<span class="badge[^"]*">(.*?)</span>', c, re.S)
     when = re.search(r'<div class="when"><b>([^<]*)</b>', c)
     if n and claim: cards.append(dict(n=int(n.group(1)), claim=strip(claim.group(1)), badge=strip(badge.group(1)) if badge else "", when=when.group(1) if when else ""))

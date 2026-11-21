@@ -1,0 +1,4 @@
+{
+ "_doc": "Hand-filled, checked against index.html. correction_entry: the separate entry that publicly corrected a ✗ call (its entry date becomes corrected_on). 43 → ENTRY 44 (2026-05-12, footnote 「更正：本条对 Day 65「智力成本一年跌 128 倍」作补充修正」); 68 → ENTRY 70 (2026-06-09, 「本篇公开修正 6 月 7 日那篇」); 75 → ENTRY 111 (2026-07-25, 「判断总账：ENTRY 75（6/13）标 ✗，今日公开修正」). Calls corrected at a dated reconciliation (102, 103, 110, 118, 141 on 2026-11-13) have no entry here: their corrected_on is the reconciliation date on the card.",
+ "correction_entry": {"43": 44, "68": 70, "75": 111}
+}
