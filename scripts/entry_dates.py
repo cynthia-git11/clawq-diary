@@ -19,6 +19,15 @@ def entry_date_d(date_txt):
     yy = re.search(r"(\d{4})年", date_txt)
     return f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else (f"{ym.group(1)}-{int(ym.group(2)):02d}" if ym else (yy.group(1) if yy else ""))
 
+# ---------- topic mentions (gen-topics.py hubs and gen-entry-pages.py 相关主题 / about / keywords: one rule for both) ----------
+# A company named only in an 利益披露 clause (the footnote's 「利益披露：…」 segment up to the next ｜, or the body's
+# 「利益披露置尾注首项：…」) or in a dated 「更新」 footnote note (e.g. 「退出」 in a holdings update) is not a mention: otherwise
+# a holding inflates its own hub (2026-11-21: the Mistral hub counted 19 entries, 14 of them only through the disclosure).
+DISC_CLAUSE = re.compile(r'利益披露(?:置尾注首项)?：.*?(?=｜|<span class="ef-sep">|</div>|</p>)', re.S)
+def topic_text(blk):
+    """plain text of one index.html entry block for topic matching, without disclosure clauses and dated 更新 notes"""
+    return strip(re.sub(r'｜\d{4}-\d{2}-\d{2} 更新：[^｜<]*', '', DISC_CLAUSE.sub("", blk)))
+
 def foot_of(blk):
     """(footnote html, footnote text) of one index.html entry block"""
     body = (re.search(r'<div class="entry-body">(.*?)$', blk, re.S) or [None, ""])[1]

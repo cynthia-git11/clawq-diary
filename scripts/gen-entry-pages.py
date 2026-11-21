@@ -21,7 +21,8 @@ Usage: python3 scripts/gen-entry-pages.py [--root DIR] [--dry]
 import re, os, sys, json, html, shutil, tempfile, datetime
 sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading
+from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading, topic_text
+import llms_sections as LS
 
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -162,7 +163,7 @@ def ledger_bits(e):
     return strip_html, corr, suf, dates, corr_dates
 
 def topics_for(e):
-    txt = strip(e["blk"]).lower()
+    txt = topic_text(e["blk"]).lower()   # same mention rule as the topic hubs (gen-topics.py): disclosure clauses do not count
     return [t for t in TOPICS if any(a.lower() in txt for a in [t["name"]] + t.get("aliases", []))]
 
 # ---------- page template ----------

@@ -9,6 +9,8 @@ Reads : index.html (entries), theses.html (ledger cards), holdings.json via scri
         is said about holding them — no fallback sentence)
 Writes: topics/<slug>.html, topics/index.html, sitemap-topics.xml (robots.txt Sitemap line added if missing), and the llms.txt
         topic-hub list (only its own <!-- gen:topics --> block, through scripts/llms_sections.py: the topics index rows)
+Matching: a topic's name / aliases must appear in the entry outside its 利益披露 clauses (a company named only in the disclosure
+        is not a mention) and outside dated 「更新」 footnote notes.
 
 Deterministic: the timeline items are the entry's own title + first sentence (verbatim, no paraphrase);
 the optional blurb is the only authored prose and must be verified before it lands in data/topics.json.
@@ -23,8 +25,10 @@ ROOT = os.environ.get("CLAWQ_ROOT") or os.path.abspath(os.path.join(os.path.dirn
 if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
 DRY = "--dry" in sys.argv
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 import holdings_lib as HL
 import llms_sections as LS
+import entry_dates as ED
 HOLD = HL.load()
 if DRY:
     W = tempfile.mkdtemp(prefix="topics-")
@@ -58,8 +62,12 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     paras = [strip(p) for p in re.findall(r"<p>(.*?)</p>", body, re.S)]
     first = re.split(r"(?<=[。！？])", paras[0])[0] if paras else ""
     quote = strip((re.search(r'<div class="entry-quote">(.*?)</div>', body, re.S) or [None, ""])[1])
-    text = strip(re.sub(r'｜\d{4}-\d{2}-\d{2} 更新：[^｜<]*', '', blk))   # 带日期的「更新」说明不参与主题关键词匹配（如持仓更正里的「退出」）
-    entries.append(dict(n=n, title=title, date_txt=date_txt, date_d=date_d, first=first, quote=quote, text=text))
+    text = ED.topic_text(blk)   # 利益披露 clauses and dated 「更新」 notes are not mentions (scripts/entry_dates.py, shared with gen-entry-pages.py)
+    # written date, same rule as gen-ledger.py: 「本篇写于 D」 in the entry or the date line's 「（M/D 补记）」 → a backfill (补记)
+    wm = re.findall(r"本篇写于 (\d{4}-\d{2}-\d{2})", blk); bm = re.search(r"（(\d{1,2})/(\d{1,2}) 补记）", date_txt)
+    written = wm[0] if wm else (f"{date_d[:4]}-{int(bm.group(1)):02d}-{int(bm.group(2)):02d}" if bm and len(date_d) == 10 else "")
+    entries.append(dict(n=n, title=title, date_txt=date_txt, date_d=date_d, first=first, quote=quote, text=text,
+                        written=written if written > date_d else ""))
 entries.sort(key=lambda e: -e["n"])
 
 # ledger cards: (claim text, badge, entry n)
@@ -142,7 +150,7 @@ for t in topics:
 <div class="tp-wrap">
   <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
   <h1 class="tp-h1">{esc(t['name'])}{(' · ' + esc(t['name_en'])) if t.get('name_en') else ''}</h1>
-  <p class="tp-sub">本日记提到 {esc(t['name'])} 的 {len(hits)} 篇 · 最近 {esc(hits[0]['date_txt'])} · 张倩 Cynthia Zhang · FutureX Capital</p>
+  <p class="tp-sub">本日记正文提到 {esc(t['name'])} 的 {len(hits)} 篇（只在利益披露里出现的不计） · 最近 {esc(hits[0]['date_txt'])} · 张倩 Cynthia Zhang · FutureX Capital</p>
 {blurb}
   <p class="tp-disc">{esc(disc)}</p>
 {qblock}  <h2 class="tp-h2">挂账判断（{len(lcards)}）</h2>
@@ -159,7 +167,7 @@ for t in topics:
 </body>
 </html>
 """
-    made.append(dict(slug=t["slug"], name=t["name"], name_en=t.get("name_en", ""), n=len(hits), last=hits[0]["date_d"]))
+    made.append(dict(slug=t["slug"], name=t["name"], name_en=t.get("name_en", ""), n=len(hits), last=hits[0]["date_d"], last_written=hits[0]["written"]))
 
 rows = "\n".join(f'      <li><a href="{m["slug"]}.html">{esc(m["name"])}</a>{(" · " + esc(m["name_en"])) if m["name_en"] else ""}<span class="tp-when">{m["n"]} 篇 · 最近 {m["last"]}</span></li>' for m in made)
 OUT["topics/index.html"] = f"""<!DOCTYPE html>
@@ -191,19 +199,26 @@ for p in PENDING: print(p)
 bad = [(f, h) for f, s in OUT.items() for h in HL.banned_hits(html.unescape(strip(s)), " ".join(ORIG))]
 for f, h in bad: print(f"  ✗ banned phrase in {f}: {h}")
 if bad: print("gen-topics FAILED: banned disclosure phrase in output — nothing written"); sys.exit(1)
+# llms.txt topic hubs: the same rows as topics/index.html (name · other names — entries · latest date), built before anything is
+# written (LS.put refuses a block carrying a buildN.py anchor)
+def _alt(m):
+    en, nm = m["name_en"], m["name"]
+    if not en or en in nm: return ""                                  # 「Mistral AI」「英伟达 NVIDIA」: nothing new to add
+    return " · " + (en[len(nm) + 3:] if en.startswith(nm + " · ") else en)   # 「Anthropic · Claude」 → 「Claude」
+_ll = _ll2 = None
+if os.path.exists(os.path.join(ROOT, "llms.txt")):
+    _rows = [f"- [{m['name']}]({BASE}topics/{m['slug']}.html){_alt(m)} — {m['n']} 篇 · 最近 {m['last']}"
+             + (f"（补记，写于 {m['last_written']}）" if m["last_written"] else "") for m in made]
+    _ll = rd("llms.txt")
+    _ll2 = LS.put(_ll, "topics", f"## 主题页 Topic hubs\n\n{len(made)} 个公司与议题各一页（中文），列出正文提到它的全部日记（新→旧）与挂账判断的当前状态；"
+                  "每行：主题 · 其他名称 — 相关日记篇数（只在利益披露里出现的不计）· 最近一篇的标注日期（补记篇为事件日，另注写作日）。"
+                  f"总索引 [topics/]({BASE}topics/)，站点地图 [sitemap-topics.xml]({BASE}sitemap-topics.xml)。\n\n" + "\n".join(_rows))
+else: print("WARN llms.txt not found — topic hubs not listed there")
 for f, s in OUT.items(): wr(f, s)
 urls = [f"  <url><loc>{BASE}topics/</loc><lastmod>{max(m['last'] for m in made) if made else ''}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>"]
 urls += [f"  <url><loc>{BASE}topics/{m['slug']}.html</loc><lastmod>{m['last'] if len(m['last']) == 10 else m['last'] + '-01'}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>" for m in made]
 wr("sitemap-topics.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-topics.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-topics.xml\n")
-# llms.txt topic hubs: the same rows as topics/index.html (name · English name — entries · latest date)
-if os.path.exists(os.path.join(ROOT, "llms.txt")):
-    _rows = [f"- [{m['name']}]({BASE}topics/{m['slug']}.html)" + (f" · {m['name_en']}" if m["name_en"] else "") + f" — {m['n']} 篇 · 最近 {m['last']}" for m in made]
-    _ll = rd("llms.txt")
-    _ll2 = LS.put(_ll, "topics", f"## 主题页 Topic hubs\n\n{len(made)} 个公司与议题各一页（中文），列出全部相关日记（新→旧）与挂账判断的当前状态；"
-                  f"每行：主题 · 英文名 — 相关日记篇数 · 最近一篇的日期。总索引 [topics/]({BASE}topics/)，站点地图 [sitemap-topics.xml]({BASE}sitemap-topics.xml)。\n\n"
-                  + "\n".join(_rows))
-    if _ll2 != _ll: wr("llms.txt", _ll2)
-else: print("WARN llms.txt not found — topic hubs not listed there")
+if _ll2 is not None and _ll2 != _ll: wr("llms.txt", _ll2)
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · topics {len(made)}/{len(topics)} · " + ", ".join(f"{m['slug']}={m['n']}" for m in made))

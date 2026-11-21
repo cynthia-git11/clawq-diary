@@ -6,7 +6,7 @@
 
 📄 **单篇页面 Per-entry pages**: [entries/](https://cynthia-git11.github.io/clawq-diary/entries/) — 每篇日记一个独立 URL（`entries/<N>.html`），含 BlogPosting JSON-LD 与结构化尾注；单篇引用请用这些 URL。站点地图 [sitemap-entries.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-entries.xml)。
 
-🗂 **主题索引 Topic hubs**: [topics/](https://cynthia-git11.github.io/clawq-diary/topics/) — 按公司与议题（Anthropic、OpenAI、DeepSeek、月之暗面、智谱、阿里 Qwen、字节、Meta Muse、Mistral、英伟达、Hugging Face、Vercel 网关计量、新云与算力合同、AI Coding、中美 AI 监管、上市与退出、模型定价）各一页，列出全部相关日记与挂账判断状态。
+🗂 **主题索引 Topic hubs**: [topics/](https://cynthia-git11.github.io/clawq-diary/topics/) — 按公司与议题各一页，列出正文提到它的日记与挂账判断状态；全部主题、篇数与链接见下文「主题页 Topic hubs」一节（由 scripts/gen-topics.py 生成）。
 
 🌐 **English entries**: [entries/en/](https://cynthia-git11.github.io/clawq-diary/entries/en/) — English editions of the entries that have a verified translation, one page per entry, cross-linked with the Chinese originals via hreflang; sitemap [sitemap-entries-en.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-entries-en.xml).
 
@@ -236,28 +236,28 @@
 <!-- gen:topics -->
 ## 主题页 Topic hubs
 
-20 个公司与议题各一页（中文），列出全部相关日记（新→旧）与挂账判断的当前状态；每行：主题 · 英文名 — 相关日记篇数 · 最近一篇的日期。总索引 [topics/](https://cynthia-git11.github.io/clawq-diary/topics/)，站点地图 [sitemap-topics.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-topics.xml)。
+20 个公司与议题各一页（中文），列出正文提到它的全部日记（新→旧）与挂账判断的当前状态；每行：主题 · 其他名称 — 相关日记篇数（只在利益披露里出现的不计）· 最近一篇的标注日期（补记篇为事件日，另注写作日）。总索引 [topics/](https://cynthia-git11.github.io/clawq-diary/topics/)，站点地图 [sitemap-topics.xml](https://cynthia-git11.github.io/clawq-diary/sitemap-topics.xml)。
 
-- [Anthropic](https://cynthia-git11.github.io/clawq-diary/topics/anthropic.html) · Anthropic · Claude — 85 篇 · 最近 2026-11-12
-- [OpenAI](https://cynthia-git11.github.io/clawq-diary/topics/openai.html) · OpenAI · GPT — 69 篇 · 最近 2026-11-12
-- [DeepSeek](https://cynthia-git11.github.io/clawq-diary/topics/deepseek.html) · DeepSeek · 深度求索 — 20 篇 · 最近 2026-10-25
-- [月之暗面 Kimi](https://cynthia-git11.github.io/clawq-diary/topics/moonshot-kimi.html) · Moonshot AI · Kimi — 19 篇 · 最近 2026-10-25
-- [智谱 GLM](https://cynthia-git11.github.io/clawq-diary/topics/zhipu-glm.html) · Zhipu · Z.ai · GLM — 11 篇 · 最近 2026-11-10
-- [阿里 Qwen](https://cynthia-git11.github.io/clawq-diary/topics/alibaba-qwen.html) · Alibaba · Qwen — 14 篇 · 最近 2026-10-25
-- [字节跳动 豆包](https://cynthia-git11.github.io/clawq-diary/topics/bytedance-doubao.html) · ByteDance · Doubao · Seed — 34 篇 · 最近 2026-11-10
-- [Meta Muse](https://cynthia-git11.github.io/clawq-diary/topics/meta-muse.html) · Meta · Muse · Llama — 16 篇 · 最近 2026-11-06
-- [Mistral AI](https://cynthia-git11.github.io/clawq-diary/topics/mistral.html) · Mistral AI — 19 篇 · 最近 2026-11-12
-- [英伟达 NVIDIA](https://cynthia-git11.github.io/clawq-diary/topics/nvidia.html) · NVIDIA — 26 篇 · 最近 2026-11-12
-- [Hugging Face](https://cynthia-git11.github.io/clawq-diary/topics/hugging-face.html) · Hugging Face — 20 篇 · 最近 2026-11-12
-- [Vercel AI Gateway 计量](https://cynthia-git11.github.io/clawq-diary/topics/vercel-gateway.html) · Vercel AI Gateway · OpenRouter meters — 21 篇 · 最近 2026-11-10
-- [新云与算力合同](https://cynthia-git11.github.io/clawq-diary/topics/neocloud-compute.html) · Neoclouds · compute contracts — 16 篇 · 最近 2026-11-12
-- [TypeSafe Jev 决策模型](https://cynthia-git11.github.io/clawq-diary/topics/typesafe-jev.html) · TypeSafe · Jev — 3 篇 · 最近 2026-10-13
-- [AI Coding 估值](https://cynthia-git11.github.io/clawq-diary/topics/ai-coding.html) · AI coding · Cognition · Cursor — 19 篇 · 最近 2026-11-10
-- [小米 MiMo](https://cynthia-git11.github.io/clawq-diary/topics/xiaomi-mimo.html) · Xiaomi · MiMo — 7 篇 · 最近 2026-10-11
-- [MiniMax](https://cynthia-git11.github.io/clawq-diary/topics/minimax.html) · MiniMax — 7 篇 · 最近 2026-10-21
-- [中美 AI 监管与出口管制](https://cynthia-git11.github.io/clawq-diary/topics/us-china-ai-policy.html) · US–China AI policy · export controls — 25 篇 · 最近 2026-11-12
-- [AI 公司上市与退出](https://cynthia-git11.github.io/clawq-diary/topics/ipo-exits.html) · AI IPOs & exits — 47 篇 · 最近 2026-11-12
-- [模型定价与缓存](https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html) · Model pricing · caching · token economics — 89 篇 · 最近 2026-11-12
+- [Anthropic](https://cynthia-git11.github.io/clawq-diary/topics/anthropic.html) · Claude — 81 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [OpenAI](https://cynthia-git11.github.io/clawq-diary/topics/openai.html) · GPT — 68 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [DeepSeek](https://cynthia-git11.github.io/clawq-diary/topics/deepseek.html) · 深度求索 — 20 篇 · 最近 2026-10-25（补记，写于 2026-11-13）
+- [月之暗面 Kimi](https://cynthia-git11.github.io/clawq-diary/topics/moonshot-kimi.html) · Moonshot AI · Kimi — 14 篇 · 最近 2026-10-25（补记，写于 2026-11-13）
+- [智谱 GLM](https://cynthia-git11.github.io/clawq-diary/topics/zhipu-glm.html) · Zhipu · Z.ai · GLM — 11 篇 · 最近 2026-11-10（补记，写于 2026-11-13）
+- [阿里 Qwen](https://cynthia-git11.github.io/clawq-diary/topics/alibaba-qwen.html) · Alibaba · Qwen — 14 篇 · 最近 2026-10-25（补记，写于 2026-11-13）
+- [字节跳动 豆包](https://cynthia-git11.github.io/clawq-diary/topics/bytedance-doubao.html) · ByteDance · Doubao · Seed — 22 篇 · 最近 2026-10-11
+- [Meta Muse](https://cynthia-git11.github.io/clawq-diary/topics/meta-muse.html) · Meta · Muse · Llama — 16 篇 · 最近 2026-11-06（补记，写于 2026-11-13）
+- [Mistral AI](https://cynthia-git11.github.io/clawq-diary/topics/mistral.html) — 5 篇 · 最近 2026-11-06（补记，写于 2026-11-13）
+- [英伟达 NVIDIA](https://cynthia-git11.github.io/clawq-diary/topics/nvidia.html) — 22 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [Hugging Face](https://cynthia-git11.github.io/clawq-diary/topics/hugging-face.html) — 13 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [Vercel AI Gateway 计量](https://cynthia-git11.github.io/clawq-diary/topics/vercel-gateway.html) · Vercel AI Gateway · OpenRouter meters — 20 篇 · 最近 2026-11-10（补记，写于 2026-11-13）
+- [新云与算力合同](https://cynthia-git11.github.io/clawq-diary/topics/neocloud-compute.html) · Neoclouds · compute contracts — 16 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [TypeSafe Jev 决策模型](https://cynthia-git11.github.io/clawq-diary/topics/typesafe-jev.html) · TypeSafe · Jev — 3 篇 · 最近 2026-10-13（补记，写于 2026-11-13）
+- [AI Coding 估值](https://cynthia-git11.github.io/clawq-diary/topics/ai-coding.html) · AI coding · Cognition · Cursor — 15 篇 · 最近 2026-11-10（补记，写于 2026-11-13）
+- [小米 MiMo](https://cynthia-git11.github.io/clawq-diary/topics/xiaomi-mimo.html) · Xiaomi · MiMo — 3 篇 · 最近 2026-09-14
+- [MiniMax](https://cynthia-git11.github.io/clawq-diary/topics/minimax.html) — 7 篇 · 最近 2026-10-21（补记，写于 2026-11-13）
+- [中美 AI 监管与出口管制](https://cynthia-git11.github.io/clawq-diary/topics/us-china-ai-policy.html) · US–China AI policy · export controls — 24 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [AI 公司上市与退出](https://cynthia-git11.github.io/clawq-diary/topics/ipo-exits.html) · AI IPOs & exits — 47 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
+- [模型定价与缓存](https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html) · Model pricing · caching · token economics — 88 篇 · 最近 2026-11-12（补记，写于 2026-11-13）
 <!-- /gen:topics -->
 
 ## 引用规范
