@@ -5,9 +5,9 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 30,
-    "uniques": 21,
-    "median_time_sec": 0,
+    "pv": 37,
+    "uniques": 24,
+    "median_time_sec": 1,
     "completion_rate": 0,
     "shares": 0
   },
@@ -107,92 +107,108 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 455,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-11-22",
+      "pv": 7,
+      "uniques": 3,
+      "shares": 0,
+      "median_time_sec": 115,
+      "completion_rate": 0
     }
   ],
   "countries": [
     {
+      "name": "英国",
+      "code": "GB",
+      "flag": "🇬🇧",
+      "pct": 0.27,
+      "pv": 10
+    },
+    {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.3,
+      "pct": 0.243,
       "pv": 9
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.267,
+      "pct": 0.216,
       "pv": 8
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.2,
+      "pct": 0.162,
       "pv": 6
-    },
-    {
-      "name": "英国",
-      "code": "GB",
-      "flag": "🇬🇧",
-      "pct": 0.1,
-      "pv": 3
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.033,
+      "pct": 0.027,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.033,
+      "pct": 0.027,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.033,
+      "pct": 0.027,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.033,
+      "pct": 0.027,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.833
+      "pct": 0.784
     },
     {
       "lang": "entries/161",
-      "pct": 0.067
-    },
-    {
-      "lang": "entries/34",
-      "pct": 0.033
-    },
-    {
-      "lang": "entries/107",
-      "pct": 0.033
+      "pct": 0.054
     },
     {
       "lang": "English (en)",
-      "pct": 0.033
+      "pct": 0.054
+    },
+    {
+      "lang": "entries/34",
+      "pct": 0.027
+    },
+    {
+      "lang": "entries/165",
+      "pct": 0.027
+    },
+    {
+      "lang": "entries/131",
+      "pct": 0.027
+    },
+    {
+      "lang": "entries/107",
+      "pct": 0.027
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 21
+      "pv": 27
     },
     {
       "ref": "cynthia-git11.github.io",
@@ -204,6 +220,10 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "t.co",
+      "pv": 1
+    },
+    {
+      "ref": "futurex.capital",
       "pv": 1
     }
   ]
