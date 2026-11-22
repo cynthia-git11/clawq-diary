@@ -4,9 +4,10 @@
 
 Three kinds of edits, all idempotent and anchored (an anchor that is not found changes nothing):
   1. Count spans (sync_counts): Day and entry count measured from index.html (title 「倩小虾日记 · Day N」, the number of
-     <div id="entry-N">, the newest entry's datePublished) are written into the hero / stats / FAQ / press spans listed in
-     COUNT_RULES, and Blog.dateModified is raised (never lowered) to the newest entry. These are the spans buildN.py does
-     not bump itself (en hero 「DAY N」, en 「Public entries written」, press kit Day/entry lines, dated 「截至 … 已发布 N 篇」).
+     <div id="entry-N">, the newest entry's date line) are written into the hero / stats / FAQ / press spans listed in
+     COUNT_RULES, and Blog.dateModified is raised (never lowered) to the newest entry's datePublished (for a backfill, its
+     written date). These are the spans buildN.py does not bump itself (en hero 「DAY N」, en 「Public entries written」,
+     press kit Day/entry lines, dated 「截至 … 已发布 N 篇」).
   2. FAQ correction pointers (faq_sync): an index.html / en.html / ja.html FAQPage answer that restates a call the ledger
      now marks ✗ or ◐ (or whose sub-claim a reconciliation judged wrong) gets a dated pointer to the ledger card that names
      the call's own ENTRY, placed before the answer's 「利益披露：」 / "Disclosure:" segment (else before the fund disclaimer,
@@ -32,12 +33,16 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July", "Augus
 
 # ---------------- site state (measured from index.html) ----------------
 def site_state(idx):
+    """latest: the newest entry's date line (its event date, the date its Day counts — the visible 「截至 DATE（Day N）」 /
+    "Last updated DATE · Day N" spans pair the two); latest_iso: its @graph datePublished, which for a backfill (补记) is the written
+    date (scripts/machine_dates.py) — only the machine Blog.dateModified is raised to it. Same value for a non-backfill."""
     n_ids = [int(x) for x in re.findall(r'<div id="entry-(\d+)"', idx)]
     latest = max(n_ids)
     dm = re.search(r"倩小虾日记 · Day (\d+)", idx)
     pm = re.search(r'#entry-%d",\s*"datePublished":\s*"([^"]+)"' % latest, idx) or re.search(r'"datePublished": "([^"]+)"', idx)
     if not (dm and pm): raise ValueError("index.html: Day in <title> or the newest datePublished not found")
-    return dict(entries=len(n_ids), latest_entry=latest, day=int(dm.group(1)), latest_iso=pm.group(1), latest=pm.group(1)[:10])
+    ev = entry_dates(idx).get(latest) or pm.group(1)[:10]
+    return dict(entries=len(n_ids), latest_entry=latest, day=int(dm.group(1)), latest_iso=pm.group(1), latest=ev)
 
 def entry_dates(idx):
     """{N: event date YYYY-MM-DD} from each entry's date line in index.html"""
@@ -97,7 +102,7 @@ def sync_counts(name, text, st):
     if name in BLOG_DM:
         m = re.search(r'("@type": "Blog",(?:(?!"@type")[\s\S])*?"dateModified": ")([^"]+)(")', text)
         if not m: missing.append("Blog.dateModified")
-        elif m.group(2)[:10] < st["latest"]:
+        elif m.group(2)[:10] < st["latest_iso"][:10]:
             text = text[:m.start(2)] + st["latest_iso"] + text[m.end(2):]; changed.append("Blog.dateModified")
     return text, changed, missing
 

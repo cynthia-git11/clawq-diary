@@ -5,6 +5,7 @@
 Both scripts read the same things from index.html and data/ledger.json in the same run: the entry date, the footnote
 items, the latest dated change the footnote names, and the ledger dates the status strip shows. Before 2026-11-21 the
 English page read the Chinese page's previous build, so a footnote-only correction reached it one run late.
+The written date of a backfill (written_of) is also read here, by gen-ledger.py, gen-topics.py and scripts/machine_dates.py.
 Deterministic, no I/O. Not a CLI."""
 import re, datetime
 
@@ -18,6 +19,29 @@ def entry_date_d(date_txt):
     ym = re.search(r"(\d{4})年(\d{1,2})月", date_txt)
     yy = re.search(r"(\d{4})年", date_txt)
     return f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else (f"{ym.group(1)}-{int(ym.group(2)):02d}" if ym else (yy.group(1) if yy else ""))
+
+# ---------- written date of a backfill (补记): one rule for gen-ledger.py (data/ledger.json written_date), gen-topics.py and the
+# machine timestamps (scripts/machine_dates.py) ----------
+WRITTEN_RE = re.compile(r"本篇写于 (\d{4}-\d{2}-\d{2})")
+BF_LINE_RE = re.compile(r"（(\d{1,2})/(\d{1,2}) 补记）")
+def written_of(blk, date_txt, date_d):
+    """written date of one index.html entry block: 「本篇写于 YYYY-MM-DD」 anywhere in it, or its date line's 「（M/D 补记）」 in the
+    entry year (ENTRY 126/127 style); "" when it carries neither. date_txt: the plain text of its .entry-date; date_d: entry_date_d().
+    ValueError when the entry names several written dates or the two markers disagree."""
+    wm = sorted(set(WRITTEN_RE.findall(blk)))
+    if len(wm) > 1: raise ValueError(f"several 本篇写于 dates {wm}")
+    written = wm[0] if wm else ""
+    bm = BF_LINE_RE.search(date_txt)
+    if bm and len(date_d) == 10:
+        w2 = f"{date_d[:4]}-{int(bm.group(1)):02d}-{int(bm.group(2)):02d}"
+        if written and written != w2: raise ValueError(f"本篇写于 {written} vs date line 补记 {w2}")
+        written = w2
+    return written
+
+def backfill_written(blk, date_txt, date_d):
+    """the written date when the entry is a backfill (written after its full entry date), else \"\""""
+    w = written_of(blk, date_txt, date_d)
+    return w if (w and len(date_d) == 10 and w > date_d) else ""
 
 # ---------- topic mentions (gen-topics.py hubs and gen-entry-pages.py 相关主题 / about / keywords: one rule for both) ----------
 # A company named only in an 利益披露 clause (the footnote's 「利益披露：…」 segment up to the next ｜, or the body's

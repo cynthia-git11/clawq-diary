@@ -28,7 +28,8 @@ Date-dependent: overdue / next_resolution, the Upcoming list on theses-en.html a
 Guards: exit 1 when a card cannot be parsed, counts disagree, a backfill marker on the card contradicts index.html,
         or the buildN invariants on theses.html would break; also when the total drops, a call_id disappears, or a
         resolved call goes back to open (re-run with --accept after checking). Normal status changes are only printed.
-Backfill: written_date comes from index.html only — 「本篇写于 YYYY-MM-DD」, or the date line's 「（M/D 补记）」 (ENTRY 126/127);
+Backfill: written_date comes from index.html only — 「本篇写于 YYYY-MM-DD」, or the date line's 「（M/D 补记）」 (ENTRY 126/127)
+        (scripts/entry_dates.py written_of, the rule scripts/machine_dates.py also uses to date a backfill's datePublished / atom entry);
         a backfill (written_date > event date) is shown as 补记 / Retrospective and counted separately from calls written before the outcome.
 Root  : --root DIR, else $CLAWQ_ROOT, else the repo this script lives in. Pipeline slot: after gen-entries-en.py, before
         gen-entry-pages.py (needs the fresh data/entries-en-map.json; accepts both index.html#entry-N and entries/N.html card links).
@@ -104,6 +105,9 @@ RETR_RE = re.compile(r"「([^「」]{2,40})」(?:撤回|不准|是过度外推|�
 COI_RE = re.compile(r"利益披露|天际持有|天际不持有|天际持仓|天际已全部退出|天际已退出")
 
 # ---------------- index.html: entries ----------------
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
+import entry_dates as ED
 idx = rd("index.html")
 E = {}
 for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
@@ -112,18 +116,11 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     dtxt = strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1])
     dm = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", dtxt)
     date_d = f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else ""
-    # written date: 「本篇写于 YYYY-MM-DD」 anywhere in the entry, or the date line's 「（M/D 补记）」 (ENTRY 126/127 style)
-    wm = sorted(set(re.findall(r"本篇写于 (\d{4}-\d{2}-\d{2})", blk)))
-    if len(wm) > 1: die(f"ENTRY {n}: several 本篇写于 dates {wm}")
-    written = wm[0] if wm else ""
-    bm = re.search(r"（(\d{1,2})/(\d{1,2}) 补记）", dtxt)
-    if bm and date_d:
-        w2 = f"{date_d[:4]}-{int(bm.group(1)):02d}-{int(bm.group(2)):02d}"
-        if written and written != w2: die(f"ENTRY {n}: 本篇写于 {written} vs date line 补记 {w2}")
-        written = w2
+    # written date: 「本篇写于 YYYY-MM-DD」 anywhere in the entry, or the date line's 「（M/D 补记）」 (ENTRY 126/127 style);
+    # scripts/entry_dates.py written_of, the same rule the machine timestamps use (scripts/machine_dates.py)
+    try: written = ED.written_of(blk, dtxt, date_d)
+    except ValueError as e: die(f"ENTRY {n}: {e}")
     E[n] = dict(raw=raw.strip(), title=strip(raw), date=date_d, written=written)
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 import hub_sync as HS
 import llms_sections as LS
 try: SITE = HS.site_state(idx)

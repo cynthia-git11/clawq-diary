@@ -10,20 +10,28 @@ Reads index.html (the single-page hub) and writes, idempotently:
                           (✗ / ◐ also get a CorrectionComment and a dated suffix on the description; title and body unchanged)
   entries/index.html      archive list, newest first
   sitemap-entries.xml     one <url> per entry, lastmod = the page's dateModified date
-  index.html              adds a ¶ permalink inside each entry header (internal links = crawl discovery)
+  index.html              adds a ¶ permalink inside each entry header (internal links = crawl discovery); a backfill's top-5
+                          BlogPosting @graph datePublished / dateModified get its written date (scripts/machine_dates.py)
+  atom.xml                per-entry page as the alternate link; a backfill's <published> / <updated> get its written date and
+                          the feed <updated> follows the latest entry <updated> (entry order unchanged)
+  sitemap.xml             when the newest entry is a backfill, buildN.py's page <lastmod> stamps (its event date) → its written date
+  data/published-times.json  the time of day of each entry seen in the top-5 @graph, frozen (scripts/machine_dates.py)
   llms.txt                appends " · 单页 <url>" to each ENTRY list line that lacks it
   llms-full.txt           adds "URL: <url>" under each "## ENTRY N" header that lacks it; month headings follow each
                           section's own date (scripts/llms_sections.py months())
   robots.txt              adds Sitemap: line for sitemap-entries.xml if missing
 
+Machine timestamps (2026-11-22): datePublished is the written date of a backfill (补记), else the entry date, at the frozen time of
+day; the visible timeline date, Day and order stay on the event date. See scripts/machine_dates.py.
 Deterministic — no LLM, nothing is paraphrased. Safe to run after every build.
 Usage: python3 scripts/gen-entry-pages.py [--root DIR] [--dry]
 """
 import re, os, sys, json, html, shutil, tempfile, datetime
 sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading, topic_text
+from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading, topic_text, backfill_written
 import llms_sections as LS
+import machine_dates as MD   # datePublished / dateModified rule, backfill written dates, the frozen time of day, hub/atom post-processing
 
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -72,15 +80,20 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     paras = [strip(p) for p in re.findall(r"<p>(.*?)</p>", body, re.S)]
     quote = strip((re.search(r'<div class="entry-quote">(.*?)</div>', body, re.S) or [None, ""])[1])
     foot_html, foot = foot_of(blk)
+    try: written = backfill_written(blk, date_txt, date_d)   # "" unless a backfill (补记): scripts/entry_dates.py written_of
+    except ValueError as _e: print(f"gen-entry-pages FAILED: ENTRY {n}: {_e}"); sys.exit(1)
     entries.append(dict(n=n, a=a, b=b, blk=blk, cat=cat, title=title, date_txt=date_txt, date_d=date_d, day=day,
-                        badge=badge, paras=paras, quote=quote, foot=foot, foot_html=foot_html))
+                        badge=badge, paras=paras, quote=quote, foot=foot, foot_html=foot_html, written=written))
 entries.sort(key=lambda e: -e["n"])
 assert len({e["n"] for e in entries}) == len(entries), "duplicate entry ids"
 byn = {e["n"]: e for e in entries}
 
-# datePublished: prefer the @graph value when present (top-5), else 13:00 CST of the entry date
-pub = dict(re.findall(r'"url": "[^"]*#entry-(\d+)",\s*"datePublished": "([^"]+)"', idx))
-def iso(e): return pub.get(str(e["n"])) or ((e["date_d"] + "T13:00:00+08:00") if len(e["date_d"]) == 10 else e["date_d"])
+# datePublished (scripts/machine_dates.py): publication date = the written date of a backfill (补记), else the entry date; time of day
+# frozen in data/published-times.json the first time the entry is seen in index.html's top-5 @graph, else 13:00 — no longer read
+# from the @graph on every run (until 2026-11-22 the time jumped from the @graph's 08:00 to 13:00 once an entry left the top 5)
+TIMES = MD.load_times(SRC_ROOT, idx, ROOT)
+def pdate(e): return MD.pub_date(e["date_d"], e["written"])
+def iso(e): return MD.pub_iso(e["n"], e["date_d"], e["written"], TIMES)
 def lastmod(e): return e["date_d"] if len(e["date_d"]) == 10 else (e["date_d"] + "-01" if len(e["date_d"]) == 7 else (e["date_d"] + "-01-01" if e["date_d"] else ""))
 
 # ---------- footnote → machine-readable items, dateModified (scripts/entry_dates.py, shared with gen-entries-en.py) ----------
@@ -233,8 +246,13 @@ def page(e, prev_e, next_e):
     if lg_dates and len(e["date_d"]) == 10 and max(lg_dates) > (mod or e["date_d"]):   # dates the ledger strip shows on this page
         mod = max(lg_dates)
         mod_lab = "最后更正" if mod in lg_corr_dates else "最后更新"   # a reconciliation that kept ⏳, a later reading or a 补记 write date is not a correction
-    MODS[e["n"]] = mod or lastmod(e)
-    mod_iso = (mod + "T13:00:00+08:00") if (mod and mod != e["date_d"]) else iso(e)
+    if e["written"]:   # a backfill: dates up to its written date (the 补记 write date included) are not changes after publication
+        if mod and mod <= e["written"]: mod = ""
+        MODS[e["n"]] = max(mod or e["written"], e["written"])
+        mod_iso = MD.later(iso(e), mod + "T13:00:00+08:00") if mod else iso(e)
+    else:
+        MODS[e["n"]] = mod or lastmod(e)
+        mod_iso = MD.later(iso(e), (mod + "T13:00:00+08:00") if (mod and mod != e["date_d"]) else iso(e))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Person", "@id": f"{BASE}#cynthia", "name": "张倩 Cynthia Zhang", "url": BASE,
          "worksFor": {"@type": "Organization", "name": "天际资本 FutureX Capital", "url": "https://futurex.capital"}},
@@ -311,7 +329,7 @@ def page(e, prev_e, next_e):
     <a href="../#entry-{e['n']}">在时间线中查看</a>
     <a href="{(f"en/{e['n']}.html" if str(e["n"]) in EN_MAP else "../en.html")}" hreflang="en">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY {e['n']}</span><span>发布 <time datetime="{iso(e)}">{esc(lastmod(e))}</time>{(f' · {mod_lab} <time datetime="{mod}">{mod}</time>') if mod and mod != lastmod(e) else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY {e['n']}</span><span>发布 <time datetime="{iso(e)}">{esc(pdate(e) if e["written"] else lastmod(e))}</time>{f'（补记，事件日 {e["date_d"]}）' if e["written"] else ''}{(f' · {mod_lab} <time datetime="{mod}">{mod}</time>') if mod and mod != (e["written"] or lastmod(e)) else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 {blk}
   </div>
@@ -396,6 +414,9 @@ def add_link(m):
 idx2 = re.sub(r'<div id="entry-(\d+)"[^>]*>\s*<div class="entry-date">.*?</div>', add_link, idx, flags=re.S)
 if "ep-link{" not in idx2:
     idx2 = idx2.replace("</head>", "  <style>.ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans);font-size:12px}.ep-link:hover{color:var(--claw2)}</style>\n</head>", 1)
+# ---------- hub: a backfill's top-5 @graph datePublished / dateModified carry its written date (buildN.py writes the event date) ----------
+DATES = {e["n"]: (e["date_d"], e["written"]) for e in entries}
+idx2, hub_fixed = MD.fix_hub(idx2, DATES, TIMES)
 if idx2 != idx: wr("index.html", idx2)
 
 # ---------- atom.xml: per-entry page becomes the alternate link; the hub anchor stays as rel="related" (geo-check keeps finding #entry-N) ----------
@@ -410,7 +431,14 @@ if os.path.exists(os.path.join(ROOT, "atom.xml")):
         n = idm.group(1)
         return re.sub(r'<link href="' + re.escape(BASE) + r'#diary" ?/>', f'<link rel="alternate" type="text/html" href="{BASE}entries/{n}.html" />\n    <link rel="related" href="{BASE}#entry-{n}" />', blk, count=1)
     at2 = re.sub(r"<entry>.*?</entry>", fix_diary, at2, flags=re.S)
+    # a backfill's <published> / <updated> carry its written date; the feed <updated> = the latest entry <updated> (order unchanged)
+    at2, atom_fixed = MD.fix_atom(at2, DATES, TIMES)
+    if atom_fixed: print(f"atom.xml: backfill timestamps set for {', '.join(str(x) for x in atom_fixed)}")
     if at2 != at: wr("atom.xml", at2)
+# ---------- sitemap.xml: buildN.py's page stamps carry a newest backfill's written date, not its event date ----------
+if os.path.exists(os.path.join(ROOT, "sitemap.xml")):
+    _sm = rd("sitemap.xml"); _sm2, _smf = MD.fix_sitemap(_sm, DATES)
+    if _smf and _sm2 != _sm: wr("sitemap.xml", _sm2); print(f"sitemap.xml: page <lastmod> stamps moved to the newest backfill's written date")
 # ---------- theses.html: ledger cards link to the single page ----------
 if os.path.exists(os.path.join(ROOT, "theses.html")):
     th = rd("theses.html"); th2 = re.sub(r'href="index\.html#entry-(\d+)"', r'href="entries/\1.html"', th)
@@ -428,4 +456,5 @@ if lf2 != lf: wr("llms-full.txt", lf2)
 rb = rd("robots.txt")
 if "sitemap-entries.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-entries.xml\n")
 
+if hub_fixed: print(f"index.html: backfill @graph timestamps set for ENTRY {', '.join(str(x) for x in hub_fixed)}")
 print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · entries {len(entries)} · pages (re)written {written} · hub permalinks added {added} · sitemap-entries {len(urls)} urls")

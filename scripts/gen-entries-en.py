@@ -7,6 +7,8 @@ any row whose best match shares too few numbers is skipped rather than guessed. 
 sitemap-entries-en.xml, data/entries-en-map.json (read by gen-entry-pages.py for hreflang), and per-row
 "Read the entry" links on en.html, then runs scripts/gen-ledger.py on the same root (skip with --no-ledger) and rebuilds
 the pages whose ledger status line (from data/ledger.json; template text + ledger fields, never translated) changed.
+datePublished = the written date of a backfill (补记), else the entry date, at the frozen time of day (scripts/machine_dates.py, the
+rule gen-entry-pages.py uses; the visible date stays the event date and a backfill also shows its written date);
 dateModified = max(published, the ledger dates the status line shows); a later dated footnote note on the Chinese original
 (read from index.html with scripts/entry_dates.py, the same code gen-entry-pages.py uses) is named as not included here.
 Deterministic, idempotent. Usage: python3 scripts/gen-entries-en.py [--root DIR] [--no-ledger]"""
@@ -14,6 +16,7 @@ import os, re, sys, json, html, itertools, collections
 sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import entry_dates as ED   # shared with gen-entry-pages.py: entry date, footnote items, dated changes, ledger dates
+import machine_dates as MD   # shared with gen-entry-pages.py: datePublished rule (backfill written date, frozen time of day)
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if "--root" in sys.argv: ROOT = sys.argv[sys.argv.index("--root") + 1]
@@ -41,11 +44,17 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     n = int(m.group(1)); blk = idx[m.start():block_at(idx, m.start())]
     dtxt = strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1])
     dm = re.search(r"Day (\d+)", dtxt); ymd = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", dtxt)
-    pub = (re.search(r'"url": "[^"]*#entry-%d",\s*"datePublished": "([^"]+)"' % n, idx) or [None, None])[1]
-    date_d = ED.entry_date_d(ED.strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1]))
+    date_txt = ED.strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1])
+    date_d = ED.entry_date_d(date_txt)
+    try: written = ED.backfill_written(blk, date_txt, date_d)   # "" unless a backfill (补记)
+    except ValueError as _e: print(f"gen-entries-en FAILED: ENTRY {n}: {_e}"); sys.exit(1)
     zh[n] = dict(n=n, day=int(dm.group(1)) if dm else None, date=f"{ymd.group(1)}-{int(ymd.group(2)):02d}-{int(ymd.group(3)):02d}" if ymd else "",
-                 pub=pub, title=strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, ""])[1]), text=strip(blk),
+                 written=written, title=strip((re.search(r'<h3 class="entry-title">(.*?)</h3>', blk, re.S) or [None, ""])[1]), text=strip(blk),
                  date_d=date_d, foot_mod=ED.modified(date_d, ED.foot_items(ED.foot_of(blk)[1])))   # same footnote date as the Chinese page
+# datePublished (scripts/machine_dates.py, same as the Chinese page): the written date of a backfill, else the entry date, at the time
+# of day frozen in data/published-times.json (13:00 for entries never seen in index.html's top-5 @graph); never read from the @graph
+TIMES = MD.load_times(ROOT, idx)
+for z in zh.values(): z["pub"] = MD.pub_iso(z["n"], z["date"], z["written"], TIMES) if z["date"] else ""
 byday = collections.defaultdict(list)
 for z in zh.values(): byday[z["day"]].append(z["n"])
 rday = collections.defaultdict(list)
@@ -170,18 +179,21 @@ def build_pages(LG):
     lead = text if (body and body[:1].islower()) else (body or title)
     desc = (lead[:157 - len(suf)] + "…" if len(lead) > 160 - len(suf) else lead) + suf
     url = f"{BASE}entries/en/{n}.html"; zurl = f"{BASE}entries/{n}.html"
-    pub = z["pub"] or (z["date"] + "T13:00:00+08:00" if z["date"] else "")
+    pub = z["pub"]
     # dateModified = max(published, the ledger dates this page's status line shows; same filter as the Chinese page: <= today,
     # full-date entries only). The Chinese page's later footnote dates are not claimed for this edition, which has no footnotes.
-    lds = [dd for c in cs for dd in ED.ledger_dates(c)] if len(z["date_d"]) == 10 else []
-    mod = max([x for x in [pub] + [dd + "T13:00:00+08:00" for dd in lds] if x] or [""])
+    # A backfill was published on its written date: ledger dates up to that day (its 补记 write date included) are not changes.
+    lds = [dd for c in cs for dd in ED.ledger_dates(c) if not (z["written"] and dd <= z["written"])] if len(z["date_d"]) == 10 else []
+    mod = ""
+    for x in [pub] + [dd + "T13:00:00+08:00" for dd in lds]: mod = MD.later(mod, x)
     corr = [{"@type": "CorrectionComment", "text": t, **({"datePublished": w} if w else {}), "url": f"{BASE}theses-en.html#{c['call_id']}"}
             for c, (_, t, w) in zip(cs, lines) if c["status"] in ("corrected", "partly")]
     strip_html = (f'\n  <div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status">'
                   + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>") if cs else ""
     # visible date: only a date the status line explains ("updated", not "corrected": it can be a reconciliation that kept ⏳,
     # a later reading or a 补记 write date); a later dated note in the Chinese footnotes is named as not included here
-    last = f' · Last updated <time datetime="{mod[:10]}">{mod[:10]}</time>' if pub and mod[:10] > pub[:10] else ""
+    last = (f' · Written <time datetime="{pub}">{pub[:10]}</time> (retrospective entry)' if z["written"] else "")   # the event date stays the entry's date
+    last += f' · Last updated <time datetime="{mod[:10]}">{mod[:10]}</time>' if pub and mod[:10] > pub[:10] else ""
     zf = z["foot_mod"] if (pub and len(z["date_d"]) == 10) else ""
     if zf and zf > max(pub[:10], mod[:10]):
         last += (f' · The Chinese original has a footnote note dated <time datetime="{zf}">{zf}</time> that this English edition does not include'
@@ -198,7 +210,7 @@ def build_pages(LG):
             {"@type": "ListItem", "position": 1, "name": "The ClawQ Chronicles", "item": f"{BASE}en.html"},
             {"@type": "ListItem", "position": 2, "name": "All entries (English)", "item": f"{BASE}entries/en/"},
             {"@type": "ListItem", "position": 3, "name": f"ENTRY {n}", "item": url}]}]}
-    pages.append(dict(n=n, title=title, date=z["date"], day=z["day"], tag=tag, mod=(mod or pub)[:10]))
+    pages.append(dict(n=n, title=title, date=z["date"], day=z["day"], tag=tag, mod=(mod or pub)[:10], pub=(pub[:10] if z["written"] else z["date"])))
     older = next((m for m in sorted(mapping, reverse=True) if m < n), None); newer = next((m for m in sorted(mapping) if m > n), None)
     pn = (f'<a rel="prev" href="{older}.html">← ENTRY {older}</a>' if older else "<span></span>") + (f'<a rel="next" href="{newer}.html" style="text-align:right">ENTRY {newer} →</a>' if newer else "")
     page = head(f"{title} · ENTRY {n} · The ClawQ Chronicles", desc, url, zurl) + f"""
@@ -224,7 +236,7 @@ def build_pages(LG):
 pages, written = build_pages(load_ledger())
 rowsli = "\n".join(f'    <li><a href="{p["n"]}.html">{esc(p["title"])}</a><span class="ee-when">ENTRY {p["n"]} · {esc(p["date"])} · Day {p["day"]} · {esc(p["tag"])}</span></li>' for p in pages)
 ld_idx = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "The ClawQ Chronicles · All entries (English)", "url": f"{BASE}entries/en/", "inLanguage": "en",
-          "isPartOf": {"@id": f"{BASE}#blog"}, "hasPart": [{"@type": "BlogPosting", "@id": f"{BASE}entries/en/{p['n']}.html", "headline": p["title"][:110], "datePublished": p["date"]} for p in pages]}
+          "isPartOf": {"@id": f"{BASE}#blog"}, "hasPart": [{"@type": "BlogPosting", "@id": f"{BASE}entries/en/{p['n']}.html", "headline": p["title"][:110], "datePublished": p["pub"]} for p in pages]}
 written += wr("entries/en/index.html", head(f"All entries in English · {len(pages)} · The ClawQ Chronicles", f"English editions of {len(pages)} entries from Cynthia Zhang's AI investment diary: one call per entry, with the numbers and what would prove it wrong.", f"{BASE}entries/en/", f"{BASE}entries/", og="website") + f"""
   <script type="application/ld+json">
 {json.dumps(ld_idx, ensure_ascii=False)}

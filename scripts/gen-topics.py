@@ -12,6 +12,8 @@ Writes: topics/<slug>.html, topics/index.html, sitemap-topics.xml (robots.txt Si
 Matching: a topic's name / aliases must appear in the entry outside its 利益披露 clauses (a company named only in the disclosure
         is not a mention) and outside dated 「更新」 footnote notes.
 
+Machine dates (2026-11-22, scripts/machine_dates.py): hasPart datePublished is a backfill's written date (else the entry date), the
+page's dateModified and sitemap lastmod the latest such date among its entries; the visible lists keep the event date.
 Deterministic: the timeline items are the entry's own title + first sentence (verbatim, no paraphrase);
 the optional blurb is the only authored prose and must be verified before it lands in data/topics.json.
 Guard: a banned disclosure phrase in any rendered page → exit 1 before anything is written (a clause quoted verbatim from
@@ -63,11 +65,11 @@ for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
     first = re.split(r"(?<=[。！？])", paras[0])[0] if paras else ""
     quote = strip((re.search(r'<div class="entry-quote">(.*?)</div>', body, re.S) or [None, ""])[1])
     text = ED.topic_text(blk)   # 利益披露 clauses and dated 「更新」 notes are not mentions (scripts/entry_dates.py, shared with gen-entry-pages.py)
-    # written date, same rule as gen-ledger.py: 「本篇写于 D」 in the entry or the date line's 「（M/D 补记）」 → a backfill (补记)
-    wm = re.findall(r"本篇写于 (\d{4}-\d{2}-\d{2})", blk); bm = re.search(r"（(\d{1,2})/(\d{1,2}) 补记）", date_txt)
-    written = wm[0] if wm else (f"{date_d[:4]}-{int(bm.group(1)):02d}-{int(bm.group(2)):02d}" if bm and len(date_d) == 10 else "")
+    # written date of a backfill (补记): scripts/entry_dates.py written_of, the rule gen-ledger.py and the machine timestamps use
+    try: written = ED.backfill_written(blk, date_txt, date_d)
+    except ValueError as _e: print(f"gen-topics FAILED: ENTRY {n}: {_e}"); sys.exit(1)
     entries.append(dict(n=n, title=title, date_txt=date_txt, date_d=date_d, first=first, quote=quote, text=text,
-                        written=written if written > date_d else ""))
+                        written=written, pub=written or date_d))   # pub: publication date for machine timestamps (scripts/machine_dates.py)
 entries.sort(key=lambda e: -e["n"])
 
 # ledger cards: (claim text, badge, entry n)
@@ -108,13 +110,15 @@ for t in topics:
     if len(hits) < t.get("min_entries", 3): continue
     hit_ns = {e["n"] for e in hits}; lcards = [c for c in cards if c["n"] in hit_ns]
     url = f"{BASE}topics/{t['slug']}.html"
+    # machine timestamps: an entry is dated by its publication date (a backfill's written date); the page changed when the latest one landed
+    last_pub = max((e["pub"] for e in hits), key=lambda d: d if len(d) == 10 else d + "-01")
     desc = t.get("blurb") or f"倩小虾日记里关于 {t['name']} 的全部 {len(hits)} 篇判断，按时间倒序，每篇附验证状态。"
     if len(desc) > 150: desc = desc[:147] + "…"
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": url, "url": url, "name": f"{t['name']} · 倩小虾日记判断脉络", "description": desc, "inLanguage": "zh-CN",
          "about": ({"@type": "Organization", "name": t["name"], "alternateName": t.get("aliases", [])[:6], "url": t["url"]} if t.get("url") else {"@type": "Thing", "name": t["name"], "alternateName": t.get("aliases", [])[:6]}),
-         "isPartOf": {"@id": f"{BASE}#blog"}, "dateModified": hits[0]["date_d"],
-         "hasPart": [{"@type": "BlogPosting", "@id": f"{BASE}entries/{e['n']}.html", "headline": e["title"], "datePublished": e["date_d"]} for e in hits]},
+         "isPartOf": {"@id": f"{BASE}#blog"}, "dateModified": last_pub,
+         "hasPart": [{"@type": "BlogPosting", "@id": f"{BASE}entries/{e['n']}.html", "headline": e["title"], "datePublished": e["pub"]} for e in hits]},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "倩小虾日记", "item": BASE}, {"@type": "ListItem", "position": 2, "name": "主题", "item": f"{BASE}topics/"}, {"@type": "ListItem", "position": 3, "name": t["name"], "item": url}]}]}
     rows = "\n".join(f'      <li><a href="../entries/{e["n"]}.html">{esc(e["title"])}</a><span class="tp-when">ENTRY {e["n"]} · {esc(e["date_txt"])}</span><span class="tp-first">{esc(e["first"])}</span></li>' for e in hits)
     lrows = "\n".join(f'      <li><a href="../entries/{c["n"]}.html">{esc(c["claim"])}</a><span class="tp-badge">{esc(c["badge"])}</span><span class="tp-when">{esc(c["when"])} · ENTRY {c["n"]}</span></li>' for c in lcards) or "      <li>暂无挂账判断。</li>"
@@ -167,7 +171,7 @@ for t in topics:
 </body>
 </html>
 """
-    made.append(dict(slug=t["slug"], name=t["name"], name_en=t.get("name_en", ""), n=len(hits), last=hits[0]["date_d"], last_written=hits[0]["written"]))
+    made.append(dict(slug=t["slug"], name=t["name"], name_en=t.get("name_en", ""), n=len(hits), last=hits[0]["date_d"], last_written=hits[0]["written"], last_pub=last_pub))
 
 rows = "\n".join(f'      <li><a href="{m["slug"]}.html">{esc(m["name"])}</a>{(" · " + esc(m["name_en"])) if m["name_en"] else ""}<span class="tp-when">{m["n"]} 篇 · 最近 {m["last"]}</span></li>' for m in made)
 OUT["topics/index.html"] = f"""<!DOCTYPE html>
@@ -215,8 +219,9 @@ if os.path.exists(os.path.join(ROOT, "llms.txt")):
                   f"总索引 [topics/]({BASE}topics/)，站点地图 [sitemap-topics.xml]({BASE}sitemap-topics.xml)。\n\n" + "\n".join(_rows))
 else: print("WARN llms.txt not found — topic hubs not listed there")
 for f, s in OUT.items(): wr(f, s)
-urls = [f"  <url><loc>{BASE}topics/</loc><lastmod>{max(m['last'] for m in made) if made else ''}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>"]
-urls += [f"  <url><loc>{BASE}topics/{m['slug']}.html</loc><lastmod>{m['last'] if len(m['last']) == 10 else m['last'] + '-01'}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>" for m in made]
+def _lm(d): return d if len(d) == 10 else d + "-01"
+urls = [f"  <url><loc>{BASE}topics/</loc><lastmod>{max(_lm(m['last_pub']) for m in made) if made else ''}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>"]
+urls += [f"  <url><loc>{BASE}topics/{m['slug']}.html</loc><lastmod>{_lm(m['last_pub'])}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>" for m in made]
 wr("sitemap-topics.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
 rb = rd("robots.txt")
 if "sitemap-topics.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-topics.xml\n")
