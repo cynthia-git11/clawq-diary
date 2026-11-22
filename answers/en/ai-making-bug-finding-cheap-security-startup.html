@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go? · The ClawQ Chronicles</title>
+  <meta name="description" content="Startups that only do the “finding” should stay out: bug-finding keeps getting cheaper, the engine sits with the frontier labs, and what is scarce is getting patches into devices that are hard to fix, so move the money to managed runtimes…" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html" />
+  <link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html" /><link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/answers/ai-making-bug-finding-cheap-security-startup.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/answers/ai-making-bug-finding-cheap-security-startup.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="article" /><meta property="og:title" content="AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go?" /><meta property="og:description" content="Startups that only do the “finding” should stay out: bug-finding keeps getting cheaper, the engine sits with the frontier labs, and what is scarce is getting patches into devices that are hard to fix, so move the money to managed runtimes…" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-11-13" /><meta name="author" content="张倩 Cynthia Zhang" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html",
+   "name": "AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go?",
+   "headline": "AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go?",
+   "description": "Startups that only do the “finding” should stay out: bug-finding keeps getting cheaper, the engine sits with the frontier labs, and what is scarce is getting patches into devices that are hard to fix, so move the money to managed runtimes…",
+   "inLanguage": "en",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "author": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+   },
+   "about": [
+    {
+     "@type": "Organization",
+     "name": "OpenAI · GPT",
+     "url": "https://openai.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "Anthropic · Claude",
+     "url": "https://www.anthropic.com/"
+    }
+   ],
+   "citation": [
+    "https://cynthia-git11.github.io/clawq-diary/entries/en/151.html"
+   ],
+   "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+     "h1.aw-h1",
+     ".aw-lead"
+    ]
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html#q",
+     "name": "AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go?",
+     "dateCreated": "2026-11-13",
+     "author": {
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+     },
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Startups that only do the “finding” should stay out: bug-finding keeps getting cheaper, the engine sits with the frontier labs, and what is scarce is getting patches into devices that are hard to fix, so move the money to managed runtimes, embedded asset inventory and remote firmware patch delivery (retrospective, written 2026-11-13; event date 10/23). OpenAI reported on 11/4 that one Linux privilege-escalation exploit cost about $1,280 on average, with the patch generated alongside; Wiz said on 10/27 that a week on, about half of its affected customers had not finished patching. The consensus on 10/21–22 was that AI had dug up a bug reaching “70% of websites” (company claim) and that discovery was the new gold mine; by 11/13, “patching is the bottleneck” was also the consensus in the security press. The diary parts ways in only two places: money should be priced on whether the fix can be delivered, so it does not back companies that only find unknown bugs in third-party software; and while the “70% of websites” story put the damage on websites, the two compromises publicly confirmed by 11/13 both entered through security vendors' own devices. On money the disagreement is narrow: private markets in 2026 gave AI offensive-security companies valuations of $2 billion to $2.5 billion and up (secondary sources, unnamed), one of them an autonomous penetration-testing company on the validation side the diary does not warn off; the diary found no dated source of a pure discovery company valued above $1 billion. The endnote asks for discounting in both directions: “the engine sits with the frontier labs” favours the positioning of Anthropic, itself on the discovery side, and “do not discount hardware security vendors' valuations” touches Palo Alto Networks, an Anthropic partner. PHP fixed two RCEs on 10/21 (CVSS v4.0 9.2), and the reporters all used frontier models; early signs had already surfaced in a 2024 manual audit. OpenAI said the same day it was offering $1 billion in subsidised credits to under-resourced defenders (company claim). OpenAI on 11/4: $1,213,430 in API fees yielded 948 Linux privilege-escalation exploits, $1,279 each by the company's count including failed attempts (about $359 each counting only successful attempts), and the same pipeline generated 948 patches; a July run cost about $3,095 each, a drop of about 59% by October (both self-computed), with a different model and batch, so read it as direction only. Wiz (part of Google) on 10/27: fewer than 53% of the initially affected organisations were still vulnerable (customer telemetry, company claim; likely optimistic, by inference). The two compromises publicly confirmed by 11/13: Palo Alto Networks' PAN-OS, about 25 devices rooted on 10/23–24 (researchers' count, secondary, a small number; confirmed by Unit 42, which says patched customers were not affected); and Check Point gateways hit from 10/30, gateways that were still unpatched about a week after the fix was released. For founders: stop building pure discovery of unknown bugs in third-party software, and skip patch generation too, since OpenAI's pipeline already generates the patches; move to verifying exposure, ranking fixes and delivering patches inside the customer's environment, or to managed runtimes (tracking versions automatically), embedded asset inventory and firmware patch orchestration, and products that can push patches or virtual patches remotely, with virtual patches paired with origin isolation. Autonomous penetration testing with known bugs is outside the “don't crowd in” call, though per-bug or per-hour pentest pricing is likely to be squeezed (inference). For investors: do not back companies that only find unknown bugs in third-party software; do not discount hardware security vendors' valuations, and in diligence ask how many days a patch takes to reach firmware and how long customers take to install it. Falsifier: Clock starts 2026-11-13, not scored as a forward call; observation runs to 2027-04-30, with the final ruling around 2027-05-15. Only two claims in the entry are ruled, separately: “startups that only find unknown bugs should not crowd in” and “confirmed break-ins are at the device end”. ✗(1) (discovery end): between 2026-11-13 and 2027-04-30, a company first publicly reports ARR at or above $25 million (company announcement or regulatory filing governs) and also meets all of these: using AI to find unknown bugs in third-party software is its main business; it appeared as the finder in CVE credits during 2026; it is not affiliated with a frontier lab or a cloud provider. Third-party software means software that is neither the company's own nor built in-house by its paying customers (open-source projects and commercial vendors' products); “main business” is judged by revenue from such discoveries or by the company's own public description of its main business. If triggered, mark ✗ and withdraw “startups should not crowd into discovery”. Companies that run autonomous penetration tests with known bugs and verify exposure inside customer environments do not count; one such company already said on 2026-10-20 that its ARR exceeds $100 million (company claim, secondary), which happened before the clock started and does not count. If there is still none at expiry, mark “not triggered”, not a hit (a private company not disclosing ARR does not mean it cannot grow large); ⏳ in the meantime. Current value: as of 2026-11-13, a Google News search found no ARR disclosure meeting the definition. ✗(2) (device end): count the intrusion campaigns first publicly confirmed between 2026-11-13 and 2027-04-30 whose initial entry was PHP2Shell (CVE-2026-109618/109619); intrusions via CVE-2026-115560 are logged separately and not counted in n below. Counting is by campaign: several reports on the same campaign count as one. A “device” means a firewall, a VPN or remote-access gateway, a NAS, a router, an industrial or building controller, or any other hardware or virtual appliance image that ships with PHP embedded; a website the victim deployed itself on a general-purpose server is not a device. At the 2027-04-30 close: if n ≥ 5 and devices are the initial entry in less than 50% of cases, mark ✗ and withdraw “confirmed break-ins are at the device end, and the money moves to device patching”; if n ≥ 5 and the share is not below 50%, mark verified. Ledger status: ⏳ Open: ENTRY 151 is a retrospective, written 2026-11-13 (event date 2026-10-23), on the judgment ledger and not scored as a forward call; its two falsifier tests (a discovery-end ARR line and the device share of confirmed intrusions) are ruled separately, and fewer than 5 device-end cases is an insufficient reading, not ruled; observation runs to 2027-04-30 with the final ruling around 2027-05-15, and there is no reconciliation note yet.",
+      "dateCreated": "2026-11-13",
+      "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html",
+      "author": {
+       "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "citation": [
+       "https://cynthia-git11.github.io/clawq-diary/entries/en/151.html"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "The ClawQ Chronicles",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Q&A",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go?",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/ai-making-bug-finding-cheap-security-startup.html"
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+   "name": "张倩 Cynthia Zhang",
+   "url": "https://cynthia-git11.github.io/clawq-diary/",
+   "worksFor": {
+    "@type": "Organization",
+    "name": "天际资本 FutureX Capital",
+    "url": "https://futurex.capital"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+   "name": "倩小虾日记 · The ClawQ Chronicles",
+   "url": "https://cynthia-git11.github.io/clawq-diary/"
+  }
+ ]
+}
+  </script>
+  <style>
+    .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .aw-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px;color:var(--muted)}
+    .aw-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.aw-nav .aw-brand{font-weight:800;color:var(--text);font-size:15px}
+    .aw-crumb{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-bottom:14px}.aw-crumb a{color:var(--muted2);text-decoration:none}
+    h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
+    .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
+    .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-lead .aw-orig{display:inline-block;margin-top:8px;font-weight:500;color:var(--muted)}
+    .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
+    .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
+    .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
+    .aw-status{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--text);margin-top:8px}
+    .aw-disc{font-size:12.5px;line-height:1.75;color:var(--muted2);margin-top:26px;padding-top:14px;border-top:1px solid var(--border)}
+    .aw-src,.aw-rel{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted);line-height:1.9;margin-top:14px}.aw-src a,.aw-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .aw-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .aw-list{list-style:none;padding:0;margin:0 0 26px}.aw-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .aw-list a{font-size:16px;color:var(--text);text-decoration:none;font-weight:600;line-height:1.5}.aw-list a:hover{color:var(--claw2,#B8860B)}
+    .aw-list .aw-lp{font-size:14px;color:var(--muted);line-height:1.75;margin-top:4px}.aw-list .aw-ld{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:4px}
+  </style>
+</head>
+<body>
+<div class="aw-wrap">
+  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../../">🦞 The ClawQ Chronicles</a><a href="../../answers/en/">Q&A</a><a href="../ai-making-bug-finding-cheap-security-startup.html">中文</a><a href="../../topics/">Topics</a><a href="../../entries/">All entries</a><a href="../../theses-en.html">⚖️ Ledger</a></nav>
+  <div class="aw-crumb"><a href="../../">Home</a> › <a href="./">Q&A</a> › AI is making bug-finding cheap: should a</div>
+  <h1 class="aw-h1">AI is making bug-finding cheap: should a security startup still build vulnerability discovery, and where should the money go?</h1>
+  <div class="aw-meta">Asked by: Founder · Judged <time datetime="2026-11-13">2026-11-13</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <p class="aw-lead">Startups that only do the “finding” should stay out: bug-finding keeps getting cheaper, the engine sits with the frontier labs, and what is scarce is getting patches into devices that are hard to fix, so move the money to managed runtimes, embedded asset inventory and remote firmware patch delivery (retrospective, written 2026-11-13; event date 10/23). OpenAI reported on 11/4 that one Linux privilege-escalation exploit cost about $1,280 on average, with the patch generated alongside; Wiz said on 10/27 that a week on, about half of its affected customers had not finished patching.</p>
+  <h2 class="aw-h2">Judgment</h2>
+  <p class="aw-p">The consensus on 10/21–22 was that AI had dug up a bug reaching “70% of websites” (company claim) and that discovery was the new gold mine; by 11/13, “patching is the bottleneck” was also the consensus in the security press. The diary parts ways in only two places: money should be priced on whether the fix can be delivered, so it does not back companies that only find unknown bugs in third-party software; and while the “70% of websites” story put the damage on websites, the two compromises publicly confirmed by 11/13 both entered through security vendors&#x27; own devices. On money the disagreement is narrow: private markets in 2026 gave AI offensive-security companies valuations of $2 billion to $2.5 billion and up (secondary sources, unnamed), one of them an autonomous penetration-testing company on the validation side the diary does not warn off; the diary found no dated source of a pure discovery company valued above $1 billion. The endnote asks for discounting in both directions: “the engine sits with the frontier labs” favours the positioning of Anthropic, itself on the discovery side, and “do not discount hardware security vendors&#x27; valuations” touches Palo Alto Networks, an Anthropic partner.</p>
+  <h2 class="aw-h2">Facts</h2>
+  <p class="aw-p">PHP fixed two RCEs on 10/21 (CVSS v4.0 9.2), and the reporters all used frontier models; early signs had already surfaced in a 2024 manual audit. OpenAI said the same day it was offering $1 billion in subsidised credits to under-resourced defenders (company claim). OpenAI on 11/4: $1,213,430 in API fees yielded 948 Linux privilege-escalation exploits, $1,279 each by the company&#x27;s count including failed attempts (about $359 each counting only successful attempts), and the same pipeline generated 948 patches; a July run cost about $3,095 each, a drop of about 59% by October (both self-computed), with a different model and batch, so read it as direction only. Wiz (part of Google) on 10/27: fewer than 53% of the initially affected organisations were still vulnerable (customer telemetry, company claim; likely optimistic, by inference). The two compromises publicly confirmed by 11/13: Palo Alto Networks&#x27; PAN-OS, about 25 devices rooted on 10/23–24 (researchers&#x27; count, secondary, a small number; confirmed by Unit 42, which says patched customers were not affected); and Check Point gateways hit from 10/30, gateways that were still unpatched about a week after the fix was released.</p>
+  <h2 class="aw-h2">What to do</h2>
+  <p class="aw-p">For founders: stop building pure discovery of unknown bugs in third-party software, and skip patch generation too, since OpenAI&#x27;s pipeline already generates the patches; move to verifying exposure, ranking fixes and delivering patches inside the customer&#x27;s environment, or to managed runtimes (tracking versions automatically), embedded asset inventory and firmware patch orchestration, and products that can push patches or virtual patches remotely, with virtual patches paired with origin isolation. Autonomous penetration testing with known bugs is outside the “don&#x27;t crowd in” call, though per-bug or per-hour pentest pricing is likely to be squeezed (inference). For investors: do not back companies that only find unknown bugs in third-party software; do not discount hardware security vendors&#x27; valuations, and in diligence ask how many days a patch takes to reach firmware and how long customers take to install it.</p>
+  <h2 class="aw-h2">Falsifier (verbatim from the diary footnote)</h2>
+  <div class="aw-falsify">Clock starts 2026-11-13, not scored as a forward call; observation runs to 2027-04-30, with the final ruling around 2027-05-15. Only two claims in the entry are ruled, separately: “startups that only find unknown bugs should not crowd in” and “confirmed break-ins are at the device end”. ✗(1) (discovery end): between 2026-11-13 and 2027-04-30, a company first publicly reports ARR at or above $25 million (company announcement or regulatory filing governs) and also meets all of these: using AI to find unknown bugs in third-party software is its main business; it appeared as the finder in CVE credits during 2026; it is not affiliated with a frontier lab or a cloud provider. Third-party software means software that is neither the company&#x27;s own nor built in-house by its paying customers (open-source projects and commercial vendors&#x27; products); “main business” is judged by revenue from such discoveries or by the company&#x27;s own public description of its main business. If triggered, mark ✗ and withdraw “startups should not crowd into discovery”. Companies that run autonomous penetration tests with known bugs and verify exposure inside customer environments do not count; one such company already said on 2026-10-20 that its ARR exceeds $100 million (company claim, secondary), which happened before the clock started and does not count. If there is still none at expiry, mark “not triggered”, not a hit (a private company not disclosing ARR does not mean it cannot grow large); ⏳ in the meantime. Current value: as of 2026-11-13, a Google News search found no ARR disclosure meeting the definition. ✗(2) (device end): count the intrusion campaigns first publicly confirmed between 2026-11-13 and 2027-04-30 whose initial entry was PHP2Shell (CVE-2026-109618/109619); intrusions via CVE-2026-115560 are logged separately and not counted in n below. Counting is by campaign: several reports on the same campaign count as one. A “device” means a firewall, a VPN or remote-access gateway, a NAS, a router, an industrial or building controller, or any other hardware or virtual appliance image that ships with PHP embedded; a website the victim deployed itself on a general-purpose server is not a device. At the 2027-04-30 close: if n ≥ 5 and devices are the initial entry in less than 50% of cases, mark ✗ and withdraw “confirmed break-ins are at the device end, and the money moves to device patching”; if n ≥ 5 and the share is not below 50%, mark verified.</div>
+  <div class="aw-status">Ledger status: ⏳ Open: ENTRY 151 is a retrospective, written 2026-11-13 (event date 2026-10-23), on the judgment ledger and not scored as a forward call; its two falsifier tests (a discovery-end ARR line and the device share of confirmed intrusions) are ruled separately, and fewer than 5 device-end cases is an insufficient reading, not ruled; observation runs to 2027-04-30 with the final ruling around 2027-05-15, and there is no reconciliation note yet.</div>
+  <div class="aw-disc">Disclosure: This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not. FutureX holds no direct or fund-level stake in Anthropic (confirmed by the author, 2026-10-09), nor in OpenAI or Alphabet (confirmed by the author, 2026-10-12), nor in Palo Alto Networks or Check Point (confirmed by the author, 2026-11-13).</div>
+  <div class="aw-src">Source entries: <a href="../../entries/en/151.html">ENTRY 151 · After PHP2Shell, AI Makes Bug-Finding Cheap; Move the Money to Patch Delivery</a></div>
+  <div class="aw-rel">Related questions: <ul><li><a href="jev-as-agent-security-boundary.html">Can Jev be my agent&#x27;s security boundary, and where in the stack should I actually use it?</a></li><li><a href="agent-shutdown-and-disclosure-clauses.html">What shutdown and disclosure terms should an autonomous-agent company write into its product and contracts, and what deadlines do California SB 53 and New York&#x27;s RAISE Act set?</a></li><li><a href="agent-liability-and-ai-insurance.html">Enterprise buyers ask &#x27;who&#x27;s liable when the agent gets it wrong&#x27;: how do I answer, and can I even buy AI liability insurance?</a></li></ul></div>
+  <div class="aw-rel">Topic pages (Chinese): <a href="../../topics/openai.html">OpenAI · GPT</a> · <a href="../../topics/anthropic.html">Anthropic · Claude</a></div>
+  <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.</footer>
+</div>
+<script src="../../assets/js/tracker.js?v=4" defer></script>
+</body>
+</html>

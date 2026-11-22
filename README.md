@@ -38,7 +38,7 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 
 [Anthropic](https://cynthia-git11.github.io/clawq-diary/topics/anthropic.html)　·　[OpenAI](https://cynthia-git11.github.io/clawq-diary/topics/openai.html)　·　[DeepSeek](https://cynthia-git11.github.io/clawq-diary/topics/deepseek.html)　·　[月之暗面 Kimi](https://cynthia-git11.github.io/clawq-diary/topics/moonshot-kimi.html)　·　[智谱 GLM](https://cynthia-git11.github.io/clawq-diary/topics/zhipu-glm.html)　·　[阿里 Qwen](https://cynthia-git11.github.io/clawq-diary/topics/alibaba-qwen.html)　·　[字节跳动 豆包](https://cynthia-git11.github.io/clawq-diary/topics/bytedance-doubao.html)　·　[Meta Muse](https://cynthia-git11.github.io/clawq-diary/topics/meta-muse.html)　·　[Mistral AI](https://cynthia-git11.github.io/clawq-diary/topics/mistral.html)　·　[英伟达 NVIDIA](https://cynthia-git11.github.io/clawq-diary/topics/nvidia.html)　·　[Hugging Face](https://cynthia-git11.github.io/clawq-diary/topics/hugging-face.html)　·　[Vercel AI Gateway 计量](https://cynthia-git11.github.io/clawq-diary/topics/vercel-gateway.html)　·　[新云与算力合同](https://cynthia-git11.github.io/clawq-diary/topics/neocloud-compute.html)　·　[TypeSafe Jev 决策模型](https://cynthia-git11.github.io/clawq-diary/topics/typesafe-jev.html)　·　[AI Coding 估值](https://cynthia-git11.github.io/clawq-diary/topics/ai-coding.html)　·　[小米 MiMo](https://cynthia-git11.github.io/clawq-diary/topics/xiaomi-mimo.html)　·　[MiniMax](https://cynthia-git11.github.io/clawq-diary/topics/minimax.html)　·　[中美 AI 监管与出口管制](https://cynthia-git11.github.io/clawq-diary/topics/us-china-ai-policy.html)　·　[AI 公司上市与退出](https://cynthia-git11.github.io/clawq-diary/topics/ipo-exits.html)　·　[模型定价与缓存](https://cynthia-git11.github.io/clawq-diary/topics/model-pricing.html)
 
-## 投资人与创业者会问的 44 个问题 Questions
+## 投资人与创业者会问的 58 个问题 Questions
 
 **投资人 Investors**
 
@@ -64,6 +64,14 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 - [张倩 / FutureX Capital 持有哪些 AI 公司？这本日记的利益冲突怎么披露？](https://cynthia-git11.github.io/clawq-diary/answers/futurex-capital-holdings-disclosure.html)
 - [Anthropic 在 Vercel AI Gateway 的花费份额为什么一个月掉了 25 个点？钱去了哪？](https://cynthia-git11.github.io/clawq-diary/answers/anthropic-vercel-gateway-spend-share-drop.html)
 - [OpenAI 第二次暂停训练是 AI 失控吗？对估值和算力订单意味着什么？](https://cynthia-git11.github.io/clawq-diary/answers/openai-second-training-pause-valuation.html)
+- [Anthropic 上市后，AI 后期轮和老股该按发行价还是首日收盘价定价？](https://cynthia-git11.github.io/clawq-diary/answers/anthropic-ipo-late-stage-ai-rounds-secondaries.html)
+- [Anthropic 招股书里的算力承诺有多大？一年内要付的算力账单跟收入比怎么样？](https://cynthia-git11.github.io/clawq-diary/answers/anthropic-s-1-compute-commitments-vs-revenue.html)
+- [Claude Fable 5.2 降价两成，Anthropic 的收入会跟着涨吗？](https://cynthia-git11.github.io/clawq-diary/answers/claude-fable-5-2-price-cut-anthropic-revenue.html)
+- [Anthropic 上市，能带动亏损的 AI 应用和软件公司 IPO 吗？](https://cynthia-git11.github.io/clawq-diary/answers/anthropic-ipo-open-door-loss-making-ai-application.html)
+- [SpaceX 用股票买下 Cursor，Cursor 背后基金的 LP 什么时候能拿到现金？](https://cynthia-git11.github.io/clawq-diary/answers/spacex-cursor-stock-exit-lp-cash.html)
+- [黄仁勋辞任后，英伟达还会给 AI 云做担保、入股吗？靠英伟达兜底的融资会变贵吗？](https://cynthia-git11.github.io/clawq-diary/answers/jensen-huang-resignation-nvidia-keep-guaranteeing.html)
+- [美国新规要海外数据中心为中国总部租户申请许可，这类机房的租金收入和估值该怎么打折？](https://cynthia-git11.github.io/clawq-diary/answers/overseas-data-centers-china-tenant-license-discount.html)
+- [消费级 AI 应用怎么估值？能按订阅人数乘 ARPU 算吗？](https://cynthia-git11.github.io/clawq-diary/answers/consumer-ai-app-valuation-subscribers-arpu.html)
 
 **创业者 Founders**
 
@@ -89,6 +97,12 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 - [协议兼容了，把后端从 Claude 换成 DeepSeek 真的只是改个 base_url 吗？](https://cynthia-git11.github.io/clawq-diary/answers/switching-claude-to-deepseek-backend.html)
 - [Kimi K3 标价 $3/$15，应用公司换过去能救毛利吗？有什么坑？](https://cynthia-git11.github.io/clawq-diary/answers/kimi-k3-pricing-and-app-margins.html)
 - [做自主 agent 的公司，要把哪些停机与通报条款写进产品和合同？加州 SB 53、纽约 RAISE 各要求多久？](https://cynthia-git11.github.io/clawq-diary/answers/agent-shutdown-and-disclosure-clauses.html)
+- [GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？](https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html)
+- [AI 交付的活能被机器自动检验时，该按复核工时收费还是按通过验收收费？](https://cynthia-git11.github.io/clawq-diary/answers/ai-pricing-review-hours-vs-verified-delivery.html)
+- [Meta 把 Wonder 放上 API，coding agent 的模型成本能降下来吗？](https://cynthia-git11.github.io/clawq-diary/answers/meta-muse-wonder-api-coding-agent-costs.html)
+- [AI 让找漏洞越来越便宜，安全创业公司还该做漏洞发现吗？钱该挪到哪？](https://cynthia-git11.github.io/clawq-diary/answers/ai-making-bug-finding-cheap-security-startup.html)
+- [向银行、保险公司卖 agent，采购尽调现在会多查哪些门槛？](https://cynthia-git11.github.io/clawq-diary/answers/agent-procurement-checks-banks-insurers.html)
+- [GDPx 上金融、法律几乎零分，做法律、金融 AI 的创业公司该怎么向投资人讲护城河？](https://cynthia-git11.github.io/clawq-diary/answers/gdpx-legal-finance-ai-startup-moat.html)
 
 ## 机器可读 Machine-readable
 

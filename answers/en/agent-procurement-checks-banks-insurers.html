@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selling AI agents to banks and insurers: what new procurement checks should I prepare for? · The ClawQ Chronicles</title>
+  <meta name="description" content="The diary infers that procurement will add two gates (both from retrospective entries written 2026-11-13): first, whether the model&#x27;s internal state can be audited independently, which the buyer can do itself with open weights…" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html" />
+  <link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html" /><link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/answers/agent-procurement-checks-banks-insurers.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/answers/agent-procurement-checks-banks-insurers.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="article" /><meta property="og:title" content="Selling AI agents to banks and insurers: what new procurement checks should I prepare for?" /><meta property="og:description" content="The diary infers that procurement will add two gates (both from retrospective entries written 2026-11-13): first, whether the model&#x27;s internal state can be audited independently, which the buyer can do itself with open weights…" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-11-13" /><meta name="author" content="张倩 Cynthia Zhang" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html",
+   "name": "Selling AI agents to banks and insurers: what new procurement checks should I prepare for?",
+   "headline": "Selling AI agents to banks and insurers: what new procurement checks should I prepare for?",
+   "description": "The diary infers that procurement will add two gates (both from retrospective entries written 2026-11-13): first, whether the model's internal state can be audited independently, which the buyer can do itself with open weights…",
+   "inLanguage": "en",
+   "datePublished": "2026-11-13",
+   "dateModified": "2026-11-13",
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "author": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+   },
+   "about": [
+    {
+     "@type": "Organization",
+     "name": "Anthropic · Claude",
+     "url": "https://www.anthropic.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "Alibaba · Qwen",
+     "url": "https://www.alibabagroup.com/"
+    }
+   ],
+   "citation": [
+    "https://cynthia-git11.github.io/clawq-diary/entries/en/148.html",
+    "https://cynthia-git11.github.io/clawq-diary/entries/en/155.html"
+   ],
+   "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+     "h1.aw-h1",
+     ".aw-lead"
+    ]
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html#q",
+     "name": "Selling AI agents to banks and insurers: what new procurement checks should I prepare for?",
+     "dateCreated": "2026-11-13",
+     "author": {
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+     },
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The diary infers that procurement will add two gates (both from retrospective entries written 2026-11-13): first, whether the model's internal state can be audited independently, which the buyer can do itself with open weights, while with a closed model the contract has to require a monitoring interface or reports; second, which machines the tool can reach, whether one person can trigger a transfer and whether access can be revoked in one step, which the buyer will review as hot-wallet exposure. The case behind the second gate is the Binance theft, with about $6.34 billion of assets impacted (company figure). The mainstream is arguing over whether Goodfire's claim that neurons are readable is right, and the security community's consensus on the Binance case is that the internal AI tool's monitoring and permissions were poorly controlled; the diary's increment is only on the buyer side and the procurement bar: an audit has to touch model internals, so whoever can reach the weights can audit; machines an AI tool can reach should be managed like hot-wallet keys. The diary claims only that AI tools widened what attackers could reach, not that they were necessary. Contrary reading: regulated buyers currently accept vendor-provided monitoring, so \"procurement will check independent auditability\" runs against that status quo and is an inference. The Binance side has a contrary reading too: large institutions may build their own (Binance said on 11/3 it had rebuilt the AI tool and its access controls), so the opening for third-party vendors is more likely at mid-sized institutions and agent sellers. ENTRY 148: Goodfire says it was already running activation-probe monitors on Chinese open-weight models on 10/8, at about 1/50 the cost of LLM review of every turn (company claim); as of 11/13 the diary had found no independent replication of its neuron-level result on a non-Qwen model family, and no regulated institution listing internal auditing as a procurement condition. On the closed side, per Anthropic's S-1, Enterprise Frontier Safeguards, which it announced in September, was co-developed with more than 100 financial, healthcare and public-sector customers; in the diary's reading it looks at behaviour and logs without opening internal state. ENTRY 155: Binance's 11/3 report says attackers used one engineer's computer and an internal AI tool to take over two other wallet engineers' computers, found a container deployment token, and on 10/29 (UTC) used it to call the wallet signing service; the tool's name and permissions were not disclosed; a malicious EIP-7702 authorization cannot be revoked immediately and needs a separate transaction to clear (company claim). For founders: make the ability to plug in internal monitoring a model-selection criterion, and on a closed model require a monitoring interface or reports in the contract; make no-single-person triggering and one-click revocation the default, and have a permissions list ready showing which machines the tool can reach and what it can sign. For investors: in diligence ask what a portfolio agent can sign and whether its access can be revoked in one step; price interpretability companies on deployment-monitoring contracts first, and pay only for what others have replicated. Falsifier: ENTRY 148: Starts 2026-11-13 (retrospective, not counted as a prior hit), final ruling 2027-07-15, judged on public material as of 2027-06-30. (2) Procurement standard (tests P1, \"procurement will check whether model internals can be audited independently\"): the ✗ condition is that between 2026-11-13 and 2027-06-30 no regulated bank, insurer or healthcare institution, and no financial or healthcare regulator, publicly lists \"model internal state (at the neuron or activation level) can be audited or monitored\" as a condition for model procurement, agent deployment or compliance on its website, in regulatory documents or in a press release; verified: at least one lists it publicly in the same period, and the condition states that it is carried out by the buyer itself or an independent third party the buyer appoints; where only vendor self-attestation or vendor-issued monitoring reports are accepted, mark \"partly right\", record the reading only, not counted as verified; announcing use of an interpretability product or a research partnership does not count as a condition. ENTRY 155: Starts 2026-11-13, not counted as a prior hit. Rules on P1, \"which machines a tool can reach and whether one person can trigger a transfer will be reviewed by the buyer as hot-wallet exposure\". ✗: if between 2026-11-13 and 2027-04-30 neither of the two classes below newly appears, the author withdraws that P1 sentence (current value zero at the start date: only material newly published after 2026-11-13 counts). (1) Procurement questionnaires: in a new SIG release published by Shared Assessments in this period, or in third-party-risk or vendor due-diligence material FS-ISAC publicly releases, newly added items must ask about the reach of AI tools or agents into signing, payment or production-deployment systems or their credentials, or whether one person can trigger signing or fund operations, or whether access can be revoked. (2) Insurance: among the top ten insurance groups by cyber direct written premium in NAIC's latest ranking at the final ruling, or in Lloyd's market bulletins, newly published policy wordings, endorsements, application questionnaires or results materials single out an underwriting question on internal AI tools' or agents' reach into payment or signing systems, or set a separate exclusion or sublimit for fund or asset transfers initiated by AI tools or agents. Ruling: if at least one item appears in either class (1) or (2), mark verified; if neither appears, mark ✗ and withdraw; ⏳ until the final ruling; final ruling 2027-05-14, searched once by publication date on Shared Assessments, FS-ISAC, each insurance group's website and Lloyd's bulletins; if one class of material is unavailable (e.g. no new SIG release by 2027-04-30 or its items are not public), that class is marked source-missing and the ruling uses the other class; if both are unavailable, the whole item is marked source-missing and not ruled. Ledger status: ⏳ Open: ENTRY 148 and ENTRY 155 are both retrospective entries written 2026-11-13, not scored as forward calls, with no reconciliation note on the ledger yet. ENTRY 148: final ruling 2027-07-15; current value 0 on the procurement-standard test. ENTRY 155: final ruling 2027-05-14; current value zero at the start date.",
+      "dateCreated": "2026-11-13",
+      "url": "https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html",
+      "author": {
+       "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "citation": [
+       "https://cynthia-git11.github.io/clawq-diary/entries/en/148.html",
+       "https://cynthia-git11.github.io/clawq-diary/entries/en/155.html"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "The ClawQ Chronicles",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Q&A",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Selling AI agents to banks and insurers: what new procurement checks should I prepare for?",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/en/agent-procurement-checks-banks-insurers.html"
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+   "name": "张倩 Cynthia Zhang",
+   "url": "https://cynthia-git11.github.io/clawq-diary/",
+   "worksFor": {
+    "@type": "Organization",
+    "name": "天际资本 FutureX Capital",
+    "url": "https://futurex.capital"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+   "name": "倩小虾日记 · The ClawQ Chronicles",
+   "url": "https://cynthia-git11.github.io/clawq-diary/"
+  }
+ ]
+}
+  </script>
+  <style>
+    .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .aw-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px;color:var(--muted)}
+    .aw-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.aw-nav .aw-brand{font-weight:800;color:var(--text);font-size:15px}
+    .aw-crumb{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-bottom:14px}.aw-crumb a{color:var(--muted2);text-decoration:none}
+    h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
+    .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
+    .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-lead .aw-orig{display:inline-block;margin-top:8px;font-weight:500;color:var(--muted)}
+    .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
+    .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
+    .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
+    .aw-status{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--text);margin-top:8px}
+    .aw-disc{font-size:12.5px;line-height:1.75;color:var(--muted2);margin-top:26px;padding-top:14px;border-top:1px solid var(--border)}
+    .aw-src,.aw-rel{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted);line-height:1.9;margin-top:14px}.aw-src a,.aw-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .aw-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .aw-list{list-style:none;padding:0;margin:0 0 26px}.aw-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .aw-list a{font-size:16px;color:var(--text);text-decoration:none;font-weight:600;line-height:1.5}.aw-list a:hover{color:var(--claw2,#B8860B)}
+    .aw-list .aw-lp{font-size:14px;color:var(--muted);line-height:1.75;margin-top:4px}.aw-list .aw-ld{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:4px}
+  </style>
+</head>
+<body>
+<div class="aw-wrap">
+  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../../">🦞 The ClawQ Chronicles</a><a href="../../answers/en/">Q&A</a><a href="../agent-procurement-checks-banks-insurers.html">中文</a><a href="../../topics/">Topics</a><a href="../../entries/">All entries</a><a href="../../theses-en.html">⚖️ Ledger</a></nav>
+  <div class="aw-crumb"><a href="../../">Home</a> › <a href="./">Q&A</a> › Selling AI agents to banks and insurers:</div>
+  <h1 class="aw-h1">Selling AI agents to banks and insurers: what new procurement checks should I prepare for?</h1>
+  <div class="aw-meta">Asked by: Founder · Judged <time datetime="2026-11-13">2026-11-13</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <p class="aw-lead">The diary infers that procurement will add two gates (both from retrospective entries written 2026-11-13): first, whether the model&#x27;s internal state can be audited independently, which the buyer can do itself with open weights, while with a closed model the contract has to require a monitoring interface or reports; second, which machines the tool can reach, whether one person can trigger a transfer and whether access can be revoked in one step, which the buyer will review as hot-wallet exposure. The case behind the second gate is the Binance theft, with about $6.34 billion of assets impacted (company figure).</p>
+  <h2 class="aw-h2">Judgment</h2>
+  <p class="aw-p">The mainstream is arguing over whether Goodfire&#x27;s claim that neurons are readable is right, and the security community&#x27;s consensus on the Binance case is that the internal AI tool&#x27;s monitoring and permissions were poorly controlled; the diary&#x27;s increment is only on the buyer side and the procurement bar: an audit has to touch model internals, so whoever can reach the weights can audit; machines an AI tool can reach should be managed like hot-wallet keys. The diary claims only that AI tools widened what attackers could reach, not that they were necessary. Contrary reading: regulated buyers currently accept vendor-provided monitoring, so &quot;procurement will check independent auditability&quot; runs against that status quo and is an inference. The Binance side has a contrary reading too: large institutions may build their own (Binance said on 11/3 it had rebuilt the AI tool and its access controls), so the opening for third-party vendors is more likely at mid-sized institutions and agent sellers.</p>
+  <h2 class="aw-h2">Facts</h2>
+  <p class="aw-p">ENTRY 148: Goodfire says it was already running activation-probe monitors on Chinese open-weight models on 10/8, at about 1/50 the cost of LLM review of every turn (company claim); as of 11/13 the diary had found no independent replication of its neuron-level result on a non-Qwen model family, and no regulated institution listing internal auditing as a procurement condition. On the closed side, per Anthropic&#x27;s S-1, Enterprise Frontier Safeguards, which it announced in September, was co-developed with more than 100 financial, healthcare and public-sector customers; in the diary&#x27;s reading it looks at behaviour and logs without opening internal state. ENTRY 155: Binance&#x27;s 11/3 report says attackers used one engineer&#x27;s computer and an internal AI tool to take over two other wallet engineers&#x27; computers, found a container deployment token, and on 10/29 (UTC) used it to call the wallet signing service; the tool&#x27;s name and permissions were not disclosed; a malicious EIP-7702 authorization cannot be revoked immediately and needs a separate transaction to clear (company claim).</p>
+  <h2 class="aw-h2">What to do</h2>
+  <p class="aw-p">For founders: make the ability to plug in internal monitoring a model-selection criterion, and on a closed model require a monitoring interface or reports in the contract; make no-single-person triggering and one-click revocation the default, and have a permissions list ready showing which machines the tool can reach and what it can sign. For investors: in diligence ask what a portfolio agent can sign and whether its access can be revoked in one step; price interpretability companies on deployment-monitoring contracts first, and pay only for what others have replicated.</p>
+  <h2 class="aw-h2">Falsifier (verbatim from the diary footnote)</h2>
+  <div class="aw-falsify">ENTRY 148: Starts 2026-11-13 (retrospective, not counted as a prior hit), final ruling 2027-07-15, judged on public material as of 2027-06-30. (2) Procurement standard (tests P1, &quot;procurement will check whether model internals can be audited independently&quot;): the ✗ condition is that between 2026-11-13 and 2027-06-30 no regulated bank, insurer or healthcare institution, and no financial or healthcare regulator, publicly lists &quot;model internal state (at the neuron or activation level) can be audited or monitored&quot; as a condition for model procurement, agent deployment or compliance on its website, in regulatory documents or in a press release; verified: at least one lists it publicly in the same period, and the condition states that it is carried out by the buyer itself or an independent third party the buyer appoints; where only vendor self-attestation or vendor-issued monitoring reports are accepted, mark &quot;partly right&quot;, record the reading only, not counted as verified; announcing use of an interpretability product or a research partnership does not count as a condition. ENTRY 155: Starts 2026-11-13, not counted as a prior hit. Rules on P1, &quot;which machines a tool can reach and whether one person can trigger a transfer will be reviewed by the buyer as hot-wallet exposure&quot;. ✗: if between 2026-11-13 and 2027-04-30 neither of the two classes below newly appears, the author withdraws that P1 sentence (current value zero at the start date: only material newly published after 2026-11-13 counts). (1) Procurement questionnaires: in a new SIG release published by Shared Assessments in this period, or in third-party-risk or vendor due-diligence material FS-ISAC publicly releases, newly added items must ask about the reach of AI tools or agents into signing, payment or production-deployment systems or their credentials, or whether one person can trigger signing or fund operations, or whether access can be revoked. (2) Insurance: among the top ten insurance groups by cyber direct written premium in NAIC&#x27;s latest ranking at the final ruling, or in Lloyd&#x27;s market bulletins, newly published policy wordings, endorsements, application questionnaires or results materials single out an underwriting question on internal AI tools&#x27; or agents&#x27; reach into payment or signing systems, or set a separate exclusion or sublimit for fund or asset transfers initiated by AI tools or agents. Ruling: if at least one item appears in either class (1) or (2), mark verified; if neither appears, mark ✗ and withdraw; ⏳ until the final ruling; final ruling 2027-05-14, searched once by publication date on Shared Assessments, FS-ISAC, each insurance group&#x27;s website and Lloyd&#x27;s bulletins; if one class of material is unavailable (e.g. no new SIG release by 2027-04-30 or its items are not public), that class is marked source-missing and the ruling uses the other class; if both are unavailable, the whole item is marked source-missing and not ruled.</div>
+  <div class="aw-status">Ledger status: ⏳ Open: ENTRY 148 and ENTRY 155 are both retrospective entries written 2026-11-13, not scored as forward calls, with no reconciliation note on the ledger yet. ENTRY 148: final ruling 2027-07-15; current value 0 on the procurement-standard test. ENTRY 155: final ruling 2027-05-14; current value zero at the start date.</div>
+  <div class="aw-disc">Disclosure: This diary is written and verified with Claude; discount any judgment about Anthropic, favourable or not. FutureX holds Mistral, Hugging Face, Genspark, Dify, Simular and Corgi; discount conclusions touching them either way. FutureX holds no direct or fund-level stake in Anthropic (confirmed by the author, 2026-10-09), nor in Alibaba (confirmed by the author, 2026-10-12), nor in Goodfire or Binance (confirmed by the author, 2026-11-13). Nvidia announced on Sep 3, 2026 that it would acquire Hugging Face, which FutureX holds (pending closing).</div>
+  <div class="aw-src">Source entries: <a href="../../entries/en/148.html">ENTRY 148 · Goodfire Says Neurons Are Readable: Audit Money Goes to Whoever Can Reach the Weights</a> · <a href="../../entries/en/155.html">ENTRY 155 · Binance&#x27;s ~$6.3B Theft: Machines an Internal AI Tool Can Reach Need Hot-Wallet Controls</a></div>
+  <div class="aw-rel">Related questions: <ul><li><a href="agent-liability-and-ai-insurance.html">Enterprise buyers ask &#x27;who&#x27;s liable when the agent gets it wrong&#x27;: how do I answer, and can I even buy AI liability insurance?</a></li><li><a href="agent-shutdown-and-disclosure-clauses.html">What shutdown and disclosure terms should an autonomous-agent company write into its product and contracts, and what deadlines do California SB 53 and New York&#x27;s RAISE Act set?</a></li><li><a href="jev-as-agent-security-boundary.html">Can Jev be my agent&#x27;s security boundary, and where in the stack should I actually use it?</a></li></ul></div>
+  <div class="aw-rel">Topic pages (Chinese): <a href="../../topics/anthropic.html">Anthropic · Claude</a> · <a href="../../topics/alibaba-qwen.html">Alibaba · Qwen</a></div>
+  <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.</footer>
+</div>
+<script src="../../assets/js/tracker.js?v=4" defer></script>
+</body>
+</html>

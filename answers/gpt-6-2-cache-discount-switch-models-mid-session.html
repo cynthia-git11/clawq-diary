@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？ · 倩小虾日记</title>
+  <meta name="description" content="默认不该，换模型放在会话边界：ENTRY 164（补记，写于 2026-11-21，事件日 11/18）判断，GPT-6.2 这一刀押在缓存上，标价可以一样，折扣只给不走的会话。美东 11/17 起 Astra 每百万 token 缓存价从 1.00 降到 0.40 美元，是输入价 8 美元的 1/20；换模型或改前缀后重读上下文，单价约是留在原会话的 25 倍，GPT-6 时 12.5 倍（自算）。" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html" /><link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/answers/en/gpt-6-2-cache-discount-switch-models-mid-session.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <meta property="og:type" content="article" /><meta property="og:title" content="GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？" /><meta property="og:description" content="默认不该，换模型放在会话边界：ENTRY 164（补记，写于 2026-11-21，事件日 11/18）判断，GPT-6.2 这一刀押在缓存上，标价可以一样，折扣只给不走的会话。美东 11/17 起 Astra 每百万 token 缓存价从 1.00 降到 0.40 美元，是输入价 8 美元的 1/20；换模型或改前缀后重读上下文，单价约是留在原会话的 25 倍，GPT-6 时 12.5 倍（自算）。" /><meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html" /><meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-11-21" /><meta name="author" content="张倩 Cynthia Zhang" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html",
+   "url": "https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html",
+   "name": "GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？",
+   "headline": "GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？",
+   "description": "默认不该，换模型放在会话边界：ENTRY 164（补记，写于 2026-11-21，事件日 11/18）判断，GPT-6.2 这一刀押在缓存上，标价可以一样，折扣只给不走的会话。美东 11/17 起 Astra 每百万 token 缓存价从 1.00 降到 0.40 美元，是输入价 8 美元的 1/20；换模型或改前缀后重读上下文，单价约是留在原会话的 25 倍，GPT-6 时 12.5 倍（自算）。",
+   "inLanguage": "zh-CN",
+   "datePublished": "2026-11-21",
+   "dateModified": "2026-11-21",
+   "isPartOf": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+   },
+   "author": {
+    "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+   },
+   "about": [
+    {
+     "@type": "Thing",
+     "name": "模型定价与缓存"
+    },
+    {
+     "@type": "Organization",
+     "name": "OpenAI",
+     "url": "https://openai.com/"
+    },
+    {
+     "@type": "Organization",
+     "name": "Anthropic",
+     "url": "https://www.anthropic.com/"
+    }
+   ],
+   "citation": [
+    "https://cynthia-git11.github.io/clawq-diary/entries/164.html"
+   ],
+   "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+     "h1.aw-h1",
+     ".aw-lead"
+    ]
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "@id": "https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html#q",
+     "name": "GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？",
+     "dateCreated": "2026-11-21",
+     "author": {
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+     },
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "默认不该，换模型放在会话边界：ENTRY 164（补记，写于 2026-11-21，事件日 11/18）判断，GPT-6.2 这一刀押在缓存上，标价可以一样，折扣只给不走的会话。美东 11/17 起 Astra 每百万 token 缓存价从 1.00 降到 0.40 美元，是输入价 8 美元的 1/20；换模型或改前缀后重读上下文，单价约是留在原会话的 25 倍，GPT-6 时 12.5 倍（自算）。 主流共识（美东 11/17）分两派：便宜派读 OpenAI 称的单任务成本（不到 GPT-6 Astra 的三分之一，公司称），推出前沿模型继续商品化、模型无关的应用受益（作者概括）；难用派盯着长任务兜圈子。日记只在降价的结构上分开，不在幅度上分开：标价表上在趋同，这是商品化，账单上奖励留下来的会话。KV 缓存按模型计算，会话中途换模型等于重写一次缓存（推断）；换过去在新模型上仍能重新积累缓存，拿不到的是最深那段折扣。对本篇不利的读数：OpenAI 主打的卖点是单任务成本，缓存没有当作主卖点；Astra 若要多跑几轮，单任务成本未必下降。 OpenAI 定价页（11/21 读取，Standard 档，每百万 token）：gpt-6.2-astra 输入 / 输出 / 缓存输入 8 / 40 / 0.40 美元，gpt-6-astra 为 10 / 50 / 1.00；超过 272K 输入时 Astra 为 16 / 60 / 0.80，缓存比例不变。Anthropic 的 Fable 5.2 缓存命中 0.20（0.025 倍），Gemini 4 全系 0.05 倍。自算（不含输出）：90% 命中的长会话，计 30 分钟写入时输入侧 2.15→1.36 美元，降 36.7%，不计写入降 38.9%；完全不命中只降 20%；同一个模型（GPT-6.2），命中率 90% 与 30% 相比输入侧成本差 4.9–5.2 倍。重读单价比（自算，指重读的上下文未命中缓存）：GPT-6.2 30 分钟档约 25 倍（10÷0.40），12 小时档 50 倍，不计写入加价 20 倍；Fable 5.2 为 50 倍（5 分钟写入 10÷0.20），Gemini 4 为 20 倍（没有写入费）。OpenAI 指南：缓存不跨组织共享，有效期默认 30 分钟、可选 12 小时。 对创业者：上下文只追加，系统提示和工具定义放最前、别动，换模型放在会话边界；多供应商路由的价值落在开局选型和会话粘性上。GPT-6.2 起顶层 instructions 每次按未缓存价计费，可复用的指令放进第一条 developer 消息，检索结果等动态内容放末尾（OpenAI 指南）；压缩历史前先算总账。锁在会话上，不在厂商上：到了会话边界，换厂商的额外代价只来自已经预热的静态前缀。对投资人：看 agent 公司别看标价表，先要缓存命中率、每任务模型成本、中途换模型比例，「模型无关」的毛利按命中率重算。 证伪口：自 2026-11-21 起算，截至 2027-02-15（北京时间）。只裁定正文两点前瞻判断。一是「这一刀押在缓存上」：OpenAI 的降价落在缓存上、折扣只给不走的会话，以 OpenAI 下一次对 gpt-6.2-astra、gpt-6.2-sol 的标价变动或 Astra、Sol 系列下一代通用型号的首发价，是否把缓存读价与输入价之比调回 0.05 以上来检验；11/17 的降幅本身是已发生的事实，不裁定。二是「深缓存折扣已是三家标配」能否延续：以 Anthropic、Google 各自下一次的标价变动或新型号首发价是否把本家缓存比例调回去来检验；11/21 的现值本身是已发生的事实，不裁定。正文的 37%、25 倍、12.5 倍是按定价页的自算，不进证伪口。✗①：期内 OpenAI 对 gpt-6.2-astra 或 gpt-6.2-sol 的下一次标价变动，或 Astra、Sol 系列下一代通用型号的首发价，使该型号比值高于 0.05（降价落回未缓存输入，或缓存价被单独上调），作者撤回「这一刀押在缓存上」，记错判；写入倍数的变化只记读数。 台账状态：ENTRY 164 台账状态：⏳ 进行中。ENTRY 164 为补记，写于 2026-11-21，补记 2026-11-18 前后的 X 热点；证伪口自 2026-11-21 起算、截至 2027-02-15，不计入事前命中。截至 2026-11-21，两条都没有被已发生的事件裁定。",
+      "dateCreated": "2026-11-21",
+      "url": "https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html",
+      "author": {
+       "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "citation": [
+       "https://cynthia-git11.github.io/clawq-diary/entries/164.html"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "倩小虾日记",
+     "item": "https://cynthia-git11.github.io/clawq-diary/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "问答",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？",
+     "item": "https://cynthia-git11.github.io/clawq-diary/answers/gpt-6-2-cache-discount-switch-models-mid-session.html"
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+   "name": "张倩 Cynthia Zhang",
+   "url": "https://cynthia-git11.github.io/clawq-diary/",
+   "worksFor": {
+    "@type": "Organization",
+    "name": "天际资本 FutureX Capital",
+    "url": "https://futurex.capital"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+   "name": "倩小虾日记 · The ClawQ Chronicles",
+   "url": "https://cynthia-git11.github.io/clawq-diary/"
+  }
+ ]
+}
+  </script>
+  <style>
+    .aw-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .aw-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px;color:var(--muted)}
+    .aw-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}.aw-nav .aw-brand{font-weight:800;color:var(--text);font-size:15px}
+    .aw-crumb{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-bottom:14px}.aw-crumb a{color:var(--muted2);text-decoration:none}
+    h1.aw-h1{font-size:26px;line-height:1.35;margin-bottom:10px}
+    .aw-meta{font-family:var(--sans,Inter,sans-serif);font-size:12.5px;color:var(--muted2);margin-bottom:20px;line-height:1.8}.aw-meta time{color:var(--muted)}
+    .aw-lead{font-size:17px;line-height:1.85;color:var(--text);font-weight:600;margin-bottom:22px;padding:14px 16px;border-left:3px solid var(--claw2,#B8860B);background:var(--panel,rgba(0,0,0,.03))}
+    .aw-lead .aw-orig{display:inline-block;margin-top:8px;font-weight:500;color:var(--muted)}
+    .aw-h2{font-size:13px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:26px 0 8px}
+    .aw-p{font-size:15.5px;line-height:1.9;color:var(--muted)}.aw-p strong{color:var(--text)}
+    .aw-falsify{font-size:13.5px;line-height:1.8;color:var(--muted);padding:12px 14px;border:1px dashed var(--border);border-radius:6px;margin-top:6px}
+    .aw-status{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--text);margin-top:8px}
+    .aw-disc{font-size:12.5px;line-height:1.75;color:var(--muted2);margin-top:26px;padding-top:14px;border-top:1px solid var(--border)}
+    .aw-src,.aw-rel{font-family:var(--sans,Inter,sans-serif);font-size:13px;color:var(--muted);line-height:1.9;margin-top:14px}.aw-src a,.aw-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .aw-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .aw-list{list-style:none;padding:0;margin:0 0 26px}.aw-list li{padding:12px 0;border-bottom:1px solid var(--border)}
+    .aw-list a{font-size:16px;color:var(--text);text-decoration:none;font-weight:600;line-height:1.5}.aw-list a:hover{color:var(--claw2,#B8860B)}
+    .aw-list .aw-lp{font-size:14px;color:var(--muted);line-height:1.75;margin-top:4px}.aw-list .aw-ld{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:4px}
+  </style>
+</head>
+<body>
+<div class="aw-wrap">
+  <nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="../">🦞 倩小虾日记</a><a href="../answers/">问答</a><a href="en/gpt-6-2-cache-discount-switch-models-mid-session.html">EN</a><a href="../topics/">主题</a><a href="../entries/">全部日记</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <div class="aw-crumb"><a href="../">首页</a> › <a href="./">问答</a> › GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该</div>
+  <h1 class="aw-h1">GPT-6.2 Astra 缓存价降到输入价的 1/20，我的 agent 还该在会话中途换模型吗？</h1>
+  <div class="aw-meta">提问者：创始人·agent 产品 / 模型路由 CTO · 判断日期 <time datetime="2026-11-21">2026-11-21</time> · 张倩 Cynthia Zhang · FutureX Capital</div>
+  <p class="aw-lead">默认不该，换模型放在会话边界：ENTRY 164（补记，写于 2026-11-21，事件日 11/18）判断，GPT-6.2 这一刀押在缓存上，标价可以一样，折扣只给不走的会话。美东 11/17 起 Astra 每百万 token 缓存价从 1.00 降到 0.40 美元，是输入价 8 美元的 1/20；换模型或改前缀后重读上下文，单价约是留在原会话的 25 倍，GPT-6 时 12.5 倍（自算）。</p>
+  <h2 class="aw-h2">判断</h2>
+  <p class="aw-p">主流共识（美东 11/17）分两派：便宜派读 OpenAI 称的单任务成本（不到 GPT-6 Astra 的三分之一，公司称），推出前沿模型继续商品化、模型无关的应用受益（作者概括）；难用派盯着长任务兜圈子。日记只在降价的结构上分开，不在幅度上分开：标价表上在趋同，这是商品化，账单上奖励留下来的会话。KV 缓存按模型计算，会话中途换模型等于重写一次缓存（推断）；换过去在新模型上仍能重新积累缓存，拿不到的是最深那段折扣。对本篇不利的读数：OpenAI 主打的卖点是单任务成本，缓存没有当作主卖点；Astra 若要多跑几轮，单任务成本未必下降。</p>
+  <h2 class="aw-h2">事实</h2>
+  <p class="aw-p">OpenAI 定价页（11/21 读取，Standard 档，每百万 token）：gpt-6.2-astra 输入 / 输出 / 缓存输入 8 / 40 / 0.40 美元，gpt-6-astra 为 10 / 50 / 1.00；超过 272K 输入时 Astra 为 16 / 60 / 0.80，缓存比例不变。Anthropic 的 Fable 5.2 缓存命中 0.20（0.025 倍），Gemini 4 全系 0.05 倍。自算（不含输出）：90% 命中的长会话，计 30 分钟写入时输入侧 2.15→1.36 美元，降 36.7%，不计写入降 38.9%；完全不命中只降 20%；同一个模型（GPT-6.2），命中率 90% 与 30% 相比输入侧成本差 4.9–5.2 倍。重读单价比（自算，指重读的上下文未命中缓存）：GPT-6.2 30 分钟档约 25 倍（10÷0.40），12 小时档 50 倍，不计写入加价 20 倍；Fable 5.2 为 50 倍（5 分钟写入 10÷0.20），Gemini 4 为 20 倍（没有写入费）。OpenAI 指南：缓存不跨组织共享，有效期默认 30 分钟、可选 12 小时。</p>
+  <h2 class="aw-h2">落点</h2>
+  <p class="aw-p">对创业者：上下文只追加，系统提示和工具定义放最前、别动，换模型放在会话边界；多供应商路由的价值落在开局选型和会话粘性上。GPT-6.2 起顶层 instructions 每次按未缓存价计费，可复用的指令放进第一条 developer 消息，检索结果等动态内容放末尾（OpenAI 指南）；压缩历史前先算总账。锁在会话上，不在厂商上：到了会话边界，换厂商的额外代价只来自已经预热的静态前缀。对投资人：看 agent 公司别看标价表，先要缓存命中率、每任务模型成本、中途换模型比例，「模型无关」的毛利按命中率重算。</p>
+  <h2 class="aw-h2">证伪口（逐字取自日记尾注）</h2>
+  <div class="aw-falsify">自 2026-11-21 起算，截至 2027-02-15（北京时间）。只裁定正文两点前瞻判断。一是「这一刀押在缓存上」：OpenAI 的降价落在缓存上、折扣只给不走的会话，以 OpenAI 下一次对 gpt-6.2-astra、gpt-6.2-sol 的标价变动或 Astra、Sol 系列下一代通用型号的首发价，是否把缓存读价与输入价之比调回 0.05 以上来检验；11/17 的降幅本身是已发生的事实，不裁定。二是「深缓存折扣已是三家标配」能否延续：以 Anthropic、Google 各自下一次的标价变动或新型号首发价是否把本家缓存比例调回去来检验；11/21 的现值本身是已发生的事实，不裁定。正文的 37%、25 倍、12.5 倍是按定价页的自算，不进证伪口。✗①：期内 OpenAI 对 gpt-6.2-astra 或 gpt-6.2-sol 的下一次标价变动，或 Astra、Sol 系列下一代通用型号的首发价，使该型号比值高于 0.05（降价落回未缓存输入，或缓存价被单独上调），作者撤回「这一刀押在缓存上」，记错判；写入倍数的变化只记读数。</div>
+  <div class="aw-status">台账状态：ENTRY 164 台账状态：⏳ 进行中。ENTRY 164 为补记，写于 2026-11-21，补记 2026-11-18 前后的 X 热点；证伪口自 2026-11-21 起算、截至 2027-02-15，不计入事前命中。截至 2026-11-21，两条都没有被已发生的事件裁定。</div>
+  <div class="aw-disc">利益披露：本日记由 Claude 系工具写作与核实，涉及 Anthropic 的判断（有利或不利）都请打折读；天际持有 Dify、Genspark、Simular、Mistral、Hugging Face，涉及这些公司的结论请双向打折读；天际不直接或经基金间接持有 Anthropic（作者 2026-10-09 确认）、Alphabet、OpenAI（作者 2026-10-12 确认）；英伟达 2026-09-03 宣布收购天际持有的 Hugging Face（待交割）。</div>
+  <div class="aw-src">原文：<a href="../entries/164.html">ENTRY 164 · GPT-6.2 缓存价打四折：降价留给不中途换模型的长会话</a></div>
+  <div class="aw-rel">相关问题：<ul><li><a href="claude-cache-read-price-cut-savings.html">Claude 缓存读降价对我账单省多少？</a></li><li><a href="switching-claude-to-deepseek-backend.html">协议兼容了，把后端从 Claude 换成 DeepSeek 真的只是改个 base_url 吗？</a></li><li><a href="openai-luna-cut-sol-margin-layer.html">OpenAI 把 Luna 降了 80% 却不降 Sol，我的产品该把毛利押在哪一层？</a></li></ul></div>
+  <div class="aw-rel">主题页：<a href="../topics/model-pricing.html">模型定价与缓存</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/anthropic.html">Anthropic</a></div>
+  <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · 本日记不构成对任何基金产品的推介或募集要约；数字与原文逐字一致，判断的验证状态以判断台账为准。</footer>
+</div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
+</body>
+</html>
