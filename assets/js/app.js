@@ -71,6 +71,8 @@
   }
 
   // Intersection observer for scroll animations
+  // 2026-11-23: threshold 0 (was 0.08) — an entry with its footnote fold open can be 10,000px+ tall, so a jump into its
+  // middle (find-in-page, a link) never showed 8% of it and the entry stayed invisible; no fade at all under reduced motion
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -79,9 +81,9 @@
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0 });
 
-  document.querySelectorAll('.entry').forEach(el => {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.entry').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
     el.style.transition = 'opacity .6s ease, transform .6s ease';
@@ -427,13 +429,8 @@ function toggleSetupGuide() {
   await loadVisitors();
   await loadMessages();
   setupRealtime();
-  // Show welcome modal for first-time visitors
-  if (!currentUser) {
-    setTimeout(() => {
-      document.getElementById('welcome-modal').style.display = 'flex';
-      setTimeout(() => document.getElementById('modal-name').focus(), 100);
-    }, 1400);
-  }
+  // 2026-11-23: the welcome modal no longer opens by itself (it covered the diary on a first visit);
+  // the identity badge in the community section (openIdentityEdit) still opens it.
 })();
 
 /* ════════════════ Block 4/4 ════════════════ */
@@ -446,7 +443,8 @@ function toggleSetupGuide() {
     });
   }
 
-  /* ── 阅读时长：每篇日记按中文字数 / 400 字每分钟估算 ── */
+  /* ── 阅读时长：每篇日记按中文字数 / 400 字每分钟估算 ──
+     只数标题、正文段落和金句；尾注（利益披露、来源、证伪口……在折叠里）不算，2026-11-23 前把尾注算进去，350 字的一篇显示「14 分钟」 */
   (function injectReadingTime(){
     requestAnimationFrame(() => {
       document.querySelectorAll('.entry').forEach(e => {
@@ -454,8 +452,10 @@ function toggleSetupGuide() {
         const tag = e.querySelector('.entry-tag');
         if (!body || !tag) return;
         if (tag.querySelector('.reading-time') || e.querySelector('.reading-time')) return;
+        const parts = [e.querySelector('.entry-title')]
+          .concat(Array.from(body.querySelectorAll('p, .entry-quote')).filter(x => !x.closest('.entry-foot, .entry-fold')));
         // 中文字符 + 英文单词 折算（中文 1 字 = 英文 1 词 ≈ 同速）
-        const txt = body.textContent || '';
+        const txt = parts.map(x => (x && x.textContent) || '').join(' ');
         const cjk = (txt.match(/[一-龥]/g) || []).length;
         const ascii = (txt.match(/[A-Za-z]+/g) || []).length;
         const minutes = Math.max(1, Math.round((cjk + ascii) / 400));
