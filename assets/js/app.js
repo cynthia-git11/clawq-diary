@@ -456,6 +456,7 @@ function toggleSetupGuide() {
         const body = e.querySelector('.entry-body');
         const tag = e.querySelector('.entry-tag');
         if (!body || !tag) return;
+        if (!e.querySelector('.ep-link, .entry-fold')) return;   // the 「未完待续」 teaser at the end of the timeline is not an entry: no chip
         if (tag.querySelector('.reading-time') || e.querySelector('.reading-time')) return;
         const parts = [e.querySelector('.entry-title')]
           .concat(Array.from(body.querySelectorAll('p, .entry-quote')).filter(x => !x.closest('.entry-foot, .entry-fold')));
