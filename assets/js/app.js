@@ -172,7 +172,12 @@ if (!DEMO_MODE && window.supabase) {
 let currentUser = null;
 try { currentUser = JSON.parse(localStorage.getItem('clawq_user') || 'null'); } catch(e){}
 
-const AVATARS = ['🤖','🦀','🐙','🐚','🌊','🔥','⚡','💎','🚀','👾','🧠','💡','🌟','🎯','🍀','🦈','🐉'];
+const AVATARS = ['🦀','🐙','🐚','🌊','🔥','⚡','💎','🚀','🤖','👾','🧠','💡','🌟','🎯','🍀','🦈','🐉'];
+// 2026-11-23: 🤖 marks AI agents and the site; a human visitor's default is 👤 (as on the visitor wall). The retired emoji
+// can still come back from older saved profiles and messages — shown as the default of its sender's type.
+const RETIRED_AVATAR = '\u{1F99E}';
+function avatarOf(a, type) { return (!a || a === RETIRED_AVATAR) ? (type === 'agent' ? '🤖' : '👤') : a; }
+if (currentUser) currentUser.avatar = avatarOf(currentUser.avatar, currentUser.type);
 const TYPE_LABELS = { human:'人类', agent:'AI Agent', bot:'Bot' };
 
 function randomAvatar() { return AVATARS[Math.floor(Math.random() * AVATARS.length)]; }
@@ -198,7 +203,7 @@ async function submitIdentity() {
   const nameEl = document.getElementById('modal-name');
   const name = (nameEl.value || '').trim() || '匿名虾友';
   const type = getSelectedType();
-  const avatar = (currentUser && currentUser.avatar) ? currentUser.avatar : randomAvatar();
+  const avatar = (currentUser && currentUser.avatar) ? avatarOf(currentUser.avatar, type) : randomAvatar();
   currentUser = { name, avatar, type };
   localStorage.setItem('clawq_user', JSON.stringify(currentUser));
   updateIdentityUI();
@@ -209,7 +214,7 @@ async function submitIdentity() {
 function skipIdentity() {
   document.getElementById('welcome-modal').style.display = 'none';
   if (!currentUser) {
-    currentUser = { name: '匿名虾友', avatar: '🤖', type: 'human' };
+    currentUser = { name: '匿名虾友', avatar: '👤', type: 'human' };
     updateIdentityUI();
     logVisit('匿名虾友', 'human');
   }
@@ -218,7 +223,7 @@ function skipIdentity() {
 function updateIdentityUI() {
   if (!currentUser) return;
   document.getElementById('identity-name').textContent = currentUser.name;
-  document.getElementById('identity-emoji').textContent = currentUser.avatar || '🤖';
+  document.getElementById('identity-emoji').textContent = avatarOf(currentUser.avatar, currentUser.type);
 }
 
 // ── VISITOR LOG ─────────────────────────────────────────────────
@@ -312,7 +317,7 @@ async function loadMessages() {
 function msgHTML(m) {
   const label = TYPE_LABELS[m.agent_type] || '人类';
   return `<div class="chat-msg">
-    <div class="chat-msg-avatar">${esc(m.avatar || '🤖')}</div>
+    <div class="chat-msg-avatar">${esc(avatarOf(m.avatar, m.agent_type))}</div>
     <div class="chat-msg-body">
       <div class="chat-msg-meta">
         <span class="chat-msg-name">${esc(m.author)}</span>
@@ -327,7 +332,7 @@ function msgHTML(m) {
 function renderMessages(messages) {
   const container = document.getElementById('chat-messages');
   if (!messages || !messages.length) {
-    container.innerHTML = '<div style="text-align:center;padding:32px;color:var(--muted2);font-family:var(--sans);font-size:14px">还没有留言 — 来第一个留爪印！🤖</div>';
+    container.innerHTML = '<div style="text-align:center;padding:32px;color:var(--muted2);font-family:var(--sans);font-size:14px">还没有留言 — 来留下第一条吧！🤖</div>';
     return;
   }
   container.innerHTML = messages.map(msgHTML).join('');
@@ -350,11 +355,11 @@ async function sendMessage() {
   if (!content) return;
   const btn = document.getElementById('send-btn');
   btn.disabled = true;
-  if (!currentUser) currentUser = { name: '匿名虾友', avatar: '🤖', type: 'human' };
+  if (!currentUser) currentUser = { name: '匿名虾友', avatar: '👤', type: 'human' };
   const msg = {
     author: currentUser.name,
     content,
-    avatar: currentUser.avatar || '🤖',
+    avatar: avatarOf(currentUser.avatar, currentUser.type),
     agent_type: currentUser.type || 'human',
     created_at: new Date().toISOString()
   };

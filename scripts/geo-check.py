@@ -43,8 +43,12 @@ Checks:
      nickname — the Chinese word, its emoji, the English word in any case, the Japanese words, or their percent-encoded forms in
      share URLs (scripts/agent_terms.py hits(); the tokens are spelled there only as escapes, since scripts/ is served too).
      Served = what the dead-URL check lists (tracked + untracked-not-ignored), minus archive/ and every path with a part starting
-     with "." or "_" (Jekyll does not publish those), text files only. buildN.py, make_daily.py and i18n_daily.py run
-     agent_terms.fix() on what they insert, so a draft that still uses the old word is rewritten before it reaches a page.
+     with "." or "_" (Jekyll does not publish those), text files only. Each file is also tested as a reader sees it: HTML
+     entities unescaped, and a .json file with \\u escapes decoded. A hit inside a link (href / src / bare URL) is named as
+     such: fix() never rewrites a link, so the author picks another source or drops it. Also flagged: 只 as the measure word
+     for an agent (「一只 AI Agent」; the house style is 个), outside scripts/. agent_terms.py's own self-test runs here
+     too. buildN.py, make_daily.py and i18n_daily.py run agent_terms.fix() on what they insert, so a draft that still uses
+     the old word is rewritten before it reaches a page; buildN.py then refuses a field that still has it (a link).
 """
 import re, json, sys, os, glob, html as _html
 from xml.etree import ElementTree as ET
@@ -377,7 +381,7 @@ except Exception as _e:
 try:
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import agent_terms as _AT
-    _ret = []
+    _ret = [f"scripts/agent_terms.py self-test: {_b}" for _b in _AT._selftest()]
     for _f in sorted(_site_files()):
         if _f.startswith("archive/") or any(_p.startswith((".", "_")) for _p in _f.split("/")) or not os.path.isfile(_f):
             continue
@@ -386,13 +390,29 @@ try:
                 _t = _fh.read()
         except (UnicodeDecodeError, OSError):
             continue                                    # images and other binary files
-        _h = _AT.hits(_t)
+        _forms = [_t]                                   # what a reader or crawler sees: entities and JSON \u escapes decoded
+        if "&" in _t:
+            _forms.append(_html.unescape(_t))
+        if _f.endswith(".json") and "\\u" in _t:
+            try:
+                with open(_f, encoding="utf-8") as _fh:
+                    _forms.append(json.dumps(json.load(_fh), ensure_ascii=False))
+            except ValueError:
+                pass                                    # check 1 / the JSON checks report a broken file
+        _h = max((_AT.hits(_x) for _x in _forms), key=len)
+        _u = max((_AT.url_hits(_x) for _x in _forms), key=len)
         if _h:
-            _ret.append(f"{_f}: {len(_h)}×")
+            _in = f"{len(_h)}× ({len(_u)} inside a link — fix() leaves links alone: pick another source or drop the link)" if _u \
+                else f"{len(_h)}× (scripts/agent_terms.py fix() rewrites it)"
+            _ret.append(f"{_f}: {_in}")
+        if not _f.startswith("scripts/"):
+            _m = max((_AT.measure_hits(_x) for _x in _forms), key=len)
+            if _m:
+                _ret.append(f"{_f}: measure word 只 for an agent ({_m[0]!r}{' …' if len(_m) > 1 else ''}); write 个")
     for _x in _ret[:10]:
-        errors.append(f"retired agent wording — {_x} (scripts/agent_terms.py fix() rewrites it)")
+        errors.append(f"agent wording — {_x}")
     if len(_ret) > 10:
-        errors.append(f"... {len(_ret) - 10} more files with retired agent wording")
+        errors.append(f"... {len(_ret) - 10} more agent-wording problems")
 except Exception as _e:
     errors.append(f"agent-wording check crashed — {_e}")
 

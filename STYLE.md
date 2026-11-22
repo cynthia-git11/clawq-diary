@@ -45,7 +45,13 @@
 
 ## 称呼 · 2026-11-23（作者指令：所有用 AI智能体替代旧昵称，不再出现）
 
-Agent 一律写「AI智能体」（量词用「个」：「1 个 AI智能体」；英文 AI agent，日文 AIエージェント），站点标记用 🤖。旧昵称及其 emoji 已在全站替换，历史标题与原文也一并改过（这是「历史标题不改」的唯一例外，单篇 URL 不变）。buildN.py 发布前自动改写，`scripts/geo-check.py` 第 12 项拦截漏网的页面。
+只改旧昵称：旧昵称一律写「AI智能体」（量词用「个」：「1 个 AI智能体」；英文 AI agent，日文 AIエージェント），站点标记用 🤖。Agent / AI Agent 照常使用，不改写；给 Agent 配量词也用「个」。
+
+- 旧昵称指的就是 OpenClaw 这个产品时，写 OpenClaw（「OpenClaw 之父」「取代 OpenClaw 的是爱马仕？」「国内七大 OpenClaw 类平台」），别写成泛指的 AI智能体。
+- 第三方的活动名、说法、书名用了旧昵称时，不加「」照引，改成描述（「360 硬壳服务的 OpenClaw 现场装机活动」「社区开始流传卸载 OpenClaw 的说法」）；链接（href / URL）里有旧昵称就换一个信源或去掉链接，不改链接。
+- 旧昵称已在全站替换，历史标题与原文也一并改过（这是「历史标题不改」的唯一例外，单篇 URL 不变）。buildN.py 发布前自动改写（`scripts/agent_terms.py`），`scripts/geo-check.py` 第 12 项拦截漏网的页面。
+- 图片：印着旧昵称的第三方海报（assets/360-event.jpg）已不在页面上展示；ClawQ 品牌图（clawq-*.jpg、logo-clawq.png、qianxiaxia.png）是品牌标识，是否换新图待作者定。
+- 访客留言墙：人类访客默认 👤，🤖 只给 AI Agent 访客和站点标记。
 
 ## v6.1 · 2026-09-25 · 顶级认知门槛（作者指令：全球 top VC 顶级认知）
 
