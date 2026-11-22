@@ -33,6 +33,12 @@ Checks:
      to a ja one without checking that the page exists. Names are compared exactly (git ls-files: tracked + untracked, not
      ignored; os.walk when not in a git checkout), because macOS ignores case and Pages does not: topics/MiniMax.html
      passes os.path.exists on a Mac and is a 404 online.
+ 11. Machine timestamps (2026-11-22, author-approved; scripts/machine_dates.py, applied by gen-entry-pages.py, which buildN.py
+     runs after every entry): a backfill's (补记) datePublished is its written date (scripts/entry_dates.py, the rule behind
+     data/ledger.json written_date) on entries/<N>.html, entries/en/<N>.html, in the index.html top-5 @graph and as its atom
+     <published>; dateModified / <updated> is never earlier than datePublished / <published>; a page's article:published_time /
+     modified_time equal its JSON-LD; an entry in the top-5 @graph has the same datePublished there as on its pages (the time of
+     day no longer moves when it leaves the top 5); the feed <updated> is not earlier than any entry <updated>.
 """
 import re, json, sys, os, glob, html as _html
 from xml.etree import ElementTree as ET
@@ -286,10 +292,85 @@ try:
 except Exception as _e:
     errors.append(f"dead-URL check crashed — {_e}")
 
+# 11. Machine timestamps (2026-11-22): see the header
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import machine_dates as _MD
+    _idx = read("index.html")
+    _D = _MD.index_dates(_idx)
+    _bad = []
+    def _ge(a, b):
+        """a is not earlier than b (ISO dates / timestamps, the comparison machine_dates.later uses)"""
+        return _MD.later(a, b) == a
+    def _pub_ok(where, n, pub, field="datePublished"):
+        w = _D.get(n, ("", ""))[1]
+        if w and pub[:10] != w:
+            _bad.append(f"{where}: ENTRY {n} is a backfill written {w} but {field} is {pub}")
+    _page_pub = {}
+    for _f in sorted(glob.glob("entries/[0-9]*.html") + glob.glob("entries/en/[0-9]*.html")):
+        if not re.fullmatch(r"\d+\.html", os.path.basename(_f)):
+            continue
+        _n = int(os.path.basename(_f)[:-5])
+        _t = read(_f)
+        _bp = None
+        for _b in jsonld_blocks(_t):
+            try:
+                _j = json.loads(_b)
+            except Exception:
+                continue
+            for _o in (_j.get("@graph", [_j]) if isinstance(_j, dict) else []):
+                if isinstance(_o, dict) and _o.get("@type") == "BlogPosting":
+                    _bp = _o
+        if not _bp or not _bp.get("datePublished"):
+            _bad.append(f"{_f}: no BlogPosting datePublished")
+            continue
+        _p, _m = _bp["datePublished"], _bp.get("dateModified") or _bp["datePublished"]
+        _page_pub.setdefault(_n, set()).add(_p)
+        _pub_ok(_f, _n, _p)
+        if not _ge(_m, _p):
+            _bad.append(f"{_f}: dateModified {_m} is earlier than datePublished {_p}")
+        for _k, _v in (("published_time", _p), ("modified_time", _m)):
+            _mm = re.search(r'<meta property="article:' + _k + r'" content="([^"]+)"', _t)
+            if _mm and _mm.group(1) != _v:
+                _bad.append(f"{_f}: article:{_k} {_mm.group(1)} ≠ JSON-LD {_v}")
+    _gb = _MD._graph_block(_idx)
+    for _g in (_MD.GRAPH_RE.finditer(_idx, _gb[0], _gb[1]) if _gb else []):
+        _n, _p, _m = int(_g.group(2)), _g.group(3), _g.group(5)
+        _pub_ok("index.html @graph", _n, _p)
+        if not _ge(_m, _p):
+            _bad.append(f"index.html @graph: ENTRY {_n} dateModified {_m} is earlier than datePublished {_p}")
+        if _page_pub.get(_n, {_p}) != {_p}:
+            _bad.append(f"index.html @graph: ENTRY {_n} datePublished {_p} ≠ its pages' {sorted(_page_pub[_n])}")
+    _at = read("atom.xml")
+    _ups = []
+    for _e in re.findall(r"<entry>.*?</entry>", _at, re.S):
+        _tm = re.search(r"<title>ENTRY (\d+) ", _e)
+        _pm = re.search(r"<published>([^<]+)</published>", _e)
+        _um = re.search(r"<updated>([^<]+)</updated>", _e)
+        if _um:
+            _ups.append(_um.group(1))
+        if not (_tm and _pm and _um):
+            continue
+        _n = int(_tm.group(1))
+        if {int(x) for g in _MD.ATOM_NUM_RE.findall(_e) for x in g if x} - {_n}:
+            continue    # id / link name another entry (130/132 → 131/133, a known slip): machine_dates.fix_atom skips it too
+        _pub_ok("atom.xml", _n, _pm.group(1), "<published>")
+        if not _ge(_um.group(1), _pm.group(1)):
+            _bad.append(f"atom.xml: ENTRY {_n} <updated> {_um.group(1)} is earlier than <published> {_pm.group(1)}")
+    _fu = re.search(r"<updated>([^<]+)</updated>", _at.split("<entry>")[0])
+    if _fu and _ups and not all(_ge(_fu.group(1), _u) for _u in _ups):
+        _bad.append(f"atom.xml: feed <updated> {_fu.group(1)} is earlier than an entry's <updated>")
+    for _x in _bad[:10]:
+        errors.append(f"machine timestamps — {_x}")
+    if len(_bad) > 10:
+        errors.append(f"... {len(_bad) - 10} more machine-timestamp problems")
+except Exception as _e:
+    errors.append(f"machine-timestamp check crashed — {_e}")
+
 if errors:
     print("GEO health check FAILED:")
     for e in errors:
         print("  ✗", e)
     sys.exit(1)
 
-print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok · FAQ ledger pointers ok · no dead sitemap / llms.txt URLs")
+print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok · FAQ ledger pointers ok · no dead sitemap / llms.txt URLs · machine timestamps ok")

@@ -35,7 +35,11 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July", "Augus
 def site_state(idx):
     """latest: the newest entry's date line (its event date, the date its Day counts — the visible 「截至 DATE（Day N）」 /
     "Last updated DATE · Day N" spans pair the two); latest_iso: its @graph datePublished, which for a backfill (补记) is the written
-    date (scripts/machine_dates.py) — only the machine Blog.dateModified is raised to it. Same value for a non-backfill."""
+    date (scripts/machine_dates.py) — only the machine Blog.dateModified is raised to it. Same value for a non-backfill.
+    Deliberate trade-off when the newest entry is a backfill (not the case on 2026-11-22: ENTRY 166 is not one): those spans show its
+    event date E, so they read earlier than Blog.dateModified (its written date W), and 「截至 E 已发布 N 篇」 counts an entry
+    written after E. They follow the timeline's own convention (date and Day on the event calendar, as buildN.py bumps Day from the
+    event date); putting W next to the event-date Day N would make the span contradict itself. The next normal entry ends it."""
     n_ids = [int(x) for x in re.findall(r'<div id="entry-(\d+)"', idx)]
     latest = max(n_ids)
     dm = re.search(r"倩小虾日记 · Day (\d+)", idx)
@@ -45,9 +49,11 @@ def site_state(idx):
     return dict(entries=len(n_ids), latest_entry=latest, day=int(dm.group(1)), latest_iso=pm.group(1), latest=ev)
 
 def entry_dates(idx):
-    """{N: event date YYYY-MM-DD} from each entry's date line in index.html"""
+    """{N: event date YYYY-MM-DD} from each entry's date line in index.html (a <time …> or other inline tag before the date is
+    allowed, so the newest entry never falls back to its @graph datePublished, a backfill's written date; month-only entries are
+    left out)"""
     out = {}
-    for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>\s*<div class="entry-date">\s*(\d{4})年(\d{1,2})月(\d{1,2})日', idx):
+    for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>\s*<div class="entry-date">\s*(?:<(?!/?div\b)[^>]+>\s*)*(\d{4})年(\d{1,2})月(\d{1,2})日', idx):
         out[int(m.group(1))] = f"{m.group(2)}-{int(m.group(3)):02d}-{int(m.group(4)):02d}"
     return out
 

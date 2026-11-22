@@ -16,18 +16,22 @@ Time of day
 datePublished = P + time; dateModified is never earlier than datePublished (max). A date the footnote or the ledger names that
     is on or before a backfill's written date is not a change after publication.
 Where (each writer applies the same rule)
-    entries/<N>.html, entries/en/<N>.html  JSON-LD, article:published_time / modified_time, the visible 发布 / Written line;
+    entries/<N>.html, entries/en/<N>.html  JSON-LD, article:published_time / modified_time, a backfill's visible 「写于 W」 /
+                                            "Written W" line (a normal entry's page keeps 「发布 DATE」);
     entries/, entries/en/, topics/*.html   CollectionPage hasPart datePublished (topic dateModified and sitemap-topics lastmod:
                                             the latest P of the topic's entries);
     index.html, atom.xml, sitemap.xml      post-processing of what buildN.py writes (it stamps the event date): fix_hub() sets a
                                             backfill's top-5 @graph datePublished / dateModified, fix_atom() a backfill's
                                             <published> / <updated> and the feed <updated> (= the latest entry <updated>),
-                                            fix_sitemap() buildN.py's page <lastmod> stamps when the newest entry is a backfill.
+                                            fix_sitemap() buildN.py's page <lastmod> stamps when the newest entry is a backfill
+                                            (not press.html / press-en.html, which hygiene0928.py dates from git).
                                             Run by gen-entry-pages.py, which buildN.py runs after every entry, so the next
                                             buildN.py run reads a fixed tree (it keys on titles, entry numbers, the @graph order
                                             and size, and the first <updated>, which stays the feed's own).
 Unchanged: the human-visible timeline date, Day number, entry order (index.html, atom.xml: by ENTRY number, descending, as
-    geo-check.py check 6 requires) and titles.
+    geo-check.py check 6 requires) and titles. One visible consequence: the styled feed page (atom.xsl) shows substring(<updated>,
+    1, 10) above each item, so a backfill's item there carries its written date (when it reached the feed), not its event date.
+Checked by geo-check.py check 11 (published = written date for a backfill, modified >= published, meta = JSON-LD, feed <updated>).
 Deterministic and idempotent; the only I/O is data/published-times.json (load_times)."""
 import re, os, json, datetime
 
@@ -90,7 +94,26 @@ def load_times(read_root, idx, write_root=None):
     return times
 
 # dates (fix_hub / fix_atom / fix_sitemap): {N: (entry date, backfill written date or "")}, as gen-entry-pages.py reads them with
-# entry_dates.backfill_written
+# entry_dates.backfill_written; index_dates() reads them the same way for geo-check.py check 11
+
+def index_dates(idx):
+    """{N: (entry date, backfill written date or "")} for every <div id="entry-N"> block of index.html (the block runs to its
+    matching </div>; the same reading as gen-entry-pages.py, through scripts/entry_dates.py). ValueError on an unbalanced block
+    or an entry whose written-date markers disagree."""
+    import entry_dates as ED
+    tag = re.compile(r"<(/?)div\b[^>]*>", re.I); out = {}
+    for m in re.finditer(r'<div id="entry-(\d+)"[^>]*>', idx):
+        i, depth = m.start(), 0
+        while True:
+            t = tag.search(idx, i)
+            if not t: raise ValueError(f"ENTRY {m.group(1)}: unbalanced div")
+            depth += -1 if t.group(1) else 1; i = t.end()
+            if depth == 0: break
+        blk = idx[m.start():i]
+        date_txt = ED.strip((re.search(r'<div class="entry-date">(.*?)</div>', blk, re.S) or [None, ""])[1])
+        date_d = ED.entry_date_d(date_txt)
+        out[int(m.group(1))] = (date_d, ED.backfill_written(blk, date_txt, date_d))
+    return out
 
 def fix_hub(idx, dates, times):
     """index.html top-5 BlogPosting @graph: a backfill's datePublished = its written date (+ frozen time), dateModified = the later
@@ -107,16 +130,23 @@ def fix_hub(idx, dates, times):
     blk = GRAPH_RE.sub(rep, idx[gb[0]:gb[1]])
     return idx[:gb[0]] + blk + idx[gb[1]:], changed
 
+GIT_DATED = ("press.html", "press-en.html")   # hygiene0928.py sets their <lastmod> from `git log`: not buildN.py's stamps
+
 def fix_sitemap(sm, dates):
     """sitemap.xml: buildN.py stamps every page <lastmod> carrying the previous stamp with the new entry's event date (「all page
     lastmods carry the latest publish date」). When the newest entry is a backfill and the first <lastmod> is still its event date,
     those stamps become its written date, so the hub pages are not dated before the day they changed and the next buildN.py run
-    finds them all on one value again. No-op otherwise (idempotent: afterwards the first <lastmod> is the written date)."""
+    finds them all on one value again. The pages in GIT_DATED keep theirs (a press page last committed on the event date is
+    dated by git, not by the entry). No-op otherwise (idempotent: afterwards the first <lastmod> is the written date)."""
     if not dates: return sm, False
     date_d, written = dates[max(dates)]
     fm = re.search(r"<lastmod>([^<]+)</lastmod>", sm)
     if not (written and fm and fm.group(1) == date_d): return sm, False
-    return sm.replace(f"<lastmod>{date_d}</lastmod>", f"<lastmod>{written}</lastmod>"), True
+    skip = tuple(f"<loc>{BASE}{p}</loc>" for p in GIT_DATED)
+    def url(m):
+        blk = m.group(0)
+        return blk if any(s in blk for s in skip) else blk.replace(f"<lastmod>{date_d}</lastmod>", f"<lastmod>{written}</lastmod>")
+    return re.sub(r"<url>.*?</url>", url, sm, flags=re.S), True
 
 ATOM_NUM_RE = re.compile(r"<id>" + re.escape(BASE) + r"entries/(\d+)</id>|href=\"" + re.escape(BASE) + r"entries/(\d+)\.html\"")
 

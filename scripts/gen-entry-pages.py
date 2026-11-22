@@ -22,7 +22,9 @@ Reads index.html (the single-page hub) and writes, idempotently:
   robots.txt              adds Sitemap: line for sitemap-entries.xml if missing
 
 Machine timestamps (2026-11-22): datePublished is the written date of a backfill (补记), else the entry date, at the frozen time of
-day; the visible timeline date, Day and order stay on the event date. See scripts/machine_dates.py.
+day; the visible timeline date, Day and order stay on the event date. See scripts/machine_dates.py. A page's meta line reads
+「发布 DATE」, or for a backfill 「写于 W（补记，事件日 E）」 (the English edition: "Written W (retrospective entry)", theses.html:
+「补记 · 写于 W」): W is when it was written, which can be earlier than its first public commit (162–165: written 11-21, committed 11-22).
 Deterministic — no LLM, nothing is paraphrased. Safe to run after every build.
 Usage: python3 scripts/gen-entry-pages.py [--root DIR] [--dry]
 """
@@ -329,7 +331,7 @@ def page(e, prev_e, next_e):
     <a href="../#entry-{e['n']}">在时间线中查看</a>
     <a href="{(f"en/{e['n']}.html" if str(e["n"]) in EN_MAP else "../en.html")}" hreflang="en">EN</a>
   </nav>
-  <div class="ep-meta"><span>ENTRY {e['n']}</span><span>发布 <time datetime="{iso(e)}">{esc(pdate(e) if e["written"] else lastmod(e))}</time>{f'（补记，事件日 {e["date_d"]}）' if e["written"] else ''}{(f' · {mod_lab} <time datetime="{mod}">{mod}</time>') if mod and mod != (e["written"] or lastmod(e)) else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="ep-meta"><span>ENTRY {e['n']}</span><span>{'写于' if e["written"] else '发布'} <time datetime="{iso(e)}">{esc(pdate(e) if e["written"] else lastmod(e))}</time>{f'（补记，事件日 {e["date_d"]}）' if e["written"] else ''}{(f' · {mod_lab} <time datetime="{mod}">{mod}</time>') if mod and mod != (e["written"] or lastmod(e)) else ''}</span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
   <div class="timeline">
 {blk}
   </div>

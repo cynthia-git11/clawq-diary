@@ -193,6 +193,9 @@ def build_pages(LG):
     # visible date: only a date the status line explains ("updated", not "corrected": it can be a reconciliation that kept ⏳,
     # a later reading or a 补记 write date); a later dated note in the Chinese footnotes is named as not included here
     last = (f' · Written <time datetime="{pub}">{pub[:10]}</time> (retrospective entry)' if z["written"] else "")   # the event date stays the entry's date
+    # the en.html row's date of a backfill can already say "· backfilled Aug 24" (126/127): that is the same written date, now in
+    # the "Written" part with its machine timestamp, so the event-date <time> keeps only the event date and Day
+    d_shown = re.sub(r"\s*·\s*backfilled [A-Z][a-z]{2,8}\.? \d{1,2}\s*$", "", d) if z["written"] else d
     last += f' · Last updated <time datetime="{mod[:10]}">{mod[:10]}</time>' if pub and mod[:10] > pub[:10] else ""
     zf = z["foot_mod"] if (pub and len(z["date_d"]) == 10) else ""
     if zf and zf > max(pub[:10], mod[:10]):
@@ -223,7 +226,7 @@ def build_pages(LG):
 <div class="ee-wrap">
   {NAV("../../")}
   <h1 class="ee-h1">{esc(title)}</h1>
-  <div class="ee-meta">ENTRY {n} · <time datetime="{esc(z['date'])}">{esc(d)}</time> · {esc(tag)} · Cynthia Zhang · FutureX Capital · <a href="../{n}.html" hreflang="zh-CN">中文原文 · Chinese original</a>{last}</div>{strip_html}
+  <div class="ee-meta">ENTRY {n} · <time datetime="{esc(z['date'])}">{esc(d_shown)}</time> · {esc(tag)} · Cynthia Zhang · FutureX Capital · <a href="../{n}.html" hreflang="zh-CN">中文原文 · Chinese original</a>{last}</div>{strip_html}
 {paragraphs(body)}
   <nav class="ee-pn" aria-label="Previous and next">{pn}</nav>
   <footer class="ee-foot">English edition of <a href="../{n}.html">ENTRY {n}</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
