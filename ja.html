@@ -394,7 +394,110 @@
       [style*="padding:44px;"]{ padding:24px 18px !important; }
       [style*="padding:36px;"]{ padding:22px 16px !important; }
     }
+    /* 日记摘要的备注（证伪口、利益披露、口径……）收进摘要下的一个折叠（下面的 reader-js 脚本），关着只占一行 */
+    .entry-row > .row-fold{ grid-column:2; min-width:0; max-width:46em; }
+    @media (max-width:880px){ .entry-row > .row-fold, .entry-row > .erow-link{ grid-column:auto; } }
+    .row-fold > .ef-sum{ display:inline-flex; align-items:center; gap:7px; max-width:100%; list-style:none; cursor:pointer;
+      font-family:var(--sans); font-size:12.5px; font-weight:600; line-height:1.6; letter-spacing:.02em; color:var(--muted);
+      padding:2px; border-radius:6px; white-space:nowrap; -webkit-user-select:none; user-select:none; }
+    .row-fold > .ef-sum::-webkit-details-marker{ display:none; }
+    .row-fold > .ef-sum::marker{ content:""; }
+    .row-fold .ef-sum-t{ overflow:hidden; text-overflow:ellipsis; border-bottom:1px dashed var(--border2); }
+    .row-fold .ef-sum::after{ content:""; flex:none; width:6px; height:6px; margin-left:1px; border-right:1.5px solid currentColor;
+      border-bottom:1.5px solid currentColor; transform:translateY(-2px) rotate(45deg); transition:transform .2s ease; }
+    .row-fold[open] > .ef-sum::after{ transform:translateY(1px) rotate(-135deg); }
+    .row-fold .ef-sum:hover, .row-fold .ef-sum:focus-visible{ color:var(--text); }
+    .row-fold .ef-sum:focus-visible, .row-fold .ef-close:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+    .row-notes{ margin-top:8px; padding-top:12px; border-top:1px dashed var(--border2); font-size:13.5px; font-weight:400;
+      line-height:1.8; color:var(--muted); }
+    .row-notes p{ margin:0 0 10px; }
+    .row-notes b{ color:var(--text); font-weight:700; }
+    .row-notes .ef-kh{ display:block; font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.02em; color:var(--muted); }
+    .row-fold .ef-close{ display:inline-flex; margin-top:2px; padding:4px 2px; background:none; border:0; border-radius:6px; cursor:pointer;
+      font-family:var(--sans); font-size:12px; font-weight:600; color:var(--muted); }
+    .row-fold .ef-close:hover{ color:var(--text); }
+    .latest-feature .lf-disc{ display:none; }
+    @media (prefers-reduced-motion:reduce){ .row-fold .ef-sum::after{ transition:none; } }
+    @media print{ .row-fold .ef-close, .row-fold .ef-sum::after{ display:none !important; } }
+    @media print{ details.row-fold::details-content{ content-visibility:visible; display:block; } }
   </style>
+  <script id="reader-js">
+  /* 读者视图（2026-11-23）：各エントリー要約の注記（反証条件・利益開示・検証点…）は要約の下の折りたたみに入れ、クリックで開く。文字は一切変えず HTML にそのまま残す（JS なしでは従来どおり全文表示） */
+  (function () {
+    var NOTE = /(^|[。）」])(反証条件|検証点：|利益開示|訂正：|本日記は、いかなるファンド商品)/g;
+    var KINDS = [['利益開示', '利益開示'], ['訂正', '訂正'], ['反証条件', '反証条件'], ['検証点', '検証点']];
+    var ORDER = ['利益開示', '反証条件', '検証点'], DISC = '利益開示', CORR = '訂正';
+    var HINT = { '反証条件': 'どうなれば誤りと認めるか', '検証点': 'どうなれば誤りと認めるか' }, FALLBACK = '注記', CLOSE = '閉じる';
+    function kindOf(lab) { for (var i = 0; i < KINDS.length; i++) if (lab.indexOf(KINDS[i][0]) === 0) return KINDS[i][1]; return ''; }
+    function foldRow(row) {
+      var t = row.querySelector('.erow-title');
+      if (!t || row.querySelector('.row-fold') || t.childNodes.length !== 1 || t.firstChild.nodeType !== 3) return;
+      var txt = t.firstChild.nodeValue, cuts = [], m;
+      NOTE.lastIndex = 0;
+      while ((m = NOTE.exec(txt))) cuts.push({ at: m.index + m[1].length, lab: m[2] });
+      if (!cuts.length) return;
+      var segs = cuts.map(function (c, i) {
+        var s = txt.slice(c.at, i + 1 < cuts.length ? cuts[i + 1].at : txt.length);
+        return { lab: c.lab, rest: s.slice(c.lab.length), kind: kindOf(c.lab) };
+      });
+      var first = segs.filter(function (s) { return s.kind === DISC; }), last = segs.filter(function (s) { return !s.kind; });
+      segs = first.concat(segs.filter(function (s) { return s.kind && s.kind !== DISC; }), last);
+      var kinds = {}; segs.forEach(function (s) { if (s.kind) kinds[s.kind] = 1; });
+      var picked = ORDER.filter(function (k) { return kinds[k]; }).slice(0, 3);
+      if (kinds[CORR]) picked.splice(picked[0] === DISC ? 1 : 0, 0, CORR);
+      t.firstChild.nodeValue = txt.slice(0, cuts[0].at);   /* the summary keeps its own text; the notes move, unchanged, into the fold */
+      var d = document.createElement('details'); d.className = 'row-fold';
+      var sum = document.createElement('summary'); sum.className = 'ef-sum';
+      var st = document.createElement('span'); st.className = 'ef-sum-t'; st.textContent = picked.length ? picked.join(' · ') : FALLBACK;
+      sum.appendChild(st); d.appendChild(sum);
+      var box = document.createElement('div'); box.className = 'row-notes';
+      segs.forEach(function (s) {
+        var p = document.createElement('p'); if (s.kind) p.dataset.kind = s.kind;
+        if (HINT[s.kind]) { var h = document.createElement('span'); h.className = 'ef-kh'; h.textContent = HINT[s.kind]; p.appendChild(h); }
+        var b = document.createElement('b'); b.textContent = s.lab; p.appendChild(b);
+        p.appendChild(document.createTextNode(s.rest)); box.appendChild(p);
+      });
+      d.appendChild(box);
+      var after = row.querySelector('.erow-tag') || t;
+      row.insertBefore(d, after.nextSibling);
+    }
+    function addClose(d) {
+      if (d.querySelector('.ef-close')) return;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'ef-close'; b.textContent = CLOSE;
+      b.addEventListener('click', function () {
+        d.open = false; var s = d.querySelector('summary');
+        if (s.getBoundingClientRect().top < 0) s.scrollIntoView({ block: 'center' });
+        s.focus({ preventScroll: true });
+      });
+      d.appendChild(b);
+    }
+    function cardDisclosure() {   /* the Latest card repeats the entry's disclosure: hidden there (it is in the entry's notes), text kept */
+      var c = document.querySelector('.latest-feature'), d = c && c.querySelector('.lf-desc');
+      if (!d || d.querySelector('.lf-disc') || d.childNodes.length !== 1 || d.firstChild.nodeType !== 3) return;
+      var n = (c.getAttribute('href') || '').match(/entry-(\d+)/), a = n && document.querySelector('.entry-row .erow-link[href$="/' + n[1] + '.html"]');
+      var ps = [].slice.call(document.querySelectorAll('.row-notes p[data-kind="' + DISC + '"]'));   /* the entry's own row first */
+      if (a) ps.unshift.apply(ps, [].slice.call(a.parentNode.querySelectorAll('.row-notes p[data-kind="' + DISC + '"]')));
+      var t = d.firstChild, disc = '', i = -1;
+      for (var k = 0; k < ps.length && i < 0; k++) { disc = ps[k].textContent.slice((HINT[DISC] || '').length).trim(); i = disc ? t.nodeValue.indexOf(disc) : -1; }
+      if (i < 0) return;
+      var mid = t.splitText(i); mid.splitText(disc.length);
+      var s = document.createElement('span'); s.className = 'lf-disc'; d.insertBefore(s, mid); s.appendChild(mid);
+    }
+    document.addEventListener('toggle', function (e) {
+      var d = e.target; if (d && d.classList && d.classList.contains('row-fold') && d.open) addClose(d);
+    }, true);
+    window.addEventListener('beforeprint', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('details.row-fold:not([open])'), function (d) { d.dataset.pr = '1'; d.open = true; });
+    });
+    window.addEventListener('afterprint', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('details.row-fold[data-pr]'), function (d) { d.open = false; delete d.dataset.pr; });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.entry-row'), foldRow);
+      cardDisclosure();
+    });
+  })();
+  </script>
 </head>
 <body>
 <a href="#diary" class="skip-link" style="position:absolute;top:-100px;left:16px;z-index:9999;padding:10px 18px;background:var(--claw);color:#fff;font-size:13px;font-weight:700;border-radius:8px;box-shadow:0 4px 20px rgba(176,128,31,.35);transition:top .2s" onfocus="this.style.top='12px'" onblur="this.style.top='-100px'">メインコンテンツへスキップ</a>
