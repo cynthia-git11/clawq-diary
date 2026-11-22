@@ -99,17 +99,22 @@
     .ee-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-8px 0 20px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
     .ee-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
     .ee-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ee-chip.st-partly{border-left-color:#9a6a00}.ee-chip.st-verified{border-left-color:#1B9E7C}
-    .ee-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .ee-ledger-line a{color:#7A5810;text-decoration:none;border-bottom:1px dashed currentColor}
     .entry-fold{margin:0 0 14px;max-width:42em}
     .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
     .entry-fold>.ef-sum::-webkit-details-marker{display:none}.entry-fold>.ef-sum::marker{content:""}
     .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
     .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
     .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
-    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}.ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}.ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}.ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}.ef-sum:focus-visible{outline:2px solid var(--gold,#9A6B16);outline-offset:2px}
     .entry-fold .ee-ledger{margin:12px 0 0}
     .entry-fold .ee-p{font-size:14px;line-height:1.8;color:var(--muted);margin:12px 0 0}
+    .entry-fold .ef-kh{display:block;margin-bottom:1px;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted)}
+    .ef-close{display:inline-flex;margin:14px 0 0;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--gold,#9A6B16);outline-offset:2px}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
+    @media print{.ef-close,.ef-sum::after{display:none!important}}
+    @media print{details.entry-fold::details-content{content-visibility:visible;display:block}}
     .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
   </style>
@@ -128,5 +133,8 @@
   <nav class="ee-pn" aria-label="Previous and next"><a rel="prev" href="98.html">← ENTRY 98</a><a rel="next" href="100.html" style="text-align:right">ENTRY 100 →</a></nav>
   <footer class="ee-foot">English edition of <a href="../99.html">ENTRY 99</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="Close";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);
+addEventListener("beforeprint",function(){document.querySelectorAll("details.entry-fold:not([open])").forEach(function(d){d.dataset.pr="1";d.open=true;});});addEventListener("afterprint",function(){document.querySelectorAll("details.entry-fold[data-pr]").forEach(function(d){d.open=false;delete d.dataset.pr;});});})();</script>
 </body>
 </html>

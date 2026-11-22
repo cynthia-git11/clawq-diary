@@ -147,7 +147,7 @@
     setTimeout(() => {
       const target = document.querySelector(location.hash);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
         target.style.boxShadow = '0 0 0 2px var(--claw2)';
         setTimeout(() => target.style.boxShadow = '', 2400);
       }

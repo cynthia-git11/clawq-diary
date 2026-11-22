@@ -9,7 +9,8 @@ is wrapped as it is, byte for byte, so crawlers and no-JS readers keep the full 
   fold_hub(index_html)   → (html, n): wrap every <div class="entry-foot"> in index.html; idempotent — an existing wrapper is
                            taken off first and put back with a freshly computed label, so a footnote that gains a segment
                            (a correction, a 补记) gets the right label on the next run
-  label(foot_html)       → the summary text: the segment kinds present, in LABEL_ORDER, at most three (「利益披露 · 来源 · 证伪口」)
+  label(foot_html)       → the summary text: the segment kinds present, in LABEL_ORDER, at most three (「利益披露 · 来源 · 证伪口」),
+                           plus 更正 right after 利益披露 whenever the footnote carries a correction (「利益披露 · 更正 · 来源 · 证伪口」)
   plain(foot_html)       → the footnote as plain text without losing a literal "<6.5%" (entry_dates.strip removes "<…>" spans)
   ordered(items)         → foot_items with the 利益披露 segment first (the reading order inside the fold; the source order is kept
                            in the HTML)
@@ -22,16 +23,29 @@ import re, html
 
 from entry_dates import foot_items
 
-LABEL_ORDER = ["利益披露", "来源", "证伪口", "更正", "对账", "补记", "口径注"]
+LABEL_ORDER = ["利益披露", "来源", "证伪口", "对账", "补记", "口径注"]
 FALSIFIER_HINT = "什么情况下我认错"   # shown after 「证伪口：」 inside the fold
+# a correction is never left out of the label (review 2026-11-23: with a cap of three it fell behind 来源 · 证伪口, and the
+# timeline has no ledger chip, so a corrected entry looked uncorrected): 更正 and its siblings (认错, 订正, 勘误, 纠偏, 后续修正,
+# 修正自己 …) count as 更正 and go right after 利益披露, as a fourth item when needed; 「更正：无」 does not count.
+CORR_KIND = re.compile(r"更正|认错|订正|勘误|纠|修正")
+NO_CORR = re.compile(r"^[\s：:]*无[。；;，,\s]*$")
 
 def plain(foot_html):
     """footnote html → plain text; only real tags are removed (a literal "<6.5%" in the text stays)"""
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"</?[A-Za-z][^>]*>", "", foot_html))).strip()
 
+def label_kind(k, v):
+    """a segment kind as the label names it: 自我披露 and other …披露 → 利益披露; the correction family → 更正 ("" for 「更正：无」)"""
+    if k.endswith("披露"): return "利益披露"
+    if k != "其他" and CORR_KIND.search(k):
+        return "" if NO_CORR.match(v[len(k):] if v.startswith(k) else v) else "更正"
+    return k
+
 def label(foot_html):
-    kinds = {k for k, _ in foot_items(plain(foot_html))}
+    kinds = {label_kind(k, v) for k, v in foot_items(plain(foot_html))}
     picked = [k for k in LABEL_ORDER if k in kinds][:3]
+    if "更正" in kinds: picked.insert(1 if picked[:1] == ["利益披露"] else 0, "更正")
     return " · ".join(picked) if picked else "尾注"
 
 def ordered(items):

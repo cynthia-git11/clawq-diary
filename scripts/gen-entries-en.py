@@ -91,17 +91,22 @@ CSS = """
     .ee-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-8px 0 20px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
     .ee-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
     .ee-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ee-chip.st-partly{border-left-color:#9a6a00}.ee-chip.st-verified{border-left-color:#1B9E7C}
-    .ee-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .ee-ledger-line a{color:#7A5810;text-decoration:none;border-bottom:1px dashed currentColor}
     .entry-fold{margin:0 0 14px;max-width:42em}
     .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
     .entry-fold>.ef-sum::-webkit-details-marker{display:none}.entry-fold>.ef-sum::marker{content:""}
     .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
     .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
     .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
-    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}.ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}.ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}.ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}.ef-sum:focus-visible{outline:2px solid var(--gold,#9A6B16);outline-offset:2px}
     .entry-fold .ee-ledger{margin:12px 0 0}
     .entry-fold .ee-p{font-size:14px;line-height:1.8;color:var(--muted);margin:12px 0 0}
+    .entry-fold .ef-kh{display:block;margin-bottom:1px;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted)}
+    .ef-close{display:inline-flex;margin:14px 0 0;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--gold,#9A6B16);outline-offset:2px}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
+    @media print{.ef-close,.ef-sum::after{display:none!important}}
+    @media print{details.entry-fold::details-content{content-visibility:visible;display:block}}
     .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
 """
@@ -121,21 +126,32 @@ def head(title, desc, url, alt_zh, depth=2, og="article"):
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{up}assets/css/main.css?v=10" />
   <link rel="icon" type="image/png" href="{up}assets/clawq-square.jpg" />"""
+# reader fold behaviour (as on the Chinese pages): a #ledger-status link opens the fold, a Close button, every fold open for printing
+FOLD_JS = """
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="Close";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);
+addEventListener("beforeprint",function(){document.querySelectorAll("details.entry-fold:not([open])").forEach(function(d){d.dataset.pr="1";d.open=true;});});addEventListener("afterprint",function(){document.querySelectorAll("details.entry-fold[data-pr]").forEach(function(d){d.open=false;delete d.dataset.pr;});});})();</script>"""
 NAV = lambda up: (f'<nav class="ee-nav" aria-label="Site"><a class="ee-brand" href="{up}en.html">🦞 The ClawQ Chronicles</a><a href="./">All entries (English)</a>'
                   f'<a href="{up}answers/en/">Q&amp;A</a><a href="{up}topics/">Topics</a><a href="{up}theses-en.html">⚖️ Ledger</a><a href="{up}">中文</a></nav>')
 LABELS = ["Investors:", "Founders:", "Falsifier:", "Ledger update", "Disclosure:", "Correction", "Verification point:", "Cross-reference:"]
 # reader fold (2026-11-23, as on the Chinese pages): note paragraphs go behind one <details> after the body; the text is the row's
-NOTE_KINDS = [("Disclosure:", "Disclosure"), ("Falsifier:", "Falsifier"), ("Falsifier (", "Falsifier"), ("Correction", "Correction"),
+NOTE_KINDS = [("Disclosure:", "Disclosure"), ("Falsifier", "Falsifier"), ("Correction", "Correction"),
               ("Ledger update", "Ledger update"), ("Verification point:", "Verification point"), ("Cross-reference:", "Cross-reference")]
-NOTE_ORDER = ["Disclosure", "Falsifier", "Correction", "Ledger update", "Ledger status", "Verification point", "Cross-reference"]
+NOTE_ORDER = ["Disclosure", "Falsifier", "Ledger update", "Ledger status", "Verification point", "Cross-reference"]   # Correction: always shown, after Disclosure
+FALSIFIER_HINT = "What would prove me wrong"   # = 「证伪口：什么情况下我认错」 on the Chinese pages; a small label line above the paragraph
 DISCLAIMER = "This diary does not constitute"
+def fold_label(kinds):
+    """at most three kinds in NOTE_ORDER, plus Correction right after Disclosure whenever there is one (as entry_fold.label)"""
+    picked = [k for k in NOTE_ORDER if k in kinds][:3]
+    if "Correction" in kinds: picked.insert(1 if picked[:1] == ["Disclosure"] else 0, "Correction")
+    return picked
 def paragraphs(text):
     """English row text → (body <p> list, note <p> list, note kinds). Paragraph breaks at the labels; a falsifier written inline
     ("… product. Falsifier (from 2026-11-13): …") starts its own paragraph, so it can go into the fold with the other notes.
     Notes in reading order: Disclosure first, the fund disclaimer last, the rest as written."""
     t = text
     for lab in LABELS: t = t.replace(" " + lab, "\n" + lab)
-    t = t.replace(". Falsifier (", ".\nFalsifier (")
+    t = re.sub(r"\. (?=Falsifier\b)", ".\n", t)   # inline falsifiers: 「. Falsifier (from …):」「. Falsifier for this entry's new judgment (…):」
     t = t.replace(" This diary does not constitute", "\nThis diary does not constitute")
     body, notes, kinds = [], [], []
     for i, para in enumerate(p.strip() for p in t.split("\n") if p.strip()):
@@ -143,8 +159,9 @@ def paragraphs(text):
         for lab in LABELS:
             if para.startswith(lab): e = f"<b>{esc(lab)}</b>" + esc(para[len(lab):]); break
         else:
-            if para.startswith("Falsifier ("): e = "<b>Falsifier</b>" + esc(para[len("Falsifier"):])
+            if para.startswith("Falsifier"): e = "<b>Falsifier</b>" + esc(para[len("Falsifier"):])
         kind = next((k for pre, k in NOTE_KINDS if para.startswith(pre)), "") if i else ""
+        if kind == "Falsifier": e = f'<span class="ef-kh">{FALSIFIER_HINT}</span>' + e
         if kind and kind not in kinds: kinds.append(kind)
         line = f'  <p class="ee-p">{e}</p>'
         if kind or (i and para.startswith(DISCLAIMER)): notes.append((0 if kind == "Disclosure" else 2 if not kind else 1, line))
@@ -230,7 +247,7 @@ def build_pages(LG):
                  + f'<a href="../../theses-en.html#call-{n}">Ledger</a></p>') if cs else ""
     body_ps, note_ps, note_kinds = paragraphs(body)
     if cs: note_kinds = note_kinds + ["Ledger status"]
-    fold_kinds = [k for k in NOTE_ORDER if k in note_kinds][:3]
+    fold_kinds = fold_label(note_kinds)
     if fold_kinds:
         # Disclosure first; the full ledger status after the notes, before the fund disclaimer (sorted last by paragraphs())
         k = len(note_ps) - (1 if note_ps and DISCLAIMER in note_ps[-1] else 0)
@@ -280,7 +297,7 @@ def build_pages(LG):
 {text_html}
   <nav class="ee-pn" aria-label="Previous and next">{pn}</nav>
   <footer class="ee-foot">English edition of <a href="../{n}.html">ENTRY {n}</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
-</div>
+</div>{FOLD_JS if fold_kinds else ""}
 </body>
 </html>
 """
