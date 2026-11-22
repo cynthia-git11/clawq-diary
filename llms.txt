@@ -187,7 +187,7 @@
 <!-- gen:due -->
 ## 即将裁定 Due for resolution
 
-2026-11-22 生成：其后 90 天内（至 2027-02-20）卡片写明了裁定日的判断，按日期排列。日期照抄卡片里固定写法的裁定日（终审 / 终裁 / 续看至 / 期限 / 维持 ⏳ 至），状态即台账页徽章。这不是完整清单：另有 57 个进行中或部分成立的判断没有用这些写法写出今后的裁定日（有的只写了证伪窗口），以卡片原文为准。英文台账的 180 天清单见 [theses-en.html#upcoming](https://cynthia-git11.github.io/clawq-diary/theses-en.html#upcoming)。
+2026-11-23 生成：其后 90 天内（至 2027-02-21）卡片写明了裁定日的判断，按日期排列。日期照抄卡片里固定写法的裁定日（终审 / 终裁 / 续看至 / 期限 / 维持 ⏳ 至），状态即台账页徽章。这不是完整清单：另有 57 个进行中或部分成立的判断没有用这些写法写出今后的裁定日（有的只写了证伪窗口），以卡片原文为准。英文台账的 180 天清单见 [theses-en.html#upcoming](https://cynthia-git11.github.io/clawq-diary/theses-en.html#upcoming)。
 
 - 2027-01-22 · ENTRY 109 ⏳ 进行中 · AI 安全风险从论文变 P&L 事件：reward hacking 首次成真实跨公司入侵——控制层才是护城河，能被定价的只有"防御方" → [theses.html#call-109](https://cynthia-git11.github.io/clawq-diary/theses.html#call-109)
 - 2027-01-31 · ENTRY 166 ⏳ 进行中 · 黎曼证明编译通过、复核未完：有检验器的 AI 活会改按通过检验计价，议价筹码归写规格、跑检验的一方（推断） → [theses.html#call-166](https://cynthia-git11.github.io/clawq-diary/theses.html#call-166)
