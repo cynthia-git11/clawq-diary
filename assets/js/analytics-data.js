@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-11-21",
+  "generated": "2026-11-22",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 31,
-    "uniques": 22,
+    "pv": 30,
+    "uniques": 21,
     "median_time_sec": 0,
     "completion_rate": 0,
     "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-10-23",
-      "pv": 1,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 241,
-      "completion_rate": 0
-    },
     {
       "date": "2026-10-24",
       "pv": 1,
@@ -122,85 +114,85 @@ window.CLAWQ_ANALYTICS = {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.29,
+      "pct": 0.3,
       "pv": 9
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.29,
-      "pv": 9
+      "pct": 0.267,
+      "pv": 8
     },
     {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.194,
+      "pct": 0.2,
       "pv": 6
     },
     {
       "name": "英国",
       "code": "GB",
       "flag": "🇬🇧",
-      "pct": 0.097,
+      "pct": 0.1,
       "pv": 3
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.032,
+      "pct": 0.033,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.032,
+      "pct": 0.033,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.032,
+      "pct": 0.033,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.032,
+      "pct": 0.033,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.839
+      "pct": 0.833
     },
     {
       "lang": "entries/161",
-      "pct": 0.065
+      "pct": 0.067
     },
     {
       "lang": "entries/34",
-      "pct": 0.032
+      "pct": 0.033
     },
     {
       "lang": "entries/107",
-      "pct": 0.032
+      "pct": 0.033
     },
     {
       "lang": "English (en)",
-      "pct": 0.032
+      "pct": 0.033
     }
   ],
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 22
+      "pv": 21
     },
     {
       "ref": "cynthia-git11.github.io",

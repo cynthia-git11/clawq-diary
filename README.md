@@ -4,7 +4,7 @@
 
 A public, auditable record of AI investment calls by Cynthia Zhang, founder of FutureX Capital. Each entry makes one call, shows its numbers, and states what would prove it wrong; corrections are made in public on the original entry.
 
-**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 161 篇　·　87 个挂账判断
+**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 166 篇　·　92 个挂账判断
 
 ## 怎么读 How to read
 
@@ -16,6 +16,11 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 
 ## 最新 15 篇 Latest entries
 
+- 2026-11-21 · [ENTRY 166 · 黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价](https://cynthia-git11.github.io/clawq-diary/entries/166.html)
+- 2026-11-20 · [ENTRY 165 · 给 AI 后期轮定价，用 Anthropic 的发行价，别用首日价](https://cynthia-git11.github.io/clawq-diary/entries/165.html)
+- 2026-11-18 · [ENTRY 164 · GPT-6.2 缓存价打四折：降价留给不中途换模型的长会话](https://cynthia-git11.github.io/clawq-diary/entries/164.html)
+- 2026-11-16 · [ENTRY 163 · 英伟达复职战：出口管制公司换 CEO，先过许可证和调查这关](https://cynthia-git11.github.io/clawq-diary/entries/163.html)
+- 2026-11-14 · [ENTRY 162 · 权重指纹查不到机房：海外机房的中国租户收入按许可打折](https://cynthia-git11.github.io/clawq-diary/entries/162.html)
 - 2026-11-12 · [ENTRY 161 · 黄仁勋走后，英伟达新增担保和战投会先收紧](https://cynthia-git11.github.io/clawq-diary/entries/161.html)
 - 2026-11-10 · [ENTRY 160 · Anthropic 降价两成：买方按美元封顶，降价换不来收入](https://cynthia-git11.github.io/clawq-diary/entries/160.html)
 - 2026-11-08 · [ENTRY 159 · Cybercab 缺投放不缺产能，Tesla 车队配套要打折](https://cynthia-git11.github.io/clawq-diary/entries/159.html)
@@ -26,13 +31,8 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 - 2026-10-29 · [ENTRY 154 · 实验室白送复杂度证明，Anthropic 把药留给自己](https://cynthia-git11.github.io/clawq-diary/entries/154.html)
 - 2026-10-27 · [ENTRY 153 · Anthropic 招股书：一年内的算力账单约等于年化收入](https://cynthia-git11.github.io/clawq-diary/entries/153.html)
 - 2026-10-25 · [ENTRY 152 · Kimi 名次换不来自营量：OpenRouter 份额剩一成](https://cynthia-git11.github.io/clawq-diary/entries/152.html)
-- 2026-10-23 · [ENTRY 151 · PHP2Shell 之后：AI 找漏洞变便宜，钱挪到补丁送达](https://cynthia-git11.github.io/clawq-diary/entries/151.html)
-- 2026-10-21 · [ENTRY 150 · 禁令加白送，托管 DeepSeek 的高溢价撑不过一年](https://cynthia-git11.github.io/clawq-diary/entries/150.html)
-- 2026-10-19 · [ENTRY 149 · 城市还在买车牌识别，Flock 估值里的跨辖区溢价要重定价](https://cynthia-git11.github.io/clawq-diary/entries/149.html)
-- 2026-10-17 · [ENTRY 148 · Goodfire 称神经元可读：审计的钱归拿得到权重的一方](https://cynthia-git11.github.io/clawq-diary/entries/148.html)
-- 2026-10-15 · [ENTRY 147 · Meta 最强模型只进自家订阅，应用层拿到的是次一档](https://cynthia-git11.github.io/clawq-diary/entries/147.html)
 
-全部 161 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
+全部 166 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
 
 ## 公司与议题 Topics
 
