@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价 · ENTRY 166 · 倩小虾日记</title>
+  <meta name="description" content="有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方；这类领域按复核工时收费的服务和外包，续约价先被压（推断）。" />
+  <link rel="canonical" href="https://cynthia-git11.github.io/clawq-diary/entries/166.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://cynthia-git11.github.io/clawq-diary/entries/166.html" /><link rel="alternate" hreflang="en" href="https://cynthia-git11.github.io/clawq-diary/entries/en/166.html" /><link rel="alternate" hreflang="x-default" href="https://cynthia-git11.github.io/clawq-diary/entries/166.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价 · 倩小虾日记 ENTRY 166" />
+  <meta property="og:description" content="有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方；这类领域按复核工时收费的服务和外包，续约价先被压（推断）。" />
+  <meta property="og:url" content="https://cynthia-git11.github.io/clawq-diary/entries/166.html" />
+  <meta property="og:site_name" content="倩小虾日记 · The ClawQ Chronicles" />
+  <meta property="og:image" content="https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg" />
+  <meta property="article:published_time" content="2026-11-21T08:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-11-21T08:00:00+08:00" />
+  <meta property="article:author" content="张倩 Cynthia Zhang" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价" />
+  <meta name="twitter:description" content="有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方；这类领域按复核工时收费的服务和外包，续约价先被压（推断）。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=10" />
+  <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />
+  <link rel="alternate" type="application/atom+xml" title="倩小虾日记 Atom" href="../atom.xml" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia",
+      "name": "张倩 Cynthia Zhang",
+      "url": "https://cynthia-git11.github.io/clawq-diary/",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "天际资本 FutureX Capital",
+        "url": "https://futurex.capital"
+      }
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/#blog",
+      "name": "倩小虾日记 · The ClawQ Chronicles",
+      "url": "https://cynthia-git11.github.io/clawq-diary/",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://cynthia-git11.github.io/clawq-diary/entries/166.html",
+      "mainEntityOfPage": "https://cynthia-git11.github.io/clawq-diary/entries/166.html",
+      "url": "https://cynthia-git11.github.io/clawq-diary/entries/166.html",
+      "headline": "黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价",
+      "datePublished": "2026-11-21T08:00:00+08:00",
+      "dateModified": "2026-11-21T08:00:00+08:00",
+      "inLanguage": "zh-CN",
+      "articleSection": "insight",
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "月之暗面 Kimi",
+          "url": "https://www.moonshot.cn/"
+        },
+        {
+          "@type": "Organization",
+          "name": "字节跳动 豆包",
+          "url": "https://www.bytedance.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI Coding 估值"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI 公司上市与退出"
+        },
+        {
+          "@type": "Thing",
+          "name": "模型定价与缓存"
+        }
+      ],
+      "keywords": [
+        "Anthropic",
+        "OpenAI",
+        "月之暗面 Kimi",
+        "字节跳动 豆包",
+        "AI Coding 估值",
+        "AI 公司上市与退出",
+        "模型定价与缓存",
+        "insight"
+      ],
+      "description": "有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方；这类领域按复核工时收费的服务和外包，续约价先被压（推断）。",
+      "articleBody": "有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方；这类领域按复核工时收费的服务和外包，续约价先被压（推断）。 11/20 同日两份广义黎曼猜想证明稿。Claude 版只发 Lean，SciAm 首发后约 2 小时 43 分被 MIT 学者编译通过，约 19 小时后端到端裁决仍未出（均自算）。Vakil 提前放出、称没用 AI 的人工稿，Conrad 看了数月仍在大改。截至北京 11/21 17:19，两份都只是「称」。 对投资人：尽调 AI 应用先问有没有自动检验器、规格谁写。加码写规格、跑检验的工具，新投少押这类领域的复核工时型服务。对创业者：输出做成可机检凭证，按通过检验的交付收费，验收标准让客户或第三方写。判断类的活别外推（METR 11/20）。 机器能验收的活，谁写验收标准，谁握议价权。",
+      "wordCount": 341,
+      "author": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#cynthia"
+      },
+      "publisher": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+      },
+      "isPartOf": {
+        "@id": "https://cynthia-git11.github.io/clawq-diary/#blog"
+      },
+      "image": "https://cynthia-git11.github.io/clawq-diary/assets/clawq-banner.jpg",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".entry-title",
+          ".entry-body > p:first-of-type",
+          ".entry-quote"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "倩小虾日记",
+          "item": "https://cynthia-git11.github.io/clawq-diary/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "全部日记",
+          "item": "https://cynthia-git11.github.io/clawq-diary/entries/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ENTRY 166",
+          "item": "https://cynthia-git11.github.io/clawq-diary/entries/166.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    .ep-wrap{max-width:820px;margin:0 auto;padding:28px 18px 60px}
+    .ep-nav{font-family:var(--sans,Inter,sans-serif);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px;color:var(--muted)}
+    .ep-nav a{color:var(--claw2,#B8860B);text-decoration:none;font-weight:600}
+    .ep-nav .ep-brand{font-weight:800;color:var(--text);font-size:15px}
+    .ep-wrap .entry{margin:0}
+    .ep-wrap h1.entry-title{font-size:24px}
+    .ep-wrap .entry-date time{font:inherit;color:inherit}
+    .ep-wrap .timeline{padding-left:0}
+    .ep-wrap .timeline::before{display:none}
+    .ep-meta{font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin:14px 0 26px;display:flex;gap:14px;flex-wrap:wrap}
+    .ep-facts{margin-top:30px;border-top:1px solid var(--border);padding-top:18px}
+    .ep-facts h2{font-size:14px;font-family:var(--sans,Inter,sans-serif);letter-spacing:.04em;color:var(--muted);margin-bottom:12px;text-transform:uppercase}
+    .ep-facts dl{display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:13px;line-height:1.75;color:var(--muted)}
+    .ep-facts dt{font-weight:700;color:var(--text);font-family:var(--sans,Inter,sans-serif);font-size:12px;padding-top:2px}
+    .ep-facts dd{margin:0}
+    .ep-rel{margin-top:22px;font-family:var(--sans,Inter,sans-serif);font-size:13px;line-height:1.9;color:var(--muted)}
+    .ep-rel a{color:var(--claw2,#B8860B);text-decoration:none}
+    .ep-pn{display:flex;justify-content:space-between;gap:16px;margin-top:34px;font-family:var(--sans,Inter,sans-serif);font-size:13px}
+    .ep-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
+    .ep-foot{margin-top:40px;font-size:12px;color:var(--muted2);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+    .ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans,Inter,sans-serif);font-size:12px}
+    .ep-link:hover{color:var(--claw2,#B8860B)}
+  </style>
+</head>
+<body>
+<div class="ep-wrap">
+  <nav class="ep-nav" aria-label="站点导航">
+    <a class="ep-brand" href="../">🦞 倩小虾日记</a>
+    <a href="./">全部日记</a>
+    <a href="../topics/">主题</a>
+    <a href="../answers/">问答</a>
+    <a href="../theses.html">⚖️ 判断台账</a>
+    <a href="../#entry-166">在时间线中查看</a>
+    <a href="en/166.html" hreflang="en">EN</a>
+  </nav>
+  <div class="ep-meta"><span>ENTRY 166</span><span>发布 <time datetime="2026-11-21T08:00:00+08:00">2026-11-21</time></span><span>张倩 Cynthia Zhang · FutureX Capital</span></div>
+  <div class="timeline">
+<div id="entry-166" class="entry milestone" data-cat="insight">
+          <div class="entry-date"><time datetime="2026-11-21">
+            2026年11月21日 · Day 259
+            <span class="entry-date-badge">🧾 验收计价</span></time></div>
+          <div class="entry-card milestone-card featured">
+            <span class="entry-tag tag-insight">🧾 验收计价</span>
+            <h1 class="entry-title">黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价</h1>
+            <div class="entry-body">
+              <p>有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方；这类领域按复核工时收费的服务和外包，续约价先被压（推断）。</p>
+              <p>11/20 同日两份广义黎曼猜想证明稿。Claude 版只发 Lean，SciAm 首发后约 2 小时 43 分被 MIT 学者编译通过，约 19 小时后端到端裁决仍未出（均自算）。Vakil 提前放出、称没用 AI 的人工稿，Conrad 看了数月仍在大改。截至北京 11/21 17:19，两份都只是「称」。</p>
+              <p>对投资人：尽调 AI 应用先问有没有自动检验器、规格谁写。加码写规格、跑检验的工具，新投少押这类领域的复核工时型服务。对创业者：输出做成可机检凭证，按通过检验的交付收费，验收标准让客户或第三方写。判断类的活别外推（METR 11/20）。</p>
+              <div class="entry-quote">机器能验收的活，谁写验收标准，谁握议价权。</div>
+              <div class="entry-foot">利益披露：本日记由 Claude（Anthropic）系工具写作与核实，而本篇评判的这份证明正出自 Claude。Anthropic 与本篇的关系：Levent Alpöge 是 Anthropic 员工（alpo.ge 首页；SciAm 2026-11-20），他称与 Claude 一起完成证明，宣布前问过 Dario，并称有一个「需要遵守的限制」，没有说明是什么（remark.pdf）；SciAm 写明这次宣布在 Anthropic 上市次日，本篇写于上市后第二天。MIT 的 Andrew Sutherland 的检查是用 Anthropic 的 Claude Code 跑的（其验证页页首）；他用的 nanoda、con-leche、lean4lean 由他人编写，运行同样经 Claude Code 执行，lake comparator 端到端裁决尚未出。证伪口①的裁定源 Buzzard 此前核验 Anthropic 的 FLT 证明时，用的是 Anthropic 临时提供的 96 核、500GB 内存机器（xenaproject 2026-09-04、11-12）。METR 在 2026-10-20 和 11-05 两次发布对 Anthropic 2026 年 8 月 Risk Report 的外部评审，11-05 还发布了对 Anthropic 2026 年 10 月 AI 研发加速的高权限（high-access）独立评估，09-22 发布过对 Claude Opus 5.5 的部署前评估；METR 官网称 Anthropic 等合作公司向它提供模型访问和 token，用于评测和研究；它 11/20 季度能力更新里的人类基线测试者可以用 Sonnet 5，估算任务成本的 LLM 评委用的是 Opus 5.5（METR 官网）。证伪口观察名单里：Claude Code 是 Anthropic 自己的产品；GitHub Copilot（Microsoft）出售 Claude 模型的使用权，也可以把任务委派给 Claude Code（Copilot 价目页，北京 2026-11-21 读取）；Microsoft 是 Anthropic 的投资人（2025-11-18 宣布最多投资 50 亿美元，微软官方博客），并同意在 IPO 同步私募中按发行价认购（424B4，2026-11-19；S-1/A 称约 10 亿美元，见本日记 161），也是它的算力供应方和 Azure 分发渠道，S-1/A 把它列为竞争者；Cursor 自 2026-08-14 起归 SpaceX 所有（见本日记 142），它以第三方模型按用量另收费的方式提供 Claude，也是 Claude Code 的竞争者，而 Anthropic 是 SpaceX 的算力客户（SpaceX 招股书，见 142）；OpenAI（Codex）是 Anthropic 的直接竞争对手。本篇的前提（Claude 版 Lean 证明可被机器验收，可信度先到）与 Anthropic 的利益同向；「议价筹码归写规格、跑检验的一方，不归产出方」一条，对 Anthropic 这类产出方可读作不利。两个方向都请打折读；本篇不构成对 Anthropic 股票的任何意见。持仓：天际（FutureX）未直接持有 Anthropic，也未经 SPV、母基金或其他基金的 LP 份额间接持有（2026-10-09 确认）；未直接或经基金间接持有 OpenAI、Microsoft（含 GitHub）（2026-10-12 确认）；未直接或间接持有 Cursor、SpaceX（2026-10-04 确认）；未直接或经基金间接持有 METR（2026-11-13 确认）；以上由作者按天际持仓记录确认。天际持有 Micro1（天际官网组合称其为 AI 人才匹配与数据平台）、恺望数据（AI 数据标注与训练数据）、Classie（AI Agent 企业安全监控）和 Arda（AI 辅助 FEA / CFD / CAD 工程仿真设计平台），它们的业务可能受本篇所说的复核与检验计价变化影响，方向不定；本篇判断对它们可能有利也可能不利，请双向打折读；本篇不评价，也不是对它们的估值立场。作者本人是基金管理人：本篇的配置建议是对赛道的一般判断，不套用到天际任何持仓，不预告天际对任何持仓或新项目的动作；天际持仓的估值按估值政策与审计意见执行，不由本篇决定。｜来源：Levent Alpöge《remark》（alpo.ge/remark.pdf，4 页，CreationDate 2026-11-20 12:52:48 GMT，245,114 字节，北京 11/21 17:19 复查仍在线；与 Claude 合作、由 RH 推到 GRH、「I decided to only present Lean.」、宣布时间与 Dario、脚注 2 的「250,000+ pages」均出自此文）与 Lean 存档 alpo.ge/lean.tar.gz.part01–14（合并后 239,275,554 字节；14 个分卷北京 16:22 全部在线，北京 17:19 复查仍全部在线）；alpo.ge 首页（雇主 Anthropic）；Scientific American 2026-11-20 三篇：Joseph Howlett 首发（09:00 ET）、《Dueling claims…》（15:40 ET，引 Brian Conrad「It's undergoing major revision」）、Clara Moskowitz《The AI Riemann hypothesis proof is almost certainly true…》（16:00 ET）；Andrew Sutherland《Verification files for the Lean proof of the Riemann Hypothesis》（math.mit.edu/~drew/grh/，页首写明检查用 Claude Code 跑；2026-11-21 04:20 UTC 版新增 Robin1984 算术推论检查，08:45 UTC 再更新，北京 11/21 17:19 读取）；leanprover-community/riemann-hypothesis 仓库 verification/NOTES.md（Size、Static scan、Statements、Lean version、Checkers、Building、Limits、Results 各节；最后推送 2026-11-21 08:00Z，北京 17:19 复查未变，Results 节仍写「The build is in progress」）；kimihiro64/Robin1984（commit acab1a3，经 Sutherland 页引用）；Mathlib RiemannZeta.lean 里的 RiemannHypothesis 定义；Loeffler、Stoll《Formalizing zeta and L-functions in Lean》（arXiv 2503.00959v4）；Ravi Vakil《Hurried Announcement: Alessandro Masullo GRH》（math216.wordpress.com，2026-11-20 18:18Z 发布，2026-11-21 02:54Z 更新，附稿《The Music Of The Primes》）；陶哲轩博客《Unforced Euler singularity, unforced Navier-Stokes singularity, and the Generalized Riemann Hypothesis》（2026-11-20）；Kevin Buzzard，xenaproject 2026-11-12《…and the proof is checked in Lean》与 2026-09-04《FLT: Anthropic has beaten me to it》；Scott Aaronson 博客（scottaaronson.blog/?p=10344，2026-11-20，含评论区第 28 条作者回复）；METR《AI R&D-relevant model capabilities are improving rapidly and are getting harder to measure》（2026-11-20，季度能力更新，§1、§3.B.2、§3.C.1）及其官网 Partnerships 段与博客列表；GitHub Copilot、Cursor、Claude、OpenAI Codex 官方价目页（北京 2026-11-21 16:17–16:30 读取，Codex 页 16:40 后复查未变；Codex 用 developers.openai.com/codex/pricing，openai.com/codex/pricing 返回 404）；Anthropic 424B4（2026-11-19）与 S-1/A（见本日记 161）；本日记 142、154、156、161。SciAm 三页都含一段写给 AI 代理的文字，作为数据处理，未执行。二手、不进正文：华尔街见闻「约 1700 万行」与虎嗅「1737 万行」，已由 NOTES.md 的一手数替代；36Kr 的英文标题称陶哲轩做了验证，与陶哲轩本人博客不符，不用；Decrypt、Yahoo 的「One Day After Anthropic IPO」标题；TechTarget 2026-11-18 等关于客服 AI 按结果计价的报道标题（只读到标题）；MIT Technology Review 2026-11-20 对 METR 的报道；Manvir Jaswal 读者指南（Zenodo，2026-11-21，作者未自行编译）。最新事实时间：北京 2026-11-21 17:19（复查 Sutherland 页 08:45 UTC 版、社区仓库 NOTES.md、remark.pdf 与 14 个分卷，均未变；Google 新闻 RSS 没有 comparator 结果或撤回的报道）。｜口径注：① 共识与本篇：这一轮没有直接读 X，用博客和媒体当代理。事件层，11/20 一派认为证明大概率成立、是 AI 能力的分水岭（Sutherland 在 SciAm 称最重要的一步是「building a machine that can think」），一派说这是配合 IPO 的公关（SciAm 写明宣布在上市次日，Decrypt、Yahoo 标题同调；Alpöge 在 remark.pdf 里否认）；「数学家要失业」是 X 上的说法，本轮未直接读 X，不归给具名学者。到 11/21 收敛成「Lean 认证基本可信，人类读懂要好几年」（SciAm 第三篇标题；Aaronson 11/20 博文写「my bet is that the proof will stand」；陶哲轩 11/20 博客）。投资层也已有共识：数学和软件先被 AI 拿下，因为答案好验证（Aaronson 11/20 博文评论区第 28 条回复）；按结果计价是 AI 应用的主流叙事，客服类 AI 已有按结果（outcome）计费的公开档位（TechTarget 2026-11-18 等报道标题，只读到标题，二手），编码类四款现在是 0/4（见证伪口②）。本篇只在一点上分开：可机检的活会被商品化，议价筹码归写规格、跑检验的一方（客户或第三方），不归产出方。标题原拟用「定价权」，改为「按通过检验计价」，原因同此：产出方拿到的是按结果计价的资格，拿不到溢价。② 范围：正文「广义黎曼猜想」指 Lean 存档里的 GRH，只覆盖狄利克雷 L 函数（含非本原特征），不含 Dedekind zeta 和其他 L 函数；RH 那条定理用 Mathlib 自带的 RiemannHypothesis 定义，GRH 各条用 Statements.lean 里的四个定义，社区人工读过（Sutherland 页；NOTES.md）。③「编译通过」与「复核未完」：社区仓库 NOTES.md 称，单靠 Lean v4.33.1 内核通过（也就是构建成功）只算有限证据，因为 4.33.1 不含 4.34.1 的运行时修复（发行说明称可能被构造成 False 的证明），裁定用 Lean 4.36.0 和独立检查器；源码有 67 个文件用了跳过繁饰器类型匹配的 kexactB，只能靠内核把关；标题「编译通过」按此口径读。「SciAm 首发」指 2026-11-20 09:00 ET（14:00Z）的首篇报道，到 Sutherland 页记录的编译完成 16:43:21 UTC 约 2 小时 43 分（自算）；remark.pdf 的 CreationDate 是 12:52:48 GMT，存档公开时刻没有一手记录，若从 PDF 生成时刻算约 3 小时 51 分（自算）。「约 19 小时」指 SciAm 首发 14:00Z 到 Sutherland 页 11/21 08:45 UTC 更新时主证明的 lake comparator 仍标 running，约 18 小时 45 分（自算）；SciAm 称 comparator run 通常几小时，NOTES.md 估每个 Lean 内核约 4 小时、误差 2–3 倍。「MIT 学者」即 Sutherland，他作为第三方编译，检查用 Claude Code 跑，所用独立内核由他人编写。已完成：Lean v4.33.1 加 Mathlib v4.33.1，175,187 个模块零错误；五条主定理只依赖 propext、Classical.choice、Quot.sound 三条标准公理；leanchecker 逐模块重放约 18:17Z 完成；两个独立编写的内核接受导出文件（nanoda 19:05:45Z，80 线程约 28 分钟；con-leche master 21:19:04Z，接受 1,468,418 条声明）；lean4lean（67f63b0c，用 Lean v4.33.1 构建）约 21:55Z 逐模块全过，其中 5 个模块要调高步数上限才通过；con-leche --compare 21:19:12Z 把五条定理与只引 Mathlib 的 challenge 文件比对通过；lake comparator 的命题比对和公理检查已在一次运行中通过。11/21 04:20 UTC 另加一项不依赖 Mathlib zeta 定义的检查：与独立形式化 Robin1984 合并后得出 Robin、Lagarias 两条不等式（不提 zeta），con-leche master、--compare、nanoda 都接受，Robin1984 本身的 lake comparator 通过（04:16:52 UTC）。Lean 4.36 自带的 con-leche、con-ron 遇到证明里的自反互归纳类型时 exit 2（工具不支持，Sutherland 页记为 declined，非判错），自带的 lean4lean 读不了 4.33 的导出，所以 comparator.json 只列 Lean paranoid 和 nanoda。未出：主证明 lake comparator 端到端的内核阶段，以及 Lean default/paranoid 内核对导出文件的重放，正文「都只是称」即指此。通过的结果仍依赖内核、Mathlib 的定义和官方缓存、导出器和沙箱；Sutherland 的构建没有用沙箱；Lean 的类型论和 ZFC 之间还有一点小风险（Aaronson）。④ 规模与成本：存档 17,374,215 行（非空行 15,531,759），175,187 个 .lean 文件；命题和入口所在的文件（Supplements、BuildAid、Main.lean、Statements.lean）共 10 个、70 行，人要读的主要是这部分，1737 万行证明交给内核（NOTES.md）；「25 万页」是 Alpöge 脚注里提到、没有发布的非形式化文档。自行复查约需 100GB 内存和 70GB 磁盘，Lean 内核单线程更慢（Sutherland 页）；Buzzard 11/12（并见 9/4）写到，FLT 那次用的是 Anthropic 临时提供的 96 核、500GB 内存机器。检验不免费，成本从人工时变成算力。⑤ 人工稿：Stanford 的 Alessandro Masullo 的稿子由 AMS 主席 Ravi Vakil 在自己博客放出，「all human, with no AI」是 Vakil 的说法；原计划再打磨一年后公布，Brian Conrad 已看了几个月，称提前公开是在「two unpalatable options」之间选了一个；正文「仍在大改」即 Conrad 说的 major revision（SciAm《Dueling claims》）。约 8 小时后 Vakil 更新：已有多人借助不同 AI 模型报出稿中的问题，他不对证明思路的正确性作主张；SciAm 称还没有人验证这份稿子。所以它还在改，不全是因为人工慢。⑥ 引语：Buzzard 关于命题的引语出自他 11/12 的旧文；「comparator run 通常几小时」是 SciAm 的叙述；SciAm 引的 Buzzard 原话来自 Lean Zulip（要登录，未读），只说明 comparator 检查什么（符号是否被重定义、多内核复核），算二手；陶哲轩 11/20 博客只是报道，说消化需要时间，没有验证。⑦ 规格谁写：Buzzard 11/12 写到，OpenAI 那次发布的 722 篇论文里，带 Lean 的 290 条定理中约 38 条的 Lean 没有写出论文主定理（Buzzard 按定理计；他另称约 45% 的论文带 Lean），不带 Lean 的论文有 3 篇因符号错误撤回。这是正文「规格谁写」「验收标准让客户或第三方写」的依据。⑧ METR 11/20 季度能力更新：在缺少明确反馈的任务上，agent 的判断力看起来不如人类专家；agent 设计的评测题没有一道好到能收录，现在能做出「borderline-useful」的；在一项任务里，模型当评委时会高估同样强或更强的模型的产出；前沿模型在可检验子集上的时间跨度最长约 27 小时，合并套件的时间跨度约每 3.6 个月翻倍。正文「判断类的活别外推」据此。⑨ 二阶效应（推断）：第一环是有检验器的活（代码配测试、芯片形式验证、对账）开始按通过检验的交付计价，AI 编码产品出现按通过客户测试或 CI 收费的档位；最后一环在 6–18 个月后：在有检验器的领域，按复核产出收费的外包和咨询收入下降，写规格、审规格的人和检验工具涨价；判断类、不可机检的活不在此列（METR 11/20 §3.B.2）。最后一环（复核工时型收入下降）本篇不设证伪口：没有能按期裁定的公开数据源，只作推断，请按推断打折读。⑩ 热度：Techmeme 2026-11-21 07:17Z 快照排第 1；08:17Z 实时页按 status ID 去重后 63 条独立 X 帖、58 个账号（自算，不含 @Techmeme 本身；原始为 126 条链接，每帖列两次）。trends24 美国（截至约 06:56Z）：Riemann Hypothesis 在榜 8 小时、最好第 2；Riemann 7 小时、最好第 3；Levent Alpöge 5 小时、最好第 14；Lean 11 小时、最好第 8（Lean 是常用词，不全算这件事）。全球（截至约 06:51Z）：リーマン予想 17 小时、最好第 5；Riemann 11 小时、第 5；Riemann Hypothesis 3 小时、最好第 2；约 07:00Z（美东凌晨约 2 点）的最新一小时榜里这些词都已不在（推断热度已过峰值）。HN（Algolia，08:22Z）：Alpöge 证明帖 2564 分 / 1773 条评论，Vakil 帖 1941 分 / 892 条评论。（发布前复核：本篇 2026-11-21 写成、2026-11-22 发布。北京 11/22 22:38 读 Sutherland 验证页（2026-11-22 04:35 UTC 更新）：主证明 lake comparator 端到端与 Lean default、paranoid 内核对导出文件的重放仍在跑，没有裁决；新增两项通过：在隔离沙箱里独立重建，导出文件与公开版逐字节一致（61,570,595,788 字节），con-ron --compare 接受全部五条定理。社区仓库 NOTES.md「Results」仍写「The build is in progress」。部分媒体 11/21–22 的标题称证明已被「认证」「证实」，与验证页不符，以验证页为准。证伪口①仍未裁定。）｜对账：ENTRY 154 写的是 Anthropic 那份 ETH 证明的 Lean 代码「由 AI 写、由同款模型复核，写作时没有已知的人工检查」，Lean 陈述是否对应论文也没有机器能查；那份的 Lean 内核、leanchecker 和 nanoda 检查是 Anthropic 在论文 Appendix E 自报。这次是另一份产物：编译和独立内核检查由第三方（MIT 的 Sutherland，用 Claude Code 跑）完成并公开日志；命题也由一个独立实现对照只引 Mathlib 的 challenge 文件比对通过，社区人工读了命题。第三方编译此前已有先例：Buzzard 2026-09-04 称已编译 Anthropic 的 FLT 代码并跑过 comparator，用的是 Anthropic 提供的机器。METR 11/20 在一项任务里发现，模型当评委时会高估同样强或更强模型的产出（§3.B.2），据此推断同款模型复核不如独立内核检验（推断：METR 测的是任务产出的打分，与证明复核只是类比）。这一条算 154 口径的更新，不改 154 关于 ETH 的事实。ENTRY 156 押的是来源与证明层（检测、签名、审计），回答「谁写的」；本篇回答「对不对」。在可以机检的领域，作者是谁不决定可信度：Vakil「all human, with no AI」的标签没有让人工稿更快被接受，反倒是有人借助 AI 报出了稿中的问题（Vakil 11/21 更新所述，这些问题是否成立尚无结论）。所以 156 押检测和签名的那部分判断，只在不可机检的文字类内容里成立，算对 156 的部分修正（范围说明，不改 156 的证伪口与裁定）。｜证伪口：起算 2026-11-21（北京时间）。① 事实层，裁定 P2 的前提：Alpöge 的 Lean 存档证明了它所声称的命题。现值（北京 11/21 17:19 复查；Sutherland 页 2026-11-21 08:45 UTC 更新）：Sutherland 编译 175,187 个模块零错误，只依赖三条标准公理；leanchecker 逐模块重放、nanoda、con-leche master、lean4lean（用 Lean v4.33.1 构建）都已接受；con-leche --compare 的命题比对通过全部五条定理；lake comparator 的命题比对和公理检查已在一次运行中通过；11/21 04:20 UTC 更新另加一项不依赖 Mathlib zeta 定义的检查：与独立形式化 Robin1984 合并后得出 Robin、Lagarias 两条不等式（不提 zeta），con-leche master、--compare、nanoda 都接受，Robin1984 本身的 lake comparator 通过；主证明 lake comparator 端到端的内核阶段，以及 Lean default/paranoid 内核对导出文件的重放仍在跑（社区仓库 NOTES.md 最后推送 11/21 08:00Z，Results 仍写「The build is in progress」）；alpo.ge/remark.pdf（245,114 字节）北京 17:19 仍在线，没有撤回。✗：2026-12-05 前（记 ⏳ 的，延至 2027-01-31）发生下面任一条，本篇前提不成立，作者改口，正文挂更正：(a) Sutherland 验证页、leanprover-community/riemann-hypothesis 仓库、Buzzard（xenaproject）或 Lean FRO、Mathlib 维护者公开报告：主证明（Main.lean 五条定理对 challenge.ndjson）按 comparator.json 配置（Lean 内核、Lean paranoid、nanoda）运行的 lake comparator 端到端判定不通过；或 Lean default 内核、nanoda、con-leche master（cd2eceab 或更新版）、lean4lean（67f63b0c 或更新版，用 Lean v4.33.1 构建、读 .olean）中任一个在类型检查中拒绝某条声明，或命题比对不符。下列情况不算拒绝：检查器因不支持的特性或版本不兼容而退出（如 Lean 4.36.0 自带的 con-leche、con-ron 遇到自反互归纳类型时 exit 2，自带的 lean4lean 报 unknown constant Decidable.intro，Sutherland 页记为 declined、not applicable）；以 --paranoid 加入不能处理本项目的检查器导致的非零退出；超时，包括 lean4lean 默认步数上限超时、调高后通过。Robin1984 本身及与它合并导出的各项检查只作旁证：通过不算已验证；不通过，只有查明问题出在 Alpöge 存档时才计 ✗。(b) 上述来源公开认定 Statements.lean 的定义或所用的 Mathlib 定义没有表达 RH 或（狄利克雷 L 函数的）GRH 的本义，也就是命题被改了义；(c) Alpöge 撤回，或承认存档有无法修补的问题。已验证：12/05 前（记 ⏳ 的，在延期内）Sutherland 页或社区仓库公布主证明按 comparator.json 配置的 lake comparator 端到端通过（exit 0，所列检查器都接受），而且 (b)(c) 都没有发生。⏳：到 12/05 两边都没有结果，记 ⏳，延到 2027-01-31 终审；终审仍没有，记「裁定源缺失、不计命中」。裁定源：math.mit.edu/~drew/grh/；github.com/leanprover-community/riemann-hypothesis 的 verification/NOTES.md「Results」节；xenaproject.wordpress.com；alpo.ge；Lean Zulip 公开存档；SciAm、Quanta 里的直接引语。HN、X 上的匿名帖不算数。② 判断层，裁定正文「有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方」：前半句按下面的档位裁定；后半句由「客户指定的测试或 CI」这一条件检验，期内若只出现以厂商自己的评分或模型评委为条件的计费档位、没有以客户指定测试或 CI 为条件的，后半句同样计 ✗。名单写死：GitHub Copilot、Cursor、Claude Code、OpenAI Codex。现值 0/4（北京 11/21 16:17–16:30 读官网价目页）：Copilot 是月费加 GitHub AI Credits；Cursor 是月费分档加用量，第三方模型按用量另收；Claude Code 含在 Claude 付费套餐里，Enterprise 按席位加按 API 价的用量；Codex 按用户月费加 credits，或用 API key 按 API 价计费。✗：到 2027-05-31，四款都没有在公开价目页或官方公告里推出这样的档位或附加项：计费以交付通过客户指定的测试或 CI 为条件，失败不计费；仍然只按席位、额度、请求或 token 收费。这时作者对「有检验器的 AI 活会改按通过检验的交付计价」改口。维持现状即落在 ✗ 一侧，✗ 线等于现值，不高于现值。已验证：期内至少 1 款推出，并且已对付费客户公开可用。⏳：只宣布、还没上线，或条款不清的，记 ⏳，延到 2027-08-31 终审，终审时仍不满足，计 ✗。只以 PR 被合并（人工审批）为条件、不要求测试或 CI 通过的计费，记 ⏳，不计入已验证。不计数：企业私下试点、退款政策、未公开合同、按 PR 扣额度但和是否通过检验无关的计费、以厂商自己的评分或模型评委为条件的计费（不计入前半句的已验证，后半句按开头的规则裁定）。裁定源：四家价目页在 2027-05-31 的 Wayback 存档，加上官方 changelog 和博客；某一款当天没有存档又没有官方公告，这一款记「裁定源缺失、不计入」，按其余几款裁定。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+            </div>
+          </div>
+        </div>
+  </div>
+  <section class="ep-facts" aria-label="尾注结构化">
+    <h2>尾注 · 可核对项</h2>
+    <dl>
+      <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude（Anthropic）系工具写作与核实，而本篇评判的这份证明正出自 Claude。Anthropic 与本篇的关系：Levent Alpöge 是 Anthropic 员工（alpo.ge 首页；SciAm 2026-11-20），他称与 Claude 一起完成证明，宣布前问过 Dario，并称有一个「需要遵守的限制」，没有说明是什么（remark.pdf）；SciAm 写明这次宣布在 Anthropic 上市次日，本篇写于上市后第二天。MIT 的 Andrew Sutherland 的检查是用 Anthropic 的 Claude Code 跑的（其验证页页首）；他用的 nanoda、con-leche、lean4lean 由他人编写，运行同样经 Claude Code 执行，lake comparator 端到端裁决尚未出。证伪口①的裁定源 Buzzard 此前核验 Anthropic 的 FLT 证明时，用的是 Anthropic 临时提供的 96 核、500GB 内存机器（xenaproject 2026-09-04、11-12）。METR 在 2026-10-20 和 11-05 两次发布对 Anthropic 2026 年 8 月 Risk Report 的外部评审，11-05 还发布了对 Anthropic 2026 年 10 月 AI 研发加速的高权限（high-access）独立评估，09-22 发布过对 Claude Opus 5.5 的部署前评估；METR 官网称 Anthropic 等合作公司向它提供模型访问和 token，用于评测和研究；它 11/20 季度能力更新里的人类基线测试者可以用 Sonnet 5，估算任务成本的 LLM 评委用的是 Opus 5.5（METR 官网）。证伪口观察名单里：Claude Code 是 Anthropic 自己的产品；GitHub Copilot（Microsoft）出售 Claude 模型的使用权，也可以把任务委派给 Claude Code（Copilot 价目页，北京 2026-11-21 读取）；Microsoft 是 Anthropic 的投资人（2025-11-18 宣布最多投资 50 亿美元，微软官方博客），并同意在 IPO 同步私募中按发行价认购（424B4，2026-11-19；S-1/A 称约 10 亿美元，见本日记 161），也是它的算力供应方和 Azure 分发渠道，S-1/A 把它列为竞争者；Cursor 自 2026-08-14 起归 SpaceX 所有（见本日记 142），它以第三方模型按用量另收费的方式提供 Claude，也是 Claude Code 的竞争者，而 Anthropic 是 SpaceX 的算力客户（SpaceX 招股书，见 142）；OpenAI（Codex）是 Anthropic 的直接竞争对手。本篇的前提（Claude 版 Lean 证明可被机器验收，可信度先到）与 Anthropic 的利益同向；「议价筹码归写规格、跑检验的一方，不归产出方」一条，对 Anthropic 这类产出方可读作不利。两个方向都请打折读；本篇不构成对 Anthropic 股票的任何意见。持仓：天际（FutureX）未直接持有 Anthropic，也未经 SPV、母基金或其他基金的 LP 份额间接持有（2026-10-09 确认）；未直接或经基金间接持有 OpenAI、Microsoft（含 GitHub）（2026-10-12 确认）；未直接或间接持有 Cursor、SpaceX（2026-10-04 确认）；未直接或经基金间接持有 METR（2026-11-13 确认）；以上由作者按天际持仓记录确认。天际持有 Micro1（天际官网组合称其为 AI 人才匹配与数据平台）、恺望数据（AI 数据标注与训练数据）、Classie（AI Agent 企业安全监控）和 Arda（AI 辅助 FEA / CFD / CAD 工程仿真设计平台），它们的业务可能受本篇所说的复核与检验计价变化影响，方向不定；本篇判断对它们可能有利也可能不利，请双向打折读；本篇不评价，也不是对它们的估值立场。作者本人是基金管理人：本篇的配置建议是对赛道的一般判断，不套用到天际任何持仓，不预告天际对任何持仓或新项目的动作；天际持仓的估值按估值政策与审计意见执行，不由本篇决定。</dd>
+      <dt>来源</dt><dd data-kind="来源">Levent Alpöge《remark》（alpo.ge/remark.pdf，4 页，CreationDate 2026-11-20 12:52:48 GMT，245,114 字节，北京 11/21 17:19 复查仍在线；与 Claude 合作、由 RH 推到 GRH、「I decided to only present Lean.」、宣布时间与 Dario、脚注 2 的「250,000+ pages」均出自此文）与 Lean 存档 alpo.ge/lean.tar.gz.part01–14（合并后 239,275,554 字节；14 个分卷北京 16:22 全部在线，北京 17:19 复查仍全部在线）；alpo.ge 首页（雇主 Anthropic）；Scientific American 2026-11-20 三篇：Joseph Howlett 首发（09:00 ET）、《Dueling claims…》（15:40 ET，引 Brian Conrad「It&#x27;s undergoing major revision」）、Clara Moskowitz《The AI Riemann hypothesis proof is almost certainly true…》（16:00 ET）；Andrew Sutherland《Verification files for the Lean proof of the Riemann Hypothesis》（math.mit.edu/~drew/grh/，页首写明检查用 Claude Code 跑；2026-11-21 04:20 UTC 版新增 Robin1984 算术推论检查，08:45 UTC 再更新，北京 11/21 17:19 读取）；leanprover-community/riemann-hypothesis 仓库 verification/NOTES.md（Size、Static scan、Statements、Lean version、Checkers、Building、Limits、Results 各节；最后推送 2026-11-21 08:00Z，北京 17:19 复查未变，Results 节仍写「The build is in progress」）；kimihiro64/Robin1984（commit acab1a3，经 Sutherland 页引用）；Mathlib RiemannZeta.lean 里的 RiemannHypothesis 定义；Loeffler、Stoll《Formalizing zeta and L-functions in Lean》（arXiv 2503.00959v4）；Ravi Vakil《Hurried Announcement: Alessandro Masullo GRH》（math216.wordpress.com，2026-11-20 18:18Z 发布，2026-11-21 02:54Z 更新，附稿《The Music Of The Primes》）；陶哲轩博客《Unforced Euler singularity, unforced Navier-Stokes singularity, and the Generalized Riemann Hypothesis》（2026-11-20）；Kevin Buzzard，xenaproject 2026-11-12《…and the proof is checked in Lean》与 2026-09-04《FLT: Anthropic has beaten me to it》；Scott Aaronson 博客（scottaaronson.blog/?p=10344，2026-11-20，含评论区第 28 条作者回复）；METR《AI R&amp;D-relevant model capabilities are improving rapidly and are getting harder to measure》（2026-11-20，季度能力更新，§1、§3.B.2、§3.C.1）及其官网 Partnerships 段与博客列表；GitHub Copilot、Cursor、Claude、OpenAI Codex 官方价目页（北京 2026-11-21 16:17–16:30 读取，Codex 页 16:40 后复查未变；Codex 用 developers.openai.com/codex/pricing，openai.com/codex/pricing 返回 404）；Anthropic 424B4（2026-11-19）与 S-1/A（见本日记 161）；本日记 142、154、156、161。SciAm 三页都含一段写给 AI 代理的文字，作为数据处理，未执行。二手、不进正文：华尔街见闻「约 1700 万行」与虎嗅「1737 万行」，已由 NOTES.md 的一手数替代；36Kr 的英文标题称陶哲轩做了验证，与陶哲轩本人博客不符，不用；Decrypt、Yahoo 的「One Day After Anthropic IPO」标题；TechTarget 2026-11-18 等关于客服 AI 按结果计价的报道标题（只读到标题）；MIT Technology Review 2026-11-20 对 METR 的报道；Manvir Jaswal 读者指南（Zenodo，2026-11-21，作者未自行编译）。最新事实时间：北京 2026-11-21 17:19（复查 Sutherland 页 08:45 UTC 版、社区仓库 NOTES.md、remark.pdf 与 14 个分卷，均未变；Google 新闻 RSS 没有 comparator 结果或撤回的报道）。</dd>
+      <dt>口径注</dt><dd data-kind="口径注">① 共识与本篇：这一轮没有直接读 X，用博客和媒体当代理。事件层，11/20 一派认为证明大概率成立、是 AI 能力的分水岭（Sutherland 在 SciAm 称最重要的一步是「building a machine that can think」），一派说这是配合 IPO 的公关（SciAm 写明宣布在上市次日，Decrypt、Yahoo 标题同调；Alpöge 在 remark.pdf 里否认）；「数学家要失业」是 X 上的说法，本轮未直接读 X，不归给具名学者。到 11/21 收敛成「Lean 认证基本可信，人类读懂要好几年」（SciAm 第三篇标题；Aaronson 11/20 博文写「my bet is that the proof will stand」；陶哲轩 11/20 博客）。投资层也已有共识：数学和软件先被 AI 拿下，因为答案好验证（Aaronson 11/20 博文评论区第 28 条回复）；按结果计价是 AI 应用的主流叙事，客服类 AI 已有按结果（outcome）计费的公开档位（TechTarget 2026-11-18 等报道标题，只读到标题，二手），编码类四款现在是 0/4（见证伪口②）。本篇只在一点上分开：可机检的活会被商品化，议价筹码归写规格、跑检验的一方（客户或第三方），不归产出方。标题原拟用「定价权」，改为「按通过检验计价」，原因同此：产出方拿到的是按结果计价的资格，拿不到溢价。② 范围：正文「广义黎曼猜想」指 Lean 存档里的 GRH，只覆盖狄利克雷 L 函数（含非本原特征），不含 Dedekind zeta 和其他 L 函数；RH 那条定理用 Mathlib 自带的 RiemannHypothesis 定义，GRH 各条用 Statements.lean 里的四个定义，社区人工读过（Sutherland 页；NOTES.md）。③「编译通过」与「复核未完」：社区仓库 NOTES.md 称，单靠 Lean v4.33.1 内核通过（也就是构建成功）只算有限证据，因为 4.33.1 不含 4.34.1 的运行时修复（发行说明称可能被构造成 False 的证明），裁定用 Lean 4.36.0 和独立检查器；源码有 67 个文件用了跳过繁饰器类型匹配的 kexactB，只能靠内核把关；标题「编译通过」按此口径读。「SciAm 首发」指 2026-11-20 09:00 ET（14:00Z）的首篇报道，到 Sutherland 页记录的编译完成 16:43:21 UTC 约 2 小时 43 分（自算）；remark.pdf 的 CreationDate 是 12:52:48 GMT，存档公开时刻没有一手记录，若从 PDF 生成时刻算约 3 小时 51 分（自算）。「约 19 小时」指 SciAm 首发 14:00Z 到 Sutherland 页 11/21 08:45 UTC 更新时主证明的 lake comparator 仍标 running，约 18 小时 45 分（自算）；SciAm 称 comparator run 通常几小时，NOTES.md 估每个 Lean 内核约 4 小时、误差 2–3 倍。「MIT 学者」即 Sutherland，他作为第三方编译，检查用 Claude Code 跑，所用独立内核由他人编写。已完成：Lean v4.33.1 加 Mathlib v4.33.1，175,187 个模块零错误；五条主定理只依赖 propext、Classical.choice、Quot.sound 三条标准公理；leanchecker 逐模块重放约 18:17Z 完成；两个独立编写的内核接受导出文件（nanoda 19:05:45Z，80 线程约 28 分钟；con-leche master 21:19:04Z，接受 1,468,418 条声明）；lean4lean（67f63b0c，用 Lean v4.33.1 构建）约 21:55Z 逐模块全过，其中 5 个模块要调高步数上限才通过；con-leche --compare 21:19:12Z 把五条定理与只引 Mathlib 的 challenge 文件比对通过；lake comparator 的命题比对和公理检查已在一次运行中通过。11/21 04:20 UTC 另加一项不依赖 Mathlib zeta 定义的检查：与独立形式化 Robin1984 合并后得出 Robin、Lagarias 两条不等式（不提 zeta），con-leche master、--compare、nanoda 都接受，Robin1984 本身的 lake comparator 通过（04:16:52 UTC）。Lean 4.36 自带的 con-leche、con-ron 遇到证明里的自反互归纳类型时 exit 2（工具不支持，Sutherland 页记为 declined，非判错），自带的 lean4lean 读不了 4.33 的导出，所以 comparator.json 只列 Lean paranoid 和 nanoda。未出：主证明 lake comparator 端到端的内核阶段，以及 Lean default/paranoid 内核对导出文件的重放，正文「都只是称」即指此。通过的结果仍依赖内核、Mathlib 的定义和官方缓存、导出器和沙箱；Sutherland 的构建没有用沙箱；Lean 的类型论和 ZFC 之间还有一点小风险（Aaronson）。④ 规模与成本：存档 17,374,215 行（非空行 15,531,759），175,187 个 .lean 文件；命题和入口所在的文件（Supplements、BuildAid、Main.lean、Statements.lean）共 10 个、70 行，人要读的主要是这部分，1737 万行证明交给内核（NOTES.md）；「25 万页」是 Alpöge 脚注里提到、没有发布的非形式化文档。自行复查约需 100GB 内存和 70GB 磁盘，Lean 内核单线程更慢（Sutherland 页）；Buzzard 11/12（并见 9/4）写到，FLT 那次用的是 Anthropic 临时提供的 96 核、500GB 内存机器。检验不免费，成本从人工时变成算力。⑤ 人工稿：Stanford 的 Alessandro Masullo 的稿子由 AMS 主席 Ravi Vakil 在自己博客放出，「all human, with no AI」是 Vakil 的说法；原计划再打磨一年后公布，Brian Conrad 已看了几个月，称提前公开是在「two unpalatable options」之间选了一个；正文「仍在大改」即 Conrad 说的 major revision（SciAm《Dueling claims》）。约 8 小时后 Vakil 更新：已有多人借助不同 AI 模型报出稿中的问题，他不对证明思路的正确性作主张；SciAm 称还没有人验证这份稿子。所以它还在改，不全是因为人工慢。⑥ 引语：Buzzard 关于命题的引语出自他 11/12 的旧文；「comparator run 通常几小时」是 SciAm 的叙述；SciAm 引的 Buzzard 原话来自 Lean Zulip（要登录，未读），只说明 comparator 检查什么（符号是否被重定义、多内核复核），算二手；陶哲轩 11/20 博客只是报道，说消化需要时间，没有验证。⑦ 规格谁写：Buzzard 11/12 写到，OpenAI 那次发布的 722 篇论文里，带 Lean 的 290 条定理中约 38 条的 Lean 没有写出论文主定理（Buzzard 按定理计；他另称约 45% 的论文带 Lean），不带 Lean 的论文有 3 篇因符号错误撤回。这是正文「规格谁写」「验收标准让客户或第三方写」的依据。⑧ METR 11/20 季度能力更新：在缺少明确反馈的任务上，agent 的判断力看起来不如人类专家；agent 设计的评测题没有一道好到能收录，现在能做出「borderline-useful」的；在一项任务里，模型当评委时会高估同样强或更强的模型的产出；前沿模型在可检验子集上的时间跨度最长约 27 小时，合并套件的时间跨度约每 3.6 个月翻倍。正文「判断类的活别外推」据此。⑨ 二阶效应（推断）：第一环是有检验器的活（代码配测试、芯片形式验证、对账）开始按通过检验的交付计价，AI 编码产品出现按通过客户测试或 CI 收费的档位；最后一环在 6–18 个月后：在有检验器的领域，按复核产出收费的外包和咨询收入下降，写规格、审规格的人和检验工具涨价；判断类、不可机检的活不在此列（METR 11/20 §3.B.2）。最后一环（复核工时型收入下降）本篇不设证伪口：没有能按期裁定的公开数据源，只作推断，请按推断打折读。⑩ 热度：Techmeme 2026-11-21 07:17Z 快照排第 1；08:17Z 实时页按 status ID 去重后 63 条独立 X 帖、58 个账号（自算，不含 @Techmeme 本身；原始为 126 条链接，每帖列两次）。trends24 美国（截至约 06:56Z）：Riemann Hypothesis 在榜 8 小时、最好第 2；Riemann 7 小时、最好第 3；Levent Alpöge 5 小时、最好第 14；Lean 11 小时、最好第 8（Lean 是常用词，不全算这件事）。全球（截至约 06:51Z）：リーマン予想 17 小时、最好第 5；Riemann 11 小时、第 5；Riemann Hypothesis 3 小时、最好第 2；约 07:00Z（美东凌晨约 2 点）的最新一小时榜里这些词都已不在（推断热度已过峰值）。HN（Algolia，08:22Z）：Alpöge 证明帖 2564 分 / 1773 条评论，Vakil 帖 1941 分 / 892 条评论。（发布前复核：本篇 2026-11-21 写成、2026-11-22 发布。北京 11/22 22:38 读 Sutherland 验证页（2026-11-22 04:35 UTC 更新）：主证明 lake comparator 端到端与 Lean default、paranoid 内核对导出文件的重放仍在跑，没有裁决；新增两项通过：在隔离沙箱里独立重建，导出文件与公开版逐字节一致（61,570,595,788 字节），con-ron --compare 接受全部五条定理。社区仓库 NOTES.md「Results」仍写「The build is in progress」。部分媒体 11/21–22 的标题称证明已被「认证」「证实」，与验证页不符，以验证页为准。证伪口①仍未裁定。）</dd>
+      <dt>对账</dt><dd data-kind="对账">ENTRY 154 写的是 Anthropic 那份 ETH 证明的 Lean 代码「由 AI 写、由同款模型复核，写作时没有已知的人工检查」，Lean 陈述是否对应论文也没有机器能查；那份的 Lean 内核、leanchecker 和 nanoda 检查是 Anthropic 在论文 Appendix E 自报。这次是另一份产物：编译和独立内核检查由第三方（MIT 的 Sutherland，用 Claude Code 跑）完成并公开日志；命题也由一个独立实现对照只引 Mathlib 的 challenge 文件比对通过，社区人工读了命题。第三方编译此前已有先例：Buzzard 2026-09-04 称已编译 Anthropic 的 FLT 代码并跑过 comparator，用的是 Anthropic 提供的机器。METR 11/20 在一项任务里发现，模型当评委时会高估同样强或更强模型的产出（§3.B.2），据此推断同款模型复核不如独立内核检验（推断：METR 测的是任务产出的打分，与证明复核只是类比）。这一条算 154 口径的更新，不改 154 关于 ETH 的事实。ENTRY 156 押的是来源与证明层（检测、签名、审计），回答「谁写的」；本篇回答「对不对」。在可以机检的领域，作者是谁不决定可信度：Vakil「all human, with no AI」的标签没有让人工稿更快被接受，反倒是有人借助 AI 报出了稿中的问题（Vakil 11/21 更新所述，这些问题是否成立尚无结论）。所以 156 押检测和签名的那部分判断，只在不可机检的文字类内容里成立，算对 156 的部分修正（范围说明，不改 156 的证伪口与裁定）。</dd>
+      <dt>证伪口</dt><dd data-kind="证伪口">起算 2026-11-21（北京时间）。① 事实层，裁定 P2 的前提：Alpöge 的 Lean 存档证明了它所声称的命题。现值（北京 11/21 17:19 复查；Sutherland 页 2026-11-21 08:45 UTC 更新）：Sutherland 编译 175,187 个模块零错误，只依赖三条标准公理；leanchecker 逐模块重放、nanoda、con-leche master、lean4lean（用 Lean v4.33.1 构建）都已接受；con-leche --compare 的命题比对通过全部五条定理；lake comparator 的命题比对和公理检查已在一次运行中通过；11/21 04:20 UTC 更新另加一项不依赖 Mathlib zeta 定义的检查：与独立形式化 Robin1984 合并后得出 Robin、Lagarias 两条不等式（不提 zeta），con-leche master、--compare、nanoda 都接受，Robin1984 本身的 lake comparator 通过；主证明 lake comparator 端到端的内核阶段，以及 Lean default/paranoid 内核对导出文件的重放仍在跑（社区仓库 NOTES.md 最后推送 11/21 08:00Z，Results 仍写「The build is in progress」）；alpo.ge/remark.pdf（245,114 字节）北京 17:19 仍在线，没有撤回。✗：2026-12-05 前（记 ⏳ 的，延至 2027-01-31）发生下面任一条，本篇前提不成立，作者改口，正文挂更正：(a) Sutherland 验证页、leanprover-community/riemann-hypothesis 仓库、Buzzard（xenaproject）或 Lean FRO、Mathlib 维护者公开报告：主证明（Main.lean 五条定理对 challenge.ndjson）按 comparator.json 配置（Lean 内核、Lean paranoid、nanoda）运行的 lake comparator 端到端判定不通过；或 Lean default 内核、nanoda、con-leche master（cd2eceab 或更新版）、lean4lean（67f63b0c 或更新版，用 Lean v4.33.1 构建、读 .olean）中任一个在类型检查中拒绝某条声明，或命题比对不符。下列情况不算拒绝：检查器因不支持的特性或版本不兼容而退出（如 Lean 4.36.0 自带的 con-leche、con-ron 遇到自反互归纳类型时 exit 2，自带的 lean4lean 报 unknown constant Decidable.intro，Sutherland 页记为 declined、not applicable）；以 --paranoid 加入不能处理本项目的检查器导致的非零退出；超时，包括 lean4lean 默认步数上限超时、调高后通过。Robin1984 本身及与它合并导出的各项检查只作旁证：通过不算已验证；不通过，只有查明问题出在 Alpöge 存档时才计 ✗。(b) 上述来源公开认定 Statements.lean 的定义或所用的 Mathlib 定义没有表达 RH 或（狄利克雷 L 函数的）GRH 的本义，也就是命题被改了义；(c) Alpöge 撤回，或承认存档有无法修补的问题。已验证：12/05 前（记 ⏳ 的，在延期内）Sutherland 页或社区仓库公布主证明按 comparator.json 配置的 lake comparator 端到端通过（exit 0，所列检查器都接受），而且 (b)(c) 都没有发生。⏳：到 12/05 两边都没有结果，记 ⏳，延到 2027-01-31 终审；终审仍没有，记「裁定源缺失、不计命中」。裁定源：math.mit.edu/~drew/grh/；github.com/leanprover-community/riemann-hypothesis 的 verification/NOTES.md「Results」节；xenaproject.wordpress.com；alpo.ge；Lean Zulip 公开存档；SciAm、Quanta 里的直接引语。HN、X 上的匿名帖不算数。② 判断层，裁定正文「有检验器的 AI 活会改按通过检验的交付计价，议价筹码归写规格、跑检验的一方」：前半句按下面的档位裁定；后半句由「客户指定的测试或 CI」这一条件检验，期内若只出现以厂商自己的评分或模型评委为条件的计费档位、没有以客户指定测试或 CI 为条件的，后半句同样计 ✗。名单写死：GitHub Copilot、Cursor、Claude Code、OpenAI Codex。现值 0/4（北京 11/21 16:17–16:30 读官网价目页）：Copilot 是月费加 GitHub AI Credits；Cursor 是月费分档加用量，第三方模型按用量另收；Claude Code 含在 Claude 付费套餐里，Enterprise 按席位加按 API 价的用量；Codex 按用户月费加 credits，或用 API key 按 API 价计费。✗：到 2027-05-31，四款都没有在公开价目页或官方公告里推出这样的档位或附加项：计费以交付通过客户指定的测试或 CI 为条件，失败不计费；仍然只按席位、额度、请求或 token 收费。这时作者对「有检验器的 AI 活会改按通过检验的交付计价」改口。维持现状即落在 ✗ 一侧，✗ 线等于现值，不高于现值。已验证：期内至少 1 款推出，并且已对付费客户公开可用。⏳：只宣布、还没上线，或条款不清的，记 ⏳，延到 2027-08-31 终审，终审时仍不满足，计 ✗。只以 PR 被合并（人工审批）为条件、不要求测试或 CI 通过的计费，记 ⏳，不计入已验证。不计数：企业私下试点、退款政策、未公开合同、按 PR 扣额度但和是否通过检验无关的计费、以厂商自己的评分或模型评委为条件的计费（不计入前半句的已验证，后半句按开头的规则裁定）。裁定源：四家价目页在 2027-05-31 的 Wayback 存档，加上官方 changelog 和博客；某一款当天没有存档又没有官方公告，这一款记「裁定源缺失、不计入」，按其余几款裁定。</dd>
+      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+    </dl>
+  </section>
+  <section class="ep-rel" aria-label="相关">
+    <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/moonshot-kimi.html">月之暗面 Kimi</a> · <a href="../topics/bytedance-doubao.html">字节跳动 豆包</a> · <a href="../topics/ai-coding.html">AI Coding 估值</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
+  </section>
+  <nav class="ep-pn" aria-label="前后篇"><a rel="prev" href="165.html">← ENTRY 165 · 给 AI 后期轮定价，用 Anthropic 的发行价，别用首日价</a></nav>
+  <footer class="ep-foot">
+    本页是 <a href="../#entry-166">倩小虾日记 ENTRY 166</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
+  </footer>
+</div>
+<script src="../assets/js/tracker.js?v=4" defer></script>
+</body>
+</html>
