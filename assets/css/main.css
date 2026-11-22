@@ -785,12 +785,12 @@
     .d2 { animation-delay: .25s; opacity: 0; }
     .d3 { animation-delay: .4s; opacity: 0; }
 
-    /* Lobster emoji pulse */
-    @keyframes lobster-bounce {
+    /* Mascot emoji pulse */
+    @keyframes mascot-bounce {
       0%, 100% { transform: rotate(-5deg) scale(1); }
       50% { transform: rotate(5deg) scale(1.1); }
     }
-    .lobster-anim { display: inline-block; animation: lobster-bounce 3s ease-in-out infinite; }
+    .mascot-anim { display: inline-block; animation: mascot-bounce 3s ease-in-out infinite; }
 
     /* ── 无障碍 · skip-to-content link · 键盘 Tab 第一次按下时浮现 ── */
     .skip-link {
@@ -1075,7 +1075,7 @@
     /* 选中色 */
     ::selection { background: var(--claw); color: #fff; }
 
-    /* ── 🦞 人话版（给非专业读者的一句话翻译，v4.2）── */
+    /* ── 🤖 人话版（给非专业读者的一句话翻译，v4.2）── */
     /* ── 新读者词典（timeline 顶部折叠）── */
     .glossary { margin: 0 0 28px; border: 1px solid var(--border2); border-radius: 14px; background: var(--bg2); overflow: hidden; }
     .glossary summary { cursor: pointer; padding: 14px 18px; font-family: var(--sans); font-size: 13.5px; font-weight: 700; color: var(--claw); user-select: none; }

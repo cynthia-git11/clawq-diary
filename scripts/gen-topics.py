@@ -152,7 +152,7 @@ for t in topics:
 </head>
 <body>
 <div class="tp-wrap">
-  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🤖 倩小虾日记</a><a href="./">全部主题</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
   <h1 class="tp-h1">{esc(t['name'])}{(' · ' + esc(t['name_en'])) if t.get('name_en') else ''}</h1>
   <p class="tp-sub">本日记正文提到 {esc(t['name'])} 的 {len(hits)} 篇（只在利益披露里出现的不计） · 最近 {esc(hits[0]['date_txt'])} · 张倩 Cynthia Zhang · FutureX Capital</p>
 {blurb}
@@ -187,7 +187,7 @@ OUT["topics/index.html"] = f"""<!DOCTYPE html>
 </head>
 <body>
 <div class="tp-wrap">
-  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🦞 倩小虾日记</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
+  <nav class="tp-nav" aria-label="站点导航"><a class="tp-brand" href="../">🤖 倩小虾日记</a><a href="../entries/">全部日记</a><a href="../answers/">问答</a><a href="../theses.html">⚖️ 判断台账</a></nav>
   <h1 class="tp-h1">主题索引</h1>
   <p class="tp-sub">每个公司或议题一页：全部相关日记（新→旧）与挂账判断的当前状态。</p>
   <ul class="tp-list">

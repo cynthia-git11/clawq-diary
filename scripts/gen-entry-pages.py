@@ -383,7 +383,7 @@ def page(e, prev_e, next_e):
 <body>
 <div class="ep-wrap">
   <nav class="ep-nav" aria-label="站点导航">
-    <a class="ep-brand" href="../">🦞 倩小虾日记</a>
+    <a class="ep-brand" href="../">🤖 倩小虾日记</a>
     <a href="./">全部日记</a>
     <a href="../topics/">主题</a>
     <a href="../answers/">问答</a>
@@ -443,7 +443,7 @@ wr("entries/index.html", f"""<!DOCTYPE html>
 </head>
 <body>
 <div class="ep-wrap">
-  <nav class="ep-nav" aria-label="站点导航"><a class="ep-brand" href="../">🦞 倩小虾日记</a><a href="../theses.html">⚖️ 判断台账</a><a href="../en.html">EN</a><a href="../llms.txt">llms.txt</a></nav>
+  <nav class="ep-nav" aria-label="站点导航"><a class="ep-brand" href="../">🤖 倩小虾日记</a><a href="../theses.html">⚖️ 判断台账</a><a href="../en.html">EN</a><a href="../llms.txt">llms.txt</a></nav>
   <h1 class="entry-title" style="font-size:26px">全部日记 · {len(entries)} 篇</h1>
   <p class="entry-body">每篇一个独立 URL，正文与时间线原文一致。判断的验证状态见 <a href="../theses.html">判断台账</a>。</p>
   <ul class="ep-list">

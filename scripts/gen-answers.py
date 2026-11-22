@@ -353,7 +353,7 @@ BYID = {q["id"]: q for q in Q}
 
 def nav(zh, depth, alt_href):
     up = "../" * depth
-    L = (["🦞 倩小虾日记", "问答", "EN", "主题", "全部日记", "⚖️ 判断台账"] if zh else ["🦞 The ClawQ Chronicles", "Q&A", "中文", "Topics", "All entries", "⚖️ Ledger"])
+    L = (["🤖 倩小虾日记", "问答", "EN", "主题", "全部日记", "⚖️ 判断台账"] if zh else ["🤖 The ClawQ Chronicles", "Q&A", "中文", "Topics", "All entries", "⚖️ Ledger"])
     idxh = f"{up}answers/" if zh else f"{up}answers/en/"
     ledger = f"{up}theses.html" if zh or not HAS_EN_LEDGER else f"{up}theses-en.html"
     return (f'<nav class="aw-nav" aria-label="nav"><a class="aw-brand" href="{up}">{L[0]}</a><a href="{idxh}">{L[1]}</a><a href="{alt_href}">{L[2]}</a>'

@@ -39,6 +39,12 @@ Checks:
      <published>; dateModified / <updated> is never earlier than datePublished / <published>; a page's article:published_time /
      modified_time equal its JSON-LD; an entry in the top-5 @graph has the same datePublished there as on its pages (the time of
      day no longer moves when it leaves the top 5); the feed <updated> is not earlier than any entry <updated>.
+ 12. Agent wording (2026-11-23, the author: 「所有用AI智能体替代…，不再出现…」): no served file outside archive/ contains the retired
+     nickname — the Chinese word, its emoji, the English word in any case, the Japanese words, or their percent-encoded forms in
+     share URLs (scripts/agent_terms.py hits(); the tokens are spelled there only as escapes, since scripts/ is served too).
+     Served = what the dead-URL check lists (tracked + untracked-not-ignored), minus archive/ and every path with a part starting
+     with "." or "_" (Jekyll does not publish those), text files only. buildN.py, make_daily.py and i18n_daily.py run
+     agent_terms.fix() on what they insert, so a draft that still uses the old word is rewritten before it reaches a page.
 """
 import re, json, sys, os, glob, html as _html
 from xml.etree import ElementTree as ET
@@ -367,10 +373,33 @@ try:
 except Exception as _e:
     errors.append(f"machine-timestamp check crashed — {_e}")
 
+# 12. Agent wording (2026-11-23): see the header
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import agent_terms as _AT
+    _ret = []
+    for _f in sorted(_site_files()):
+        if _f.startswith("archive/") or any(_p.startswith((".", "_")) for _p in _f.split("/")) or not os.path.isfile(_f):
+            continue
+        try:
+            with open(_f, encoding="utf-8") as _fh:
+                _t = _fh.read()
+        except (UnicodeDecodeError, OSError):
+            continue                                    # images and other binary files
+        _h = _AT.hits(_t)
+        if _h:
+            _ret.append(f"{_f}: {len(_h)}×")
+    for _x in _ret[:10]:
+        errors.append(f"retired agent wording — {_x} (scripts/agent_terms.py fix() rewrites it)")
+    if len(_ret) > 10:
+        errors.append(f"... {len(_ret) - 10} more files with retired agent wording")
+except Exception as _e:
+    errors.append(f"agent-wording check crashed — {_e}")
+
 if errors:
     print("GEO health check FAILED:")
     for e in errors:
         print("  ✗", e)
     sys.exit(1)
 
-print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok · FAQ ledger pointers ok · no dead sitemap / llms.txt URLs · machine timestamps ok")
+print("GEO health check passed ✓  JSON-LD valid · XML well-formed · AI crawlers present · latest entry synced · counts consistent · atom order/dedupe ok · ledger invariants ok · Q&A/topic pages ok · FAQ ledger pointers ok · no dead sitemap / llms.txt URLs · machine timestamps ok · agent wording ok")

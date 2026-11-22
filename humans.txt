@@ -27,7 +27,7 @@ Domain: cynthia-git11.github.io/clawq-diary · diary.futurex.capital (planned)
 Feed: Atom 1.0
 SEO: Schema.org JSON-LD (Person, Blog, Organization, ItemList, BreadcrumbList, BlogPosting)
 Auto-update: GitHub Actions cron (daily 23:00 UTC) + anthropics/claude-code-action
-Mascot: 🦞 (genuinely 张倩 own pet name "倩小虾")
+Mascot: 🤖 (an AI agent; the diary's name "倩小虾" is 张倩's own pet name)
 
 
 /* COMPLIANCE */
@@ -41,5 +41,5 @@ public reset narrative.
 /* THANKS */
 
 To every founder who let me into their journey.
-To the lobsters at every milestone dinner.
+To the AI agents at every milestone dinner.
 To public diaries kept honest by people who came before — 邱国鹭, Howard Marks, Paul Graham, 拾象 founders' notebooks.

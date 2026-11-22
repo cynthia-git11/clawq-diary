@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-  <title>倩小虾日记 · 天际龙虾组织成长史</title>
+  <title>倩小虾日记 · 天际AI智能体组织成长史</title>
   <subtitle>张倩 Cynthia Zhang · 公开思考的 AI 投资笔记 · 不构成对任何基金产品的推介或募集要约</subtitle>
   <link href="https://cynthia-git11.github.io/clawq-diary/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://cynthia-git11.github.io/clawq-diary/" rel="alternate" type="text/html"/>
@@ -1467,7 +1467,7 @@
   </entry>
 
   <entry>
-    <title>OpenClaw v2026.4.29：龙虾开始"认人"，NVIDIA 正式入驻，启动加速 18 倍</title>
+    <title>OpenClaw v2026.4.29：AI智能体开始"认人"，NVIDIA 正式入驻，启动加速 18 倍</title>
     <link rel="alternate" type="text/html" href="https://cynthia-git11.github.io/clawq-diary/entries/36.html" />
     <link rel="related" href="https://cynthia-git11.github.io/clawq-diary/#entry-36" />
     <id>https://cynthia-git11.github.io/clawq-diary/entries/36</id>

@@ -151,13 +151,13 @@
 
 ---
 
-## 🏷️ v3.0-warm-lobster
+## 🏷️ v3.0-warm（暖暗色原版）
 
 **日期**：2026-05-31
 **Commit**：[`6a7c39c`](https://github.com/cynthia-git11/clawq-diary/commit/6a7c39c)
-**回滚**：`git checkout v3.0-warm-lobster -- .`
+**回滚**：`git checkout ed01999 -- .`（该版本的 git 标签指向的提交）
 
-**状态描述**：FutureX 天际蓝品牌改造**之前**的最后一个暖暗色稳定版（"龙虾橘 + 黑底"原版）。如果觉得新蓝色系不喜欢，这是 1 行回滚的安全网。
+**状态描述**：FutureX 天际蓝品牌改造**之前**的最后一个暖暗色稳定版（"暖橘 + 黑底"原版）。如果觉得新蓝色系不喜欢，这是 1 行回滚的安全网。
 
 **改造路线**（v3.0 → v3.5）：
 - v3.1 · 天际蓝色系（deck-faithful 浅色版）
@@ -281,7 +281,7 @@ git checkout v2.0-compliance-clean
 
 1. **Investment Thesis · 投资论文**
    - Lane 1 端到端垂直（给结果不卖工具）
-   - Lane 2 硬件 × 龙虾（物理世界供应链护城河）
+   - Lane 2 硬件 × AI智能体（物理世界供应链护城河）
    - Lane 3 企业 AI 安全合规（B 端入场券）
    - Why Now · 2026 Q3–Q4 窗口论证
 
@@ -344,7 +344,7 @@ git checkout -b restore/v1.1 v1.1-lp-decision-portal
   - Why FutureX vs 同期 AI GP 对比矩阵（6×3）
   - 三级 LP 入场通道（$1–10M / $10–25M / $25M+）
 - 📰 Press Kit（press.html + press-en.html）
-- 🦞 404.html 龙虾主题错误页
+- 🤖 404.html AI智能体主题错误页
 - 🔗 Family of Sites 页脚（8 张卡 × 2 语言）
 - 📱 PWA manifest（可装到桌面）
 - 🖨️ 打印样式（LP 直接导出 PDF 包）

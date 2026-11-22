@@ -1,4 +1,4 @@
-# 倩小虾日记 · 天际龙虾组织成长史
+# 倩小虾日记 · 天际AI智能体组织成长史
 # robots.txt — allow all major search engines and AI crawlers
 
 User-agent: *

@@ -85,7 +85,7 @@ COUNT_RULES = {   # file → [(label, regex, replacement(st))]; every regex also
         ("long bio 目前写到 Day N", r"起(?:每天公开发布一篇投资日记《倩小虾日记》，已连续记录 \d+ 天|公开发布投资日记《倩小虾日记》（不定期更新、有判断才写），目前写到 Day \d+)。",
          lambda s: f"起公开发布投资日记《倩小虾日记》（不定期更新、有判断才写），目前写到 Day {s['day']}。"),
         # cadence wording as on index.html / 404.html (2026-06-14 起不定期更新)
-        ("footer", r"(The ClawQ Chronicles</a> · )Day \d+ · (?:持续更新中|不定期更新、有判断才写)( 🦞)", lambda s: rf"\g<1>Day {s['day']} · 不定期更新、有判断才写\g<2>"),
+        ("footer", r"(The ClawQ Chronicles</a> · )Day \d+ · (?:持续更新中|不定期更新、有判断才写)( 🤖)", lambda s: rf"\g<1>Day {s['day']} · 不定期更新、有判断才写\g<2>"),
     ],
     "press-en.html": [
         ("Last updated", r"Last updated \d{4}\.\d{2}\.\d{2} · Day \d+", lambda s: f"Last updated {s['latest'].replace('-', '.')} · Day {s['day']}"),
@@ -93,7 +93,7 @@ COUNT_RULES = {   # file → [(label, regex, replacement(st))]; every regex also
         ("bio currently Day N, N entries", r"currently <strong>Day \d+, \d+ entries</strong>", lambda s: f"currently <strong>Day {s['day']}, {s['entries']} entries</strong>"),
         ("bio currently on Day N", r"currently on Day \d+\.", lambda s: f"currently on Day {s['day']}."),
         # cadence wording as on en.html's footer ("updated when it matters") — the diary has not been daily since 2026-06-14
-        ("footer", r"(The ClawQ Chronicles</a> · )Day \d+ · (?:auto-updated daily|updated when it matters)( 🦞)", lambda s: rf"\g<1>Day {s['day']} · updated when it matters\g<2>"),
+        ("footer", r"(The ClawQ Chronicles</a> · )Day \d+ · (?:auto-updated daily|updated when it matters)( 🤖)", lambda s: rf"\g<1>Day {s['day']} · updated when it matters\g<2>"),
     ],
 }
 BLOG_DM = ("index.html", "en.html", "ja.html")
