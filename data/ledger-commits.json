@@ -521,5 +521,35 @@
   "date": "2026-11-13",
   "via": "title"
  },
+ "162": {
+  "commit": "bf87d682d2fa95806dd4920ceb0487f0f4ce69ca",
+  "at": "2026-11-22T14:39:22Z",
+  "date": "2026-11-22",
+  "via": "title"
+ },
+ "163": {
+  "commit": "bf87d682d2fa95806dd4920ceb0487f0f4ce69ca",
+  "at": "2026-11-22T14:39:22Z",
+  "date": "2026-11-22",
+  "via": "title"
+ },
+ "164": {
+  "commit": "bf87d682d2fa95806dd4920ceb0487f0f4ce69ca",
+  "at": "2026-11-22T14:39:22Z",
+  "date": "2026-11-22",
+  "via": "title"
+ },
+ "165": {
+  "commit": "bf87d682d2fa95806dd4920ceb0487f0f4ce69ca",
+  "at": "2026-11-22T14:39:22Z",
+  "date": "2026-11-22",
+  "via": "title"
+ },
+ "166": {
+  "commit": "bf87d682d2fa95806dd4920ceb0487f0f4ce69ca",
+  "at": "2026-11-22T14:39:22Z",
+  "date": "2026-11-22",
+  "via": "title"
+ },
  "_doc": "First public commit per ledger call, frozen 2026-11-21: `git log --reverse -S '<entry title>' -- index.html`, each checked by hand (the commit adds the title, its parent lacks it; commit date within two days of the entry date except marked backfills). ids were renumbered on 2026-06-13, so id=\"entry-N\" is not used for old entries. date = Beijing time (UTC+8). New calls are added by scripts/gen-ledger.py on the run after they are committed, only if that commit has id=\"entry-N\" with the same title."
 }
