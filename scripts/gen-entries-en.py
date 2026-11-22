@@ -11,6 +11,9 @@ datePublished = the written date of a backfill (补记), else the entry date, at
 rule gen-entry-pages.py uses; the visible date stays the event date and a backfill also shows its written date);
 dateModified = max(published, the ledger dates the status line shows); a later dated footnote note on the Chinese original
 (read from index.html with scripts/entry_dates.py, the same code gen-entry-pages.py uses) is named as not included here.
+Reader view (2026-11-23, as on the Chinese pages): a one-line ledger chip under the meta line; the note paragraphs (Disclosure first,
+Falsifier, Correction, Ledger update …, the fund disclaimer last) and the full ledger status sit in ONE <details class="entry-fold">
+after the body. The row text is unchanged; only paragraph breaks and the fold are added.
 Deterministic, idempotent. Usage: python3 scripts/gen-entries-en.py [--root DIR] [--no-ledger]"""
 import os, re, sys, json, html, itertools, collections
 sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
@@ -83,6 +86,22 @@ CSS = """
     .ee-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}.ee-ledger p+p{margin-top:6px}
     .ee-ledger b{color:var(--text);font-weight:700}.ee-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ee-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ee-ledger .st-corrected b{color:var(--red,#B5462A)}.ee-ledger .st-partly{border-left-color:#9a6a00}.ee-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): notes (disclosure, falsifier, ledger status) in one fold after the body */
+    .ee-wrap{overflow-wrap:anywhere}.ee-p{max-width:42em}
+    .ee-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-8px 0 20px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ee-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ee-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ee-chip.st-partly{border-left-color:#9a6a00}.ee-chip.st-verified{border-left-color:#1B9E7C}
+    .ee-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:0 0 14px;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}.entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}.ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}.ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ee-ledger{margin:12px 0 0}
+    .entry-fold .ee-p{font-size:14px;line-height:1.8;color:var(--muted);margin:12px 0 0}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
     .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
 """
@@ -105,17 +124,32 @@ def head(title, desc, url, alt_zh, depth=2, og="article"):
 NAV = lambda up: (f'<nav class="ee-nav" aria-label="Site"><a class="ee-brand" href="{up}en.html">🦞 The ClawQ Chronicles</a><a href="./">All entries (English)</a>'
                   f'<a href="{up}answers/en/">Q&amp;A</a><a href="{up}topics/">Topics</a><a href="{up}theses-en.html">⚖️ Ledger</a><a href="{up}">中文</a></nav>')
 LABELS = ["Investors:", "Founders:", "Falsifier:", "Ledger update", "Disclosure:", "Correction", "Verification point:", "Cross-reference:"]
+# reader fold (2026-11-23, as on the Chinese pages): note paragraphs go behind one <details> after the body; the text is the row's
+NOTE_KINDS = [("Disclosure:", "Disclosure"), ("Falsifier:", "Falsifier"), ("Falsifier (", "Falsifier"), ("Correction", "Correction"),
+              ("Ledger update", "Ledger update"), ("Verification point:", "Verification point"), ("Cross-reference:", "Cross-reference")]
+NOTE_ORDER = ["Disclosure", "Falsifier", "Correction", "Ledger update", "Ledger status", "Verification point", "Cross-reference"]
+DISCLAIMER = "This diary does not constitute"
 def paragraphs(text):
+    """English row text → (body <p> list, note <p> list, note kinds). Paragraph breaks at the labels; a falsifier written inline
+    ("… product. Falsifier (from 2026-11-13): …") starts its own paragraph, so it can go into the fold with the other notes.
+    Notes in reading order: Disclosure first, the fund disclaimer last, the rest as written."""
     t = text
     for lab in LABELS: t = t.replace(" " + lab, "\n" + lab)
+    t = t.replace(". Falsifier (", ".\nFalsifier (")
     t = t.replace(" This diary does not constitute", "\nThis diary does not constitute")
-    out = []
-    for para in [p.strip() for p in t.split("\n") if p.strip()]:
+    body, notes, kinds = [], [], []
+    for i, para in enumerate(p.strip() for p in t.split("\n") if p.strip()):
         e = esc(para)
         for lab in LABELS:
             if para.startswith(lab): e = f"<b>{esc(lab)}</b>" + esc(para[len(lab):]); break
-        out.append(f'  <p class="ee-p">{e}</p>')
-    return "\n".join(out)
+        else:
+            if para.startswith("Falsifier ("): e = "<b>Falsifier</b>" + esc(para[len("Falsifier"):])
+        kind = next((k for pre, k in NOTE_KINDS if para.startswith(pre)), "") if i else ""
+        if kind and kind not in kinds: kinds.append(kind)
+        line = f'  <p class="ee-p">{e}</p>'
+        if kind or (i and para.startswith(DISCLAIMER)): notes.append((0 if kind == "Disclosure" else 2 if not kind else 1, line))
+        else: body.append(line)
+    return body, [x for _, x in sorted(notes, key=lambda t: t[0])], kinds
 
 # judgment ledger status (2026-11-21): one line per data/ledger.json card, template text + ledger fields only (no translation;
 # the author's Chinese wording is quoted as Chinese). Pages are built twice: before gen-ledger.py (which reads the English h1s
@@ -188,8 +222,24 @@ def build_pages(LG):
     for x in [pub] + [dd + "T13:00:00+08:00" for dd in lds]: mod = MD.later(mod, x)
     corr = [{"@type": "CorrectionComment", "text": t, **({"datePublished": w} if w else {}), "url": f"{BASE}theses-en.html#{c['call_id']}"}
             for c, (_, t, w) in zip(cs, lines) if c["status"] in ("corrected", "partly")]
-    strip_html = (f'\n  <div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status">'
+    strip_html = (f'<div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status">'
                   + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>") if cs else ""
+    # one light line under the meta line (status chip + Ledger link); the full status strip goes into the reader fold
+    line_html = (f'\n  <p class="ee-ledger-line" role="note" aria-label="Judgment ledger status">'
+                 + "".join(f'<span class="ee-chip st-{c["status"]}">{LE[c["status"]]}</span>' for c in cs)
+                 + f'<a href="../../theses-en.html#call-{n}">Ledger</a></p>') if cs else ""
+    body_ps, note_ps, note_kinds = paragraphs(body)
+    if cs: note_kinds = note_kinds + ["Ledger status"]
+    fold_kinds = [k for k in NOTE_ORDER if k in note_kinds][:3]
+    if fold_kinds:
+        # Disclosure first; the full ledger status after the notes, before the fund disclaimer (sorted last by paragraphs())
+        k = len(note_ps) - (1 if note_ps and DISCLAIMER in note_ps[-1] else 0)
+        inner = note_ps[:k] + ([f"  {strip_html}"] if strip_html else []) + note_ps[k:]
+        fold = ('  <details class="entry-fold">\n    <summary class="ef-sum"><span class="ef-sum-t">' + " · ".join(fold_kinds) + "</span></summary>\n"
+                + "\n".join("  " + x for x in inner) + "\n  </details>")
+        text_html = "\n".join(body_ps) + "\n" + fold
+    else:
+        text_html = "\n".join(body_ps + note_ps)
     # visible date: only a date the status line explains ("updated", not "corrected": it can be a reconciliation that kept ⏳,
     # a later reading or a 补记 write date); a later dated note in the Chinese footnotes is named as not included here
     last = (f' · Written <time datetime="{pub}">{pub[:10]}</time> (retrospective entry)' if z["written"] else "")   # the event date stays the entry's date
@@ -226,8 +276,8 @@ def build_pages(LG):
 <div class="ee-wrap">
   {NAV("../../")}
   <h1 class="ee-h1">{esc(title)}</h1>
-  <div class="ee-meta">ENTRY {n} · <time datetime="{esc(z['date'])}">{esc(d_shown)}</time> · {esc(tag)} · Cynthia Zhang · FutureX Capital · <a href="../{n}.html" hreflang="zh-CN">中文原文 · Chinese original</a>{last}</div>{strip_html}
-{paragraphs(body)}
+  <div class="ee-meta">ENTRY {n} · <time datetime="{esc(z['date'])}">{esc(d_shown)}</time> · {esc(tag)} · Cynthia Zhang · FutureX Capital · <a href="../{n}.html" hreflang="zh-CN">中文原文 · Chinese original</a>{last}</div>{line_html}
+{text_html}
   <nav class="ee-pn" aria-label="Previous and next">{pn}</nav>
   <footer class="ee-foot">English edition of <a href="../{n}.html">ENTRY {n}</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
 </div>

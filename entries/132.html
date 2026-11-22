@@ -109,7 +109,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -169,6 +169,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -191,28 +222,32 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 合规</span>
             <h1 class="entry-title">Anthropic 只降了缓存读价，省多少全看你账单那一行</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-132">判断台账 #call-132</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/19ab86f37cfd23180618a1b1af47fd6bc2207226" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 19ab86f，2026-09-02">git 19ab86f</a>（2026-09-02）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-132">判断台账</a></p>
             <div class="entry-body">
               <p>模型降价得自己算，用 9 月前的老账单。Anthropic 9/1 的 Fable 5.1 输入输出一分没动、只砍缓存读价：省下的比例＝0.75 ×（老账单缓存读 ÷ 总额）。</p>
               <p>缓存读 $1 降到 $0.25，是输入价的 0.025 倍，其余五项未变。同一页官方文档里，脚注写缓存读是输入价的 10%、定价表却是 2.5%，差四倍。官方说典型账单降约 25%、复杂编码与高 agentic 最多约 45%，反推即缓存读原本得占账单 33% 和 60%。</p>
               <p>对创业者：只数 Fable 与 Mythos 两个 SKU 的 cache_read，Opus 与 Sonnet 仍按 0.1 倍，混进去会高估。对投资人：OpenAI 与 Google 0.1 倍、DeepSeek 约 0.032 倍，但倍数低不等于便宜——它只说账单形状，比价要拿绝对价。</p>
               <div class="entry-quote">通稿给的是它的账单降幅，不是你的。</div>
-              <div class="entry-foot">利益披露：本日记由 Claude 系工具写作与核实，本篇正在分析 Anthropic 的定价并建议读者不要照用其通稿数字，对其不利与有利的结论都请打折读；按公开可查信息，FutureX 不在 Anthropic、OpenAI、Google、DeepSeek 已披露的投资方名单中（完整组合仅对合格投资人披露）。｜来源：Anthropic 官方定价页 platform.claude.com/docs/en/about-claude/pricing、Fable 5.1 发布公告、模型页 platform.claude.com/docs/en/models/fable-5-1/overview（文档自相矛盾处即在此页）；OpenAI、Google Gemini、DeepSeek 官方定价页。全部 2026-09-02 抓取。｜口径注：官方模型名为 Claude Fable 5.1 与 Claude Mythos 5.1，无「Claude 5.1」此名；0.025 倍仅适用这两个 SKU，Anthropic 其余机型仍按 0.1 倍，非全线降价；0.025 倍是当前最低但非首创，DeepSeek 早已在 0.032 倍量级；同日 Anthropic 另取消了 Sonnet 5 原定 9/1 从 $2/$10 涨到 $3/$15 的计划，故「是否在降价」这一印象比本篇呈现的更复杂；官方对 25%/45% 披露了测算人群与时间窗（Claude Enterprise、Claude Code 与 API 真实负载、2026 年 8 月连续四周、default effort），但未披露缓存命中率与缓存读占比，33%/60% 系我按官方两数反推、非官方口径；官方原文为 around 25% 与 up to around 45%，属区间表述非承诺值；回本门槛两代相同（5 分钟档 1 次读、1 小时档 2 次读），本次降价不改变是否该用缓存的决策；Google 的 0.1 倍系显式缓存口径，其隐式缓存折扣官方未披露，且另按小时收缓存存储费；以上均为标准档口径，Batch 档缓存读价未核实。｜证伪口：自 2026-09-02 起 12 个月内，若 Google 取消按小时缓存存储费、且四家缓存写入倍数全部落入 1.0-1.5 倍区间，则「报价表不可比」不成立，本条主判断记 ✗、判断总账同步降为观察中；裁定源为四家官方定价页，届时同日抓取并公开读数。｜2026-09-25 对账：Anthropic 9/22 发 Claude Opus 5.5，定价页：输入 $4、输出 $20、缓存读 $0.20（0.05 倍），Opus 5 维持 $5/$25/缓存读 $0.50，Fable 5.1 与 Mythos 5.1 维持 $10/$50/缓存读 $0.25（0.025 倍），其余机型 0.1 倍——缓存读倍数现在分三档，本篇「省下的比例 = 0.75 × 缓存读占比」的公式只对 Fable/Mythos 档成立，Opus 5.5 档系数为 0.5；发布稿称典型负载较 Opus 5 省 40%（表价 -20% 叠加每任务 token 减少），系公司口径。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">利益披露 · 来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude 系工具写作与核实，本篇正在分析 Anthropic 的定价并建议读者不要照用其通稿数字，对其不利与有利的结论都请打折读；按公开可查信息，FutureX 不在 Anthropic、OpenAI、Google、DeepSeek 已披露的投资方名单中（完整组合仅对合格投资人披露）。</dd>
+                    <dt>来源</dt><dd data-kind="来源">Anthropic 官方定价页 platform.claude.com/docs/en/about-claude/pricing、Fable 5.1 发布公告、模型页 platform.claude.com/docs/en/models/fable-5-1/overview（文档自相矛盾处即在此页）；OpenAI、Google Gemini、DeepSeek 官方定价页。全部 2026-09-02 抓取。</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">官方模型名为 Claude Fable 5.1 与 Claude Mythos 5.1，无「Claude 5.1」此名；0.025 倍仅适用这两个 SKU，Anthropic 其余机型仍按 0.1 倍，非全线降价；0.025 倍是当前最低但非首创，DeepSeek 早已在 0.032 倍量级；同日 Anthropic 另取消了 Sonnet 5 原定 9/1 从 $2/$10 涨到 $3/$15 的计划，故「是否在降价」这一印象比本篇呈现的更复杂；官方对 25%/45% 披露了测算人群与时间窗（Claude Enterprise、Claude Code 与 API 真实负载、2026 年 8 月连续四周、default effort），但未披露缓存命中率与缓存读占比，33%/60% 系我按官方两数反推、非官方口径；官方原文为 around 25% 与 up to around 45%，属区间表述非承诺值；回本门槛两代相同（5 分钟档 1 次读、1 小时档 2 次读），本次降价不改变是否该用缓存的决策；Google 的 0.1 倍系显式缓存口径，其隐式缓存折扣官方未披露，且另按小时收缓存存储费；以上均为标准档口径，Batch 档缓存读价未核实。</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">自 2026-09-02 起 12 个月内，若 Google 取消按小时缓存存储费、且四家缓存写入倍数全部落入 1.0-1.5 倍区间，则「报价表不可比」不成立，本条主判断记 ✗、判断总账同步降为观察中；裁定源为四家官方定价页，届时同日抓取并公开读数。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-09-25 对账：Anthropic 9/22 发 Claude Opus 5.5，定价页：输入 $4、输出 $20、缓存读 $0.20（0.05 倍），Opus 5 维持 $5/$25/缓存读 $0.50，Fable 5.1 与 Mythos 5.1 维持 $10/$50/缓存读 $0.25（0.025 倍），其余机型 0.1 倍——缓存读倍数现在分三档，本篇「省下的比例 = 0.75 × 缓存读占比」的公式只对 Fable/Mythos 档成立，Opus 5.5 档系数为 0.5；发布稿称典型负载较 Opus 5 省 40%（表价 -20% 叠加每任务 token 减少），系公司口径。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-132">判断台账 #call-132</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/19ab86f37cfd23180618a1b1af47fd6bc2207226" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 19ab86f，2026-09-02">git 19ab86f</a>（2026-09-02）</p></div>
+                <div class="entry-foot">利益披露：本日记由 Claude 系工具写作与核实，本篇正在分析 Anthropic 的定价并建议读者不要照用其通稿数字，对其不利与有利的结论都请打折读；按公开可查信息，FutureX 不在 Anthropic、OpenAI、Google、DeepSeek 已披露的投资方名单中（完整组合仅对合格投资人披露）。｜来源：Anthropic 官方定价页 platform.claude.com/docs/en/about-claude/pricing、Fable 5.1 发布公告、模型页 platform.claude.com/docs/en/models/fable-5-1/overview（文档自相矛盾处即在此页）；OpenAI、Google Gemini、DeepSeek 官方定价页。全部 2026-09-02 抓取。｜口径注：官方模型名为 Claude Fable 5.1 与 Claude Mythos 5.1，无「Claude 5.1」此名；0.025 倍仅适用这两个 SKU，Anthropic 其余机型仍按 0.1 倍，非全线降价；0.025 倍是当前最低但非首创，DeepSeek 早已在 0.032 倍量级；同日 Anthropic 另取消了 Sonnet 5 原定 9/1 从 $2/$10 涨到 $3/$15 的计划，故「是否在降价」这一印象比本篇呈现的更复杂；官方对 25%/45% 披露了测算人群与时间窗（Claude Enterprise、Claude Code 与 API 真实负载、2026 年 8 月连续四周、default effort），但未披露缓存命中率与缓存读占比，33%/60% 系我按官方两数反推、非官方口径；官方原文为 around 25% 与 up to around 45%，属区间表述非承诺值；回本门槛两代相同（5 分钟档 1 次读、1 小时档 2 次读），本次降价不改变是否该用缓存的决策；Google 的 0.1 倍系显式缓存口径，其隐式缓存折扣官方未披露，且另按小时收缓存存储费；以上均为标准档口径，Batch 档缓存读价未核实。｜证伪口：自 2026-09-02 起 12 个月内，若 Google 取消按小时缓存存储费、且四家缓存写入倍数全部落入 1.0-1.5 倍区间，则「报价表不可比」不成立，本条主判断记 ✗、判断总账同步降为观察中；裁定源为四家官方定价页，届时同日抓取并公开读数。｜2026-09-25 对账：Anthropic 9/22 发 Claude Opus 5.5，定价页：输入 $4、输出 $20、缓存读 $0.20（0.05 倍），Opus 5 维持 $5/$25/缓存读 $0.50，Fable 5.1 与 Mythos 5.1 维持 $10/$50/缓存读 $0.25（0.025 倍），其余机型 0.1 倍——缓存读倍数现在分三档，本篇「省下的比例 = 0.75 × 缓存读占比」的公式只对 Fable/Mythos 档成立，Opus 5.5 档系数为 0.5；发布稿称典型负载较 Opus 5 省 40%（表价 -20% 叠加每任务 token 减少），系公司口径。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude 系工具写作与核实，本篇正在分析 Anthropic 的定价并建议读者不要照用其通稿数字，对其不利与有利的结论都请打折读；按公开可查信息，FutureX 不在 Anthropic、OpenAI、Google、DeepSeek 已披露的投资方名单中（完整组合仅对合格投资人披露）。</dd>
-      <dt>来源</dt><dd data-kind="来源">Anthropic 官方定价页 platform.claude.com/docs/en/about-claude/pricing、Fable 5.1 发布公告、模型页 platform.claude.com/docs/en/models/fable-5-1/overview（文档自相矛盾处即在此页）；OpenAI、Google Gemini、DeepSeek 官方定价页。全部 2026-09-02 抓取。</dd>
-      <dt>口径注</dt><dd data-kind="口径注">官方模型名为 Claude Fable 5.1 与 Claude Mythos 5.1，无「Claude 5.1」此名；0.025 倍仅适用这两个 SKU，Anthropic 其余机型仍按 0.1 倍，非全线降价；0.025 倍是当前最低但非首创，DeepSeek 早已在 0.032 倍量级；同日 Anthropic 另取消了 Sonnet 5 原定 9/1 从 $2/$10 涨到 $3/$15 的计划，故「是否在降价」这一印象比本篇呈现的更复杂；官方对 25%/45% 披露了测算人群与时间窗（Claude Enterprise、Claude Code 与 API 真实负载、2026 年 8 月连续四周、default effort），但未披露缓存命中率与缓存读占比，33%/60% 系我按官方两数反推、非官方口径；官方原文为 around 25% 与 up to around 45%，属区间表述非承诺值；回本门槛两代相同（5 分钟档 1 次读、1 小时档 2 次读），本次降价不改变是否该用缓存的决策；Google 的 0.1 倍系显式缓存口径，其隐式缓存折扣官方未披露，且另按小时收缓存存储费；以上均为标准档口径，Batch 档缓存读价未核实。</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">自 2026-09-02 起 12 个月内，若 Google 取消按小时缓存存储费、且四家缓存写入倍数全部落入 1.0-1.5 倍区间，则「报价表不可比」不成立，本条主判断记 ✗、判断总账同步降为观察中；裁定源为四家官方定价页，届时同日抓取并公开读数。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-09-25 对账：Anthropic 9/22 发 Claude Opus 5.5，定价页：输入 $4、输出 $20、缓存读 $0.20（0.05 倍），Opus 5 维持 $5/$25/缓存读 $0.50，Fable 5.1 与 Mythos 5.1 维持 $10/$50/缓存读 $0.25（0.025 倍），其余机型 0.1 倍——缓存读倍数现在分三档，本篇「省下的比例 = 0.75 × 缓存读占比」的公式只对 Fable/Mythos 档成立，Opus 5.5 档系数为 0.5；发布稿称典型负载较 Opus 5 省 40%（表价 -20% 叠加每任务 token 减少），系公司口径。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/deepseek.html">DeepSeek</a> · <a href="../topics/ai-coding.html">AI Coding 估值</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/claude-cache-read-price-cut-savings.html">Claude 缓存读降价对我账单省多少？</a></p>
@@ -222,6 +257,8 @@
     本页是 <a href="../#entry-132">倩小虾日记 ENTRY 132</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

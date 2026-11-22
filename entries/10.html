@@ -150,6 +150,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -177,23 +208,26 @@
               <p><strong>55 亿投出去，向 LP 返了 37 亿</strong>，退出有效率排行业前 5%。字节的核心是 AI 算法——2017 年这么说的人不多，我们说了，所以投得进去。蔚来、PingCAP 同一套打法。</p>
               <p>对投资人：立项会先把「拐点为什么是现在」写成一句能被证伪的话，写不出就别投；看人固定打四项分，坚韧、敢创新、快速学习、商业洞察力，四项不齐不投。对创业者：融资别讲赛道多大，讲你踩中的那个拐点，和复制你要先跨过哪道技术门槛。</p>
               <div class="entry-quote">认人是唯一不能外包给报告的那一步。</div>
-              <div class="entry-foot">来源：对话 FutureX Capital 天际资本张倩 · 搜狐财经；原文引语「跟着产业发展走，捕获袭来的每一次科技浪潮。迎难而上，一往无前。」｜口径注：55 亿为累计投资额、37 亿为累计向 LP 返还，原文未说明两者是否为同期口径，也未给出 DPI 等标准定义；「退出有效率行业前 5%」为公司自述排名，未经第三方机构核验｜诚信标注：业绩数字单源、来自本人受访自述，外部无法独立复核｜证伪口：起算日为本条发布日，若 24 个月内基金年度 LP 报告显示累计分配（现为 37 亿 / 55 亿）不再上行，本条方法论的业绩支撑不成立，裁定源为天际资本基金年度 LP 报告，后果是本条方法论需重新公开检讨｜利益披露：本人为天际资本（FutureX Capital）创始人；文中字节跳动、蔚来、PingCAP 均为本基金已投项目，本条构成对自身业绩的陈述｜2026-10-11 更新：作者 2026-10-11 确认，天际已全部退出蔚来（退出日期未披露）；上文「已投项目」指历史投资，蔚来不是天际现有持仓，天际官网组合仍列出蔚来并标「已退出」。原文保留。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">利益披露 · 来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>利益披露</dt><dd data-kind="利益披露">本人为天际资本（FutureX Capital）创始人；文中字节跳动、蔚来、PingCAP 均为本基金已投项目，本条构成对自身业绩的陈述</dd>
+                    <dt>来源</dt><dd data-kind="来源">对话 FutureX Capital 天际资本张倩 · 搜狐财经；原文引语「跟着产业发展走，捕获袭来的每一次科技浪潮。迎难而上，一往无前。」</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">55 亿为累计投资额、37 亿为累计向 LP 返还，原文未说明两者是否为同期口径，也未给出 DPI 等标准定义；「退出有效率行业前 5%」为公司自述排名，未经第三方机构核验</dd>
+                    <dt>诚信标注</dt><dd data-kind="诚信标注">业绩数字单源、来自本人受访自述，外部无法独立复核</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">起算日为本条发布日，若 24 个月内基金年度 LP 报告显示累计分配（现为 37 亿 / 55 亿）不再上行，本条方法论的业绩支撑不成立，裁定源为天际资本基金年度 LP 报告，后果是本条方法论需重新公开检讨</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-10-11 更新：作者 2026-10-11 确认，天际已全部退出蔚来（退出日期未披露）；上文「已投项目」指历史投资，蔚来不是天际现有持仓，天际官网组合仍列出蔚来并标「已退出」。原文保留。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="entry-foot">来源：对话 FutureX Capital 天际资本张倩 · 搜狐财经；原文引语「跟着产业发展走，捕获袭来的每一次科技浪潮。迎难而上，一往无前。」｜口径注：55 亿为累计投资额、37 亿为累计向 LP 返还，原文未说明两者是否为同期口径，也未给出 DPI 等标准定义；「退出有效率行业前 5%」为公司自述排名，未经第三方机构核验｜诚信标注：业绩数字单源、来自本人受访自述，外部无法独立复核｜证伪口：起算日为本条发布日，若 24 个月内基金年度 LP 报告显示累计分配（现为 37 亿 / 55 亿）不再上行，本条方法论的业绩支撑不成立，裁定源为天际资本基金年度 LP 报告，后果是本条方法论需重新公开检讨｜利益披露：本人为天际资本（FutureX Capital）创始人；文中字节跳动、蔚来、PingCAP 均为本基金已投项目，本条构成对自身业绩的陈述｜2026-10-11 更新：作者 2026-10-11 确认，天际已全部退出蔚来（退出日期未披露）；上文「已投项目」指历史投资，蔚来不是天际现有持仓，天际官网组合仍列出蔚来并标「已退出」。原文保留。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">对话 FutureX Capital 天际资本张倩 · 搜狐财经；原文引语「跟着产业发展走，捕获袭来的每一次科技浪潮。迎难而上，一往无前。」</dd>
-      <dt>口径注</dt><dd data-kind="口径注">55 亿为累计投资额、37 亿为累计向 LP 返还，原文未说明两者是否为同期口径，也未给出 DPI 等标准定义；「退出有效率行业前 5%」为公司自述排名，未经第三方机构核验</dd>
-      <dt>诚信标注</dt><dd data-kind="诚信标注">业绩数字单源、来自本人受访自述，外部无法独立复核</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">起算日为本条发布日，若 24 个月内基金年度 LP 报告显示累计分配（现为 37 亿 / 55 亿）不再上行，本条方法论的业绩支撑不成立，裁定源为天际资本基金年度 LP 报告，后果是本条方法论需重新公开检讨</dd>
-      <dt>利益披露</dt><dd data-kind="利益披露">本人为天际资本（FutureX Capital）创始人；文中字节跳动、蔚来、PingCAP 均为本基金已投项目，本条构成对自身业绩的陈述</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-10-11 更新：作者 2026-10-11 确认，天际已全部退出蔚来（退出日期未披露）；上文「已投项目」指历史投资，蔚来不是天际现有持仓，天际官网组合仍列出蔚来并标「已退出」。原文保留。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/bytedance-doubao.html">字节跳动 豆包</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a></p>
   </section>
@@ -202,6 +236,8 @@
     本页是 <a href="../#entry-10">倩小虾日记 ENTRY 10</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

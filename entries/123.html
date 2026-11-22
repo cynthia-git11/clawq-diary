@@ -116,7 +116,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -176,6 +176,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -198,29 +229,33 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🔌 管道不是护城河</span>
             <h1 class="entry-title">DeepSeek 静默把 V4-Pro 转正了——而我两天前那句"迁移成本低是最贵的幻觉"，今天反而更成立</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-123">判断台账 #call-123</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/bd57182a5d946cec8aae41c1fafc6f1115ff88f8" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git bd57182，2026-08-13">git bd57182</a>（2026-08-13）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-123">判断台账</a></p>
             <div class="entry-body">
               <p>换底座的成本不在管道，在 harness。谁家产品的护城河是「支持多模型」，<strong>谁的护城河就是零</strong>。</p>
               <p>DeepSeek 静默把 V4-Pro 转正，协议兼容让 Claude Code 改个 base_url 就能切底座。但实测同一个 Opus 4.6 只换 harness，差 4.5 个点——模型是针对特定工具面后训练的，换壳就漏能力。</p>
               <p>对创业者：把后训练和你自己的工具面绑死，那才是抄不走的部分；只做路由和兼容层的，现在找第二条腿。对投资人：尽调只问一句——换完底座，你用什么衡量掉了多少。答不上来的团队，「随时可切供应商」这条风险缓释按零计入估值。</p>
               <div class="entry-quote">协议兼容把管道成本压到近零，而管道从来不是护城河。</div>
-              <div class="entry-foot">来源：DeepSeek API 文档与价格页、DeepSeek 更新日志（2026-04-24、2026-07-31）、DeepSeek Claude Code/Codex 集成文档、Hugging Face deepseek-ai 仓库、Global Times（8/13）、Simon Willison（8/12）、Unite.AI（8/12）、OpenRouter 模型页、Reddit/Hacker News 转贴、Anthropic 价格页与 Claude Code 文档、新浪/证券时报/华尔街见闻（6/30）、aitoollab（8/6）、DeepSeek 调价公告（2025-02-25、2026-06-29）、Nicolas Bustamante《Model-Harness Fit》（5/3）｜ 口径注：V4-Pro 转正公告小到要靠社区考古；0813 未开权重 ｜ 修正自己：ENTRY 121「迁移成本低是最贵的幻觉」收紧为——接口通了，还得把模型调教成你工作流里那个模型；Lindy 那 6-9 个月在协议兼容前，只能当上限 ｜ 更正：ENTRY 118「Sonnet 5 预告涨回 $3/$15」已被 Anthropic 取消，$2/$10 是常态价，台账已注；标单源不等于免责 ｜ 证伪口：12 个月内三家以上美国公司公开把生产级 coding agent 从 Anthropic/OpenAI 迁到中国模型、耗时短于两个月，「迁移成本在 harness 不在管道」降级；harness/agent 框架厂商公布跨模型适配后基准回归仍超 3 个百分点，升级为已验证 ｜ ENTRY 118 价格口半程：顶层未降，Sol 未核实、暂不结论。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 更正</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">DeepSeek API 文档与价格页、DeepSeek 更新日志（2026-04-24、2026-07-31）、DeepSeek Claude Code/Codex 集成文档、Hugging Face deepseek-ai 仓库、Global Times（8/13）、Simon Willison（8/12）、Unite.AI（8/12）、OpenRouter 模型页、Reddit/Hacker News 转贴、Anthropic 价格页与 Claude Code 文档、新浪/证券时报/华尔街见闻（6/30）、aitoollab（8/6）、DeepSeek 调价公告（2025-02-25、2026-06-29）、Nicolas Bustamante《Model-Harness Fit》（5/3）</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">V4-Pro 转正公告小到要靠社区考古；0813 未开权重</dd>
+                    <dt>修正自己</dt><dd data-kind="修正自己">ENTRY 121「迁移成本低是最贵的幻觉」收紧为——接口通了，还得把模型调教成你工作流里那个模型；Lindy 那 6-9 个月在协议兼容前，只能当上限</dd>
+                    <dt>更正</dt><dd data-kind="更正">ENTRY 118「Sonnet 5 预告涨回 $3/$15」已被 Anthropic 取消，$2/$10 是常态价，台账已注；标单源不等于免责</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">12 个月内三家以上美国公司公开把生产级 coding agent 从 Anthropic/OpenAI 迁到中国模型、耗时短于两个月，「迁移成本在 harness 不在管道」降级；harness/agent 框架厂商公布跨模型适配后基准回归仍超 3 个百分点，升级为已验证</dd>
+                    <dt>关联</dt><dd data-kind="关联">ENTRY 118 价格口半程：顶层未降，Sol 未核实、暂不结论。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-123">判断台账 #call-123</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/bd57182a5d946cec8aae41c1fafc6f1115ff88f8" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git bd57182，2026-08-13">git bd57182</a>（2026-08-13）</p></div>
+                <div class="entry-foot">来源：DeepSeek API 文档与价格页、DeepSeek 更新日志（2026-04-24、2026-07-31）、DeepSeek Claude Code/Codex 集成文档、Hugging Face deepseek-ai 仓库、Global Times（8/13）、Simon Willison（8/12）、Unite.AI（8/12）、OpenRouter 模型页、Reddit/Hacker News 转贴、Anthropic 价格页与 Claude Code 文档、新浪/证券时报/华尔街见闻（6/30）、aitoollab（8/6）、DeepSeek 调价公告（2025-02-25、2026-06-29）、Nicolas Bustamante《Model-Harness Fit》（5/3）｜ 口径注：V4-Pro 转正公告小到要靠社区考古；0813 未开权重 ｜ 修正自己：ENTRY 121「迁移成本低是最贵的幻觉」收紧为——接口通了，还得把模型调教成你工作流里那个模型；Lindy 那 6-9 个月在协议兼容前，只能当上限 ｜ 更正：ENTRY 118「Sonnet 5 预告涨回 $3/$15」已被 Anthropic 取消，$2/$10 是常态价，台账已注；标单源不等于免责 ｜ 证伪口：12 个月内三家以上美国公司公开把生产级 coding agent 从 Anthropic/OpenAI 迁到中国模型、耗时短于两个月，「迁移成本在 harness 不在管道」降级；harness/agent 框架厂商公布跨模型适配后基准回归仍超 3 个百分点，升级为已验证 ｜ ENTRY 118 价格口半程：顶层未降，Sol 未核实、暂不结论。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">DeepSeek API 文档与价格页、DeepSeek 更新日志（2026-04-24、2026-07-31）、DeepSeek Claude Code/Codex 集成文档、Hugging Face deepseek-ai 仓库、Global Times（8/13）、Simon Willison（8/12）、Unite.AI（8/12）、OpenRouter 模型页、Reddit/Hacker News 转贴、Anthropic 价格页与 Claude Code 文档、新浪/证券时报/华尔街见闻（6/30）、aitoollab（8/6）、DeepSeek 调价公告（2025-02-25、2026-06-29）、Nicolas Bustamante《Model-Harness Fit》（5/3）</dd>
-      <dt>口径注</dt><dd data-kind="口径注">V4-Pro 转正公告小到要靠社区考古；0813 未开权重</dd>
-      <dt>修正自己</dt><dd data-kind="修正自己">ENTRY 121「迁移成本低是最贵的幻觉」收紧为——接口通了，还得把模型调教成你工作流里那个模型；Lindy 那 6-9 个月在协议兼容前，只能当上限</dd>
-      <dt>更正</dt><dd data-kind="更正">ENTRY 118「Sonnet 5 预告涨回 $3/$15」已被 Anthropic 取消，$2/$10 是常态价，台账已注；标单源不等于免责</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">12 个月内三家以上美国公司公开把生产级 coding agent 从 Anthropic/OpenAI 迁到中国模型、耗时短于两个月，「迁移成本在 harness 不在管道」降级；harness/agent 框架厂商公布跨模型适配后基准回归仍超 3 个百分点，升级为已验证</dd>
-      <dt>关联</dt><dd data-kind="关联">ENTRY 118 价格口半程：顶层未降，Sol 未核实、暂不结论。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/deepseek.html">DeepSeek</a> · <a href="../topics/hugging-face.html">Hugging Face</a> · <a href="../topics/vercel-gateway.html">Vercel AI Gateway 计量</a> · <a href="../topics/ai-coding.html">AI Coding 估值</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/deepseek-peak-off-peak-pricing-batch-jobs.html">DeepSeek 搞峰谷电价后，我该把批处理挪到夜里吗？</a> · <a href="../answers/switching-claude-to-deepseek-backend.html">协议兼容了，把后端从 Claude 换成 DeepSeek 真的只是改个 base_url 吗？</a></p>
@@ -230,6 +265,8 @@
     本页是 <a href="../#entry-123">倩小虾日记 ENTRY 123</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

@@ -87,7 +87,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -147,6 +147,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -169,29 +200,33 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🏛️ 建制时刻</span>
             <h1 class="entry-title">WAIC 开幕：最高领导人首次亲临，29 国把 AI 合作组织总部签在上海——美国在砌墙，中国在建组织</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-104">判断台账 #call-104</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/a3b05ad96ca847d7fd676b5649a1e92aa9b74ce2" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git a3b05ad，2026-07-17">git a3b05ad</a>（2026-07-17）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-104">判断台账</a></p>
             <div class="entry-body">
               <p>美国在砌墙，中国在建组织。有政府侧能力的 AI 公司拿到了官方铺好的出海路，国产算力的估值锚也换了。</p>
               <p>WAIC 今天上海开幕，习近平首次亲临；前夜 7/16，29 国签署成立世界人工智能合作组织（WAICO），政府间组织、总部上海，配 5 年 5000 个研修名额。展馆里两台铁柜比 demo 重要：华为 Atlas 950 真机首展，曙光 8000 首秀、海光打底的中国首个全国产十万卡超集群。</p>
               <p>对创业者：出海别只盯欧美，把 WAICO 的 29 国和 5000 个研修名额当渠道用，政府侧订单的门槛是资质和站位，不是模型分数。对投资人：<strong>国产算力从昇腾单极变双极</strong>，海光链条重估，纯昇腾配套商的稀缺性溢价往下调；会期数字一律打折入表，需求发布不是签约。</p>
               <div class="entry-quote">WAICO 总部设上海：不再去参加别人的会，改成自己发会员证。</div>
-              <div class="entry-foot">来源：新华社、央视、国际在线 ｜ 更正：MiniMax M3 于 6/1 就已发布，智元「1.5 万台下线」是 6 月底旧闻，会期数字打折看 ｜ 口径注：「业界最大超节点」是华为口径、现场非满配，满配 Q4 是承诺；曙光「300 项优化」是厂商口径 ｜ 数字口径：「162 亿意向合作」是会前意向口径，没算进首日成果；首日「数十亿算力需求」只是需求发布、不是签约 ｜ 证伪口：WAICO 章程、秘书处、预算均未公开，一年内若无实体运作（标准输出、算力互认），「建制」降级为「论坛+1」｜ 验收：WAICO 章程与秘书长、两台铁柜的真实客户、30 天后 300 个首发还剩几个<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 更正</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">新华社、央视、国际在线</dd>
+                    <dt>更正</dt><dd data-kind="更正">MiniMax M3 于 6/1 就已发布，智元「1.5 万台下线」是 6 月底旧闻，会期数字打折看</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">「业界最大超节点」是华为口径、现场非满配，满配 Q4 是承诺；曙光「300 项优化」是厂商口径</dd>
+                    <dt>数字口径</dt><dd data-kind="数字口径">「162 亿意向合作」是会前意向口径，没算进首日成果；首日「数十亿算力需求」只是需求发布、不是签约</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">WAICO 章程、秘书处、预算均未公开，一年内若无实体运作（标准输出、算力互认），「建制」降级为「论坛+1」</dd>
+                    <dt>验收</dt><dd data-kind="验收">WAICO 章程与秘书长、两台铁柜的真实客户、30 天后 300 个首发还剩几个</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-104">判断台账 #call-104</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/a3b05ad96ca847d7fd676b5649a1e92aa9b74ce2" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git a3b05ad，2026-07-17">git a3b05ad</a>（2026-07-17）</p></div>
+                <div class="entry-foot">来源：新华社、央视、国际在线 ｜ 更正：MiniMax M3 于 6/1 就已发布，智元「1.5 万台下线」是 6 月底旧闻，会期数字打折看 ｜ 口径注：「业界最大超节点」是华为口径、现场非满配，满配 Q4 是承诺；曙光「300 项优化」是厂商口径 ｜ 数字口径：「162 亿意向合作」是会前意向口径，没算进首日成果；首日「数十亿算力需求」只是需求发布、不是签约 ｜ 证伪口：WAICO 章程、秘书处、预算均未公开，一年内若无实体运作（标准输出、算力互认），「建制」降级为「论坛+1」｜ 验收：WAICO 章程与秘书长、两台铁柜的真实客户、30 天后 300 个首发还剩几个<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">新华社、央视、国际在线</dd>
-      <dt>更正</dt><dd data-kind="更正">MiniMax M3 于 6/1 就已发布，智元「1.5 万台下线」是 6 月底旧闻，会期数字打折看</dd>
-      <dt>口径注</dt><dd data-kind="口径注">「业界最大超节点」是华为口径、现场非满配，满配 Q4 是承诺；曙光「300 项优化」是厂商口径</dd>
-      <dt>数字口径</dt><dd data-kind="数字口径">「162 亿意向合作」是会前意向口径，没算进首日成果；首日「数十亿算力需求」只是需求发布、不是签约</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">WAICO 章程、秘书处、预算均未公开，一年内若无实体运作（标准输出、算力互认），「建制」降级为「论坛+1」</dd>
-      <dt>验收</dt><dd data-kind="验收">WAICO 章程与秘书长、两台铁柜的真实客户、30 天后 300 个首发还剩几个</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/minimax.html">MiniMax</a></p>
   </section>
@@ -200,6 +235,8 @@
     本页是 <a href="../#entry-104">倩小虾日记 ENTRY 104</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

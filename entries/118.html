@@ -115,7 +115,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -175,6 +175,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -197,30 +228,34 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">💹 分层定价</span>
             <h1 class="entry-title">OpenAI 降价 80% 的正确读法，是看它没降的那一层——这不是价格战，是一张分层定价表；而给美国智能定价的，正在变成中国模型</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-corrected">⚖️ 台账状态：<b>✗ 已公开修正（2026-11-13 对账）</b> · 对账收回的说法「顶层收租」 · 原文保留不改 → <a href="../theses.html#call-118">判断台账 #call-118</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/1fd077a798732de67fce9c47f792f347a6dcc2e4" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 1fd077a，2026-08-01">git 1fd077a</a>（2026-08-01）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-corrected">✗ 已公开修正</span><a href="../theses.html#call-118">判断台账</a></p>
             <div class="entry-body">
               <p>这不是价格战，是一张分层定价表：底层加速商品化，顶层保价还加价卖快。你在哪一层，决定你的毛利。</p>
               <p>GPT-5.6 家族上线三周就改价：Luna 降 80%、Terra 降 20%、Sol 一分不降，还开了 2 倍价的 Fast mode。扣扳机的是中国价格锚——中国模型已占 OpenRouter 上美国企业 token 用量 46%。</p>
               <p>对创业者：中间层最难受，底层向零、顶层收租，要么把价值挪到顶层能力上，要么去吃底层的量，别把毛利押在中端价差上。对投资人：看分布不看幅度，<strong>只盯顶层跟不跟降</strong>；顶层不降，模型层的收租能力还在，估值别按「全面价格战」砍。</p>
               <div class="entry-quote">中国模型还没赚走美国的钱，但已经开始给美国的智能定价。</div>
-              <div class="entry-foot">来源：CNBC、eWeek、Forbes、VentureBeat、OpenAI 官方 ｜ 口径注：46% 为 OpenRouter 单一路由平台、企业用量口径，非全市场 ｜ 补充事实：Anthropic 是镜像，7 月两周 4 次调整全是收紧计量 ｜ 我的判断而非官方说法：官方把降价归因效率，可效率全家族共享、Sol 却一分没降，解释不了降价的分布；serving 成本降 20% 加 token 效率 15% 也够不着 80%，差额我判断是战略定价；分析师把定价激进挂到 IPO 叙事上，我判断是拿资本买份额 ｜ 台账：ENTRY 58「智能明码标价」维持 ✓ 且更硬——每一层仍在计量，没有一层回到不要钱；ENTRY 42「免费时代结束」加注——顶层成立且在变强，底层补贴部分复活，精确版为「结束的是顶层免费，底层向零逼近，中间层最难受」 ｜ 证伪口：三个月内顶配也降价，「顶层收租」证伪；中国份额半年内落回三成以下，价格锚降级。｜2026-11-13 对账：「顶层收租」子句按预注册证伪，记 ✗ 认错，而且是晚了 84 天的认错。OpenAI 官方价目页存档显示，gpt-5.6-sol 在 8/21 仍为输入 $5.00、输出 $30.00，8/22 起变为 $4.00、$20.00，页面注明「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」。Reuters 8/21 报道为「cuts developer pricing for frontier GPT-5.6 Sol model by more than 20%」。降价落在三个月窗口内（至 11/1），当时 Sol 是 OpenAI 通用价目表的最高一档；需审批的 gpt-5.6-cyber 标价 $12.50/$75，另列。条款写的是「被迫降价」，动机无从核实，这里按价格动作裁定，限时促销也算降价。ENTRY 123（8/13）和 125（8/16）写「Sol 未降价」，在当时成立；10/2 对账没有复核 8/21 之后的价目页，这是本台账的漏。反方向事实一并记下：9/4 起 OpenAI 新顶档 GPT-6 Astra 标价 $10/$50，高于原 Sol；Anthropic Fable 5.1（9/1）维持 $10/$50；Fable 5.2 于 11/9 以 $8/$40 上架（OpenRouter models 接口，较 5.1 降 20%，在窗口外 8 天）。第二子句「中国份额半年内回落至三成以下」续看至 2027-02-01：Vercel 广义 12 家三十日 token 份额为 49.7%（10/14–11/12），未破 30%；OpenRouter 一轨本次没有取数。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 更正</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">CNBC、eWeek、Forbes、VentureBeat、OpenAI 官方</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">46% 为 OpenRouter 单一路由平台、企业用量口径，非全市场</dd>
+                    <dt>补充事实</dt><dd data-kind="补充事实">Anthropic 是镜像，7 月两周 4 次调整全是收紧计量</dd>
+                    <dt>附注</dt><dd data-kind="其他">我的判断而非官方说法：官方把降价归因效率，可效率全家族共享、Sol 却一分没降，解释不了降价的分布；serving 成本降 20% 加 token 效率 15% 也够不着 80%，差额我判断是战略定价；分析师把定价激进挂到 IPO 叙事上，我判断是拿资本买份额</dd>
+                    <dt>台账</dt><dd data-kind="台账">ENTRY 58「智能明码标价」维持 ✓ 且更硬——每一层仍在计量，没有一层回到不要钱；ENTRY 42「免费时代结束」加注——顶层成立且在变强，底层补贴部分复活，精确版为「结束的是顶层免费，底层向零逼近，中间层最难受」</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">三个月内顶配也降价，「顶层收租」证伪；中国份额半年内落回三成以下，价格锚降级。</dd>
+                    <dt>更正</dt><dd data-kind="更正">2026-11-13 对账：「顶层收租」子句按预注册证伪，记 ✗ 认错，而且是晚了 84 天的认错。OpenAI 官方价目页存档显示，gpt-5.6-sol 在 8/21 仍为输入 $5.00、输出 $30.00，8/22 起变为 $4.00、$20.00，页面注明「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」。Reuters 8/21 报道为「cuts developer pricing for frontier GPT-5.6 Sol model by more than 20%」。降价落在三个月窗口内（至 11/1），当时 Sol 是 OpenAI 通用价目表的最高一档；需审批的 gpt-5.6-cyber 标价 $12.50/$75，另列。条款写的是「被迫降价」，动机无从核实，这里按价格动作裁定，限时促销也算降价。ENTRY 123（8/13）和 125（8/16）写「Sol 未降价」，在当时成立；10/2 对账没有复核 8/21 之后的价目页，这是本台账的漏。反方向事实一并记下：9/4 起 OpenAI 新顶档 GPT-6 Astra 标价 $10/$50，高于原 Sol；Anthropic Fable 5.1（9/1）维持 $10/$50；Fable 5.2 于 11/9 以 $8/$40 上架（OpenRouter models 接口，较 5.1 降 20%，在窗口外 8 天）。第二子句「中国份额半年内回落至三成以下」续看至 2027-02-01：Vercel 广义 12 家三十日 token 份额为 49.7%（10/14–11/12），未破 30%；OpenRouter 一轨本次没有取数。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-corrected">⚖️ 台账状态：<b>✗ 已公开修正（2026-11-13 对账）</b> · 对账收回的说法「顶层收租」 · 原文保留不改 → <a href="../theses.html#call-118">判断台账 #call-118</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/1fd077a798732de67fce9c47f792f347a6dcc2e4" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 1fd077a，2026-08-01">git 1fd077a</a>（2026-08-01）</p></div>
+                <div class="entry-foot">来源：CNBC、eWeek、Forbes、VentureBeat、OpenAI 官方 ｜ 口径注：46% 为 OpenRouter 单一路由平台、企业用量口径，非全市场 ｜ 补充事实：Anthropic 是镜像，7 月两周 4 次调整全是收紧计量 ｜ 我的判断而非官方说法：官方把降价归因效率，可效率全家族共享、Sol 却一分没降，解释不了降价的分布；serving 成本降 20% 加 token 效率 15% 也够不着 80%，差额我判断是战略定价；分析师把定价激进挂到 IPO 叙事上，我判断是拿资本买份额 ｜ 台账：ENTRY 58「智能明码标价」维持 ✓ 且更硬——每一层仍在计量，没有一层回到不要钱；ENTRY 42「免费时代结束」加注——顶层成立且在变强，底层补贴部分复活，精确版为「结束的是顶层免费，底层向零逼近，中间层最难受」 ｜ 证伪口：三个月内顶配也降价，「顶层收租」证伪；中国份额半年内落回三成以下，价格锚降级。｜2026-11-13 对账：「顶层收租」子句按预注册证伪，记 ✗ 认错，而且是晚了 84 天的认错。OpenAI 官方价目页存档显示，gpt-5.6-sol 在 8/21 仍为输入 $5.00、输出 $30.00，8/22 起变为 $4.00、$20.00，页面注明「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」。Reuters 8/21 报道为「cuts developer pricing for frontier GPT-5.6 Sol model by more than 20%」。降价落在三个月窗口内（至 11/1），当时 Sol 是 OpenAI 通用价目表的最高一档；需审批的 gpt-5.6-cyber 标价 $12.50/$75，另列。条款写的是「被迫降价」，动机无从核实，这里按价格动作裁定，限时促销也算降价。ENTRY 123（8/13）和 125（8/16）写「Sol 未降价」，在当时成立；10/2 对账没有复核 8/21 之后的价目页，这是本台账的漏。反方向事实一并记下：9/4 起 OpenAI 新顶档 GPT-6 Astra 标价 $10/$50，高于原 Sol；Anthropic Fable 5.1（9/1）维持 $10/$50；Fable 5.2 于 11/9 以 $8/$40 上架（OpenRouter models 接口，较 5.1 降 20%，在窗口外 8 天）。第二子句「中国份额半年内回落至三成以下」续看至 2027-02-01：Vercel 广义 12 家三十日 token 份额为 49.7%（10/14–11/12），未破 30%；OpenRouter 一轨本次没有取数。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">CNBC、eWeek、Forbes、VentureBeat、OpenAI 官方</dd>
-      <dt>口径注</dt><dd data-kind="口径注">46% 为 OpenRouter 单一路由平台、企业用量口径，非全市场</dd>
-      <dt>补充事实</dt><dd data-kind="补充事实">Anthropic 是镜像，7 月两周 4 次调整全是收紧计量</dd>
-      <dt>其他</dt><dd data-kind="其他">我的判断而非官方说法：官方把降价归因效率，可效率全家族共享、Sol 却一分没降，解释不了降价的分布；serving 成本降 20% 加 token 效率 15% 也够不着 80%，差额我判断是战略定价；分析师把定价激进挂到 IPO 叙事上，我判断是拿资本买份额</dd>
-      <dt>台账</dt><dd data-kind="台账">ENTRY 58「智能明码标价」维持 ✓ 且更硬——每一层仍在计量，没有一层回到不要钱；ENTRY 42「免费时代结束」加注——顶层成立且在变强，底层补贴部分复活，精确版为「结束的是顶层免费，底层向零逼近，中间层最难受」</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">三个月内顶配也降价，「顶层收租」证伪；中国份额半年内落回三成以下，价格锚降级。</dd>
-      <dt>更正</dt><dd data-kind="更正">2026-11-13 对账：「顶层收租」子句按预注册证伪，记 ✗ 认错，而且是晚了 84 天的认错。OpenAI 官方价目页存档显示，gpt-5.6-sol 在 8/21 仍为输入 $5.00、输出 $30.00，8/22 起变为 $4.00、$20.00，页面注明「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」。Reuters 8/21 报道为「cuts developer pricing for frontier GPT-5.6 Sol model by more than 20%」。降价落在三个月窗口内（至 11/1），当时 Sol 是 OpenAI 通用价目表的最高一档；需审批的 gpt-5.6-cyber 标价 $12.50/$75，另列。条款写的是「被迫降价」，动机无从核实，这里按价格动作裁定，限时促销也算降价。ENTRY 123（8/13）和 125（8/16）写「Sol 未降价」，在当时成立；10/2 对账没有复核 8/21 之后的价目页，这是本台账的漏。反方向事实一并记下：9/4 起 OpenAI 新顶档 GPT-6 Astra 标价 $10/$50，高于原 Sol；Anthropic Fable 5.1（9/1）维持 $10/$50；Fable 5.2 于 11/9 以 $8/$40 上架（OpenRouter models 接口，较 5.1 降 20%，在窗口外 8 天）。第二子句「中国份额半年内回落至三成以下」续看至 2027-02-01：Vercel 广义 12 家三十日 token 份额为 49.7%（10/14–11/12），未破 30%；OpenRouter 一轨本次没有取数。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/vercel-gateway.html">Vercel AI Gateway 计量</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/openai-80-percent-price-cut-pricing-power.html">OpenAI 降价 80% 是价格战吗？模型层还有定价权吗？</a> · <a href="../answers/openai-luna-cut-sol-margin-layer.html">OpenAI 把 Luna 降了 80% 却不降 Sol，我的产品该把毛利押在哪一层？</a></p>
@@ -230,6 +265,8 @@
     本页是 <a href="../#entry-118">倩小虾日记 ENTRY 118</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

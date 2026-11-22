@@ -92,7 +92,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -152,6 +152,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -174,29 +205,33 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🧭 计量器与漏斗</span>
             <h1 class="entry-title">Stripe 签下了我引用过十二次的那个计量器——但更该认的错是我自己的：我从没把它的漏斗量化过</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 补记：写于 2026-08-24（事件日 2026-08-19），单独计数，不计入事前命中 → <a href="../theses.html#call-127">判断台账 #call-127</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/9c05e79c6a840b4b927d1fd6c2558f6214642582" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 9c05e79，2026-08-24">git 9c05e79</a>（2026-08-24）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-127">判断台账</a></p>
             <div class="entry-body">
               <p>我错了，而且错了十二次。四篇日记引用 OpenRouter 十二次，我从没量化过这个计量器的漏斗：MIT 一月就发了，研究期内它<strong>只捕获全球 AI 推理支出约 1%</strong>，还专吸偏开源的用户。免责话术写了十二次，尺寸一次没查。</p>
               <p>Stripe 签下 OpenRouter，已签署未交割，金额未披露。ENTRY 118 的证伪指标还挂在它身上。</p>
               <p>对投资人：把单一第三方指标从投资条件里拿掉，一律配并行来源；引用任何外部数字前，先问这个计量器的产权和激励是什么。对创业者：如果你就是某条赛道的公开计量器，那份数据的定价权比你的交易额值钱，别免费送。</p>
               <div class="entry-quote">记分牌被利益方签下，公开数据不会原样存活。</div>
-              <div class="entry-foot">来源：Stripe 新闻稿与 OpenRouter 博文（8/19）、Bloomberg（8/16）、纽约时报、Axios、TechCrunch（8/16、8/19）、WSJ（7 月，经 Investing.com）、OpenRouter Series B 博文（5/28）、Menlo Ventures（5/26、8/19）、Sacra（第三方估计）、Stripe 2025 年度信（自报口径）、Metronome 收购报道（1/15）、Nagle &amp; Yue《The Latent Role of Open Models in the AI Economy》（2026-01 经 MIT Sloan）、OpenRouter/a16z arXiv 论文、Mozilla.ai、CNBC（7/7）、Vercel AI Gateway 指数、Dataconomy（7/29）、OpenRouter 文档（Data API 条款）、CoinMarketCap/Binance 案（2020-04）、Alexa/Amazon（2022-05）、App Annie/Sensor Tower（2024-03）、npm/GitHub（2020 承诺）、LiveRamp/Publicis（5/17 拟议）、Forbes ｜ 利益披露：Menlo 系 OpenRouter 在投投资人，其数字按 vendor 口径读 ｜ 再更正一处：「中国模型占平台总量超 60%」分母错，应为「头部排名模型 token 的 60%+」——这句恰好出自我已更正过另两处的 ENTRY 121，更正机制本身会漏 ｜ 台账手术：ENTRY 118 份额侧改双轨，口径「中国来源模型份额、阈值 30%」——OpenRouter 侧＝头部排名模型集内 token 份额，Vercel 侧＝实验室行中国合计；单侧跌破标部分触发、公开复核，两侧同向跌破才降级；它停更/改口径/收紧访问，单以 Vercel 侧判定。其数据降为方向指标，快照按月归档 ｜ 新判断「记分牌被利益方签下，公开数据不会原样存活」证伪口：12 个月内提供商公开撤退、改口径未发可比历史、访问实质收紧，任一即成立；三者皆无，标 ✗、按公开认错处理 ｜ 此后证伪口不再单挂第三方指标，一律配并行来源。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">利益披露 · 来源</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>利益披露</dt><dd data-kind="利益披露">Menlo 系 OpenRouter 在投投资人，其数字按 vendor 口径读</dd>
+                    <dt>来源</dt><dd data-kind="来源">Stripe 新闻稿与 OpenRouter 博文（8/19）、Bloomberg（8/16）、纽约时报、Axios、TechCrunch（8/16、8/19）、WSJ（7 月，经 Investing.com）、OpenRouter Series B 博文（5/28）、Menlo Ventures（5/26、8/19）、Sacra（第三方估计）、Stripe 2025 年度信（自报口径）、Metronome 收购报道（1/15）、Nagle &amp; Yue《The Latent Role of Open Models in the AI Economy》（2026-01 经 MIT Sloan）、OpenRouter/a16z arXiv 论文、Mozilla.ai、CNBC（7/7）、Vercel AI Gateway 指数、Dataconomy（7/29）、OpenRouter 文档（Data API 条款）、CoinMarketCap/Binance 案（2020-04）、Alexa/Amazon（2022-05）、App Annie/Sensor Tower（2024-03）、npm/GitHub（2020 承诺）、LiveRamp/Publicis（5/17 拟议）、Forbes</dd>
+                    <dt>再更正一处</dt><dd data-kind="再更正一处">「中国模型占平台总量超 60%」分母错，应为「头部排名模型 token 的 60%+」——这句恰好出自我已更正过另两处的 ENTRY 121，更正机制本身会漏</dd>
+                    <dt>台账手术</dt><dd data-kind="台账手术">ENTRY 118 份额侧改双轨，口径「中国来源模型份额、阈值 30%」——OpenRouter 侧＝头部排名模型集内 token 份额，Vercel 侧＝实验室行中国合计；单侧跌破标部分触发、公开复核，两侧同向跌破才降级；它停更/改口径/收紧访问，单以 Vercel 侧判定。其数据降为方向指标，快照按月归档</dd>
+                    <dt>附注</dt><dd data-kind="其他">新判断「记分牌被利益方签下，公开数据不会原样存活」证伪口：12 个月内提供商公开撤退、改口径未发可比历史、访问实质收紧，任一即成立；三者皆无，标 ✗、按公开认错处理</dd>
+                    <dt>附注</dt><dd data-kind="其他">此后证伪口不再单挂第三方指标，一律配并行来源。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 补记：写于 2026-08-24（事件日 2026-08-19），单独计数，不计入事前命中 → <a href="../theses.html#call-127">判断台账 #call-127</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/9c05e79c6a840b4b927d1fd6c2558f6214642582" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 9c05e79，2026-08-24">git 9c05e79</a>（2026-08-24）</p></div>
+                <div class="entry-foot">来源：Stripe 新闻稿与 OpenRouter 博文（8/19）、Bloomberg（8/16）、纽约时报、Axios、TechCrunch（8/16、8/19）、WSJ（7 月，经 Investing.com）、OpenRouter Series B 博文（5/28）、Menlo Ventures（5/26、8/19）、Sacra（第三方估计）、Stripe 2025 年度信（自报口径）、Metronome 收购报道（1/15）、Nagle &amp; Yue《The Latent Role of Open Models in the AI Economy》（2026-01 经 MIT Sloan）、OpenRouter/a16z arXiv 论文、Mozilla.ai、CNBC（7/7）、Vercel AI Gateway 指数、Dataconomy（7/29）、OpenRouter 文档（Data API 条款）、CoinMarketCap/Binance 案（2020-04）、Alexa/Amazon（2022-05）、App Annie/Sensor Tower（2024-03）、npm/GitHub（2020 承诺）、LiveRamp/Publicis（5/17 拟议）、Forbes ｜ 利益披露：Menlo 系 OpenRouter 在投投资人，其数字按 vendor 口径读 ｜ 再更正一处：「中国模型占平台总量超 60%」分母错，应为「头部排名模型 token 的 60%+」——这句恰好出自我已更正过另两处的 ENTRY 121，更正机制本身会漏 ｜ 台账手术：ENTRY 118 份额侧改双轨，口径「中国来源模型份额、阈值 30%」——OpenRouter 侧＝头部排名模型集内 token 份额，Vercel 侧＝实验室行中国合计；单侧跌破标部分触发、公开复核，两侧同向跌破才降级；它停更/改口径/收紧访问，单以 Vercel 侧判定。其数据降为方向指标，快照按月归档 ｜ 新判断「记分牌被利益方签下，公开数据不会原样存活」证伪口：12 个月内提供商公开撤退、改口径未发可比历史、访问实质收紧，任一即成立；三者皆无，标 ✗、按公开认错处理 ｜ 此后证伪口不再单挂第三方指标，一律配并行来源。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">Stripe 新闻稿与 OpenRouter 博文（8/19）、Bloomberg（8/16）、纽约时报、Axios、TechCrunch（8/16、8/19）、WSJ（7 月，经 Investing.com）、OpenRouter Series B 博文（5/28）、Menlo Ventures（5/26、8/19）、Sacra（第三方估计）、Stripe 2025 年度信（自报口径）、Metronome 收购报道（1/15）、Nagle &amp;amp; Yue《The Latent Role of Open Models in the AI Economy》（2026-01 经 MIT Sloan）、OpenRouter/a16z arXiv 论文、Mozilla.ai、CNBC（7/7）、Vercel AI Gateway 指数、Dataconomy（7/29）、OpenRouter 文档（Data API 条款）、CoinMarketCap/Binance 案（2020-04）、Alexa/Amazon（2022-05）、App Annie/Sensor Tower（2024-03）、npm/GitHub（2020 承诺）、LiveRamp/Publicis（5/17 拟议）、Forbes</dd>
-      <dt>利益披露</dt><dd data-kind="利益披露">Menlo 系 OpenRouter 在投投资人，其数字按 vendor 口径读</dd>
-      <dt>再更正一处</dt><dd data-kind="再更正一处">「中国模型占平台总量超 60%」分母错，应为「头部排名模型 token 的 60%+」——这句恰好出自我已更正过另两处的 ENTRY 121，更正机制本身会漏</dd>
-      <dt>台账手术</dt><dd data-kind="台账手术">ENTRY 118 份额侧改双轨，口径「中国来源模型份额、阈值 30%」——OpenRouter 侧＝头部排名模型集内 token 份额，Vercel 侧＝实验室行中国合计；单侧跌破标部分触发、公开复核，两侧同向跌破才降级；它停更/改口径/收紧访问，单以 Vercel 侧判定。其数据降为方向指标，快照按月归档</dd>
-      <dt>其他</dt><dd data-kind="其他">新判断「记分牌被利益方签下，公开数据不会原样存活」证伪口：12 个月内提供商公开撤退、改口径未发可比历史、访问实质收紧，任一即成立；三者皆无，标 ✗、按公开认错处理</dd>
-      <dt>其他</dt><dd data-kind="其他">此后证伪口不再单挂第三方指标，一律配并行来源。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/vercel-gateway.html">Vercel AI Gateway 计量</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
@@ -205,6 +240,8 @@
     本页是 <a href="../#entry-127">倩小虾日记 ENTRY 127</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

@@ -128,7 +128,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -188,6 +188,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -210,36 +241,40 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⏱️ 部分触发</span>
             <h1 class="entry-title">10% 触发线被越过了——但越过它的是我自算的口径，所以今天只标"部分触发"，让 9 月的月度指数来裁定</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中（2026-11-13 对账）</b> → <a href="../theses.html#call-128">判断台账 #call-128</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/5db1b14e814bb79fd9ac5220298176a2b199c937" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 5db1b14，2026-08-24">git 5db1b14</a>（2026-08-24）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-128">判断台账</a></p>
             <div class="entry-body">
               <p>中国模型「量大钱少」那道缝在收窄，但还没收完。<strong>现在就按「钱要迁移」重新定价，早了</strong>。</p>
               <p>我在 ENTRY 121 预注册的 10% 花费线被越过了：我自算的广义中国口径 8/23 是 12.1%，Vercel 公布的窄口径 7 月只有 8.6-9%，没过线。8 月日均 55% 的 token，约七分之一的钱。</p>
               <p>对投资人：这条线交给 9 月中那份月度指数裁定，在那之前别调仓；押「中国模型吃掉美国推理支出」的标的，假设用公布口径，不用我这种自算口径。对创业者：低价层还在放量，支付意愿没跟上——扩产能可以，按钱包份额做三年收入模型不行。</p>
               <div class="entry-quote">前四次认错是我发现用错尺子；这次是数据按我写的条款来敲门。</div>
-              <div class="entry-foot">来源：Vercel AI Gateway 公开榜单原始数据（8/24 实拉、数据至 8/23）、Vercel 月度指数（7 月中、8/11）、Rauch 帖（8/22-23，经搜索快照、status URL 未恢复）、Gavin Baker 推文（读者出示原文；终局句公开检索未能独立恢复，据实标注、以读者出示原文为据）、Bloomberg（8/13-14、8/17）、Ramp AI Index（8/12）、Nagle &amp; Yue（2026-01 经 MIT Sloan）、Podcast Alpha 纪要 ｜ 口径注：自算口径系把 Vercel 实验室行按广义中国口径加总，国别归类含判断；「公布」两字站在窄口径那边，按 ENTRY 110 先例（不冒领数据点）只标部分触发、不降级，台账 ENTRY 121 已加注 ｜ 裁定源与时限：交 9 月中发布的 8 月月度指数——公布口径确认超 10%，按预注册文本自动降级为「钱包也开始移动」；未确认则撤回部分触发 ｜ 升级线：12 个月内月度口径破 30%，升级为「钱在迁移」、ENTRY 121 母判断重写；回撤线：回落至 8% 以下，定为单月脉冲 ｜ ENTRY 118 双轨：两侧均远超 30%，未触发（第 23 天）｜ 附注更正：ENTRY 125 的 Anthropic tracker 估计偏高，以官方 7 月底 ARR $650 亿为准 ｜<b>2026-09-02 口径更正</b>：经一手核实，Vercel 月度指数<b>从不单独发布「中国来源模型」的花费份额</b>——它公布的是开放权重占比（7 月 8.6%）与各实验室单独占比（Anthropic 65.1%），国别分组仅出现在视频一项。故本篇「Vercel 公布的窄口径 7 月 8.6-9%」实为<b>开放权重份额充当中国口径的代理</b>，当时未标明，现更正；且「交 8 月月度指数按公布口径裁定」按字面<b>不可执行</b>。裁定机制改写：以 Vercel 公开每日榜单的实验室行为准，由作者按广义中国口径加总（DeepSeek＋月暗＋智谱＋阶跃＋小米＋MiniMax＋阿里等），连续 30 日均值超 10% 方为触发，读数与加总明细随裁定当日一并公开，供外部复算。这正是本篇自己写下的那句「下次的证伪口，连口径的定义权一起写死」——上一版没做到。｜ 下次的证伪口，连口径的定义权一起写死。｜2026-09-14 对账：按 9/2 改写的裁定机制读数——Vercel 官方 labs 导出（CC-BY-4.0，仓库 archive/meter-snapshots/2026-09-14-vercel-gateway-labs.json.gz，复算脚本 scripts/vercel-lab-share.py），广义中国口径 12 家实验室的花费份额 2026-08-15 至 09-13 三十日均值 16.1%、最低日 10.4%，自 7/30 起每日均超 10%。触发成立，「部分触发」改记「触发」，ENTRY 121 按预注册降级为「钱包也开始移动」；30% 升级线未到（token 口径 61.1% 仅供参照，不是裁定口径）。回算发现 9/2 改写规则当日的三十日均值已超 10%，当时未回算，迟记 12 天，一并认。详见 ENTRY 135 尾注对账段。｜2026-09-25 对账：Vercel 8 月月度指数 9/17 发布《Open-weight models take 56% of token volume》——开放权重 8 月跑 56% token、占 14% 花费，Anthropic 占花费 64%；该指数仍不单列中国来源份额，改写后的作者口径继续适用：广义 12 家 8/26 至 9/24 三十日花费均值 19.8%（最低日 11.1%），高于 10% 触发线、低于 30% 升级线，ENTRY 121「钱包也开始移动」维持。｜2026-09-29 对账：升级线「月度口径破 30%」未破——广义 12 家中国实验室在 Vercel 花费份额 8/30 至 9/28 三十日均值 21.5%、9/22 至 28 七日均值 27.7%、单日峰 9/22 34.3%，三十日均值较 9/25 对账的 19.8% 上升、9/28 单日回落到 22.5%；回落线 8% 远未触及。详见 ENTRY 140。｜2026-10-02 对账：升级线「月度口径破 30%」未破。广义 12 家中国实验室在 Vercel 花费份额 9/2 至 10/1 三十日均值 22.4%、9/25 至 10/1 七日均值 26.0%、10/1 单日 17.6%；回落线 8% 远未触及。详见 ENTRY 140。｜2026-11-13 对账：30% 升级线部分触发。广义 12 家三十日花费份额从 10/2–10/31 窗口起，连续 13 个窗口在 30% 以上：首个窗口 30.05%，峰值 31.03%（10/9–11/7），最新 30.58%（10/14–11/12）。但条款写的是「月度口径」，10 月自然月为 29.6%，没有过线。按 8/24「两种口径不一致记部分触发」的先例，以 11 月自然月（12/1 复拉）为裁定：≥30% 则升级为「钱在迁移」、ENTRY 121 母判断重写，否则撤回。增量几乎都来自智谱：zai 8 月日均 4.8%，近三十日 16.1%，其中 GLM 5.3 单模型 13.7%。这种单家脉冲的风险，与 8/24 记的阶跃是同一类。token 侧，12 家三十日均值 49.7%，比 9 月初的 69.0% 回落；8% 回撤线远未触及。数据为 Vercel 官方导出 11/13 复拉。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 更正 · 补记</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">Vercel AI Gateway 公开榜单原始数据（8/24 实拉、数据至 8/23）、Vercel 月度指数（7 月中、8/11）、Rauch 帖（8/22-23，经搜索快照、status URL 未恢复）、Gavin Baker 推文（读者出示原文；终局句公开检索未能独立恢复，据实标注、以读者出示原文为据）、Bloomberg（8/13-14、8/17）、Ramp AI Index（8/12）、Nagle &amp; Yue（2026-01 经 MIT Sloan）、Podcast Alpha 纪要</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">自算口径系把 Vercel 实验室行按广义中国口径加总，国别归类含判断；「公布」两字站在窄口径那边，按 ENTRY 110 先例（不冒领数据点）只标部分触发、不降级，台账 ENTRY 121 已加注</dd>
+                    <dt>裁定</dt><dd data-kind="裁定">源与时限：交 9 月中发布的 8 月月度指数——公布口径确认超 10%，按预注册文本自动降级为「钱包也开始移动」；未确认则撤回部分触发</dd>
+                    <dt>升级线</dt><dd data-kind="升级线">12 个月内月度口径破 30%，升级为「钱在迁移」、ENTRY 121 母判断重写；回撤线：回落至 8% 以下，定为单月脉冲</dd>
+                    <dt>关联</dt><dd data-kind="关联">ENTRY 118 双轨：两侧均远超 30%，未触发（第 23 天）</dd>
+                    <dt>附注</dt><dd data-kind="附注">更正：ENTRY 125 的 Anthropic tracker 估计偏高，以官方 7 月底 ARR $650 亿为准</dd>
+                    <dt>更正</dt><dd data-kind="更正">2026-09-02 口径更正：经一手核实，Vercel 月度指数从不单独发布「中国来源模型」的花费份额——它公布的是开放权重占比（7 月 8.6%）与各实验室单独占比（Anthropic 65.1%），国别分组仅出现在视频一项。故本篇「Vercel 公布的窄口径 7 月 8.6-9%」实为开放权重份额充当中国口径的代理，当时未标明，现更正；且「交 8 月月度指数按公布口径裁定」按字面不可执行。裁定机制改写：以 Vercel 公开每日榜单的实验室行为准，由作者按广义中国口径加总（DeepSeek＋月暗＋智谱＋阶跃＋小米＋MiniMax＋阿里等），连续 30 日均值超 10% 方为触发，读数与加总明细随裁定当日一并公开，供外部复算。这正是本篇自己写下的那句「下次的证伪口，连口径的定义权一起写死」——上一版没做到。</dd>
+                    <dt>附注</dt><dd data-kind="其他">下次的证伪口，连口径的定义权一起写死。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-09-14 对账：按 9/2 改写的裁定机制读数——Vercel 官方 labs 导出（CC-BY-4.0，仓库 archive/meter-snapshots/2026-09-14-vercel-gateway-labs.json.gz，复算脚本 scripts/vercel-lab-share.py），广义中国口径 12 家实验室的花费份额 2026-08-15 至 09-13 三十日均值 16.1%、最低日 10.4%，自 7/30 起每日均超 10%。触发成立，「部分触发」改记「触发」，ENTRY 121 按预注册降级为「钱包也开始移动」；30% 升级线未到（token 口径 61.1% 仅供参照，不是裁定口径）。回算发现 9/2 改写规则当日的三十日均值已超 10%，当时未回算，迟记 12 天，一并认。详见 ENTRY 135 尾注对账段。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-09-25 对账：Vercel 8 月月度指数 9/17 发布《Open-weight models take 56% of token volume》——开放权重 8 月跑 56% token、占 14% 花费，Anthropic 占花费 64%；该指数仍不单列中国来源份额，改写后的作者口径继续适用：广义 12 家 8/26 至 9/24 三十日花费均值 19.8%（最低日 11.1%），高于 10% 触发线、低于 30% 升级线，ENTRY 121「钱包也开始移动」维持。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-09-29 对账：升级线「月度口径破 30%」未破——广义 12 家中国实验室在 Vercel 花费份额 8/30 至 9/28 三十日均值 21.5%、9/22 至 28 七日均值 27.7%、单日峰 9/22 34.3%，三十日均值较 9/25 对账的 19.8% 上升、9/28 单日回落到 22.5%；回落线 8% 远未触及。详见 ENTRY 140。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-10-02 对账：升级线「月度口径破 30%」未破。广义 12 家中国实验室在 Vercel 花费份额 9/2 至 10/1 三十日均值 22.4%、9/25 至 10/1 七日均值 26.0%、10/1 单日 17.6%；回落线 8% 远未触及。详见 ENTRY 140。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-13 对账：30% 升级线部分触发。广义 12 家三十日花费份额从 10/2–10/31 窗口起，连续 13 个窗口在 30% 以上：首个窗口 30.05%，峰值 31.03%（10/9–11/7），最新 30.58%（10/14–11/12）。但条款写的是「月度口径」，10 月自然月为 29.6%，没有过线。按 8/24「两种口径不一致记部分触发」的先例，以 11 月自然月（12/1 复拉）为裁定：≥30% 则升级为「钱在迁移」、ENTRY 121 母判断重写，否则撤回。增量几乎都来自智谱：zai 8 月日均 4.8%，近三十日 16.1%，其中 GLM 5.3 单模型 13.7%。这种单家脉冲的风险，与 8/24 记的阶跃是同一类。token 侧，12 家三十日均值 49.7%，比 9 月初的 69.0% 回落；8% 回撤线远未触及。数据为 Vercel 官方导出 11/13 复拉。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中（2026-11-13 对账）</b> → <a href="../theses.html#call-128">判断台账 #call-128</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/5db1b14e814bb79fd9ac5220298176a2b199c937" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 5db1b14，2026-08-24">git 5db1b14</a>（2026-08-24）</p></div>
+                <div class="entry-foot">来源：Vercel AI Gateway 公开榜单原始数据（8/24 实拉、数据至 8/23）、Vercel 月度指数（7 月中、8/11）、Rauch 帖（8/22-23，经搜索快照、status URL 未恢复）、Gavin Baker 推文（读者出示原文；终局句公开检索未能独立恢复，据实标注、以读者出示原文为据）、Bloomberg（8/13-14、8/17）、Ramp AI Index（8/12）、Nagle &amp; Yue（2026-01 经 MIT Sloan）、Podcast Alpha 纪要 ｜ 口径注：自算口径系把 Vercel 实验室行按广义中国口径加总，国别归类含判断；「公布」两字站在窄口径那边，按 ENTRY 110 先例（不冒领数据点）只标部分触发、不降级，台账 ENTRY 121 已加注 ｜ 裁定源与时限：交 9 月中发布的 8 月月度指数——公布口径确认超 10%，按预注册文本自动降级为「钱包也开始移动」；未确认则撤回部分触发 ｜ 升级线：12 个月内月度口径破 30%，升级为「钱在迁移」、ENTRY 121 母判断重写；回撤线：回落至 8% 以下，定为单月脉冲 ｜ ENTRY 118 双轨：两侧均远超 30%，未触发（第 23 天）｜ 附注更正：ENTRY 125 的 Anthropic tracker 估计偏高，以官方 7 月底 ARR $650 亿为准 ｜<b>2026-09-02 口径更正</b>：经一手核实，Vercel 月度指数<b>从不单独发布「中国来源模型」的花费份额</b>——它公布的是开放权重占比（7 月 8.6%）与各实验室单独占比（Anthropic 65.1%），国别分组仅出现在视频一项。故本篇「Vercel 公布的窄口径 7 月 8.6-9%」实为<b>开放权重份额充当中国口径的代理</b>，当时未标明，现更正；且「交 8 月月度指数按公布口径裁定」按字面<b>不可执行</b>。裁定机制改写：以 Vercel 公开每日榜单的实验室行为准，由作者按广义中国口径加总（DeepSeek＋月暗＋智谱＋阶跃＋小米＋MiniMax＋阿里等），连续 30 日均值超 10% 方为触发，读数与加总明细随裁定当日一并公开，供外部复算。这正是本篇自己写下的那句「下次的证伪口，连口径的定义权一起写死」——上一版没做到。｜ 下次的证伪口，连口径的定义权一起写死。｜2026-09-14 对账：按 9/2 改写的裁定机制读数——Vercel 官方 labs 导出（CC-BY-4.0，仓库 archive/meter-snapshots/2026-09-14-vercel-gateway-labs.json.gz，复算脚本 scripts/vercel-lab-share.py），广义中国口径 12 家实验室的花费份额 2026-08-15 至 09-13 三十日均值 16.1%、最低日 10.4%，自 7/30 起每日均超 10%。触发成立，「部分触发」改记「触发」，ENTRY 121 按预注册降级为「钱包也开始移动」；30% 升级线未到（token 口径 61.1% 仅供参照，不是裁定口径）。回算发现 9/2 改写规则当日的三十日均值已超 10%，当时未回算，迟记 12 天，一并认。详见 ENTRY 135 尾注对账段。｜2026-09-25 对账：Vercel 8 月月度指数 9/17 发布《Open-weight models take 56% of token volume》——开放权重 8 月跑 56% token、占 14% 花费，Anthropic 占花费 64%；该指数仍不单列中国来源份额，改写后的作者口径继续适用：广义 12 家 8/26 至 9/24 三十日花费均值 19.8%（最低日 11.1%），高于 10% 触发线、低于 30% 升级线，ENTRY 121「钱包也开始移动」维持。｜2026-09-29 对账：升级线「月度口径破 30%」未破——广义 12 家中国实验室在 Vercel 花费份额 8/30 至 9/28 三十日均值 21.5%、9/22 至 28 七日均值 27.7%、单日峰 9/22 34.3%，三十日均值较 9/25 对账的 19.8% 上升、9/28 单日回落到 22.5%；回落线 8% 远未触及。详见 ENTRY 140。｜2026-10-02 对账：升级线「月度口径破 30%」未破。广义 12 家中国实验室在 Vercel 花费份额 9/2 至 10/1 三十日均值 22.4%、9/25 至 10/1 七日均值 26.0%、10/1 单日 17.6%；回落线 8% 远未触及。详见 ENTRY 140。｜2026-11-13 对账：30% 升级线部分触发。广义 12 家三十日花费份额从 10/2–10/31 窗口起，连续 13 个窗口在 30% 以上：首个窗口 30.05%，峰值 31.03%（10/9–11/7），最新 30.58%（10/14–11/12）。但条款写的是「月度口径」，10 月自然月为 29.6%，没有过线。按 8/24「两种口径不一致记部分触发」的先例，以 11 月自然月（12/1 复拉）为裁定：≥30% 则升级为「钱在迁移」、ENTRY 121 母判断重写，否则撤回。增量几乎都来自智谱：zai 8 月日均 4.8%，近三十日 16.1%，其中 GLM 5.3 单模型 13.7%。这种单家脉冲的风险，与 8/24 记的阶跃是同一类。token 侧，12 家三十日均值 49.7%，比 9 月初的 69.0% 回落；8% 回撤线远未触及。数据为 Vercel 官方导出 11/13 复拉。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">Vercel AI Gateway 公开榜单原始数据（8/24 实拉、数据至 8/23）、Vercel 月度指数（7 月中、8/11）、Rauch 帖（8/22-23，经搜索快照、status URL 未恢复）、Gavin Baker 推文（读者出示原文；终局句公开检索未能独立恢复，据实标注、以读者出示原文为据）、Bloomberg（8/13-14、8/17）、Ramp AI Index（8/12）、Nagle &amp;amp; Yue（2026-01 经 MIT Sloan）、Podcast Alpha 纪要</dd>
-      <dt>口径注</dt><dd data-kind="口径注">自算口径系把 Vercel 实验室行按广义中国口径加总，国别归类含判断；「公布」两字站在窄口径那边，按 ENTRY 110 先例（不冒领数据点）只标部分触发、不降级，台账 ENTRY 121 已加注</dd>
-      <dt>裁定</dt><dd data-kind="裁定">源与时限：交 9 月中发布的 8 月月度指数——公布口径确认超 10%，按预注册文本自动降级为「钱包也开始移动」；未确认则撤回部分触发</dd>
-      <dt>升级线</dt><dd data-kind="升级线">12 个月内月度口径破 30%，升级为「钱在迁移」、ENTRY 121 母判断重写；回撤线：回落至 8% 以下，定为单月脉冲</dd>
-      <dt>关联</dt><dd data-kind="关联">ENTRY 118 双轨：两侧均远超 30%，未触发（第 23 天）</dd>
-      <dt>附注</dt><dd data-kind="附注">更正：ENTRY 125 的 Anthropic tracker 估计偏高，以官方 7 月底 ARR $650 亿为准</dd>
-      <dt>更正</dt><dd data-kind="更正">2026-09-02 口径更正：经一手核实，Vercel 月度指数从不单独发布「中国来源模型」的花费份额——它公布的是开放权重占比（7 月 8.6%）与各实验室单独占比（Anthropic 65.1%），国别分组仅出现在视频一项。故本篇「Vercel 公布的窄口径 7 月 8.6-9%」实为开放权重份额充当中国口径的代理，当时未标明，现更正；且「交 8 月月度指数按公布口径裁定」按字面不可执行。裁定机制改写：以 Vercel 公开每日榜单的实验室行为准，由作者按广义中国口径加总（DeepSeek＋月暗＋智谱＋阶跃＋小米＋MiniMax＋阿里等），连续 30 日均值超 10% 方为触发，读数与加总明细随裁定当日一并公开，供外部复算。这正是本篇自己写下的那句「下次的证伪口，连口径的定义权一起写死」——上一版没做到。</dd>
-      <dt>其他</dt><dd data-kind="其他">下次的证伪口，连口径的定义权一起写死。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-09-14 对账：按 9/2 改写的裁定机制读数——Vercel 官方 labs 导出（CC-BY-4.0，仓库 archive/meter-snapshots/2026-09-14-vercel-gateway-labs.json.gz，复算脚本 scripts/vercel-lab-share.py），广义中国口径 12 家实验室的花费份额 2026-08-15 至 09-13 三十日均值 16.1%、最低日 10.4%，自 7/30 起每日均超 10%。触发成立，「部分触发」改记「触发」，ENTRY 121 按预注册降级为「钱包也开始移动」；30% 升级线未到（token 口径 61.1% 仅供参照，不是裁定口径）。回算发现 9/2 改写规则当日的三十日均值已超 10%，当时未回算，迟记 12 天，一并认。详见 ENTRY 135 尾注对账段。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-09-25 对账：Vercel 8 月月度指数 9/17 发布《Open-weight models take 56% of token volume》——开放权重 8 月跑 56% token、占 14% 花费，Anthropic 占花费 64%；该指数仍不单列中国来源份额，改写后的作者口径继续适用：广义 12 家 8/26 至 9/24 三十日花费均值 19.8%（最低日 11.1%），高于 10% 触发线、低于 30% 升级线，ENTRY 121「钱包也开始移动」维持。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-09-29 对账：升级线「月度口径破 30%」未破——广义 12 家中国实验室在 Vercel 花费份额 8/30 至 9/28 三十日均值 21.5%、9/22 至 28 七日均值 27.7%、单日峰 9/22 34.3%，三十日均值较 9/25 对账的 19.8% 上升、9/28 单日回落到 22.5%；回落线 8% 远未触及。详见 ENTRY 140。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-10-02 对账：升级线「月度口径破 30%」未破。广义 12 家中国实验室在 Vercel 花费份额 9/2 至 10/1 三十日均值 22.4%、9/25 至 10/1 七日均值 26.0%、10/1 单日 17.6%；回落线 8% 远未触及。详见 ENTRY 140。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-13 对账：30% 升级线部分触发。广义 12 家三十日花费份额从 10/2–10/31 窗口起，连续 13 个窗口在 30% 以上：首个窗口 30.05%，峰值 31.03%（10/9–11/7），最新 30.58%（10/14–11/12）。但条款写的是「月度口径」，10 月自然月为 29.6%，没有过线。按 8/24「两种口径不一致记部分触发」的先例，以 11 月自然月（12/1 复拉）为裁定：≥30% 则升级为「钱在迁移」、ENTRY 121 母判断重写，否则撤回。增量几乎都来自智谱：zai 8 月日均 4.8%，近三十日 16.1%，其中 GLM 5.3 单模型 13.7%。这种单家脉冲的风险，与 8/24 记的阶跃是同一类。token 侧，12 家三十日均值 49.7%，比 9 月初的 69.0% 回落；8% 回撤线远未触及。数据为 Vercel 官方导出 11/13 复拉。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/deepseek.html">DeepSeek</a> · <a href="../topics/zhipu-glm.html">智谱 GLM</a> · <a href="../topics/alibaba-qwen.html">阿里 Qwen</a> · <a href="../topics/vercel-gateway.html">Vercel AI Gateway 计量</a> · <a href="../topics/xiaomi-mimo.html">小米 MiMo</a> · <a href="../topics/minimax.html">MiniMax</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/chinese-models-share-us-ai-gateways.html">中国模型在美国 AI 网关上占多少 token、多少花费？</a> · <a href="../answers/low-cost-inference-open-weight-revenue-ceiling.html">我们在开源/中国模型这层做低价推理，收入天花板在哪？投资人为什么只问花费份额？</a> · <a href="../answers/anthropic-vercel-gateway-spend-share-drop.html">Anthropic 在 Vercel AI Gateway 的花费份额为什么一个月掉了 25 个点？钱去了哪？</a></p>
@@ -249,6 +284,8 @@
     本页是 <a href="../#entry-128">倩小虾日记 ENTRY 128</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

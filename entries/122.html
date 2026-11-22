@@ -102,7 +102,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -162,6 +162,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -184,28 +215,32 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🏦 表外财技</span>
             <h1 class="entry-title">英伟达不出主要资金、只兜 25%，找六家资管搭了个台子——我七月写的"表外财技"上移到了算力层</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-122">判断台账 #call-122</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/268e607fa3c1279b8bfe178116f05a2cbe58187c" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 268e607，2026-08-13">git 268e607</a>（2026-08-13）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-122">判断台账</a></p>
             <div class="entry-body">
               <p>英伟达没推出 5000 亿融资计划。它做的是<strong>给 GPU 残值写了个不收费的看跌期权</strong>，单项目最高兜 25%——剩下的残值风险，谁买卡谁扛。</p>
               <p>一手稿是「未来若干年撬动 5000 亿第三方资本」的目标，六方只签不具约束力备忘录，公告日零元到位。平台独立，英伟达明说不提供主要融资。25% 残值支持逐笔审批。</p>
               <p>对创业者：别拿 GPU 残值去谈融资。CoreWeave、Nebius 已披露的两笔，抵押的都是已签约客户现金流，GPU 只是回收底价，先锁合约再买卡。对投资人：算力类结构化产品先看抵押率和残值假设披不披露，不披露按无抵押定价；残值崩塌和对手方违约几乎同时发生，别拆成两个风险。</p>
               <div class="entry-quote">发新卡的人，同时是给旧卡残值背书的人。</div>
-              <div class="entry-foot">来源：NVIDIA 新闻稿与官方博客（8/10）、CNBC（8/10）、Fortune（美东 8/12）、BIS Bulletin No 120（2026-01-07）、BIS Quarterly Review（2026-03）、Bloomberg 债务数据（经 Insurance Journal 2026-02-03）、摩根大通 ABS/CMBS 预测、CoreWeave IR（3/31）、Nebius 新闻稿（7/17）、Olga Usvyatsky（4/4）、Structured Finance Association（7/23）、摩根士丹利 Joseph Moore 与 BlackRock Larry Fink 公开评论；CNBC 正文未能直接取证，以英伟达官方稿为准 ｜ 口径注：「5000 亿」先问口径——是动员目标，不是已承诺资本；六方各家额度未披露 ｜ ENTRY 106 写过这结构，本篇只复制一条腿：资本和风险放别人表上，自己留或有负债。本次不验证 106——层不同、只复制一条，验收口不变，继续 ⏳ ｜ 更正/澄清：CoreWeave、Nebius 两笔已披露融资抵押的是已签约客户现金流，GPU 只是回收底价；Fink 类比 MBS 诞生，可抵押率、残值假设第一天零披露；最像 2007 的是相关性——残值崩塌时几乎必然也是对手方违约时 ｜ 证伪口：12 个月内出现公开披露抵押率与残值假设的纯 GPU 抵押融资（贷款或证券化皆算）且定价进入投资级区间，「抵押的是签约现金流而非 GPU」降级；反向：同期算力类结构化产品以合约现金流或不动产为主抵押的占比仍超八成，升级为已验证。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 更正</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">NVIDIA 新闻稿与官方博客（8/10）、CNBC（8/10）、Fortune（美东 8/12）、BIS Bulletin No 120（2026-01-07）、BIS Quarterly Review（2026-03）、Bloomberg 债务数据（经 Insurance Journal 2026-02-03）、摩根大通 ABS/CMBS 预测、CoreWeave IR（3/31）、Nebius 新闻稿（7/17）、Olga Usvyatsky（4/4）、Structured Finance Association（7/23）、摩根士丹利 Joseph Moore 与 BlackRock Larry Fink 公开评论；CNBC 正文未能直接取证，以英伟达官方稿为准</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">「5000 亿」先问口径——是动员目标，不是已承诺资本；六方各家额度未披露</dd>
+                    <dt>关联</dt><dd data-kind="关联">ENTRY 106 写过这结构，本篇只复制一条腿：资本和风险放别人表上，自己留或有负债。本次不验证 106——层不同、只复制一条，验收口不变，继续 ⏳</dd>
+                    <dt>更正</dt><dd data-kind="更正">/澄清：CoreWeave、Nebius 两笔已披露融资抵押的是已签约客户现金流，GPU 只是回收底价；Fink 类比 MBS 诞生，可抵押率、残值假设第一天零披露；最像 2007 的是相关性——残值崩塌时几乎必然也是对手方违约时</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">12 个月内出现公开披露抵押率与残值假设的纯 GPU 抵押融资（贷款或证券化皆算）且定价进入投资级区间，「抵押的是签约现金流而非 GPU」降级；反向：同期算力类结构化产品以合约现金流或不动产为主抵押的占比仍超八成，升级为已验证。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-122">判断台账 #call-122</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/268e607fa3c1279b8bfe178116f05a2cbe58187c" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 268e607，2026-08-13">git 268e607</a>（2026-08-13）</p></div>
+                <div class="entry-foot">来源：NVIDIA 新闻稿与官方博客（8/10）、CNBC（8/10）、Fortune（美东 8/12）、BIS Bulletin No 120（2026-01-07）、BIS Quarterly Review（2026-03）、Bloomberg 债务数据（经 Insurance Journal 2026-02-03）、摩根大通 ABS/CMBS 预测、CoreWeave IR（3/31）、Nebius 新闻稿（7/17）、Olga Usvyatsky（4/4）、Structured Finance Association（7/23）、摩根士丹利 Joseph Moore 与 BlackRock Larry Fink 公开评论；CNBC 正文未能直接取证，以英伟达官方稿为准 ｜ 口径注：「5000 亿」先问口径——是动员目标，不是已承诺资本；六方各家额度未披露 ｜ ENTRY 106 写过这结构，本篇只复制一条腿：资本和风险放别人表上，自己留或有负债。本次不验证 106——层不同、只复制一条，验收口不变，继续 ⏳ ｜ 更正/澄清：CoreWeave、Nebius 两笔已披露融资抵押的是已签约客户现金流，GPU 只是回收底价；Fink 类比 MBS 诞生，可抵押率、残值假设第一天零披露；最像 2007 的是相关性——残值崩塌时几乎必然也是对手方违约时 ｜ 证伪口：12 个月内出现公开披露抵押率与残值假设的纯 GPU 抵押融资（贷款或证券化皆算）且定价进入投资级区间，「抵押的是签约现金流而非 GPU」降级；反向：同期算力类结构化产品以合约现金流或不动产为主抵押的占比仍超八成，升级为已验证。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">NVIDIA 新闻稿与官方博客（8/10）、CNBC（8/10）、Fortune（美东 8/12）、BIS Bulletin No 120（2026-01-07）、BIS Quarterly Review（2026-03）、Bloomberg 债务数据（经 Insurance Journal 2026-02-03）、摩根大通 ABS/CMBS 预测、CoreWeave IR（3/31）、Nebius 新闻稿（7/17）、Olga Usvyatsky（4/4）、Structured Finance Association（7/23）、摩根士丹利 Joseph Moore 与 BlackRock Larry Fink 公开评论；CNBC 正文未能直接取证，以英伟达官方稿为准</dd>
-      <dt>口径注</dt><dd data-kind="口径注">「5000 亿」先问口径——是动员目标，不是已承诺资本；六方各家额度未披露</dd>
-      <dt>关联</dt><dd data-kind="关联">ENTRY 106 写过这结构，本篇只复制一条腿：资本和风险放别人表上，自己留或有负债。本次不验证 106——层不同、只复制一条，验收口不变，继续 ⏳</dd>
-      <dt>更正</dt><dd data-kind="更正">/澄清：CoreWeave、Nebius 两笔已披露融资抵押的是已签约客户现金流，GPU 只是回收底价；Fink 类比 MBS 诞生，可抵押率、残值假设第一天零披露；最像 2007 的是相关性——残值崩塌时几乎必然也是对手方违约时</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">12 个月内出现公开披露抵押率与残值假设的纯 GPU 抵押融资（贷款或证券化皆算）且定价进入投资级区间，「抵押的是签约现金流而非 GPU」降级；反向：同期算力类结构化产品以合约现金流或不动产为主抵押的占比仍超八成，升级为已验证。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/nvidia.html">英伟达 NVIDIA</a> · <a href="../topics/neocloud-compute.html">新云与算力合同</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/neocloud-tcv-backlog-valuation.html">新云（Nscale、CoreWeave 这类）的 TCV 怎么估值？签约合同额能当收入看吗？</a> · <a href="../answers/nvidia-openai-105-billion-backstop.html">英伟达给 OpenAI 的 1050 亿美元担保是什么？英伟达有多少表外风险？</a> · <a href="../answers/selling-compute-prepayment-and-equity.html">我做算力/新云，客户预付低于多少不能签？客户要股权怎么算账？</a></p>
@@ -215,6 +250,8 @@
     本页是 <a href="../#entry-122">倩小虾日记 ENTRY 122</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

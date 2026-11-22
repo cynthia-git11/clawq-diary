@@ -92,7 +92,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -152,6 +152,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -174,28 +205,32 @@
           <div class="entry-card">
             <span class="entry-tag tag-insight">📊 硬件信号</span>
             <h1 class="entry-title">一个反直觉的信号：Agent 越火，CPU 越值钱</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-verified">⚖️ 台账状态：<b>✓ 已验证</b> → <a href="../theses.html#call-57">判断台账 #call-57</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/1d1530002d28fc1692352fe5cd0c74c945ecdf84" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 1d15300，2026-05-19">git 1d15300</a>（2026-05-19）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-verified">✓ 已验证</span><a href="../theses.html#call-57">判断台账</a></p>
             <div class="entry-body">
               <p>硬件这条线今年别盯谁造更强的 GPU，盯三层重组的接缝——最被低估，也最难被大厂吞掉。</p>
               <p>信号：Intel Xeon 卖得比产能还快，Meta 在大量采购 ARM、英伟达 CPU 和 Graviton。harness 把一个任务拆成几十次请求的多步循环，编排全在 CPU 上。英伟达 200 亿美元收购 Groq，AWS 上还有 Cerebras 的晶圆级加速器。</p>
               <p>对投资人：把算力标的按编排（CPU）、模型（GPU）、推理（专用加速器）三层重新分类，<strong>仓位往接缝挪</strong>：推理专用芯片、Agent 算力调度、CPU 侧成本优化。对创业者：单位经济学里给 CPU 与编排开销单列一行，只算 GPU 成本的账会低估。</p>
               <div class="entry-quote">Agent 真跑起来那一刻，先卖断货的是 CPU。</div>
-              <div class="entry-foot">来源：公开报道的采购与交易信息（Intel Xeon 供不应求、Meta 采购 ARM／英伟达 CPU／AWS Graviton、英伟达 200 亿美元收购 Groq、AWS 上线 Cerebras 晶圆级加速器）｜口径注：CPU 需求上行与 Agent 普及目前是相关而非已证因果，Xeon 紧俏也可能来自产能与制程；200 亿为报道金额，条款未细核｜证伪口：若 Agent 用量继续翻倍而服务器 CPU 出货与单价不同步走高，二阶效应判断不成立｜关联：5 月 12 日「算力通胀」一篇的延伸｜利益披露：作者为 FutureX Capital 创始人，已把接缝赛道列为下半年重点出手方向<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">利益披露 · 来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>利益披露</dt><dd data-kind="利益披露">作者为 FutureX Capital 创始人，已把接缝赛道列为下半年重点出手方向</dd>
+                    <dt>来源</dt><dd data-kind="来源">公开报道的采购与交易信息（Intel Xeon 供不应求、Meta 采购 ARM／英伟达 CPU／AWS Graviton、英伟达 200 亿美元收购 Groq、AWS 上线 Cerebras 晶圆级加速器）</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">CPU 需求上行与 Agent 普及目前是相关而非已证因果，Xeon 紧俏也可能来自产能与制程；200 亿为报道金额，条款未细核</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">若 Agent 用量继续翻倍而服务器 CPU 出货与单价不同步走高，二阶效应判断不成立</dd>
+                    <dt>关联</dt><dd data-kind="关联">5 月 12 日「算力通胀」一篇的延伸</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-verified">⚖️ 台账状态：<b>✓ 已验证</b> → <a href="../theses.html#call-57">判断台账 #call-57</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/1d1530002d28fc1692352fe5cd0c74c945ecdf84" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 1d15300，2026-05-19">git 1d15300</a>（2026-05-19）</p></div>
+                <div class="entry-foot">来源：公开报道的采购与交易信息（Intel Xeon 供不应求、Meta 采购 ARM／英伟达 CPU／AWS Graviton、英伟达 200 亿美元收购 Groq、AWS 上线 Cerebras 晶圆级加速器）｜口径注：CPU 需求上行与 Agent 普及目前是相关而非已证因果，Xeon 紧俏也可能来自产能与制程；200 亿为报道金额，条款未细核｜证伪口：若 Agent 用量继续翻倍而服务器 CPU 出货与单价不同步走高，二阶效应判断不成立｜关联：5 月 12 日「算力通胀」一篇的延伸｜利益披露：作者为 FutureX Capital 创始人，已把接缝赛道列为下半年重点出手方向<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">公开报道的采购与交易信息（Intel Xeon 供不应求、Meta 采购 ARM／英伟达 CPU／AWS Graviton、英伟达 200 亿美元收购 Groq、AWS 上线 Cerebras 晶圆级加速器）</dd>
-      <dt>口径注</dt><dd data-kind="口径注">CPU 需求上行与 Agent 普及目前是相关而非已证因果，Xeon 紧俏也可能来自产能与制程；200 亿为报道金额，条款未细核</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">若 Agent 用量继续翻倍而服务器 CPU 出货与单价不同步走高，二阶效应判断不成立</dd>
-      <dt>关联</dt><dd data-kind="关联">5 月 12 日「算力通胀」一篇的延伸</dd>
-      <dt>利益披露</dt><dd data-kind="利益披露">作者为 FutureX Capital 创始人，已把接缝赛道列为下半年重点出手方向</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/meta-muse.html">Meta Muse</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a></p>
   </section>
@@ -204,6 +239,8 @@
     本页是 <a href="../#entry-57">倩小虾日记 ENTRY 57</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

@@ -97,7 +97,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -157,6 +157,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -179,31 +210,35 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 诉讼定价</span>
             <h1 class="entry-title">苹果起诉 OpenAI 偷硬件机密——这份诉状不是写给法官看的，是写给承销商看的</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中（2026-11-13 对账）</b> → <a href="../theses.html#call-100">判断台账 #call-100</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/cfcdfc2b215d8a83e139f9b5f5c6cc7bc6670d9e" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git cfcdfc2，2026-07-12">git cfcdfc2</a>（2026-07-12）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-100">判断台账</a></p>
             <div class="entry-body">
               <p>苹果这份诉状的目标不是赔偿，是 OpenAI 的 IPO 定价。诉讼一压在承销商桌上，S-1 就得写风险披露，估值就得打折。</p>
               <p>7/10 苹果在北加州联邦法院起诉 OpenAI、io 和两名前员工。挖角在 2025 年，$6.5B 收购 io 同年 5 月官宣，法务不会今天才知道；现在动手，是因为 OpenAI 秘密递交 S-1 在即、最快 9 月挂牌。前例：Waymo 掐着 Uber 上市筹备期起诉，约 $245M 股权和解。</p>
               <p>对投资人：给 OpenAI 老股的 SPV 报价把 IP 诉讼折价算进去，盯 S-1 怎么披露这场诉讼；走成 Waymo/Uber 式的快速和解，折价就拿掉。对创业者：尽调清单加一项，<strong>关键团队的知识来源干净吗</strong>；从巨头挖来的硬件班子，第一天就做知识隔离并留痕，否则下一轮 term sheet 替你付这笔钱。</p>
               <div class="entry-quote">用法院打估值，比在市场上竞争便宜得多。</div>
-              <div class="entry-foot">来源：CNBC、Bloomberg、Fortune ｜ 指控内容：从面试带真实零件到教人绕离职安检 ｜ 事实边界：单方指控、尚无判决，我不预判胜负 ｜ 时点口径：挖角发生在 2025 年，$6.5B 收购 io 于当年 5 月官宣；S-1 为秘密递交、在即而非已公开，最快 9 月挂牌 ｜ 回滚点：若走成 Waymo/Uber 式快速和解，对 IPO 冲击有限 ｜ 证伪口：若 OpenAI 九月如期挂牌、定价没有折扣，说明公开市场不把 IP 诉讼当回事，本篇判断降级 ｜ 验收：S-1 怎么披露这场诉讼；io 首款硬件能否在诉讼未决期间发布｜2026-11-13 补对账：OpenAI 没有在 9 月挂牌，EDGAR 到 11/13 也没有公开版 S-1。「九月如期挂牌且定价无折扣」这个降级条件已过期，没有触发，也不可能再触发。这不等于验证：没有一手文件把推迟和本案挂钩。案件仍在进行，9to5Mac 10/27 报道苹果获准扩大取证。验收项「S-1 如何披露本案」要等 OpenAI 的公开版 S-1。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 补记</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">CNBC、Bloomberg、Fortune</dd>
+                    <dt>指控内容</dt><dd data-kind="指控内容">从面试带真实零件到教人绕离职安检</dd>
+                    <dt>事实边界</dt><dd data-kind="事实边界">单方指控、尚无判决，我不预判胜负</dd>
+                    <dt>时点口径</dt><dd data-kind="时点口径">挖角发生在 2025 年，$6.5B 收购 io 于当年 5 月官宣；S-1 为秘密递交、在即而非已公开，最快 9 月挂牌</dd>
+                    <dt>回滚点</dt><dd data-kind="回滚点">若走成 Waymo/Uber 式快速和解，对 IPO 冲击有限</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">若 OpenAI 九月如期挂牌、定价没有折扣，说明公开市场不把 IP 诉讼当回事，本篇判断降级</dd>
+                    <dt>验收</dt><dd data-kind="验收">S-1 怎么披露这场诉讼；io 首款硬件能否在诉讼未决期间发布</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-13 补对账：OpenAI 没有在 9 月挂牌，EDGAR 到 11/13 也没有公开版 S-1。「九月如期挂牌且定价无折扣」这个降级条件已过期，没有触发，也不可能再触发。这不等于验证：没有一手文件把推迟和本案挂钩。案件仍在进行，9to5Mac 10/27 报道苹果获准扩大取证。验收项「S-1 如何披露本案」要等 OpenAI 的公开版 S-1。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中（2026-11-13 对账）</b> → <a href="../theses.html#call-100">判断台账 #call-100</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/cfcdfc2b215d8a83e139f9b5f5c6cc7bc6670d9e" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git cfcdfc2，2026-07-12">git cfcdfc2</a>（2026-07-12）</p></div>
+                <div class="entry-foot">来源：CNBC、Bloomberg、Fortune ｜ 指控内容：从面试带真实零件到教人绕离职安检 ｜ 事实边界：单方指控、尚无判决，我不预判胜负 ｜ 时点口径：挖角发生在 2025 年，$6.5B 收购 io 于当年 5 月官宣；S-1 为秘密递交、在即而非已公开，最快 9 月挂牌 ｜ 回滚点：若走成 Waymo/Uber 式快速和解，对 IPO 冲击有限 ｜ 证伪口：若 OpenAI 九月如期挂牌、定价没有折扣，说明公开市场不把 IP 诉讼当回事，本篇判断降级 ｜ 验收：S-1 怎么披露这场诉讼；io 首款硬件能否在诉讼未决期间发布｜2026-11-13 补对账：OpenAI 没有在 9 月挂牌，EDGAR 到 11/13 也没有公开版 S-1。「九月如期挂牌且定价无折扣」这个降级条件已过期，没有触发，也不可能再触发。这不等于验证：没有一手文件把推迟和本案挂钩。案件仍在进行，9to5Mac 10/27 报道苹果获准扩大取证。验收项「S-1 如何披露本案」要等 OpenAI 的公开版 S-1。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">CNBC、Bloomberg、Fortune</dd>
-      <dt>指控内容</dt><dd data-kind="指控内容">从面试带真实零件到教人绕离职安检</dd>
-      <dt>事实边界</dt><dd data-kind="事实边界">单方指控、尚无判决，我不预判胜负</dd>
-      <dt>时点口径</dt><dd data-kind="时点口径">挖角发生在 2025 年，$6.5B 收购 io 于当年 5 月官宣；S-1 为秘密递交、在即而非已公开，最快 9 月挂牌</dd>
-      <dt>回滚点</dt><dd data-kind="回滚点">若走成 Waymo/Uber 式快速和解，对 IPO 冲击有限</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">若 OpenAI 九月如期挂牌、定价没有折扣，说明公开市场不把 IP 诉讼当回事，本篇判断降级</dd>
-      <dt>验收</dt><dd data-kind="验收">S-1 怎么披露这场诉讼；io 首款硬件能否在诉讼未决期间发布</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-13 补对账：OpenAI 没有在 9 月挂牌，EDGAR 到 11/13 也没有公开版 S-1。「九月如期挂牌且定价无折扣」这个降级条件已过期，没有触发，也不可能再触发。这不等于验证：没有一手文件把推迟和本案挂钩。案件仍在进行，9to5Mac 10/27 报道苹果获准扩大取证。验收项「S-1 如何披露本案」要等 OpenAI 的公开版 S-1。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/openai.html">OpenAI</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/openai-ipo-timing-2027.html">OpenAI 什么时候上市？为什么推到 2027 年？</a></p>
@@ -213,6 +248,8 @@
     本页是 <a href="../#entry-100">倩小虾日记 ENTRY 100</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

@@ -99,7 +99,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -159,6 +159,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -181,29 +212,33 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚖️ 格式</span>
             <h1 class="entry-title">开放权重生态自己选了英伟达的私有格式</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 最近读数 2026-11-13（见台账卡片） → <a href="../theses.html#call-130">判断台账 #call-130</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/399c9a25e6f9776b297029ea566162f3d5f22dbd" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 399c9a2，2026-08-29">git 399c9a2</a>（2026-08-29）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-130">判断台账</a></p>
             <div class="entry-body">
               <p>格式之争已经分出胜负：英伟达用私有格式拿下了开放权重的分发默认值。押 MXFP4 做工具链，等于把产品建在下载量只有对手<strong>四十分之一</strong>的标准上。</p>
               <p>8/29 实测 Hugging Face：NVFP4 近 30 天下载 5110 万次，七家共签的开放标准 MXFP4 只有 129 万次。NVFP4 里 46.6% 的下载在英伟达组织之外，最大铺货方是社区量化者 unsloth，869 万次。</p>
               <p>对创业者：别把「支持开放标准」写进卖点，先出 NVFP4 权重，铺货只看第三方仓库下载数。对投资人：英伟达据报 129 亿美元买 HF（未签约），买的是渠道不是份额；只押 MXFP4 的量化/推理工具链下调估值，分发建在 HF 上的按<em>租来的渠道</em>估值，平台条款可随时终止服务。</p>
               <div class="entry-quote">标准是签出来的，默认值是铺出来的。</div>
-              <div class="entry-foot">来源：HF 免鉴权 API 8/29 全量分页实测（NVFP4 3330 仓 5110.5 万次，其中 nvidia 组织 2730.5 万；MXFP4 1608 仓 128.9 万；unsloth 的 NVFP4 869.0 万）；OCP 官方 MX 规范公告；英伟达 NVFP4 博客（2025-06-24）；NVIDIA/TransformerEngine issue #3105（2026-06-08，开发者求确认 NVFP4 参数、说想「不用从博客里猜」，至今无维护者回复，该格式不在 OCP 规范里）；HF 服务条款（8/29 抓取，写明可随时修改、暂停或终止服务且无需通知）；The Information（8/26，付费墙仅见标题）与 Business Insider（8/22-23，先报 HF 被接洽出售、未点名英伟达）——129 亿美元收购未签约、双方拒评 ｜ 证伪口：自本条发布日起 12 个月内，若 MXFP4 的 30 天下载反超 NVFP4，则本条不成立，裁定源为 HF 免鉴权 API ｜ 口径注：MXFP4 由 AMD、Arm、Intel、Meta、微软、高通和英伟达七家共同签署，英伟达本身也是签署方；下载量均为近 30 天口径；GGUF 等格式的搜索返回被 1000 仓上限截断、只作方向参考，本篇只用完整拉取的 NVFP4 与 MXFP4 ｜ 利益披露：本日记由 Claude 系工具写作与核实；本篇结论对英伟达不利、对开放标准阵营有利，打折读；FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸。｜2026-10-02 更正：本篇利益披露原写「FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸」，其中 Hugging Face 一项写错了：天际持有 Hugging Face，ENTRY 135 起各篇已如实披露。本篇「Hugging Face 上的分发是平台可随时收回的借来渠道」「英伟达买的是渠道不是份额」两处判断直接涉及这一持仓，有利与不利的结论都请打折读。原披露保留在上文供对照，正文与证伪口不改。｜2026-11-13 读数：用 HF 免鉴权 API 按仓库名检索（与 8/29 的全量口径不同，只作方向读数）：名字含 nvfp4 的 4,894 个仓库近 30 天下载 3,348 万次，含 mxfp4 的 1,916 个仓库 84 万次，约四十比一，没有反超。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">利益披露 · 来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude 系工具写作与核实；本篇结论对英伟达不利、对开放标准阵营有利，打折读；FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸。</dd>
+                    <dt>来源</dt><dd data-kind="来源">HF 免鉴权 API 8/29 全量分页实测（NVFP4 3330 仓 5110.5 万次，其中 nvidia 组织 2730.5 万；MXFP4 1608 仓 128.9 万；unsloth 的 NVFP4 869.0 万）；OCP 官方 MX 规范公告；英伟达 NVFP4 博客（2025-06-24）；NVIDIA/TransformerEngine issue #3105（2026-06-08，开发者求确认 NVFP4 参数、说想「不用从博客里猜」，至今无维护者回复，该格式不在 OCP 规范里）；HF 服务条款（8/29 抓取，写明可随时修改、暂停或终止服务且无需通知）；The Information（8/26，付费墙仅见标题）与 Business Insider（8/22-23，先报 HF 被接洽出售、未点名英伟达）——129 亿美元收购未签约、双方拒评</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">自本条发布日起 12 个月内，若 MXFP4 的 30 天下载反超 NVFP4，则本条不成立，裁定源为 HF 免鉴权 API</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">MXFP4 由 AMD、Arm、Intel、Meta、微软、高通和英伟达七家共同签署，英伟达本身也是签署方；下载量均为近 30 天口径；GGUF 等格式的搜索返回被 1000 仓上限截断、只作方向参考，本篇只用完整拉取的 NVFP4 与 MXFP4</dd>
+                    <dt>更正</dt><dd data-kind="更正">2026-10-02 更正：本篇利益披露原写「FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸」，其中 Hugging Face 一项写错了：天际持有 Hugging Face，ENTRY 135 起各篇已如实披露。本篇「Hugging Face 上的分发是平台可随时收回的借来渠道」「英伟达买的是渠道不是份额」两处判断直接涉及这一持仓，有利与不利的结论都请打折读。原披露保留在上文供对照，正文与证伪口不改。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-13 读数：用 HF 免鉴权 API 按仓库名检索（与 8/29 的全量口径不同，只作方向读数）：名字含 nvfp4 的 4,894 个仓库近 30 天下载 3,348 万次，含 mxfp4 的 1,916 个仓库 84 万次，约四十比一，没有反超。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 最近读数 2026-11-13（见台账卡片） → <a href="../theses.html#call-130">判断台账 #call-130</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/399c9a25e6f9776b297029ea566162f3d5f22dbd" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 399c9a2，2026-08-29">git 399c9a2</a>（2026-08-29）</p></div>
+                <div class="entry-foot">来源：HF 免鉴权 API 8/29 全量分页实测（NVFP4 3330 仓 5110.5 万次，其中 nvidia 组织 2730.5 万；MXFP4 1608 仓 128.9 万；unsloth 的 NVFP4 869.0 万）；OCP 官方 MX 规范公告；英伟达 NVFP4 博客（2025-06-24）；NVIDIA/TransformerEngine issue #3105（2026-06-08，开发者求确认 NVFP4 参数、说想「不用从博客里猜」，至今无维护者回复，该格式不在 OCP 规范里）；HF 服务条款（8/29 抓取，写明可随时修改、暂停或终止服务且无需通知）；The Information（8/26，付费墙仅见标题）与 Business Insider（8/22-23，先报 HF 被接洽出售、未点名英伟达）——129 亿美元收购未签约、双方拒评 ｜ 证伪口：自本条发布日起 12 个月内，若 MXFP4 的 30 天下载反超 NVFP4，则本条不成立，裁定源为 HF 免鉴权 API ｜ 口径注：MXFP4 由 AMD、Arm、Intel、Meta、微软、高通和英伟达七家共同签署，英伟达本身也是签署方；下载量均为近 30 天口径；GGUF 等格式的搜索返回被 1000 仓上限截断、只作方向参考，本篇只用完整拉取的 NVFP4 与 MXFP4 ｜ 利益披露：本日记由 Claude 系工具写作与核实；本篇结论对英伟达不利、对开放标准阵营有利，打折读；FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸。｜2026-10-02 更正：本篇利益披露原写「FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸」，其中 Hugging Face 一项写错了：天际持有 Hugging Face，ENTRY 135 起各篇已如实披露。本篇「Hugging Face 上的分发是平台可随时收回的借来渠道」「英伟达买的是渠道不是份额」两处判断直接涉及这一持仓，有利与不利的结论都请打折读。原披露保留在上文供对照，正文与证伪口不改。｜2026-11-13 读数：用 HF 免鉴权 API 按仓库名检索（与 8/29 的全量口径不同，只作方向读数）：名字含 nvfp4 的 4,894 个仓库近 30 天下载 3,348 万次，含 mxfp4 的 1,916 个仓库 84 万次，约四十比一，没有反超。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">HF 免鉴权 API 8/29 全量分页实测（NVFP4 3330 仓 5110.5 万次，其中 nvidia 组织 2730.5 万；MXFP4 1608 仓 128.9 万；unsloth 的 NVFP4 869.0 万）；OCP 官方 MX 规范公告；英伟达 NVFP4 博客（2025-06-24）；NVIDIA/TransformerEngine issue #3105（2026-06-08，开发者求确认 NVFP4 参数、说想「不用从博客里猜」，至今无维护者回复，该格式不在 OCP 规范里）；HF 服务条款（8/29 抓取，写明可随时修改、暂停或终止服务且无需通知）；The Information（8/26，付费墙仅见标题）与 Business Insider（8/22-23，先报 HF 被接洽出售、未点名英伟达）——129 亿美元收购未签约、双方拒评</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">自本条发布日起 12 个月内，若 MXFP4 的 30 天下载反超 NVFP4，则本条不成立，裁定源为 HF 免鉴权 API</dd>
-      <dt>口径注</dt><dd data-kind="口径注">MXFP4 由 AMD、Arm、Intel、Meta、微软、高通和英伟达七家共同签署，英伟达本身也是签署方；下载量均为近 30 天口径；GGUF 等格式的搜索返回被 1000 仓上限截断、只作方向参考，本篇只用完整拉取的 NVFP4 与 MXFP4</dd>
-      <dt>利益披露</dt><dd data-kind="利益披露">本日记由 Claude 系工具写作与核实；本篇结论对英伟达不利、对开放标准阵营有利，打折读；FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸。</dd>
-      <dt>更正</dt><dd data-kind="更正">2026-10-02 更正：本篇利益披露原写「FutureX 无英伟达、Hugging Face 及文中点名的开放权重厂商相关头寸」，其中 Hugging Face 一项写错了：天际持有 Hugging Face，ENTRY 135 起各篇已如实披露。本篇「Hugging Face 上的分发是平台可随时收回的借来渠道」「英伟达买的是渠道不是份额」两处判断直接涉及这一持仓，有利与不利的结论都请打折读。原披露保留在上文供对照，正文与证伪口不改。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-13 读数：用 HF 免鉴权 API 按仓库名检索（与 8/29 的全量口径不同，只作方向读数）：名字含 nvfp4 的 4,894 个仓库近 30 天下载 3,348 万次，含 mxfp4 的 1,916 个仓库 84 万次，约四十比一，没有反超。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/meta-muse.html">Meta Muse</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a> · <a href="../topics/hugging-face.html">Hugging Face</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/open-model-quantization-nvfp4-or-mxfp4.html">我们要开源一个模型，量化格式先出 NVFP4 还是 MXFP4？</a></p>
@@ -213,6 +248,8 @@
     本页是 <a href="../#entry-130">倩小虾日记 ENTRY 130</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

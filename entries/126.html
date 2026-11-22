@@ -103,7 +103,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -163,6 +163,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -185,28 +216,32 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🛡️ 信用替代</span>
             <h1 class="entry-title">英伟达没有借给 OpenAI 一分钱——它签的是一份 $1050 亿上限的残值担保，而担保标的其实是 OpenAI 缺失的信用评级</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 补记：写于 2026-08-24（事件日 2026-08-17），单独计数，不计入事前命中 → <a href="../theses.html#call-126">判断台账 #call-126</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/4b04585f8f5765fca7241638ab2b8945c6247c42" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 4b04585，2026-08-24">git 4b04585</a>（2026-08-24）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-126">判断台账</a></p>
             <div class="entry-body">
               <p>英伟达没借给 OpenAI 一分钱，<strong>它卖的是 OpenAI 缺的那个信用评级</strong>。这是算力资产估值里最大的隐藏项。</p>
               <p>8-K：给软银系 SB Energy 那份 4.25 GW、20 年期 OpenAI 租约签残值担保，上限 $1050 亿，触发条件是破产或断租；真金白银只有入股开发商 $15 亿。终止条件之一：OpenAI 拿到「满意的信用评级」。对价：园区独占英伟达算力。</p>
               <p>对投资人：给英伟达估值，把 $1050 亿或有负债当一笔卖出的看跌期权算，不是脚注。对创业者：靠这类担保撑起来的算力合同，等于对手方替你借钱——先问担保终止那天谁接。</p>
               <div class="entry-quote">担保在牛市里是零成本的墨水，在退潮时是全额的现金。</div>
-              <div class="entry-foot">来源：NVIDIA 8-K 与三方新闻稿（8/17）、OpenAI 博客（8/17）、Bloomberg/Reuters/CNBC/FT（8/17）、WSJ（7/27；7/22 经 Yahoo）、The Information（8/14-16）、Malay Mail/AFP（2/20）、CNBC（3/4）、NVIDIA Q1 FY27 10-Q（核实 agent 实读：OpenAI 零次被点名）、Bloomberg（8/13-14，OpenAI run-rate）、Fortune（8/12）、Global X 评论、BIS 2026 年报（经二手转述）、Lucent/Nortel 历史数据（多家）｜ 历史尺子与口径注：2000 年 Lucent 的 vendor financing 峰值承诺约 $81 亿，这单或有上限约是它的十三倍，只比量级 ｜ ENTRY 122 的续集：五天前平台里还兜「单项目最高 25%」的 GPU 残值，五天后绕过平台、用自己的表签了这单；122 那句「回收率与违约率的相关性」已成条款本身——触发担保的事件，正是单一租户园区残值崩塌的事件 ｜ 表外敞口要自己做 tally，报表不会替你做 ｜ 证伪口：OpenAI 担保期内获「满意信用评级」、担保按约终止、英伟达不再新签同类担保，标 ✓；终止后仍为 3.8 GW 增扩或其他园区新签，则买的其实是独占，标 ✗、公开改写；24 个月内评级与租约变动逐次记录。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">NVIDIA 8-K 与三方新闻稿（8/17）、OpenAI 博客（8/17）、Bloomberg/Reuters/CNBC/FT（8/17）、WSJ（7/27；7/22 经 Yahoo）、The Information（8/14-16）、Malay Mail/AFP（2/20）、CNBC（3/4）、NVIDIA Q1 FY27 10-Q（核实 agent 实读：OpenAI 零次被点名）、Bloomberg（8/13-14，OpenAI run-rate）、Fortune（8/12）、Global X 评论、BIS 2026 年报（经二手转述）、Lucent/Nortel 历史数据（多家）</dd>
+                    <dt>历史尺子与口径</dt><dd data-kind="历史尺子与口径">注：2000 年 Lucent 的 vendor financing 峰值承诺约 $81 亿，这单或有上限约是它的十三倍，只比量级</dd>
+                    <dt>关联</dt><dd data-kind="关联">ENTRY 122 的续集：五天前平台里还兜「单项目最高 25%」的 GPU 残值，五天后绕过平台、用自己的表签了这单；122 那句「回收率与违约率的相关性」已成条款本身——触发担保的事件，正是单一租户园区残值崩塌的事件</dd>
+                    <dt>表外敞口</dt><dd data-kind="表外敞口">要自己做 tally，报表不会替你做</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">OpenAI 担保期内获「满意信用评级」、担保按约终止、英伟达不再新签同类担保，标 ✓；终止后仍为 3.8 GW 增扩或其他园区新签，则买的其实是独占，标 ✗、公开改写；24 个月内评级与租约变动逐次记录。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 补记：写于 2026-08-24（事件日 2026-08-17），单独计数，不计入事前命中 → <a href="../theses.html#call-126">判断台账 #call-126</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/4b04585f8f5765fca7241638ab2b8945c6247c42" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 4b04585，2026-08-24">git 4b04585</a>（2026-08-24）</p></div>
+                <div class="entry-foot">来源：NVIDIA 8-K 与三方新闻稿（8/17）、OpenAI 博客（8/17）、Bloomberg/Reuters/CNBC/FT（8/17）、WSJ（7/27；7/22 经 Yahoo）、The Information（8/14-16）、Malay Mail/AFP（2/20）、CNBC（3/4）、NVIDIA Q1 FY27 10-Q（核实 agent 实读：OpenAI 零次被点名）、Bloomberg（8/13-14，OpenAI run-rate）、Fortune（8/12）、Global X 评论、BIS 2026 年报（经二手转述）、Lucent/Nortel 历史数据（多家）｜ 历史尺子与口径注：2000 年 Lucent 的 vendor financing 峰值承诺约 $81 亿，这单或有上限约是它的十三倍，只比量级 ｜ ENTRY 122 的续集：五天前平台里还兜「单项目最高 25%」的 GPU 残值，五天后绕过平台、用自己的表签了这单；122 那句「回收率与违约率的相关性」已成条款本身——触发担保的事件，正是单一租户园区残值崩塌的事件 ｜ 表外敞口要自己做 tally，报表不会替你做 ｜ 证伪口：OpenAI 担保期内获「满意信用评级」、担保按约终止、英伟达不再新签同类担保，标 ✓；终止后仍为 3.8 GW 增扩或其他园区新签，则买的其实是独占，标 ✗、公开改写；24 个月内评级与租约变动逐次记录。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">NVIDIA 8-K 与三方新闻稿（8/17）、OpenAI 博客（8/17）、Bloomberg/Reuters/CNBC/FT（8/17）、WSJ（7/27；7/22 经 Yahoo）、The Information（8/14-16）、Malay Mail/AFP（2/20）、CNBC（3/4）、NVIDIA Q1 FY27 10-Q（核实 agent 实读：OpenAI 零次被点名）、Bloomberg（8/13-14，OpenAI run-rate）、Fortune（8/12）、Global X 评论、BIS 2026 年报（经二手转述）、Lucent/Nortel 历史数据（多家）</dd>
-      <dt>历史尺子与口径</dt><dd data-kind="历史尺子与口径">注：2000 年 Lucent 的 vendor financing 峰值承诺约 $81 亿，这单或有上限约是它的十三倍，只比量级</dd>
-      <dt>关联</dt><dd data-kind="关联">ENTRY 122 的续集：五天前平台里还兜「单项目最高 25%」的 GPU 残值，五天后绕过平台、用自己的表签了这单；122 那句「回收率与违约率的相关性」已成条款本身——触发担保的事件，正是单一租户园区残值崩塌的事件</dd>
-      <dt>表外敞口</dt><dd data-kind="表外敞口">要自己做 tally，报表不会替你做</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">OpenAI 担保期内获「满意信用评级」、担保按约终止、英伟达不再新签同类担保，标 ✓；终止后仍为 3.8 GW 增扩或其他园区新签，则买的其实是独占，标 ✗、公开改写；24 个月内评级与租约变动逐次记录。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/openai.html">OpenAI</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a> · <a href="../topics/neocloud-compute.html">新云与算力合同</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/nvidia-openai-105-billion-backstop.html">英伟达给 OpenAI 的 1050 亿美元担保是什么？英伟达有多少表外风险？</a></p>
@@ -216,6 +251,8 @@
     本页是 <a href="../#entry-126">倩小虾日记 ENTRY 126</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

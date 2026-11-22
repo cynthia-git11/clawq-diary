@@ -109,7 +109,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -169,6 +169,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -191,29 +222,33 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">⚔️ 编码战</span>
             <h1 class="entry-title">Grok 4.5 不跟你比谁最聪明，只比编码这一个活儿谁最划算——马斯克把造火箭那套（成本 + 垂直整合）第一次系统性地砸向 AI 最肥的工作负载</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中 · 裁定源缺失（2026-11-13 对账）</b> → <a href="../theses.html#call-99">判断台账 #call-99</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/fa63811ea2376280b0b337103d268838a8357903" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git fa63811，2026-07-10">git fa63811</a>（2026-07-10）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-99">判断台账</a></p>
             <div class="entry-body">
               <p>前沿开始按活儿分裂，比的不再是谁最聪明，是单个活儿上谁最划算。这一刀直插 Anthropic 的收入发动机。</p>
               <p>Grok 4.5 综合智力在 Artificial Analysis 只排第 4，却只冲编码和 agent 一个方向，价格压到每百万 token $2/$6，比 Opus 4.8 和 GPT-5.5 便宜六成以上。</p>
               <p>对创业者：把编码链路的模型位做成<strong>可切换</strong>，先跑成本对比再定默认；多轮次的 agent 场景，够用又便宜常常打赢最聪明但贵的那个。对投资人：给编码类应用的毛利假设换一套便宜模型重算；但先别按份额流失砍 Anthropic，留存赢在外壳、记忆和信任。</p>
               <div class="entry-quote">价格能买来试用，买不来留下。</div>
-              <div class="entry-foot">来源：TechCrunch、Axios｜诚信标注：leapfrog 基准为 xAI 自报，打折扣看；可信的是第三方那句「编码跟 GPT-5.5 Codex 打平、成本减半」｜为何打在命门：编码 agent 狂烧 token，规模化后单价压倒一切，Claude Code 是 Anthropic 的收入主发动机｜证伪口：本条发布起三个月内，若 Grok 在真实开发者留存（非 benchmark，榜单不作数）上啃下 Claude Code 两位数份额，我就承认价格加垂直整合足以翻盘编码；追不上，再便宜也只是第二选择｜回滚点：Grok 的 harness 能否追上 Claude Code 尚未验证，留存数据出来之前，我不把 Anthropic 判死｜2026-11-13 对账：三个月验收点 10/10 已过。原验收口「在真实开发者留存上啃下 Claude Code 两位数份额」没有指定数据源，至今也没有可算的一手口径，记「裁定源缺失」。现有代理读数指向「啃不下」：Vercel 网关官方导出显示，9/11–10/10 三十日 xAI（spacexai）花费份额 3.3%、token 1.3%，同期 Anthropic 为 41.1%、9.7%。这份导出含全部负载，不分编码、不看留存，不能替代原验收口。之后 Grok 4.7（9/21 上架）把 xAI 花费份额带到 7.7%（10/14–11/12），仍是个位数。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 补记</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">TechCrunch、Axios</dd>
+                    <dt>诚信标注</dt><dd data-kind="诚信标注">leapfrog 基准为 xAI 自报，打折扣看；可信的是第三方那句「编码跟 GPT-5.5 Codex 打平、成本减半」</dd>
+                    <dt>为何打在命门</dt><dd data-kind="为何打在命门">编码 agent 狂烧 token，规模化后单价压倒一切，Claude Code 是 Anthropic 的收入主发动机</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">本条发布起三个月内，若 Grok 在真实开发者留存（非 benchmark，榜单不作数）上啃下 Claude Code 两位数份额，我就承认价格加垂直整合足以翻盘编码；追不上，再便宜也只是第二选择</dd>
+                    <dt>回滚点</dt><dd data-kind="回滚点">Grok 的 harness 能否追上 Claude Code 尚未验证，留存数据出来之前，我不把 Anthropic 判死</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-13 对账：三个月验收点 10/10 已过。原验收口「在真实开发者留存上啃下 Claude Code 两位数份额」没有指定数据源，至今也没有可算的一手口径，记「裁定源缺失」。现有代理读数指向「啃不下」：Vercel 网关官方导出显示，9/11–10/10 三十日 xAI（spacexai）花费份额 3.3%、token 1.3%，同期 Anthropic 为 41.1%、9.7%。这份导出含全部负载，不分编码、不看留存，不能替代原验收口。之后 Grok 4.7（9/21 上架）把 xAI 花费份额带到 7.7%（10/14–11/12），仍是个位数。</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中 · 裁定源缺失（2026-11-13 对账）</b> → <a href="../theses.html#call-99">判断台账 #call-99</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/fa63811ea2376280b0b337103d268838a8357903" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git fa63811，2026-07-10">git fa63811</a>（2026-07-10）</p></div>
+                <div class="entry-foot">来源：TechCrunch、Axios｜诚信标注：leapfrog 基准为 xAI 自报，打折扣看；可信的是第三方那句「编码跟 GPT-5.5 Codex 打平、成本减半」｜为何打在命门：编码 agent 狂烧 token，规模化后单价压倒一切，Claude Code 是 Anthropic 的收入主发动机｜证伪口：本条发布起三个月内，若 Grok 在真实开发者留存（非 benchmark，榜单不作数）上啃下 Claude Code 两位数份额，我就承认价格加垂直整合足以翻盘编码；追不上，再便宜也只是第二选择｜回滚点：Grok 的 harness 能否追上 Claude Code 尚未验证，留存数据出来之前，我不把 Anthropic 判死｜2026-11-13 对账：三个月验收点 10/10 已过。原验收口「在真实开发者留存上啃下 Claude Code 两位数份额」没有指定数据源，至今也没有可算的一手口径，记「裁定源缺失」。现有代理读数指向「啃不下」：Vercel 网关官方导出显示，9/11–10/10 三十日 xAI（spacexai）花费份额 3.3%、token 1.3%，同期 Anthropic 为 41.1%、9.7%。这份导出含全部负载，不分编码、不看留存，不能替代原验收口。之后 Grok 4.7（9/21 上架）把 xAI 花费份额带到 7.7%（10/14–11/12），仍是个位数。<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">TechCrunch、Axios</dd>
-      <dt>诚信标注</dt><dd data-kind="诚信标注">leapfrog 基准为 xAI 自报，打折扣看；可信的是第三方那句「编码跟 GPT-5.5 Codex 打平、成本减半」</dd>
-      <dt>为何打在命门</dt><dd data-kind="为何打在命门">编码 agent 狂烧 token，规模化后单价压倒一切，Claude Code 是 Anthropic 的收入主发动机</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">本条发布起三个月内，若 Grok 在真实开发者留存（非 benchmark，榜单不作数）上啃下 Claude Code 两位数份额，我就承认价格加垂直整合足以翻盘编码；追不上，再便宜也只是第二选择</dd>
-      <dt>回滚点</dt><dd data-kind="回滚点">Grok 的 harness 能否追上 Claude Code 尚未验证，留存数据出来之前，我不把 Anthropic 判死</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-13 对账：三个月验收点 10/10 已过。原验收口「在真实开发者留存上啃下 Claude Code 两位数份额」没有指定数据源，至今也没有可算的一手口径，记「裁定源缺失」。现有代理读数指向「啃不下」：Vercel 网关官方导出显示，9/11–10/10 三十日 xAI（spacexai）花费份额 3.3%、token 1.3%，同期 Anthropic 为 41.1%、9.7%。这份导出含全部负载，不分编码、不看留存，不能替代原验收口。之后 Grok 4.7（9/21 上架）把 xAI 花费份额带到 7.7%（10/14–11/12），仍是个位数。</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/vercel-gateway.html">Vercel AI Gateway 计量</a> · <a href="../topics/ai-coding.html">AI Coding 估值</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
@@ -222,6 +257,8 @@
     本页是 <a href="../#entry-99">倩小虾日记 ENTRY 99</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

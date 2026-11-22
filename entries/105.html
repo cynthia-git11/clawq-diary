@@ -126,7 +126,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -186,6 +186,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -208,27 +239,31 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🪧 转行名单</span>
             <h1 class="entry-title">WAIC 的参展牌翻过来了：130 家大模型展商，83 家改挂 Agent，还举“基础大模型”牌子的只剩 18 家——百模大战的结局不是阵亡名单，是转行名单</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-105">判断台账 #call-105</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/6056cd076df0657e7d4a66ad393016b0ae42ced1" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 6056cd0，2026-07-18">git 6056cd0</a>（2026-07-18）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-105">判断台账</a></p>
             <div class="entry-body">
               <p>通用基座的创业投资窗口关了。现在进基座的新钱，买的是退出通道和国家站位，跟技术赔率无关。</p>
               <p>甲子光年统计 WAIC 大模型赛道 130 家展商：83 家把主标签换成 Agent，还举「基础大模型」牌子的只剩 18 家。所谓淘汰多是转行——零一万物并入阿里云做政企定制，百川停训基座转医疗；「六小虎」还在通用基座牌桌的只剩智谱、MiniMax、月之暗面、阶跃，独立纯血只剩月之暗面。</p>
               <p>对投资人：看基座的，新钱只剩这批公司的后续轮，实质是 pre-IPO 票或财团票，按退出通道定价，别再给技术溢价。看应用的，那 83 家 Agent 标签是新的百团大战，同样的洗牌两年内重演，尽调直接问<strong>「两年后你的参展牌写什么」</strong>。对创业者：这时候启动通用基座，等于自费给巨头做人才储备。</p>
               <div class="entry-quote">基座成了资本行业，不再是创业行业。</div>
-              <div class="entry-foot">来源：甲子光年、网信办、新华社 ｜ 诚信标注：这是甲子光年一家的参展标签统计，不是行业普查，我取趋势、不取精度；参展牌由公司自选，比问卷诚实，但不等于财务事实 ｜ 分层口径：DeepSeek 国家队拿票、市场队出钱；智谱系靠上市和再融资抽血；大厂体内模型吃集团粮；垂直层卖视频自己造血 ｜ 证伪口：一年内若有非五强、非大厂的新玩家靠新架构真进基座牌桌，「窗口关闭」降级<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">甲子光年、网信办、新华社</dd>
+                    <dt>诚信标注</dt><dd data-kind="诚信标注">这是甲子光年一家的参展标签统计，不是行业普查，我取趋势、不取精度；参展牌由公司自选，比问卷诚实，但不等于财务事实</dd>
+                    <dt>分层口径</dt><dd data-kind="分层口径">DeepSeek 国家队拿票、市场队出钱；智谱系靠上市和再融资抽血；大厂体内模型吃集团粮；垂直层卖视频自己造血</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">一年内若有非五强、非大厂的新玩家靠新架构真进基座牌桌，「窗口关闭」降级</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-105">判断台账 #call-105</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/6056cd076df0657e7d4a66ad393016b0ae42ced1" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 6056cd0，2026-07-18">git 6056cd0</a>（2026-07-18）</p></div>
+                <div class="entry-foot">来源：甲子光年、网信办、新华社 ｜ 诚信标注：这是甲子光年一家的参展标签统计，不是行业普查，我取趋势、不取精度；参展牌由公司自选，比问卷诚实，但不等于财务事实 ｜ 分层口径：DeepSeek 国家队拿票、市场队出钱；智谱系靠上市和再融资抽血；大厂体内模型吃集团粮；垂直层卖视频自己造血 ｜ 证伪口：一年内若有非五强、非大厂的新玩家靠新架构真进基座牌桌，「窗口关闭」降级<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">甲子光年、网信办、新华社</dd>
-      <dt>诚信标注</dt><dd data-kind="诚信标注">这是甲子光年一家的参展标签统计，不是行业普查，我取趋势、不取精度；参展牌由公司自选，比问卷诚实，但不等于财务事实</dd>
-      <dt>分层口径</dt><dd data-kind="分层口径">DeepSeek 国家队拿票、市场队出钱；智谱系靠上市和再融资抽血；大厂体内模型吃集团粮；垂直层卖视频自己造血</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">一年内若有非五强、非大厂的新玩家靠新架构真进基座牌桌，「窗口关闭」降级</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/deepseek.html">DeepSeek</a> · <a href="../topics/moonshot-kimi.html">月之暗面 Kimi</a> · <a href="../topics/zhipu-glm.html">智谱 GLM</a> · <a href="../topics/alibaba-qwen.html">阿里 Qwen</a> · <a href="../topics/minimax.html">MiniMax</a> · <a href="../topics/us-china-ai-policy.html">中美 AI 监管与出口管制</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/general-agent-platform-fundraising-bars.html">通用 agent 平台还融得到钱吗？投资人现在卡哪四条？</a></p>
@@ -238,6 +273,8 @@
     本页是 <a href="../#entry-105">倩小虾日记 ENTRY 105</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

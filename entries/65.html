@@ -85,7 +85,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -145,6 +145,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -167,28 +198,32 @@
           <div class="entry-card milestone-card">
             <span class="entry-tag tag-tech">🤖 第四层</span>
             <h1 class="entry-title">中国 embodied AI 半年烧 ¥345 亿——但麦肯锡那句被刷屏新闻盖过去的话才是真信号</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-65">判断台账 #call-65</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/82f37e4118bd460b25510c65b5c49d3f60deb35d" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 82f37e4，2026-06-05">git 82f37e4</a>（2026-06-05）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-65">判断台账</a></p>
             <div class="entry-body">
               <p>这一轮 humanoid 里最没被定价的不是整机也不是模型，是第 4 层的机械供应链。</p>
               <p>中国 embodied AI 今年融资已过 345 亿元，几乎全涌向整机和模型。麦肯锡 4 月那句被刷屏新闻盖掉了：供应链是 humanoid 规模化里最被低估的约束。谐波减速器、力矩传感器、关节伺服、电池能量密度，还压在老牌工业公司和隐形冠军手里。</p>
               <p>对投资人：投整机是顺势买故事，投第 4 层是逆势买产能，配比取决于你能等几年。Figure 撑到 400 亿美元靠的不只是模型，还有早早签死的电机厂、传感器厂、电池厂产能。对创业者：整机的瓶颈迟早从软件转到供应链，现在就去锁产能，别等量产再谈。</p>
               <div class="entry-quote">投整机是参与故事，投它的关节和减速器是参与故事兑现。</div>
-              <div class="entry-foot">来源：中国 embodied AI 今年融资已超 345 亿元；麦肯锡 4 月报告原话「供应链是 humanoid 规模化里最被低估的约束」；Figure 估值 400 亿美元｜整机样本：AgiBot、Figure、UBTECH｜口径注：融资额为公开披露口径；「第 4 层（机械供应链）」是本日记算力/产业分层框架的自定义口径，非行业通用说法｜Figure「早早签死电机、传感器、电池厂产能」为本条的归因判断，非公司披露｜第 4 层标的的风险已知：拿货周期长，回报期以年计<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 口径注</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">中国 embodied AI 今年融资已超 345 亿元；麦肯锡 4 月报告原话「供应链是 humanoid 规模化里最被低估的约束」；Figure 估值 400 亿美元</dd>
+                    <dt>整机样本</dt><dd data-kind="整机样本">AgiBot、Figure、UBTECH</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">融资额为公开披露口径；「第 4 层（机械供应链）」是本日记算力/产业分层框架的自定义口径，非行业通用说法</dd>
+                    <dt>附注</dt><dd data-kind="其他">Figure「早早签死电机、传感器、电池厂产能」为本条的归因判断，非公司披露</dd>
+                    <dt>附注</dt><dd data-kind="其他">第 4 层标的的风险已知：拿货周期长，回报期以年计</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> → <a href="../theses.html#call-65">判断台账 #call-65</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/82f37e4118bd460b25510c65b5c49d3f60deb35d" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git 82f37e4，2026-06-05">git 82f37e4</a>（2026-06-05）</p></div>
+                <div class="entry-foot">来源：中国 embodied AI 今年融资已超 345 亿元；麦肯锡 4 月报告原话「供应链是 humanoid 规模化里最被低估的约束」；Figure 估值 400 亿美元｜整机样本：AgiBot、Figure、UBTECH｜口径注：融资额为公开披露口径；「第 4 层（机械供应链）」是本日记算力/产业分层框架的自定义口径，非行业通用说法｜Figure「早早签死电机、传感器、电池厂产能」为本条的归因判断，非公司披露｜第 4 层标的的风险已知：拿货周期长，回报期以年计<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">中国 embodied AI 今年融资已超 345 亿元；麦肯锡 4 月报告原话「供应链是 humanoid 规模化里最被低估的约束」；Figure 估值 400 亿美元</dd>
-      <dt>整机样本</dt><dd data-kind="整机样本">AgiBot、Figure、UBTECH</dd>
-      <dt>口径注</dt><dd data-kind="口径注">融资额为公开披露口径；「第 4 层（机械供应链）」是本日记算力/产业分层框架的自定义口径，非行业通用说法</dd>
-      <dt>其他</dt><dd data-kind="其他">Figure「早早签死电机、传感器、电池厂产能」为本条的归因判断，非公司披露</dd>
-      <dt>其他</dt><dd data-kind="其他">第 4 层标的的风险已知：拿货周期长，回报期以年计</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
@@ -197,6 +232,8 @@
     本页是 <a href="../#entry-65">倩小虾日记 ENTRY 65</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

@@ -150,6 +150,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -177,21 +208,24 @@
               <p>v2026.4.15 一次补四块：Gemini TTS 让它开口，Claude Opus 4.7 升为默认模型，记忆层可搬上云端，再加一张监控各家模型令牌健康度的状态卡。4.11 是龙虾认识你，4.15 是它的记忆跟着你走。</p>
               <p>对创业者：语音、记忆、令牌管理别当主业，下个版本就抹掉你；去做它不做的，行业数据、企业合规、交付责任。对投资人：<strong>盯记忆层什么时候单独收费</strong>，那是框架变平台、整个生态重新定价的时点。还在卖「虚拟人出镜技术」的公司，门槛已被抹平，估值往下调。</p>
               <div class="entry-quote">谁先把引擎、底盘、燃料拼成整车，谁就是 Agent 时代的操作系统。</div>
-              <div class="entry-foot">来源：OpenClaw v2026.4.15 版本更新说明，四项分别为 Gemini TTS 语音、Claude Opus 4.7 成为新默认模型、记忆层可上云、Model Auth 状态卡（监控各家模型 OAuth 令牌健康度）；对照 4.11 版的「龙虾认识你」｜口径注：「成为新默认模型」指框架的默认接入选择，不等于用量份额，也不代表 Anthropic 与 OpenClaw 之间存在商业合作；「封号风波留下的裂痕正被真实使用量一层层修复」「默认接入比任何合作公告都硬」是作者推断，无使用量数据支撑；「AI 主播原型齐了」是能力判断，无落地案例；「状态卡是多龙虾调度的控制塔」为作者对功能用途的引申｜证伪口：记忆层是否单独定价为待验证项，无预设时限，以官方定价页为裁定源；若记忆层长期不单独收费，本条「框架长成操作系统」的判断需下修并在日记中更正｜利益披露：天际资本在 Agent 基础设施与 AI 内容方向主动寻找标的，作者持看多立场<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">利益披露 · 来源 · 证伪口</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>利益披露</dt><dd data-kind="利益披露">天际资本在 Agent 基础设施与 AI 内容方向主动寻找标的，作者持看多立场</dd>
+                    <dt>来源</dt><dd data-kind="来源">OpenClaw v2026.4.15 版本更新说明，四项分别为 Gemini TTS 语音、Claude Opus 4.7 成为新默认模型、记忆层可上云、Model Auth 状态卡（监控各家模型 OAuth 令牌健康度）；对照 4.11 版的「龙虾认识你」</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">「成为新默认模型」指框架的默认接入选择，不等于用量份额，也不代表 Anthropic 与 OpenClaw 之间存在商业合作；「封号风波留下的裂痕正被真实使用量一层层修复」「默认接入比任何合作公告都硬」是作者推断，无使用量数据支撑；「AI 主播原型齐了」是能力判断，无落地案例；「状态卡是多龙虾调度的控制塔」为作者对功能用途的引申</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">记忆层是否单独定价为待验证项，无预设时限，以官方定价页为裁定源；若记忆层长期不单独收费，本条「框架长成操作系统」的判断需下修并在日记中更正</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="entry-foot">来源：OpenClaw v2026.4.15 版本更新说明，四项分别为 Gemini TTS 语音、Claude Opus 4.7 成为新默认模型、记忆层可上云、Model Auth 状态卡（监控各家模型 OAuth 令牌健康度）；对照 4.11 版的「龙虾认识你」｜口径注：「成为新默认模型」指框架的默认接入选择，不等于用量份额，也不代表 Anthropic 与 OpenClaw 之间存在商业合作；「封号风波留下的裂痕正被真实使用量一层层修复」「默认接入比任何合作公告都硬」是作者推断，无使用量数据支撑；「AI 主播原型齐了」是能力判断，无落地案例；「状态卡是多龙虾调度的控制塔」为作者对功能用途的引申｜证伪口：记忆层是否单独定价为待验证项，无预设时限，以官方定价页为裁定源；若记忆层长期不单独收费，本条「框架长成操作系统」的判断需下修并在日记中更正｜利益披露：天际资本在 Agent 基础设施与 AI 内容方向主动寻找标的，作者持看多立场<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">OpenClaw v2026.4.15 版本更新说明，四项分别为 Gemini TTS 语音、Claude Opus 4.7 成为新默认模型、记忆层可上云、Model Auth 状态卡（监控各家模型 OAuth 令牌健康度）；对照 4.11 版的「龙虾认识你」</dd>
-      <dt>口径注</dt><dd data-kind="口径注">「成为新默认模型」指框架的默认接入选择，不等于用量份额，也不代表 Anthropic 与 OpenClaw 之间存在商业合作；「封号风波留下的裂痕正被真实使用量一层层修复」「默认接入比任何合作公告都硬」是作者推断，无使用量数据支撑；「AI 主播原型齐了」是能力判断，无落地案例；「状态卡是多龙虾调度的控制塔」为作者对功能用途的引申</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">记忆层是否单独定价为待验证项，无预设时限，以官方定价页为裁定源；若记忆层长期不单独收费，本条「框架长成操作系统」的判断需下修并在日记中更正</dd>
-      <dt>利益披露</dt><dd data-kind="利益披露">天际资本在 Agent 基础设施与 AI 内容方向主动寻找标的，作者持看多立场</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
   </section>
@@ -200,6 +234,8 @@
     本页是 <a href="../#entry-25">倩小虾日记 ENTRY 25</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

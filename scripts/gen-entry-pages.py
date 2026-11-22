@@ -6,11 +6,15 @@ Reads index.html (the single-page hub) and writes, idempotently:
   entries/<N>.html        one static page per ENTRY (same markup/classes as the hub, so main.css applies),
                           with BlogPosting + BreadcrumbList JSON-LD, canonical, og/twitter, speakable,
                           and a machine-readable breakdown of the footnote (来源｜证伪口｜口径注｜更正｜利益披露);
-                          entries with a judgment-ledger card get a status strip above .entry-body from data/ledger.json
-                          (✗ / ◐ also get a CorrectionComment and a dated suffix on the description; title and body unchanged)
+                          entries with a judgment-ledger card get a one-line status chip above .entry-body from data/ledger.json
+                          (✗ / ◐ also get a CorrectionComment and a dated suffix on the description; title and body unchanged);
+                          reader fold (2026-11-23): the footnote, the structured breakdown and the full ledger status sit in ONE
+                          <details class="entry-fold"> right after the quote (scripts/entry_fold.py); the reader sees title, date,
+                          body and quote first
   entries/index.html      archive list, newest first
   sitemap-entries.xml     one <url> per entry, lastmod = the page's dateModified date
-  index.html              adds a ¶ permalink inside each entry header (internal links = crawl discovery); a backfill's top-5
+  index.html              wraps every footnote in the reader fold (scripts/entry_fold.py; the footnote markup stays byte for byte);
+                          adds a ¶ permalink inside each entry header (internal links = crawl discovery); a backfill's top-5
                           BlogPosting @graph datePublished / dateModified get its written date (scripts/machine_dates.py)
   atom.xml                per-entry page as the alternate link; a backfill's <published> / <updated> get its written date and
                           the feed <updated> follows the latest entry <updated> (entry order unchanged)
@@ -34,6 +38,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading, topic_text, backfill_written
 import llms_sections as LS
 import machine_dates as MD   # datePublished / dateModified rule, backfill written dates, the frozen time of day, hub/atom post-processing
+import entry_fold as EF      # reader fold: the footnote behind one <details> after the quote (index.html and the single pages)
 
 BASE = "https://cynthia-git11.github.io/clawq-diary/"
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -54,7 +59,10 @@ def wr(f, s):
 def strip(s): return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s)).strip()
 def esc(s): return html.escape(s, quote=True)
 
-idx = rd("index.html")
+idx0 = rd("index.html")
+# reader fold first (2026-11-23): buildN.py writes the bare footnote; wrapping it here, before the blocks are read, gives the single
+# pages the same wrapper in the same run. Idempotent: the wrapper is rebuilt from the footnote each time (label follows the segments).
+idx, FOLDED = EF.fold_hub(idx0)
 
 # ---------- locate every entry block (div id="entry-N" ... matching close) ----------
 def block_at(s, start):
@@ -160,14 +168,18 @@ def ledger_line(c):
     when = c["corrected_on"] if st == "corrected" else (c["reconciled"] if st == "partly" else None)
     return h, html.unescape(strip(status)), when
 def ledger_bits(e):
-    """strip html, CorrectionComment list, description suffix, the ledger dates the strip shows, and the subset that are
-    correction dates (✗ corrected_on; the reconciliation date of a ◐ call or of a sub-claim judged wrong), for one entry
-    ("" / [] / "" / [] / [] without cards)"""
+    """light line html, strip html, CorrectionComment list, description suffix, the ledger dates the strip shows, and the subset
+    that are correction dates (✗ corrected_on; the reconciliation date of a ◐ call or of a sub-claim judged wrong), for one entry
+    ("" / "" / [] / "" / [] / [] without cards)"""
     cs = LEDGER.get(e["n"], [])
-    if not cs: return "", [], "", [], []
+    if not cs: return "", "", [], "", [], []
     lines = [ledger_line(c) for c in cs]
     strip_html = ('<div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态">'
                   + "".join(f'<p class="st-{c["status"]}">{h}</p>' for c, (h, _, _) in zip(cs, lines)) + "</div>")
+    # one light line above the body (2026-11-23): status chip + 判断台账 link; the full strip above moves into the reader fold
+    line_html = ('<p class="ep-ledger-line" role="note" aria-label="判断台账状态">'
+                 + "".join(f'<span class="ep-chip st-{c["status"]}">{LZ[c["status"]]}</span>' for c in cs)
+                 + f'<a href="../theses.html#call-{cs[0]["entry"]}">判断台账</a></p>')
     corr = [{"@type": "CorrectionComment", "text": t, **({"datePublished": w} if w else {}), "url": f"{BASE}theses.html#{c['call_id']}"}
             for c, (_, t, w) in zip(cs, lines) if c["status"] in ("corrected", "partly")]
     suf = ""
@@ -178,7 +190,7 @@ def ledger_bits(e):
     dates = [d for c in cs for d in ledger_dates(c)]
     corr_dates = ([c["corrected_on"] for c in cs if c["status"] == "corrected" and c["corrected_on"]]
                   + [c["reconciled"] for c in cs if c["reconciled"] and (c["status"] == "partly" or c.get("subclaim_judged_wrong"))])
-    return strip_html, corr, suf, dates, corr_dates
+    return line_html, strip_html, corr, suf, dates, corr_dates
 
 def topics_for(e):
     txt = topic_text(e["blk"]).lower()   # same mention rule as the topic hubs (gen-topics.py): disclosure clauses do not count
@@ -215,6 +227,37 @@ CSS = """
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
 """
 HEAD_LINKS = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -231,7 +274,7 @@ def page(e, prev_e, next_e):
     desc = (e["paras"][0] if e["paras"] else e["title"])
     # 摘要字段（description/og/twitter）不复述已更正的事实；正文 articleBody 保留原文
     for old, new in DESC_FIX.get(e["n"], []): desc = desc.replace(old, new)
-    lg_html, lg_corr, lg_suf, lg_dates, lg_corr_dates = ledger_bits(e)
+    lg_line, lg_html, lg_corr, lg_suf, lg_dates, lg_corr_dates = ledger_bits(e)
     # ✗ / ◐: the summary keeps the original opening and ends with the dated ledger status (cut from the original, never from the suffix)
     if len(desc) > 150 - len(lg_suf): desc = desc[:147 - len(lg_suf)] + "…"
     desc += lg_suf
@@ -266,12 +309,17 @@ def page(e, prev_e, next_e):
          "keywords": kw, "description": desc, "articleBody": body_txt, "wordCount": len(re.sub(r"\s", "", body_txt)),
          "author": {"@id": f"{BASE}#cynthia"}, "publisher": {"@id": f"{BASE}#blog"}, "isPartOf": {"@id": f"{BASE}#blog"},
          "image": f"{BASE}assets/clawq-banner.jpg",
-         "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".entry-title", ".entry-body > p:first-of-type", ".entry-quote"] + ([".ep-ledger"] if lg_html else [])}},
+         "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".entry-title", ".entry-body > p:first-of-type", ".entry-quote"] + ([".ep-ledger-line"] if lg_html else [])}},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "倩小虾日记", "item": BASE},
             {"@type": "ListItem", "position": 2, "name": "全部日记", "item": f"{BASE}entries/"},
             {"@type": "ListItem", "position": 3, "name": f"ENTRY {e['n']}", "item": url}]}]}
-    facts = "\n".join(f"      <dt>{esc(k)}</dt><dd data-kind=\"{esc(k)}\">{esc(v if not v.startswith(k) else v[len(k):].lstrip('：: '))}</dd>" for k, v in items)
+    # structured footnote (shown inside the reader fold): the plain text keeps a literal "<6.5%" and decodes &amp; once (entry_dates.strip
+    # did neither); 利益披露 first, the fund disclaimer last; data-kind keeps the machine label
+    def dt(k): return ("附注" if k == "其他" else esc(k)) + (f'<span class="ef-kh">：{EF.FALSIFIER_HINT}</span>' if k == "证伪口" else "")
+    facts = "\n".join(f"    <dt>{dt(k)}</dt><dd data-kind=\"{esc(k)}\">{esc(v if not v.startswith(k) else v[len(k):].lstrip('：: '))}</dd>"
+                      for k, v in EF.ordered(foot_items(EF.plain(e["foot_html"]))))
+    facts_html = '<section class="ep-facts" aria-label="尾注结构化">\n  <h2>尾注 · 可核对项</h2>\n  <dl>\n' + facts + "\n  </dl>\n</section>"   # indented where placed
     rel_t = [t for t in tops if os.path.exists(os.path.join(SRC_ROOT, "topics", t["slug"] + ".html"))][:8]
     rel_q = [q for q in ANSWERS if e["n"] in [int(x) for x in q.get("entries", [])]][:8]
     related = ""
@@ -287,9 +335,19 @@ def page(e, prev_e, next_e):
     # entry block: drop the (最新) comment if any, keep classes; strip the ¶ permalink if present (page is the permalink)
     blk = re.sub(r'\s*<a class="ep-link"[^>]*>¶</a>', "", e["blk"])
     blk = blk.replace('<h3 class="entry-title">', '<h1 class="entry-title">', 1).replace("</h3>", "</h1>", 1) if '<h3 class="entry-title">' in blk else blk
-    if lg_html:   # ledger status strip between the title and .entry-body; the body itself stays byte-identical to the hub
-        blk, k = re.subn(r'(\n[ \t]*)(<div class="entry-body">)', lambda m: m.group(1) + lg_html + m.group(1) + m.group(2), blk, count=1)
-        if not k: print(f"WARN gen-entry-pages: ENTRY {e['n']} has no .entry-body — ledger status strip not placed")
+    if lg_line:   # ledger status: one line between the title and .entry-body; the full strip goes into the reader fold below
+        blk, k = re.subn(r'(\n[ \t]*)(<div class="entry-body">)', lambda m: m.group(1) + lg_line + m.group(1) + m.group(2), blk, count=1)
+        if not k: print(f"WARN gen-entry-pages: ENTRY {e['n']} has no .entry-body — ledger status line not placed")
+    # reader fold: structured footnote (利益披露 first) and then the full ledger strip, right after the summary; the verbatim footnote
+    # stays in the fold too (byte-identical to the hub, hidden by CSS while the structured copy is shown)
+    blk, k = re.subn(r'(<details class="entry-fold">\n([ \t]*)<summary class="ef-sum">(?:(?!</summary>).)*</summary>\n)',
+                     lambda m: m.group(1) + m.group(2) + facts_html.replace("\n", "\n" + m.group(2)) + "\n" + (m.group(2) + lg_html + "\n" if lg_html else ""),
+                     blk, count=1, flags=re.S)
+    facts_after = ""
+    if not k:
+        print(f"WARN gen-entry-pages: ENTRY {e['n']} has no reader fold — footnote breakdown placed after the entry")
+        facts_after = "  " + facts_html.replace("\n", "\n  ") + "\n"
+        if lg_html: blk = blk.replace(lg_line, lg_html, 1)
     lm = lastmod(e)
     if lm and e["date_txt"]:
         blk = re.sub(r'(<div class="entry-date">)(.*?)(</div>)', lambda m: m.group(1) + f'<time datetime="{lm}">' + m.group(2) + "</time>" + m.group(3), blk, count=1, flags=re.S)
@@ -335,18 +393,14 @@ def page(e, prev_e, next_e):
   <div class="timeline">
 {blk}
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-{facts}
-    </dl>
-  </section>
-{related}
+{facts_after}{related}
   <nav class="ep-pn" aria-label="前后篇">{pn}</nav>
   <footer class="ep-foot">
     本页是 <a href="../#entry-{e['n']}">倩小虾日记 ENTRY {e['n']}</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){{function o(){{var t=null;try{{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}}catch(e){{}}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){{d.open=true;t.scrollIntoView();}}}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){{var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){{d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({{block:"center"}});s.focus({{preventScroll:true}});}});d.appendChild(b);}},true);}})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
@@ -413,13 +467,13 @@ def add_link(m):
     if 'class="ep-link"' in head: return head
     added += 1
     return head.replace("</div>", f' <a class="ep-link" href="entries/{n}.html" title="本篇独立页面 ENTRY {n}">¶</a></div>', 1)
-idx2 = re.sub(r'<div id="entry-(\d+)"[^>]*>\s*<div class="entry-date">.*?</div>', add_link, idx, flags=re.S)
+idx2 = re.sub(r'<div id="entry-(\d+)"[^>]*>\s*<div class="entry-date">.*?</div>', add_link, idx, flags=re.S)   # idx: already folded
 if "ep-link{" not in idx2:
     idx2 = idx2.replace("</head>", "  <style>.ep-link{margin-left:10px;color:var(--muted2);text-decoration:none;font-family:var(--sans);font-size:12px}.ep-link:hover{color:var(--claw2)}</style>\n</head>", 1)
 # ---------- hub: a backfill's top-5 @graph datePublished / dateModified carry its written date (buildN.py writes the event date) ----------
 DATES = {e["n"]: (e["date_d"], e["written"]) for e in entries}
 idx2, hub_fixed = MD.fix_hub(idx2, DATES, TIMES)
-if idx2 != idx: wr("index.html", idx2)
+if idx2 != idx0: wr("index.html", idx2)
 
 # ---------- atom.xml: per-entry page becomes the alternate link; the hub anchor stays as rel="related" (geo-check keeps finding #entry-N) ----------
 if os.path.exists(os.path.join(ROOT, "atom.xml")):
@@ -459,4 +513,4 @@ rb = rd("robots.txt")
 if "sitemap-entries.xml" not in rb: wr("robots.txt", rb.rstrip("\n") + f"\nSitemap: {BASE}sitemap-entries.xml\n")
 
 if hub_fixed: print(f"index.html: backfill @graph timestamps set for ENTRY {', '.join(str(x) for x in hub_fixed)}")
-print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · entries {len(entries)} · pages (re)written {written} · hub permalinks added {added} · sitemap-entries {len(urls)} urls")
+print(f"{'DRY RUN in ' + ROOT if DRY else 'OK'} · entries {len(entries)} · pages (re)written {written} · hub permalinks added {added} · footnotes folded {FOLDED} · sitemap-entries {len(urls)} urls")

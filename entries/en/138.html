@@ -94,6 +94,22 @@
     .ee-ledger p{margin:0;padding:8px 12px;border-left:3px solid var(--claw2,#B8860B);background:var(--bg2,#F6F0E3);border-radius:0 8px 8px 0}.ee-ledger p+p{margin-top:6px}
     .ee-ledger b{color:var(--text);font-weight:700}.ee-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ee-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ee-ledger .st-corrected b{color:var(--red,#B5462A)}.ee-ledger .st-partly{border-left-color:#9a6a00}.ee-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): notes (disclosure, falsifier, ledger status) in one fold after the body */
+    .ee-wrap{overflow-wrap:anywhere}.ee-p{max-width:42em}
+    .ee-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-8px 0 20px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ee-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ee-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ee-chip.st-partly{border-left-color:#9a6a00}.ee-chip.st-verified{border-left-color:#1B9E7C}
+    .ee-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:0 0 14px;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}.entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}.ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}.ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ee-ledger{margin:12px 0 0}
+    .entry-fold .ee-p{font-size:14px;line-height:1.8;color:var(--muted);margin:12px 0 0}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
     .ee-pn{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-family:var(--sans,Inter,sans-serif);font-size:13px}.ee-pn a{color:var(--claw2,#B8860B);text-decoration:none;max-width:48%}
     .ee-list{list-style:none;padding:0;margin:0}.ee-list li{padding:10px 0;border-bottom:1px solid var(--border)}.ee-list a{color:var(--text);text-decoration:none;font-weight:600;font-size:15px}.ee-when{display:block;font-family:var(--sans,Inter,sans-serif);font-size:12px;color:var(--muted2);margin-top:2px}
   </style>
@@ -103,15 +119,19 @@
   <nav class="ee-nav" aria-label="Site"><a class="ee-brand" href="../../en.html">🦞 The ClawQ Chronicles</a><a href="./">All entries (English)</a><a href="../../answers/en/">Q&amp;A</a><a href="../../topics/">Topics</a><a href="../../theses-en.html">⚖️ Ledger</a><a href="../../">中文</a></nav>
   <h1 class="ee-h1">TypeSafe Jev: Adoption Is Not Pricing Power</h1>
   <div class="ee-meta">ENTRY 138 · <time datetime="2026-09-25">Sep 25 · Day 202</time> · ⚙️ Judgment layer · Cynthia Zhang · FutureX Capital · <a href="../138.html" hreflang="zh-CN">中文原文 · Chinese original</a> · Last updated <time datetime="2026-11-13">2026-11-13</time></div>
-  <div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status"><p class="st-open">⚖️ Ledger status: <b>⏳ Open (reconciled 2026-11-13)</b> · sub-claim judged wrong at reconciliation (Chinese original): <span lang="zh-CN">「促销一停采用就掉」</span> → <a href="../../theses-en.html#call-138">Ledger #call-138</a> · first public commit <a href="https://github.com/cynthia-git11/clawq-diary/commit/1e46834c6b77de3f5f024ca839f4a2a045c427c1" title="Commit in which this entry first appeared in the public repository (Beijing time)" aria-label="First public commit git 1e46834, 2026-09-25">git 1e46834</a> (2026-09-25)</p></div>
+  <p class="ee-ledger-line" role="note" aria-label="Judgment ledger status"><span class="ee-chip st-open">⏳ Open</span><a href="../../theses-en.html#call-138">Ledger</a></p>
   <p class="ee-p">Jev&#x27;s surge is adoption, not pricing power: TypeSafe priced it at $0.042 per million input tokens (company docs, Sep 15), and Together&#x27;s $17 copy matched that. Vercel says nearly 13% of paying teams used Jev within 24 hours (Vercel blog, Sep 18); under a free promotion it took 26.7% of requests but 2.0% of tokens on Sep 24. The reported valuation of over $10B (The Information and FT, citing people familiar; unsigned) buys an option on the default-judge seat, which distributors hold.</p>
   <p class="ee-p"><b>Investors:</b> do not enter at $10B; back the harnesses that hold the default seat.</p>
   <p class="ee-p"><b>Founders:</b> trial routing on Jev-class models, never as a security boundary.</p>
-  <p class="ee-p"><b>Falsifier:</b> per Vercel&#x27;s dataset=models export, any 7-day average of Jev&#x27;s request share below 13% from Sep 26 to Oct 31, 2026 verifies the call; at or above 20% marks it wrong.</p>
-  <p class="ee-p"><b>Ledger update</b> (Sep 29): Sep 26 to 28 averaged 23.1%; no full window yet, so pending, wrong-condition holding.</p>
-  <p class="ee-p"><b>Ledger update</b> (Oct 2): Jev&#x27;s request share averaged 23.1% over the first six complete post-promo days, so the wrong-call condition holds for the Oct 31 ruling; five rivals shipped decision models from Sep 29 to Oct 1, but neither OpenRouter nor Vercel lists one at or below $0.02/M, so falsifier 2 is not triggered.</p>
-  <p class="ee-p"><b>Disclosure:</b> written with Claude tools; Claude Fable 5.1 is TypeSafe&#x27;s pricing comparator; FutureX holds Hugging Face, host of the open copies; the author is a Vercel customer; FutureX holds no position in TypeSafe, DCVC, Together, OpenAI, Cloudflare, LangChain or ConvAI.</p>
-  <p class="ee-p">This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</p>
+  <details class="entry-fold">
+    <summary class="ef-sum"><span class="ef-sum-t">Disclosure · Falsifier · Ledger update</span></summary>
+    <p class="ee-p"><b>Disclosure:</b> written with Claude tools; Claude Fable 5.1 is TypeSafe&#x27;s pricing comparator; FutureX holds Hugging Face, host of the open copies; the author is a Vercel customer; FutureX holds no position in TypeSafe, DCVC, Together, OpenAI, Cloudflare, LangChain or ConvAI.</p>
+    <p class="ee-p"><b>Falsifier:</b> per Vercel&#x27;s dataset=models export, any 7-day average of Jev&#x27;s request share below 13% from Sep 26 to Oct 31, 2026 verifies the call; at or above 20% marks it wrong.</p>
+    <p class="ee-p"><b>Ledger update</b> (Sep 29): Sep 26 to 28 averaged 23.1%; no full window yet, so pending, wrong-condition holding.</p>
+    <p class="ee-p"><b>Ledger update</b> (Oct 2): Jev&#x27;s request share averaged 23.1% over the first six complete post-promo days, so the wrong-call condition holds for the Oct 31 ruling; five rivals shipped decision models from Sep 29 to Oct 1, but neither OpenRouter nor Vercel lists one at or below $0.02/M, so falsifier 2 is not triggered.</p>
+    <div class="ee-ledger" id="ledger-status" role="note" aria-label="Judgment ledger status"><p class="st-open">⚖️ Ledger status: <b>⏳ Open (reconciled 2026-11-13)</b> · sub-claim judged wrong at reconciliation (Chinese original): <span lang="zh-CN">「促销一停采用就掉」</span> → <a href="../../theses-en.html#call-138">Ledger #call-138</a> · first public commit <a href="https://github.com/cynthia-git11/clawq-diary/commit/1e46834c6b77de3f5f024ca839f4a2a045c427c1" title="Commit in which this entry first appeared in the public repository (Beijing time)" aria-label="First public commit git 1e46834, 2026-09-25">git 1e46834</a> (2026-09-25)</p></div>
+    <p class="ee-p">This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</p>
+  </details>
   <nav class="ee-pn" aria-label="Previous and next"><a rel="prev" href="137.html">← ENTRY 137</a><a rel="next" href="139.html" style="text-align:right">ENTRY 139 →</a></nav>
   <footer class="ee-foot">English edition of <a href="../138.html">ENTRY 138</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
 </div>

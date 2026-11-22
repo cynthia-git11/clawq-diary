@@ -103,7 +103,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -163,6 +163,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -185,30 +216,34 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">💰 落袋纪律</span>
             <h1 class="entry-title">马斯克三次在泡沫顶把弹药落袋——接着我上周的认错：股价是给散户看的，创始人看的是另一个数</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 最近读数 2026-11-21（见台账卡片） → <a href="../theses.html#call-113">判断台账 #call-113</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/aea5d97ae383cb4f8d3346255ee7be426d51500d" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git aea5d97，2026-07-27">git aea5d97</a>（2026-07-27）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-113">判断台账</a></p>
             <div class="entry-body">
               <p>股价是给二级散户看的，创始人该盯的是落进公司账上的弹药——这两个数可以同时反向成立。</p>
               <p>SpaceX 从 $135 发行价破发到约 $115，IPO 当天却已把约 $857 亿募进账上。Tesla 当年高位增发把溢价锁进三座超级工厂，2022 年股价回撤约 75%，产能还在。OpenAI、Anthropic 估值近万亿，都没闭环，全在纸上。</p>
               <p>对创业者：窗口开着就把叙事溢价换成毁不掉的东西——现金、产能、现金牛业务，别等估值「合理」了再融。对投资人：问被投一句「<strong>叙事凉了以后，你手里还剩什么</strong>」；把「已落袋资产／纸面估值」这个比值加进定价模型。</p>
               <div class="entry-quote">赢的不是判断对顶部，是在窗口关上前把溢价换成资产。</div>
-              <div class="entry-foot">来源：SpaceX S-1、Tesla 10-Q、Bloomberg、CNN ｜ 承接：7/25（ENTRY 111）已就「SpaceX 首日 +19% 验证退出通道打通」认错并标 ✗；本篇是同一堂课的另一面——破发与融资锁定同时成立 ｜ 母文（锦缎）更正：母文称 xAI「现金流闭环」，核出来是错的，我引它的模式、不引它的错；xAI 目前是烧钱炉，靠并进有 Starlink 现金牛的 SpaceX 交叉输血 ｜ 补充：PayPal 套现是 SpaceX、Tesla 的启动金 ｜ 分寸：三次都成有强幸存者偏差；马斯克落袋了，不代表 IPO 接盘的散户落袋了 ｜ 证伪口：一年内「太空+AI」叙事被证伪、股价续跌，则「第三次全身而退」这一判断打折。｜2026-11-21 读数：证伪口看的是 SpaceX。SPCX 10/30 以来有四个交易日收盘低于发行价 $135（10/30、11/5、11/6、11/20），11/20 收 $127.79（Nasdaq）。「太空+AI」叙事没有被证伪的一手事件，两个条件只沾了「股价续跌」这一半，维持 ⏳，续看至 2027-07-27。对照项：Anthropic 挂牌时，公司从基础发行拿到约 788 亿美元（已扣承销折扣、未扣其他费用），另有 260 亿美元同步私募（424B4）和约 122 亿超额配售（CNBC 11/20 引公司稿），近万亿纸面估值里已有一部分换成了现金<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 证伪口 · 补记</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">SpaceX S-1、Tesla 10-Q、Bloomberg、CNN</dd>
+                    <dt>承接</dt><dd data-kind="承接">7/25（ENTRY 111）已就「SpaceX 首日 +19% 验证退出通道打通」认错并标 ✗；本篇是同一堂课的另一面——破发与融资锁定同时成立</dd>
+                    <dt>母文（锦缎）更正</dt><dd data-kind="母文（锦缎）更正">母文称 xAI「现金流闭环」，核出来是错的，我引它的模式、不引它的错；xAI 目前是烧钱炉，靠并进有 Starlink 现金牛的 SpaceX 交叉输血</dd>
+                    <dt>补充</dt><dd data-kind="补充">PayPal 套现是 SpaceX、Tesla 的启动金</dd>
+                    <dt>分寸</dt><dd data-kind="分寸">三次都成有强幸存者偏差；马斯克落袋了，不代表 IPO 接盘的散户落袋了</dd>
+                    <dt>证伪口<span class="ef-kh">：什么情况下我认错</span></dt><dd data-kind="证伪口">一年内「太空+AI」叙事被证伪、股价续跌，则「第三次全身而退」这一判断打折。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-21 读数：证伪口看的是 SpaceX。SPCX 10/30 以来有四个交易日收盘低于发行价 $135（10/30、11/5、11/6、11/20），11/20 收 $127.79（Nasdaq）。「太空+AI」叙事没有被证伪的一手事件，两个条件只沾了「股价续跌」这一半，维持 ⏳，续看至 2027-07-27。对照项：Anthropic 挂牌时，公司从基础发行拿到约 788 亿美元（已扣承销折扣、未扣其他费用），另有 260 亿美元同步私募（424B4）和约 122 亿超额配售（CNBC 11/20 引公司稿），近万亿纸面估值里已有一部分换成了现金</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 最近读数 2026-11-21（见台账卡片） → <a href="../theses.html#call-113">判断台账 #call-113</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/aea5d97ae383cb4f8d3346255ee7be426d51500d" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git aea5d97，2026-07-27">git aea5d97</a>（2026-07-27）</p></div>
+                <div class="entry-foot">来源：SpaceX S-1、Tesla 10-Q、Bloomberg、CNN ｜ 承接：7/25（ENTRY 111）已就「SpaceX 首日 +19% 验证退出通道打通」认错并标 ✗；本篇是同一堂课的另一面——破发与融资锁定同时成立 ｜ 母文（锦缎）更正：母文称 xAI「现金流闭环」，核出来是错的，我引它的模式、不引它的错；xAI 目前是烧钱炉，靠并进有 Starlink 现金牛的 SpaceX 交叉输血 ｜ 补充：PayPal 套现是 SpaceX、Tesla 的启动金 ｜ 分寸：三次都成有强幸存者偏差；马斯克落袋了，不代表 IPO 接盘的散户落袋了 ｜ 证伪口：一年内「太空+AI」叙事被证伪、股价续跌，则「第三次全身而退」这一判断打折。｜2026-11-21 读数：证伪口看的是 SpaceX。SPCX 10/30 以来有四个交易日收盘低于发行价 $135（10/30、11/5、11/6、11/20），11/20 收 $127.79（Nasdaq）。「太空+AI」叙事没有被证伪的一手事件，两个条件只沾了「股价续跌」这一半，维持 ⏳，续看至 2027-07-27。对照项：Anthropic 挂牌时，公司从基础发行拿到约 788 亿美元（已扣承销折扣、未扣其他费用），另有 260 亿美元同步私募（424B4）和约 122 亿超额配售（CNBC 11/20 引公司稿），近万亿纸面估值里已有一部分换成了现金<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">SpaceX S-1、Tesla 10-Q、Bloomberg、CNN</dd>
-      <dt>承接</dt><dd data-kind="承接">7/25（ENTRY 111）已就「SpaceX 首日 +19% 验证退出通道打通」认错并标 ✗；本篇是同一堂课的另一面——破发与融资锁定同时成立</dd>
-      <dt>母文（锦缎）更正</dt><dd data-kind="母文（锦缎）更正">母文称 xAI「现金流闭环」，核出来是错的，我引它的模式、不引它的错；xAI 目前是烧钱炉，靠并进有 Starlink 现金牛的 SpaceX 交叉输血</dd>
-      <dt>补充</dt><dd data-kind="补充">PayPal 套现是 SpaceX、Tesla 的启动金</dd>
-      <dt>分寸</dt><dd data-kind="分寸">三次都成有强幸存者偏差；马斯克落袋了，不代表 IPO 接盘的散户落袋了</dd>
-      <dt>证伪口</dt><dd data-kind="证伪口">一年内「太空+AI」叙事被证伪、股价续跌，则「第三次全身而退」这一判断打折。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-21 读数：证伪口看的是 SpaceX。SPCX 10/30 以来有四个交易日收盘低于发行价 $135（10/30、11/5、11/6、11/20），11/20 收 $127.79（Nasdaq）。「太空+AI」叙事没有被证伪的一手事件，两个条件只沾了「股价续跌」这一半，维持 ⏳，续看至 2027-07-27。对照项：Anthropic 挂牌时，公司从基础发行拿到约 788 亿美元（已扣承销折扣、未扣其他费用），另有 260 亿美元同步私募（424B4）和约 122 亿超额配售（CNBC 11/20 引公司稿），近万亿纸面估值里已有一部分换成了现金</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/spacex-below-ipo-price-ai-exits.html">SpaceX 破发对 AI 一级市场退出意味着什么？</a> · <a href="../answers/raise-more-in-hot-valuation-window.html">估值窗口热的时候该不该多融？融来的钱该变成什么？</a></p>
@@ -218,6 +253,8 @@
     本页是 <a href="../#entry-113">倩小虾日记 ENTRY 113</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>

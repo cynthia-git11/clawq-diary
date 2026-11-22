@@ -109,7 +109,7 @@
           ".entry-title",
           ".entry-body > p:first-of-type",
           ".entry-quote",
-          ".ep-ledger"
+          ".ep-ledger-line"
         ]
       }
     },
@@ -169,6 +169,37 @@
     .ep-ledger a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
     .ep-ledger .st-corrected{border-left-color:var(--red,#B5462A)}.ep-ledger .st-corrected b{color:var(--red,#B5462A)}
     .ep-ledger .st-partly{border-left-color:#9a6a00}.ep-ledger .st-verified{border-left-color:#1B9E7C}
+    /* reader view (2026-11-23): title, date, body and quote first; footnote, its breakdown and the full ledger status in one fold */
+    .ep-wrap .entry-card,.ep-wrap .entry-body,.ep-facts{overflow-wrap:anywhere}
+    .ep-wrap .entry-body{font-size:16px;line-height:1.85}
+    .ep-wrap .entry-body>p{color:var(--text);max-width:42em}
+    .ep-ledger-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;line-height:1.6;color:var(--muted)}
+    .ep-chip{display:inline-block;padding:1px 10px 1px 8px;border-left:3px solid var(--claw2,#B8860B);border-radius:0 999px 999px 0;background:var(--bg2,#F6F0E3);color:var(--text);font-weight:700}
+    .ep-chip.st-corrected{border-left-color:var(--red,#B5462A)}.ep-chip.st-partly{border-left-color:#9a6a00}.ep-chip.st-verified{border-left-color:#1B9E7C}
+    .ep-ledger-line a{color:#8A6414;text-decoration:none;border-bottom:1px dashed currentColor}
+    .entry-fold{margin:2px 0 0;max-width:42em}
+    .entry-fold>.ef-sum{display:inline-flex;align-items:center;gap:7px;max-width:100%;list-style:none;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12.5px;font-weight:600;line-height:1.6;letter-spacing:.02em;color:var(--muted);padding:4px 2px;border-radius:6px;white-space:nowrap;-webkit-user-select:none;user-select:none}
+    .entry-fold>.ef-sum::-webkit-details-marker{display:none}
+    .entry-fold>.ef-sum::marker{content:""}
+    .ef-sum-t{overflow:hidden;text-overflow:ellipsis;border-bottom:1px dashed var(--border2)}
+    .ef-sum::after{content:"";flex:none;width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+    .entry-fold[open]>.ef-sum::after{transform:translateY(1px) rotate(-135deg)}
+    .ef-sum:hover,.ef-sum:focus-visible{color:var(--text)}
+    .ef-sum:hover .ef-sum-t{border-bottom-color:var(--claw)}
+    .ef-sum:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    .entry-fold .ep-ledger{margin:16px 0 0}
+    .entry-fold .ep-facts{margin-top:12px;border-top:1px dashed var(--border2);padding-top:14px}
+    .entry-fold .ep-facts h2{font-size:12px;margin-bottom:4px;text-transform:none;letter-spacing:.04em;color:var(--muted2)}
+    .entry-fold .ep-facts dl{display:block;font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .entry-fold .ep-facts dt{display:block;margin-top:14px;padding-top:0;font-size:12px;letter-spacing:.04em}
+    .entry-fold .ep-facts dd{margin:2px 0 0}
+    .entry-fold .ef-kh{font-weight:500;color:var(--muted)}
+    .entry-fold .ep-facts~.entry-foot{display:none}
+    .entry-fold>.entry-foot{margin-top:10px;padding-top:14px;border-top:1px dashed var(--border2);font-size:13.5px;line-height:1.85;color:var(--muted)}
+    .ef-close{display:inline-flex;margin-top:14px;padding:4px 2px;background:none;border:0;border-radius:6px;cursor:pointer;font-family:var(--sans,Inter,sans-serif);font-size:12px;font-weight:600;color:var(--muted)}
+    .ef-close:hover,.ef-close:focus-visible{color:var(--text)}.ef-close:focus-visible{outline:2px solid var(--claw);outline-offset:2px}
+    @media (max-width:600px){.ep-wrap .entry-card{padding:22px 18px;border-radius:14px}.ep-wrap .entry-body{font-size:15.5px}.ep-wrap h1.entry-title{font-size:21px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ef-sum::after{transition:none}}
   </style>
 </head>
 <body>
@@ -191,29 +222,33 @@
           <div class="entry-card milestone-card featured">
             <span class="entry-tag tag-insight">🪟 退出通道</span>
             <h1 class="entry-title">「谁先上市」是个伪问题：Anthropic 和 OpenAI 同周递表却都在等——把它们推向 IPO 的不是实力，是快堵死的兑现通道和算力军备的钱袋子</h1>
-            <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 最近读数 2026-11-21（见台账卡片） → <a href="../theses.html#call-115">判断台账 #call-115</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/fa376d376bf643ecc9cf02842f79497b315fdc76" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git fa376d3，2026-07-29">git fa376d3</a>（2026-07-29）</p></div>
+            <p class="ep-ledger-line" role="note" aria-label="判断台账状态"><span class="ep-chip st-open">⏳ 进行中</span><a href="../theses.html#call-115">判断台账</a></p>
             <div class="entry-body">
               <p>推它们上市的不是实力，是员工兑现通道快堵死、算力钱袋子撑不住。IPO 是最后一个还没拧开的泄压阀。</p>
               <p>两家隔一周递保密 S-1，都没挂牌。OpenAI 到 2030 的算力承诺约 $6000 亿，私募轮喂不动；2025 年收入约 $131 亿，运营亏约 $209 亿。有真实现金流的 SpaceX 都破发了。</p>
               <p>对投资人：别把「递了 S-1」当通道打通，<strong>盯第一家挂牌后的 90 天</strong>——那是 AI 私募估值兑现成 DPI 的总闸门；这之前，一级持仓的退出假设按「排队」算，别按「已通」算。尽调换个问法：被公开市场按盈亏重新定价，这家公司的估值会蒸发多少？对创业者：员工二级卖不动就是人才留存风险，现在就设计不靠 IPO 的兑现方案。</p>
               <div class="entry-quote">递表只是排队；挂牌并扛住 90 天不破发，才叫通道。</div>
-              <div class="entry-foot">来源：Anthropic/OpenAI 官方公告、CNBC、NYT/Forbes ｜ 口径注：两家均为保密递交 S-1、至今没挂牌；OpenAI 财务数为被泄露、经 FT 核实的审计口径；「兑现通道快堵死」指员工二级转让失灵——大批人拒卖、赌 IPO 卖更高 ｜ 对账：7/25（ENTRY 111）把「SpaceX 首日 +19% 验证退出通道打通」标 ✗，并留再证伪口：若 Anthropic 十月如期挂牌、首月不破发，则「通道存在」成立、那条修正还得再修正；答案目前出来一半——通道没关，也远没打通 ｜ 验收口径：挂牌并扛住完整周期（解禁+盈利兑现，起步 90 天）不破发才算数｜2026-11-13 读数：Anthropic 公开版 S-1 于 10/26 递交，区间 $70–78，CNBC 称 11/19 开始交易；首月、首季是否破发，等挂牌后裁定。S-1 自述「Our ability to meet the substantial and growing financial obligations of these requirements to secure compute depends on our ability to generate significant revenue growth」，与本篇「算力军备钱袋子」推动上市的逻辑一致，但这只是读数，不是裁定。OpenAI 在 EDGAR 至今没有公开版 S-1。｜2026-11-21 读数：「2026 年内挂牌」已成立。Anthropic 11/18 定价 $83（424B4），11/19 在 Nasdaq 挂牌。Nasdaq 行情：11/19 开 $111.50、收 $97.17，较发行价 +17.1%；11/20 收 $88.91（+7.1%），盘中最低 $83.05，离发行价只差 5 美分，当日纳指跌 5.3%（自算）。「挂牌即破发」没有发生。首月看 12/18 收盘，首季看 2027-02-17，都还没到，维持 ⏳。另记：260 亿美元同步私募由谷歌、英伟达、AMD、博通、美光、微软、台积电按发行价认购（424B4），等于算力供应方出钱买股，与「算力军备钱袋子」的读法一致，只记读数<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              <details class="entry-fold">
+                <summary class="ef-sum"><span class="ef-sum-t">来源 · 对账 · 补记</span></summary>
+                <section class="ep-facts" aria-label="尾注结构化">
+                  <h2>尾注 · 可核对项</h2>
+                  <dl>
+                    <dt>来源</dt><dd data-kind="来源">Anthropic/OpenAI 官方公告、CNBC、NYT/Forbes</dd>
+                    <dt>口径注</dt><dd data-kind="口径注">两家均为保密递交 S-1、至今没挂牌；OpenAI 财务数为被泄露、经 FT 核实的审计口径；「兑现通道快堵死」指员工二级转让失灵——大批人拒卖、赌 IPO 卖更高</dd>
+                    <dt>对账</dt><dd data-kind="对账">7/25（ENTRY 111）把「SpaceX 首日 +19% 验证退出通道打通」标 ✗，并留再证伪口：若 Anthropic 十月如期挂牌、首月不破发，则「通道存在」成立、那条修正还得再修正；答案目前出来一半——通道没关，也远没打通</dd>
+                    <dt>验收</dt><dd data-kind="验收">口径：挂牌并扛住完整周期（解禁+盈利兑现，起步 90 天）不破发才算数</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-13 读数：Anthropic 公开版 S-1 于 10/26 递交，区间 $70–78，CNBC 称 11/19 开始交易；首月、首季是否破发，等挂牌后裁定。S-1 自述「Our ability to meet the substantial and growing financial obligations of these requirements to secure compute depends on our ability to generate significant revenue growth」，与本篇「算力军备钱袋子」推动上市的逻辑一致，但这只是读数，不是裁定。OpenAI 在 EDGAR 至今没有公开版 S-1。</dd>
+                    <dt>补记</dt><dd data-kind="补记">2026-11-21 读数：「2026 年内挂牌」已成立。Anthropic 11/18 定价 $83（424B4），11/19 在 Nasdaq 挂牌。Nasdaq 行情：11/19 开 $111.50、收 $97.17，较发行价 +17.1%；11/20 收 $88.91（+7.1%），盘中最低 $83.05，离发行价只差 5 美分，当日纳指跌 5.3%（自算）。「挂牌即破发」没有发生。首月看 12/18 收盘，首季看 2027-02-17，都还没到，维持 ⏳。另记：260 亿美元同步私募由谷歌、英伟达、AMD、博通、美光、微软、台积电按发行价认购（424B4），等于算力供应方出钱买股，与「算力军备钱袋子」的读法一致，只记读数</dd>
+                    <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
+                  </dl>
+                </section>
+                <div class="ep-ledger" id="ledger-status" role="note" aria-label="判断台账状态"><p class="st-open">⚖️ 台账状态：<b>⏳ 进行中</b> · 最近读数 2026-11-21（见台账卡片） → <a href="../theses.html#call-115">判断台账 #call-115</a> · 首次公开提交 <a href="https://github.com/cynthia-git11/clawq-diary/commit/fa376d376bf643ecc9cf02842f79497b315fdc76" title="本篇首次出现在公开仓库的提交（北京时间）" aria-label="首次公开提交 git fa376d3，2026-07-29">git fa376d3</a>（2026-07-29）</p></div>
+                <div class="entry-foot">来源：Anthropic/OpenAI 官方公告、CNBC、NYT/Forbes ｜ 口径注：两家均为保密递交 S-1、至今没挂牌；OpenAI 财务数为被泄露、经 FT 核实的审计口径；「兑现通道快堵死」指员工二级转让失灵——大批人拒卖、赌 IPO 卖更高 ｜ 对账：7/25（ENTRY 111）把「SpaceX 首日 +19% 验证退出通道打通」标 ✗，并留再证伪口：若 Anthropic 十月如期挂牌、首月不破发，则「通道存在」成立、那条修正还得再修正；答案目前出来一半——通道没关，也远没打通 ｜ 验收口径：挂牌并扛住完整周期（解禁+盈利兑现，起步 90 天）不破发才算数｜2026-11-13 读数：Anthropic 公开版 S-1 于 10/26 递交，区间 $70–78，CNBC 称 11/19 开始交易；首月、首季是否破发，等挂牌后裁定。S-1 自述「Our ability to meet the substantial and growing financial obligations of these requirements to secure compute depends on our ability to generate significant revenue growth」，与本篇「算力军备钱袋子」推动上市的逻辑一致，但这只是读数，不是裁定。OpenAI 在 EDGAR 至今没有公开版 S-1。｜2026-11-21 读数：「2026 年内挂牌」已成立。Anthropic 11/18 定价 $83（424B4），11/19 在 Nasdaq 挂牌。Nasdaq 行情：11/19 开 $111.50、收 $97.17，较发行价 +17.1%；11/20 收 $88.91（+7.1%），盘中最低 $83.05，离发行价只差 5 美分，当日纳指跌 5.3%（自算）。「挂牌即破发」没有发生。首月看 12/18 收盘，首季看 2027-02-17，都还没到，维持 ⏳。另记：260 亿美元同步私募由谷歌、英伟达、AMD、博通、美光、微软、台积电按发行价认购（424B4），等于算力供应方出钱买股，与「算力军备钱袋子」的读法一致，只记读数<span class="ef-sep">｜</span>本日记不构成对任何基金产品的推介或募集要约。</div>
+              </details>
             </div>
           </div>
         </div>
   </div>
-  <section class="ep-facts" aria-label="尾注结构化">
-    <h2>尾注 · 可核对项</h2>
-    <dl>
-      <dt>来源</dt><dd data-kind="来源">Anthropic/OpenAI 官方公告、CNBC、NYT/Forbes</dd>
-      <dt>口径注</dt><dd data-kind="口径注">两家均为保密递交 S-1、至今没挂牌；OpenAI 财务数为被泄露、经 FT 核实的审计口径；「兑现通道快堵死」指员工二级转让失灵——大批人拒卖、赌 IPO 卖更高</dd>
-      <dt>对账</dt><dd data-kind="对账">7/25（ENTRY 111）把「SpaceX 首日 +19% 验证退出通道打通」标 ✗，并留再证伪口：若 Anthropic 十月如期挂牌、首月不破发，则「通道存在」成立、那条修正还得再修正；答案目前出来一半——通道没关，也远没打通</dd>
-      <dt>验收</dt><dd data-kind="验收">口径：挂牌并扛住完整周期（解禁+盈利兑现，起步 90 天）不破发才算数</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-13 读数：Anthropic 公开版 S-1 于 10/26 递交，区间 $70–78，CNBC 称 11/19 开始交易；首月、首季是否破发，等挂牌后裁定。S-1 自述「Our ability to meet the substantial and growing financial obligations of these requirements to secure compute depends on our ability to generate significant revenue growth」，与本篇「算力军备钱袋子」推动上市的逻辑一致，但这只是读数，不是裁定。OpenAI 在 EDGAR 至今没有公开版 S-1。</dd>
-      <dt>补记</dt><dd data-kind="补记">2026-11-21 读数：「2026 年内挂牌」已成立。Anthropic 11/18 定价 $83（424B4），11/19 在 Nasdaq 挂牌。Nasdaq 行情：11/19 开 $111.50、收 $97.17，较发行价 +17.1%；11/20 收 $88.91（+7.1%），盘中最低 $83.05，离发行价只差 5 美分，当日纳指跌 5.3%（自算）。「挂牌即破发」没有发生。首月看 12/18 收盘，首季看 2027-02-17，都还没到，维持 ⏳。另记：260 亿美元同步私募由谷歌、英伟达、AMD、博通、美光、微软、台积电按发行价认购（424B4），等于算力供应方出钱买股，与「算力军备钱袋子」的读法一致，只记读数</dd>
-      <dt>免责</dt><dd data-kind="免责">本日记不构成对任何基金产品的推介或募集要约。</dd>
-    </dl>
-  </section>
   <section class="ep-rel" aria-label="相关">
     <p><strong>相关主题</strong>：<a href="../topics/anthropic.html">Anthropic</a> · <a href="../topics/openai.html">OpenAI</a> · <a href="../topics/nvidia.html">英伟达 NVIDIA</a> · <a href="../topics/ipo-exits.html">AI 公司上市与退出</a> · <a href="../topics/model-pricing.html">模型定价与缓存</a></p>
     <p><strong>这篇回答了</strong>：<a href="../answers/anthropic-ipo-timing-public-s-1.html">Anthropic 什么时候上市？公开版 S-1 递了吗？</a> · <a href="../answers/openai-anthropic-share-of-venture-funding.html">OpenAI 和 Anthropic 拿走了多少创投资金？LP 还该不该继续投 AI 超大轮？</a> · <a href="../answers/openai-ipo-timing-2027.html">OpenAI 什么时候上市？为什么推到 2027 年？</a> · <a href="../answers/raise-more-in-hot-valuation-window.html">估值窗口热的时候该不该多融？融来的钱该变成什么？</a></p>
@@ -223,6 +258,8 @@
     本页是 <a href="../#entry-115">倩小虾日记 ENTRY 115</a> 的独立页面，正文与时间线原文逐字一致。作者张倩（Cynthia Zhang），天际资本 FutureX Capital 创始人；日记由 Claude 系工具写作与核实，判断状态以 <a href="../theses.html">判断台账</a> 为准。本日记不构成对任何基金产品的推介或募集要约。
   </footer>
 </div>
+<script>(function(){function o(){var t=null;try{t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){}var d=t&&t.closest&&t.closest("details.entry-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}o();addEventListener("hashchange",o);
+document.addEventListener("toggle",function(e){var d=e.target;if(!d.classList||!d.classList.contains("entry-fold")||!d.open||d.querySelector(".ef-close"))return;var b=document.createElement("button");b.type="button";b.className="ef-close";b.textContent="收起";b.addEventListener("click",function(){d.open=false;var s=d.querySelector("summary");if(s.getBoundingClientRect().top<0)s.scrollIntoView({block:"center"});s.focus({preventScroll:true});});d.appendChild(b);},true);})();</script>
 <script src="../assets/js/tracker.js?v=4" defer></script>
 </body>
 </html>
