@@ -5,10 +5,10 @@ window.CLAWQ_ANALYTICS = {
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 36,
-    "uniques": 23,
+    "pv": 48,
+    "uniques": 26,
     "median_time_sec": 0,
-    "completion_rate": 0,
+    "completion_rate": 0.038,
     "shares": 0
   },
   "daily": [
@@ -107,90 +107,114 @@ window.CLAWQ_ANALYTICS = {
       "shares": 0,
       "median_time_sec": 115,
       "completion_rate": 0
+    },
+    {
+      "date": "2026-11-23",
+      "pv": 12,
+      "uniques": 3,
+      "shares": 0,
+      "median_time_sec": 67,
+      "completion_rate": 0.333
     }
   ],
   "countries": [
     {
+      "name": "新加坡",
+      "code": "SG",
+      "flag": "🇸🇬",
+      "pct": 0.333,
+      "pv": 16
+    },
+    {
       "name": "英国",
       "code": "GB",
       "flag": "🇬🇧",
-      "pct": 0.278,
-      "pv": 10
+      "pct": 0.229,
+      "pv": 11
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.222,
-      "pv": 8
+      "pct": 0.188,
+      "pv": 9
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.222,
-      "pv": 8
-    },
-    {
-      "name": "新加坡",
-      "code": "SG",
-      "flag": "🇸🇬",
       "pct": 0.167,
-      "pv": 6
+      "pv": 8
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.028,
+      "pct": 0.021,
       "pv": 1
     },
     {
       "name": "EC",
       "code": "EC",
       "flag": "🌐",
-      "pct": 0.028,
+      "pct": 0.021,
       "pv": 1
     },
     {
       "name": "德国",
       "code": "DE",
       "flag": "🇩🇪",
-      "pct": 0.028,
+      "pct": 0.021,
       "pv": 1
     },
     {
       "name": "加拿大",
       "code": "CA",
       "flag": "🇨🇦",
-      "pct": 0.028,
+      "pct": 0.021,
       "pv": 1
     }
   ],
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.806
+      "pct": 0.646
+    },
+    {
+      "lang": "entries/index",
+      "pct": 0.062
     },
     {
       "lang": "entries/161",
-      "pct": 0.056
+      "pct": 0.042
     },
     {
       "lang": "English (en)",
-      "pct": 0.056
+      "pct": 0.042
+    },
+    {
+      "lang": "topics/model-pricing",
+      "pct": 0.021
+    },
+    {
+      "lang": "topics/index",
+      "pct": 0.021
+    },
+    {
+      "lang": "判断总账 (theses)",
+      "pct": 0.021
+    },
+    {
+      "lang": "entries/166",
+      "pct": 0.021
     },
     {
       "lang": "entries/165",
-      "pct": 0.028
+      "pct": 0.021
     },
     {
       "lang": "entries/131",
-      "pct": 0.028
-    },
-    {
-      "lang": "entries/107",
-      "pct": 0.028
+      "pct": 0.021
     }
   ],
   "referrers": [
@@ -200,19 +224,23 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "ref": "cynthia-git11.github.io",
-      "pv": 5
+      "pv": 12
     },
     {
       "ref": "weixin110.qq.com",
       "pv": 3
     },
     {
+      "ref": "github.com",
+      "pv": 3
+    },
+    {
       "ref": "t.co",
-      "pv": 1
+      "pv": 2
     },
     {
       "ref": "futurex.capital",
-      "pv": 1
+      "pv": 2
     }
   ]
 };
