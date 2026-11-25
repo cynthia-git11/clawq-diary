@@ -514,7 +514,7 @@ EN_PAGE = f"""<!DOCTYPE html>
   <div class="compliance">{CLAUDE_EN}. Where a Chinese card carries a conflict-of-interest disclosure, its row here points to it; read those calls with that disclosure in mind. {DISC_EN} Past calls do not indicate future accuracy.</div>
 </div>
 <footer>The Judgment Ledger · <a href="en.html" style="color:var(--claw)">The ClawQ Chronicles</a> · <a href="theses.html" hreflang="zh-CN">中文台账</a> · <a href="entries/en/">All entries (English)</a> · <a href="llms.txt">llms.txt</a></footer>
-<script src="assets/js/tracker.js?v=4" defer></script>
+<script src="assets/js/tracker.js?v=5" defer></script>
 </body>
 </html>
 """

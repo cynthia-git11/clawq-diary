@@ -488,7 +488,7 @@ def page(q, zh):
 {top_div}
   <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · {'本日记不构成对任何基金产品的推介或募集要约；数字与原文逐字一致，判断的验证状态以判断台账为准。' if zh else 'Nothing here is an offer or solicitation for any fund product; numbers match the source entry verbatim, and verification status lives in the ledger.'}</footer>
 </div>
-<script src="{up}assets/js/tracker.js?v=4" defer></script>
+<script src="{up}assets/js/tracker.js?v=5" defer></script>
 </body>
 </html>
 """
@@ -549,7 +549,7 @@ def index_page(zh):
 {chr(10).join(secs)}
   <footer class="aw-foot">张倩 Cynthia Zhang · 天际资本 FutureX Capital · {'本日记不构成对任何基金产品的推介或募集要约。' if zh else 'Nothing here is an offer or solicitation for any fund product.'}</footer>
 </div>
-<script src="{up}assets/js/tracker.js?v=4" defer></script>
+<script src="{up}assets/js/tracker.js?v=5" defer></script>
 </body>
 </html>
 """

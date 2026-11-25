@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Tracker coverage check: every content page must load assets/js/tracker.js?v=4 exactly once.
+"""Tracker coverage check: every content page must load assets/js/tracker.js?v=5 exactly once.
 
 Scans every *.html under the repo (excluding .git/, integrations/, 404.html, analytics.html) and asserts:
-  1. exactly one <script src="...assets/js/tracker.js?v=4"> tag
+  1. exactly one <script src="...assets/js/tracker.js?v=5"> tag
   2. the relative src resolves (from the page's own directory) to an existing file
   3. no stale reference to another tracker.js version
 Prints a per-directory summary; exits non-zero and lists the offending files when anything is missing.
@@ -13,7 +13,7 @@ import os, re, sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if "--root" in sys.argv: ROOT = os.path.abspath(sys.argv[sys.argv.index("--root") + 1])
-WANT = "assets/js/tracker.js?v=4"
+WANT = "assets/js/tracker.js?v=5"
 SKIP_DIRS = {".git", "integrations", "node_modules"}
 SKIP_FILES = {"404.html", "analytics.html"}
 TAG = re.compile(r'<script\b[^>]*\bsrc="([^"]*assets/js/tracker\.js[^"]*)"[^>]*>', re.I)

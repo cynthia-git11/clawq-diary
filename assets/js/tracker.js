@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   倩小虾日记 · 自建访问追踪器 v4（无第三方、无 cookie、不存 PII）
+   倩小虾日记 · 自建访问追踪器 v5（无第三方、无 cookie、不存 PII）
    采集：PV · 可见停留时长 · 滚动完读 · 分享点击 · 时区粗推地区
    上报：navigator.sendBeacon → 自建 endpoint（占位）；localStorage 兜底累计
    v4：page 改为「相对站点根的路径」——站点根由本脚本自身的 src 推出
@@ -11,6 +11,10 @@
    ════════════════════════════════════════════════════════════════ */
 (function () {
   if (location.search.indexOf('notrack') > -1) return;
+  // v5（2026-11-25）：本地预览、内网地址和 file:// 不上报，避免把作者自己的预览算进流量
+  var HOST = (location.hostname || '').toLowerCase();
+  if (location.protocol === 'file:' || !HOST || HOST === 'localhost' || HOST === '[::1]' || HOST === '::1' ||
+      /\.(localhost|local|test)$/.test(HOST) || /^(127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|0\.0\.0\.0$)/.test(HOST)) return;
 
   // 自建后端上报地址（部署 Cloudflare Worker / 自有函数后填入；当前仅本地累计）
   var ENDPOINT = 'https://clawq-analytics.clawq.workers.dev/collect';

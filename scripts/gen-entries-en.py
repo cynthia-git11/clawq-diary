@@ -298,6 +298,7 @@ def build_pages(LG):
   <nav class="ee-pn" aria-label="Previous and next">{pn}</nav>
   <footer class="ee-foot">English edition of <a href="../{n}.html">ENTRY {n}</a>; the Chinese original, with its full footnotes (sources, method notes, falsifier, disclosure, corrections), is the reference text. Written and verified with Claude; verification status lives in the <a href="../../theses-en.html">judgment ledger</a>. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
 </div>{FOLD_JS if fold_kinds else ""}
+<script src="../../assets/js/tracker.js?v=5" defer></script>
 </body>
 </html>
 """
@@ -323,6 +324,7 @@ written += wr("entries/en/index.html", head(f"All entries in English · {len(pag
   </ul>
   <footer class="ee-foot">Cynthia Zhang · FutureX Capital. This diary does not constitute promotion of, or an offer to subscribe for, any fund product.</footer>
 </div>
+<script src="../../assets/js/tracker.js?v=5" defer></script>
 </body>
 </html>
 """)
