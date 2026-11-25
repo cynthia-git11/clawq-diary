@@ -31,6 +31,7 @@ sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 import holdings_lib as HL
 import llms_sections as LS
 import entry_dates as ED
+import topic_match
 HOLD = HL.load()
 if DRY:
     W = tempfile.mkdtemp(prefix="topics-")
@@ -100,7 +101,7 @@ HEAD = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="icon" type="image/png" href="../assets/clawq-square.jpg" />"""
 
 def match(t, e):
-    return any(a.lower() in e["text"].lower() for a in [t["name"]] + t.get("aliases", []))
+    return topic_match.matches(t, e["text"])   # ASCII aliases on word boundaries, 字节 not the byte unit (scripts/topic_match.py)
 
 ans_p = os.path.join(ROOT, "data/answers.json")
 answers = json.load(open(ans_p, encoding="utf-8")) if os.path.exists(ans_p) else []

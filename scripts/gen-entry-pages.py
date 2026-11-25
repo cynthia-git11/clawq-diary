@@ -35,6 +35,7 @@ Usage: python3 scripts/gen-entry-pages.py [--root DIR] [--dry]
 import re, os, sys, json, html, shutil, tempfile, datetime
 sys.dont_write_bytecode = True   # no scripts/__pycache__ in the repo
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import topic_match
 from entry_dates import TODAY, entry_date_d, foot_of, foot_items, modified, ledger_dates, later_reading, topic_text, backfill_written
 import llms_sections as LS
 import machine_dates as MD   # datePublished / dateModified rule, backfill written dates, the frozen time of day, hub/atom post-processing
@@ -193,8 +194,8 @@ def ledger_bits(e):
     return line_html, strip_html, corr, suf, dates, corr_dates
 
 def topics_for(e):
-    txt = topic_text(e["blk"]).lower()   # same mention rule as the topic hubs (gen-topics.py): disclosure clauses do not count
-    return [t for t in TOPICS if any(a.lower() in txt for a in [t["name"]] + t.get("aliases", []))]
+    txt = topic_text(e["blk"])   # same mention rule as the topic hubs (gen-topics.py): disclosure clauses do not count
+    return [t for t in TOPICS if topic_match.matches(t, txt)]   # shared matcher (scripts/topic_match.py)
 
 # ---------- page template ----------
 CSS = """

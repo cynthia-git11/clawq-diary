@@ -568,6 +568,32 @@ try:
         + "\n".join(due_rows), before=("<!-- gen:answers -->", "<!-- gen:topics -->", "\n## 引用规范"))
 except ValueError as e: warn(f"llms.txt 即将裁定 block not updated: {e}")
 
+# ---------------- llms.txt entry list / llms-full.txt sections: dated status of closed calls (2026-11-25) ----------------
+# buildN writes each entry's llms.txt line and llms-full.txt section once, at publication; a call corrected, partly upheld or
+# verified later still read as open there. One idempotent marker per closed call: 〔台账：…〕 at the end of its llms.txt line,
+# a 「台账：…」 line under the URL line of its llms-full.txt section. Open calls carry none (an old marker is removed).
+ST_ZH = {"verified": "✓ 已验证", "corrected": "✗ 已公开修正", "partly": "◐ 部分成立"}
+def closed_marker(c):
+    if c["status"] not in ST_ZH: return None
+    d = c.get("corrected_on") or c.get("reconciled")
+    return ST_ZH[c["status"]] + (f"，{d}" if d else "") + (f"，公开修正见 ENTRY {c['correction_entry']}" if c.get("correction_entry") else "")
+MK = re.compile(r" 〔台账：[^〕]*〕$")
+_ls = OUT["llms.txt"].split("\n")
+for c in calls:
+    k = [i for i, x in enumerate(_ls) if x.startswith(f"- [ENTRY {c['entry']} · ")]
+    if len(k) != 1: continue
+    m = closed_marker(c); base = MK.sub("", _ls[k[0]])
+    _ls[k[0]] = base + (f" 〔台账：{m} → [theses.html#call-{c['entry']}]({BASE}theses.html#call-{c['entry']})〕" if m else "")
+OUT["llms.txt"] = "\n".join(_ls)
+lf = rd("llms-full.txt")
+lf = re.sub(r"(?m)^台账：[^\n]*\n", "", lf)
+def _sec(mo):
+    c = next((x for x in calls if x["entry"] == int(mo.group(2))), None)
+    m = closed_marker(c) if c else None
+    return mo.group(1) + (f"台账：{m}（{BASE}theses.html#call-{c['entry']}）\n" if m else "")
+lf2 = re.sub(r"(^## ENTRY (\d+) · [^\n]*\nURL: [^\n]*\n)", _sec, lf, flags=re.M)
+if lf2 != rd("llms-full.txt"): OUT["llms-full.txt"] = lf2
+
 # ---------------- index.html / en.html FAQ answers (anchor or warn; never widen) ----------------
 ZH_A = (f"截至 {updated}，{T} 个重大判断：{S['verified']} 个已验证、{S['corrected']} 个被她自己公开修正、{S['partly']} 个部分成立、{S['open']} 个进行中，"
         f"其中 {stats['backfilled']} 个是事后补记、单独计数（逐条状态、裁定日与 CSV 见该页）。")

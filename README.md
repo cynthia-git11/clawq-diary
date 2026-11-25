@@ -4,7 +4,7 @@
 
 A public, auditable record of AI investment calls by Cynthia Zhang, founder of FutureX Capital. Each entry makes one call, shows its numbers, and states what would prove it wrong; corrections are made in public on the original entry.
 
-**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 166 篇　·　92 个挂账判断
+**网站 Site**：<https://cynthia-git11.github.io/clawq-diary/>　·　共 168 篇　·　94 个挂账判断
 
 ## 怎么读 How to read
 
@@ -16,6 +16,8 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 
 ## 最新 15 篇 Latest entries
 
+- 2026-11-25 · [ENTRY 168 · 英伟达请回黄仁勋：我判错了，政府背书要当欠账估](https://cynthia-git11.github.io/clawq-diary/entries/168.html)
+- 2026-11-23 · [ENTRY 167 · OpenAI 首席科学家提议按困惑度限速，谁握尺子谁发牌照](https://cynthia-git11.github.io/clawq-diary/entries/167.html)
 - 2026-11-21 · [ENTRY 166 · 黎曼证明编译通过、复核未完：可机检的 AI 活会按通过检验计价](https://cynthia-git11.github.io/clawq-diary/entries/166.html)
 - 2026-11-20 · [ENTRY 165 · 给 AI 后期轮定价，用 Anthropic 的发行价，别用首日价](https://cynthia-git11.github.io/clawq-diary/entries/165.html)
 - 2026-11-18 · [ENTRY 164 · GPT-6.2 缓存价打四折：降价留给不中途换模型的长会话](https://cynthia-git11.github.io/clawq-diary/entries/164.html)
@@ -29,10 +31,8 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 - 2026-11-02 · [ENTRY 156 · AI 检测器正进入出版交稿流程，误判由作者买单](https://cynthia-git11.github.io/clawq-diary/entries/156.html)
 - 2026-10-31 · [ENTRY 155 · 币安被盗 63 亿美元：AI 工具够得着的机器，按热钱包管](https://cynthia-git11.github.io/clawq-diary/entries/155.html)
 - 2026-10-29 · [ENTRY 154 · 实验室白送复杂度证明，Anthropic 把药留给自己](https://cynthia-git11.github.io/clawq-diary/entries/154.html)
-- 2026-10-27 · [ENTRY 153 · Anthropic 招股书：一年内的算力账单约等于年化收入](https://cynthia-git11.github.io/clawq-diary/entries/153.html)
-- 2026-10-25 · [ENTRY 152 · Kimi 名次换不来自营量：OpenRouter 份额剩一成](https://cynthia-git11.github.io/clawq-diary/entries/152.html)
 
-全部 166 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
+全部 168 篇见 [entries/](https://cynthia-git11.github.io/clawq-diary/entries/)。
 
 ## 公司与议题 Topics
 
@@ -69,7 +69,7 @@ A public, auditable record of AI investment calls by Cynthia Zhang, founder of F
 - [Claude Fable 5.2 降价两成，Anthropic 的收入会跟着涨吗？](https://cynthia-git11.github.io/clawq-diary/answers/claude-fable-5-2-price-cut-anthropic-revenue.html)
 - [Anthropic 上市，能带动亏损的 AI 应用和软件公司 IPO 吗？](https://cynthia-git11.github.io/clawq-diary/answers/anthropic-ipo-open-door-loss-making-ai-application.html)
 - [SpaceX 用股票买下 Cursor，Cursor 背后基金的 LP 什么时候能拿到现金？](https://cynthia-git11.github.io/clawq-diary/answers/spacex-cursor-stock-exit-lp-cash.html)
-- [黄仁勋辞任后，英伟达还会给 AI 云做担保、入股吗？靠英伟达兜底的融资会变贵吗？](https://cynthia-git11.github.io/clawq-diary/answers/jensen-huang-resignation-nvidia-keep-guaranteeing.html)
+- [黄仁勋辞任后（11/22 已复职），英伟达还会给 AI 云做担保、入股吗？靠英伟达兜底的融资会变贵吗？](https://cynthia-git11.github.io/clawq-diary/answers/jensen-huang-resignation-nvidia-keep-guaranteeing.html)
 - [美国新规要海外数据中心为中国总部租户申请许可，这类机房的租金收入和估值该怎么打折？](https://cynthia-git11.github.io/clawq-diary/answers/overseas-data-centers-china-tenant-license-discount.html)
 - [消费级 AI 应用怎么估值？能按订阅人数乘 ARPU 算吗？](https://cynthia-git11.github.io/clawq-diary/answers/consumer-ai-app-valuation-subscribers-arpu.html)
 
