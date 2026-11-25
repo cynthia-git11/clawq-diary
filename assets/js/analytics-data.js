@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-11-24",
+  "generated": "2026-11-25",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
     "pv": 50,
-    "uniques": 29,
-    "median_time_sec": 0,
-    "completion_rate": 0.034,
+    "uniques": 28,
+    "median_time_sec": 1,
+    "completion_rate": 0.036,
     "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-10-26",
-      "pv": 1,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 0,
-      "completion_rate": 0
-    },
     {
       "date": "2026-10-28",
       "pv": 1,
@@ -118,7 +110,7 @@ window.CLAWQ_ANALYTICS = {
     },
     {
       "date": "2026-11-24",
-      "pv": 2,
+      "pv": 3,
       "uniques": 3,
       "shares": 0,
       "median_time_sec": 4,
@@ -137,8 +129,8 @@ window.CLAWQ_ANALYTICS = {
       "name": "英国",
       "code": "GB",
       "flag": "🇬🇧",
-      "pct": 0.22,
-      "pv": 11
+      "pct": 0.24,
+      "pv": 12
     },
     {
       "name": "美国",
@@ -157,13 +149,6 @@ window.CLAWQ_ANALYTICS = {
     {
       "name": "FR",
       "code": "FR",
-      "flag": "🌐",
-      "pct": 0.02,
-      "pv": 1
-    },
-    {
-      "name": "EC",
-      "code": "EC",
       "flag": "🌐",
       "pct": 0.02,
       "pv": 1
