@@ -1,25 +1,17 @@
 /* 自建追踪 · 真实数据（Cloudflare Worker + D1）· 无第三方、无 cookie、不存 PII */
 window.CLAWQ_ANALYTICS = {
-  "generated": "2026-11-26",
+  "generated": "2026-11-27",
   "range_days": 30,
   "source": "self-hosted-worker-d1",
   "status": "live",
   "totals": {
-    "pv": 50,
-    "uniques": 29,
+    "pv": 49,
+    "uniques": 28,
     "median_time_sec": 3,
-    "completion_rate": 0.034,
+    "completion_rate": 0.036,
     "shares": 0
   },
   "daily": [
-    {
-      "date": "2026-10-28",
-      "pv": 1,
-      "uniques": 1,
-      "shares": 0,
-      "median_time_sec": 0,
-      "completion_rate": 0
-    },
     {
       "date": "2026-11-01",
       "pv": 1,
@@ -130,41 +122,34 @@ window.CLAWQ_ANALYTICS = {
       "name": "新加坡",
       "code": "SG",
       "flag": "🇸🇬",
-      "pct": 0.36,
+      "pct": 0.367,
       "pv": 18
     },
     {
       "name": "英国",
       "code": "GB",
       "flag": "🇬🇧",
-      "pct": 0.24,
+      "pct": 0.245,
       "pv": 12
     },
     {
       "name": "美国",
       "code": "US",
       "flag": "🇺🇸",
-      "pct": 0.18,
+      "pct": 0.184,
       "pv": 9
     },
     {
       "name": "日本",
       "code": "JP",
       "flag": "🇯🇵",
-      "pct": 0.16,
+      "pct": 0.163,
       "pv": 8
     },
     {
       "name": "FR",
       "code": "FR",
       "flag": "🌐",
-      "pct": 0.02,
-      "pv": 1
-    },
-    {
-      "name": "德国",
-      "code": "DE",
-      "flag": "🇩🇪",
       "pct": 0.02,
       "pv": 1
     },
@@ -179,19 +164,19 @@ window.CLAWQ_ANALYTICS = {
   "by_lang": [
     {
       "lang": "中文 (index)",
-      "pct": 0.66
+      "pct": 0.653
     },
     {
       "lang": "entries/index",
-      "pct": 0.06
+      "pct": 0.061
     },
     {
       "lang": "entries/161",
-      "pct": 0.04
+      "pct": 0.041
     },
     {
       "lang": "English (en)",
-      "pct": 0.04
+      "pct": 0.041
     },
     {
       "lang": "topics/model-pricing",
@@ -221,7 +206,7 @@ window.CLAWQ_ANALYTICS = {
   "referrers": [
     {
       "ref": "(direct)",
-      "pv": 27
+      "pv": 26
     },
     {
       "ref": "cynthia-git11.github.io",
